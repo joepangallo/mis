@@ -1,0 +1,25 @@
+# macOS / editor cruft
+.DS_Store
+*.textClipping
+
+# Third-party course materials. The textbook chapter is a copyrighted work
+# published by its publisher, not ours to redistribute — keep it locally, out
+# of version control, even in a private repository.
+Ch 1..pdf
+*.epub
+
+# Institutional and assessment documents. These carry the school name, the
+# course code, and the wording of a graded case. The module itself is written
+# to contain none of that, and committing the source documents would put it
+# all back. Keep them beside the repo, not inside it.
+*Signature Assignment*.docx
+*Management-Information-Systems.pdf
+Syllabus*.pdf
+
+# Terms reserved to a live assessment, checked by src/check.mjs but never
+# committed — naming them here would be the same leak by another route.
+src/forbidden.local.txt
+
+# Build scratch
+/tmp/
+*.tmp.html
