@@ -26,6 +26,9 @@ body{background:#fff; font-size:10.5pt; line-height:1.5}
 h1{font-size:24pt} h2{font-size:16pt} h3{font-size:12pt} h4{font-size:11pt}
 .chapter{break-before:page; padding-top:6pt}
 .chapter:first-of-type{break-before:auto}
+/* These transitions previously stranded a few lines on otherwise empty pages.
+   Let the next major section use that remaining space before continuing. */
+#s14,#glossary,#final{break-before:auto}
 .card,.callout,.activity,.tbl-wrap,.hero,.gloss-card,.q{box-shadow:none}
 /* Tall blocks must be allowed to split across pages, or a card that is 60% of a
    page height pushes itself to the next one and leaves the rest of the current
@@ -42,6 +45,9 @@ h1,h2,h3,h4,h5,.act-head,.eyebrow{break-after:avoid}
 .activity{border:1px solid #c9bda6; background:#faf7f1; margin:14pt 0}
 .act-kind{background:#17506f}
 .act-body p.mini{color:#6b6153}
+#final .act-body>p{margin-bottom:.55em}
+#final .act-body>ul{margin-bottom:.8em}
+#final .act-body>ul>li{margin:.28em 0}
 .gloss-list{display:grid; grid-template-columns:1fr 1fr; gap:8pt}
 .gloss-card{break-inside:avoid; background:#f7f3ea}
 .obj-grid{grid-template-columns:1fr 1fr}

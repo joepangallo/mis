@@ -1,18 +1,40 @@
 /* Structural, schema, and hygiene checks over the assembled page and the data
    that produced it. Run after every build. */
-import { readFileSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { readFileSync, existsSync, mkdtempSync, rmSync } from "node:fs";
+import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { tmpdir } from "node:os";
+import { spawnSync } from "node:child_process";
 import vm from "node:vm";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SP = HERE;
-const PAGE = process.argv[2] || join(HERE, "..", "module-01-managing-in-the-digital-world.html");
+const args = process.argv.slice(2);
+const RELEASE = args.includes("--release");
+const pageArg = args.find((a) => !a.startsWith("--"));
+const PAGE = pageArg ? resolve(pageArg) : join(HERE, "..", "module-01-managing-in-the-digital-world.html");
 const IDS = ["s11a","s11b","s12a","s12b","s12c","s13","s14","s15"];
+const PREFIX = {s11a:"dw",s11b:"dd",s12a:"isd",s12b:"ppl",s12c:"org",s13:"dual",s14:"eth",s15:"str"};
 
 const fail = [], warn = [];
 const bad = (m) => fail.push(m);
 const meh = (m) => warn.push(m);
+const need = (cond, msg) => { if (!cond) bad(msg); };
+const nonempty = (v) => typeof v === "string" && v.trim().length > 0;
+const plain = (v) => String(v == null ? "" : v).replace(/<[^>]*>/g, " ").replace(/&[A-Za-z0-9#]+;/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
+const distinct = (values) => new Set(values.map(plain)).size === values.length;
+const words = (v) => plain(v).split(/\s+/).filter(Boolean).length;
+const OBJ = new Set(["1.1","1.2","1.3","1.4","1.5"]);
+const GIVEAWAY = /\b(?:always|all of the above|none of the above)\b|\bnever\s+(?:can|will|is|are|does|do|counts?|qualifies?)\b|\bonly\s+(?:ever|one|way)\b/i;
+
+function readJson(name) {
+  const p = join(SP, name);
+  if (!existsSync(p)) { bad(`${name} missing`); return {}; }
+  try { return JSON.parse(readFileSync(p, "utf8")); }
+  catch (e) { bad(`${name} is not valid JSON: ${e.message}`); return {}; }
+}
+const MANIFEST = readJson("module.manifest.json");
+const PROVENANCE = readJson("provenance.json");
 
 /* ---- load the data exactly the way the build does ---- */
 const sb = { ACT:{}, PROSE:{}, GLOSSARY:[], FINAL:{questions:[]}, console };
@@ -25,72 +47,165 @@ for (const id of [...IDS, "glossary", "final"]) {
 }
 const { ACT, PROSE, GLOSSARY, FINAL } = sb;
 
+/* ---- release manifest and source provenance ---- */
+const sameArray = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v, i) => v === b[i]);
+const sameSet = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v) => b.includes(v));
+need(sameArray(MANIFEST.sections, IDS), "module.manifest.json sections do not match the required order");
+need(sameArray(MANIFEST.objectives, [...OBJ]), "module.manifest.json objectives do not match 1.1 through 1.5");
+need(sameSet(MANIFEST.activityKeys, Object.keys(ACT)), "activity keys differ from module.manifest.json");
+need(MANIFEST.finalQuestionCount === (FINAL.questions || []).length, "final question count differs from module.manifest.json");
+need(sameArray(MANIFEST.glossaryTerms, GLOSSARY.map((g) => g.t)), "glossary terms or their order differ from module.manifest.json");
+const actualKinds = {};
+Object.values(ACT).forEach((a) => { actualKinds[a.kind] = (actualKinds[a.kind] || 0) + 1; });
+const kindNames = new Set([...Object.keys(actualKinds), ...Object.keys(MANIFEST.activityKinds || {})]);
+need([...kindNames].every((k) => actualKinds[k] === MANIFEST.activityKinds?.[k]), "activity-kind counts differ from module.manifest.json");
+
+need(PROVENANCE.policy && nonempty(PROVENANCE.policy.core) && nonempty(PROVENANCE.policy.supplement) && nonempty(PROVENANCE.policy.hypotheticals) && nonempty(PROVENANCE.policy.currentLaw), "provenance.json policy is incomplete");
+const sourceIds = new Set(Object.keys(PROVENANCE.sources || {}));
+need(sourceIds.has("chapter1") && sourceIds.has("porter1985") && sourceIds.has("porterMillar1985"), "provenance.json is missing a required textbook or Porter source");
+need(sourceIds.has("ftcPrivacy") && sourceIds.has("ccpa2026"), "provenance.json is missing an official privacy source");
+for (const [id, source] of Object.entries(PROVENANCE.sources || {})) {
+  need(nonempty(source.citation), `provenance source ${id} has no citation`);
+  if (source.url) {
+    need(/^https:\/\//.test(source.url), `provenance source ${id} does not use HTTPS`);
+    need(/^\d{4}-\d{2}-\d{2}$/.test(source.checked || ""), `provenance source ${id} has no checked date`);
+  }
+}
+for (const obj of ["1.1","1.2","1.3","1.4"]) {
+  const locator = PROVENANCE.chapterLocators?.[obj];
+  need(nonempty(locator?.pdfPages) && nonempty(locator?.heading), `chapter locator ${obj} is incomplete`);
+}
+need(nonempty(PROVENANCE.chapterLocators?.porterReferences?.pdfPage) && nonempty(PROVENANCE.chapterLocators?.porterReferences?.heading), "Porter bibliography locator is incomplete");
+for (const id of [...IDS, "glossary", "final"]) {
+  const refs = (PROVENANCE.fragments || {})[id];
+  need(Array.isArray(refs) && refs.length > 0, `provenance has no sources for ${id}`);
+  (refs || []).forEach((ref) => need(sourceIds.has(ref), `provenance for ${id} cites unknown source ${ref}`));
+}
+for (const obj of OBJ) {
+  const refs = (PROVENANCE.objectives || {})[obj];
+  need(Array.isArray(refs) && refs.length > 0, `provenance has no sources for objective ${obj}`);
+  (refs || []).forEach((ref) => need(sourceIds.has(ref), `objective ${obj} cites unknown source ${ref}`));
+}
+need((PROVENANCE.fragments?.s15 || []).includes("porter1985") && (PROVENANCE.fragments?.s15 || []).includes("porterMillar1985"), "strategy supplement does not cite both Porter sources");
+need((PROVENANCE.fragments?.s14 || []).includes("ftcPrivacy") && (PROVENANCE.fragments?.s14 || []).includes("ccpa2026"), "privacy section does not cite both official current-law sources");
+if (RELEASE) {
+  const chapterPath = PROVENANCE.sources?.chapter1?.localFile;
+  need(nonempty(chapterPath) && existsSync(resolve(SP, chapterPath)), "release check requires the local Chapter 1 PDF named in provenance.json");
+}
+
 /* ---- activity schema ---- */
-const need = (cond, msg) => { if (!cond) bad(msg); };
-const OBJ = new Set(["1.1","1.2","1.3","1.4","1.5"]);
 for (const [k, a] of Object.entries(ACT)) {
   const at = `${k} (${a.kind})`;
-  need(a.kind, `${k}: no kind`);
-  need(a.label && a.title && a.how, `${at}: missing label/title/how`);
+  need(nonempty(a.kind), `${k}: no kind`);
+  need(nonempty(a.label) && nonempty(a.title) && nonempty(a.how), `${at}: missing label/title/how`);
   need(OBJ.has(a.objective), `${at}: objective is ${JSON.stringify(a.objective)}`);
   if (a.kind === "quiz") {
     need(Array.isArray(a.questions) && a.questions.length, `${at}: no questions`);
     (a.questions || []).forEach((q, i) => {
+      need(nonempty(q.q), `${at} q${i+1}: question is empty`);
       need(Array.isArray(q.opts) && q.opts.length === 4, `${at} q${i+1}: opts is not 4`);
       need(Array.isArray(q.why) && q.why.length === 4, `${at} q${i+1}: why is not 4`);
       need(Number.isInteger(q.a) && q.a >= 0 && q.a < 4, `${at} q${i+1}: bad answer index ${q.a}`);
+      need((q.opts || []).every(nonempty), `${at} q${i+1}: an option is empty`);
+      need((q.why || []).every(nonempty), `${at} q${i+1}: an explanation is empty`);
+      need(distinct(q.opts || []), `${at} q${i+1}: options are not distinct`);
+      need(distinct(q.why || []), `${at} q${i+1}: explanations are not distinct`);
+      (q.why || []).forEach((w, wi) => need(words(w) >= 10, `${at} q${i+1} why ${wi}: explanation is too thin to teach the misconception`));
       (q.opts || []).forEach((o, oi) => {
-        if (/\b(always|never|only|all of the above|none of the above)\b/i.test(String(o)) && oi !== q.a)
+        if (GIVEAWAY.test(String(o)) && oi !== q.a)
           meh(`${at} q${i+1} opt ${oi}: absolute wording may give it away`);
       });
     });
   } else if (a.kind === "sort") {
+    need(Array.isArray(a.buckets) && a.buckets.length >= 2, `${at}: fewer than 2 buckets`);
+    need(Array.isArray(a.items) && a.items.length >= 2, `${at}: fewer than 2 items`);
+    (a.buckets || []).forEach((b, i) => need(nonempty(b.id) && nonempty(b.name) && nonempty(b.hint), `${at} bucket ${i}: missing id/name/hint`));
     const ids = new Set((a.buckets||[]).map(b => b.id));
     need(ids.size >= 2, `${at}: fewer than 2 buckets`);
-    (a.items||[]).forEach((it, i) => need(ids.has(it.b), `${at} item ${i}: bucket "${it.b}" not declared`));
+    need(ids.size === (a.buckets || []).length, `${at}: duplicate bucket id`);
+    need(distinct((a.buckets || []).map((b) => b.name)), `${at}: duplicate bucket name`);
+    (a.items||[]).forEach((it, i) => {
+      need(nonempty(it.t) && nonempty(it.why), `${at} item ${i}: missing t/why`);
+      need(ids.has(it.b), `${at} item ${i}: bucket "${it.b}" not declared`);
+    });
+    need(distinct((a.items || []).map((it) => it.t)), `${at}: duplicate item text`);
     for (const b of ids) need((a.items||[]).some(it => it.b === b), `${at}: bucket "${b}" has no items`);
   } else if (a.kind === "match") {
-    (a.pairs||[]).forEach((p,i) => need(p.l && p.r, `${at} pair ${i}: missing l/r`));
+    (a.pairs||[]).forEach((p,i) => need(nonempty(p.l) && nonempty(p.r) && nonempty(p.why), `${at} pair ${i}: missing l/r/why`));
     need((a.pairs||[]).length >= 4, `${at}: fewer than 4 pairs`);
+    need(distinct((a.pairs || []).map((p) => p.l)), `${at}: duplicate left-side match`);
+    need(distinct((a.pairs || []).map((p) => p.r)), `${at}: duplicate right-side match`);
   } else if (a.kind === "order") {
     need((a.steps||[]).length >= 3, `${at}: fewer than 3 steps`);
-    (a.steps||[]).forEach((s,i) => need(s.t && s.why, `${at} step ${i}: missing t/why`));
+    (a.steps||[]).forEach((s,i) => need(nonempty(s.t) && nonempty(s.why), `${at} step ${i}: missing t/why`));
+    need(distinct((a.steps || []).map((s) => s.t)), `${at}: duplicate step text`);
   } else if (a.kind === "fill") {
+    need(Array.isArray(a.blanks) && a.blanks.length > 0, `${at}: no blanks`);
     (a.blanks||[]).forEach((b,i) => {
       need(typeof b.before === "string" && typeof b.after === "string", `${at} blank ${i}: missing before/after`);
       need(Array.isArray(b.choices) && b.choices.length >= 2, `${at} blank ${i}: needs 2+ choices`);
+      need((b.choices || []).every(nonempty) && distinct(b.choices || []), `${at} blank ${i}: choices must be nonempty and distinct`);
       need(Number.isInteger(b.a) && b.a >= 0 && b.a < (b.choices||[]).length, `${at} blank ${i}: bad answer index`);
+      need(nonempty(b.why), `${at} blank ${i}: missing why`);
     });
   } else if (a.kind === "explore") {
     need((a.labels||[]).length === 4, `${at}: labels is not 4`);
-    (a.items||[]).forEach((it,i) => need(it.name && it.what && it.real && it.absent && it.why, `${at} item ${i}: missing a facet`));
+    need((a.labels || []).every(nonempty) && distinct(a.labels || []), `${at}: labels must be nonempty and distinct`);
+    need(Array.isArray(a.items) && a.items.length > 0, `${at}: no items`);
+    (a.items||[]).forEach((it,i) => need(nonempty(it.icon) && nonempty(it.name) && nonempty(it.sub) && nonempty(it.what) && nonempty(it.real) && nonempty(it.absent) && nonempty(it.why), `${at} item ${i}: missing icon/name/sub/facet`));
+    need(distinct((a.items || []).map((it) => it.name)), `${at}: duplicate item name`);
   } else if (a.kind === "diagram") {
+    need(Array.isArray(a.models) && a.models.length > 0, `${at}: no models`);
     (a.models||[]).forEach((m,i) => {
-      need(m.id && m.name && (m.boxes||[]).length && (m.points||[]).length, `${at} model ${i}: incomplete`);
-      (m.boxes||[]).forEach((b,bi) => need(["a","b","c","d"].includes(b.c), `${at} model ${i} box ${bi}: c="${b.c}"`));
+      need(nonempty(m.id) && nonempty(m.name) && nonempty(m.site) && (m.boxes||[]).length && (m.points||[]).length, `${at} model ${i}: incomplete`);
+      (m.boxes||[]).forEach((b,bi) => {
+        need(["a","b","c","d"].includes(b.c), `${at} model ${i} box ${bi}: c="${b.c}"`);
+        need(nonempty(b.t) && nonempty(b.w), `${at} model ${i} box ${bi}: missing t/w`);
+      });
+      need((m.points || []).every(nonempty), `${at} model ${i}: empty point`);
     });
+    need(distinct((a.models || []).map((m) => m.id)), `${at}: duplicate model id`);
+    need(distinct((a.models || []).map((m) => m.name)), `${at}: duplicate model name`);
   } else if (a.kind === "sim") {
+    need(Array.isArray(a.steps) && a.steps.length > 0, `${at}: no steps`);
     (a.steps||[]).forEach((s,i) => {
+      need(nonempty(s.situation), `${at} step ${i}: missing situation`);
+      need(Array.isArray(s.opts) && s.opts.length >= 2, `${at} step ${i}: fewer than 2 options`);
       const oks = (s.opts||[]).filter(o => o.ok).length;
       need(oks === 1, `${at} step ${i}: ${oks} options flagged ok (need exactly 1)`);
-      (s.opts||[]).forEach((o,oi) => need(o.t && o.out, `${at} step ${i} opt ${oi}: missing t/out`));
+      (s.opts||[]).forEach((o,oi) => need(nonempty(o.t) && nonempty(o.out), `${at} step ${i} opt ${oi}: missing t/out`));
+      need(distinct((s.opts || []).map((o) => o.t)), `${at} step ${i}: duplicate option text`);
+      need(distinct((s.opts || []).map((o) => o.out)), `${at} step ${i}: duplicate outcomes`);
     });
   } else if (a.kind === "selfcheck") {
-    (a.items||[]).forEach((it,i) => need(it.t && it.hint, `${at} item ${i}: missing t/hint`));
+    need(Array.isArray(a.items) && a.items.length > 0, `${at}: no items`);
+    (a.items||[]).forEach((it,i) => need(nonempty(it.t) && nonempty(it.hint), `${at} item ${i}: missing t/hint`));
+    need(distinct((a.items || []).map((it) => it.t)), `${at}: duplicate item text`);
   } else bad(`${at}: unknown kind`);
 }
 
 /* ---- mounts ---- */
 const mounted = new Map();
 const density = {};
+const ALLOWED_PROSE_CLASSES = new Set(["lede","card","grid","g2","g3","g4","callout","tip","warn","info","exam","eyebrow","tagline","tbl-wrap","tbl","mini","pill","chip","hint","service-card","list-tight","wide","term","keys","steps","split","takeaway","activity"]);
+const SECTION_OBJECTIVE = {s11a:"1.1",s11b:"1.1",s12a:"1.2",s12b:"1.2",s12c:"1.2",s13:"1.3",s14:"1.4",s15:"1.5"};
 for (const id of IDS) {
   const html = PROSE[id];
   if (!html) { bad(`PROSE.${id} missing`); continue; }
-  for (const m of html.matchAll(/data-activity="([A-Za-z0-9_]+)"/g)) {
+  const refs = [...html.matchAll(/data-activity="([A-Za-z0-9_]+)"/g)];
+  const canonical = [...html.matchAll(/<div class="activity" data-activity="([A-Za-z0-9_]+)"><\/div>/g)];
+  need(refs.length === canonical.length, `${id}: every activity mount must use the exact empty canonical div`);
+  for (const m of canonical) {
     const k = m[1];
     if (mounted.has(k)) bad(`activity ${k} mounted twice (${mounted.get(k)} and ${id})`);
     mounted.set(k, id);
     if (!ACT[k]) bad(`${id} mounts ${k}, which has no data`);
+    need(k.startsWith(PREFIX[id]), `${id} mounts ${k}, which does not use its ${PREFIX[id]} prefix`);
+    if (ACT[k]) need(ACT[k].objective === SECTION_OBJECTIVE[id], `${id} mounts ${k} with objective ${ACT[k].objective}`);
+  }
+  for (const cm of html.matchAll(/\bclass="([^"]*)"/g)) {
+    for (const token of cm[1].trim().split(/\s+/).filter(Boolean))
+      need(ALLOWED_PROSE_CLASSES.has(token), `${id}: prose uses unapproved class "${token}"`);
   }
   const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   if (words < 700) meh(`${id}: only ${words} words of prose`);
@@ -140,44 +255,74 @@ for (const id of IDS) {
   if (noLead) meh(`${id}: first key-list item does not open with a bolded name`);
 }
 for (const k of Object.keys(ACT)) if (!mounted.has(k)) bad(`activity ${k} is never mounted`);
+need(/Application supplement/i.test(PROSE.s15 || ""), "s15 is not visibly labeled as an application supplement");
+need(/hypothetical/i.test(PROSE.s15 || ""), "s15 does not identify its practice situation as hypothetical");
+need(/hypothetical/i.test(FINAL.how || ""), "final challenge does not identify its invented practice situations as hypothetical");
+need(!/Harborline/i.test(JSON.stringify({ACT, PROSE, FINAL})), "fictional Harborline company remains in student-facing source");
 
 /* ---- glossary + final ---- */
-need(GLOSSARY.length >= 45, `glossary has only ${GLOSSARY.length} terms`);
+need(GLOSSARY.length === MANIFEST.glossaryTerms?.length, `glossary has ${GLOSSARY.length} terms; manifest requires ${MANIFEST.glossaryTerms?.length}`);
 const seenTerm = new Set();
 GLOSSARY.forEach(g => {
-  need(g.t && g.d, `glossary entry missing t/d: ${JSON.stringify(g).slice(0,60)}`);
-  if (seenTerm.has(g.t)) bad(`glossary term duplicated: ${g.t}`);
-  seenTerm.add(g.t);
+  need(nonempty(g.t) && nonempty(g.d) && nonempty(g.e), `glossary entry missing t/d/e: ${JSON.stringify(g).slice(0,60)}`);
+  need(OBJ.has(g.lo) && g.lo !== "1.5", `glossary "${g.t}" has invalid chapter objective ${JSON.stringify(g.lo)}`);
+  const termKey = plain(g.t);
+  if (seenTerm.has(termKey)) bad(`glossary term duplicated: ${g.t}`);
+  seenTerm.add(termKey);
   if (g.d && g.t && new RegExp("^\\s*" + g.t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + "\\b", "i").test(g.d))
     meh(`glossary "${g.t}": definition restates the term`);
 });
 const fq = FINAL.questions || [];
-need(fq.length >= 20, `final has only ${fq.length} questions`);
+need(fq.length === MANIFEST.finalQuestionCount, `final has ${fq.length} questions; manifest requires ${MANIFEST.finalQuestionCount}`);
 const byObj = {}, byPos = {0:0,1:0,2:0,3:0};
 fq.forEach((q,i) => {
+  need(nonempty(q.q), `final q${i+1}: question is empty`);
   need(Array.isArray(q.opts) && q.opts.length === 4, `final q${i+1}: opts is not 4`);
   need(Array.isArray(q.why) && q.why.length === 4, `final q${i+1}: why is not 4`);
+  need((q.opts || []).every(nonempty) && distinct(q.opts || []), `final q${i+1}: options must be nonempty and distinct`);
+  need((q.why || []).every(nonempty) && distinct(q.why || []), `final q${i+1}: explanations must be nonempty and distinct`);
+  (q.why || []).forEach((w, wi) => need(words(w) >= 10, `final q${i+1} why ${wi}: explanation is too thin to teach the misconception`));
   need(Number.isInteger(q.a) && q.a >= 0 && q.a < 4, `final q${i+1}: bad answer index`);
   need(OBJ.has(q.obj), `final q${i+1}: obj is ${JSON.stringify(q.obj)}`);
+  (q.opts || []).forEach((o, oi) => {
+    if (GIVEAWAY.test(String(o)) && oi !== q.a)
+      meh(`final q${i+1} opt ${oi}: absolute wording may give it away`);
+  });
   byObj[q.obj] = (byObj[q.obj]||0)+1;
   if (Number.isInteger(q.a)) byPos[q.a]++;
 });
-for (const o of OBJ) need((byObj[o]||0) >= 3, `final has only ${byObj[o]||0} questions for objective ${o}`);
+for (const o of OBJ) need((byObj[o]||0) === MANIFEST.finalByObjective?.[o], `final has ${byObj[o]||0} questions for objective ${o}; manifest requires ${MANIFEST.finalByObjective?.[o]}`);
 for (const p of [0,1,2,3]) if (byPos[p] > fq.length * 0.45) meh(`final: ${byPos[p]}/${fq.length} answers sit at position ${"ABCD"[p]}`);
 
 /* ---- rendered page hygiene ---- */
+let freshPage = null;
+const scratch = mkdtempSync(join(tmpdir(), "mis-check-"));
+const freshPath = join(scratch, "module.html");
+try {
+  const built = spawnSync(process.execPath, [join(HERE, "build.mjs"), freshPath], {encoding:"utf8", maxBuffer:10_000_000});
+  if (built.status !== 0) bad(`fresh build failed:\n${(built.stderr || built.stdout || "no output").trim()}`);
+  else freshPage = readFileSync(freshPath, "utf8");
+} finally {
+  rmSync(scratch, {recursive:true, force:true});
+}
+
 if (!existsSync(PAGE)) { bad(`page not built: ${PAGE}`); }
 else {
   const page = readFileSync(PAGE, "utf8");
+  if (freshPage != null) need(page === freshPage, `generated page is stale; run node src/build.mjs`);
   const forbidden = [
     [/keiser/i, "school name"],
     [/\bCGS\s*3300\b/i, "course code"],
     [/\bsyllabus\b/i, "syllabus reference"],
     [/\brubric\b/i, "rubric reference"],
-    [/\bclaude\b/i, "AI attribution"],
-    [/\bgenerated by AI\b/i, "AI attribution"],
+    [/\b(?:written|created|generated|assisted|produced)\s+(?:with|by)\s+(?:AI|ChatGPT|Claude|OpenAI|Codex)\b/i, "AI attribution"],
+    [/\bAI[- ]generated\b/i, "AI attribution"],
     [/\/Users\//, "local filesystem path"],
+    [/[A-Za-z]:\\(?:Users|Documents|Desktop)\\/i, "local filesystem path"],
+    [/\bfile:\/\//i, "local file URL"],
+    [/\bHarborline\b/i, "invented company name"],
     [/\bworth \d+ points\b/i, "points"],
+    [/\b\d+\s*points?\b/i, "point value"],
     [/\bthis assignment\b/i, "assignment reference"],
   ];
   /* Terms specific to a live assessment - the company named in a graded case,
@@ -189,16 +334,45 @@ else {
     for (const term of readFileSync(localList, "utf8").split(/\r?\n/).map((t) => t.trim()).filter(Boolean))
       forbidden.push([new RegExp("\\b" + term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i"), "a reserved assessment term"]);
   } else {
-    meh("src/forbidden.local.txt not present - assessment-specific terms are not being checked");
+    if (RELEASE) bad("release check requires src/forbidden.local.txt");
+    else meh("src/forbidden.local.txt not present - assessment-specific terms are not being checked");
   }
   for (const [re, what] of forbidden) { const m = page.match(re); if (m) bad(`page contains ${what}: ${JSON.stringify(m[0])}`); }
   need(!/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(page), "page contains emoji");
   need(page.includes('id="main"'), "no main landmark");
   need(page.includes("<noscript>"), "no noscript fallback");
-  need((page.match(/class="chapter"/g)||[]).length === 10, "expected 10 chapter sections");
-  need(!/<script[^>]+src=/.test(page), "page loads an external script (must be self-contained)");
-  need(!/<link[^>]+stylesheet/.test(page), "page loads an external stylesheet (must be self-contained)");
-  need(!/https?:\/\/(?!www\.w3\.org)/.test(page.replace(/https?:\/\/[^"'\s]*shutterstock[^"'\s]*/gi,"")), "page references an external URL");
+  need((page.match(/class="chapter"/g)||[]).length === IDS.length + 2, `expected ${IDS.length + 2} chapter sections`);
+  need(!/<script\b[^>]*\bsrc\s*=/i.test(page), "page loads a script by src (must be self-contained)");
+  need(!/<link\b/i.test(page), "page contains a link element (styles and icons must be self-contained)");
+  need(!/<base\b/i.test(page), "page contains a base element that can redirect local links");
+  need(!/https?:\/\//i.test(page), "page references an external URL");
+  need(!/@import\b/i.test(page), "page CSS contains @import");
+  need(!/@font-face\b/i.test(page), "page embeds a custom font instead of using the self-contained system stack");
+  need(!/url\(\s*["']?(?:https?:|\/\/)/i.test(page), "page CSS contains an external url()");
+  need(!/\b(?:fetch|XMLHttpRequest|WebSocket|EventSource)\s*\(/.test(page), "page runtime contains a network API call");
+  need(!/\.sendBeacon\s*\(/.test(page), "page runtime contains a beacon call");
+  for (const m of page.matchAll(/\b(?:src|href|poster|data|action|formaction)\s*=\s*(["'])(.*?)\1/gi)) {
+    const value = m[2].trim();
+    if (value && !value.startsWith("#") && !value.startsWith("data:")) bad(`page attribute contains a non-local reference: ${JSON.stringify(value.slice(0,100))}`);
+  }
+  need(!/<div class="activity" data-activity=/i.test(page), "a raw source activity mount survived the build");
+  for (const key of MANIFEST.activityKeys || []) {
+    const safe = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    need((page.match(new RegExp(`<section class="activity" data-activity="${safe}"`, "g")) || []).length === 1, `built fallback for ${key} is not present exactly once`);
+    need((page.match(new RegExp(`id="act-${safe}"`, "g")) || []).length === 1, `built activity title for ${key} is not present exactly once`);
+  }
+  need((page.match(/<section class="activity" id="finalMount"/g) || []).length === 1, "final challenge mount is not present exactly once");
+  need((page.match(/<b>Lesson and answer summary<\/b>/g) || []).length === Object.keys(ACT).length, "JavaScript-free activity summaries are incomplete");
+  need((page.match(/<b>Answer key<\/b>/g) || []).length === 1, "JavaScript-free final answer key is missing or duplicated");
+  need(page.includes('aria-label="Module completion progress"'), "progress meter is not labeled as completion");
+  need(page.includes('stage.setAttribute("role", "tabpanel")'), "diagram runtime lacks tabpanel semantics");
+  need(page.includes('toggle.setAttribute("aria-controls", detail.id)'), "explore runtime lacks aria-controls");
+  need(page.includes('sidebar.setAttribute("inert", "")'), "closed mobile navigation is not removed from keyboard focus");
+  need(page.includes('var outcomes = el("div", "sim-outcomes")'), "simulations do not reveal all option outcomes");
+  need(page.includes('if(finalEntry){ finalEntry.total = qs.length; }'), "final registry entry is not guarded against reset duplication");
+  const ids = new Map();
+  for (const m of page.matchAll(/\sid="([^"]+)"/g)) ids.set(m[1], (ids.get(m[1]) || 0) + 1);
+  for (const [id, count] of ids) if (count > 1) bad(`built page has duplicate id "${id}" (${count} times)`);
   const opens = (page.match(/<section/g)||[]).length, closes = (page.match(/<\/section>/g)||[]).length;
   need(opens === closes, `unbalanced <section> tags: ${opens} open, ${closes} close`);
   const dopens = (page.match(/<div/g)||[]).length, dcloses = (page.match(/<\/div>/g)||[]).length;

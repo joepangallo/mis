@@ -2,11 +2,11 @@
 PROSE.s14 = `
 <span class="eyebrow">Section 1&ndash;4</span>
 <h2>Computer ethics, privacy, and intellectual property</h2>
-<p class="lede">Every system in this chapter runs on data, and much of it is about people, including you. This section covers the rules that decide what may be done with it &mdash; a few are laws, most are not.</p>
+<p class="lede">Every system in this chapter runs on data, and much of it is about people, including you. This section separates three questions that overlap without being identical: what is ethical, what an organization promised, and what applicable law permits.</p>
 
 <h3>Ethics is not the same thing as law</h3>
-<p>Something can be perfectly legal and still be the wrong thing to do. <b>Computer ethics</b> describes moral issues and standards of conduct as they pertain to the use of information systems.</p>
-<p>A company that maintains a database of its customers legally owns those data and is free to sell them, so compiling your shopping habits and credit history and selling that file breaks no statute &mdash; whether it should be done at all is the ethics question.</p>
+<p>Something can be permitted by law and still be the wrong thing to do. <b>Computer ethics</b> describes moral issues and standards of conduct as they pertain to the use of information systems.</p>
+<p>The chapter uses the sale of customer data to expose that ethical question. Do not turn its ownership framing into a universal legal rule: whether an organization may share or sell personal data depends on the jurisdiction, the kind of data, the notice and consent provided, and the promises the organization made.</p>
 
 <h3>Mason&rsquo;s four questions: PAPA</h3>
 <p>In 1986 <b>Richard O. Mason</b> reduced the debate to four issues &mdash; information privacy, accuracy, property, and accessibility &mdash; known ever since as <b>PAPA</b>. Almost every argument about technology and people is one of these four.</p>
@@ -28,7 +28,7 @@ PROSE.s14 = `
   <li><b>Surveys</b> gather more than the answer asked for, whether you fill one out to apply for a card or to rate a restaurant.</li>
   <li><b>The email address you type to reach a Wi-Fi network</b> is the price of the connection, so the network is free only in name.</li>
 </ul>
-<p>By providing them you agree the data can be used as the company wishes, within legal limits.</p>
+<p>Providing data enables the immediate transaction; it does not grant unlimited permission for every later use. Notice, choice, an organization&rsquo;s promises, and applicable law still matter.</p>
 <p>One survey alone is harmless; the combination is not, because two kinds of data work together.</p>
 <ul class="keys">
   <li><b>Demographic data</b> answers who am I, and where do I live, the part of you that appears on any form.</li>
@@ -37,7 +37,7 @@ PROSE.s14 = `
 <p>Put the two beside each other and a company can piece the bits into a highly accurate profile. The aggregation has a name, the <b>Database of Intentions</b>: what you want, what you buy, what you like, what you are interested in, what you are doing, where you are, who you are, and whom you know.</p>
 <p>Such profiles feed predictive models that allow manipulating people through targeted advertising, and invite discrimination and damaging breaches.</p>
 <p class="takeaway">Providing data at separate moments never meant agreeing they be combined into one picture.</p>
-<p>So who owns it? The company that maintains the customer database legally owns the data and is free to sell them. There are limits, and they come from what the company itself said: a firm that stated its marketing data would be used strictly internally as a gauge of its own customer base, then sold those data years later, would be unethically and illegally breaking its original promise.</p>
+<p>So who controls it? The chapter frames a company-maintained database as a property issue, then emphasizes limits created by what the company said. Current law may add rights to know, correct, delete, limit, or opt out, depending on the person, data, organization, and jurisdiction. A firm that promised to use marketing data strictly inside its own business and then sold them would at minimum break its ethical commitment, and regulators may also enforce deceptive privacy promises.</p>
 <p>Each company answers the question twice.</p>
 <ul class="keys">
   <li><b>At a strategic and ethical level</b>, should we be doing this, which is where a promise about the data is kept or broken.</li>
@@ -49,8 +49,8 @@ PROSE.s14 = `
 </div>
 <p>Two newer rules go further.</p>
 <ul class="keys">
-  <li><b>The General Data Protection Regulation (GDPR)</b>, adopted by the European Union in 2018, establishes transparency, data minimization, integrity, confidentiality, and a fundamental right to privacy.</li>
-  <li><b>The California Consumer Privacy Act (CCPA)</b> gives Californians more control over the information companies hold about them.</li>
+  <li><b>The General Data Protection Regulation (GDPR)</b>, applied across the European Union from 2018, establishes principles including transparency, data minimization, integrity, confidentiality, and protection of personal data.</li>
+  <li><b>The California Consumer Privacy Act (CCPA)</b> gives covered California consumers defined rights over personal information held by covered businesses.</li>
 </ul>
 <div class="activity" data-activity="ethQuiz1"></div>
 
@@ -66,7 +66,7 @@ PROSE.s14 = `
 <tr><td>Enforcement/Redress</td><td>Means to enforce these practices and give customers a remedy, through self-regulation or law.</td></tr>
 </tbody>
 </table></div>
-<p>Here is the catch: statements say how data will be used but often do not protect you, and companies online are not required by law to respect your privacy. A vendor may record the whole shape of a visit.</p>
+<p>Here is the catch: a privacy statement is notice, not a technical shield. Organizations must honor their promises and applicable law, yet a policy can still be vague or hard to use while a vendor records the shape of a visit.</p>
 <ul class="split">
   <li>Which pages you look at.</li>
   <li>Which products you examine in detail.</li>
@@ -74,16 +74,16 @@ PROSE.s14 = `
   <li>How you pay.</li>
   <li>Where it is delivered.</li>
 </ul>
-<p>An unscrupulous vendor can sell all of it, which is where the direct mail, the spam, and the telemarketing calls come from. Review the privacy policy of every company you do business with, and refuse the ones with no clear policy or no respect for your privacy.</p>
+<p>A vendor may seek to share or sell those records where its notice, consent, promises, and applicable law allow it, and an unscrupulous one may ignore those limits. Review the privacy policy of every company you do business with, use the choices it offers, and prefer businesses that state their practices clearly.</p>
 <div class="activity" data-activity="ethPrivacySim"></div>
 
 <h3>Email at work is not your mail</h3>
-<p>Most companies provide internet and email access, and many periodically monitor what employees send and receive. There is little legal recourse, and the two rules people reach for do little.</p>
+<p>Most companies provide internet and email access, and many monitor some activity on the accounts or systems they supply. Do not assume a work message is private: monitoring rules vary with jurisdiction, the communication, the employer&rsquo;s policy, and the notice given.</p>
 <ul class="keys">
-  <li><b>The Electronic Communications Privacy Act (ECPA)</b> of 1986 made eavesdropping on phone conversations much harder but gave email far weaker support, and no other federal or state law protects it.</li>
-  <li><b>State laws, most notably California&rsquo;s</b>, define how companies should inform employees of monitoring and in which situations monitoring is legal, which works as a guideline for ethical practice rather than as a protection of privacy.</li>
+  <li><b>The Electronic Communications Privacy Act (ECPA)</b> of 1986 regulates interception and access to electronic communications, but its rules and exceptions do not create a blanket guarantee that messages on an employer&rsquo;s system are private.</li>
+  <li><b>State laws and workplace policies</b> may require notice or restrict particular monitoring practices, so the applicable rule cannot be inferred from one chapter example or one state alone.</li>
 </ul>
-<p>Courts do expect companies to be prudent and open and to publish the monitoring policy, since employees believe email is private mostly because nobody told them otherwise. Assume what you send at work will be read by people it was never meant for, so write only what would not embarrass you if made public.</p>
+<p>A clear monitoring policy helps establish expectations, but applicable law still controls. The practical lesson is narrower: treat work accounts and systems as organizational resources, read the policy, and send sensitive personal messages through a personal account on a personal device.</p>
 
 <h3>Steps that actually maintain your privacy online</h3>
 <p>None of these makes you invisible, but each closes one leak.</p>
@@ -114,7 +114,7 @@ PROSE.s14 = `
 <ul>
   <li>Is it ethical to rearrange and otherwise change a photograph, when it still looks like a genuine record?</li>
   <li>Is it ethical to take computer time at work for personal business, when the equipment and the hours belong to somebody else?</li>
-  <li>Is it ethical to compile a customer&rsquo;s shopping habits and credit history in order to sell them, when doing so breaks no law?</li>
+  <li>Is it ethical to compile a customer&rsquo;s shopping habits and credit history for sale, even where the specific use is legally permitted?</li>
 </ul>
 <p>Because nobody settles those in the moment, many businesses and most universities publish guidelines telling users to act responsibly, ethically, and legally and to follow online etiquette and the law.</p>
 
@@ -171,7 +171,7 @@ ACT.ethPapaExplore = {
       what: "Who owns information about individuals, and how that information can be sold and exchanged.",
       real: "The unwanted solicitations from credit card companies, department stores, and charities that follow one purchase, and the answer to the question of how you got on another mailing list.",
       absent: "Separate pieces of you get joined. Demographic data, psychographic data, and card transactions combine into a profile precise enough to support targeted manipulation, discrimination, or a damaging breach.",
-      why: "The company that maintains the database legally owns the data and may sell them, and providing data at separate moments never meant agreeing they be combined into one picture."
+      why: "The chapter frames database control as a property question, but control is not unlimited: promises, consent, the kind of data, and applicable law can all constrain sale or exchange."
     },
     {
       icon: "ACSS",
@@ -200,9 +200,9 @@ ACT.ethPapaSort = {
   items: [
     { t: "A restaurant makes you type an email address to use its free Wi-Fi, and never says what happens to the address.", b: "privacy", why: "Giving an email address for Wi-Fi is one of the collection moments the chapter names, and the question is what you should have to reveal in an ordinary transaction." },
     { t: "An insurer's file lists a surgery you never had, so your claim is denied.", b: "accuracy", why: "Nothing was leaked or sold here; the record is simply not true, which is the authenticity and fidelity problem." },
-    { t: "A magazine sells its subscriber list to a department store, which starts mailing you catalogs.", b: "property", why: "The company that maintains the database legally owns it and is free to sell it, which is exactly the ownership and exchange question." },
+    { t: "A magazine shares its subscriber list with a department store, which starts mailing you catalogs.", b: "property", why: "Who controls a subscriber list and under what conditions it may be exchanged is exactly the property question; legality depends on the surrounding notice, consent, promises, and law." },
     { t: "A claims clerk with no reason to look opens a neighbor's file, because the system lets any employee open any record.", b: "access", why: "The data are accurate and legitimately held; the issue is who has the right to obtain them and how access is controlled." },
-    { t: "A company promised survey answers would be used strictly internally, then sold them to another firm five years later.", b: "property", why: "The chapter calls this unethically and illegally breaking an original promise about data the company otherwise owns." },
+    { t: "A company promised survey answers would be used strictly internally, then sold them to another firm years later.", b: "property", why: "The exchange raises the property question, and breaking the stated purpose is also an ethical failure that may trigger legal enforcement against deceptive promises." },
     { t: "You give a birth date and home address to a social network, abandon the profile a year later, and the data stay out there.", b: "privacy", why: "You revealed personal information for one purpose and lost any say over how long it lives, which is the privacy question rather than an ownership dispute." },
     { t: "Someone edits a photograph of a public figure to show an event that never happened, then posts it as news.", b: "accuracy", why: "The chapter raises photo manipulation as an ethical problem precisely because the image no longer faithfully represents what happened." },
     { t: "A hiring manager searches your name and reads a question you posted years ago on a page that has since been taken off the web.", b: "access", why: "Nothing here is inaccurate and nothing was sold; the question is what a person has the right to obtain about you and how they may reach it, and search engine caches keep pages available long after the original comes down." },
@@ -230,7 +230,7 @@ ACT.ethQuiz1 = {
       why: [
         "Those are statutes, such as the ECPA. Law and ethics overlap but differ: governments play catch-up, so much of what is legal is still an open ethical question. This would be right if the question asked what computer crime legislation does.",
         "That is Integrity/Security, one of the five fair information practices and the tactical half of the accessibility question. It is a way of acting ethically, not the field that decides what acting ethically means.",
-        "Correct. This is the chapter's definition, and it is deliberately broad: it covers conduct that is perfectly legal, such as combining purchase data into a customer profile, and still worth arguing about.",
+        "Correct. This is the chapter's definition, and it is deliberately broad: it covers conduct that may be legally permitted in a particular context, such as combining purchase data into a customer profile, and still worth arguing about.",
         "That is an acceptable-use policy, one product of ethical thinking inside one organization. Ethics is the set of standards such a policy gets written from, which is why schools and businesses each write their own."
       ]
     },
@@ -239,31 +239,31 @@ ACT.ethQuiz1 = {
       opts: [
         "Accuracy, because the authenticity and fidelity of the information have failed",
         "Information privacy, because medical data about an individual is exposed",
-        "Property, because the hospital owns the record and controls what happens to it",
+        "Property, because the hospital controls the record and decides how it is maintained",
         "Accessibility, because clinicians can open the record and act on what it says"
       ],
       a: 0,
       why: [
-        "Correct. Accuracy is Mason's question about authenticity and fidelity, and it is the one issue where data can be perfectly private, properly owned, and correctly restricted and still cause harm.",
+        "Correct. Accuracy is Mason's question about authenticity and fidelity, and it is the issue that can fail even when data remain private and access is correctly restricted.",
         "Privacy concerns what an individual should have to reveal to others. Nothing was revealed to anyone who should not see it; the record is simply untrue. This would be the answer if a correct record had been leaked or sold.",
-        "Property asks who owns information about individuals and how it may be sold and exchanged. The hospital does own the record, but ownership is not what failed, and nothing was sold.",
+        "Property asks who controls information about individuals and how it may be exchanged. Control of the record is not what failed here, and nothing was transferred.",
         "Accessibility asks who has the right to obtain information and how it is accessed. The clinicians reading the file are exactly who should have access; the problem is what the file says."
       ]
     },
     {
-      q: "You buy a lamp from an online retailer. According to the chapter, who legally owns the record of that purchase, and what may they do with it?",
+      q: "You buy a lamp from an online retailer. Which statement best connects the chapter's property question to current privacy rules?",
       opts: [
-        "You own it, because it is data about you, so the retailer needs written permission before any reuse",
-        "No one owns it, because data sitting in a company database is effectively public information",
-        "The credit card company owns it, because it processed the payment and holds the transaction",
-        "The company that maintains the database owns it and may sell it, within legal limits and any promise it made"
+        "Because the record is about you, the retailer needs affirmative written permission before repurposing it",
+        "Because the retailer maintains the record, its ownership interest controls unless it made a specific promise",
+        "Because the card issuer processed payment, its rules control how the retailer may use the transaction record",
+        "The retailer controls its customer record, but notice, consent, promises, data type, and applicable law can limit later use or sale"
       ],
       a: 3,
       why: [
-        "This describes where the GDPR in Europe and the CCPA in California are pushing, and it is what most people assume. It is not the general rule the chapter states, which puts ownership with the company holding the database.",
-        "Being owned by a company is the opposite of being public. The data are private property that can be bought and sold, which is exactly why your name moves from one mailing list to the next.",
-        "The card issuer holds its own record of the payment, and using a card is how you indirectly allow that collection. It does not own the retailer's customer database, which is the record in question.",
-        "Correct. The chapter says the company maintaining the database of customers legally owns the data and is free to sell them, limited only by law and by promises it made about how the data would be used."
+        "Some laws require consent for particular uses, but written permission before every internal use is not a universal rule. This would be correct only where the applicable law or a prior promise specifically required that consent.",
+        "The chapter uses database control to introduce the property question, not to erase privacy obligations. This would be correct only if no law, notice, consent choice, contract, or promise limited the proposed use.",
+        "A card issuer maintains its own payment record, while a retailer maintains its customer and order records. Processing one part of a transaction does not give the issuer exclusive control over every resulting record.",
+        "Correct. This preserves the chapter's property question while recognizing that current legal rights and duties vary by jurisdiction, data type, notice, consent, and the organization's promises."
       ]
     }
   ]
@@ -280,17 +280,17 @@ ACT.ethPrivacySim = {
     {
       situation: "The shop's free Wi-Fi will not connect until you enter an email address on its login page.",
       opts: [
-        { t: "Enter the personal address you use for family, school, and banking.", ok: false, out: "By providing the address to get on the network you implicitly agree it can be used as that company wishes, within legal limits. It is now in a marketing database tied to a place and a time, and it is the same address your password resets go to." },
-        { t: "Enter a separate email account you keep only for sign-ups and online purchases.", ok: true, out: "This is the chapter's advice applied early. The address may still be collected and sold, but the marketing that follows lands where it cannot bury anything important, and it is not tied to your banking or work identity." },
+        { t: "Enter the personal address you use for family, school, and banking.", ok: false, out: "The address can now be recorded in connection with a place and time, subject to the notice, choices, promises, and law that apply. It is also the same address your important password resets use, so unrelated marketing and security messages share one crowded channel." },
+        { t: "Enter a separate email account you keep only for sign-ups and online purchases.", ok: true, out: "This is the chapter's advice applied early. The address may still be collected and used as disclosed and permitted, but the marketing that follows lands where it cannot bury anything important and is not tied to your banking or work identity." },
         { t: "Make up an address that does not exist, so nothing can be sent to you.", ok: false, out: "It hides you tonight, but you cannot receive the confirmation link many networks send, and the first real order needs a real address anyway. A separate real account solves it permanently instead of once." }
       ]
     },
     {
       situation: "The store you found is one you have never used, and you cannot find a privacy policy anywhere on the site.",
       opts: [
-        { t: "Order anyway; a missing policy just means a small company that has not written one yet.", ok: false, out: "Companies online are not required by law to respect your privacy. With no posted policy there is no notice of what is gathered, who receives it, or how it is protected, and an unscrupulous vendor can sell the pages you viewed, what you bought, how you paid, and where it shipped." },
+        { t: "Order anyway; a missing policy just means a small company that has not written one yet.", ok: false, out: "A missing policy leaves you without clear notice of what is gathered, why, who receives it, or how it is protected. Applicable law may still impose duties, but you cannot evaluate the vendor's stated practices or choices before handing over the data." },
         { t: "Buy from a competitor that publishes a clear policy, ideally one audited by an independent organization such as TRUSTe.", ok: true, out: "This is the chapter's rule: review the privacy policy of every company you do business with, and refuse those that have no clear policy. Outside monitoring adds a check the site cannot perform on itself." },
-        { t: "Order, but pay with a card that has a low limit so the damage is capped.", ok: false, out: "That caps fraud losses, which is a different risk. It changes nothing about collection: the purchase, the browsing that led to it, and the shipping address are still gathered and salable." }
+        { t: "Order, but pay with a card that has a low limit so the damage is capped.", ok: false, out: "That addresses payment exposure, which is a different risk. It changes nothing about the vendor's collection of the purchase, the browsing that led to it, or the shipping address, nor does it tell you how those records may be used." }
       ]
     },
     {
@@ -306,7 +306,7 @@ ACT.ethPrivacySim = {
       opts: [
         { t: "Log out of the store account, which should stop it from following you.", ok: false, out: "Logging out ends your session but leaves the cookies on your machine, and those are what let a site owner monitor where you go and what you do. The tracking continues while you are signed in to nothing." },
         { t: "Rely on the store's privacy policy, since it promised not to misuse your information.", ok: false, out: "A policy states intentions, not capabilities, and the chapter is blunt that data privacy statements often do not protect consumers. The tracking here is being done by a file sitting on your own machine." },
-        { t: "Manage the browser's cookie settings, use a private window, switch to a search engine such as DuckDuckGo, and turn off ad personalization.", ok: true, out: "These are the chapter's steps for visiting sites anonymously, and together they give a high degree of privacy from marketers, identity thieves, and even coworkers. Not perfect, but the trail between what you shop for and what follows you is broken." }
+        { t: "Manage the browser's cookie settings, use a private window, switch to a search engine such as DuckDuckGo, and turn off ad personalization.", ok: true, out: "These are the chapter's suggested privacy steps. Each limits part of the trail between what you shop for and what follows you, but none should be mistaken for complete anonymity." }
       ]
     },
     {
@@ -345,23 +345,23 @@ ACT.ethQuiz2 = {
   objective: "1.4",
   questions: [
     {
-      q: "Your employer has never mentioned monitoring. What should you assume about email you send from your work account?",
+      q: "Your employer has never mentioned monitoring. What is the soundest approach to email you send from your work account?",
       opts: [
-        "It is private until the company publishes a policy, since employees must be notified before monitoring begins",
-        "It is protected by the Electronic Communications Privacy Act the same way a phone conversation is",
-        "Personal messages sent from a work account are outside the monitoring, because they are not company business",
-        "It is likely to be read by people it was not intended for, so send only what would not embarrass you if made public"
+        "Treat it as private until the company publishes a policy, because notice normally defines when monitoring begins",
+        "Treat the ECPA as the controlling protection, comparable to the rule for a private phone conversation",
+        "Treat personal messages as exempt from monitoring, because their subject matter is not company business",
+        "Read the policy and applicable rules, avoid sensitive personal use, and assume an employer-provided account may be monitored"
       ],
       a: 3,
       why: [
-        "This is the common assumption, and the chapter explains it: the main reason employees believe email is private is that nobody ever told them otherwise. Notice is good practice, and California has laws about informing employees, but silence does not create privacy.",
-        "The ECPA of 1986 is real and did make eavesdropping on phone conversations much harder, but it gave email far weaker support, and no other federal or state law fills the gap. Swap voice mail for email and this would be true.",
-        "Companies monitor the account and systems they provide, not a category of message. Using a work account for personal mail puts that mail in the same monitored place, which is why a separate personal account is the recommended habit.",
-        "Correct. Court cases have not supported privacy for employee email and internet use, so the chapter's rule for every user is to write only messages that would not embarrass them if made public."
+        "Notice can be required by a policy or particular law, but it is not safe to infer privacy from silence. This would be correct only where the applicable rule made advance notice a condition of the specific monitoring at issue.",
+        "The ECPA regulates electronic communications, but different communications, access methods, exceptions, and jurisdictions can produce different rules. This would be correct only if one protection applied identically to every channel, which it does not.",
+        "Monitoring commonly turns on the account, device, network, policy, and applicable law rather than whether a message feels personal. This would be correct only if the governing policy or law created that subject-matter exemption.",
+        "Correct. This does not claim that every form of monitoring is lawful; it recognizes that rules vary and applies the chapter's practical lesson to keep sensitive personal communication off employer-provided accounts and systems."
       ]
     },
     {
-      q: "A checkout page shows a box that is <b>already checked</b>: 'Yes, send me offers from our partners.' Leaving it checked is an example of what?",
+      q: "A checkout page shows a box that is <b>already checked</b>: 'Yes, send me offers from our partners.' Which consent model is the page using?",
       opts: [
         "Opt in, because a checked box is a signal of agreement to further use of the data",
         "Opt out, because the data will be used unless you take an action to refuse",

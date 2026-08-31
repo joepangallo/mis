@@ -11,20 +11,24 @@ Do not hand-edit that file. It is generated. Edit the sources here and rebuild.
 | File | What it holds |
 |---|---|
 | `module.css` | The whole design system: theme tokens (beige base, dark toggle), layout, and every activity component. |
-| `engine.js` | The runtime. Turns each activity data object into a working widget, tracks mastery, and stores progress in the reader's browser only. |
+| `engine.js` | The runtime. Turns each activity data object into a working widget, tracks completion, and stores progress in the reader's browser only. Correctness remains visible inside graded activities. |
 | `shell.json` | The page chrome written as prose: title, hero, objectives, "how to use this page", the glossary and final-challenge intros, and the closing note. |
 | `frag/<section>.js` | One file per lesson section. Assigns `PROSE.<id>` (the lesson HTML) and any number of `ACT.<key>` activity objects. |
 | `frag/glossary.js` | `GLOSSARY` — every chapter term with a plain-language definition and an example. |
 | `frag/final.js` | `FINAL` — the twenty-five-situation closing challenge, tagged by objective. |
+| `module.manifest.json` | The exact release inventory: ordered sections, activity keys and kind counts, glossary terms, and final distribution. |
+| `provenance.json` | Source policy and fragment/objective-to-source mapping. It records the chapter core, Porter supplement, and official privacy-law sources. |
 | `build.mjs` | Assembles everything into the output page, and writes a JavaScript-free summary of every activity into the page as it goes. |
-| `check.mjs` | Structural, schema, and hygiene checks. Run it after every build. |
+| `check.mjs` | Fresh-build comparison plus provenance, inventory, schema, accessibility, readability, offline, and hygiene checks. Run it after every build. |
 | `make-pdf.mjs` | Strips the scripts and applies print typography, producing the source for the printable companion. |
+| `check-pdf.mjs` | Uses Poppler to verify PDF text, hygiene, page size, static-answer coverage, glyphs, and sparse pages. |
 
 ## Rebuild
 
 ```sh
 node src/build.mjs        # writes ../module-01-managing-in-the-digital-world.html
 node src/check.mjs        # verifies the result
+node src/check.mjs --release  # also requires local chapter + forbidden-term files
 ```
 
 The printable companion is a separate render of the same page with the scripts removed, so what
@@ -35,19 +39,27 @@ node src/make-pdf.mjs ../module-01-managing-in-the-digital-world.html /tmp/print
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
   --run-all-compositor-stages-before-draw --virtual-time-budget=15000 --no-pdf-header-footer \
   --print-to-pdf="../module-01-managing-in-the-digital-world.pdf" "file:///tmp/print.html"
+node src/check-pdf.mjs ../module-01-managing-in-the-digital-world.pdf
 ```
 
-Check the result for the three defects that actually occur: HTML entities leaking into the text,
-missing glyphs printing as boxes, and half-empty pages where a tall card refused to split. The
-print stylesheet already keeps the small units atomic (a list item, a question, a glossary entry,
-a table row) and lets the big containers break, which is what keeps the page count honest.
+`check-pdf.mjs` catches HTML entities leaking into text, missing glyphs printing as boxes, hygiene
+leaks, missing static answers, and sparse pages. A release still includes visual review of rendered
+page images, because automated text checks cannot judge clipping or awkward visual breaks. The print
+stylesheet keeps small units atomic and lets large containers split.
 
-`build.mjs` fails loudly on the mistakes that actually happen: an activity defined but never
-mounted in the prose, a mount that names an activity with no data, or the same activity mounted
-twice. `check.mjs` goes further and validates every activity against its schema — four options
-and four explanations per quiz question, exactly one strong choice per decision step, every sort
-item pointing at a declared bucket, and so on — then scans the built page for anything that must
-never ship in student-facing material.
+`build.mjs` validates mounts before touching the deliverable, then writes atomically. `check.mjs`
+independently builds to a temporary file and byte-compares it with the committed page, checks every
+activity and static fallback exactly once, enforces the manifest and provenance maps, validates
+nonempty and distinct schema content, and scans for network references and student-facing leaks.
+
+## Source boundaries
+
+Objectives 1.1–1.4, their vocabulary, and factual cases come from the local Chapter 1 PDF. The
+strategy material is deliberately labeled an **application supplement** and cites the Porter works
+listed by the chapter; it is not presented as a fifth textbook learning objective. Hypothetical
+practice conditions must say that they are hypothetical and must not invent a named real-seeming
+company or purported real-world statistic. Current-law qualifications belong in `provenance.json`
+and must use official sources.
 
 ## Adding or changing an activity
 

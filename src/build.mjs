@@ -1,12 +1,12 @@
 /* Assembles the single self-contained module page from:
-   - build/module.css          the design system
-   - build/engine.js           the activity runtime
-   - build/shell.js            hero, glossary and final section prose written here
+   - module.css                the design system
+   - engine.js                 the activity runtime
+   - shell.json                hero, glossary and final section prose
    - frag/<id>.js              per-section prose + activity data (authored separately)
    Output is one HTML file that works with JavaScript on (full interactivity)
    and with JavaScript off (a complete lesson plus every answer, so the page is
    also printable and study-able offline). */
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, renameSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
@@ -25,21 +25,20 @@ const SECTIONS = [
   { id: "s14",  title: "Ethics, privacy, and property" },
   { id: "s15",  title: "Strategy: forces and value" },
 ];
+let problems = 0;
 
 /* ---------------------------------------------------------------- load data */
 const sandbox = { ACT: {}, PROSE: {}, GLOSSARY: [], FINAL: { questions: [] }, console };
 vm.createContext(sandbox);
 
-const loaded = [];
 for (const s of SECTIONS) {
   const p = join(SP, "frag", s.id + ".js");
-  if (!existsSync(p)) { console.warn("MISSING fragment:", p); continue; }
+  if (!existsSync(p)) { console.warn("MISSING fragment:", p); problems++; continue; }
   vm.runInContext(readFileSync(p, "utf8"), sandbox, { filename: p });
-  loaded.push(s.id);
 }
 for (const extra of ["glossary", "final"]) {
   const p = join(SP, "frag", extra + ".js");
-  if (!existsSync(p)) { console.warn("MISSING fragment:", p); continue; }
+  if (!existsSync(p)) { console.warn("MISSING fragment:", p); problems++; continue; }
   vm.runInContext(readFileSync(p, "utf8"), sandbox, { filename: p });
 }
 const { ACT, PROSE, GLOSSARY, FINAL } = sandbox;
@@ -110,10 +109,16 @@ function fallback(key, a) {
 /* Replace every mount in the prose with the mount plus its static fallback. */
 function inflate(html) {
   const seen = [];
-  const out = html.replace(/<div class="activity" data-activity="([A-Za-z0-9_]+)"><\/div>/g, (m, key) => {
+  const out = html.replace(/<div\b([^>]*)>\s*<\/div>/gi, (m, attrs) => {
+    const classMatch = attrs.match(/\bclass\s*=\s*(["'])(.*?)\1/i);
+    const classes = classMatch ? classMatch[2].trim().split(/\s+/) : [];
+    if (!classes.includes("activity")) return m;
+    const keyMatch = attrs.match(/\bdata-activity\s*=\s*(["'])([A-Za-z0-9_]+)\1/i);
+    if (!keyMatch) { console.warn("  ! activity mount has no valid data-activity key:", m); problems++; return m; }
+    const key = keyMatch[2];
     seen.push(key);
     const a = ACT[key];
-    if (!a) { console.warn("  ! mount with no activity data:", key); return ""; }
+    if (!a) { console.warn("  ! mount with no activity data:", key); problems++; return m; }
     return `<section class="activity" data-activity="${key}" aria-labelledby="act-${key}">${fallback(key, a)}</section>`;
   });
   return { html: out, seen };
@@ -122,7 +127,6 @@ function inflate(html) {
 /* ------------------------------------------------------------- consistency */
 const mounted = new Set();
 const bodies = [];
-let problems = 0;
 for (const s of SECTIONS) {
   const raw = PROSE[s.id];
   if (!raw) { console.warn("MISSING prose:", s.id); problems++; continue; }
@@ -135,6 +139,10 @@ for (const s of SECTIONS) {
 }
 for (const k of Object.keys(ACT)) {
   if (!mounted.has(k)) { console.warn("  ! activity never mounted:", k); problems++; }
+}
+if (problems) {
+  console.error(`build stopped: ${problems} structural problem${problems === 1 ? "" : "s"}; existing output was not changed`);
+  process.exit(1);
 }
 
 /* --------------------------------------------------------------- assemble */
@@ -149,9 +157,9 @@ const sectionHtml = bodies.map((b) =>
   `      <p class="section-reset"><button type="button" class="act-reset" data-reset-section="${b.id}">Clear this section and start it over</button></p>\n` +
   `    </section>`).join("\n\n");
 
-const glossaryFallback = `<dl class="gloss-list">` + GLOSSARY.map((g) =>
+const glossaryFallback = `<div class="gloss-list">` + GLOSSARY.map((g) =>
   `<dl class="gloss-card"><dt><span class="gloss-lo">${esc(g.lo)}</span>${esc(g.t)}</dt>` +
-  `<dd>${esc(g.d)}${g.e ? `<span class="gloss-ex"><b>For example:</b> ${esc(g.e)}</span>` : ""}</dd></dl>`).join("") + `</dl>`;
+  `<dd>${esc(g.d)}${g.e ? `<span class="gloss-ex"><b>For example:</b> ${esc(g.e)}</span>` : ""}</dd></dl>`).join("") + `</div>`;
 
 const finalFallback = `<div class="act-head"><span class="act-kind">Final challenge</span>` +
   `<h4 class="act-title" id="act-final">${esc(FINAL.title || "Final challenge")}</h4></div>` +
@@ -169,7 +177,7 @@ const page = `<!DOCTYPE html>
 <title>${shell.title}</title>
 <meta name="description" content="${shell.description}">
 <script>
-(function(){"use strict";try{if(localStorage.getItem("mis-ch1-theme-v1")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();
+(function(){"use strict";document.documentElement.classList.add("js");try{if(localStorage.getItem("mis-ch1-theme-v1")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();
 <\/script>
 <style>
 ${css}
@@ -194,8 +202,8 @@ ${css}
     </div>
     <div class="topbar-spacer"></div>
     <div class="progress-wrap">
-      <progress class="progress-meter" id="moduleProgress" max="100" value="0" aria-label="Module mastery progress" aria-describedby="progressLabel">0%</progress>
-      <span class="progress-label" id="progressLabel">0 of 0 mastered</span>
+      <progress class="progress-meter" id="moduleProgress" max="100" value="0" aria-label="Module completion progress" aria-describedby="progressLabel">0%</progress>
+      <span class="progress-label" id="progressLabel">0 of 0 complete</span>
     </div>
     <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sidebar">Contents</button>
     <button type="button" class="icon-btn" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
@@ -245,9 +253,10 @@ ${engine}
 </html>
 `;
 
-writeFileSync(OUT, page, "utf8");
+const tempOut = OUT.replace(/\.html$/i, "") + `.${process.pid}.tmp.html`;
+writeFileSync(tempOut, page, "utf8");
+renameSync(tempOut, OUT);
 const actCount = Object.keys(ACT).length;
 console.log(`built ${OUT}`);
 console.log(`  sections: ${bodies.length}/${SECTIONS.length}   activities: ${actCount}   glossary: ${GLOSSARY.length}   final: ${(FINAL.questions||[]).length}`);
-console.log(`  bytes: ${page.length}   warnings: ${problems}`);
-if (problems) process.exitCode = 1;
+console.log(`  bytes: ${page.length}   warnings: 0`);

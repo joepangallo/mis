@@ -2,9 +2,9 @@
    MODULE RUNTIME
    Every activity on the page is described by a plain data object in MIS_ACT.
    This file turns each of those objects into a working, keyboard-reachable
-   widget, tracks what the reader has mastered, and stores that mastery in this
+   widget, tracks what the reader has completed, and stores that progress in this
    browser only. Answers themselves are never stored -- reloading the page
-   gives a clean slate to practise against while the mastery record stays.
+   gives a clean slate to practise against while the completion record stays.
    ========================================================================== */
 (function(){
 "use strict";
@@ -12,7 +12,7 @@
 var ACT = window.MIS_ACT || {};
 var GLOSSARY = window.MIS_GLOSSARY || [];
 var FINAL = window.MIS_FINAL || {questions:[]};
-var STORE_KEY = "mis-ch1-mastery-v1";
+var STORE_KEY = "mis-ch1-progress-v2";
 var THEME_KEY = "mis-ch1-theme-v1";
 
 /* ---------------------------------------------------------------- helpers */
@@ -92,29 +92,31 @@ function report(key, done, total){
   e.done = done; e.total = total;
   store.set(key, {done: done, total: total});
   paintProgress();
-  var host = document.querySelector('[data-activity="' + key + '"]');
+  var host = key === "__final__" ? document.getElementById("finalMount") : document.querySelector('[data-activity="' + key + '"]');
   if(host){
     var state = host.querySelector(".act-state");
     if(state){
+      var saved = store.get(key);
+      var shown = Math.max(done, saved ? saved.done : 0);
       if(total <= 0){ state.textContent = ""; }
-      else if(done >= total){ state.textContent = "Mastered · " + done + "/" + total; state.style.color = "var(--good)"; }
-      else if(done > 0){ state.textContent = done + "/" + total; state.style.color = "var(--text-dim)"; }
+      else if(shown >= total){ state.textContent = "Complete · " + shown + "/" + total; state.style.color = "var(--good)"; }
+      else if(shown > 0){ state.textContent = shown + "/" + total; state.style.color = "var(--text-dim)"; }
       else { state.textContent = ""; }
     }
   }
 }
 function paintProgress(){
-  var masteredCount = 0, i;
+  var completedCount = 0, i;
   for(i = 0; i < registry.length; i++){
     var best = store.get(registry[i].key);
     var done = Math.max(registry[i].done || 0, best ? best.done : 0);
-    if(registry[i].total > 0 && done >= registry[i].total) masteredCount++;
+    if(registry[i].total > 0 && done >= registry[i].total) completedCount++;
   }
   var meter = document.getElementById("moduleProgress");
   var label = document.getElementById("progressLabel");
-  var pct = registry.length ? Math.round(masteredCount / registry.length * 100) : 0;
+  var pct = registry.length ? Math.round(completedCount / registry.length * 100) : 0;
   if(meter){ meter.value = pct; meter.textContent = pct + "%"; }
-  if(label) label.textContent = masteredCount + " of " + registry.length + " mastered";
+  if(label) label.textContent = completedCount + " of " + registry.length + " complete";
   paintSidebarScores();
 }
 function paintSidebarScores(){
@@ -199,6 +201,9 @@ RENDER.quiz = function(body, cfg, key){
 
     var list = el("ul", "opts");
     var fb = el("div", "fb");
+    fb.setAttribute("role", "status");
+    fb.setAttribute("aria-live", "polite");
+    fb.tabIndex = -1;
     fb.hidden = true;
     var buttons = [];
 
@@ -243,6 +248,7 @@ RENDER.quiz = function(body, cfg, key){
         });
         fb.appendChild(again);
         score();
+        fb.focus();
       });
       buttons.push(b);
       li.appendChild(b);
@@ -256,7 +262,7 @@ RENDER.quiz = function(body, cfg, key){
 
   function score(){
     var n = 0;
-    answered.forEach(function(a, i){ if(a !== null && a === qs[i].a) n++; });
+    answered.forEach(function(a){ if(a !== null) n++; });
     report(key, n, qs.length);
   }
   report(key, 0, qs.length);
@@ -323,6 +329,7 @@ RENDER.sort = function(body, cfg, key, redraw){
       host.innerHTML = "";
       items.forEach(function(it){ if(placed[it.i] === bk.id) host.appendChild(makeChip(it)); });
       node.classList.toggle("is-target", !!picked);
+      node.querySelector(".bucket-target").setAttribute("aria-disabled", picked && !graded ? "false" : "true");
     });
     checkBtn.disabled = graded || Object.keys(placed).length < items.length;
     checkBtn.textContent = graded ? "Checked" : "Check my sorting";
@@ -332,18 +339,16 @@ RENDER.sort = function(body, cfg, key, redraw){
   body.appendChild(pool);
   cfg.buckets.forEach(function(bk){
     var node = el("div", "bucket");
-    node.appendChild(el("div", "bucket-head", txt(bk.name)));
-    if(bk.hint) node.appendChild(el("div", "bucket-sub", txt(bk.hint)));
+    var target = el("button", "bucket-target");
+    target.type = "button";
+    target.appendChild(el("span", "bucket-head", txt(bk.name)));
+    if(bk.hint) target.appendChild(el("span", "bucket-sub", txt(bk.hint)));
+    target.setAttribute("aria-label", "Place the selected item in " + bk.name);
+    target.addEventListener("click", function(){ drop(bk.id); });
+    node.appendChild(target);
     node.appendChild(el("div", "bucket-items"));
-    node.addEventListener("click", function(){ drop(bk.id); });
     node.addEventListener("dragover", function(ev){ ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; });
     node.addEventListener("drop", function(ev){ ev.preventDefault(); drop(bk.id); });
-    node.tabIndex = 0;
-    node.setAttribute("role", "button");
-    node.setAttribute("aria-label", "Place the selected item in " + bk.name);
-    node.addEventListener("keydown", function(ev){
-      if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); drop(bk.id); }
-    });
     bucketNodes[bk.id] = node;
     bucketsWrap.appendChild(node);
   });
@@ -357,7 +362,7 @@ RENDER.sort = function(body, cfg, key, redraw){
     graded = true;
     var n = 0;
     items.forEach(function(it){ if(placed[it.i] === it.b) n++; });
-    report(key, n, items.length);
+    report(key, items.length, items.length);
     paint();
     var again = el("button", "act-reset", "Shuffle and try again");
     again.type = "button";
@@ -388,6 +393,13 @@ RENDER.match = function(body, cfg, key, redraw){
   var grid = el("div", "match-grid");
   var colL = el("div", "match-col");
   var colR = el("div", "match-col");
+  colL.setAttribute("role", "group");
+  colL.setAttribute("aria-label", "Terms");
+  colR.setAttribute("role", "group");
+  colR.setAttribute("aria-label", "Definitions");
+  var status = el("p", "match-status");
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
   var nodesL = {}, nodesR = {};
 
   function paint(){
@@ -421,6 +433,7 @@ RENDER.match = function(body, cfg, key, redraw){
     b.addEventListener("click", function(){
       if(solved[o.i]) return;
       pickL = (pickL === o.i) ? null : o.i;
+      status.textContent = pickL === null ? "Selection cleared." : "Selected " + o.t + ". Choose its definition.";
       paint();
     });
     nodesL[o.i] = b;
@@ -438,10 +451,12 @@ RENDER.match = function(body, cfg, key, redraw){
         var badge = el("span", "match-badge", "Matched");
         nodesL[o.i].insertBefore(badge, nodesL[o.i].firstChild);
         if(pairs[o.i].why) nodesR[o.i].appendChild(el("span", "match-why", txt(pairs[o.i].why)));
+        status.textContent = "Matched " + pairs[o.i].l + " to " + pairs[o.i].r + ".";
         pickL = null;
         paint();
       } else {
         var miss = nodesR[o.i];
+        status.textContent = nodesL[pickL].textContent + " does not match " + o.t + ". Try another definition.";
         miss.classList.add("is-miss");
         setTimeout(function(){ miss.classList.remove("is-miss"); }, 620);
       }
@@ -451,6 +466,7 @@ RENDER.match = function(body, cfg, key, redraw){
   });
 
   body.appendChild(el("p", "hint", "Choose a term, then the definition that matches it."));
+  body.appendChild(status);
   grid.appendChild(colL);
   grid.appendChild(colR);
   body.appendChild(grid);
@@ -469,11 +485,29 @@ RENDER.order = function(body, cfg, key, redraw){
   if(cfg.intro) body.appendChild(el("p", null, txt(cfg.intro)));
   var list = el("ol", "order-list");
   body.appendChild(list);
+  var status = el("p", "match-status");
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  body.appendChild(status);
+
+  function move(si, pos, delta, direction){
+    var swap = current[pos + delta];
+    current[pos + delta] = current[pos];
+    current[pos] = swap;
+    paint();
+    status.textContent = steps[si].t + " moved to position " + (pos + delta + 1) + ".";
+    var moved = list.querySelector('[data-step="' + si + '"]');
+    if(!moved) return;
+    var control = moved.querySelector('[data-move="' + direction + '"]:not([disabled])') ||
+      moved.querySelector("button:not([disabled])");
+    if(control) control.focus(); else { moved.tabIndex = -1; moved.focus(); }
+  }
 
   function paint(){
     list.innerHTML = "";
     current.forEach(function(si, pos){
       var row = el("li", "order-row");
+      row.setAttribute("data-step", String(si));
       row.appendChild(el("span", "order-pos", String(pos + 1)));
       var t = el("span", "order-txt", txt(steps[si].t));
       if(graded){
@@ -485,16 +519,18 @@ RENDER.order = function(body, cfg, key, redraw){
       if(!graded){
         var btns = el("div", "order-btns");
         var up = el("button", null, "▲");
-        up.type = "button"; up.title = "Move up"; up.setAttribute("aria-label", "Move up");
+        up.type = "button"; up.title = "Move up"; up.setAttribute("aria-label", "Move " + steps[si].t + " up");
+        up.setAttribute("data-move", "up");
         up.disabled = pos === 0;
         up.addEventListener("click", function(){
-          var t2 = current[pos - 1]; current[pos - 1] = current[pos]; current[pos] = t2; paint();
+          move(si, pos, -1, "up");
         });
         var dn = el("button", null, "▼");
-        dn.type = "button"; dn.title = "Move down"; dn.setAttribute("aria-label", "Move down");
+        dn.type = "button"; dn.title = "Move down"; dn.setAttribute("aria-label", "Move " + steps[si].t + " down");
+        dn.setAttribute("data-move", "down");
         dn.disabled = pos === current.length - 1;
         dn.addEventListener("click", function(){
-          var t2 = current[pos + 1]; current[pos + 1] = current[pos]; current[pos] = t2; paint();
+          move(si, pos, 1, "down");
         });
         btns.appendChild(up); btns.appendChild(dn);
         row.appendChild(btns);
@@ -511,7 +547,7 @@ RENDER.order = function(body, cfg, key, redraw){
     graded = true;
     var n = 0;
     current.forEach(function(si, pos){ if(si === pos) n++; });
-    report(key, n, steps.length);
+    report(key, steps.length, steps.length);
     check.disabled = true;
     var again = el("button", "act-reset", "Shuffle and try again");
     again.type = "button";
@@ -550,6 +586,8 @@ RENDER.fill = function(body, cfg, key){
     row.appendChild(sel);
     row.appendChild(document.createTextNode(txt(bk.after)));
     var why = el("span", "fill-why");
+    why.setAttribute("role", "status");
+    why.setAttribute("aria-live", "polite");
     why.hidden = true;
     row.appendChild(why);
     sel.addEventListener("change", function(){
@@ -567,7 +605,7 @@ RENDER.fill = function(body, cfg, key){
 
   function score(){
     var n = 0;
-    chosen.forEach(function(c, i){ if(c !== null && c === blanks[i].a) n++; });
+    chosen.forEach(function(c){ if(c !== null) n++; });
     report(key, n, blanks.length);
   }
   report(key, 0, blanks.length);
@@ -583,25 +621,32 @@ RENDER.explore = function(body, cfg, key){
   var grid = el("div", "char-grid");
 
   items.forEach(function(it, i){
-    var card = el("button", "char");
-    card.type = "button";
-    card.setAttribute("aria-expanded", "false");
-    var top = el("div", "char-top");
+    var card = el("div", "char");
+    var toggle = el("button", "char-toggle");
+    toggle.type = "button";
+    toggle.id = "explore-" + key + "-toggle-" + i;
+    toggle.setAttribute("aria-expanded", "false");
+    var top = el("span", "char-top");
     top.appendChild(el("span", "char-ico", txt(it.icon || "")));
     top.appendChild(el("span", "char-name", "<span>" + txt(it.sub || "") + "</span>" + txt(it.name)));
-    card.appendChild(top);
+    toggle.appendChild(top);
     var detail = el("div", "char-detail");
+    detail.id = "explore-" + key + "-detail-" + i;
+    detail.setAttribute("role", "region");
+    detail.setAttribute("aria-labelledby", toggle.id);
+    toggle.setAttribute("aria-controls", detail.id);
     detail.hidden = true;
     [["what", 0], ["real", 1], ["absent", 2], ["why", 3]].forEach(function(pair){
       if(it[pair[0]] == null) return;
       detail.appendChild(el("div", null, "<b>" + txt(labels[pair[1]]) + "</b>" + txt(it[pair[0]])));
     });
+    card.appendChild(toggle);
     card.appendChild(detail);
-    card.addEventListener("click", function(){
+    toggle.addEventListener("click", function(){
       var open = detail.hidden;
       detail.hidden = !open;
       card.classList.toggle("is-open", open);
-      card.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
       if(open) opened[i] = true;
       report(key, Object.keys(opened).length, items.length);
     });
@@ -621,12 +666,16 @@ RENDER.diagram = function(body, cfg, key){
   var seen = {};
   var tabs = el("div", "dc-tabs");
   tabs.setAttribute("role", "tablist");
+  tabs.setAttribute("aria-label", cfg.title || "Diagram views");
   var stage = el("div", "dc");
+  stage.id = "diagram-" + key + "-panel";
+  stage.setAttribute("role", "tabpanel");
   var tabBtns = [];
 
   function show(mi){
     seen[mi] = true;
     var m = models[mi];
+    stage.setAttribute("aria-labelledby", "diagram-" + key + "-tab-" + mi);
     tabBtns.forEach(function(b, bi){
       b.setAttribute("aria-selected", bi === mi ? "true" : "false");
       b.classList.toggle("is-seen", !!seen[bi]);
@@ -653,11 +702,15 @@ RENDER.diagram = function(body, cfg, key){
     var b = el("button", "tab-btn", txt(m.name));
     b.type = "button";
     b.setAttribute("role", "tab");
+    b.id = "diagram-" + key + "-tab-" + mi;
+    b.setAttribute("aria-controls", stage.id);
     b.addEventListener("click", function(){ show(mi); });
     b.addEventListener("keydown", function(ev){
       var next = null;
       if(ev.key === "ArrowRight") next = (mi + 1) % models.length;
       if(ev.key === "ArrowLeft") next = (mi - 1 + models.length) % models.length;
+      if(ev.key === "Home") next = 0;
+      if(ev.key === "End") next = models.length - 1;
       if(next !== null){ ev.preventDefault(); tabBtns[next].focus(); show(next); }
     });
     tabBtns.push(b);
@@ -675,10 +728,15 @@ RENDER.diagram = function(body, cfg, key){
    including the ones that were not taken, and the run can be replayed.     */
 RENDER.sim = function(body, cfg, key, redraw){
   var steps = cfg.steps || [];
-  var at = 0, good = 0;
+  var at = 0, good = 0, awaitingContinue = false;
   var track = el("div", "sim-track");
   var stage = el("div", "sim-stage");
   var log = el("div", "sim-log");
+  track.setAttribute("aria-label", "Decision progress");
+  track.setAttribute("role", "progressbar");
+  track.setAttribute("aria-valuemin", "0");
+  track.setAttribute("aria-valuemax", String(steps.length));
+  stage.tabIndex = -1;
 
   if(cfg.intro) body.appendChild(el("p", null, txt(cfg.intro)));
   body.appendChild(track);
@@ -687,6 +745,8 @@ RENDER.sim = function(body, cfg, key, redraw){
 
   function paintTrack(){
     track.innerHTML = "";
+    track.setAttribute("aria-valuenow", String(at));
+    track.setAttribute("aria-valuetext", at + " of " + steps.length + " decisions finished");
     steps.forEach(function(_, i){
       var d = el("span", "sim-dot" + (i < at ? " is-done" : (i === at ? " is-now" : "")));
       track.appendChild(d);
@@ -706,6 +766,7 @@ RENDER.sim = function(body, cfg, key, redraw){
     var s = steps[at];
     stage.appendChild(el("p", "sim-situation", txt(s.situation)));
     var list = el("ul", "opts");
+    var buttons = [];
     (s.opts || []).forEach(function(o, oi){
       var li = el("li");
       var b = el("button", "opt");
@@ -713,20 +774,46 @@ RENDER.sim = function(body, cfg, key, redraw){
       b.appendChild(el("span", "opt-key", LETTERS[oi]));
       b.appendChild(el("span", null, txt(o.t)));
       b.addEventListener("click", function(){
+        if(awaitingContinue) return;
+        awaitingContinue = true;
         if(o.ok) good++;
+        buttons.forEach(function(bb, bi){
+          bb.disabled = true;
+          bb.classList.add(bi === oi ? (o.ok ? "is-correct" : "is-wrong") : "is-muted");
+        });
+
         var entry = el("div", "sim-entry " + (o.ok ? "ok" : "no"));
         entry.appendChild(el("b", null, "Decision " + (at + 1) + " · " + (o.ok ? "stronger call" : "weaker call")));
         entry.appendChild(el("div", null, "<i>You chose:</i> " + txt(o.t) + "<br>" + txt(o.out)));
-        if(!o.ok){
-          var best = (s.opts || []).filter(function(x){ return x.ok; })[0];
-          if(best) entry.appendChild(el("div", "mini", "<b>The stronger call was:</b> " + txt(best.t) + " &mdash; " + txt(best.out)));
-        }
         log.appendChild(entry);
-        at++;
-        report(key, good, steps.length);
-        paintTrack();
-        paintStage();
+
+        var outcomes = el("div", "sim-outcomes");
+        outcomes.setAttribute("role", "status");
+        outcomes.setAttribute("aria-live", "polite");
+        outcomes.tabIndex = -1;
+        outcomes.appendChild(el("p", "sim-situation", "<b>Compare every outcome before continuing.</b>"));
+        (s.opts || []).forEach(function(option, optionIndex){
+          var outcome = el("div", "sim-entry " + (option.ok ? "ok" : "no") + (optionIndex === oi ? " is-chosen" : ""));
+          outcome.appendChild(el("b", null, "Option " + LETTERS[optionIndex] + " · " + (option.ok ? "stronger call" : "weaker call") + (optionIndex === oi ? " · your choice" : "")));
+          outcome.appendChild(el("div", null, "<strong>" + txt(option.t) + "</strong><br>" + txt(option.out)));
+          outcomes.appendChild(outcome);
+        });
+        stage.appendChild(outcomes);
+
+        var next = el("button", "btn sim-next", at + 1 < steps.length ? "Continue to the next decision" : "Finish the run");
+        next.type = "button";
+        next.addEventListener("click", function(){
+          at++;
+          awaitingContinue = false;
+          paintTrack();
+          paintStage();
+          stage.focus();
+        });
+        stage.appendChild(next);
+        report(key, at + 1, steps.length);
+        outcomes.focus();
       });
+      buttons.push(b);
       li.appendChild(b);
       list.appendChild(li);
     });
@@ -755,6 +842,8 @@ RENDER.selfcheck = function(body, cfg, key){
     var yes = el("button", null, "Yes");
     var no = el("button", "no", "Not yet");
     yes.type = "button"; no.type = "button";
+    yes.setAttribute("aria-label", "Yes: " + it.t);
+    no.setAttribute("aria-label", "Not yet: " + it.t);
     yes.setAttribute("aria-pressed", "false");
     no.setAttribute("aria-pressed", "false");
     function pick(which){
@@ -762,7 +851,8 @@ RENDER.selfcheck = function(body, cfg, key){
       yes.setAttribute("aria-pressed", which === "y" ? "true" : "false");
       no.setAttribute("aria-pressed", which === "n" ? "true" : "false");
       hint.hidden = which !== "n";
-      report(key, Object.keys(answered).length, items.length);
+      var ready = Object.keys(answered).filter(function(k){ return answered[k] === "y"; }).length;
+      report(key, ready, items.length);
     }
     yes.addEventListener("click", function(){ pick("y"); });
     no.addEventListener("click", function(){ pick("n"); });
@@ -870,6 +960,9 @@ function buildFinal(){
   body.appendChild(qHost);
   var result = el("div");
   result.style.marginTop = "16px";
+  result.setAttribute("role", "status");
+  result.setAttribute("aria-live", "polite");
+  result.tabIndex = -1;
   body.appendChild(result);
 
   order.forEach(function(qi, pos){
@@ -958,24 +1051,37 @@ function buildFinal(){
         }
       });
     });
-    report("__final__", total, qs.length);
+    report("__final__", qs.length, qs.length);
     scoreBtn.disabled = true;
     toast("Scored " + total + " of " + qs.length + ".");
+    result.focus();
     result.scrollIntoView({block: "nearest"});
   });
   foot.appendChild(scoreBtn);
   var reset = el("button", "act-reset", "Clear and start the challenge over");
   reset.type = "button";
-  reset.addEventListener("click", function(){ store.clear("__final__"); buildFinal(); paintProgress(); });
+  reset.addEventListener("click", function(){
+    store.clear("__final__");
+    var entry = findEntry("__final__");
+    if(entry) entry.done = 0;
+    buildFinal();
+    paintProgress();
+    var fresh = document.getElementById("act-final");
+    if(fresh){ fresh.tabIndex = -1; fresh.focus(); }
+  });
   foot.appendChild(reset);
 
-  registry.push({key: "__final__", section: "final", total: qs.length, done: 0});
+  var finalEntry = findEntry("__final__");
+  if(finalEntry){ finalEntry.total = qs.length; }
+  else registry.push({key: "__final__", section: "final", total: qs.length, done: 0});
   paintProgressLine();
 }
 
 /* =========================================================================
    PAGE WIRING
    ====================================================================== */
+var sidebarController = null;
+
 function buildSidebar(){
   var nav = document.getElementById("navList");
   if(!nav) return;
@@ -990,8 +1096,7 @@ function buildSidebar(){
     sc.setAttribute("data-for", sec.id);
     a.appendChild(sc);
     a.addEventListener("click", function(){
-      var sb = document.getElementById("sidebar");
-      if(sb) sb.classList.remove("is-open");
+      if(sidebarController) sidebarController(false, false);
     });
     nav.appendChild(a);
   });
@@ -1031,10 +1136,35 @@ function wireChrome(){
 
   var menuBtn = document.getElementById("menuBtn");
   var sidebar = document.getElementById("sidebar");
-  if(menuBtn && sidebar) menuBtn.addEventListener("click", function(){
-    var open = sidebar.classList.toggle("is-open");
-    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
+  var mobileNav = window.matchMedia("(max-width: 1000px)");
+  if(menuBtn && sidebar){
+    sidebarController = function(open, returnFocus){
+      var canOpen = mobileNav.matches && open;
+      sidebar.classList.toggle("is-open", canOpen);
+      menuBtn.setAttribute("aria-expanded", canOpen ? "true" : "false");
+      if(mobileNav.matches && !canOpen){
+        sidebar.setAttribute("inert", "");
+        sidebar.setAttribute("aria-hidden", "true");
+      } else {
+        sidebar.removeAttribute("inert");
+        sidebar.removeAttribute("aria-hidden");
+      }
+      if(returnFocus) menuBtn.focus();
+      if(canOpen){
+        setTimeout(function(){
+          var first = sidebar.querySelector("a,button,[tabindex]:not([tabindex='-1'])");
+          if(first) first.focus();
+        }, 0);
+      }
+    };
+    menuBtn.addEventListener("click", function(){
+      sidebarController(!sidebar.classList.contains("is-open"), false);
+    });
+    var syncNav = function(){ sidebarController(false, false); };
+    if(mobileNav.addEventListener) mobileNav.addEventListener("change", syncNav);
+    else if(mobileNav.addListener) mobileNav.addListener(syncNav);
+    syncNav();
+  }
 
   var resetBtn = document.getElementById("resetBtn");
   if(resetBtn) resetBtn.addEventListener("click", function(){
@@ -1044,7 +1174,7 @@ function wireChrome(){
   });
 
   document.addEventListener("keydown", function(ev){
-    if(ev.key === "Escape" && sidebar) sidebar.classList.remove("is-open");
+    if(ev.key === "Escape" && sidebarController && sidebar && sidebar.classList.contains("is-open")) sidebarController(false, true);
   });
 
   var bar = document.querySelector(".topbar");

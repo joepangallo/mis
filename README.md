@@ -6,7 +6,7 @@ Interactive, self-contained study modules for an introductory information system
 
 | Module | Page | Covers |
 |---|---|---|
-| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | The digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · Porter's Five Forces and the value chain |
+| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus a clearly labeled Porter strategy supplement |
 
 Each module ships as **one HTML file with nothing external** — no CDN, no fonts, no scripts, no
 network of any kind. Open it from a hard drive, a flash drive, or any static host and it works.
@@ -23,9 +23,9 @@ A print-ready PDF companion sits beside it carrying the same lesson plus every a
 - **A searchable glossary** of the chapter vocabulary, filterable by objective.
 - **A closing challenge** of situations rather than definitions, scored per objective so a weak area
   is visible instead of averaged into a single number.
-- **Saved progress** kept in the reader's own browser. Nothing is submitted, transmitted, or
-  collected. Answers reset on reload so every attempt is fresh; the mastery record persists until
-  the reader clears it.
+- **Saved completion progress** kept in the reader's own browser. Nothing is submitted, transmitted,
+  or collected. Answers reset on reload so every attempt is fresh; the completion record persists
+  until the reader clears it. Graded activities still show correctness separately.
 - **A complete JavaScript-free layer.** With scripting off, the page still reads as a full lesson
   with every activity summarised and answered, which is also what makes it printable.
 
@@ -37,7 +37,7 @@ commands.
 
 ```sh
 node src/build.mjs     # regenerate the page
-node src/check.mjs     # structure, schema, readability and hygiene checks
+node src/check.mjs     # freshness, provenance, schema, accessibility, readability and hygiene
 ```
 
 `check.mjs` is the guard rail. Besides validating every activity against its schema, it fails the
@@ -45,6 +45,16 @@ build on the mistakes that matter here: an activity defined but never placed, a 
 grown into a wall, a section with no lists or one drowning in them, a list with no lead-in
 sentence, and any school name, course code, local file path, or assessment-specific term reaching a
 student-facing page.
+
+`src/module.manifest.json` freezes the expected sections, activity keys and kinds, glossary terms,
+and final-question distribution. `src/provenance.json` states which source supports each fragment:
+Objectives 1.1–1.4 trace to the local textbook chapter, the visibly labeled strategy supplement uses
+the Porter works cited there, and current privacy-law qualifications use official sources. Practice
+situations are labeled as hypothetical rather than presented as reported company facts.
+
+For a local release, `node src/check.mjs --release` additionally requires the gitignored chapter PDF
+and `src/forbidden.local.txt`. GitHub Actions runs the ordinary check against the committed generated
+page, so a stale build or structural drift cannot merge unnoticed.
 
 ## Course materials
 

@@ -1,19 +1,19 @@
 /* ===== final ===== */
 FINAL = {
   title:"Final challenge",
-  how:"Twenty-five situations drawn from the whole chapter: work out what is actually going on before you answer, then read the explanation attached to every option and not just the one you picked.",
+  how:"Twenty-five documented chapter cases or clearly hypothetical situations from the chapter and application supplement: work out what is happening before you answer, then read every option's explanation.",
   questions:[
 
-    {q:"A county buries temperature sensors in a stretch of highway. The readings travel over the network and automatically lower the posted speed limit when ice is likely. A mile of road that used to generate nothing at all now generates a continuous stream that other systems act on. Which idea does this best illustrate?",
+    {q:"A county buries temperature sensors in a stretch of highway. The readings travel over the network and automatically lower the posted speed limit when ice is likely. Road use that generated no connected record now generates a continuous stream that other systems act on. Which idea does this best illustrate?",
      opts:[
        "Big Data, because the sensors produce a high volume of readings at high velocity from many different points",
-       "Increasing <b>digital density</b>, because a mile of road now generates connected data per unit of activity",
+       "Increasing <b>digital density</b>, because the road now generates connected data per unit of activity",
        "The network effect, because each sensor added to the road makes the system more valuable to every driver using it",
        "The consumerization of IT, because sensor technology reached ordinary consumers before it reached government agencies"],
      a:1, obj:"1.1",
      why:[
        "Big Data names the datasets themselves: extremely large and complex, high in volume, variety, and velocity. These readings may well pile up into Big Data, and that would be the right answer if you were asked to classify the stored result rather than the change in the road.",
-       "Correct. Digital density is the amount of connected data per unit of activity. Driving a mile used to leave no trace; now it leaves readings that feed a speed-limit decision, which is exactly the new value-added interaction that rising digital density enables.",
+       "Correct. Digital density is the amount of connected data per unit of activity. Traveling this road used to leave no connected reading; now it feeds a speed-limit decision, which is exactly the new value-added interaction that rising digital density enables.",
        "The network effect is the notion that a network, or a tool or application based on one, increases in value with the number of other users. It would fit if drivers made the service better for each other; here the readings are collected whether one car passes or a thousand.",
        "Consumerization of IT is the pattern of technologies appearing in the consumer marketplace first and being pulled into organizations later, as smartphones were. That would be the answer if the county had adopted a device its residents already had at home."]},
 
@@ -43,7 +43,7 @@ FINAL = {
        "The knowledge society is Drucker&rsquo;s prediction that possessing knowledge would matter as much as land, labor, or capital, with education as its cornerstone. That explains why access matters so much; the thing physically blocking these patients is the access itself.",
        "Demographic changes are shifts in the structure of populations related to age, birth rates, and migration. Age does appear in the scenario, but the barrier described is connectivity and skills, which the chapter names separately."]},
 
-    {q:"A neighborhood tool-lending app is close to useless to its first 20 members: whatever you need, nobody nearby owns it. At 4,000 members almost any request is filled within a mile, and new members say they joined because so many others already had. What is happening?",
+    {q:"A neighborhood tool-lending app is of little use while membership is small because few requested tools are listed nearby. As membership grows, requests are much easier to fill, and new members say they joined because so many others already had. What is happening?",
      opts:[
        "Increasing digital density, because every loan now generates connected data the app can act on",
        "A micro-moment, because a member instinctively picks up a mobile device to accomplish a goal",
@@ -69,12 +69,12 @@ FINAL = {
        "The digital divide is the gap between people with access to information systems and those without, which the chapter discusses at the level of communities and countries. Uneven phone models inside one staff is a support problem rather than that divide.",
        "Systems integration is connecting separate and often modular information systems and data, using technologies such as APIs, to improve business processes and decision making. Integration work may follow from this situation, but it does not name the trend the memo is about."]},
 
-    {q:"A warehouse scanner emits 4417092233. A screen shows that same string in a row labeled <b>SKU</b>, beside <b>Aisle 9</b> and <b>On hand: 2</b>. The shift lead glances at it and phones in an order, because she knows two units of that item at four o&rsquo;clock on a Friday will be gone by Saturday noon. Which part of that sequence is <b>knowledge</b>?",
+    {q:"A warehouse scanner emits an unlabeled identifier. A screen places it in a row labeled <b>SKU</b>, beside its aisle and a low on-hand quantity. The shift lead orders more because experience says that quantity will not meet weekend demand. Which part of that sequence is <b>knowledge</b>?",
      opts:[
-       "The string 4417092233, because it is what the system actually captured and everything else is derived from it",
+       "The unlabeled identifier, because it is what the system actually captured and everything else is derived from it",
        "The labeled row showing SKU, aisle, and quantity, because a person can now read it and understand what it refers to",
        "The scanner and the network that carried the reading, because without them none of the rest could happen",
-       "The lead&rsquo;s rule that two units at that hour on that day means reorder now, because it lets her decide"],
+       "The lead&rsquo;s rule that the displayed quantity will not meet expected demand, because it lets her decide"],
      a:3, obj:"1.2",
      why:[
        "That is data: raw symbols such as characters and numbers, with no meaning in and of themselves and little value until processed. Asked what the scanner produced, this would be the right answer.",
@@ -82,7 +82,7 @@ FINAL = {
        "That is the technology component of the information system, the hardware and telecommunications networks. The chapter treats those as what carries and processes data, not as a form of understanding.",
        "Correct. Knowledge is the ability to understand information, form opinions, and make decisions or predictions from it &mdash; a body of governing procedures, guidelines, or rules used to organize data for a task. The reorder rule lives in the lead, and without it the row on the screen would just sit there."]},
 
-    {q:"A distributor spends heavily on servers, a database, a network, and licences. Eighteen months later nobody has been trained, no report reaches a decision maker, and the sales team still keeps its own spreadsheets. A consultant tells the owner: you bought information technology, but you do not yet have an information system. On the chapter&rsquo;s definition, what makes that a fair statement?",
+    {q:"A distributor spends heavily on servers, a database, a network, and licences. After implementation nobody has been trained, no report reaches a decision maker, and the sales team still keeps its own spreadsheets. A consultant tells the owner: you bought information technology, but you do not yet have an information system. On the chapter&rsquo;s definition, what makes that a fair statement?",
      opts:[
        "The equipment is under-powered for the transaction volume the distributor runs, so it cannot process the data quickly enough",
        "An information system is people plus technology producing <b>useful</b> data, and both the people and the usefulness are missing",
@@ -147,20 +147,20 @@ FINAL = {
        "Collaboration systems enable people to communicate, collaborate, and coordinate with each other, with email plus an automated shared calendar as the example. They coordinate people; they do not execute the business transactions described here.",
        "Customer relationship management supports interaction between the firm and its customers, with sales force automation and lead generation as sample applications. A customer starts this chain, but reserving stock and posting ledger entries are not customer-facing interactions."]},
 
-    {q:"A hospital moves scheduling, charting, and pharmacy onto a single cloud vendor. For two years it books more procedures per day than any competitor and cuts its records staff. Then the vendor has a six-hour outage on a weekday morning and the hospital cancels a full day of elective surgery. Which reading of this matches the chapter?",
+    {q:"A hospital moves scheduling, charting, and pharmacy onto a single cloud vendor. For a sustained period it books more procedures than competitors and reduces records work. Then the vendor has a serious weekday outage and the hospital cancels scheduled elective procedures. Which reading of this matches the chapter?",
      opts:[
        "The hospital&rsquo;s business model was unsound, and bad business models tend to fail whether or not the firm uses technology",
        "This is a security failure, since consolidating three clinical functions gives an attacker a single point to strike",
        "This is the <b>dual nature</b> of information systems: the system that gave the advantage also created the dependence",
-       "The two years of gains should be discounted, because a system that can go down has not produced a genuine advantage"],
+       "The earlier gains should be discounted, because a system that can go down has not produced a genuine advantage"],
      a:2, obj:"1.3",
      why:[
-       "The chapter does say that companies with bad business models tend to fail regardless of whether they use information technology. Nothing here suggests that is the situation: the hospital outperformed its rivals for two years, which is evidence the model worked.",
+       "The chapter does say that companies with bad business models tend to fail regardless of whether they use information technology. Nothing here suggests that situation: the hospital's sustained operational gains are evidence that the model worked.",
        "Concentrating systems does raise security questions, but an outage is an availability failure rather than a breach. This would be the right frame if data had been stolen, or encrypted by an attacker demanding a ransom.",
        "Correct. The chapter compares information technology to a sword: effective as a competitive weapon, and dangerous to those who live by it. Its Zoom case makes the same point in almost the same words, noting that relying on a single provider can quickly disrupt many activities in unforeseen ways.",
        "This treats any exposure to risk as proof there was never a benefit. The FedEx case shows large, complicated, failure-prone systems producing sustained advantage, which is the chapter&rsquo;s point that the advantage and the risk arrive together rather than cancelling out."]},
 
-    {q:"A distributor&rsquo;s IT committee has two proposals and money for one. <b>A</b>: retire three aging servers and move the same workloads to a hosted provider, saving about US$180,000 a year, with nothing a customer would notice. <b>B</b>: build reordering that reads each customer&rsquo;s own consumption history and proposes the next order before they run out, which no competitor offers. Which is <b>strategic</b> in the chapter&rsquo;s sense?",
+    {q:"A distributor&rsquo;s IT committee has two proposals and money for one. <b>A</b>: retire aging servers and move the same workloads to a hosted provider, producing substantial operating savings with nothing a customer would notice. <b>B</b>: build reordering that reads each customer&rsquo;s own consumption history and proposes the next order before they run out, which no competitor offers. Which is <b>strategic</b> in the chapter&rsquo;s sense?",
      opts:[
        "A, because the savings are certain while B&rsquo;s revenue is not, and a system should return its investment before it chases growth",
        "Both equally, because an investment decision of this size shapes the firm&rsquo;s direction whichever proposal wins",
@@ -173,7 +173,7 @@ FINAL = {
        "The chapter says the reverse in as many words: whether it is a small mom-and-pop boutique or a large government agency, every organization can find a way to use information technology to beat its rivals.",
        "Correct. Strategic here means developed, and continuously updated, to gain or sustain competitive advantage over rivals. B changes the customer&rsquo;s reason to buy from this distributor, while A changes only what the distributor pays to do what it already did."]},
 
-    {q:"A regional bank is first in its market with photo check deposit, and for a year new account openings run well above trend. Eighteen months later every competing bank offers the same feature and the bank&rsquo;s growth is back to normal. What is the best explanation?",
+    {q:"A regional bank is first in its market with photo check deposit, and new account openings run well above trend. Later, every competing bank offers the same feature and the bank&rsquo;s growth returns to normal. What is the best explanation?",
      opts:[
        "Competitive advantage from the use of information systems can be <b>fleeting</b>, because competitors can eventually do the same thing",
        "The feature was not strategic to begin with, because it was built on standard technology rather than something invented at the bank",
@@ -184,9 +184,9 @@ FINAL = {
        "Correct. This is the caution the chapter attaches to its own argument: information systems can enable advantage, but that advantage can be fleeting because competitors can eventually do the same thing. It is also why FedEx reengineers and improves its systems on average twice a year even while leading.",
        "The chapter rejects that test. Companies from Amazon to Zoom created competitive advantage by combining commoditized technologies with proprietary systems and business processes, so standing on standard technology does not disqualify an initiative from being strategic.",
        "Continued investment does matter &mdash; FedEx reengineers and improves its systems on average twice a year &mdash; but nothing in the scenario says this system was left alone, and the growth ended exactly when rivals matched the feature rather than when the bank stopped work.",
-       "Launch marketing might explain a spike, not a year of account openings above trend that returns to normal precisely as every competitor offers the same feature. The timing points at the rivals, not at the advertising."]},
+       "Launch marketing might explain a brief spike, not sustained account openings above trend that return to normal precisely as competitors match the feature. The timing points at the rivals, not at the advertising."]},
 
-    {q:"Two airlines licence the identical off-the-shelf revenue management package. The first runs it as delivered. The second loads ten years of its own booking, weather, and gate-turn history into it and rebuilds how crews are staged around what it learns, and it holds a margin lead for years afterward. What does the chapter say accounts for the difference?",
+    {q:"Two airlines licence the identical off-the-shelf revenue management package. The first runs it as delivered. The second loads years of its own booking, weather, and gate-turn history into it and rebuilds how crews are staged around what it learns, sustaining a margin lead. What does the chapter say accounts for the difference?",
      opts:[
        "The second airline must have licensed a more capable edition, since identical software would otherwise produce identical results",
        "Nothing durable accounts for it, since standardized software is a commodity that every competitor can licence just as easily",
@@ -196,21 +196,21 @@ FINAL = {
      why:[
        "A more capable edition would be a difference in the purchased product, and both airlines licensed the identical package. The scenario holds the software constant on purpose, so the remaining difference has to be what each firm did with it.",
        "That is the commodity argument the chapter states and then answers. It accepts that information systems have become standardized and ubiquitous, and it still points to Amazon, Zoom, Google, and Facebook building advantage on top of them.",
-       "Correct. The chapter&rsquo;s phrasing is that companies created competitive advantages by combining certain commoditized technologies with proprietary systems and business processes. Ten years of accumulated history and a rebuilt staging process are things a competitor cannot licence.",
+       "Correct. The chapter&rsquo;s phrasing is that companies created competitive advantages by combining certain commoditized technologies with proprietary systems and business processes. Accumulated history and a rebuilt staging process are things a competitor cannot licence.",
        "The chapter never requires in-house development, and its API discussion makes the opposite point: Uber built almost its entire app around functionality other companies provided. What matters is what gets built on top, not who wrote the base."]},
 
-    {q:"A fitness app told users at sign-up that their workout data would be used to improve coaching inside the app. Three years and one change of ownership later, the company sells that same data to an insurance broker. Which assessment matches the chapter?",
+    {q:"A fitness app told users at sign-up that their workout data would be used to improve coaching inside the app. After a change of ownership, the company sells those data to an insurance broker. Which assessment best connects the chapter's ethics lesson to current privacy rules?",
      opts:[
-       "There is no issue, because the company that maintains the database legally owns the data and users agreed to collection",
-       "It is a problem, because the company stated one purpose at sign-up and then sold the data, breaking its promise",
-       "It is a problem in the European Union and California, where regulation defines rights over personal data, but not elsewhere",
-       "It is acceptable provided names were stripped before the sale, since records with no name attached are not personal data"],
+       "Database control is the main issue, so agreement to the original collection is enough for the later sale",
+       "The changed purpose breaks the stated promise, creating an ethical problem and potentially a legal one under applicable rules",
+       "Jurisdiction is the main issue, so the original promise has no independent ethical weight",
+       "Removing names resolves the concern, because the broker receives records without direct identifiers"],
      a:1, obj:"1.4",
      why:[
-       "The first half is exactly what the chapter says: the company that maintains the database of customers or subscribers legally owns the data and is free to sell them. The chapter then states the limit this option leaves out, that there are limits to what a company can do with such data.",
-       "Correct. The chapter&rsquo;s own example is a company that said its marketing data were strictly for internal use and sold them years later, and it calls that unethically and illegally breaking its original promise. What was violated is the promise, not the ownership.",
-       "The General Data Protection Regulation and the California Consumer Privacy Act do give those users stronger defined rights, and the chapter notes that contrast with the rest of the United States. A reversed purpose promise is still a problem outside them, which is why the chapter frames it as both ethical and legal.",
-       "Removing names is weaker protection than it sounds. The chapter describes companies piecing together demographic and psychographic data into highly accurate profiles of their customers, with each additional bit helping create a more accurate picture."]},
+       "This is the ownership-only reading of the chapter's property question. It would fit only if the original notice, consent, promises, data type, and applicable law placed no limit on the new use; the stated inside-the-app purpose supplies such a limit.",
+       "Correct. The chapter's example treats a reversed purpose promise as an ethical failure. Current enforcement can also make deceptive privacy promises or particular data sales legally significant, though the exact rule depends on jurisdiction and facts.",
+       "Jurisdiction determines legal rights and duties, but ethics and an organization's stated commitment remain relevant even when a specific statute does not decide the case. This would fit a question limited solely to which statute applies, not this ethical assessment.",
+       "De-identification can reduce some privacy risk, but it does not erase the changed purpose or automatically remove a record from every privacy rule. This would fit only if the promise and applicable standard expressly permitted that form of sharing."]},
 
     {q:"A retailer combines three things it collected separately: loyalty-card purchase records, answers to a mall survey shoppers filled out for a free coffee, and transaction data from its store credit card. Merged, the file predicts household events accurately enough to time mailings to them. Which concern does the chapter raise about exactly this?",
      opts:[
@@ -264,7 +264,7 @@ FINAL = {
        "Appropriating other people&rsquo;s intellectual output means taking someone&rsquo;s creative or intellectual work and using it as your own. That would be the answer if the wrong were publishing a photographer&rsquo;s image without credit rather than falsifying what it shows.",
        "Interfering with other people&rsquo;s computer work means disrupting what someone else is doing with their machine or their systems. Nothing here stops the coworker from using a computer; the harm is to his reputation."]},
 
-    {q:"A furniture maker&rsquo;s three largest accounts are builders who together are about 60 percent of revenue. One of them now demands 90-day payment terms and a 6 percent price reduction, and mentions that two other suppliers have quoted the same work. Which of the five forces is strongest here?",
+    {q:"A furniture maker&rsquo;s largest accounts supply most of its revenue. One demands longer payment terms and a lower price, and mentions that rival suppliers have quoted the same work. Which of the five forces is strongest here?",
      opts:[
        "Bargaining power of suppliers, because the builders are dictating the terms of the relationship to the maker",
        "Competitive rivalry, because two other suppliers have quoted the same work and are competing for it directly",
@@ -277,7 +277,7 @@ FINAL = {
        "Correct. Buyer power grows when a few accounts make up most of your revenue, when comparison is easy, and when switching costs the customer little, and all three are present. That combination is the signature of this force, and it is why loyalty and switching costs are the usual response to it.",
        "New entrants are firms not competing in your industry today that could start tomorrow, held back by barriers to entry such as cost, scale, know-how, or loyalty. The two rival suppliers quoting are already in this business, so no barrier is being tested."]},
 
-    {q:"A cinema chain&rsquo;s attendance falls four years running, including in three towns where it is the only theater and where no new theater has opened. Over the same four years, household spending on streaming subscriptions in those towns roughly doubled. Which force explains the decline?",
+    {q:"A cinema chain&rsquo;s attendance falls for several periods, including in towns where it is the only theater and no new theater has opened. Over the same span, household spending on streaming subscriptions rises sharply. Which force explains the decline?",
      opts:[
        "Competitive rivalry, because the chain is losing to other companies competing for the same entertainment spending",
        "Bargaining power of buyers, because moviegoers are refusing to pay the ticket prices the chain sets for them",
@@ -285,7 +285,7 @@ FINAL = {
        "<b>Threat of substitutes</b>, because a product from outside the industry meets the same need, so demand leaves the category"],
      a:3, obj:"1.5",
      why:[
-       "Rivalry is pressure from firms inside your own industry selling nearly the same thing to the same customers. The scenario removes that possibility deliberately: in three of these towns there is no other theater and none opened.",
+       "Rivalry is pressure from firms inside your own industry selling nearly the same thing to the same customers. The scenario removes that possibility deliberately: in the towns described there is no other theater and none opened.",
        "Buyer power is customers forcing your price down or your service up while still buying from your industry, which happens when switching is cheap and comparison is easy. These households are not negotiating over ticket prices; they stopped buying tickets at all.",
        "A new entrant is a company that starts selling what you sell. A streaming service operates no theaters and sells no tickets to them, which is what separates an entrant from a different kind of product answering the same need.",
        "Correct. A substitute meets the same underlying need, an evening&rsquo;s entertainment, by a different route, so the customer never enters your industry. The tell is in the facts: the decline continues where there is no competitor at all, so nothing inside the industry can account for it."]},
@@ -303,7 +303,7 @@ FINAL = {
        "Operations turns inputs into what the customer buys, such as register scans becoming restock tasks so the milk case refills before it empties. Almost anything upstream eventually helps operations, but naming the activity an initiative actually changes is what keeps the analysis usable.",
        "Firm infrastructure covers general management, finance, accounting, legal, and planning, such as a margin report by store by day. The buying team here is doing supplier selection, which the value chain names as its own activity."]},
 
-    {q:"A retailer gives every returns desk a screen showing the customer&rsquo;s complete purchase history, so a refund takes under a minute and no receipt is needed. Complaints fall, and repeat visits from customers who returned something rise. Where does this initiative sit in the value chain?",
+    {q:"A retailer gives every returns desk a screen showing the customer&rsquo;s complete purchase history, so a refund is resolved quickly and no receipt is needed. Complaints fall, and repeat visits from customers who returned something rise. Where does this initiative sit in the value chain?",
      opts:[
        "Marketing and sales, because a smooth return is what persuades customers to choose this retailer next time",
        "<b>Service</b>, because it keeps the customer whole after the sale &mdash; returns, complaints, and repairs",
@@ -312,15 +312,15 @@ FINAL = {
      a:1, obj:"1.5",
      why:[
        "Marketing and sales is making customers aware and giving them a reason to choose you before they buy, such as a loyalty offer aimed at an item a household stopped buying. The downstream effect described is real, but the activity being improved happens after the sale.",
-       "Correct. Service is the primary activity that keeps the customer whole once the sale is done, and a returns screen showing purchase history so a refund takes seconds is the standard example of a system that adds value there.",
+       "Correct. Service is the primary activity that keeps the customer whole once the sale is done, and a returns screen showing purchase history so a refund is resolved quickly is an example of a system that adds value there.",
        "Outbound logistics is getting the finished product out to the customer, such as pickup and delivery batched by neighborhood into slots a driver can meet. A return travels the other way and is handled as service, not as a delivery problem.",
        "Technology development is the support activity of improving the product and the processes themselves, such as building your own app rather than renting one every rival can rent. Building this screen involved that work, but the activity where the value reaches the customer is service."]},
 
     {q:"Four analysts each write one closing sentence at the end of the same study of a regional retailer. Which one is a recommendation an executive can fund and later judge, rather than a preference?",
      opts:[
        "Our biggest exposure is disruption, so we should invest in digital transformation and modernize the customer experience",
-       "We should adopt artificial intelligence this year, because the leading firms in our sector already have and our costs run 4 points higher",
-       "Buyer power is strongest &mdash; 41 percent of lapsed members shop a rival &mdash; so build one chain-wide purchase history, judged by repeat visits",
+       "We should adopt artificial intelligence this year, because leading firms in our sector already have and our costs are higher",
+       "Buyer power is strongest &mdash; customer research shows many lapsed members shop a rival &mdash; so build one chain-wide purchase history, judged by repeat visits",
        "Inventory visibility is inconsistent from store to store, which is costing us sales in seasonal categories and should be fixed soon"],
      a:2, obj:"1.5",
      why:[
