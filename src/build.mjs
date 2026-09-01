@@ -12,10 +12,31 @@ import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const SP = HERE;
-const OUT = process.argv[2] || join(HERE, "..", "module-01-managing-in-the-digital-world.html");
 
-const SECTIONS = [
+/* One generator, many modules. `--module=<dir>` points at a directory holding
+   that module's frag/, shell.json, manifest, provenance and sections.json.
+   With no flag the paths stay exactly where Module 1 has always kept them, so
+   nothing about the original build changes. */
+const argv = process.argv.slice(2);
+const modArg = argv.find((a) => a.startsWith("--module="));
+const SP = modArg ? join(HERE, modArg.slice("--module=".length)) : HERE;
+const CFG_PATH = join(SP, "sections.json");
+const CFG = existsSync(CFG_PATH) ? JSON.parse(readFileSync(CFG_PATH, "utf8")) : null;
+const positional = argv.find((a) => !a.startsWith("--"));
+const OUT = positional
+  ? positional
+  : join(HERE, "..", CFG ? CFG.outputFile : "module-01-managing-in-the-digital-world.html");
+
+const OBJECTIVE_NAMES = (CFG && CFG.objectiveNames) || {
+  "1.1": "The digital world",
+  "1.2": "What an information system is",
+  "1.3": "The dual nature of information systems",
+  "1.4": "Computer ethics, privacy, and property",
+  "1.5": "Information systems and competitive strategy",
+  "1.6": "Using AI to improve business workflows",
+};
+
+const SECTIONS = CFG ? CFG.sections : [
   { id: "s11a", title: "The digital world" },
   { id: "s11b", title: "Digital density" },
   { id: "s12a", title: "What an information system is" },
@@ -24,6 +45,7 @@ const SECTIONS = [
   { id: "s13",  title: "When systems succeed and fail" },
   { id: "s14",  title: "Ethics, privacy, and property" },
   { id: "s15",  title: "Strategy: forces and value" },
+  { id: "s16",  title: "AI in business workflows" },
 ];
 let problems = 0;
 
@@ -148,7 +170,7 @@ if (problems) {
 /* --------------------------------------------------------------- assemble */
 const css = readFileSync(join(HERE, "module.css"), "utf8");
 const engine = readFileSync(join(HERE, "engine.js"), "utf8");
-const shell = JSON.parse(readFileSync(join(HERE, "shell.json"), "utf8"));
+const shell = JSON.parse(readFileSync(join(SP, "shell.json"), "utf8"));
 
 const jsonSafe = (o) => JSON.stringify(o).replace(/</g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
 
@@ -245,6 +267,7 @@ ${shell.foot}
 window.MIS_ACT = ${jsonSafe(ACT)};
 window.MIS_GLOSSARY = ${jsonSafe(GLOSSARY)};
 window.MIS_FINAL = ${jsonSafe(FINAL)};
+window.MIS_OBJECTIVES = ${jsonSafe(OBJECTIVE_NAMES)};
 <\/script>
 <script>
 ${engine}

@@ -6,7 +6,8 @@ Interactive, self-contained study modules for an introductory information system
 
 | Module | Page | Covers |
 |---|---|---|
-| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus a clearly labeled Porter strategy supplement |
+| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus two clearly labeled application supplements: Porter&rsquo;s strategy frameworks, and deciding where AI belongs in a business workflow |
+| 2 | [`module-02-enabling-strategy-through-information-systems.html`](module-02-enabling-strategy-through-information-systems.html) | Chapter 2 Objectives 2.1&ndash;2.3: decision-making levels and functional areas &middot; automating, organizational learning and strategy &middot; the five competitive forces &middot; generic strategies, resources and the value chain &middot; business and revenue models, platforms and network effects &middot; innovation &middot; plus two application supplements: AI in the strategy workflow, and an analyst&rsquo;s toolkit of **runnable** spreadsheet and SQL exercises |
 
 Each module ships as **one HTML file with nothing external** — no CDN, no fonts, no scripts, no
 network of any kind. Open it from a hard drive, a flash drive, or any static host and it works.
@@ -36,9 +37,21 @@ Pages are generated. Edit the sources in `src/`, never the built HTML — see
 commands.
 
 ```sh
-node src/build.mjs     # regenerate the page
-node src/check.mjs     # freshness, provenance, schema, accessibility, readability and hygiene
+node src/build.mjs                      # regenerate Module 1
+node src/check.mjs                      # freshness, provenance, schema, accessibility, readability, hygiene
+
+node src/build.mjs --module=modules/02  # regenerate Module 2
+node src/check.mjs --module=modules/02  # the same checks against Module 2
 ```
+
+One generator serves every module. Module 1's sources sit directly in `src/`; each later module gets
+`src/modules/<id>/` with its own `frag/`, `shell.json`, `sections.json`, manifest and provenance,
+while the design system, the activity runtime and the build and check scripts are shared. Adding a
+module means adding that directory, not copying the generator.
+
+Two activity kinds actually execute what the reader types &mdash; a spreadsheet formula evaluator and
+a SQL SELECT engine, both running in the page with no network and no library. Each covers what the
+chapter teaches and refuses clearly when asked for anything outside it.
 
 `check.mjs` is the guard rail. Besides validating every activity against its schema, it fails the
 build on the mistakes that matter here: an activity defined but never placed, a paragraph that has

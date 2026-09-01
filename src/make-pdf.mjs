@@ -38,6 +38,13 @@ h1{font-size:24pt} h2{font-size:16pt} h3{font-size:12pt} h4{font-size:11pt}
 .callout,.gloss-card,.char,.dc-box,.obj,.sim-entry{break-inside:avoid}
 .activity li,.activity .q,.activity p,.card li,table.tbl tr{break-inside:avoid}
 ul.keys > li,ol.steps > li,ul.split > li,p.takeaway{break-inside:avoid}
+.code-task{break-inside:avoid}
+.code-test{break-inside:avoid; background:#f7f3ea}
+textarea.code-editor{background:#fff; min-height:auto}
+.code-entry{background:#fff; border:1px solid #c9bda6}
+.sql-table{background:#f7f3ea}
+.sql-table[open] summary{margin-bottom:6px}
+.sql-table summary{list-style:none}
 ul.keys > li{background:#f7f3ea; border-left-color:#17506f}
 ol.steps > li::before{background:#17506f}
 h1,h2,h3,h4,h5,.act-head,.eyebrow{break-after:avoid}

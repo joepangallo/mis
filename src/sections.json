@@ -1,0 +1,90 @@
+{
+  "id": "01",
+  "outputFile": "module-01-managing-in-the-digital-world.html",
+  "title": "Module 1 · Managing in the Digital World",
+  "sections": [
+    {
+      "id": "s11a",
+      "title": "The digital world",
+      "prefix": "dw",
+      "objective": "1.1"
+    },
+    {
+      "id": "s11b",
+      "title": "Digital density",
+      "prefix": "dd",
+      "objective": "1.1"
+    },
+    {
+      "id": "s12a",
+      "title": "What an information system is",
+      "prefix": "isd",
+      "objective": "1.2"
+    },
+    {
+      "id": "s12b",
+      "title": "The people in information systems",
+      "prefix": "ppl",
+      "objective": "1.2"
+    },
+    {
+      "id": "s12c",
+      "title": "Systems inside an organization",
+      "prefix": "org",
+      "objective": "1.2"
+    },
+    {
+      "id": "s13",
+      "title": "When systems succeed and fail",
+      "prefix": "dual",
+      "objective": "1.3"
+    },
+    {
+      "id": "s14",
+      "title": "Ethics, privacy, and property",
+      "prefix": "eth",
+      "objective": "1.4"
+    },
+    {
+      "id": "s15",
+      "title": "Strategy: forces and value",
+      "prefix": "str",
+      "objective": "1.5"
+    },
+    {
+      "id": "s16",
+      "title": "AI in business workflows",
+      "prefix": "ai",
+      "objective": "1.6"
+    },
+    {
+      "id": "s17",
+      "title": "The concepts as code",
+      "prefix": "code",
+      "objective": "1.7"
+    }
+  ],
+  "objectives": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "1.6",
+    "1.7"
+  ],
+  "objectiveNames": {
+    "1.1": "The digital world",
+    "1.2": "What an information system is",
+    "1.3": "The dual nature of information systems",
+    "1.4": "Computer ethics, privacy, and property",
+    "1.5": "Information systems and competitive strategy",
+    "1.6": "Using AI to improve business workflows",
+    "1.7": "The concepts as code"
+  },
+  "supplements": [
+    "s15",
+    "s16",
+    "s17"
+  ]
+}

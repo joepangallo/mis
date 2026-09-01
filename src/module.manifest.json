@@ -1,6 +1,25 @@
 {
-  "sections": ["s11a", "s11b", "s12a", "s12b", "s12c", "s13", "s14", "s15"],
-  "objectives": ["1.1", "1.2", "1.3", "1.4", "1.5"],
+  "sections": [
+    "s11a",
+    "s11b",
+    "s12a",
+    "s12b",
+    "s12c",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17"
+  ],
+  "objectives": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "1.6",
+    "1.7"
+  ],
   "activityKeys": [
     "dwQuiz1",
     "dwFill",
@@ -42,18 +61,27 @@
     "strQuiz1",
     "strValueChain",
     "strStrategySim",
-    "strQuiz2"
+    "strQuiz2",
+    "aiMethod",
+    "aiQuiz1",
+    "aiMode",
+    "aiRisks",
+    "aiWorkflow",
+    "aiQuiz2",
+    "codeExercises",
+    "codeQuiz"
   ],
   "activityKinds": {
-    "quiz": 16,
-    "sort": 4,
+    "code": 1,
+    "diagram": 5,
+    "explore": 6,
+    "fill": 2,
     "match": 3,
     "order": 1,
-    "fill": 2,
-    "explore": 5,
-    "diagram": 4,
-    "sim": 4,
-    "selfcheck": 2
+    "quiz": 19,
+    "selfcheck": 2,
+    "sim": 5,
+    "sort": 5
   },
   "glossaryTerms": [
     "3D printing",
@@ -111,6 +139,14 @@
     "urbanization",
     "wearable technologies"
   ],
-  "finalQuestionCount": 25,
-  "finalByObjective": {"1.1": 5, "1.2": 6, "1.3": 4, "1.4": 5, "1.5": 5}
+  "finalQuestionCount": 34,
+  "finalByObjective": {
+    "1.1": 5,
+    "1.2": 6,
+    "1.3": 4,
+    "1.4": 5,
+    "1.5": 5,
+    "1.6": 5,
+    "1.7": 4
+  }
 }

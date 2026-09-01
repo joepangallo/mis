@@ -863,6 +863,1090 @@ RENDER.selfcheck = function(body, cfg, key){
   report(key, 0, items.length);
 };
 
+
+/* =========================================================================
+   CODE EXERCISES
+   Two small interpreters let a reader write a real spreadsheet formula or a
+   real SQL query and watch it run against data on the page. Neither is a full
+   product: each covers what the chapter teaches and says so plainly when asked
+   for something outside that, which is more useful to a learner than a blank
+   result would be.
+   ====================================================================== */
+/* ============================================================================
+   A small spreadsheet formula evaluator.
+   Supports the text and arithmetic functions the chapter's spreadsheet exercise
+   actually uses, so a reader types a real formula and watches it fill a real
+   column. Deliberately not a full Excel: it covers what is taught, and says so
+   plainly when a reader reaches for something it does not know.
+   ========================================================================== */
+function makeFormula(){
+  "use strict";
+
+  /* ---- lexer ------------------------------------------------------------ */
+  function lex(src){
+    var t = [], i = 0, s = src;
+    var isD = function(c){ return c >= "0" && c <= "9"; };
+    var isA = function(c){ return /[A-Za-z_$]/.test(c); };
+    while(i < s.length){
+      var c = s[i];
+      if(c === " " || c === "\t" || c === "\n"){ i++; continue; }
+      if(c === '"'){
+        var j = i + 1, out = "";
+        while(j < s.length){
+          if(s[j] === '"' && s[j+1] === '"'){ out += '"'; j += 2; continue; }
+          if(s[j] === '"'){ break; }
+          out += s[j++];
+        }
+        if(j >= s.length) throw new Error("a double quote is never closed");
+        t.push({k:"str", v:out}); i = j + 1; continue;
+      }
+      if(isD(c) || (c === "." && isD(s[i+1]))){
+        var n = "";
+        while(i < s.length && (isD(s[i]) || s[i] === ".")) n += s[i++];
+        t.push({k:"num", v:parseFloat(n)}); continue;
+      }
+      if(isA(c)){
+        var w = "";
+        while(i < s.length && /[A-Za-z0-9_$.]/.test(s[i])) w += s[i++];
+        t.push({k:"word", v:w}); continue;
+      }
+      if("+-*/^&%(),:<>=".indexOf(c) >= 0){
+        if((c === "<" && (s[i+1] === "=" || s[i+1] === ">")) || (c === ">" && s[i+1] === "=")){
+          t.push({k:"op", v:c + s[i+1]}); i += 2; continue;
+        }
+        t.push({k:"op", v:c}); i++; continue;
+      }
+      throw new Error('unexpected character "' + c + '"');
+    }
+    return t;
+  }
+
+  /* ---- parser (precedence climbing) ------------------------------------- */
+  var BIN = {"<":1,">":1,"=":1,"<=":1,">=":1,"<>":1, "&":2, "+":3,"-":3, "*":4,"/":4, "^":5};
+  function parse(tokens){
+    var p = 0;
+    function peek(){ return tokens[p]; }
+    function eat(v){
+      var t = tokens[p];
+      if(!t || (v && t.v !== v)) throw new Error("expected " + (v || "more input"));
+      p++; return t;
+    }
+    function primary(){
+      var t = peek();
+      if(!t) throw new Error("the formula ends too early");
+      if(t.k === "num"){ p++; return {t:"num", v:t.v}; }
+      if(t.k === "str"){ p++; return {t:"str", v:t.v}; }
+      if(t.k === "op" && t.v === "-"){ p++; return {t:"neg", a:primary()}; }
+      if(t.k === "op" && t.v === "+"){ p++; return primary(); }
+      if(t.k === "op" && t.v === "("){ p++; var e = expr(0); eat(")"); return e; }
+      if(t.k === "word"){
+        p++;
+        var nx = peek();
+        if(nx && nx.k === "op" && nx.v === "("){
+          p++;
+          var args = [];
+          if(peek() && !(peek().k === "op" && peek().v === ")")){
+            args.push(expr(0));
+            while(peek() && peek().k === "op" && peek().v === ","){ p++; args.push(expr(0)); }
+          }
+          eat(")");
+          return {t:"call", name:t.v.toUpperCase(), args:args};
+        }
+        if(nx && nx.k === "op" && nx.v === ":" ){
+          var second = tokens[p+1];
+          if(second && second.k === "word"){ p += 2; return {t:"range", a:t.v, b:second.v}; }
+        }
+        return {t:"ref", v:t.v};
+      }
+      throw new Error("unexpected " + JSON.stringify(t.v));
+    }
+    function expr(min){
+      var left = primary();
+      while(true){
+        var t = peek();
+        if(!t || t.k !== "op" || !(t.v in BIN)) break;
+        var prec = BIN[t.v];
+        if(prec < min) break;
+        p++;
+        var right = expr(prec + 1);
+        left = {t:"bin", op:t.v, a:left, b:right};
+      }
+      return left;
+    }
+    var out = expr(0);
+    if(p < tokens.length) throw new Error("unexpected " + JSON.stringify(tokens[p].v) + " after the formula");
+    return out;
+  }
+
+  /* ---- helpers ---------------------------------------------------------- */
+  function colToIndex(letters){
+    var n = 0;
+    for(var i = 0; i < letters.length; i++) n = n * 26 + (letters.charCodeAt(i) - 64);
+    return n - 1;
+  }
+  function splitRef(ref){
+    var m = /^(\$?)([A-Za-z]+)(\$?)(\d+)$/.exec(ref);
+    if(!m) return null;
+    return {
+      col: colToIndex(m[2].toUpperCase()),
+      row: parseInt(m[4], 10) - 1,
+      absCol: m[1] === "$",
+      absRow: m[3] === "$"
+    };
+  }
+  function num(v){
+    if(typeof v === "number") return v;
+    if(v === "" || v === null || v === undefined) return 0;
+    var n = parseFloat(String(v).replace(/[$,]/g, ""));
+    if(isNaN(n)) throw new Error("expected a number but found " + JSON.stringify(String(v)));
+    return n;
+  }
+  function str(v){ return v === null || v === undefined ? "" : String(v); }
+
+  /* ---- functions -------------------------------------------------------- */
+  var FN = {
+    TRIM: function(a){ return str(a[0]).replace(/\s+/g, " ").trim(); },
+    CLEAN: function(a){ return str(a[0]).replace(/[\x00-\x1F\x7F]/g, ""); },
+    LOWER: function(a){ return str(a[0]).toLowerCase(); },
+    UPPER: function(a){ return str(a[0]).toUpperCase(); },
+    PROPER: function(a){ return str(a[0]).toLowerCase().replace(/\b[a-z]/g, function(c){ return c.toUpperCase(); }); },
+    LEN: function(a){ return str(a[0]).length; },
+    LEFT: function(a){ return str(a[0]).slice(0, a.length > 1 ? num(a[1]) : 1); },
+    RIGHT: function(a){ var n = a.length > 1 ? num(a[1]) : 1; return n <= 0 ? "" : str(a[0]).slice(-n); },
+    MID: function(a){ var st = num(a[1]); return str(a[0]).substr(st - 1, num(a[2])); },
+    FIND: function(a){
+      var i = str(a[1]).indexOf(str(a[0]), a.length > 2 ? num(a[2]) - 1 : 0);
+      if(i < 0) throw new Error("FIND could not locate " + JSON.stringify(str(a[0])));
+      return i + 1;
+    },
+    SEARCH: function(a){
+      var i = str(a[1]).toLowerCase().indexOf(str(a[0]).toLowerCase(), a.length > 2 ? num(a[2]) - 1 : 0);
+      if(i < 0) throw new Error("SEARCH could not locate " + JSON.stringify(str(a[0])));
+      return i + 1;
+    },
+    SUBSTITUTE: function(a){ return str(a[0]).split(str(a[1])).join(str(a[2])); },
+    REPLACE: function(a){
+      var s = str(a[0]), st = num(a[1]) - 1, n = num(a[2]);
+      return s.slice(0, st) + str(a[3]) + s.slice(st + n);
+    },
+    CONCATENATE: function(a){ return a.map(str).join(""); },
+    CONCAT: function(a){ return a.map(str).join(""); },
+    IF: function(a){ return a[0] ? a[1] : (a.length > 2 ? a[2] : false); },
+    ROUND: function(a){ var d = a.length > 1 ? num(a[1]) : 0, f = Math.pow(10, d); return Math.round(num(a[0]) * f) / f; },
+    ABS: function(a){ return Math.abs(num(a[0])); },
+    SUM: function(a){ return flat(a).reduce(function(t, v){ return t + (v === "" ? 0 : num(v)); }, 0); },
+    AVERAGE: function(a){ var f = flat(a).filter(function(v){ return v !== ""; }); return f.reduce(function(t, v){ return t + num(v); }, 0) / (f.length || 1); },
+    COUNT: function(a){ return flat(a).filter(function(v){ return v !== "" && !isNaN(parseFloat(v)); }).length; },
+    COUNTA: function(a){ return flat(a).filter(function(v){ return v !== "" && v !== null; }).length; },
+    MAX: function(a){ return Math.max.apply(null, flat(a).filter(function(v){ return v !== ""; }).map(num)); },
+    MIN: function(a){ return Math.min.apply(null, flat(a).filter(function(v){ return v !== ""; }).map(num)); },
+  };
+  function flat(a){
+    var out = [];
+    a.forEach(function(v){ if(Array.isArray(v)) out = out.concat(flat(v)); else out.push(v); });
+    return out;
+  }
+
+  /* ---- evaluator -------------------------------------------------------- */
+  function evaluate(node, ctx){
+    switch(node.t){
+      case "num": return node.v;
+      case "str": return node.v;
+      case "neg": return -num(evaluate(node.a, ctx));
+      case "ref": {
+        var r = splitRef(node.v);
+        if(!r) throw new Error(JSON.stringify(node.v) + " is not a cell this sheet has");
+        return ctx.cell(r.absRow ? r.row : r.row + ctx.offset, r.col);
+      }
+      case "range": {
+        var a = splitRef(node.a), b = splitRef(node.b);
+        if(!a || !b) throw new Error("that range is not one this sheet has");
+        var out = [];
+        var ar = a.absRow ? a.row : a.row + ctx.offset, br = b.absRow ? b.row : b.row + ctx.offset;
+        for(var r2 = Math.min(ar,br); r2 <= Math.max(ar,br); r2++)
+          for(var c = Math.min(a.col,b.col); c <= Math.max(a.col,b.col); c++)
+            out.push(ctx.cell(r2, c));
+        return out;
+      }
+      case "call": {
+        var f = FN[node.name];
+        if(!f) throw new Error(node.name + " is not one of the functions this exercise supports");
+        return f(node.args.map(function(x){ return evaluate(x, ctx); }));
+      }
+      case "bin": {
+        var x = evaluate(node.a, ctx), y = evaluate(node.b, ctx);
+        switch(node.op){
+          case "&": return str(x) + str(y);
+          case "+": return num(x) + num(y);
+          case "-": return num(x) - num(y);
+          case "*": return num(x) * num(y);
+          case "/": {
+            var d = num(y);
+            if(d === 0) throw new Error("division by zero");
+            return num(x) / d;
+          }
+          case "^": return Math.pow(num(x), num(y));
+          case "=": return str(x).toLowerCase() === str(y).toLowerCase();
+          case "<>": return str(x).toLowerCase() !== str(y).toLowerCase();
+          case "<": return num(x) < num(y);
+          case ">": return num(x) > num(y);
+          case "<=": return num(x) <= num(y);
+          case ">=": return num(x) >= num(y);
+        }
+      }
+    }
+    throw new Error("this formula uses something the exercise cannot evaluate");
+  }
+
+  /* ---- public ----------------------------------------------------------- */
+  function run(formula, grid, rowIndex){
+    var src = String(formula || "").trim();
+    if(src[0] === "=") src = src.slice(1);
+    if(!src) throw new Error("the cell is empty");
+    var ast = parse(lex(src));
+    return evaluate(ast, {
+      offset: (rowIndex === undefined || rowIndex === null ? 1 : rowIndex) - 1,
+      cell: function(r, c){
+        var row = grid[r];
+        if(!row) return "";
+        var v = row[c];
+        return v === undefined || v === null ? "" : v;
+      }
+    });
+  }
+  return {run: run, FN: FN};
+}
+
+/* ============================================================================
+   A small SQL SELECT engine over in-page tables.
+   Covers the shape of query a first database exercise asks for - projection,
+   filtering, joining, grouping, aggregation, ordering and limiting - so the
+   reader writes real SQL and sees a real result set. It refuses clearly when
+   asked for something outside that, rather than failing quietly.
+   ========================================================================== */
+function makeSql(){
+  "use strict";
+
+  var KW = ["SELECT","DISTINCT","FROM","JOIN","INNER","LEFT","ON","WHERE","GROUP","BY","HAVING",
+            "ORDER","ASC","DESC","LIMIT","AND","OR","NOT","AS","LIKE","IN","BETWEEN","IS","NULL","COUNT",
+            "SUM","AVG","MIN","MAX"];
+
+  function lex(s){
+    var t = [], i = 0;
+    while(i < s.length){
+      var c = s[i];
+      if(/\s/.test(c)){ i++; continue; }
+      if(c === "-" && s[i+1] === "-"){ while(i < s.length && s[i] !== "\n") i++; continue; }
+      if(c === "'" || c === '"'){
+        var q = c, j = i + 1, out = "";
+        while(j < s.length){
+          if(s[j] === q && s[j+1] === q){ out += q; j += 2; continue; }
+          if(s[j] === q) break;
+          out += s[j++];
+        }
+        if(j >= s.length) throw new Error("a quoted value is never closed");
+        t.push({k:"str", v:out}); i = j + 1; continue;
+      }
+      if(/[0-9]/.test(c) || (c === "." && /[0-9]/.test(s[i+1]))){
+        var n = ""; while(i < s.length && /[0-9.]/.test(s[i])) n += s[i++];
+        t.push({k:"num", v:parseFloat(n)}); continue;
+      }
+      if(/[A-Za-z_]/.test(c)){
+        var w = ""; while(i < s.length && /[A-Za-z0-9_.]/.test(s[i])) w += s[i++];
+        var up = w.toUpperCase();
+        t.push(KW.indexOf(up) >= 0 ? {k:"kw", v:up} : {k:"id", v:w});
+        continue;
+      }
+      if(s.substr(i,2) === "<>" || s.substr(i,2) === "!=" || s.substr(i,2) === "<=" || s.substr(i,2) === ">="){
+        t.push({k:"op", v:s.substr(i,2) === "!=" ? "<>" : s.substr(i,2)}); i += 2; continue;
+      }
+      if("=<>+-*/(),".indexOf(c) >= 0){ t.push({k:"op", v:c}); i++; continue; }
+      if(c === "*"){ t.push({k:"op", v:"*"}); i++; continue; }
+      if(c === ";"){ i++; continue; }
+      throw new Error('unexpected character "' + c + '"');
+    }
+    return t;
+  }
+
+  function parse(tokens){
+    var p = 0;
+    var at = function(k, v){ var t = tokens[p]; return !!t && t.k === k && (v === undefined || t.v === v); };
+    var kw = function(v){ return at("kw", v); };
+    function need(pred, what){ if(!pred) throw new Error("expected " + what); }
+    function take(){ return tokens[p++]; }
+
+    need(kw("SELECT"), "the query to start with SELECT"); p++;
+    var distinct = false;
+    if(kw("DISTINCT")){ distinct = true; p++; }
+
+    var cols = [];
+    do {
+      if(at("op","*")){ p++; cols.push({kind:"all"}); }
+      else {
+        var e = expr();
+        var alias = null;
+        if(kw("AS")){ p++; need(at("id") || at("str"), "an alias"); alias = take().v; }
+        else if(at("id") && !kw("FROM")) { alias = take().v; }
+        cols.push({kind:"expr", e:e, alias:alias});
+      }
+      if(at("op",",")){ p++; continue; }
+      break;
+    } while(true);
+
+    need(kw("FROM"), "FROM"); p++;
+    need(at("id"), "a table name");
+    var from = {table:take().v, alias:null};
+    if(kw("AS")){ p++; from.alias = take().v; } else if(at("id")) from.alias = take().v;
+
+    var joins = [];
+    while(kw("JOIN") || kw("INNER") || kw("LEFT")){
+      var type = "inner";
+      if(kw("LEFT")){ type = "left"; p++; }
+      if(kw("INNER")) p++;
+      need(kw("JOIN"), "JOIN"); p++;
+      need(at("id"), "a table name to join");
+      var j = {table:take().v, alias:null, type:type};
+      if(kw("AS")){ p++; j.alias = take().v; } else if(at("id") && !kw("ON")) j.alias = take().v;
+      need(kw("ON"), "ON"); p++;
+      j.on = expr();
+      joins.push(j);
+    }
+
+    var where = null, group = null, having = null, order = null, limit = null;
+    if(kw("WHERE")){ p++; where = expr(); }
+    if(kw("GROUP")){ p++; need(kw("BY"), "BY"); p++; group = []; do { group.push(expr()); if(at("op",",")){p++;continue;} break; } while(true); }
+    if(kw("HAVING")){ p++; having = expr(); }
+    if(kw("ORDER")){
+      p++; need(kw("BY"), "BY"); p++; order = [];
+      do {
+        var oe = expr(), dir = "asc";
+        if(kw("ASC")){ p++; } else if(kw("DESC")){ p++; dir = "desc"; }
+        order.push({e:oe, dir:dir});
+        if(at("op",",")){ p++; continue; }
+        break;
+      } while(true);
+    }
+    if(kw("LIMIT")){ p++; need(at("num"), "a number after LIMIT"); limit = take().v; }
+    if(p < tokens.length) throw new Error("unexpected " + JSON.stringify(String(tokens[p].v)) + " at the end of the query");
+    return {distinct:distinct, cols:cols, from:from, joins:joins, where:where, group:group, having:having, order:order, limit:limit};
+
+    /* expressions */
+    function expr(){ return orX(); }
+    function orX(){ var l = andX(); while(kw("OR")){ p++; l = {t:"or", a:l, b:andX()}; } return l; }
+    function andX(){ var l = notX(); while(kw("AND")){ p++; l = {t:"and", a:l, b:notX()}; } return l; }
+    function notX(){ if(kw("NOT")){ p++; return {t:"not", a:notX()}; } return cmp(); }
+    function cmp(){
+      var l = add();
+      if(kw("IS")){
+        p++; var neg = false;
+        if(kw("NOT")){ neg = true; p++; }
+        need(kw("NULL"), "NULL"); p++;
+        return {t:"isnull", a:l, neg:neg};
+      }
+      if(kw("LIKE")){ p++; return {t:"like", a:l, b:add()}; }
+      if(kw("BETWEEN")){ p++; var lo = add(); need(kw("AND"), "AND"); p++; return {t:"between", a:l, lo:lo, hi:add()}; }
+      if(kw("NOT") && tokens[p+1] && tokens[p+1].v === "IN"){ p += 2; return {t:"not", a:inList(l)}; }
+      if(kw("IN")){ p++; return inList(l); }
+      if(at("op") && ["=","<>","<",">","<=",">="].indexOf(tokens[p].v) >= 0){
+        var op = take().v; return {t:"cmp", op:op, a:l, b:add()};
+      }
+      return l;
+    }
+    function inList(l){
+      need(at("op","("), "( after IN"); p++;
+      var vals = [];
+      do { vals.push(add()); if(at("op",",")){ p++; continue; } break; } while(true);
+      need(at("op",")"), ") after IN list"); p++;
+      return {t:"in", a:l, vals:vals};
+    }
+    function add(){
+      var l = mul();
+      while(at("op","+") || at("op","-")){ var o = take().v; l = {t:"arith", op:o, a:l, b:mul()}; }
+      return l;
+    }
+    function mul(){
+      var l = unary();
+      while(at("op","*") || at("op","/")){ var o = take().v; l = {t:"arith", op:o, a:l, b:unary()}; }
+      return l;
+    }
+    function unary(){
+      if(at("op","-")){ p++; return {t:"neg", a:unary()}; }
+      return atom();
+    }
+    function atom(){
+      if(at("op","(")){ p++; var e = expr(); need(at("op",")"), ")"); p++; return e; }
+      if(at("num")) return {t:"lit", v:take().v};
+      if(at("str")) return {t:"lit", v:take().v};
+      if(kw("NULL")){ p++; return {t:"lit", v:null}; }
+      if(at("kw") && ["COUNT","SUM","AVG","MIN","MAX"].indexOf(tokens[p].v) >= 0){
+        var fn = take().v;
+        need(at("op","("), "( after " + fn); p++;
+        var arg = null;
+        if(at("op","*")){ p++; arg = {t:"star"}; }
+        else { if(kw("DISTINCT")) p++; arg = expr(); }
+        need(at("op",")"), ")"); p++;
+        return {t:"agg", fn:fn, arg:arg};
+      }
+      if(at("id")) return {t:"col", name:take().v};
+      throw new Error("expected a column, value or function but found " + JSON.stringify(String((tokens[p]||{}).v)));
+    }
+  }
+
+  /* ---- evaluation ------------------------------------------------------- */
+  function get(row, name){
+    if(name in row) return row[name];
+    var bare = name.indexOf(".") >= 0 ? name.split(".").pop() : name;
+    if(bare in row) return row[bare];
+    var lower = Object.keys(row).find(function(k){ return k.toLowerCase() === bare.toLowerCase(); });
+    if(lower) return row[lower];
+    throw new Error("there is no column called " + JSON.stringify(name));
+  }
+  function bare(row){
+    var out = {};
+    Object.keys(row).forEach(function(k){ if(k.indexOf(".") < 0) out[k] = row[k]; });
+    return out;
+  }
+  function likeRe(pat){
+    var esc = String(pat).replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/%/g, ".*").replace(/_/g, ".");
+    return new RegExp("^" + esc + "$", "i");
+  }
+  function cmpVals(a, b){
+    if(a === null || b === null) return null;
+    if(typeof a === "number" && typeof b === "number") return a < b ? -1 : a > b ? 1 : 0;
+    var x = String(a).toLowerCase(), y = String(b).toLowerCase();
+    return x < y ? -1 : x > y ? 1 : 0;
+  }
+  function ev(node, row, group){
+    switch(node.t){
+      case "lit": return node.v;
+      case "col": return get(row, node.name);
+      case "star": return 1;
+      case "neg": return -Number(ev(node.a, row, group));
+      case "arith": {
+        var a = Number(ev(node.a, row, group)), b = Number(ev(node.b, row, group));
+        if(node.op === "+") return a + b;
+        if(node.op === "-") return a - b;
+        if(node.op === "*") return a * b;
+        if(b === 0) throw new Error("division by zero");
+        return a / b;
+      }
+      case "cmp": {
+        var c = cmpVals(ev(node.a, row, group), ev(node.b, row, group));
+        if(c === null) return false;
+        switch(node.op){
+          case "=": return c === 0; case "<>": return c !== 0;
+          case "<": return c < 0; case ">": return c > 0;
+          case "<=": return c <= 0; case ">=": return c >= 0;
+        }
+        return false;
+      }
+      case "and": return !!ev(node.a, row, group) && !!ev(node.b, row, group);
+      case "or": return !!ev(node.a, row, group) || !!ev(node.b, row, group);
+      case "not": return !ev(node.a, row, group);
+      case "isnull": { var v = ev(node.a, row, group); var isN = v === null || v === undefined || v === ""; return node.neg ? !isN : isN; }
+      case "like": return likeRe(ev(node.b, row, group)).test(String(ev(node.a, row, group)));
+      case "between": { var t = ev(node.a,row,group); return cmpVals(t, ev(node.lo,row,group)) >= 0 && cmpVals(t, ev(node.hi,row,group)) <= 0; }
+      case "in": { var t2 = ev(node.a,row,group); return node.vals.some(function(x){ return cmpVals(t2, ev(x,row,group)) === 0; }); }
+      case "agg": {
+        if(!group) throw new Error(node.fn + " needs a GROUP BY, or must be the only kind of column selected");
+        var vals = group.map(function(r){ return node.arg.t === "star" ? 1 : ev(node.arg, r, null); });
+        if(node.fn === "COUNT") return node.arg.t === "star" ? vals.length : vals.filter(function(v){ return v !== null && v !== undefined && v !== ""; }).length;
+        var nums = vals.filter(function(v){ return v !== null && v !== undefined && v !== ""; }).map(Number);
+        if(!nums.length) return null;
+        if(node.fn === "SUM") return nums.reduce(function(a,b){ return a+b; }, 0);
+        if(node.fn === "AVG") return nums.reduce(function(a,b){ return a+b; }, 0) / nums.length;
+        if(node.fn === "MIN") return Math.min.apply(null, nums);
+        if(node.fn === "MAX") return Math.max.apply(null, nums);
+      }
+    }
+    throw new Error("this query uses something the exercise cannot evaluate");
+  }
+  function hasAgg(n){
+    if(!n || typeof n !== "object") return false;
+    if(n.t === "agg") return true;
+    return Object.keys(n).some(function(k){ return hasAgg(n[k]); });
+  }
+  function label(c, i){
+    if(c.alias) return c.alias;
+    if(c.e.t === "col") return c.e.name.indexOf(".") >= 0 ? c.e.name.split(".").pop() : c.e.name;
+    if(c.e.t === "agg") return c.e.fn + "(" + (c.e.arg.t === "star" ? "*" : (c.e.arg.name || "")) + ")";
+    return "col" + (i + 1);
+  }
+
+  function run(sql, tables){
+    var q = parse(lex(String(sql || "").trim()));
+    /* Every row carries its columns twice: bare, and prefixed with the table
+       name and alias. Joining two tables that share a column name would
+       otherwise let the right-hand value overwrite the left, quietly making
+       `a.x = b.x` always true. Qualified copies never collide, and `get`
+       checks the exact name first. */
+    function tableRows(name, alias){
+      var key = Object.keys(tables).find(function(k){ return k.toLowerCase() === String(name).toLowerCase(); });
+      if(!key) throw new Error("there is no table called " + JSON.stringify(name));
+      var prefixes = [String(key)];
+      if(alias && alias.toLowerCase() !== String(key).toLowerCase()) prefixes.push(String(alias));
+      return tables[key].rows.map(function(r){
+        var out = {};
+        Object.keys(r).forEach(function(c){
+          out[c] = r[c];
+          prefixes.forEach(function(px){ out[px + "." + c] = r[c]; });
+        });
+        return out;
+      });
+    }
+    var rows = tableRows(q.from.table, q.from.alias);
+    q.joins.forEach(function(j){
+      var right = tableRows(j.table, j.alias), out = [];
+      rows.forEach(function(l){
+        var matched = false;
+        right.forEach(function(r){
+          var merged = Object.assign({}, l, r);
+          if(ev(j.on, merged, null)){ out.push(merged); matched = true; }
+        });
+        if(!matched && j.type === "left") out.push(Object.assign({}, l));
+      });
+      rows = out;
+    });
+    if(q.where) rows = rows.filter(function(r){ return ev(q.where, r, null); });
+
+    var result = [], headers;
+    var selectsAgg = q.cols.some(function(c){ return c.kind === "expr" && hasAgg(c.e); });
+
+    if(q.group || selectsAgg){
+      var buckets = new Map();
+      if(q.group){
+        rows.forEach(function(r){
+          var k = JSON.stringify(q.group.map(function(g){ return ev(g, r, null); }));
+          if(!buckets.has(k)) buckets.set(k, []);
+          buckets.get(k).push(r);
+        });
+      } else buckets.set("__all__", rows);
+      headers = q.cols.map(function(c, i){ return c.kind === "all" ? "*" : label(c, i); });
+      buckets.forEach(function(groupRows){
+        var rep = groupRows[0] || {};
+        if(q.having && !ev(q.having, rep, groupRows)) return;
+        var out = {};
+        q.cols.forEach(function(c, i){
+          if(c.kind === "all") throw new Error("SELECT * cannot be combined with grouping");
+          out[label(c, i)] = ev(c.e, rep, groupRows);
+        });
+        result.push(out);
+      });
+    } else {
+      headers = null;
+      result = rows.map(function(r){
+        if(q.cols.length === 1 && q.cols[0].kind === "all") return bare(r);
+        var out = {};
+        q.cols.forEach(function(c, i){
+          if(c.kind === "all"){ Object.assign(out, bare(r)); return; }
+          out[label(c, i)] = ev(c.e, r, null);
+        });
+        return out;
+      });
+      headers = result.length ? Object.keys(result[0]) : (q.cols[0] && q.cols[0].kind === "all" ? Object.keys(bare(rows[0] || {})) : q.cols.map(label));
+    }
+
+    if(q.distinct){
+      var seen = new Set(), ded = [];
+      result.forEach(function(r){ var k = JSON.stringify(r); if(!seen.has(k)){ seen.add(k); ded.push(r); } });
+      result = ded;
+    }
+    if(q.order){
+      result = result.slice().sort(function(a, b){
+        for(var i = 0; i < q.order.length; i++){
+          var o = q.order[i];
+          var av = o.e.t === "col" ? (function(){ try { return get(a, o.e.name); } catch(e){ return null; } })() : ev(o.e, a, null);
+          var bv = o.e.t === "col" ? (function(){ try { return get(b, o.e.name); } catch(e){ return null; } })() : ev(o.e, b, null);
+          var c = cmpVals(av, bv);
+          if(c === null) c = 0;
+          if(c !== 0) return o.dir === "desc" ? -c : c;
+        }
+        return 0;
+      });
+    }
+    if(q.limit !== null && q.limit !== undefined) result = result.slice(0, q.limit);
+    if(!headers || !headers.length) headers = result.length ? Object.keys(result[0]) : [];
+    return {headers: headers, rows: result, ordered: !!q.order};
+  }
+  return {run: run};
+}
+
+var FORMULA = makeFormula();
+var SQL = makeSql();
+
+function colLetter(i){
+  var s = "";
+  i += 1;
+  while(i > 0){ var m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = Math.floor((i - 1) / 26); }
+  return s;
+}
+
+/* ---- formula ------------------------------------------------------------
+   A spreadsheet with one column the reader fills in. The formula is entered
+   once and applied down every row, which is how the function is actually used
+   and where a wrong reference shows itself immediately.                    */
+RENDER.formula = function(body, cfg, key, redraw){
+  var tasks = cfg.tasks || [];
+  var solved = {};
+  var grid = [(cfg.headers || []).slice()].concat((cfg.data || []).map(function(r){ return r.slice(); }));
+
+  function computeExpected(t){
+    var out = [];
+    for(var r = 1; r < grid.length; r++){
+      try { out.push(FORMULA.run(t.expect.replace(/\{row\}/g, String(r + 1)), grid, r)); }
+      catch(e){ out.push("#ERROR"); }
+    }
+    return out;
+  }
+
+  tasks.forEach(function(t, ti){
+    var wrap = el("div", "code-task");
+    var head = el("div", "code-task-head");
+    head.appendChild(el("span", "q-num", String(ti + 1)));
+    head.appendChild(el("span", "q-text", txt(t.prompt)));
+    wrap.appendChild(head);
+    if(t.note) wrap.appendChild(el("p", "mini", txt(t.note)));
+
+    var targetCol = t.column;
+    var expected = computeExpected(t);
+
+    var bar = el("div", "code-input");
+    var lab = el("label", "code-label");
+    lab.textContent = colLetter(targetCol) + "2 =";
+    lab.setAttribute("for", "f-" + key + "-" + ti);
+    var input = el("input", "code-entry mono");
+    input.type = "text";
+    input.id = "f-" + key + "-" + ti;
+    input.setAttribute("spellcheck", "false");
+    input.setAttribute("autocapitalize", "off");
+    input.placeholder = t.placeholder || "=FUNCTION(...)";
+    var runBtn = el("button", "btn", "Fill the column");
+    runBtn.type = "button";
+    bar.appendChild(lab); bar.appendChild(input); bar.appendChild(runBtn);
+    wrap.appendChild(bar);
+
+    var msg = el("p", "code-msg");
+    msg.setAttribute("role", "status");
+    wrap.appendChild(msg);
+
+    var tblWrap = el("div", "tbl-wrap");
+    var tbl = el("table", "tbl code-sheet");
+    tblWrap.appendChild(tbl);
+    wrap.appendChild(tblWrap);
+
+    function paint(values, errIndex){
+      tbl.innerHTML = "";
+      var thead = el("thead"), hr = el("tr");
+      hr.appendChild(el("th", "code-rownum", ""));
+      (cfg.headers || []).forEach(function(h, ci){
+        var th = el("th", ci === targetCol ? "is-target" : null,
+          "<span class=\"code-col\">" + colLetter(ci) + "</span>" + txt(h));
+        hr.appendChild(th);
+      });
+      thead.appendChild(hr); tbl.appendChild(thead);
+      var tb = el("tbody");
+      (cfg.data || []).forEach(function(row, ri){
+        var tr = el("tr");
+        tr.appendChild(el("td", "code-rownum", String(ri + 2)));
+        (cfg.headers || []).forEach(function(_, ci){
+          if(ci === targetCol){
+            var v = values ? values[ri] : "";
+            var cell = el("td", "is-target" + (errIndex === ri ? " is-bad" : ""));
+            cell.textContent = v === undefined || v === null ? "" : String(v);
+            tr.appendChild(cell);
+          } else {
+            var td = el("td");
+            td.textContent = row[ci] === undefined || row[ci] === null ? "" : String(row[ci]);
+            tr.appendChild(td);
+          }
+        });
+        tb.appendChild(tr);
+      });
+      tbl.appendChild(tb);
+    }
+
+    function attempt(){
+      var src = input.value.trim();
+      if(!src){ msg.className = "code-msg"; msg.textContent = ""; paint(null); return; }
+      var values = [], firstErr = -1, errText = "";
+      for(var r = 1; r < grid.length; r++){
+        try { values.push(FORMULA.run(src, grid, r)); }
+        catch(e){
+          values.push("#ERROR");
+          if(firstErr < 0){ firstErr = r - 1; errText = e.message; }
+        }
+      }
+      paint(values, firstErr);
+      /* Compare exactly. Trimming or folding case here would accept a formula
+         that leaves the very whitespace and capitalisation the task is about. */
+      var right = firstErr < 0 && values.length === expected.length && values.every(function(v, i){
+        return String(v) === String(expected[i]);
+      });
+      if(firstErr >= 0){
+        msg.className = "code-msg no";
+        msg.innerHTML = "<b>Row " + (firstErr + 2) + " could not be worked out:</b> " + txt(errText);
+      } else if(right){
+        solved[ti] = true;
+        msg.className = "code-msg ok";
+        msg.innerHTML = "<b>That fills the column correctly.</b> " + txt(t.explain || "");
+      } else {
+        msg.className = "code-msg no";
+        msg.innerHTML = "<b>It runs, but the column is not right yet.</b> " +
+          txt(t.hint || "Compare the first row against what the task asks for.");
+      }
+      report(key, Object.keys(solved).length, tasks.length);
+    }
+
+    runBtn.addEventListener("click", attempt);
+    input.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ ev.preventDefault(); attempt(); } });
+
+    var foot = el("p", "code-foot");
+    var reveal = el("button", "act-reset", "Show the formula");
+    reveal.type = "button";
+    reveal.addEventListener("click", function(){
+      input.value = t.expect.replace(/\{row\}/g, "2");
+      attempt();
+    });
+    foot.appendChild(reveal);
+    wrap.appendChild(foot);
+
+    paint(null);
+    body.appendChild(wrap);
+  });
+  report(key, 0, tasks.length);
+};
+
+/* ---- sql ----------------------------------------------------------------
+   The reader writes a SELECT against tables printed on the page. The result is
+   compared with the result of the reference query rather than with its text, so
+   any query that genuinely answers the question is accepted.               */
+RENDER.sql = function(body, cfg, key){
+  var tasks = cfg.tasks || [];
+  var solved = {};
+  var tables = cfg.tables || {};
+
+  var schema = el("div", "sql-schema");
+  schema.appendChild(el("p", "mini", "<b>Tables you can query.</b> Column names are shown with the first rows of data."));
+  Object.keys(tables).forEach(function(name){
+    var t = tables[name];
+    var cols = t.rows.length ? Object.keys(t.rows[0]) : [];
+    var box = el("details", "sql-table");
+    var sum = el("summary", null, "<b class=\"mono\">" + txt(name) + "</b> <span class=\"mini\">" +
+      t.rows.length + " rows &middot; " + cols.join(", ") + "</span>");
+    box.appendChild(sum);
+    var w = el("div", "tbl-wrap");
+    var tb = el("table", "tbl");
+    var th = el("thead"), hr = el("tr");
+    cols.forEach(function(c){ hr.appendChild(el("th", null, txt(c))); });
+    th.appendChild(hr); tb.appendChild(th);
+    var bd = el("tbody");
+    t.rows.slice(0, 8).forEach(function(r){
+      var tr = el("tr");
+      cols.forEach(function(c){ var td = el("td"); td.textContent = String(r[c]); tr.appendChild(td); });
+      bd.appendChild(tr);
+    });
+    tb.appendChild(bd); w.appendChild(tb); box.appendChild(w);
+    if(t.rows.length > 8) box.appendChild(el("p", "mini", "Showing the first 8 of " + t.rows.length + " rows; a query sees them all."));
+    schema.appendChild(box);
+  });
+  body.appendChild(schema);
+
+  function shape(res){
+    return JSON.stringify({
+      cols: res.headers.map(function(h){ return String(h).toLowerCase(); }),
+      rows: (res.ordered ? res.rows : res.rows.slice().sort(function(a, b){
+        return JSON.stringify(a) < JSON.stringify(b) ? -1 : 1;
+      })).map(function(r){
+        return res.headers.map(function(h){ return String(r[h]); });
+      })
+    });
+  }
+
+  tasks.forEach(function(t, ti){
+    var wrap = el("div", "code-task");
+    var head = el("div", "code-task-head");
+    head.appendChild(el("span", "q-num", String(ti + 1)));
+    head.appendChild(el("span", "q-text", txt(t.prompt)));
+    wrap.appendChild(head);
+
+    var ta = el("textarea", "code-entry mono sql-entry");
+    ta.rows = 3;
+    ta.setAttribute("spellcheck", "false");
+    ta.id = "q-" + key + "-" + ti;
+    ta.placeholder = "SELECT ... FROM ...";
+    wrap.appendChild(ta);
+
+    var bar = el("div", "code-input");
+    var runBtn = el("button", "btn", "Run the query");
+    runBtn.type = "button";
+    bar.appendChild(runBtn);
+    var reveal = el("button", "act-reset", "Show a query that works");
+    reveal.type = "button";
+    bar.appendChild(reveal);
+    wrap.appendChild(bar);
+
+    var msg = el("p", "code-msg");
+    msg.setAttribute("role", "status");
+    wrap.appendChild(msg);
+    var out = el("div", "sql-result");
+    wrap.appendChild(out);
+
+    var expected;
+    try { expected = SQL.run(t.expect, tables); }
+    catch(e){ expected = null; }
+
+    function attempt(){
+      var src = ta.value.trim();
+      out.innerHTML = "";
+      if(!src){ msg.className = "code-msg"; msg.textContent = ""; return; }
+      var res;
+      try { res = SQL.run(src, tables); }
+      catch(e){
+        msg.className = "code-msg no";
+        msg.innerHTML = "<b>That query could not run:</b> " + txt(e.message);
+        return;
+      }
+      var w = el("div", "tbl-wrap");
+      var tbl = el("table", "tbl");
+      var th = el("thead"), hr = el("tr");
+      res.headers.forEach(function(h){ hr.appendChild(el("th", null, txt(h))); });
+      th.appendChild(hr); tbl.appendChild(th);
+      var bd = el("tbody");
+      res.rows.slice(0, 25).forEach(function(r){
+        var tr = el("tr");
+        res.headers.forEach(function(h){
+          var td = el("td");
+          var v = r[h];
+          td.textContent = v === null || v === undefined ? "" : String(v);
+          tr.appendChild(td);
+        });
+        bd.appendChild(tr);
+      });
+      tbl.appendChild(bd); w.appendChild(tbl); out.appendChild(w);
+      out.appendChild(el("p", "mini", res.rows.length + " row" + (res.rows.length === 1 ? "" : "s") + " returned."));
+
+      if(expected && shape(res) === shape(expected)){
+        solved[ti] = true;
+        msg.className = "code-msg ok";
+        msg.innerHTML = "<b>That answers the question.</b> " + txt(t.explain || "");
+      } else {
+        msg.className = "code-msg no";
+        msg.innerHTML = "<b>The query ran, but the result is not what was asked for.</b> " +
+          txt(t.hint || "Check which columns are selected and which rows survive the filter.");
+      }
+      report(key, Object.keys(solved).length, tasks.length);
+    }
+
+    runBtn.addEventListener("click", attempt);
+    ta.addEventListener("keydown", function(ev){
+      if(ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)){ ev.preventDefault(); attempt(); }
+    });
+    reveal.addEventListener("click", function(){ ta.value = t.expect; attempt(); });
+
+    body.appendChild(wrap);
+  });
+  report(key, 0, tasks.length);
+};
+
+
+/* ---- code ---------------------------------------------------------------
+   A JavaScript exercise: a stated contract, a starter stub, and a set of tests
+   the reader has to make pass. Their code runs inside a Worker built from a
+   blob, which works with no network and, crucially, can be terminated - so a
+   loop that never ends costs a message rather than the whole page. Where a
+   browser refuses to create that Worker the exercise still runs, on the main
+   thread, and says so.                                                     */
+var CODE_WORKER_SRC =
+  "self.onmessage=function(ev){" +
+  "var d=ev.data,results=[],run;" +
+  "try{run=new Function('__call', d.code + '\\n;return eval(__call);');}" +
+  "catch(err){self.postMessage({fatal:String(err&&err.message||err)});return;}" +
+  "for(var i=0;i<d.tests.length;i++){" +
+  "try{var got=run(d.tests[i]);results.push({ok:true,got:got===undefined?'__undefined__':JSON.parse(JSON.stringify(got===undefined?null:got))});}" +
+  "catch(err){results.push({ok:false,err:String(err&&err.message||err)});}}" +
+  "self.postMessage({results:results});};";
+
+var CODE_WORKER_URL = null, CODE_WORKER_OK = null;
+function codeWorkerUrl(){
+  if(CODE_WORKER_URL !== null) return CODE_WORKER_URL;
+  try{
+    CODE_WORKER_URL = URL.createObjectURL(new Blob([CODE_WORKER_SRC], {type:"text/javascript"}));
+  }catch(e){ CODE_WORKER_URL = false; }
+  return CODE_WORKER_URL;
+}
+
+/* Same shape of answer whether it came from a Worker or from a direct call. */
+function runCode(code, calls, done){
+  var url = codeWorkerUrl(), settled = false;
+  function finish(payload){ if(!settled){ settled = true; done(payload); } }
+  if(url){
+    var w;
+    try{ w = new Worker(url); }
+    catch(e){ w = null; CODE_WORKER_OK = false; }
+    if(w){
+      var timer = setTimeout(function(){
+        try{ w.terminate(); }catch(e){}
+        finish({timeout:true});
+      }, 2000);
+      w.onmessage = function(ev){
+        clearTimeout(timer);
+        CODE_WORKER_OK = true;
+        try{ w.terminate(); }catch(e){}
+        finish(ev.data);
+      };
+      w.onerror = function(err){
+        clearTimeout(timer);
+        try{ w.terminate(); }catch(e){}
+        CODE_WORKER_OK = false;
+        finish({fatal:String((err && err.message) || "the code could not be loaded")});
+      };
+      w.postMessage({code:code, tests:calls});
+      return;
+    }
+  }
+  /* No Worker available: run here instead, and let the reader know why an
+     endless loop would be unrecoverable. */
+  CODE_WORKER_OK = false;
+  var results = [], run;
+  try{ run = new Function("__call", code + "\n;return eval(__call);"); }
+  catch(err){ finish({fatal:String(err && err.message || err), unsandboxed:true}); return; }
+  for(var i = 0; i < calls.length; i++){
+    try{
+      var got = run(calls[i]);
+      results.push({ok:true, got: got === undefined ? "__undefined__" : JSON.parse(JSON.stringify(got === undefined ? null : got))});
+    }catch(err){ results.push({ok:false, err:String(err && err.message || err)}); }
+  }
+  finish({results:results, unsandboxed:true});
+}
+
+function sameValue(a, b){
+  if(typeof a === "number" && typeof b === "number"){
+    if(!isFinite(a) || !isFinite(b)) return a === b;
+    return Math.abs(a - b) < 1e-9;
+  }
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+function showValue(v){
+  if(v === "__undefined__") return "undefined";
+  return JSON.stringify(v);
+}
+
+RENDER.code = function(body, cfg, key){
+  var exercises = cfg.exercises || [];
+  var solved = {};
+
+  exercises.forEach(function(ex, xi){
+    var wrap = el("div", "code-task");
+    var head = el("div", "code-task-head");
+    head.appendChild(el("span", "q-num", String(xi + 1)));
+    head.appendChild(el("span", "q-text", txt(ex.prompt)));
+    wrap.appendChild(head);
+    if(ex.signature) wrap.appendChild(el("p", "code-sig mono", txt(ex.signature)));
+    if(ex.note) wrap.appendChild(el("p", "mini", txt(ex.note)));
+
+    var ta = el("textarea", "code-entry mono code-editor");
+    ta.rows = Math.min(16, Math.max(6, String(ex.starter || "").split("\n").length + 2));
+    ta.setAttribute("spellcheck", "false");
+    ta.value = ex.starter || "";
+    ta.id = "c-" + key + "-" + xi;
+    wrap.appendChild(ta);
+
+    var bar = el("div", "code-input");
+    var runBtn = el("button", "btn", "Run the tests");
+    runBtn.type = "button";
+    bar.appendChild(runBtn);
+    var resetBtn = el("button", "act-reset", "Reset the stub");
+    resetBtn.type = "button";
+    resetBtn.addEventListener("click", function(){ ta.value = ex.starter || ""; });
+    bar.appendChild(resetBtn);
+    var solBtn = el("button", "act-reset", "Show a solution");
+    solBtn.type = "button";
+    solBtn.addEventListener("click", function(){ ta.value = ex.solution; attempt(); });
+    bar.appendChild(solBtn);
+    wrap.appendChild(bar);
+
+    var msg = el("p", "code-msg");
+    msg.setAttribute("role", "status");
+    wrap.appendChild(msg);
+    var list = el("div", "code-tests");
+    wrap.appendChild(list);
+
+    function paint(results, note){
+      list.innerHTML = "";
+      (ex.tests || []).forEach(function(t, ti){
+        var r = results ? results[ti] : null;
+        var pass = r && r.ok && sameValue(r.got, t.expect);
+        var row = el("div", "code-test" + (r ? (pass ? " is-pass" : " is-fail") : ""));
+        row.appendChild(el("span", "code-test-mark", r ? (pass ? "pass" : "fail") : "test"));
+        var d = el("div", "code-test-body");
+        d.appendChild(el("code", null, txt(t.call)));
+        var want = el("span", "code-test-want", " → " + showValue(t.expect));
+        d.appendChild(want);
+        if(r && !pass){
+          d.appendChild(el("span", "code-test-got",
+            r.ok ? "your code returned " + showValue(r.got) : "threw: " + txt(r.err)));
+        }
+        if(t.note) d.appendChild(el("span", "code-test-note", txt(t.note)));
+        row.appendChild(d);
+        list.appendChild(row);
+      });
+      if(note) list.appendChild(el("p", "mini", note));
+    }
+
+    function attempt(){
+      msg.className = "code-msg";
+      msg.textContent = "Running…";
+      runCode(ta.value, (ex.tests || []).map(function(t){ return t.call; }), function(payload){
+        if(payload.timeout){
+          msg.className = "code-msg no";
+          msg.innerHTML = "<b>Your code did not finish.</b> It was stopped after two seconds &mdash; the usual cause is a loop whose condition never becomes false.";
+          paint(null);
+          return;
+        }
+        if(payload.fatal){
+          msg.className = "code-msg no";
+          msg.innerHTML = "<b>That code could not be loaded:</b> " + txt(payload.fatal);
+          paint(null);
+          return;
+        }
+        var results = payload.results || [];
+        var passed = (ex.tests || []).filter(function(t, ti){
+          var r = results[ti];
+          return r && r.ok && sameValue(r.got, t.expect);
+        }).length;
+        var total = (ex.tests || []).length;
+        paint(results, payload.unsandboxed
+          ? "This browser would not create a sandboxed worker, so the code ran on the page itself. Everything works the same, but a loop that never ends cannot be stopped here."
+          : null);
+        if(passed === total){
+          solved[xi] = true;
+          msg.className = "code-msg ok";
+          msg.innerHTML = "<b>All " + total + " tests pass.</b> " + txt(ex.explain || "");
+        } else {
+          msg.className = "code-msg no";
+          msg.innerHTML = "<b>" + passed + " of " + total + " tests pass.</b> " + txt(ex.hint || "");
+        }
+        report(key, Object.keys(solved).length, exercises.length);
+      });
+    }
+
+    runBtn.addEventListener("click", attempt);
+    ta.addEventListener("keydown", function(ev){
+      if(ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)){ ev.preventDefault(); attempt(); }
+      if(ev.key === "Tab"){
+        ev.preventDefault();
+        var st = ta.selectionStart, en = ta.selectionEnd;
+        ta.value = ta.value.slice(0, st) + "  " + ta.value.slice(en);
+        ta.selectionStart = ta.selectionEnd = st + 2;
+      }
+    });
+
+    paint(null);
+    body.appendChild(wrap);
+  });
+  report(key, 0, exercises.length);
+};
+
 /* =========================================================================
    GLOSSARY
    ====================================================================== */
@@ -924,12 +2008,15 @@ function buildGlossary(){
    Twenty-five situations, scored by objective rather than as one number, so a
    weak area is visible instead of averaged away.
    ====================================================================== */
-var OBJ_NAMES = {
+/* Each module supplies its own objective names, so the per-objective breakdown
+   works for any module rather than only the one this map was written for. */
+var OBJ_NAMES = window.MIS_OBJECTIVES || {
   "1.1": "The digital world",
   "1.2": "What an information system is",
   "1.3": "The dual nature of information systems",
   "1.4": "Computer ethics, privacy, and property",
-  "1.5": "Information systems and competitive strategy"
+  "1.5": "Information systems and competitive strategy",
+  "1.6": "Using AI to improve business workflows"
 };
 function buildFinal(){
   var host = document.getElementById("finalMount");

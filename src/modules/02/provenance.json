@@ -1,0 +1,94 @@
+{
+  "policy": {
+    "core": "Objectives 2.1 through 2.3, their vocabulary, and their factual cases trace to Chapter 2 of the supplied textbook.",
+    "supplement": "Applications 2.4, 2.5 and 2.6 are explicitly labeled supplements, not textbook learning objectives. 2.4 places artificial intelligence inside the chapter's own value and advantage analysis. 2.5 makes the chapter's end-of-chapter spreadsheet and database exercises runnable on the page. 2.6 restates the chapter's analysis steps as executable functions and extends the database work across several tables; it introduces no new claims about the subject matter.",
+    "hypotheticals": "Practice situations are signposted as hypothetical. They may supply qualitative conditions needed for reasoning, but may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim.",
+    "currentLaw": "This module makes no claims about current law."
+  },
+  "sources": {
+    "chapter2": {
+      "citation": "Valacich & Schneider, Information Systems Today, 10th ed., Chapter 2, Enabling Organizational Strategy through Information Systems",
+      "localFile": "../../../Ch. 2.docx"
+    },
+    "chapter2Exercises": {
+      "citation": "Valacich & Schneider, Information Systems Today, 10th ed., Chapter 2, Application and Analytics Exercises",
+      "relationship": "The spreadsheet and database exercises the chapter sets; Application 2.5 makes them runnable."
+    },
+    "porter1985": {
+      "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press.",
+      "relationship": "The competitive-forces and value-chain analysis Chapter 2 presents originates here."
+    }
+  },
+  "fragments": {
+    "s21a": [
+      "chapter2"
+    ],
+    "s21b": [
+      "chapter2"
+    ],
+    "s21c": [
+      "chapter2",
+      "porter1985"
+    ],
+    "s21d": [
+      "chapter2",
+      "porter1985"
+    ],
+    "s22a": [
+      "chapter2"
+    ],
+    "s22b": [
+      "chapter2"
+    ],
+    "s23a": [
+      "chapter2"
+    ],
+    "s23b": [
+      "chapter2"
+    ],
+    "s24": [
+      "chapter2"
+    ],
+    "s25": [
+      "chapter2",
+      "chapter2Exercises"
+    ],
+    "glossary": [
+      "chapter2"
+    ],
+    "final": [
+      "chapter2",
+      "porter1985",
+      "chapter2Exercises"
+    ],
+    "s26": [
+      "chapter2",
+      "chapter2Exercises",
+      "porter1985"
+    ]
+  },
+  "objectives": {
+    "2.1": [
+      "chapter2",
+      "porter1985"
+    ],
+    "2.2": [
+      "chapter2"
+    ],
+    "2.3": [
+      "chapter2"
+    ],
+    "2.4": [
+      "chapter2"
+    ],
+    "2.5": [
+      "chapter2",
+      "chapter2Exercises"
+    ],
+    "2.6": [
+      "chapter2",
+      "chapter2Exercises",
+      "porter1985"
+    ]
+  }
+}

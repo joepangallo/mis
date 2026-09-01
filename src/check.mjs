@@ -8,13 +8,26 @@ import { spawnSync } from "node:child_process";
 import vm from "node:vm";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const SP = HERE;
 const args = process.argv.slice(2);
 const RELEASE = args.includes("--release");
+
+/* `--module=<dir>` checks another module in the same shape. Without it every
+   path resolves exactly where Module 1 keeps them, so its checks are unchanged. */
+const modArg = args.find((a) => a.startsWith("--module="));
+const SP = modArg ? join(HERE, modArg.slice("--module=".length)) : HERE;
+const CFG_PATH = join(SP, "sections.json");
+const CFG = existsSync(CFG_PATH) ? JSON.parse(readFileSync(CFG_PATH, "utf8")) : null;
+/* Some provenance rules assert facts true only of Module 1's sources. */
+const IS_M1 = !CFG || CFG.id === "01";
+
 const pageArg = args.find((a) => !a.startsWith("--"));
-const PAGE = pageArg ? resolve(pageArg) : join(HERE, "..", "module-01-managing-in-the-digital-world.html");
-const IDS = ["s11a","s11b","s12a","s12b","s12c","s13","s14","s15"];
-const PREFIX = {s11a:"dw",s11b:"dd",s12a:"isd",s12b:"ppl",s12c:"org",s13:"dual",s14:"eth",s15:"str"};
+const PAGE = pageArg
+  ? resolve(pageArg)
+  : join(HERE, "..", CFG ? CFG.outputFile : "module-01-managing-in-the-digital-world.html");
+const IDS = CFG ? CFG.sections.map((s) => s.id)
+                : ["s11a","s11b","s12a","s12b","s12c","s13","s14","s15","s16"];
+const PREFIX = CFG ? Object.fromEntries(CFG.sections.map((s) => [s.id, s.prefix]))
+                   : {s11a:"dw",s11b:"dd",s12a:"isd",s12b:"ppl",s12c:"org",s13:"dual",s14:"eth",s15:"str",s16:"ai"};
 
 const fail = [], warn = [];
 const bad = (m) => fail.push(m);
@@ -24,7 +37,7 @@ const nonempty = (v) => typeof v === "string" && v.trim().length > 0;
 const plain = (v) => String(v == null ? "" : v).replace(/<[^>]*>/g, " ").replace(/&[A-Za-z0-9#]+;/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
 const distinct = (values) => new Set(values.map(plain)).size === values.length;
 const words = (v) => plain(v).split(/\s+/).filter(Boolean).length;
-const OBJ = new Set(["1.1","1.2","1.3","1.4","1.5"]);
+const OBJ = new Set(CFG ? CFG.objectives : ["1.1","1.2","1.3","1.4","1.5","1.6"]);
 const GIVEAWAY = /\b(?:always|all of the above|none of the above)\b|\bnever\s+(?:can|will|is|are|does|do|counts?|qualifies?)\b|\bonly\s+(?:ever|one|way)\b/i;
 
 function readJson(name) {
@@ -51,7 +64,7 @@ const { ACT, PROSE, GLOSSARY, FINAL } = sb;
 const sameArray = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v, i) => v === b[i]);
 const sameSet = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v) => b.includes(v));
 need(sameArray(MANIFEST.sections, IDS), "module.manifest.json sections do not match the required order");
-need(sameArray(MANIFEST.objectives, [...OBJ]), "module.manifest.json objectives do not match 1.1 through 1.5");
+need(sameArray(MANIFEST.objectives, [...OBJ]), "module.manifest.json objectives do not match the module's declared objectives");
 need(sameSet(MANIFEST.activityKeys, Object.keys(ACT)), "activity keys differ from module.manifest.json");
 need(MANIFEST.finalQuestionCount === (FINAL.questions || []).length, "final question count differs from module.manifest.json");
 need(sameArray(MANIFEST.glossaryTerms, GLOSSARY.map((g) => g.t)), "glossary terms or their order differ from module.manifest.json");
@@ -62,8 +75,12 @@ need([...kindNames].every((k) => actualKinds[k] === MANIFEST.activityKinds?.[k])
 
 need(PROVENANCE.policy && nonempty(PROVENANCE.policy.core) && nonempty(PROVENANCE.policy.supplement) && nonempty(PROVENANCE.policy.hypotheticals) && nonempty(PROVENANCE.policy.currentLaw), "provenance.json policy is incomplete");
 const sourceIds = new Set(Object.keys(PROVENANCE.sources || {}));
-need(sourceIds.has("chapter1") && sourceIds.has("porter1985") && sourceIds.has("porterMillar1985"), "provenance.json is missing a required textbook or Porter source");
-need(sourceIds.has("ftcPrivacy") && sourceIds.has("ccpa2026"), "provenance.json is missing an official privacy source");
+if (IS_M1) {
+  need(sourceIds.has("chapter1") && sourceIds.has("porter1985") && sourceIds.has("porterMillar1985"), "provenance.json is missing a required textbook or Porter source");
+  need(sourceIds.has("ftcPrivacy") && sourceIds.has("ccpa2026"), "provenance.json is missing an official privacy source");
+} else {
+  need([...sourceIds].some((id) => /^chapter\d+$/.test(id)), "provenance.json names no textbook chapter source");
+}
 for (const [id, source] of Object.entries(PROVENANCE.sources || {})) {
   need(nonempty(source.citation), `provenance source ${id} has no citation`);
   if (source.url) {
@@ -71,11 +88,11 @@ for (const [id, source] of Object.entries(PROVENANCE.sources || {})) {
     need(/^\d{4}-\d{2}-\d{2}$/.test(source.checked || ""), `provenance source ${id} has no checked date`);
   }
 }
-for (const obj of ["1.1","1.2","1.3","1.4"]) {
+for (const obj of (IS_M1 ? ["1.1","1.2","1.3","1.4"] : [])) {
   const locator = PROVENANCE.chapterLocators?.[obj];
   need(nonempty(locator?.pdfPages) && nonempty(locator?.heading), `chapter locator ${obj} is incomplete`);
 }
-need(nonempty(PROVENANCE.chapterLocators?.porterReferences?.pdfPage) && nonempty(PROVENANCE.chapterLocators?.porterReferences?.heading), "Porter bibliography locator is incomplete");
+if (IS_M1) need(nonempty(PROVENANCE.chapterLocators?.porterReferences?.pdfPage) && nonempty(PROVENANCE.chapterLocators?.porterReferences?.heading), "Porter bibliography locator is incomplete");
 for (const id of [...IDS, "glossary", "final"]) {
   const refs = (PROVENANCE.fragments || {})[id];
   need(Array.isArray(refs) && refs.length > 0, `provenance has no sources for ${id}`);
@@ -86,10 +103,11 @@ for (const obj of OBJ) {
   need(Array.isArray(refs) && refs.length > 0, `provenance has no sources for objective ${obj}`);
   (refs || []).forEach((ref) => need(sourceIds.has(ref), `objective ${obj} cites unknown source ${ref}`));
 }
-need((PROVENANCE.fragments?.s15 || []).includes("porter1985") && (PROVENANCE.fragments?.s15 || []).includes("porterMillar1985"), "strategy supplement does not cite both Porter sources");
-need((PROVENANCE.fragments?.s14 || []).includes("ftcPrivacy") && (PROVENANCE.fragments?.s14 || []).includes("ccpa2026"), "privacy section does not cite both official current-law sources");
+if (IS_M1) need((PROVENANCE.fragments?.s15 || []).includes("porter1985") && (PROVENANCE.fragments?.s15 || []).includes("porterMillar1985"), "strategy supplement does not cite both Porter sources");
+if (IS_M1) need((PROVENANCE.fragments?.s14 || []).includes("ftcPrivacy") && (PROVENANCE.fragments?.s14 || []).includes("ccpa2026"), "privacy section does not cite both official current-law sources");
 if (RELEASE) {
-  const chapterPath = PROVENANCE.sources?.chapter1?.localFile;
+  const chapterKey = Object.keys(PROVENANCE.sources || {}).find((k) => /^chapter\d+$/.test(k));
+  const chapterPath = PROVENANCE.sources?.[chapterKey]?.localFile;
   need(nonempty(chapterPath) && existsSync(resolve(SP, chapterPath)), "release check requires the local Chapter 1 PDF named in provenance.json");
 }
 
@@ -177,6 +195,51 @@ for (const [k, a] of Object.entries(ACT)) {
       need(distinct((s.opts || []).map((o) => o.t)), `${at} step ${i}: duplicate option text`);
       need(distinct((s.opts || []).map((o) => o.out)), `${at} step ${i}: duplicate outcomes`);
     });
+  } else if (a.kind === "formula") {
+    need(Array.isArray(a.headers) && a.headers.length >= 2, `${at}: needs a headers row`);
+    need(Array.isArray(a.data) && a.data.length >= 2, `${at}: needs at least two data rows`);
+    (a.data || []).forEach((row, i) => need(Array.isArray(row) && row.length === (a.headers || []).length,
+      `${at} row ${i}: has ${(row || []).length} cells, headers declare ${(a.headers || []).length}`));
+    need(Array.isArray(a.tasks) && a.tasks.length, `${at}: no tasks`);
+    (a.tasks || []).forEach((t, i) => {
+      need(nonempty(t.prompt), `${at} task ${i}: no prompt`);
+      need(nonempty(t.expect) && /^=/.test(t.expect.trim()), `${at} task ${i}: expect must be a formula starting with =`);
+      need(Number.isInteger(t.column) && t.column >= 0 && t.column < (a.headers || []).length,
+        `${at} task ${i}: column ${t.column} is outside the sheet`);
+      need(nonempty(t.explain), `${at} task ${i}: no explanation for a correct answer`);
+      need(nonempty(t.hint), `${at} task ${i}: no hint for a wrong answer`);
+    });
+  } else if (a.kind === "code") {
+    need(Array.isArray(a.exercises) && a.exercises.length, `${at}: no exercises`);
+    (a.exercises || []).forEach((ex, i) => {
+      need(nonempty(ex.prompt), `${at} exercise ${i}: no prompt`);
+      need(nonempty(ex.starter), `${at} exercise ${i}: no starter stub`);
+      need(nonempty(ex.solution), `${at} exercise ${i}: no reference solution`);
+      need(nonempty(ex.hint), `${at} exercise ${i}: no hint for a failing attempt`);
+      need(nonempty(ex.explain), `${at} exercise ${i}: no explanation for a passing attempt`);
+      need(Array.isArray(ex.tests) && ex.tests.length >= 3, `${at} exercise ${i}: needs at least three tests`);
+      (ex.tests || []).forEach((t, ti) => {
+        need(nonempty(t.call), `${at} exercise ${i} test ${ti}: no call`);
+        need("expect" in t, `${at} exercise ${i} test ${ti}: no expected value`);
+      });
+      need(String(ex.starter) !== String(ex.solution), `${at} exercise ${i}: the stub gives the answer away`);
+    });
+  } else if (a.kind === "sql") {
+    need(a.tables && Object.keys(a.tables).length, `${at}: no tables`);
+    for (const [tn, t] of Object.entries(a.tables || {})) {
+      need(Array.isArray(t.rows) && t.rows.length >= 3, `${at}: table ${tn} needs at least three rows`);
+      const cols = Object.keys(t.rows[0] || {});
+      need(cols.length >= 2, `${at}: table ${tn} needs at least two columns`);
+      (t.rows || []).forEach((r, i) => need(Object.keys(r).length === cols.length,
+        `${at}: table ${tn} row ${i} has different columns from the first row`));
+    }
+    need(Array.isArray(a.tasks) && a.tasks.length, `${at}: no tasks`);
+    (a.tasks || []).forEach((t, i) => {
+      need(nonempty(t.prompt), `${at} task ${i}: no prompt`);
+      need(nonempty(t.expect) && /^\s*SELECT\b/i.test(t.expect), `${at} task ${i}: expect must be a SELECT query`);
+      need(nonempty(t.explain), `${at} task ${i}: no explanation for a correct answer`);
+      need(nonempty(t.hint), `${at} task ${i}: no hint for a wrong answer`);
+    });
   } else if (a.kind === "selfcheck") {
     need(Array.isArray(a.items) && a.items.length > 0, `${at}: no items`);
     (a.items||[]).forEach((it,i) => need(nonempty(it.t) && nonempty(it.hint), `${at} item ${i}: missing t/hint`));
@@ -188,7 +251,8 @@ for (const [k, a] of Object.entries(ACT)) {
 const mounted = new Map();
 const density = {};
 const ALLOWED_PROSE_CLASSES = new Set(["lede","card","grid","g2","g3","g4","callout","tip","warn","info","exam","eyebrow","tagline","tbl-wrap","tbl","mini","pill","chip","hint","service-card","list-tight","wide","term","keys","steps","split","takeaway","activity"]);
-const SECTION_OBJECTIVE = {s11a:"1.1",s11b:"1.1",s12a:"1.2",s12b:"1.2",s12c:"1.2",s13:"1.3",s14:"1.4",s15:"1.5"};
+const SECTION_OBJECTIVE = CFG ? Object.fromEntries(CFG.sections.map((s) => [s.id, s.objective]))
+  : {s11a:"1.1",s11b:"1.1",s12a:"1.2",s12b:"1.2",s12c:"1.2",s13:"1.3",s14:"1.4",s15:"1.5",s16:"1.6"};
 for (const id of IDS) {
   const html = PROSE[id];
   if (!html) { bad(`PROSE.${id} missing`); continue; }
@@ -255,8 +319,10 @@ for (const id of IDS) {
   if (noLead) meh(`${id}: first key-list item does not open with a bolded name`);
 }
 for (const k of Object.keys(ACT)) if (!mounted.has(k)) bad(`activity ${k} is never mounted`);
-need(/Application supplement/i.test(PROSE.s15 || ""), "s15 is not visibly labeled as an application supplement");
-need(/hypothetical/i.test(PROSE.s15 || ""), "s15 does not identify its practice situation as hypothetical");
+for (const sup of (CFG ? (CFG.supplements || []) : ["s15", "s16"])) {
+  need(/Application supplement/i.test(PROSE[sup] || ""), `${sup} is not visibly labeled as an application supplement`);
+  need(/hypothetical/i.test(PROSE[sup] || ""), `${sup} does not identify its practice situation as hypothetical`);
+}
 need(/hypothetical/i.test(FINAL.how || ""), "final challenge does not identify its invented practice situations as hypothetical");
 need(!/Harborline/i.test(JSON.stringify({ACT, PROSE, FINAL})), "fictional Harborline company remains in student-facing source");
 
@@ -265,7 +331,10 @@ need(GLOSSARY.length === MANIFEST.glossaryTerms?.length, `glossary has ${GLOSSAR
 const seenTerm = new Set();
 GLOSSARY.forEach(g => {
   need(nonempty(g.t) && nonempty(g.d) && nonempty(g.e), `glossary entry missing t/d/e: ${JSON.stringify(g).slice(0,60)}`);
-  need(OBJ.has(g.lo) && g.lo !== "1.5", `glossary "${g.t}" has invalid chapter objective ${JSON.stringify(g.lo)}`);
+  const supplementObjectives = CFG
+    ? new Set((CFG.supplements || []).map((id) => SECTION_OBJECTIVE[id]))
+    : new Set(["1.5", "1.6"]);
+  need(OBJ.has(g.lo) && !supplementObjectives.has(g.lo), `glossary "${g.t}" has invalid chapter objective ${JSON.stringify(g.lo)}`);
   const termKey = plain(g.t);
   if (seenTerm.has(termKey)) bad(`glossary term duplicated: ${g.t}`);
   seenTerm.add(termKey);
@@ -299,7 +368,10 @@ let freshPage = null;
 const scratch = mkdtempSync(join(tmpdir(), "mis-check-"));
 const freshPath = join(scratch, "module.html");
 try {
-  const built = spawnSync(process.execPath, [join(HERE, "build.mjs"), freshPath], {encoding:"utf8", maxBuffer:10_000_000});
+  const buildArgs = [join(HERE, "build.mjs")];
+  if (modArg) buildArgs.push(modArg);
+  buildArgs.push(freshPath);
+  const built = spawnSync(process.execPath, buildArgs, {encoding:"utf8", maxBuffer:10_000_000});
   if (built.status !== 0) bad(`fresh build failed:\n${(built.stderr || built.stdout || "no output").trim()}`);
   else freshPage = readFileSync(freshPath, "utf8");
 } finally {
@@ -309,7 +381,7 @@ try {
 if (!existsSync(PAGE)) { bad(`page not built: ${PAGE}`); }
 else {
   const page = readFileSync(PAGE, "utf8");
-  if (freshPage != null) need(page === freshPage, `generated page is stale; run node src/build.mjs`);
+  if (freshPage != null) need(page === freshPage, `generated page is stale; run node src/build.mjs${modArg ? " " + modArg : ""}`);
   const forbidden = [
     [/keiser/i, "school name"],
     [/\bCGS\s*3300\b/i, "course code"],
@@ -329,7 +401,8 @@ else {
      for instance - must never appear in the page, but naming them here would
      put them in version control, which is the same leak by another route. Keep
      them one per line in an untracked `src/forbidden.local.txt` instead. */
-  const localList = join(SP, "forbidden.local.txt");
+  const localList = [join(SP, "forbidden.local.txt"), join(HERE, "forbidden.local.txt")]
+    .find((p) => existsSync(p)) || join(HERE, "forbidden.local.txt");
   if (existsSync(localList)) {
     for (const term of readFileSync(localList, "utf8").split(/\r?\n/).map((t) => t.trim()).filter(Boolean))
       forbidden.push([new RegExp("\\b" + term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i"), "a reserved assessment term"]);

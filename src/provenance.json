@@ -1,7 +1,7 @@
 {
   "policy": {
     "core": "Objectives 1.1 through 1.4, their vocabulary, and their factual cases trace to Chapter 1 of the supplied textbook.",
-    "supplement": "Application 1.5 is an explicitly labeled supplement based on the Porter works cited by Chapter 1; it is not presented as a fifth textbook learning objective.",
+    "supplement": "Applications 1.5, 1.6 and 1.7 are explicitly labeled supplements, not textbook learning objectives. 1.5 applies the Porter works cited by Chapter 1. 1.6 gathers the AI material Chapter 1 already carries and adds a method for deciding where AI belongs in a workflow. 1.7 restates definitions the chapter gives as executable functions; it introduces no new claims about the subject matter.",
     "hypotheticals": "Practice situations are signposted as hypothetical. They may supply qualitative conditions needed for reasoning, but may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim.",
     "currentLaw": "Statements about current privacy law use official regulator or statutory sources and are framed by jurisdiction rather than as universal rules."
   },
@@ -30,29 +30,102 @@
     }
   },
   "chapterLocators": {
-    "1.1": {"pdfPages": "3-33", "heading": "LO 1.1 Describe the characteristics of the digital world"},
-    "1.2": {"pdfPages": "34-67", "heading": "LO 1.2 Explain what an information system is"},
-    "1.3": {"pdfPages": "68-76", "heading": "LO 1.3 Describe the dual nature of information systems"},
-    "1.4": {"pdfPages": "77-94", "heading": "LO 1.4 Describe how computer ethics affect the use of information systems"},
-    "porterReferences": {"pdfPage": "119", "heading": "References"}
+    "1.1": {
+      "pdfPages": "3-33",
+      "heading": "LO 1.1 Describe the characteristics of the digital world"
+    },
+    "1.2": {
+      "pdfPages": "34-67",
+      "heading": "LO 1.2 Explain what an information system is"
+    },
+    "1.3": {
+      "pdfPages": "68-76",
+      "heading": "LO 1.3 Describe the dual nature of information systems"
+    },
+    "1.4": {
+      "pdfPages": "77-94",
+      "heading": "LO 1.4 Describe how computer ethics affect the use of information systems"
+    },
+    "porterReferences": {
+      "pdfPage": "119",
+      "heading": "References"
+    }
   },
   "fragments": {
-    "s11a": ["chapter1"],
-    "s11b": ["chapter1"],
-    "s12a": ["chapter1"],
-    "s12b": ["chapter1"],
-    "s12c": ["chapter1"],
-    "s13": ["chapter1"],
-    "s14": ["chapter1", "ftcPrivacy", "ccpa2026"],
-    "s15": ["chapter1", "porter1985", "porterMillar1985"],
-    "glossary": ["chapter1"],
-    "final": ["chapter1", "porter1985", "porterMillar1985", "ftcPrivacy", "ccpa2026"]
+    "s11a": [
+      "chapter1"
+    ],
+    "s11b": [
+      "chapter1"
+    ],
+    "s12a": [
+      "chapter1"
+    ],
+    "s12b": [
+      "chapter1"
+    ],
+    "s12c": [
+      "chapter1"
+    ],
+    "s13": [
+      "chapter1"
+    ],
+    "s14": [
+      "chapter1",
+      "ftcPrivacy",
+      "ccpa2026"
+    ],
+    "s15": [
+      "chapter1",
+      "porter1985",
+      "porterMillar1985"
+    ],
+    "glossary": [
+      "chapter1"
+    ],
+    "final": [
+      "chapter1",
+      "porter1985",
+      "porterMillar1985",
+      "ftcPrivacy",
+      "ccpa2026"
+    ],
+    "s16": [
+      "chapter1",
+      "porter1985",
+      "porterMillar1985"
+    ],
+    "s17": [
+      "chapter1"
+    ]
   },
   "objectives": {
-    "1.1": ["chapter1"],
-    "1.2": ["chapter1"],
-    "1.3": ["chapter1"],
-    "1.4": ["chapter1", "ftcPrivacy", "ccpa2026"],
-    "1.5": ["chapter1", "porter1985", "porterMillar1985"]
+    "1.1": [
+      "chapter1"
+    ],
+    "1.2": [
+      "chapter1"
+    ],
+    "1.3": [
+      "chapter1"
+    ],
+    "1.4": [
+      "chapter1",
+      "ftcPrivacy",
+      "ccpa2026"
+    ],
+    "1.5": [
+      "chapter1",
+      "porter1985",
+      "porterMillar1985"
+    ],
+    "1.6": [
+      "chapter1",
+      "porter1985",
+      "porterMillar1985"
+    ],
+    "1.7": [
+      "chapter1"
+    ]
   }
 }

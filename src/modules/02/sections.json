@@ -1,0 +1,94 @@
+{
+  "outputFile": "module-02-enabling-strategy-through-information-systems.html",
+  "title": "Module 2 · Enabling Organizational Strategy through Information Systems",
+  "sections": [
+    {
+      "id": "s21a",
+      "title": "Decision levels and functional areas",
+      "prefix": "lvl",
+      "objective": "2.1"
+    },
+    {
+      "id": "s21b",
+      "title": "Automate, learn, strategize",
+      "prefix": "als",
+      "objective": "2.1"
+    },
+    {
+      "id": "s21c",
+      "title": "Where to compete: five forces",
+      "prefix": "frc",
+      "objective": "2.1"
+    },
+    {
+      "id": "s21d",
+      "title": "How to compete: strategy and value",
+      "prefix": "vch",
+      "objective": "2.1"
+    },
+    {
+      "id": "s22a",
+      "title": "Business models in the digital world",
+      "prefix": "bmc",
+      "objective": "2.2"
+    },
+    {
+      "id": "s22b",
+      "title": "Revenue, platforms, and network effects",
+      "prefix": "rev",
+      "objective": "2.2"
+    },
+    {
+      "id": "s23a",
+      "title": "Innovation and its value",
+      "prefix": "inv",
+      "objective": "2.3"
+    },
+    {
+      "id": "s23b",
+      "title": "Innovating in practice",
+      "prefix": "ipr",
+      "objective": "2.3"
+    },
+    {
+      "id": "s24",
+      "title": "AI in the strategy workflow",
+      "prefix": "aiw",
+      "objective": "2.4"
+    },
+    {
+      "id": "s25",
+      "title": "The analyst's toolkit",
+      "prefix": "tk",
+      "objective": "2.5"
+    },
+    {
+      "id": "s26",
+      "title": "Strategy as code",
+      "prefix": "code",
+      "objective": "2.6"
+    }
+  ],
+  "objectives": [
+    "2.1",
+    "2.2",
+    "2.3",
+    "2.4",
+    "2.5",
+    "2.6"
+  ],
+  "objectiveNames": {
+    "2.1": "Automating, learning, and strategy",
+    "2.2": "Business models in the digital world",
+    "2.3": "Innovation and competitive advantage",
+    "2.4": "AI in the strategy workflow",
+    "2.5": "The analyst's toolkit",
+    "2.6": "Strategy as code and database questions"
+  },
+  "supplements": [
+    "s24",
+    "s25",
+    "s26"
+  ],
+  "id": "02"
+}

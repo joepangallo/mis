@@ -350,6 +350,58 @@ p.takeaway{
 .sc-btns button[aria-pressed="true"]{background:var(--accent-strong); color:#fff; border-color:var(--accent-strong)}
 .sc-btns button.no[aria-pressed="true"]{background:var(--warn); border-color:var(--warn); color:#fff}
 
+/* ---- code exercises -------------------------------------------------------
+   A spreadsheet the reader fills one column of, and a query box that prints a
+   real result set. Both need to read as tools rather than as prose, so they get
+   a monospace entry, a status line, and a table that can scroll on its own. */
+.code-task{border-top:1px solid var(--border-soft); padding-top:16px; margin-top:16px}
+.code-task:first-child{border-top:0; padding-top:0; margin-top:0}
+.code-task-head{display:flex; gap:9px; align-items:baseline; margin-bottom:9px}
+.code-input{display:flex; gap:9px; align-items:center; flex-wrap:wrap; margin:10px 0}
+.code-label{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.86rem; font-weight:700; color:var(--accent); white-space:nowrap}
+.code-entry{
+  flex:1; min-width:220px; border:1px solid var(--border); background:var(--panel-2);
+  border-radius:10px; padding:9px 12px; font-size:.88rem; color:var(--text);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.code-entry:focus{outline:3px solid var(--accent); outline-offset:1px}
+textarea.sql-entry{width:100%; resize:vertical; line-height:1.5; margin-bottom:2px}
+.code-msg{margin:8px 0 0; font-size:.87rem; line-height:1.55; min-height:1px}
+.code-msg.ok{color:var(--good)}
+.code-msg.no{color:var(--bad)}
+.code-foot{margin:10px 0 0}
+table.tbl.code-sheet td,table.tbl.code-sheet th{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.82rem; white-space:nowrap}
+.code-rownum{width:34px; text-align:right !important; color:var(--muted); background:var(--panel-2); font-variant-numeric:tabular-nums}
+table.tbl th.is-target,table.tbl td.is-target{background:var(--accent-soft)}
+table.tbl td.is-target.is-bad{background:var(--bad-soft); color:var(--bad)}
+.code-col{display:block; font-size:.66rem; color:var(--muted); font-weight:800; letter-spacing:.08em}
+.sql-schema{margin-bottom:16px}
+.sql-table{border:1px solid var(--border); border-radius:11px; background:var(--panel-2); padding:9px 12px; margin-bottom:9px}
+.sql-table summary{cursor:pointer; font-size:.9rem}
+.sql-table summary::marker{color:var(--muted)}
+.sql-table .tbl-wrap{margin:10px 0 0}
+.sql-result{margin-top:10px}
+.sql-result .tbl-wrap{margin-bottom:6px}
+
+/* ---- code exercises: JavaScript ------------------------------------------- */
+.code-sig{margin:0 0 8px; font-size:.86rem; color:var(--accent); font-weight:700}
+textarea.code-editor{width:100%; resize:vertical; line-height:1.6; tab-size:2; white-space:pre}
+.code-tests{display:grid; gap:6px; margin-top:10px}
+.code-test{display:flex; gap:9px; align-items:flex-start; border:1px solid var(--border); background:var(--panel-2); border-radius:9px; padding:7px 10px; font-size:.84rem}
+.code-test.is-pass{border-color:var(--good); background:var(--good-soft)}
+.code-test.is-fail{border-color:var(--bad); background:var(--bad-soft)}
+.code-test-mark{
+  flex:0 0 40px; text-align:center; font-size:.62rem; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); background:var(--panel); border:1px solid var(--border);
+  border-radius:99px; padding:2px 0; margin-top:1px;
+}
+.code-test.is-pass .code-test-mark{color:#fff; background:var(--good); border-color:var(--good)}
+.code-test.is-fail .code-test-mark{color:#fff; background:var(--bad); border-color:var(--bad)}
+.code-test-body{flex:1; min-width:0; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; line-height:1.5; overflow-wrap:anywhere}
+.code-test-want{color:var(--muted)}
+.code-test-got{display:block; color:var(--bad); margin-top:3px}
+.code-test-note{display:block; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--text-dim); margin-top:3px; font-size:.82rem}
+
 /* ---- score / final ------------------------------------------------------- */
 .verdict{display:flex; gap:16px; align-items:center; flex-wrap:wrap; border:1px solid var(--border); border-radius:13px; background:var(--panel-2); padding:15px}
 .score-ring{flex:0 0 92px; width:92px; height:92px; border-radius:50%; display:grid; place-items:center; background:conic-gradient(var(--good) calc(var(--pct)*1%), var(--border) 0); position:relative}

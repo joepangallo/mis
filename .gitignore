@@ -6,6 +6,9 @@
 # published by its publisher, not ours to redistribute — keep it locally, out
 # of version control, even in a private repository.
 Ch 1..pdf
+Ch. 2.docx
+Ch*.pdf
+Ch*.docx
 *.epub
 
 # Institutional and assessment documents. These carry the school name, the

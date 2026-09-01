@@ -15,9 +15,9 @@ Do not hand-edit that file. It is generated. Edit the sources here and rebuild.
 | `shell.json` | The page chrome written as prose: title, hero, objectives, "how to use this page", the glossary and final-challenge intros, and the closing note. |
 | `frag/<section>.js` | One file per lesson section. Assigns `PROSE.<id>` (the lesson HTML) and any number of `ACT.<key>` activity objects. |
 | `frag/glossary.js` | `GLOSSARY` — every chapter term with a plain-language definition and an example. |
-| `frag/final.js` | `FINAL` — the twenty-five-situation closing challenge, tagged by objective. |
+| `frag/final.js` | `FINAL` — the thirty-situation closing challenge, tagged by objective. |
 | `module.manifest.json` | The exact release inventory: ordered sections, activity keys and kind counts, glossary terms, and final distribution. |
-| `provenance.json` | Source policy and fragment/objective-to-source mapping. It records the chapter core, Porter supplement, and official privacy-law sources. |
+| `provenance.json` | Source policy and fragment/objective-to-source mapping. It records the chapter core, the two application supplements, and official privacy-law sources. |
 | `build.mjs` | Assembles everything into the output page, and writes a JavaScript-free summary of every activity into the page as it goes. |
 | `check.mjs` | Fresh-build comparison plus provenance, inventory, schema, accessibility, readability, offline, and hygiene checks. Run it after every build. |
 | `make-pdf.mjs` | Strips the scripts and applies print typography, producing the source for the printable companion. |
@@ -55,8 +55,10 @@ nonempty and distinct schema content, and scans for network references and stude
 ## Source boundaries
 
 Objectives 1.1–1.4, their vocabulary, and factual cases come from the local Chapter 1 PDF. The
-strategy material is deliberately labeled an **application supplement** and cites the Porter works
-listed by the chapter; it is not presented as a fifth textbook learning objective. Hypothetical
+strategy material and the AI-workflow material are each deliberately labeled an **application
+supplement**; neither is presented as an additional textbook learning objective. The strategy
+supplement cites the Porter works listed by the chapter. The AI supplement gathers the AI material
+Chapter 1 already carries and adds only the method for deciding where AI belongs in a workflow. Hypothetical
 practice conditions must say that they are hypothetical and must not invent a named real-seeming
 company or purported real-world statistic. Current-law qualifications belong in `provenance.json`
 and must use official sources.
@@ -77,3 +79,25 @@ two sections can never collide.
 
 Every kind renders a complete answer summary into the page for readers without JavaScript, so the
 page stays usable — and printable — with scripting off.
+
+## More than one module
+
+`src/` holds the shared generator and Module 1's own sources. Every later module lives in
+`src/modules/<id>/` with the same internal shape &mdash; `frag/`, `shell.json`,
+`module.manifest.json`, `provenance.json` &mdash; plus a `sections.json` declaring its section order,
+per-section activity-key prefixes and objectives, its objective names, which sections are application
+supplements, and the output filename. Pass `--module=modules/<id>` to `build.mjs`, `check.mjs`,
+`check-pdf.mjs` and `regen-manifest.mjs`; with no flag they operate on Module 1 exactly as before.
+
+## Activity kinds that run code
+
+`formula` renders a spreadsheet and evaluates what the reader types down every row, with relative
+references shifting the way a filled-down formula does and `$` pinning them the way an absolute one
+does. It supports the functions the chapter teaches: TRIM, CLEAN, LOWER, UPPER, PROPER, LEFT, RIGHT,
+MID, LEN, FIND, SEARCH, SUBSTITUTE, REPLACE, CONCATENATE, IF, ROUND and the common aggregates.
+
+`sql` renders the tables and runs the reader's SELECT against them &mdash; projection, expressions
+and aliases, WHERE, JOIN, GROUP BY, HAVING, ORDER BY, DISTINCT and LIMIT. Answers are judged by
+comparing result sets against the reference query, so any query that genuinely answers the question
+is accepted rather than only the expected wording. Both interpreters report a plain-language reason
+when they cannot run something, which teaches more than an empty result would.

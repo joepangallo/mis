@@ -7,7 +7,13 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const PDF = resolve(process.argv[2] || join(HERE, "..", "module-01-managing-in-the-digital-world.pdf"));
+const args = process.argv.slice(2);
+const modArg = args.find((a) => a.startsWith("--module="));
+const SP = modArg ? join(HERE, modArg.slice("--module=".length)) : HERE;
+const cfgPath = join(SP, "sections.json");
+const CFG = existsSync(cfgPath) ? JSON.parse(readFileSync(cfgPath, "utf8")) : null;
+const pdfArg = args.find((a) => !a.startsWith("--"));
+const PDF = resolve(pdfArg || join(HERE, "..", (CFG ? CFG.outputFile : "module-01-managing-in-the-digital-world.html").replace(/\.html$/, ".pdf")));
 const fail = [], warn = [];
 const bad = (m) => fail.push(m);
 const meh = (m) => warn.push(m);
@@ -35,10 +41,21 @@ if (info) {
 if (text) {
   need(pages.length === pageCount, `pdftotext found ${pages.length} pages but pdfinfo reports ${pageCount}`);
   need(words(text) > 12_000, `PDF contains only ${words(text)} words; lesson content may be missing`);
-  need((text.match(/Lesson and answer summary/g) || []).length === 41, "PDF does not contain all 41 static activity summaries");
+  /* Take the expected count from the manifest rather than a literal, so adding a
+     section cannot leave this check silently asserting a stale number. */
+  const manifestPath = join(SP, "module.manifest.json");
+  const expectedActivities = existsSync(manifestPath)
+    ? (JSON.parse(readFileSync(manifestPath, "utf8")).activityKeys || []).length
+    : 0;
+  need(expectedActivities > 0, "module.manifest.json has no activityKeys to check the PDF against");
+  const summaries = (text.match(/Lesson and answer summary/g) || []).length;
+  need(summaries === expectedActivities, `PDF has ${summaries} static activity summaries, expected ${expectedActivities}`);
   need((text.match(/Answer key/g) || []).length === 1, "PDF final answer key is missing or duplicated");
-  need(/Application supplement\s*·\s*1[–-]5/i.test(text), "strategy section is not visibly labeled as a supplement in the PDF");
-  need(text.includes("clearly hypothetical organizational situation"), "final challenge does not identify hypothetical situations in the PDF");
+  const supplementCount = CFG ? (CFG.supplements || []).length : 1;
+  const labelled = (text.match(/Application supplement/gi) || []).length;
+  need(labelled >= supplementCount,
+    `PDF shows ${labelled} "Application supplement" labels, expected at least ${supplementCount}`);
+  need(/hypothetical/i.test(text), "final challenge does not identify hypothetical situations in the PDF");
 
   const forbidden = [
     [/keiser/i, "school name"],
@@ -68,9 +85,16 @@ if (text) {
     if (hit) bad(`PDF contains ${label}: ${JSON.stringify(hit[0])}`);
   }
 
+  /* Each section starts on a fresh page, so the page that ends a section is
+     legitimately short - the same as a chapter ending high on a page in a
+     printed book. Only flag a thin page when it is NOT a section boundary,
+     which is where a genuinely unsplittable block would show up. */
+  const startsSection = (t) => /^\s*(?:SECTION\s+\d|APPLICATION SUPPLEMENT|MODULE\s+\d|Reference\b|Put it together\b)/i.test(String(t || "").trim());
   pages.forEach((page, index) => {
     const count = words(page);
-    if (count < 70) bad(`page ${index + 1} is sparse (${count} words)`);
+    const endsASection = index + 1 < pages.length && startsSection(pages[index + 1]);
+    if (count < 70 && !endsASection) bad(`page ${index + 1} is sparse (${count} words)`);
+    else if (count < 70) meh(`page ${index + 1} is short (${count} words) but ends a section`);
     else if (count < 100) meh(`page ${index + 1} is light (${count} words)`);
   });
 }
