@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Case — Riverside Professional Development</title>
+<style>
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(880px,calc(100% - 32px));margin:auto}
+a{color:var(--accent-strong)}
+header.top{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;padding:34px 0 28px}
+header.top .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 11px;margin-bottom:10px}
+header.top h1{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em}
+header.top p{margin:0;color:#e7eefc;max-width:64ch}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:10px 0}
+.toolbar-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.toolbar label{font-size:.78rem;font-weight:700;color:var(--muted)}
+.toolbar input[type=text]{margin-left:6px;height:34px;padding:0 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);min-width:180px}
+.save-status{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.btn{border:1px solid var(--accent-line);background:var(--accent-strong);color:#fff;border-radius:9px;padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn.ghost:hover{background:var(--panel-2)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3ae}
+.btn.danger:hover{background:var(--bad-soft)}
+main{padding:26px 0 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:0 0 18px}
+.card h2{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.01em}
+.card .kicker{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.card p{margin:10px 0}
+.card ul{margin:10px 0;padding-left:22px}
+.card li{margin:4px 0}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.92rem}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.task{border-top:1px dashed var(--border-soft);padding-top:16px;margin-top:16px}
+.task:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.task h3{margin:0 0 6px;font-size:1.05rem}
+.task .points{float:right;background:#fff;border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:800;color:var(--muted)}
+textarea{display:block;width:100%;min-height:120px;margin-top:10px;padding:11px 12px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);font:14px/1.55 inherit;resize:vertical}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.wc-badge{padding:3px 10px;border-radius:999px;font-weight:800;background:var(--panel-2);color:var(--muted)}
+.wc-badge.ok{background:var(--good-soft);color:var(--good)}
+.wc-badge.low, .wc-badge.high{background:var(--warn-soft);color:var(--warn)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+table.tbl caption{text-align:left;padding:8px 10px;background:var(--accent-strong);color:#fff;border-radius:8px 8px 0 0;font-weight:700}
+table.tbl th,table.tbl td{padding:8px 10px;border-bottom:1px solid var(--border-soft);text-align:left}
+table.tbl thead th{background:var(--panel-2);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+table.tbl tfoot td{font-weight:800;border-top:2px solid var(--border)}
+footer{padding:20px 0 40px;color:var(--muted);font-size:.82rem}
+@media print{
+  .toolbar{display:none}
+  header.top{background:#fff !important;color:#000;border-bottom:2px solid #000}
+  header.top .eyebrow{background:none;border-color:#000;color:#000}
+  header.top p{color:#333}
+  body{background:#fff}
+  .card{box-shadow:none;border:1px solid #999;break-inside:avoid}
+  textarea{border:1px solid #666;white-space:pre-wrap;height:auto;overflow:visible}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Practice case &middot; not the graded signature assignment</span>
+    <h1>Riverside Professional Development</h1>
+    <p>A practice run at the same kind of analysis your graded strategy assignment asks for &mdash; built from a
+    different, invented company so you can work the method once before you have to get it right on the one that
+    counts. It draws on material from Chapters 1 through 3: the value chain and competitive forces from Chapter 2,
+    the kinds of information systems from Chapter 1, and the infrastructure choice behind your recommendation from
+    Chapter 3.</p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-inner">
+    <label>Name <input type="text" id="studentName" autocomplete="name"></label>
+    <button type="button" class="btn ghost" id="exportBtn">Export my work</button>
+    <button type="button" class="btn ghost" id="printBtn">Print / Save PDF</button>
+    <button type="button" class="btn danger" id="clearBtn">Clear my work</button>
+    <span class="save-status" id="saveStatus">Saved in this browser as you type.</span>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section class="card">
+      <span class="kicker">Scenario</span>
+      <h2>A training provider watching its market change underneath it</h2>
+      <p><b>Riverside Professional Development is not a real company.</b> It is invented for this exercise, the way
+      the practice examples in your lecture modules are, and any organization or number in it is hypothetical.</p>
+      <p>Riverside has run in-person certification courses out of two training centers for more than a decade &mdash;
+      OSHA and trade-license renewals, healthcare recertification hours, and small-business licensing prep. Its
+      instructors are well regarded locally, and for years its only real competitor was the community college down
+      the road. Over the last two years, enrollment has been flat while several online course platforms have started
+      offering the same certifications on their own schedule, at a lower price, with a certificate issued the moment
+      a student finishes. Front-desk staff say more callers now ask <i>&ldquo;is this available online?&rdquo;</i>
+      before they ask about price or dates. Leadership does not want to guess its way into a technology purchase; it
+      wants the pressure named, the real internal opportunities scanned, and one initiative recommended that could
+      actually be costed, built, and judged afterward.</p>
+      <div class="callout">Nothing about this scenario is drawn from any real company, and nothing here should
+      resemble any other case you have been given in this course. If any detail sounds familiar to you for reasons
+      outside this class, that is a coincidence &mdash; treat this Riverside and only this Riverside.</div>
+    </section>
+
+    <section class="card">
+      <div class="task">
+        <span class="points">6 pts</span>
+        <h3>Task 1 &middot; Name the pressure (Chapter 2 &mdash; the five competitive forces)</h3>
+        <p>Apply Porter&rsquo;s five competitive forces to Riverside. For each of the five, write one or two
+        sentences saying whether it is weak, moderate, or strong right now, using evidence from the scenario or a
+        reasonable stated assumption &mdash; not a guess with no support. Close with one sentence naming the single
+        force doing the most damage right now, and why it beats the other four.</p>
+        <textarea id="t1" data-key="t1" placeholder="Rivalry: &#10;New entrants: &#10;Buyer power: &#10;Supplier power: &#10;Substitutes: &#10;&#10;The strongest pressure right now is &hellip; because &hellip;"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">6 pts</span>
+        <h3>Task 2 &middot; Find the opportunities (Chapter 2 &mdash; the value chain)</h3>
+        <p>Using the value chain, name <b>at least two</b> internal activities &mdash; primary or support &mdash;
+        where a system could create a real operational or customer-facing advantage for Riverside. For each area:
+        name the activity, describe the specific weakness the scenario points to (or a reasonable assumption you
+        state), and say briefly why a system could help. Two is a floor, not a target: the second area is what
+        proves you scanned the chain instead of stopping at the first idea you had.</p>
+        <textarea id="t2" data-key="t2" placeholder="Area 1 (activity): &#10;Area 2 (a genuinely different activity):"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">8 pts</span>
+        <h3>Task 3 &middot; Recommend exactly one initiative (Chapters 1, 2 &amp; 3)</h3>
+        <p>Recommend <b>exactly one</b> information system for Riverside to build, drawn from one of the two areas
+        you named above. Do not list several options and let the reader pick. Your recommendation must cover all
+        four parts below.</p>
+        <ul>
+          <li><b>What it does</b> &mdash; specific enough that someone could cost it and later judge whether it
+          shipped, not a slogan like &ldquo;modernize enrollment.&rdquo;</li>
+          <li><b>What kind of system it is</b> (Chapter 1) &mdash; a transaction processing system, a management
+          information system report, a decision support system, an executive support system, or a more specific
+          kind such as an e-commerce, CRM, or collaboration system &mdash; and why that label fits.</li>
+          <li><b>How it would run</b> (Chapter 3) &mdash; would Riverside build and host this itself, or use a cloud
+          provider? If cloud, which service model fits best &mdash; infrastructure as a service, platform as a
+          service, or software as a service &mdash; and why? Name the one infrastructure pressure from the chapter
+          (obsolescence, rising energy costs, growing storage needs, fluctuating demand, or the need to move
+          quickly) that most supports your choice.</li>
+          <li><b>How you would know it worked</b> &mdash; one measure and a rough timeframe.</li>
+        </ul>
+        <textarea id="t3" data-key="t3" placeholder="What it does: &#10;&#10;What kind of system it is, and why: &#10;&#10;How it would run (build vs. cloud, which service model, which infrastructure pressure): &#10;&#10;How you would know it worked, and by when:"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">5 pts</span>
+        <h3>Task 4 &middot; Compare against a real company (Chapter 2)</h3>
+        <p>Choose <b>one real company</b> you can read about &mdash; any size, any industry &mdash; that has done
+        something with technology Riverside could learn from. In <b>150 to 200 words</b>, say what the company did,
+        what makes it worth comparing to Riverside even though the two are probably a very different size, and the
+        one lesson that would still make sense at Riverside&rsquo;s much smaller scale. A lesson that only works at
+        the larger company&rsquo;s budget or footprint is not a lesson that transfers.</p>
+        <textarea id="t4" data-key="t4" placeholder="The company I am comparing to Riverside is &hellip;"></textarea>
+        <div class="wc-row">
+          <span class="wc-badge" id="wcBadge">0 words</span>
+          <span id="wcMsg" style="color:var(--muted)">Aim for 150&ndash;200 words.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">What to hand in</span>
+      <h2>One document with all four tasks</h2>
+      <p>Use <b>Export my work</b> above to download a text file with your name and all four answers, in order, or
+      write your answers in your own document if you prefer &mdash; either is fine, as long as all four tasks are
+      clearly labeled. Submit it the way your instructor has asked for this assignment.</p>
+    </section>
+
+    <section class="card">
+      <span class="kicker">How this is graded</span>
+      <h2>25 points</h2>
+      <table class="tbl">
+        <caption>Points per task</caption>
+        <thead><tr><th>Task</th><th>What earns the points</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td>1 &middot; Five forces</td><td>All five forces addressed with evidence or a stated assumption; the strongest one is named and defended</td><td>6</td></tr>
+          <tr><td>2 &middot; Value chain</td><td>At least two <i>distinct</i> activities, each with a specific weakness named, not two versions of the same idea</td><td>6</td></tr>
+          <tr><td>3 &middot; Recommendation</td><td>Exactly one initiative, concrete enough to cost; correctly classified; a sound build-vs-cloud call tied to a real infrastructure pressure; a real measure</td><td>8</td></tr>
+          <tr><td>4 &middot; Comparison</td><td>A real, named company; a lesson that would still make sense at Riverside&rsquo;s scale; inside the 150&ndash;200 word band</td><td>5</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Total</td><td>25</td></tr></tfoot>
+      </table>
+      <p style="font-size:.85rem;color:var(--muted)">A restated number is not reasoning. The written parts of every
+      task are worth the points they are worth because they ask you to explain a judgment, not report a fact you
+      already had.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Riverside Professional Development is a hypothetical practice scenario built for this course.
+  Your work is saved in this browser only, on this computer &mdash; it is not uploaded anywhere. Export or print
+  before you close the tab if you want to keep a copy.</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "practice-case-riverside-v1";
+  var fields = ["t1","t2","t3","t4"];
+  var els = {};
+  fields.forEach(function(id){ els[id] = document.getElementById(id); });
+  var nameEl = document.getElementById("studentName");
+  var statusEl = document.getElementById("saveStatus");
+  var wcBadge = document.getElementById("wcBadge");
+  var wcMsg = document.getElementById("wcMsg");
+
+  function wordCount(s){
+    var t = (s || "").trim();
+    if(!t) return 0;
+    return t.split(/\s+/).length;
+  }
+  function updateWordCount(){
+    var n = wordCount(els.t4.value);
+    wcBadge.textContent = n + (n === 1 ? " word" : " words");
+    wcBadge.className = "wc-badge" + (n === 0 ? "" : n < 150 ? " low" : n > 200 ? " high" : " ok");
+    wcMsg.textContent = n === 0 ? "Aim for 150–200 words."
+      : n < 150 ? "Below the band — " + (150 - n) + " more to reach 150."
+      : n > 200 ? "Over the band — cut " + (n - 200) + " words to get back under 200."
+      : "In the band.";
+  }
+
+  function autosize(el){ el.style.height = "auto"; el.style.height = (el.scrollHeight + 2) + "px"; }
+
+  function save(){
+    var data = { name: nameEl.value };
+    fields.forEach(function(id){ data[id] = els[id].value; });
+    try{
+      localStorage.setItem(KEY, JSON.stringify(data));
+      statusEl.textContent = "Saved locally · " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+    }catch(e){
+      statusEl.textContent = "Could not save in this browser — export your work before closing this tab.";
+    }
+  }
+  var saveTimer = null;
+  function queueSave(){ clearTimeout(saveTimer); statusEl.textContent = "Saving…"; saveTimer = setTimeout(save, 300); }
+
+  function restore(){
+    var raw = null;
+    try{ raw = localStorage.getItem(KEY); }catch(e){ raw = null; }
+    if(!raw) return;
+    var data;
+    try{ data = JSON.parse(raw); }catch(e){ return; }
+    if(!data || typeof data !== "object") return;
+    if(typeof data.name === "string") nameEl.value = data.name;
+    fields.forEach(function(id){
+      if(typeof data[id] === "string"){ els[id].value = data[id]; autosize(els[id]); }
+    });
+  }
+
+  fields.forEach(function(id){
+    els[id].addEventListener("input", function(){ autosize(els[id]); queueSave(); if(id === "t4") updateWordCount(); });
+  });
+  nameEl.addEventListener("input", queueSave);
+
+  document.getElementById("exportBtn").addEventListener("click", function(){
+    save();
+    var labels = {
+      t1: "Task 1 — Name the pressure (five competitive forces)",
+      t2: "Task 2 — Find the opportunities (value chain)",
+      t3: "Task 3 — Recommend exactly one initiative",
+      t4: "Task 4 — Compare against a real company (" + wordCount(els.t4.value) + " words)"
+    };
+    var lines = [
+      "Riverside Professional Development — practice case",
+      "Name: " + (nameEl.value || "(no name entered)"),
+      "Exported: " + new Date().toLocaleString(),
+      ""
+    ];
+    fields.forEach(function(id){
+      lines.push("## " + labels[id], "", els[id].value.trim() || "(no answer)", "");
+    });
+    var blob = new Blob([lines.join("\n")], {type: "text/plain;charset=utf-8"});
+    var a = document.createElement("a");
+    var safeName = (nameEl.value || "student").trim().replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "student";
+    a.href = URL.createObjectURL(blob);
+    a.download = safeName + "-riverside-practice-case.md";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  document.getElementById("printBtn").addEventListener("click", function(){
+    fields.forEach(function(id){ autosize(els[id]); });
+    window.print();
+  });
+
+  document.getElementById("clearBtn").addEventListener("click", function(){
+    if(!window.confirm("Clear your name and all four answers on this page? This cannot be undone.")) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    nameEl.value = "";
+    fields.forEach(function(id){ els[id].value = ""; autosize(els[id]); });
+    updateWordCount();
+    statusEl.textContent = "Cleared.";
+  });
+
+  restore();
+  fields.forEach(function(id){ autosize(els[id]); });
+  updateWordCount();
+})();
+</script>
+</body>
+</html>

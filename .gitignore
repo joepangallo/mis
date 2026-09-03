@@ -30,6 +30,11 @@ book/
 # committed — naming them here would be the same leak by another route.
 src/forbidden.local.txt
 
+# Instructor-only grading guidance for the practice case study. The student-facing page sits right
+# beside this file, so keep the model-answer notes out of git rather than trust a manual review of
+# every future `git add` to catch it. Commit only when explicitly released.
+practice-case-study/instructor-notes.md
+
 # Build scratch
 /tmp/
 *.tmp.html
