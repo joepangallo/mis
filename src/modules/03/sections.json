@@ -1,0 +1,109 @@
+{
+  "outputFile": "module-03-information-systems-infrastructure.html",
+  "title": "Module 3 · Information Systems Infrastructure and Cloud Services",
+  "sections": [
+    {
+      "id": "s32a",
+      "title": "Why infrastructure is a management question",
+      "prefix": "inf",
+      "objective": "3.2"
+    },
+    {
+      "id": "s32b",
+      "title": "Hardware: the machines and the things that are not computers",
+      "prefix": "hw",
+      "objective": "3.2"
+    },
+    {
+      "id": "s32c",
+      "title": "System software and storage",
+      "prefix": "sys",
+      "objective": "3.2"
+    },
+    {
+      "id": "s32d",
+      "title": "Networks: how machines share",
+      "prefix": "net",
+      "objective": "3.2"
+    },
+    {
+      "id": "s32e",
+      "title": "How the internet and the web actually work",
+      "prefix": "web",
+      "objective": "3.2"
+    },
+    {
+      "id": "s32f",
+      "title": "Intranets, extranets, and where the machines live",
+      "prefix": "org",
+      "objective": "3.2"
+    },
+    {
+      "id": "s33a",
+      "title": "Why infrastructure goes out of date",
+      "prefix": "obs",
+      "objective": "3.3"
+    },
+    {
+      "id": "s33b",
+      "title": "Storage, spikes, energy, and the need to move fast",
+      "prefix": "drv",
+      "objective": "3.3"
+    },
+    {
+      "id": "s34a",
+      "title": "Renting instead of owning",
+      "prefix": "cld",
+      "objective": "3.4"
+    },
+    {
+      "id": "s34b",
+      "title": "Service models and kinds of cloud",
+      "prefix": "svc",
+      "objective": "3.4"
+    },
+    {
+      "id": "s34c",
+      "title": "Deciding well: what to ask before you move",
+      "prefix": "dec",
+      "objective": "3.4"
+    },
+    {
+      "id": "s34d",
+      "title": "What the cloud made possible",
+      "prefix": "adv",
+      "objective": "3.4"
+    },
+    {
+      "id": "s35",
+      "title": "Where the data itself lives: databases and SQLite",
+      "prefix": "db",
+      "objective": "3.5"
+    },
+    {
+      "id": "s36",
+      "title": "The internet as a business tool",
+      "prefix": "biz",
+      "objective": "3.6"
+    }
+  ],
+  "objectives": [
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5",
+    "3.6"
+  ],
+  "objectiveNames": {
+    "3.2": "The essential components of an IS infrastructure",
+    "3.3": "Managerial issues in running and evolving the infrastructure",
+    "3.4": "Cloud computing and current trends",
+    "3.5": "Database technology, from files to SQLite",
+    "3.6": "The internet as a business tool"
+  },
+  "supplements": [
+    "s35",
+    "s36"
+  ],
+  "id": "03"
+}

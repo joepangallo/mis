@@ -409,7 +409,7 @@ ACT.frcQuiz2 = {
     {
       q: "Which of these is a recommendation a decision maker could actually fund and later judge?",
       opts: [
-        "&ldquo;Buyer power is our strongest force, shown by shoppers who have compared our price before they reach the counter, so we should modernize the customer experience across every channel and review our progress regularly through the coming year&rdquo;",
+        "&ldquo;Buyer power is our strongest force, shown by shoppers who have compared our price before they reach the counter, so we should modernize the customer experience across every channel we operate, invest in the systems that would support it, and review our progress regularly through the coming year&rdquo;",
         "&ldquo;Our three largest competitors have all installed new store systems in the past year and customers have noticed the difference, so we should adopt comparable systems this year rather than keep falling behind them on service&rdquo;",
         "&ldquo;Supplier power is our strongest force, shown by two manufacturers raising prices while no one here can state our total volume; we will consolidate purchasing into one record and qualify three alternate suppliers, judged by unit cost and lead time at the next quarterly review&rdquo;",
         "&ldquo;Substitutes are our strongest force, shown by discounts that no longer bring departed customers back to us, so we need to become a more innovative and data-driven organization able to respond to whatever the market does next&rdquo;"

@@ -62,6 +62,7 @@
     "strValueChain",
     "strStrategySim",
     "strQuiz2",
+    "strApply",
     "aiMethod",
     "aiQuiz1",
     "aiMode",
@@ -78,7 +79,7 @@
     "fill": 2,
     "match": 3,
     "order": 1,
-    "quiz": 19,
+    "quiz": 20,
     "selfcheck": 2,
     "sim": 5,
     "sort": 5

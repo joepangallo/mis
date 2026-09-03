@@ -15,9 +15,9 @@ Do not hand-edit that file. It is generated. Edit the sources here and rebuild.
 | `shell.json` | The page chrome written as prose: title, hero, objectives, "how to use this page", the glossary and final-challenge intros, and the closing note. |
 | `frag/<section>.js` | One file per lesson section. Assigns `PROSE.<id>` (the lesson HTML) and any number of `ACT.<key>` activity objects. |
 | `frag/glossary.js` | `GLOSSARY` — every chapter term with a plain-language definition and an example. |
-| `frag/final.js` | `FINAL` — the thirty-situation closing challenge, tagged by objective. |
+| `frag/final.js` | `FINAL` — the closing challenge, tagged by objective. The number of situations is per module and is recorded in that module's `module.manifest.json` as `finalQuestionCount`, so this file carries no count of its own. |
 | `module.manifest.json` | The exact release inventory: ordered sections, activity keys and kind counts, glossary terms, and final distribution. |
-| `provenance.json` | Source policy and fragment/objective-to-source mapping. It records the chapter core, the two application supplements, and official privacy-law sources. |
+| `provenance.json` | Source policy and fragment/objective-to-source mapping. It records every source a module draws on — the chapter core, that module's application supplements, and anything else it cites, such as the Porter works behind the strategy material or the official privacy-law sources Module 1 uses — with the relationship each bears to the fragments and objectives that rely on it. |
 | `build.mjs` | Assembles everything into the output page, and writes a JavaScript-free summary of every activity into the page as it goes. |
 | `check.mjs` | Fresh-build comparison plus provenance, inventory, schema, accessibility, readability, offline, and hygiene checks. Run it after every build. |
 | `make-pdf.mjs` | Strips the scripts and applies print typography, producing the source for the printable companion. |
@@ -41,6 +41,21 @@ node src/make-pdf.mjs ../module-01-managing-in-the-digital-world.html /tmp/print
   --print-to-pdf="../module-01-managing-in-the-digital-world.pdf" "file:///tmp/print.html"
 node src/check-pdf.mjs ../module-01-managing-in-the-digital-world.pdf
 ```
+
+For a later module, pass the same `--module=modules/NN` flag to both scripts, and for a release add
+`--release` so a missing `src/forbidden.local.txt` fails the run instead of merely warning:
+
+```sh
+node src/make-pdf.mjs ../module-03-information-systems-infrastructure.html /tmp/print.html
+node src/check-pdf.mjs --module=modules/03 --release ../module-03-information-systems-infrastructure.pdf
+```
+
+`make-pdf.mjs` stamps the print source with the first twelve hex characters of the sha-256 of the page
+it was handed, and `check-pdf.mjs` recomputes that digest from the page sitting beside the PDF and
+refuses a companion printed from any other build. That is the only tripwire in the repository that
+catches a PDF left behind by a prose-only edit, since every other PDF assertion is intrinsic to the
+PDF and a rewritten paragraph changes none of them. Without `--module`, `check-pdf.mjs` grades against
+Module 1's manifest and page, so always pass it.
 
 `check-pdf.mjs` catches HTML entities leaking into text, missing glyphs printing as boxes, hygiene
 leaks, missing static answers, and sparse pages. A release still includes visual review of rendered
@@ -70,12 +85,14 @@ and must use official sources.
    belongs: `<div class="activity" data-activity="yourKey"></div>`
 3. Rebuild and re-check.
 
-Activity keys are prefixed per section (`dw`, `dd`, `isd`, `ppl`, `org`, `dual`, `eth`, `str`) so
-two sections can never collide.
+Activity keys are prefixed per section so two sections can never collide. The prefixes in force are
+declared in that module's `sections.json` (`src/sections.json` for Module 1), which is the list to read
+before choosing a new one &mdash; a literal list here would drift the next time a section is added.
 
 ## Activity kinds
 
-`quiz` · `sort` · `match` · `order` · `fill` · `explore` · `diagram` · `sim` · `selfcheck`
+`quiz` · `sort` · `match` · `order` · `fill` · `explore` · `diagram` · `sim` · `selfcheck`, plus the three
+runnable kinds described below: `formula` · `sql` · `code`.
 
 Every kind renders a complete answer summary into the page for readers without JavaScript, so the
 page stays usable — and printable — with scripting off.
@@ -101,3 +118,16 @@ and aliases, WHERE, JOIN, GROUP BY, HAVING, ORDER BY, DISTINCT and LIMIT. Answer
 comparing result sets against the reference query, so any query that genuinely answers the question
 is accepted rather than only the expected wording. Both interpreters report a plain-language reason
 when they cannot run something, which teaches more than an empty result would.
+
+`code` runs the reader's JavaScript against the exercise's own tests in a worker, reporting which tests pass
+and what each failing one returned or threw.
+
+All three print like every other kind: the static fallback carries the task, the reference formula, query or
+solution, and the explanation, so the printed companion keeps the promise the top-level README makes that it
+holds the lesson plus every answer. Reference answers print inside `pre.act-answer`, which must keep its
+wrapping rule in `module.css` — without it a long solution line is silently cut off at the page edge rather
+than wrapped, which produces a printed answer that is simply wrong.
+
+The three runnable kinds are also the only place a reader's own text re-enters the page. Their evaluators
+quote it back inside error messages, and a SELECT alias becomes a result header, so those strings go through
+`escHtml()` rather than `txt()`. `check.mjs` fails the build if any of those six sinks reverts.

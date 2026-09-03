@@ -3,6 +3,7 @@
    and the final-challenge key. Interactive widgets have nothing to contribute
    on paper, so the scripts are stripped and the static content is printed. */
 import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -10,7 +11,13 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const SRC = process.argv[2];
 const OUT = process.argv[3];
 
-let s = readFileSync(SRC, "utf8");
+const raw = readFileSync(SRC);
+/* Stamp the print source with a short digest of the page it was made from, so the printed
+   companion can be tied back to one exact build. check-pdf.mjs recomputes it and refuses a
+   PDF printed from a different page, which is the only tripwire that catches a stale PDF
+   after a prose-only edit. */
+const EDITION = createHash("sha256").update(raw).digest("hex").slice(0, 12);
+let s = raw.toString("utf8");
 s = s.replace(/<script\b[\s\S]*?<\/script>/g, "");
 s = s.replace(/<noscript>[\s\S]*?<\/noscript>/g, "");
 
@@ -61,8 +68,10 @@ h1,h2,h3,h4,h5,.act-head,.eyebrow{break-after:avoid}
 .grid.g4,.grid.g3{grid-template-columns:1fr 1fr}
 a{color:#17506f; text-decoration:none}
 .module-foot{break-inside:avoid}
+.print-edition{break-before:avoid; margin:6pt 0 0; font-size:7.5pt; color:#6b6153; letter-spacing:.04em}
 @page{size:letter; margin:15mm 14mm 16mm}
 </style>`;
 s = s.replace("</head>", printCss + "\n</head>");
+s = s.replace("</main>", `  <p class="print-edition">Print edition ${EDITION}</p>\n  </main>`);
 writeFileSync(OUT, s, "utf8");
 console.log("print source written:", OUT, s.length, "bytes");

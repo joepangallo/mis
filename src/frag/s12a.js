@@ -159,7 +159,7 @@ ACT.isdQuiz1 = {
     {q: "Which statement matches the chapter's definition of an <b>information system</b>?",
      opts: [
        "A computer program that stores and retrieves an organization's records.",
-       "The hardware, software, and telecommunications networks an organization owns.",
+       "The hardware, software, and telecommunications networks an organization owns, together with the budget and the contracts under which they were bought.",
        "The combination of people and information technology that creates, collects, processes, stores, and distributes useful data.",
        "The department that maintains an organization's computers and user accounts."
      ],
@@ -335,7 +335,7 @@ ACT.isdQuiz2 = {
        "The nine digits 465889727, with nothing attached to them.",
        "The value 465-88-9727 sitting in a field labeled SSN in John Doe's record.",
        "Understanding that a Social Security number identifies exactly one person, so two records sharing one must be the same person or an error.",
-       "A printed report listing every customer's Social Security number beside their account balance."
+       "A printed report listing every customer's Social Security number beside their account balance, sorted so that the largest balances appear at the top of the first page."
      ],
      a: 2,
      why: [

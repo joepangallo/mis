@@ -10,7 +10,8 @@
     "s23b",
     "s24",
     "s25",
-    "s26"
+    "s26",
+    "s27"
   ],
   "objectives": [
     "2.1",
@@ -18,7 +19,8 @@
     "2.3",
     "2.4",
     "2.5",
-    "2.6"
+    "2.6",
+    "2.7"
   ],
   "activityKeys": [
     "lvlLevels",
@@ -76,19 +78,26 @@
     "tkQuiz",
     "codeStrategy",
     "codeSql",
-    "codeQuiz2"
+    "codeQuiz2",
+    "delExplore",
+    "delSim",
+    "delSort",
+    "delCount",
+    "delQuiz",
+    "delApply",
+    "delCheck"
   ],
   "activityKinds": {
     "code": 1,
     "diagram": 5,
-    "explore": 6,
-    "formula": 2,
+    "explore": 7,
+    "formula": 3,
     "match": 5,
     "order": 3,
-    "quiz": 20,
-    "selfcheck": 1,
-    "sim": 5,
-    "sort": 6,
+    "quiz": 22,
+    "selfcheck": 2,
+    "sim": 6,
+    "sort": 7,
     "sql": 2
   },
   "glossaryTerms": [
@@ -149,13 +158,14 @@
     "virtual reality (VR) headset",
     "XaaS"
   ],
-  "finalQuestionCount": 34,
+  "finalQuestionCount": 39,
   "finalByObjective": {
     "2.1": 8,
     "2.2": 6,
     "2.3": 6,
     "2.4": 5,
     "2.5": 5,
-    "2.6": 4
+    "2.6": 4,
+    "2.7": 5
   }
 }

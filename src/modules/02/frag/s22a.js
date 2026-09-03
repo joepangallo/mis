@@ -223,8 +223,8 @@ ACT.bmcQuiz1 = {
     {
       q: "Which statement best describes what a business model is?",
       opts: [
-        "A summary of a business&rsquo;s strategic direction that outlines how objectives will be achieved, specifying the value proposition and how the company will create, deliver, and capture value",
-        "The set of information systems a company has purchased or built, listed with the vendor, the annual cost, and the department that uses each one",
+        "A summary of a business&rsquo;s strategic direction that specifies the value proposition and how the company will create, deliver and capture value",
+        "The set of information systems a company has purchased or built over the years, listed out with the vendor, the annual cost, the renewal date and the department that uses each one",
         "A forecast of the revenue and profit the company expects to report over the coming financial year, broken down by product line",
         "A chart showing who reports to whom, so that responsibility for each part of the business can be traced to a named manager"
       ],

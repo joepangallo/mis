@@ -226,8 +226,8 @@ ACT.alsQuiz1 = {
       q: "Entering application data takes 2.5 days in the technology-supported process but only about an hour in the manual one. What is the accurate reading of that?",
       opts: [
         "The columns must be reversed, since a process that gained a computer should not take longer at that step than the paper one did",
-        "In the manual process nothing is keyed in at all, since applications stay on paper, while the technology-supported process needs an employee to key batches into the system",
-        "The technology-supported process is checking applications more thoroughly, and the extra scrutiny is what takes the extra time",
+        "In the manual process nothing is keyed in at all, since applications stay on paper, while the supported process needs somebody to key batches in",
+        "The technology-supported process is checking each application far more thoroughly than the paper one ever did, and it is that extra scrutiny rather than the keying which takes the extra time",
         "The two processes handle different sizes of loan, so their times for this activity cannot fairly be compared"
       ],
       a: 1,

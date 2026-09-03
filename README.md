@@ -6,8 +6,9 @@ Interactive, self-contained study modules for an introductory information system
 
 | Module | Page | Covers |
 |---|---|---|
-| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus two clearly labeled application supplements: Porter&rsquo;s strategy frameworks, and deciding where AI belongs in a business workflow |
-| 2 | [`module-02-enabling-strategy-through-information-systems.html`](module-02-enabling-strategy-through-information-systems.html) | Chapter 2 Objectives 2.1&ndash;2.3: decision-making levels and functional areas &middot; automating, organizational learning and strategy &middot; the five competitive forces &middot; generic strategies, resources and the value chain &middot; business and revenue models, platforms and network effects &middot; innovation &middot; plus two application supplements: AI in the strategy workflow, and an analyst&rsquo;s toolkit of **runnable** spreadsheet and SQL exercises |
+| 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus three clearly labeled application supplements: Porter&rsquo;s strategy frameworks, deciding where AI belongs in a business workflow, and the chapter&rsquo;s concepts expressed as runnable code |
+| 2 | [`module-02-enabling-strategy-through-information-systems.html`](module-02-enabling-strategy-through-information-systems.html) | Chapter 2 Objectives 2.1&ndash;2.3: decision-making levels and functional areas &middot; automating, organizational learning and strategy &middot; the five competitive forces &middot; generic strategies, resources and the value chain &middot; business and revenue models, platforms and network effects &middot; innovation &middot; plus four application supplements: AI in the strategy workflow, an analyst&rsquo;s toolkit of **runnable** spreadsheet and SQL exercises, strategy as code, and a closing rehearsal that runs the whole analysis as one deliverable |
+| 3 | [`module-03-information-systems-infrastructure.html`](module-03-information-systems-infrastructure.html) | Chapter 3 Objectives 3.2&ndash;3.4: what an IS infrastructure is made of &mdash; hardware, system software and storage &middot; networks, and how the internet and the web actually carry a request &middot; intranets, extranets and data centres &middot; why infrastructure ages, and the pressures that force it to change &middot; cloud computing, its characteristics and its service models &middot; plus two clearly labeled application supplements: where the data itself lives, bridging to the course&rsquo;s SQLite work, and the internet as a business tool |
 
 Each module ships as **one HTML file with nothing external** — no CDN, no fonts, no scripts, no
 network of any kind. Open it from a hard drive, a flash drive, or any static host and it works.
@@ -42,6 +43,9 @@ node src/check.mjs                      # freshness, provenance, schema, accessi
 
 node src/build.mjs --module=modules/02  # regenerate Module 2
 node src/check.mjs --module=modules/02  # the same checks against Module 2
+
+node src/build.mjs --module=modules/03  # regenerate Module 3
+node src/check.mjs --module=modules/03  # the same checks against Module 3
 ```
 
 One generator serves every module. Module 1's sources sit directly in `src/`; each later module gets
@@ -66,8 +70,10 @@ the Porter works cited there, and current privacy-law qualifications use officia
 situations are labeled as hypothetical rather than presented as reported company facts.
 
 For a local release, `node src/check.mjs --release` additionally requires the gitignored chapter PDF
-and `src/forbidden.local.txt`. GitHub Actions runs the ordinary check against the committed generated
-page, so a stale build or structural drift cannot merge unnoticed.
+and `src/forbidden.local.txt`; `node src/check-pdf.mjs --module=modules/NN --release <pdf>` applies the
+same fail-closed rule to the printable companion. GitHub Actions runs the ordinary check against the
+committed generated page of **every** module, one matrix job each, so a stale build or structural drift
+cannot merge unnoticed in any of them.
 
 ## Course materials
 

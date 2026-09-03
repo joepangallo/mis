@@ -111,6 +111,28 @@ if (RELEASE) {
   need(nonempty(chapterPath) && existsSync(resolve(SP, chapterPath)), "release check requires the local Chapter 1 PDF named in provenance.json");
 }
 
+/* A correct option that is reliably the longest is answerable without reading the stem at
+   all. The cause is structural rather than careless: the correct option carries the
+   chapter's qualifying clauses while the distractors get trimmed to a single idea. Both
+   the per-question gap and the share across a pool are worth reporting, because either one
+   on its own can be defended and the two together are a scoring strategy. */
+const optChars = (o) => String(o).replace(/<[^>]*>/g, "").replace(/&(?:[A-Za-z]+|#\d+);/g, "x").length;
+function lengthTell(label, items) {
+  let longest = 0;
+  for (const { q, at } of items) {
+    if (!Array.isArray(q.opts) || !Number.isInteger(q.a) || !q.opts[q.a]) continue;
+    const lens = q.opts.map(optChars);
+    const correct = lens[q.a];
+    const maxOther = Math.max(...lens.filter((_, i) => i !== q.a));
+    if (correct > maxOther) longest++;
+    if (correct - maxOther > 40)
+      meh(`${at}: correct option is ${correct - maxOther} characters longer than the longest distractor`);
+  }
+  if (items.length && longest > items.length * 0.45)
+    meh(`${label}: the correct option is the longest in ${longest}/${items.length} questions - long enough to be answerable without reading the stem`);
+}
+const inlineQuizItems = [];
+
 /* ---- activity schema ---- */
 for (const [k, a] of Object.entries(ACT)) {
   const at = `${k} (${a.kind})`;
@@ -133,6 +155,7 @@ for (const [k, a] of Object.entries(ACT)) {
         if (GIVEAWAY.test(String(o)) && oi !== q.a)
           meh(`${at} q${i+1} opt ${oi}: absolute wording may give it away`);
       });
+      inlineQuizItems.push({ q, at: `${at} q${i+1}` });
     });
   } else if (a.kind === "sort") {
     need(Array.isArray(a.buckets) && a.buckets.length >= 2, `${at}: fewer than 2 buckets`);
@@ -362,6 +385,9 @@ fq.forEach((q,i) => {
 });
 for (const o of OBJ) need((byObj[o]||0) === MANIFEST.finalByObjective?.[o], `final has ${byObj[o]||0} questions for objective ${o}; manifest requires ${MANIFEST.finalByObjective?.[o]}`);
 for (const p of [0,1,2,3]) if (byPos[p] > fq.length * 0.45) meh(`final: ${byPos[p]}/${fq.length} answers sit at position ${"ABCD"[p]}`);
+for (const o of OBJ) if ((byObj[o] || 0) < 4) meh(`final: objective ${o} carries only ${byObj[o] || 0} question(s) - too few to tell a weak area from a lucky guess`);
+lengthTell("final", fq.map((q, i) => ({ q, at: `final q${i+1}` })));
+lengthTell("inline quizzes", inlineQuizItems);
 
 /* ---- rendered page hygiene ---- */
 let freshPage = null;
@@ -421,12 +447,53 @@ else {
   need(!/https?:\/\//i.test(page), "page references an external URL");
   need(!/@import\b/i.test(page), "page CSS contains @import");
   need(!/@font-face\b/i.test(page), "page embeds a custom font instead of using the self-contained system stack");
-  need(!/url\(\s*["']?(?:https?:|\/\/)/i.test(page), "page CSS contains an external url()");
+  /* A url() must be a data: URI. Rejecting only http:// and // let a *relative* url()
+     through - in module.css or in an inline style attribute - and a relative url() names a
+     file that does not travel beside a single-file page, so the flash-drive copy renders
+     without it and no error is reported anywhere. */
+  for (const m of page.matchAll(/(?<![\w-])url\(\s*(["']?)([^"')]*)\1\s*\)/gi)) {
+    const value = m[2].trim();
+    if (!/^data:/i.test(value)) bad(`page CSS contains a url() that is not a data: URI: ${JSON.stringify(value.slice(0, 100))}`);
+  }
   need(!/\b(?:fetch|XMLHttpRequest|WebSocket|EventSource)\s*\(/.test(page), "page runtime contains a network API call");
   need(!/\.sendBeacon\s*\(/.test(page), "page runtime contains a beacon call");
+  /* The reader's own formula, query and code text is quoted back inside the evaluators' error messages, a
+     SELECT alias becomes a result header, and a failing test prints whatever the reader's own function returned
+     or threw. Those strings reach innerHTML, so they must be escaped: txt() passes
+     HTML through on purpose, for authored labels. Escaping the wrong one re-breaks entities; escaping neither
+     lets a reader inject markup into their own page, and every local page shares one storage origin. */
+  for (const [sink, what] of [
+    [/txt\(errText\)/, "the spreadsheet evaluator's error text"],
+    [/txt\(e\.message\)/, "the SQL evaluator's error text"],
+    [/el\("th", null, txt\(h\)\)/, "SQL result headers, which carry reader-chosen aliases"],
+    [/txt\(payload\.fatal\)/, "the code runner's fatal message"],
+    [/"your code returned " \+ showValue\(r\.got\)/, "the value the reader's own function returned"],
+    [/"threw: " \+ txt\(r\.err\)/, "the message the reader's own function threw"],
+  ]) if (sink.test(page)) bad(`page renders ${what} with txt() instead of escHtml() — reader input can inject markup`);
+  need(/function escHtml\(/.test(page), "page runtime is missing the escHtml() helper that escapes reader input");
+  /* The rules above are negative: they catch the old unescaped expression coming back. On their own a rename
+     (errText, payload.fatal, r.err) would slip past them, so each site is also asserted positively. A rename is
+     then forced to update this list, which is the point — the list is the record of which strings are reader
+     input. */
+  for (const [present, what] of [
+    [/escHtml\(errText\)/, "spreadsheet evaluator error text"],
+    [/escHtml\(e\.message\)/, "SQL evaluator error text"],
+    [/el\("th", null, escHtml\(h\)\)/, "SQL result headers"],
+    [/escHtml\(payload\.fatal\)/, "code runner fatal message"],
+    [/escHtml\(showValue\(r\.got\)\)/, "value the reader's function returned"],
+    [/escHtml\(r\.err\)/, "message the reader's function threw"],
+  ]) need(present.test(page), `page no longer escapes ${what} — if this moved or was renamed, update this list`);
   for (const m of page.matchAll(/\b(?:src|href|poster|data|action|formaction)\s*=\s*(["'])(.*?)\1/gi)) {
     const value = m[2].trim();
     if (value && !value.startsWith("#") && !value.startsWith("data:")) bad(`page attribute contains a non-local reference: ${JSON.stringify(value.slice(0,100))}`);
+  }
+  /* srcset is a comma-separated candidate list, so it needs splitting before each URL is
+     judged; left unchecked it was a live network request the rest of these rules could not see. */
+  for (const m of page.matchAll(/\bsrcset\s*=\s*(["'])(.*?)\1/gi)) {
+    for (const candidate of m[2].split(",")) {
+      const value = candidate.trim().split(/\s+/)[0] || "";
+      if (value && !value.startsWith("#") && !value.startsWith("data:")) bad(`page srcset contains a non-local reference: ${JSON.stringify(value.slice(0,100))}`);
+    }
   }
   need(!/<div class="activity" data-activity=/i.test(page), "a raw source activity mount survived the build");
   for (const key of MANIFEST.activityKeys || []) {

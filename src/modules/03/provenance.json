@@ -1,0 +1,124 @@
+{
+  "policy": {
+    "core": "Objectives 3.2, 3.3 and 3.4, their vocabulary, their figures and tables, and their factual cases trace to Chapter 3 of the supplied textbook. The supplied chapter PDF contains no LO 3.1: its objective lines run 3.2, 3.3, 3.4, and Figures 3.2 through 3.7 are absent from the file, so this module numbers its core sections after the objectives the source actually carries and does not invent a 3.1. The opening orientation section is assembled from material the chapter does contain - the chapter opener, the lead-in paragraph of LO 3.2, and the chapter's own What's in It for You? box - and is filed under objective 3.2 rather than given an objective number of its own.",
+    "supplement": "Applications 3.5 and 3.6 are explicitly labeled application supplements, not textbook learning objectives. 3.5 gathers the chapter's own database touchpoints - servers that provide access to databases, web servers that assemble pages from database queries, database management systems as a storage and licensing cost, and the platform model that removes that licence - and carries them forward to the database work the course does elsewhere in SQLite; it adds only the vocabulary needed to read a stored table and ask it a question. 3.6 assembles the chapter's intranet, extranet, electronic-commerce, content-delivery and interface material into the three uses named by course objective 5, and adds no claim the chapter does not already make.",
+    "hypotheticals": "Practice situations are signposted as hypothetical. They may supply the qualitative conditions a reader needs in order to reason, but may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim. Real organizations may be named only where the chapter itself names them, and only for what the chapter says about them.",
+    "currentLaw": "This module makes no claims about current law. The chapter states a records-retention duty flatly and names several compliance regimes; the module refers to retention and data-protection duties only as requirements that apply in some industries and jurisdictions, without asserting their scope, and does not restate any statute as a universal mandate.",
+    "datedFigures": "The chapter carries a number of point-in-time figures. Where the module reproduces them it attributes them to the chapter as a snapshot and teaches the ordering, ratio or mechanism rather than the digits. The consolidated list is in qualifications below."
+  },
+  "sources": {
+    "chapter3": {
+      "citation": "Valacich & Schneider, Information Systems Today, 10th ed., Chapter 3 (the information systems infrastructure, its managerial issues, and cloud computing), supplied as a local chapter PDF.",
+      "localFile": "../../../book/Ch. 3.pdf"
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials. Objective 4 names hardware, software, database technology and computer networks; objective 5 names internet technology for electronic commerce, communicating with employees and working with business partners.",
+      "localFile": "../../../book/Course Objectives.docx",
+      "relationship": "Scopes which course objectives this module may honestly claim and which two application supplements exist, and supplies the wording of the eleven objectives reproduced in the module's on-page course-objective map."
+    },
+    "courseDatabaseWork": {
+      "citation": "The course's own database work in SQLite, which is where course objectives 10 and 11 are exercised.",
+      "relationship": "Application supplement 3.5 is the bridge from Chapter 3's storage and web-server material to that work. It prepares for the database work rather than replacing it, and introduces no textbook learning objective."
+    }
+  },
+  "fragments": {
+    "s32a": [
+      "chapter3"
+    ],
+    "s32b": [
+      "chapter3"
+    ],
+    "s32c": [
+      "chapter3"
+    ],
+    "s32d": [
+      "chapter3"
+    ],
+    "s32e": [
+      "chapter3"
+    ],
+    "s32f": [
+      "chapter3"
+    ],
+    "s33a": [
+      "chapter3"
+    ],
+    "s33b": [
+      "chapter3"
+    ],
+    "s34a": [
+      "chapter3"
+    ],
+    "s34b": [
+      "chapter3"
+    ],
+    "s34c": [
+      "chapter3"
+    ],
+    "s34d": [
+      "chapter3"
+    ],
+    "s35": [
+      "chapter3",
+      "courseObjectives",
+      "courseDatabaseWork"
+    ],
+    "s36": [
+      "chapter3",
+      "courseObjectives"
+    ],
+    "glossary": [
+      "chapter3"
+    ],
+    "final": [
+      "chapter3",
+      "courseObjectives",
+      "courseDatabaseWork"
+    ],
+    "shell": [
+      "chapter3",
+      "courseObjectives"
+    ]
+  },
+  "objectives": {
+    "3.2": [
+      "chapter3"
+    ],
+    "3.3": [
+      "chapter3"
+    ],
+    "3.4": [
+      "chapter3"
+    ],
+    "3.5": [
+      "chapter3",
+      "courseObjectives",
+      "courseDatabaseWork"
+    ],
+    "3.6": [
+      "chapter3",
+      "courseObjectives"
+    ]
+  },
+  "qualifications": [
+    "LO 3.1 is absent from the supplied chapter PDF and is not reconstructed anywhere in this module.",
+    "The chapter announces six general classes of computer and then names five; mobile devices are the sixth, and its own table lists six rows.",
+    "Every memory and price cell in the chapter's comparison of computer classes is point-in-time. The module teaches the ordering and the ratios, not the digits.",
+    "The chapter's claim that radio-frequency identification is rapidly replacing bar codes is softened: adoption is uneven and depends on whether the item is valuable enough to justify a tag.",
+    "The chapter's estimate that the searchable surface of the web is as little as one percent of it is unmeasurable and is attributed to the chapter, not asserted; the structural point is what is taught.",
+    "The chapter's connection-speed examples are anchored to an older broadband market. The module teaches time equals size divided by rate, and attributes the tiers to the chapter.",
+    "The chapter's table of computing generations is captioned six and lists seven; the module presents seven and notes that the periods are a teaching device rather than settled history.",
+    "Moore's original statement predicted roughly annual doubling and was revised to roughly two years; it is an empirical observation and an industry roadmap, not a law of physics, and its pace has slowed. The chapter's figure for operations per second on a current processor is understated by about three orders of magnitude and is not repeated.",
+    "The vendor end-of-support date the chapter gives for an operating system has passed; the module states it in the past tense and teaches the mechanism rather than the date.",
+    "The chapter's figure is an upper bound - up to seventy percent of infrastructures utilized at only twenty percent of capacity - and the module states it as a bound rather than as a typical value; the chapter attributes it only to estimates.",
+    "The chapter's per-rack power figure predates the current generation of accelerator hardware; the comparison with household demand is kept, the number is presented as the chapter's.",
+    "Accelerator prices move constantly, and the very large deployment the chapter describes was an announced plan rather than a completed build; the module says so.",
+    "Magnetic tape's stated shelf life is a media figure; archives are more often lost to format and drive obsolescence than to media decay.",
+    "One firm's decision to move back out of a public cloud is presented as one company's point-in-time conclusion, not as evidence about the general case; the chapter's own sentence about considerable disagreement is the honest framing.",
+    "The exemplar supercomputer named in the chapter has been surpassed several times; its figure is used only to illustrate scale.",
+    "The chapter names Facebook as a company; the corporate parent renamed itself in 2021, and the module says which company is meant.",
+    "The chapter's example web addresses, its example interface key, and its file-manager screenshot are not reproduced. Addresses appear only as inert placeholder text, no key that could resemble a real credential is shown, and no personal account name or local file path is reproduced anywhere.",
+    "The chapter credits cloud computing with reducing energy consumption while describing an enormous new demand for AI computing power. The module surfaces the tension as a reflection question rather than resolving it.",
+    "The chapter calls HTML5 the current version of the web's markup language. The web's markup has since been maintained as a continuously revised living standard rather than as numbered releases, so the module presents HTML5 as the chapter's label for the modern language rather than as a version number still being counted up."
+  ]
+}

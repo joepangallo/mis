@@ -289,7 +289,7 @@ ACT.pplQuiz2 = {
        "It deletes the files permanently, which is why payment cannot restore them",
        "It encrypts the data in place in a format the victim cannot access, and the attacker demands payment for the decryption keys",
        "Its defining move is copying the data out and publishing it publicly",
-       "It locks the screen behind a warning message while the files stay readable underneath"
+       "It locks the screen behind a warning message while the files themselves stay perfectly readable underneath, which is why a technician can recover them without paying anything"
      ],
      a: 1,
      why: [
@@ -302,7 +302,7 @@ ACT.pplQuiz2 = {
      opts: [
        "Pay promptly, since paying is what gets the decryption keys released",
        "Budget for it as a routine cost, since the 2018 average demand was about US$530",
-       "Stop storing personally identifiable information, since that is the data ransomware goes after",
+       "Stop storing personally identifiable information altogether, since that is the data ransomware goes after and an organization holding none of it has nothing an attacker could hold to ransom",
        "Raise security awareness and vigilance to avoid infection, and strengthen backup and disaster recovery so an infection is survivable"
      ],
      a: 3,

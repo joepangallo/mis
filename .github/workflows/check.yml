@@ -1,4 +1,4 @@
-name: Check generated module
+name: Check generated modules
 
 on:
   push:
@@ -12,10 +12,18 @@ permissions:
 jobs:
   module:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # One entry per module. The empty string is Module 1, whose sources live
+        # directly in src/. Adding a module here is the only step needed to put
+        # its committed page under the same guard as the others.
+        module: ["", "--module=modules/02", "--module=modules/03"]
+    name: Verify ${{ matrix.module == '' && 'module 1' || matrix.module }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: 22
       - name: Verify generated page, schemas, provenance, accessibility, and hygiene
-        run: node src/check.mjs
+        run: node src/check.mjs ${{ matrix.module }}

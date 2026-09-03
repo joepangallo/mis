@@ -68,6 +68,9 @@ const { ACT, PROSE, GLOSSARY, FINAL } = sandbox;
 /* ------------------------------------------------------------ static output */
 const esc = (s) => String(s == null ? "" : s);
 const L = ["A", "B", "C", "D", "E", "F", "G", "H"];
+/* esc() passes HTML through, because authored prose and labels rely on that. A reference formula, SQL query or
+   JavaScript solution is literal text a reader must read exactly, so it gets real escaping instead. */
+const escCode = (s) => String(s == null ? "" : s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
 const whyText = (s) => String(s == null ? "" : s).replace(/^\s*(?:<b>)?\s*(?:That is )?correct[.!:,]?(?:<\/b>)?\s*(?:&mdash;|-|\u2014)?\s*/i, "");
 
 function fallback(key, a) {
@@ -116,6 +119,35 @@ function fallback(key, a) {
       const best = (s.opts || []).find((o) => o.ok);
       parts.push(`<p><b>Decision ${i + 1}.</b> ${esc(s.situation)}</p><ul>` +
         (s.opts || []).map((o) => `<li>${esc(o.t)}${o.ok ? " <b>&mdash; the stronger call.</b> " : " &mdash; "}${esc(o.out)}</li>`).join("") + `</ul>`);
+    });
+  } else if (K === "formula") {
+    /* The runnable kinds print the task and its reference answer, the same bargain the quiz and sim branches
+       already make: the printed companion carries the lesson plus every answer. */
+    if ((a.headers || []).length) parts.push(`<p class="mini"><b>Columns:</b> ${(a.headers || []).map(esc).join(" &middot; ")}</p>`);
+    (a.tasks || []).forEach((t, i) => {
+      parts.push(`<p><b>${i + 1}.</b> ${esc(t.prompt)}</p>` +
+        `<pre class="act-answer"><code>${escCode(t.expect)}</code></pre>` +
+        (t.explain ? `<p class="mini">${esc(t.explain)}</p>` : ""));
+    });
+  } else if (K === "sql") {
+    const tables = a.tables || {};
+    Object.keys(tables).forEach((name) => {
+      const rows = (tables[name] || {}).rows || [];
+      const cols = rows.length ? Object.keys(rows[0]) : [];
+      parts.push(`<p class="mini"><b>${esc(name)}</b> &mdash; ${cols.map(esc).join(", ")} ` +
+        `(${rows.length} row${rows.length === 1 ? "" : "s"})</p>`);
+    });
+    (a.tasks || []).forEach((t, i) => {
+      parts.push(`<p><b>${i + 1}.</b> ${esc(t.prompt)}</p>` +
+        `<pre class="act-answer"><code>${escCode(t.expect)}</code></pre>` +
+        (t.explain ? `<p class="mini">${esc(t.explain)}</p>` : ""));
+    });
+  } else if (K === "code") {
+    (a.exercises || []).forEach((ex, i) => {
+      parts.push(`<p><b>${i + 1}.</b> ${esc(ex.prompt)}</p>` +
+        (ex.signature ? `<p class="mini"><b>Signature:</b> <code>${escCode(ex.signature)}</code></p>` : "") +
+        `<pre class="act-answer"><code>${escCode(ex.solution)}</code></pre>` +
+        (ex.explain ? `<p class="mini">${esc(ex.explain)}</p>` : ""));
     });
   } else if (K === "selfcheck") {
     parts.push(`<ul>` + (a.items || []).map((it) =>
@@ -236,6 +268,10 @@ ${css}
 <div class="shell">
   <nav class="sidebar" id="sidebar" aria-label="Module contents">
     <p class="side-title">Module contents</p>
+    <a class="side-link side-pin" href="#objective-map">
+      <span class="side-num" aria-hidden="true">&rarr;</span>
+      <span class="side-txt">Course objectives</span>
+    </a>
     <div id="navList"></div>
     <div class="side-foot">
       Your progress is saved in this browser only &mdash; nothing is submitted or sent anywhere. Answers clear when you reload, and you can restart any activity, any section, or the whole page at any time.
@@ -268,6 +304,7 @@ window.MIS_ACT = ${jsonSafe(ACT)};
 window.MIS_GLOSSARY = ${jsonSafe(GLOSSARY)};
 window.MIS_FINAL = ${jsonSafe(FINAL)};
 window.MIS_OBJECTIVES = ${jsonSafe(OBJECTIVE_NAMES)};
+window.MIS_MODULE = ${jsonSafe((CFG && CFG.id) || "01")};
 <\/script>
 <script>
 ${engine}

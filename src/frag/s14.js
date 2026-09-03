@@ -395,7 +395,7 @@ ACT.ethQuiz2 = {
     {
       q: "Besides its list of prohibitions, what does the Computer Ethics Institute's guidance actually recommend that people do?",
       opts: [
-        "Publish an organizational code of conduct so that every user knows the rules in advance",
+        "Publish an organizational code of conduct, so that every user of the system knows in advance which uses of it the organization will and will not stand behind",
         "Secure your accounts and files so that nobody can reach them without authorization",
         "Think about the social consequences of programs you write and systems you design, and show consideration for others",
         "Avoid using a computer to harm others or to snoop in other people's files"

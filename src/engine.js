@@ -12,7 +12,14 @@
 var ACT = window.MIS_ACT || {};
 var GLOSSARY = window.MIS_GLOSSARY || [];
 var FINAL = window.MIS_FINAL || {questions:[]};
-var STORE_KEY = "mis-ch1-progress-v2";
+/* One key per module. It used to be a single shared constant, so activity keys that appear in more than one
+   module (orgQuiz1, orgQuiz2, and __final__ in every module) bled across pages: a module could open already
+   showing another module's answers as complete, and the Reset button — which promises to clear "this page" —
+   emptied every module's progress at once. The id is injected by build.mjs from the module's sections.json. */
+var MODULE_ID = (typeof window !== "undefined" && window.MIS_MODULE) || "01";
+var STORE_KEY = "mis-m" + MODULE_ID + "-progress-v3";
+var LEGACY_KEY = "mis-ch1-progress-v2";
+var ADOPTED_KEY = "mis-m01-adopted-legacy-v1";
 var THEME_KEY = "mis-ch1-theme-v1";
 
 /* ---------------------------------------------------------------- helpers */
@@ -23,6 +30,15 @@ function el(tag, cls, html){
   return n;
 }
 function txt(s){ return String(s == null ? "" : s); }
+/* txt() deliberately passes HTML through: activity labels are authored in the fragment files and rely on it
+   to render entities. Anything the READER typed is different — the formula, SQL and code engines quote the
+   reader's own text back inside their error messages, and a SELECT alias becomes a result header — so those
+   strings must be escaped before they reach innerHTML. Use escHtml() for runtime data, txt() for authored. */
+function escHtml(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
 function shuffle(arr){
   var a = arr.slice(), i, j, t;
   for(i = a.length - 1; i > 0; i--){
@@ -47,9 +63,53 @@ function whyText(s){
   return txt(s).replace(/^\s*(?:<b>)?\s*(?:That is )?correct[.!:,]?(?:<\/b>)?\s*(?:&mdash;|-|\u2014)?\s*/i, "");
 }
 
+/* Item labels in the fragment files are authored as HTML -- the printable
+   fallback in build.mjs writes them straight into the page -- so the widgets
+   render them with innerHTML too. Strings that are spoken rather than shown
+   (aria-live status lines, aria-labels) need the same words without the markup,
+   or a screen reader announces the entity instead of the character.
+
+   THE INVARIANT THAT MAKES THAT SAFE: every string reaching an innerHTML sink
+   in a renderer is authored at build time in the module's own fragment files.
+   The fields are cfg.items[].t (sort), cfg.pairs[].l/.r (match), cfg.steps[].t
+   (order) and cfg.blanks[].before/.after/.choices[] (fill). Do not route a
+   reader-supplied value into any of them. What a reader types belongs in
+   textContent, which is how the formula, sql and code renderers already handle
+   typed cell values and query results -- keep it that way.
+
+   Worth keeping strict even though the page is offline: Chrome and Edge report
+   the same origin -- the bare local-file scheme, carrying no host -- for every
+   page opened from disk, so a single localStorage bucket is shared by every
+   local HTML file the browser has ever opened. Verified: an unrelated local
+   page read this module's saved progress straight back. Script running in one
+   local page can therefore reach the saved work of all of them. */
+var decodeHost = null;
+function plain(s){
+  if(!decodeHost) decodeHost = document.createElement("div");
+  decodeHost.innerHTML = txt(s);
+  return decodeHost.textContent || "";
+}
+
 var store = (function(){
   var data = {};
   try{ data = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; }catch(e){ data = {}; }
+  /* One-time adoption for Module 1, whose progress is what the old shared key actually held. Modules 2 and 3
+     deliberately start clean rather than inherit entries the collision had already scrambled.
+     "One time" has to be recorded rather than inferred from an empty store. Reset empties the store and then
+     reloads the page, so inferring it re-adopted the old blob on that very reload and handed the student back
+     the answers they had just cleared -- the button appeared to do nothing. The flag is what makes adoption
+     happen once; the legacy key itself is deliberately left in place, so a browser that has not opened
+     Module 1 yet can still migrate later, and tidying it away would silently break that. */
+  if(MODULE_ID === "01" && !Object.keys(data).length && !localStorage.getItem(ADOPTED_KEY)){
+    try{
+      var legacy = JSON.parse(localStorage.getItem(LEGACY_KEY) || "{}") || {};
+      if(Object.keys(legacy).length){
+        data = legacy;
+        localStorage.setItem(STORE_KEY, JSON.stringify(data));
+      }
+      localStorage.setItem(ADOPTED_KEY, "1");
+    }catch(e){ /* nothing to adopt */ }
+  }
   return {
     get: function(k){ return data[k] || null; },
     set: function(k, v){
@@ -289,7 +349,7 @@ RENDER.sort = function(body, cfg, key, redraw){
   function makeChip(it){
     var b = el("button", "sort-item");
     b.type = "button";
-    b.textContent = it.t;
+    b.innerHTML = txt(it.t);
     b.setAttribute("draggable", "true");
     b.addEventListener("click", function(){
       if(graded) return;
@@ -429,11 +489,11 @@ RENDER.match = function(body, cfg, key, redraw){
   left.forEach(function(o){
     var b = el("button", "match-item");
     b.type = "button";
-    b.textContent = o.t;
+    b.innerHTML = txt(o.t);
     b.addEventListener("click", function(){
       if(solved[o.i]) return;
       pickL = (pickL === o.i) ? null : o.i;
-      status.textContent = pickL === null ? "Selection cleared." : "Selected " + o.t + ". Choose its definition.";
+      status.textContent = pickL === null ? "Selection cleared." : "Selected " + plain(o.t) + ". Choose its definition.";
       paint();
     });
     nodesL[o.i] = b;
@@ -442,7 +502,7 @@ RENDER.match = function(body, cfg, key, redraw){
   right.forEach(function(o){
     var b = el("button", "match-item");
     b.type = "button";
-    b.textContent = o.t;
+    b.innerHTML = txt(o.t);
     b.addEventListener("click", function(){
       if(pickL === null || solved[o.i]) return;
       tries++;
@@ -451,12 +511,12 @@ RENDER.match = function(body, cfg, key, redraw){
         var badge = el("span", "match-badge", "Matched");
         nodesL[o.i].insertBefore(badge, nodesL[o.i].firstChild);
         if(pairs[o.i].why) nodesR[o.i].appendChild(el("span", "match-why", txt(pairs[o.i].why)));
-        status.textContent = "Matched " + pairs[o.i].l + " to " + pairs[o.i].r + ".";
+        status.textContent = "Matched " + plain(pairs[o.i].l) + " to " + plain(pairs[o.i].r) + ".";
         pickL = null;
         paint();
       } else {
         var miss = nodesR[o.i];
-        status.textContent = nodesL[pickL].textContent + " does not match " + o.t + ". Try another definition.";
+        status.textContent = nodesL[pickL].textContent + " does not match " + plain(o.t) + ". Try another definition.";
         miss.classList.add("is-miss");
         setTimeout(function(){ miss.classList.remove("is-miss"); }, 620);
       }
@@ -495,7 +555,7 @@ RENDER.order = function(body, cfg, key, redraw){
     current[pos + delta] = current[pos];
     current[pos] = swap;
     paint();
-    status.textContent = steps[si].t + " moved to position " + (pos + delta + 1) + ".";
+    status.textContent = plain(steps[si].t) + " moved to position " + (pos + delta + 1) + ".";
     var moved = list.querySelector('[data-step="' + si + '"]');
     if(!moved) return;
     var control = moved.querySelector('[data-move="' + direction + '"]:not([disabled])') ||
@@ -519,14 +579,14 @@ RENDER.order = function(body, cfg, key, redraw){
       if(!graded){
         var btns = el("div", "order-btns");
         var up = el("button", null, "▲");
-        up.type = "button"; up.title = "Move up"; up.setAttribute("aria-label", "Move " + steps[si].t + " up");
+        up.type = "button"; up.title = "Move up"; up.setAttribute("aria-label", "Move " + plain(steps[si].t) + " up");
         up.setAttribute("data-move", "up");
         up.disabled = pos === 0;
         up.addEventListener("click", function(){
           move(si, pos, -1, "up");
         });
         var dn = el("button", null, "▼");
-        dn.type = "button"; dn.title = "Move down"; dn.setAttribute("aria-label", "Move " + steps[si].t + " down");
+        dn.type = "button"; dn.title = "Move down"; dn.setAttribute("aria-label", "Move " + plain(steps[si].t) + " down");
         dn.setAttribute("data-move", "down");
         dn.disabled = pos === current.length - 1;
         dn.addEventListener("click", function(){
@@ -572,7 +632,9 @@ RENDER.fill = function(body, cfg, key){
 
   blanks.forEach(function(bk, bi){
     var row = el("div", "fill-row");
-    row.appendChild(document.createTextNode(txt(bk.before)));
+    /* The text around the blank is authored HTML like every other label, so it
+       is rendered rather than inserted as a literal string. */
+    row.appendChild(el("span", null, txt(bk.before)));
     var sel = el("select", "fill-in");
     sel.setAttribute("aria-label", "Blank " + (bi + 1));
     var ph = el("option", null, "choose…");
@@ -584,7 +646,7 @@ RENDER.fill = function(body, cfg, key){
       sel.appendChild(op);
     });
     row.appendChild(sel);
-    row.appendChild(document.createTextNode(txt(bk.after)));
+    row.appendChild(el("span", null, txt(bk.after)));
     var why = el("span", "fill-why");
     why.setAttribute("role", "status");
     why.setAttribute("aria-live", "polite");
@@ -1584,7 +1646,7 @@ RENDER.formula = function(body, cfg, key, redraw){
       });
       if(firstErr >= 0){
         msg.className = "code-msg no";
-        msg.innerHTML = "<b>Row " + (firstErr + 2) + " could not be worked out:</b> " + txt(errText);
+        msg.innerHTML = "<b>Row " + (firstErr + 2) + " could not be worked out:</b> " + escHtml(errText);
       } else if(right){
         solved[ti] = true;
         msg.className = "code-msg ok";
@@ -1703,13 +1765,13 @@ RENDER.sql = function(body, cfg, key){
       try { res = SQL.run(src, tables); }
       catch(e){
         msg.className = "code-msg no";
-        msg.innerHTML = "<b>That query could not run:</b> " + txt(e.message);
+        msg.innerHTML = "<b>That query could not run:</b> " + escHtml(e.message);
         return;
       }
       var w = el("div", "tbl-wrap");
       var tbl = el("table", "tbl");
       var th = el("thead"), hr = el("tr");
-      res.headers.forEach(function(h){ hr.appendChild(el("th", null, txt(h))); });
+      res.headers.forEach(function(h){ hr.appendChild(el("th", null, escHtml(h))); });
       th.appendChild(hr); tbl.appendChild(th);
       var bd = el("tbody");
       res.rows.slice(0, 25).forEach(function(r){
@@ -1883,8 +1945,10 @@ RENDER.code = function(body, cfg, key){
         var want = el("span", "code-test-want", " → " + showValue(t.expect));
         d.appendChild(want);
         if(r && !pass){
+          /* Both halves come back from the reader's own function -- the value it
+             returned, or the message it threw -- so both are escaped. */
           d.appendChild(el("span", "code-test-got",
-            r.ok ? "your code returned " + showValue(r.got) : "threw: " + txt(r.err)));
+            r.ok ? "your code returned " + escHtml(showValue(r.got)) : "threw: " + escHtml(r.err)));
         }
         if(t.note) d.appendChild(el("span", "code-test-note", txt(t.note)));
         row.appendChild(d);
@@ -1905,7 +1969,7 @@ RENDER.code = function(body, cfg, key){
         }
         if(payload.fatal){
           msg.className = "code-msg no";
-          msg.innerHTML = "<b>That code could not be loaded:</b> " + txt(payload.fatal);
+          msg.innerHTML = "<b>That code could not be loaded:</b> " + escHtml(payload.fatal);
           paint(null);
           return;
         }
@@ -1960,12 +2024,23 @@ function buildGlossary(){
   search.placeholder = "Search the chapter vocabulary…";
   search.setAttribute("aria-label", "Search the chapter vocabulary");
   tools.appendChild(search);
-  var filters = ["all", "1.1", "1.2", "1.3", "1.4"];
+  /* The tabs are derived from the objectives the terms in THIS module actually
+     carry, so a module can never be handed a tab that filters to nothing, and
+     the objective's own name from the module config becomes the spoken label. */
+  var present = [];
+  GLOSSARY.forEach(function(g){ if(g.lo && present.indexOf(g.lo) === -1) present.push(g.lo); });
+  present.sort();
+  var filters = ["all"].concat(present);
   var active = "all";
   var fBtns = [];
   filters.forEach(function(f){
     var b = el("button", "tab-btn", f === "all" ? "Every term" : "Objective " + f);
     b.type = "button";
+    if(f !== "all"){
+      var oName = OBJ_NAMES[f];
+      b.setAttribute("aria-label", oName ? "Objective " + f + ": " + oName : "Objective " + f);
+      if(oName) b.title = oName;
+    }
     b.setAttribute("aria-selected", f === "all" ? "true" : "false");
     b.addEventListener("click", function(){
       active = f;

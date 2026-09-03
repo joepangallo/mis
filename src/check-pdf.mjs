@@ -5,6 +5,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -12,6 +13,7 @@ const modArg = args.find((a) => a.startsWith("--module="));
 const SP = modArg ? join(HERE, modArg.slice("--module=".length)) : HERE;
 const cfgPath = join(SP, "sections.json");
 const CFG = existsSync(cfgPath) ? JSON.parse(readFileSync(cfgPath, "utf8")) : null;
+const RELEASE = args.includes("--release");
 const pdfArg = args.find((a) => !a.startsWith("--"));
 const PDF = resolve(pdfArg || join(HERE, "..", (CFG ? CFG.outputFile : "module-01-managing-in-the-digital-world.html").replace(/\.html$/, ".pdf")));
 const fail = [], warn = [];
@@ -57,6 +59,20 @@ if (text) {
     `PDF shows ${labelled} "Application supplement" labels, expected at least ${supplementCount}`);
   need(/hypothetical/i.test(text), "final challenge does not identify hypothetical situations in the PDF");
 
+  /* Nothing else here reads the page the PDF is a companion of, so a prose-only edit used to
+     leave a stale PDF passing every check. make-pdf.mjs stamps the print source with the first
+     twelve hex characters of the sha-256 of the HTML it was handed; if that token is missing or
+     belongs to an older page, this PDF was printed from a different build. */
+  const htmlName = (CFG ? CFG.outputFile : "module-01-managing-in-the-digital-world.html");
+  const htmlPath = join(dirname(PDF), htmlName);
+  if (!existsSync(htmlPath)) bad(`cannot verify PDF freshness: page not found beside the PDF: ${htmlPath}`);
+  else {
+    const stamp = createHash("sha256").update(readFileSync(htmlPath)).digest("hex").slice(0, 12);
+    const printed = (text.match(/Print edition ([0-9a-f]{12})/) || [])[1];
+    if (!printed) bad("PDF carries no print-edition stamp; re-run make-pdf.mjs and reprint");
+    else need(printed === stamp, `PDF was printed from a different build of ${htmlName} (stamp ${printed}, page is ${stamp}); reprint it`);
+  }
+
   const forbidden = [
     [/keiser/i, "school name"],
     [/\bCGS\s*3300\b/i, "course code"],
@@ -73,13 +89,18 @@ if (text) {
     [/&(?:[A-Za-z][A-Za-z0-9]+|#\d+|#x[0-9A-Fa-f]+);/, "unrendered HTML entity"],
     [/\uFFFD|□|▯/, "missing-glyph marker"],
   ];
-  const localList = join(HERE, "forbidden.local.txt");
+  /* Same lookup order as check.mjs: a module may carry its own list, and src/ is the
+     fallback. Looking only in src/ would let one checker honour a per-module list that the
+     other silently ignored. */
+  const localList = [join(SP, "forbidden.local.txt"), join(HERE, "forbidden.local.txt")]
+    .find((p) => existsSync(p)) || join(HERE, "forbidden.local.txt");
   if (existsSync(localList)) {
     for (const term of readFileSync(localList, "utf8").split(/\r?\n/).map((t) => t.trim()).filter(Boolean)) {
       const safe = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       forbidden.push([new RegExp(`\\b${safe}\\b`, "i"), "reserved assessment term"]);
     }
-  } else meh("src/forbidden.local.txt not present - assessment-specific PDF terms are not being checked");
+  } else if (RELEASE) bad("release check requires src/forbidden.local.txt");
+  else meh("src/forbidden.local.txt not present - assessment-specific PDF terms are not being checked");
   for (const [re, label] of forbidden) {
     const hit = text.match(re);
     if (hit) bad(`PDF contains ${label}: ${JSON.stringify(hit[0])}`);

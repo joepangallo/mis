@@ -299,7 +299,7 @@ ACT.invQuiz1 = {
       q: "Which of the following best matches the chapter&rsquo;s definition of a radical innovation?",
       opts: [
         "A software vendor releases an annual update with a redesigned menu and faster file handling",
-        "A manufacturer negotiates lower prices from its suppliers and passes some of the saving to customers",
+        "A manufacturer negotiates lower prices from its suppliers, passes part of the saving on to customers, and takes a share of the market from a rival that could not match the new price",
         "A device using a markedly different technology serves customers the old product never reached, and the old product is eventually marginalized",
         "A company spends more on research than any of its competitors in the same industry"
       ],

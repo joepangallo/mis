@@ -270,7 +270,7 @@ ACT.iprQuiz1 = {
         "A 1994 consulting forecast mentioned the internet on five of 750 pages, and by the 1997 briefing the internet was a pervasive topic throughout",
         "Betamax had better recording quality than VHS, and Sony later led Blu-ray to victory over HD DVD",
         "Eli Lilly created InnoCentive, and P&amp;G, Lego, and Heineken solicited ideas from outsiders",
-        "Instagram began as an app called Burbn, and its founders stripped it down to photo sharing and commenting"
+        "Instagram began life as an app called Burbn, and its founders stripped it back until nothing was left of it but photo sharing and commenting"
       ],
       a: 0,
       why: [

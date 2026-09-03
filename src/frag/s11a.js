@@ -429,7 +429,7 @@ ACT.dwQuiz2 = {
       opts: [
         "Information systems supporting healthcare processes, from diagnosis and treatment to analyzing patient data to running offices and hospitals.",
         "Software that lets patients look up symptoms, view test results, and book appointments online.",
-        "The medical equipment itself, such as cardiac monitors and imaging machines, once it is connected to a network.",
+        "The medical equipment itself, such as cardiac monitors and imaging machines, once it has been connected to a network and is sending its readings somewhere to be stored.",
         "A specialization within computer science that prepares programmers to build software for hospitals."
       ],
       a: 0,

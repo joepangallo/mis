@@ -103,6 +103,11 @@ button{font:inherit; color:inherit}
 .side-num{color:var(--muted); font-size:.74rem; font-variant-numeric:tabular-nums; flex:0 0 auto; min-width:24px}
 .side-txt{flex:1; min-width:0}
 .side-score{font-size:.72rem; color:var(--good); font-weight:800; font-variant-numeric:tabular-nums}
+/* The one static entry in the sidebar: a permanent jump to "where this module sits in the course
+   objectives," which otherwise lives in the hero and would never appear in the auto-generated section
+   list (that list only scans .chapter sections; the objective map is a hero card, not a section). */
+.side-pin{margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid var(--border-soft); font-weight:650}
+.side-pin .side-num{color:var(--accent-strong); font-weight:800}
 .side-foot{margin-top:12px; padding-top:11px; border-top:1px solid var(--border-soft); font-size:.76rem; color:var(--muted); line-height:1.55}
 main{min-width:0}
 main:focus{outline:none}
@@ -401,6 +406,18 @@ textarea.code-editor{width:100%; resize:vertical; line-height:1.6; tab-size:2; w
 .code-test-want{color:var(--muted)}
 .code-test-got{display:block; color:var(--bad); margin-top:3px}
 .code-test-note{display:block; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--text-dim); margin-top:3px; font-size:.82rem}
+
+/* The JavaScript-free summary of a runnable activity prints its reference
+   formula, query or solution verbatim, and that is what the printed companion
+   is read from. A long line must wrap: on paper there is nothing to scroll, so
+   an unwrapped line is not merely awkward, it is silently cut off and the
+   printed answer becomes wrong. */
+pre.act-answer{
+  margin:10px 0; padding:10px 12px; border:1px solid var(--border-soft);
+  border-radius:10px; background:var(--panel-2); overflow-wrap:anywhere;
+  font-size:.82rem; line-height:1.55; white-space:pre-wrap;
+}
+pre.act-answer code{font-size:inherit}
 
 /* ---- score / final ------------------------------------------------------- */
 .verdict{display:flex; gap:16px; align-items:center; flex-wrap:wrap; border:1px solid var(--border); border-radius:13px; background:var(--panel-2); padding:15px}

@@ -189,8 +189,8 @@ ACT.revQuiz1 = {
     {
       q: "Why did falling costs make free versions of digital products practical in the first place?",
       opts: [
-        "Because in a competitive marketplace price is set by marginal cost, and processing, storage, and bandwidth have become cheap enough that serving one more user costs very little",
-        "Because cloud computing turned variable costs into fixed costs, so additional users are absorbed by money the firm has already spent",
+        "Because price in a competitive marketplace is set by marginal cost, and serving one more user now costs very little",
+        "Because cloud computing turned what used to be variable costs into fixed ones, so every additional user is absorbed by money the firm committed long before that user arrived",
         "Because advertising revenue rises with every free user a service adds, so free users are not really free",
         "Because the cost of writing the software is paid once up front, so every user after the first one is pure profit"
       ],
@@ -205,9 +205,9 @@ ACT.revQuiz1 = {
     {
       q: "A company running a freemium product is deciding which features to leave in the free version. What guidance does the chapter give, and what does the Fantastical example add?",
       opts: [
-        "Give away as much as possible, because a larger base of free users turns into a larger number of paying subscribers",
+        "Give away as much as possible, because a larger base of free users reliably turns into a larger number of paying subscribers and the conversion rate holds steady whatever is given away",
         "Keep the free version as thin as possible, because users decide on price alone and will upgrade once they need the product",
-        "The free version must be compelling enough to attract users but not so generous that few will pay, and pulling a free feature back later is especially hard, as Fantastical found",
+        "The free version must be compelling enough to attract users but not so generous that few will pay, and a free feature is very hard to pull back later",
         "The balance is settled at launch, because changing which features are free afterwards is a routine pricing update"
       ],
       a: 2,

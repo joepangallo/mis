@@ -19,6 +19,13 @@ Ch*.docx
 *Management-Information-Systems.pdf
 Syllabus*.pdf
 
+# The supplied course materials, kept beside the working copy rather than in it. Everything in here is either
+# the publisher's chapter text or institutional paperwork: the textbook chapters, the eleven course objectives,
+# and the signature assignment whose case name is the reserved term src/check.mjs --release refuses to ship.
+# Ignoring the directory rather than each file means a new document dropped in here cannot be swept in by a
+# `git add -A` before anyone notices it.
+book/
+
 # Terms reserved to a live assessment, checked by src/check.mjs but never
 # committed — naming them here would be the same leak by another route.
 src/forbidden.local.txt

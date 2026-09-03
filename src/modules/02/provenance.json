@@ -1,7 +1,7 @@
 {
   "policy": {
     "core": "Objectives 2.1 through 2.3, their vocabulary, and their factual cases trace to Chapter 2 of the supplied textbook.",
-    "supplement": "Applications 2.4, 2.5 and 2.6 are explicitly labeled supplements, not textbook learning objectives. 2.4 places artificial intelligence inside the chapter's own value and advantage analysis. 2.5 makes the chapter's end-of-chapter spreadsheet and database exercises runnable on the page. 2.6 restates the chapter's analysis steps as executable functions and extends the database work across several tables; it introduces no new claims about the subject matter.",
+    "supplement": "Applications 2.4, 2.5, 2.6 and 2.7 are explicitly labeled supplements, not textbook learning objectives. 2.4 places artificial intelligence inside the chapter's own value and advantage analysis. 2.5 makes the chapter's end-of-chapter spreadsheet and database exercises runnable on the page. 2.6 restates the chapter's analysis steps as executable functions and extends the database work across several tables. 2.7 assembles the chapter's own frameworks into the shape a finished written analysis takes - the pressure, at least two value chain areas, exactly one recommended initiative, and a 150 to 200 word comparison against a real company the reader chooses. None of them introduces a new claim about the subject matter.",
     "hypotheticals": "Practice situations are signposted as hypothetical. They may supply qualitative conditions needed for reasoning, but may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim.",
     "currentLaw": "This module makes no claims about current law."
   },
@@ -17,6 +17,15 @@
     "porter1985": {
       "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press.",
       "relationship": "The competitive-forces and value-chain analysis Chapter 2 presents originates here."
+    },
+    "assessmentShape": {
+      "citation": "Program signature-assessment brief for this course's strategy analysis (SLO-1: align IT operations with organizational goals). Deliverables: a framework analysis using Porter's five forces and the value chain, and one written comparison summary of 150 to 200 words.",
+      "relationship": "Supplement 2.7 rehearses the shape of that deliverable - how many areas, how many initiatives, how long the summary - on a hypothetical firm invented for the purpose. The graded case itself is never named, described, characterised, or pre-solved anywhere in the module, and no detail unique to it appears on any page."
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials, which the course is graded against and which the textbook's own learning objectives do not match one for one.",
+      "localFile": "../../../book/Course Objectives.docx",
+      "relationship": "Scopes which course objectives this module may honestly claim and which application supplements exist, and supplies the wording of the eleven objectives reproduced in the module's on-page course-objective map."
     }
   },
   "fragments": {
@@ -65,6 +74,14 @@
       "chapter2",
       "chapter2Exercises",
       "porter1985"
+    ],
+    "s27": [
+      "chapter2",
+      "porter1985",
+      "assessmentShape"
+    ],
+    "shell": [
+      "courseObjectives"
     ]
   },
   "objectives": {
@@ -89,6 +106,11 @@
       "chapter2",
       "chapter2Exercises",
       "porter1985"
+    ],
+    "2.7": [
+      "chapter2",
+      "porter1985",
+      "assessmentShape"
     ]
   }
 }

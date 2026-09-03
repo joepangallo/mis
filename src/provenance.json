@@ -27,6 +27,11 @@
       "citation": "California Consumer Privacy Act statute effective January 1, 2026",
       "url": "https://cppa.ca.gov/regulations/pdf/20260101_ccpa_statute.pdf",
       "checked": "2026-08-30"
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials, which the course is graded against and which the textbook's own learning objectives do not match one for one.",
+      "localFile": "../book/Course Objectives.docx",
+      "relationship": "Scopes which course objectives this module may honestly claim, and supplies the wording of the eleven objectives reproduced in the module's on-page course-objective map."
     }
   },
   "chapterLocators": {
@@ -97,6 +102,9 @@
     ],
     "s17": [
       "chapter1"
+    ],
+    "shell": [
+      "courseObjectives"
     ]
   },
   "objectives": {

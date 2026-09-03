@@ -382,7 +382,7 @@ ACT.vchQuiz2 = {
         "Fund it, because a system that automates work and produces learning has already justified itself",
         "Fund it, because a company that can differentiate on quality should abandon a low-cost position",
         "Probably decline it, because organizations do not want systems that fail to match the strategy even when they offer automating and learning benefits",
-        "Declare it a strategic necessity, because any system a competitor might also buy is something the firm must have"
+        "Declare it a strategic necessity, because any system a competitor might also buy is something the firm has to have in order to stay level, whatever it does or does not do for the strategy"
       ],
       a: 2,
       why: [

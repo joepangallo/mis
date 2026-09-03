@@ -119,6 +119,10 @@ The purchased software is never the advantage; what you build on it is.</div>
 </ul></div>
 
 <div class="activity" data-activity="strQuiz2"></div>
+
+<p>The five companies below are not the practice grocer, and none of them is real. Naming the force, placing a system correctly, and catching a claim of permanent advantage are the same three judgments, asked about businesses you have not seen worked out already.</p>
+
+<div class="activity" data-activity="strApply"></div>
 `;
 
 ACT.strForces = {
@@ -244,7 +248,7 @@ ACT.strQuiz1 = {
         "Bargaining power of buyers, because the grocer is the buyer in this relationship",
         "Bargaining power of suppliers, because alternatives are few and suppliers set terms the grocer discovers after the fact",
         "Competitive rivalry, because other grocers are competing for the same produce",
-        "Threat of new entrants, because new growers could enter and bring prices back down"
+        "Threat of new entrants, because new growers could enter this market and bring prices back down again, so the grocer should wait for that correction rather than change anything now"
       ],
       a: 1,
       why: [
@@ -395,6 +399,96 @@ ACT.strQuiz2 = {
         "Correct. This is the chapter's own caution, and it explains the phrase gain or sustain: the advantage lives in continuing to improve the system after launch, not in the launch itself.",
         "This is the commodity argument the chapter states and then rejects, pointing to rapidly changing IT and to companies from Amazon to Zoom that built advantage by combining commoditized technologies with proprietary systems and business processes. It is a real position, but it is not this chapter's conclusion.",
         "The software is buyable, which is true and is why the launch by itself is not the advantage. It still misses the chapter's point: advantage comes from combining commoditized technology with proprietary systems, processes and data, so accumulated purchase history is the part a rival cannot license."
+      ]
+    }
+  ]
+};
+
+ACT.strApply = {
+  kind: "quiz",
+  label: "Apply it",
+  title: "Five companies you have not seen before",
+  how: "Each question is a different, invented business. Judge the force, the placement, or the claim before you read why.",
+  objective: "1.5",
+  questions: [
+    {
+      q: "A two-screen independent movie theater has seen steady walk-in traffic for a decade. In the last two years, several regular customers have said they now just wait for the same films to reach a streaming service a few months later. Which competitive force is doing the most damage right now?",
+      opts: [
+        "Rivalry among nearby theaters showing the same films",
+        "Suppliers, since film studios set the terms for which theaters get a release",
+        "The threat of substitute entertainment from outside the theater industry",
+        "New entrants building additional theaters in the area"
+      ],
+      a: 2,
+      why: [
+        "Nothing here describes another theater competing for the same audience on price or seating; the customers are not choosing a rival theater, they are choosing not to go to one.",
+        "Studio terms would explain which films a theater can show, not why a customer skips the trip entirely once a film is available at home.",
+        "Correct. Streaming is not another theater; it is a different way to meet the same need, arriving from outside the industry the theater competes in.",
+        "No new theater is described. The pressure is a way of watching the film that removes the need to visit any theater at all."
+      ]
+    },
+    {
+      q: "A dental lab makes crowns and dentures to order for local dentists. A new system lets a dentist's office upload a digital scan and see, in real time, whether the case has been received, is being milled, or has shipped. Which value-chain activity does this system improve?",
+      opts: [
+        "Outbound logistics, because it tracks a case on its way back to the dentist",
+        "Service, because dentists are the customers being kept informed",
+        "Operations, because the lab is milling crowns while the case is open",
+        "Firm infrastructure, because the system touches the lab's general management"
+      ],
+      a: 0,
+      why: [
+        "Correct. Outbound logistics covers getting the finished product to the customer, and a status feed that follows the case from milling through shipping is exactly that movement made visible.",
+        "Service is what happens after delivery &mdash; fixing a problem with a crown that does not fit. Being kept informed while the case is still in production is a different activity from after-sale support.",
+        "Operations is producing the crown itself &mdash; the milling. The tracking system does not do the milling; it reports on where the case sits, which is closer to the movement of the product than its production.",
+        "Firm infrastructure is general management, finance, legal and planning. A case-tracking system for dentists has nothing to do with how the lab is financed or governed."
+      ]
+    },
+    {
+      q: "A boutique fitness studio's owner lists two problems in a planning memo: (1) class bookings are still taken by phone and are double-booked most weeks, and (2) the studio's Instagram account &ldquo;does not feel cool enough&rdquo; compared to a newer studio down the street. Which one is a genuine value-chain opportunity a system could address?",
+      opts: [
+        "Both, since either problem could be fixed with the right kind of app",
+        "Neither, since a small fitness studio does not really run a full value chain",
+        "Only the Instagram one, since brand perception is what drives a customer's choice of studio",
+        "Only the double-booking one, since it names an activity the studio performs and a system could change"
+      ],
+      a: 3,
+      why: [
+        "Wanting a fix is not the test. One of these names something the studio does; the other names an opinion about a competitor's image.",
+        "Every business runs a full value chain, including the scheduling and service work happening around the classes, not only the classes themselves.",
+        "Brand perception can matter, but &ldquo;does not feel cool enough&rdquo; names no activity a system operates on &mdash; there is nothing here to build.",
+        "Correct. Booking and scheduling sit inside operations or service, are something the studio does today, and a system could plainly change how they are done. A rival's image is a competitive fact, not an activity in this studio's own chain."
+      ]
+    },
+    {
+      q: "A regional pest-control company installs the first online same-day booking tool in its market and tells investors this guarantees a permanent lead over every competitor. Given the chapter's own caution, what is the most accurate response?",
+      opts: [
+        "Advantage from an information system can be fleeting, since competitors can eventually copy it",
+        "The claim holds, since being first to market with a system locks in the advantage for good",
+        "The claim fails only because booking software is inexpensive to build",
+        "The claim fails because customers do not care about booking speed for pest control specifically"
+      ],
+      a: 0,
+      why: [
+        "Correct. Being first does not make an advantage permanent; the chapter is explicit that a rival can eventually do the same thing, which is why sustaining it takes continued work rather than a single launch.",
+        "This is the claim being tested, not the chapter's position. Nothing about launching first prevents a competitor from building the same tool next season.",
+        "Cost is beside the point. An advantage can fade even when a system was expensive to build, and a cheap one can still be worth having; the issue is durability, not price.",
+        "Nothing in the scenario says customers are indifferent to booking speed, and the question is about whether an advantage lasts, not whether the feature matters at all."
+      ]
+    },
+    {
+      q: "A specialty coffee roaster sells almost entirely through a handful of long-standing wholesale accounts and has been losing accounts to a competitor with fresher relationships. The owner commissions an expensive mobile app for direct-to-consumer sales, expecting it to fix the account losses. What does the chapter's caution about business models say to expect?",
+      opts: [
+        "The app will likely succeed regardless of the account losses, since a genuinely good app overcomes almost any weakness underneath it",
+        "The app targets a different problem than the one described; a system amplifies a business model, it does not repair a relationship it was never built to touch",
+        "The app is doomed to fail outright, since no app can be built while wholesale relationships remain unfixed",
+        "The account losses stop mattering once the app launches, since consumer and wholesale sales run on entirely separate tracks"
+      ],
+      a: 1,
+      why: [
+        "This reverses the chapter's point. A system amplifies whatever model is already there; it does not overcome a weakness the model has in an entirely different part of the business.",
+        "Correct. The business problem named is account relationships; the app is a consumer-sales tool. A system built for one activity does not repair a different one, however well it is built.",
+        "Nothing requires fixing wholesale first &mdash; the app can be built and can even succeed on its own terms. The caution is about what it can fix, not whether it can exist.",
+        "The two channels can certainly interact, but more importantly the question is about whether the app addresses the stated problem at all, which it does not."
       ]
     }
   ]
