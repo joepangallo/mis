@@ -1,0 +1,277 @@
+/* page.css — design system for the Week 1 homework pages.
+   Tokens are borrowed from ../../src/module.css so the pages read as siblings of the module pages;
+   the structure (sticky toolbar, task cards, editors, outputs, print rules) follows the db homework pattern. */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --info:#0a6a8c; --info-soft:#0a6a8c1a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --toolbar-h:86px;
+}
+
+/* ---- base ---------------------------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--toolbar-h) + 16px); color-scheme:light}
+body{margin:0; background:var(--bg); color:var(--text); font:16px/1.65 var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+h1,h2,h3,h4{line-height:1.25; margin:0 0 .5em; letter-spacing:-.015em}
+h1{font-size:2.05rem} h2{font-size:1.55rem} h3{font-size:1.15rem} h4{font-size:1rem}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1em; padding-left:1.25em}
+li{margin:.35em 0}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd,pre,textarea.editor,.mono{font-family:var(--mono)}
+code{font-size:.9em; background:var(--panel-2); border:1px solid var(--border-soft); border-radius:5px; padding:0 .3em}
+pre{margin:0 0 1em; font-size:.86rem; line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere}
+pre code{background:none; border:0; padding:0; font-size:inherit}
+button{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
+[hidden]{display:none !important}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+.skip{position:absolute; left:-9999px; top:0; background:var(--accent-strong); color:#fff; padding:10px 16px; z-index:200; border-radius:0 0 10px 0}
+.skip:focus{left:0}
+.wrap{width:min(1120px,calc(100% - 36px)); margin:0 auto}
+.no-script{margin:12px auto; max-width:900px; padding:12px 16px; border:2px solid var(--warn); border-radius:10px; background:var(--warn-soft)}
+
+/* ---- hero ---------------------------------------------------------------------------------- */
+.hero{border-bottom:1px solid var(--border); background:linear-gradient(160deg,var(--panel),var(--panel-2)); padding:30px 0 24px}
+.eyebrow{display:inline-block; font-size:.7rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); border:1px solid var(--accent-line); padding:3px 9px; border-radius:99px; margin-bottom:9px}
+.hero h1{margin:.1em 0 .35em}
+.lede{font-size:1.06rem; color:var(--text-dim); max-width:62rem}
+.lede p{margin:0 0 .6em}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.chip{display:inline-block; font-size:.8rem; padding:3px 10px; border-radius:99px; background:var(--accent-soft); border:1px solid var(--accent-line); color:var(--text)}
+.print-name{display:none}
+
+/* ---- toolbar ------------------------------------------------------------------------------- */
+.toolbar{position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter:saturate(150%) blur(10px); border-bottom:1px solid var(--border)}
+.toolbar-inner{min-height:var(--toolbar-h); display:flex; align-items:center; gap:6px 8px; flex-wrap:wrap; padding:8px 0 7px}
+.name-field{display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:700; color:var(--text-dim)}
+.name-field input{width:180px; min-height:36px; padding:6px 10px; border:1px solid var(--border); border-radius:9px; background:var(--panel); color:var(--text); font:inherit; font-weight:500}
+/* the status line gets a full-width row of its own under the name field and the buttons (CSS order — the DOM order
+   name → status → buttons is what a screen reader hears), so every message is readable in full and the toolbar keeps
+   one height whether the message is short or long: the page must not jump on the first keystroke */
+.save-status{order:1; flex:1 1 100%; min-width:0; min-height:24px; display:flex; align-items:center; gap:8px; color:var(--muted); font-size:.8rem; line-height:1.3}
+.save-status .status-text{min-width:0; overflow-wrap:anywhere}
+.save-status strong{color:var(--good)}
+.save-status.is-warn{color:var(--warn)}
+.save-status.is-bad{color:var(--bad)}
+.btn{min-height:36px; border:1px solid var(--accent-line); background:var(--accent-strong); color:#fff; border-radius:10px; padding:7px 13px; font-size:.86rem; font-weight:700; cursor:pointer; white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.5; cursor:not-allowed; filter:none}
+.btn.ghost{background:var(--panel); color:var(--text); border-color:var(--border)}
+.btn.ghost:hover{border-color:var(--accent-line); background:var(--panel-2); filter:none}
+.btn.run{background:var(--good); border-color:var(--good)}
+.btn.danger{background:var(--panel); color:var(--bad); border-color:#dfaaa6}
+.btn.danger:hover{background:var(--bad-soft); filter:none}
+.btn.small{min-height:30px; padding:4px 10px; font-size:.78rem}
+.save-status .btn.status-action{flex:0 0 auto; min-height:22px; padding:1px 9px; font-size:.74rem}
+
+/* ---- cards --------------------------------------------------------------------------------- */
+main{padding:26px 0 56px}
+.card{border:1px solid var(--border); background:var(--panel); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--shadow); margin:0 0 20px; scroll-margin-top:calc(var(--toolbar-h) + 16px)}
+.card > :last-child{margin-bottom:0}
+.section-label{display:block; margin-bottom:5px; color:var(--accent); font-size:.7rem; font-weight:900; letter-spacing:.11em; text-transform:uppercase}
+.card h2{margin-top:0}
+.card h3{margin-top:1.3em; padding-top:.5em; border-top:1px solid var(--border-soft)}
+.card h3:first-of-type{border-top:0; padding-top:0}
+.how p{margin:0}
+.notice{border:1px solid var(--border); border-left:5px solid var(--accent); background:var(--accent-soft); border-radius:12px; padding:12px 15px; margin:0 0 14px; font-size:.95rem}
+.notice > :last-child{margin-bottom:0}
+.notice.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.notice.bad{border-left-color:var(--bad); background:var(--bad-soft)}
+.notice.good{border-left-color:var(--good); background:var(--good-soft)}
+.notice.info{border-left-color:var(--info); background:var(--info-soft)}
+.pill{display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; padding:2px 8px; border-radius:99px; background:var(--panel-2); border:1px solid var(--border); color:var(--text-dim); vertical-align:middle}
+
+/* ---- tables from content ------------------------------------------------------------------- */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:12px; background:var(--panel); margin:0 0 16px}
+table.tbl{width:100%; border-collapse:collapse; font-size:.9rem}
+table.tbl caption{text-align:left; padding:9px 13px; font-weight:700; font-size:.85rem; color:var(--text-dim); background:var(--panel-2); border-bottom:1px solid var(--border-soft)}
+table.tbl th,table.tbl td{text-align:left; padding:8px 12px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl thead th{background:var(--panel-2); font-size:.74rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); white-space:nowrap}
+table.tbl tbody tr:last-child td{border-bottom:0}
+
+/* ---- steps --------------------------------------------------------------------------------- */
+ol.steps{list-style:none; margin:0 0 6px; padding:0; display:grid; gap:14px}
+ol.steps > li{margin:0; display:grid; grid-template-columns:minmax(44px,max-content) minmax(0,1fr); gap:12px; align-items:start; scroll-margin-top:calc(var(--toolbar-h) + 16px)}
+.step-label{display:grid; place-items:center; min-width:44px; min-height:30px; padding:2px 6px; border-radius:9px; background:var(--accent-strong); color:#fff; font:800 .82rem/1.2 var(--mono); text-align:center; overflow-wrap:anywhere}
+.step-label.is-word{background:var(--panel-2); color:var(--text-dim); border:1px solid var(--border); font-family:var(--sans); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; padding:2px 9px}
+.step-body{min-width:0}
+.step-body > p:last-child{margin-bottom:.4em}
+.expect{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px}
+.expect span{padding:3px 8px; border-radius:6px; background:var(--panel-2); border:1px solid var(--border); color:var(--text-dim); font:700 .72rem/1.3 var(--mono)}
+.step.is-optional .step-body::before{content:"Optional"; display:inline-block; margin-bottom:6px; font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+/* ---- workspaces ---------------------------------------------------------------------------- */
+.ws{margin:8px 0 10px; border:1px solid var(--border); border-radius:12px; background:var(--panel-2); padding:10px 12px}
+.ws-label{display:block; font-size:.74rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
+/* editors grow with their content (field-sizing) — browsers without it get the JS fallback, which sets an inline
+   height and re-measures on resize; overflow-y:auto guarantees a scrollbar if anything is ever taller than the box */
+textarea.editor{display:block; width:100%; min-height:96px; padding:10px 12px; resize:vertical; border:1px solid var(--border); border-radius:9px; background:var(--panel); color:var(--text); font-size:13.5px; line-height:1.55; tab-size:4; overflow-y:auto; field-sizing:content}
+textarea.editor.text-editor{font-family:var(--sans); font-size:15px; min-height:calc(var(--rows,4) * 1.55em + 22px)}
+textarea.editor::placeholder{color:var(--muted)}
+.print-text{display:none}
+.ws-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:8px}
+.shortcut{color:var(--muted); font-size:.74rem}
+.ws-ref pre{margin:0 0 8px; padding:10px 12px; background:var(--panel); border:1px solid var(--border); border-radius:9px; font-size:.84rem}
+.ws-ref .btn{margin-top:2px}
+
+/* ---- outputs ------------------------------------------------------------------------------- */
+/* an idle output stays in the accessibility tree (empty, zero height) so its first "Running…" is announced */
+.output{display:block; margin-top:10px; border:1px solid var(--border); border-radius:10px; background:var(--panel); overflow:hidden}
+.output[data-state="idle"]{border:0; margin:0; padding:0; min-height:0}
+.output[data-state="running"]{border-color:var(--warn)}
+.output[data-state="error"]{border-color:var(--bad)}
+.out-caption{padding:7px 11px; background:var(--warn-soft); color:var(--warn); font-size:.78rem; font-weight:700; border-bottom:1px solid var(--border-soft)}
+.out-head{padding:7px 11px; background:var(--panel-2); color:var(--text-dim); font-size:.76rem; font-weight:800; border-top:1px solid var(--border-soft)}
+.out-head:first-child{border-top:0}
+.out-msg{padding:9px 12px; font-size:.86rem; border-top:1px solid var(--border-soft); white-space:pre-wrap; overflow-wrap:anywhere}
+.out-msg:first-child{border-top:0}
+.out-msg.ok{background:var(--good-soft); color:var(--good)}
+.out-msg.note{background:var(--warn-soft); color:var(--warn)}
+.out-msg.error{background:var(--bad-soft); color:var(--bad)}
+.out-msg.info{background:var(--info-soft); color:var(--info)}
+.out-msg.running{background:var(--warn-soft); color:var(--warn)}
+.out-code{margin:0; padding:9px 12px; background:var(--panel-2); border-top:1px solid var(--border-soft); font-size:.82rem; max-height:320px; overflow:auto; white-space:pre-wrap}
+.out-scroll{overflow:auto; max-height:360px; border-top:1px solid var(--border-soft)}
+/* a result grows to its content and the wrapper scrolls sideways; a column is never narrower than its longest word
+   (a 2,000-character cell still wraps at 32rem) */
+table.result{width:max-content; min-width:100%; border-collapse:collapse; font-size:.8rem; font-family:var(--mono)}
+table.result caption{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
+table.result th,table.result td{padding:5px 9px; border-right:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); text-align:left; vertical-align:top; white-space:pre-wrap; overflow-wrap:break-word; word-break:normal; min-width:6ch; max-width:32rem}
+table.result th:last-child,table.result td:last-child{border-right:0}
+table.result thead th{position:sticky; top:0; background:var(--panel-2); font-weight:800; font-size:.72rem; color:var(--text-dim)}
+table.result td.null{color:var(--bad); font-style:italic}
+table.result td.empty{color:var(--muted); font-style:italic; text-align:center}
+.out-text{margin:0; padding:9px 12px; font-size:.84rem; white-space:pre-wrap; overflow-wrap:anywhere; max-height:420px; overflow:auto}
+.out-text.stderr{color:var(--bad); background:var(--bad-soft); border-top:1px solid var(--border-soft)}
+
+/* ---- database panel ------------------------------------------------------------------------ */
+.engine{display:grid; gap:8px; margin:0 0 16px}
+.engine-item{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:9px 12px; border:1px solid var(--border); border-radius:10px; background:var(--panel-2); font-size:.88rem}
+.engine-dot{width:10px; height:10px; border-radius:50%; background:#c39418; box-shadow:0 0 0 4px #f5e6b3; flex:0 0 10px}
+.engine-item[data-state="ready"] .engine-dot{background:var(--good); box-shadow:0 0 0 4px #cfe8dc}
+.engine-item[data-state="error"] .engine-dot{background:var(--bad); box-shadow:0 0 0 4px #f0cfd0}
+.engine-item[data-state="idle"] .engine-dot{background:#9a9283; box-shadow:0 0 0 4px #e3dccd}
+.engine-item strong{white-space:nowrap}
+.engine-item .engine-detail{color:var(--text-dim); flex:1 1 20ch; min-width:0; overflow-wrap:anywhere}
+.db-select-row{display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:0 0 12px; font-size:.9rem}
+.db-select-row select{flex:1 1 16ch; min-width:0; max-width:100%; font:inherit; padding:5px 9px; border:1px solid var(--border); border-radius:8px; background:var(--panel-2); color:var(--text)}
+.db-tables{display:grid; gap:6px; margin:0 0 12px}
+.db-table-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:7px 11px; border:1px solid var(--border); border-radius:9px; background:var(--panel-2); font-size:.9rem}
+.db-table-row .name{font-family:var(--mono); font-weight:700}
+.db-table-row .count{color:var(--muted); font-size:.82rem; margin-right:auto}
+.db-empty{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:9px 11px; border:1px dashed var(--border); border-radius:9px; color:var(--muted); font-size:.9rem}
+.db-empty-action{margin-left:auto; white-space:nowrap}
+.db-empty.is-error{color:var(--bad); background:var(--bad-soft); border:1px solid #dfaaa6}
+.db-detail{margin:0 0 6px}
+.db-detail .output{display:block; margin-top:0}
+
+/* ---- terminal ------------------------------------------------------------------------------ */
+.terminal{border:1px solid var(--border); border-radius:10px; background:#1f1b16; color:#efe7d9; overflow:hidden; margin:0 0 6px}
+.transcript{margin:0; padding:10px 12px; min-height:60px; max-height:380px; overflow:auto; font:.84rem/1.5 var(--mono); white-space:pre-wrap; overflow-wrap:anywhere}
+.transcript:empty::before{content:"Type a command below and press Run. Try: help"; color:#a89f8e}
+.term-entry{margin:0 0 8px}
+.term-cmd{color:#9ed0f2; font-weight:700}
+.term-stdout{color:#efe7d9}
+.term-stderr{color:#ffb4b8}
+.term-exit{color:#f5c56c}
+.term-note{color:#f5c56c}
+/* stays rendered (zero height) while empty, so the live region exists before "Downloading Python…" lands in it */
+.term-status{padding:0 12px; min-height:0; font:.84rem/1.5 var(--mono); color:#f5c56c}
+.term-status:not(:empty){padding-bottom:8px}
+.term-row{display:flex; align-items:center; gap:8px; padding:8px 10px; border-top:1px solid #3a342c; background:#2a2520}
+.term-row .prompt{color:#9ed0f2; font:800 .95rem var(--mono)}
+.term-row input{flex:1; min-width:0; min-height:34px; padding:6px 9px; border:1px solid #837868; border-radius:8px; background:#1f1b16; color:#efe7d9; font:.88rem var(--mono)}
+/* the accent ring is 2.2:1 on the dark row; the prompt colour is 10:1 there */
+.terminal :focus-visible{outline-color:#9ed0f2}
+.term-row input::placeholder{color:#8f8677}
+.term-row .btn{min-height:34px}
+.terminal[data-state="running"] .term-row{background:#3a2f1a}
+
+/* ---- files --------------------------------------------------------------------------------- */
+.file-tree,.file-tree ul{list-style:none; margin:0; padding:0}
+.file-tree ul{padding-left:18px; border-left:1px dashed var(--border)}
+.file-tree li{margin:4px 0}
+.file-folder{font-family:var(--mono); font-weight:700; color:var(--text-dim); font-size:.88rem}
+.file-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:4px 8px; border-radius:8px}
+.file-row.is-current{background:var(--accent-soft)}
+.file-name{font-family:var(--mono); font-size:.88rem}
+.file-size{color:var(--muted); font-size:.76rem}
+.file-actions{margin-left:auto; display:flex; gap:6px}
+pre.file-view{margin:6px 0 10px; padding:10px 12px; border:1px solid var(--border); border-radius:9px; background:var(--panel-2); max-height:420px; overflow:auto; font-size:.8rem; white-space:pre}
+
+/* ---- start over ---------------------------------------------------------------------------- */
+.danger-zone{margin-top:18px; padding:14px 16px; border:1px solid #dfaaa6; border-radius:12px; background:var(--bad-soft)}
+.danger-zone h3{border-top:0; padding-top:0; margin-top:0; color:var(--bad)}
+.danger-zone p{font-size:.9rem; color:var(--text-dim)}
+.danger-actions{display:flex; gap:8px; flex-wrap:wrap}
+
+/* ---- grading / unstuck / footer ------------------------------------------------------------ */
+.unstuck dt{font-weight:700; margin-top:.8em}
+.unstuck dd{margin:0 0 .4em; color:var(--text-dim)}
+.unstuck dd > :last-child{margin-bottom:0}
+.page-foot{border-top:1px solid var(--border); padding:18px 0 28px; font-size:.82rem; color:var(--muted)}
+
+/* ---- responsive ---------------------------------------------------------------------------- */
+@media (max-width:760px){
+  .wrap{width:min(100% - 22px,1120px)}
+  .toolbar{position:static}
+  .name-field input{width:140px}
+  .save-status{flex-basis:100%}
+  .card{padding:15px 14px}
+  ol.steps > li{grid-template-columns:minmax(38px,max-content) minmax(0,1fr); gap:9px}
+  .step-label{min-width:38px}
+  h1{font-size:1.7rem}
+}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+/* ---- print --------------------------------------------------------------------------------- */
+@media print{
+  /* the "Week 1 · Chapter N · version …" line prints as a running footer in the bottom page margin (--print-foot is set
+     per page by build.mjs; Chrome/Edge ≥ 131 render @page margin boxes), so it can never sit alone on a last page */
+  @page{margin:.55in; @bottom-center{content:var(--print-foot, ""); font:9pt/1.2 var(--sans); color:#000}}
+  body{background:#fff; color:#000; font-size:10.5pt}
+  .skip,.toolbar,.engine,.ws-actions,.danger-zone,.file-actions,.term-row,.term-status,.db-select-row,.shortcut,.ws-ref .btn,.page-foot{display:none !important}
+  .hero{background:#fff; color:#000; border-bottom:3px solid #000; padding:12px 0 10px}
+  .hero h1,.lede,.eyebrow{color:#000}
+  .eyebrow,.chip{border-color:#777; background:#fff; color:#000}
+  .print-name{display:block; margin:8px 0 0; font-size:11pt; font-weight:700}
+  main{padding:14px 0 0}
+  .card,.ws,.output,.tbl-wrap,.terminal{box-shadow:none; border-color:#999}
+  /* keep the small units together (a content table, a prose paragraph, a message line, a table row) and a heading or
+     label with what follows it; a step, a box, a code block and a result may break across pages — moving a whole step
+     (or a 17-line snippet) used to leave most of a page blank. Column headers repeat on every page of a long result. */
+  .tbl-wrap,.step-body > p,.out-msg,.out-caption{break-inside:avoid}
+  h2,h3,.ws-label,.out-head,.out-caption{break-after:avoid}
+  ol.steps > li{break-inside:auto}
+  table.result{width:100%; min-width:0}
+  table.result thead{display:table-header-group}
+  table.result tr{break-inside:avoid}
+  table.result th,table.result td{overflow-wrap:anywhere}
+  pre.print-text,.ws-ref pre,.out-text,.out-code,.transcript{orphans:3; widows:3}
+  .step-label,.step-label.is-word{background:#000; color:#fff; border-color:#000; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  /* the student's text prints from its mirror: a <pre> wraps at print width and breaks across pages, a textarea does neither */
+  textarea.editor{display:none !important}
+  .print-text{display:block; margin:0; padding:8px 10px; border:1px solid #777; border-radius:6px; background:#fff; color:#000; font:10pt/1.45 var(--mono); white-space:pre-wrap; overflow-wrap:anywhere; min-height:2.6em; max-height:none; overflow:visible}
+  .ws-text .print-text{font-family:var(--sans); font-size:10.5pt}
+  .print-text:empty::before{content:"(empty)"; color:#666}
+  .output,.output[data-state]{display:block; max-height:none; overflow:visible}
+  .output:empty{display:none}
+  .out-scroll,.out-text,.out-code,.transcript,pre.file-view{max-height:none; overflow:visible}
+  pre.file-view{white-space:pre-wrap; overflow-wrap:anywhere}
+  table.result thead th{position:static}
+  .terminal{background:#fff; color:#000; border:1px solid #999}
+  .transcript{color:#000}
+  .term-cmd{color:#000} .term-stdout{color:#000} .term-stderr{color:#900} .term-exit,.term-note{color:#630}
+  a{color:#000; text-decoration:underline}
+}

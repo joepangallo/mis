@@ -1,0 +1,30 @@
+{
+  "note": "The only external resources the student pages touch. Loader scripts are pinned by SRI; Pyodide's runtime files are pinned by the immutable versioned indexURL only (documented residual risk).",
+  "sqljs": {
+    "version": "1.14.2",
+    "base": "https://cdn.jsdelivr.net/npm/sql.js@1.14.2/dist/",
+    "loader": {
+      "url": "https://cdn.jsdelivr.net/npm/sql.js@1.14.2/dist/sql-wasm.js",
+      "integrity": "sha384-7Zym2PlgXfg8ap8cqJUwlZrLl+VEwt0NVbzYfhH28IWLnSpAgQOnSCY2+EXo5MtM",
+      "bytes": 46535
+    },
+    "wasm": {
+      "url": "https://cdn.jsdelivr.net/npm/sql.js@1.14.2/dist/sql-wasm.wasm",
+      "integrity": "sha384-x0YkuPkDHnKTZcB1JO4eb6j5+eU36aka+jBA6tOKTFaTz98b9V7fPT0QgZ9qyQW2",
+      "bytes": 658410
+    }
+  },
+  "pyodide": {
+    "version": "314.0.6",
+    "base": "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/",
+    "loader": {
+      "url": "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/pyodide.js",
+      "integrity": "sha384-NV89XnNMjL1QhwMSII1A5nl9HxxqvDhq6dsIoI2bComfFnFR06or2wdEAHhXEgOI",
+      "bytes": 18912
+    }
+  },
+  "helpLinks": [
+    "https://sqlitebrowser.org/",
+    "https://www.python.org/downloads/"
+  ]
+}

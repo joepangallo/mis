@@ -1,0 +1,40 @@
+Date Sold,Salesperson,Destination,Tickets Sold
+2/15/2022,Lisa,France (Paris and Nice),3
+3/4/2022,Bob,Hungary and Poland,2
+1/28/2022,Lisa,Thailand or Indonesia,4
+1/15/2022,Bob,Japan,2
+3/7/2022,Vivien,India,3
+2/1/2022,John,"Middle East (UAE, Qatar and Oman)",1
+3/6/2022,Andrew,Egypt and South Africa,1
+2/11/2022,Bob,India,2
+2/9/2022,John,Egypt and South Africa,2
+1/19/2022,John,Thailand or Indonesia,3
+1/30/2022,Heather,Hungary and Poland,3
+2/27/2022,Vivien,"Middle East (UAE, Qatar and Oman)",4
+3/14/2022,John,Japan,3
+2/13/2022,Lisa,Japan,2
+3/2/2022,John,France (Paris and Nice),1
+3/29/2022,Lisa,Egypt and South Africa,2
+3/17/2022,John,India,4
+1/22/2022,Vivien,Thailand or Indonesia,6
+2/5/2022,John,Hungary and Poland,2
+3/10/2022,Vivien,France (Paris and Nice),1
+3/7/2022,Vivien,Egypt and South Africa,2
+2/2/2022,Lisa,India,3
+1/23/2022,Vivien,Hungary and Poland,1
+3/4/2022,Andrew,"Middle East (UAE, Qatar and Oman)",3
+1/2/2022,Andrew,Japan,2
+1/19/2022,Andrew,France (Paris and Nice),2
+1/2/2022,Bob,France (Paris and Nice),1
+3/13/2022,Lisa,Hungary and Poland,3
+2/1/2022,Lisa,"Middle East (UAE, Qatar and Oman)",3
+3/17/2022,Vivien,Japan,3
+3/12/2022,Bob,Egypt and South Africa,2
+2/11/2022,Andrew,India,1
+2/19/2022,Bob,"Middle East (UAE, Qatar and Oman)",2
+2/19/2022,Heather,Egypt and South Africa,1
+3/16/2022,Heather,Thailand or Indonesia,1
+,,Total Tickets Sold,
+,,Most Tickets Sold,
+,,Least Tickets Sold,
+,,Average Number of Tickets Sold,
