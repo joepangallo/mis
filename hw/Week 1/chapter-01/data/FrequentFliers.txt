@@ -1,0 +1,44 @@
+Last_Name	First_Name	Address	City	State	ZIP	Phone_Number	Frequent_Flier_Number	Airline	Meal Category	Seating_Area
+Easton	Dennis	1401 Merman	Moscow	ID	83843	208-882-3476	725722	Continental	Vegan	Aisle
+Lin	Yu-Lin	1900 E 12th	Moscow	ID	83843	208-882-3232	530376	American Airlines	Vegan	Aisle
+Beasley	Steve	4125 Maryland Ct	Pullman	WA	99163	509-332-2354	144323	British Airways	Vegan	Aisle
+Becker	Hubert	560 Hawthorne Dr	Palouse	WA	99161	509-336-6578	603151	American Airlines	Vegan	Window
+Fuhrmann	Leslie	525 Dexter	Albion	WA	99102	509-336-9807	752937	Delta	Vegan	Window
+Gillespie	Patricia	454 Diane	Pullman	WA	99163	509-332-4578	803686	Continental	Vegan	Emgerency Exit
+Li	Chun	2250 Hwy 95 N	Colfax	WA	99111	509-357-4433	211641	American Airlines	Vegan	Aisle
+Lee	SooJin	1500 Ravenna Ct	Pullman	WA	99163	509-332-6589	740617	American Airlines	Vegan	Window
+Lawrence	Earl	2546 Palouse River Road	Palouse	WA	99161	509-123-4561	813258	American Airlines	Vegan	Window
+Baker	Beth	1230 Gibson Street	Pullman	WA	99160	509-555-8947	219608	American Airlines	Vegan	Aisle
+Zhan	Man	811 Summit Rd	Pullman	WA	99163	509-332-4567	978445	Delta	Vegan	Aisle
+Yang	Jung	105 NE Spring	Colfax	WA	99111	509-357-4509	515086	Delta	Vegan	Window
+Hutchinson	Eric	800 True St	Albion	WA	99102	509-336-5465	867814	American Airlines	Vegan	Window
+Thompson	Caitlin	225 N Thomas	Pullman	WA	99163	509-332-8790	15782	British Airways	Kosher	Window
+Baldwin	MaryAnn	450 Lamont St	Moscow	ID	83843	208-882-4455	206584	Continental	Kosher	Emgerency Exit
+Dumont	Mark	547 Laurel	Pullman	WA	99163	509-332-4526	74826	Continental	Kosher	Emgerency Exit
+Gibson	Fernanda	201 Ponderosa Way	Moscow	ID	83843	208-882-6745	79235	Delta	Kosher	Emgerency Exit
+Sanderson	Sonja	1212 W Pullman Rd	Palouse	WA	99161	509-336-5567	380392	Delta	Kosher	Aisle
+Clausen	Gina	1260 Crescent Ct	Palouse	WA	99161	509-336-7777	43476	American Airlines	Kosher	Window
+Hunter	Anna	6 State St	Moscow	ID	83843	208-882-3424	189143	Continental	Kosher	Emgerency Exit
+Marshal	Debbie	1427 E 5th	Moscow	ID	83843	208-882-1525	788839	Delta	Kosher	Aisle
+Austin	Joseph	448 C Street	Pullman	WA	99164	509-333-4576	398846	American Airlines	Kosher	Window
+Clark	Heather	313 S Blaine	Pullman	WA	99163	509-332-9087	276924	American Airlines	Kosher	Window
+Thornton	Janet	815 SE Klemgard	Pullman	WA	99163	509-332-8679	883456	British Airways	Kosher	Window
+Norton	Cynthia	333 Lauder	Colfax	WA	99111	509-357-5676	634054	Delta	Islamic/halal	Window
+Walker	Ken	1300 Old State Route 26	Pullman	WA	99163	509-332-6709	259804	British Airways	Islamic/halal	Window
+Nauman	Michael	345 A Street	Colfax	WA	99160	509-357-5673	742971	British Airways	Islamic/halal	Aisle
+Boyd	Gloria	445 Kamiaken	Pullman	WA	99163	509-332-1234	925803	British Airways	Islamic/halal	Aisle
+Proctor	Ginny	1031 Tolo Tr	Lewiston	ID	83501	208-875-3333	525630	Continental	Islamic/halal	Aisle
+Hunt	Jack	1200 Fairview St	Pullman	WA	99163	509-332-6708	424960	Delta	Islamic/halal	Aisle
+West	Helen	1255 Sunny Meade Way	Colfax	WA	99111	509-357-3487	747197	American Airlines	Islamic/halal	Window
+Henderson	Angela	50 Bishop Blvd	Pullman	WA	99163	509-332-4343	434996	British Airways	Islamic/halal	Window
+Stewart	Kathy	840 Mabelle	Colfax	WA	99111	509-357-8889	306513	British Airways	Islamic/halal	Window
+Cox	Linda	1920 Terre View Dr	Pullman	WA	99163	509-332-7456	472458	American Airlines	Islamic/halal	Window
+Choi	Diane	103 S Main	Moscow	ID	83843	208-882-5478	224029	British Airways	Non Veg	Window
+Looney	Carl	1234 Main	Pullman	WA	99163	509-222-5645	401419	Continental	Non Veg	Emgerency Exit
+Fujimoto	Carla	1501 Whitman	Pullman	WA	99163	509-332-4532	542880	Continental	Non Veg	Aisle
+Herman	Frank	1611 Hwy 3	Pullman	WA	99163	509-332-1267	837399	American Airlines	Non Veg	Window
+Wallace	Alex	1000 Colorado St	Moscow	ID	83843	208-882-5576	304136	Delta	Non Veg	Aisle
+Hall	Marion	110 Van Buren	Colfax	WA	99111	509-357-3434	135797	American Airlines	Non Veg	Aisle
+Weber	Cliff	1037 Fink Rd	Lewiston	ID	83501	208-875-7844	874563	American Airlines	Non Veg	Aisle
+Frazier	Nancy	1630 Valley Rd	Pullman	WA	99163	509-332-1243	294736	Continental	Non Veg	Aisle
+Sanchez	Ramon	1375 Mtn View Dr	Moscow	ID	83843	208-882-9898	818401	Continental	Non Veg	Aisle
