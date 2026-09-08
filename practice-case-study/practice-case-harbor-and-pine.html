@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Case &mdash; Harbor &amp; Pine Garden Centers</title>
+<meta name="description" content="A practice framework analysis: apply the five competitive forces and the value chain to a hypothetical regional garden retailer, recommend one IT initiative, and compare it against a real retailer.">
+<style>
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(880px,calc(100% - 32px));margin:auto}
+a{color:var(--accent-strong)}
+header.top{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;padding:34px 0 28px}
+header.top .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:4px 11px;margin-bottom:10px}
+header.top h1{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em}
+header.top p{margin:0;color:#e7eefc;max-width:66ch}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);padding:10px 0}
+.toolbar-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.toolbar label{font-size:.78rem;font-weight:700;color:var(--muted)}
+.toolbar input[type=text]{margin-left:6px;height:34px;padding:0 10px;border:1px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);min-width:180px}
+.save-status{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.btn{border:1px solid var(--accent-line);background:var(--accent-strong);color:#fff;border-radius:9px;
+  padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn.ghost:hover{background:var(--panel-2)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3ae}
+.btn.danger:hover{background:var(--bad-soft)}
+main{padding:26px 0 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px 22px;margin:0 0 18px}
+.card h2{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.01em}
+.card .kicker{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px}
+.card p{margin:10px 0}
+.card ul{margin:10px 0;padding-left:22px}
+.card li{margin:4px 0}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:10px;
+  padding:12px 14px;margin:12px 0;font-size:.92rem}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.good{border-left-color:var(--good);background:var(--good-soft)}
+.facts{list-style:none;padding:0;margin:12px 0}
+.facts li{position:relative;padding:9px 12px 9px 30px;background:var(--panel-2);
+  border:1px solid var(--border-soft);border-radius:10px;margin:7px 0;font-size:.9rem}
+.facts li::before{content:"";position:absolute;left:13px;top:17px;width:7px;height:7px;
+  border-radius:999px;background:var(--accent)}
+.task{border-top:1px dashed var(--border-soft);padding-top:16px;margin-top:16px}
+.task:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.task h3{margin:0 0 6px;font-size:1.05rem}
+.task .points{float:right;background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:3px 10px;font-size:.72rem;font-weight:800;color:var(--muted)}
+textarea{display:block;width:100%;min-height:130px;margin-top:10px;padding:11px 12px;
+  border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);
+  font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;resize:vertical}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.wc-badge{padding:3px 10px;border-radius:999px;font-weight:800;background:var(--panel-2);color:var(--muted)}
+.wc-badge.ok{background:var(--good-soft);color:var(--good)}
+.wc-badge.low,.wc-badge.high{background:var(--warn-soft);color:var(--warn)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+table.tbl caption{text-align:left;padding:8px 10px;background:var(--accent-strong);color:#fff;
+  border-radius:8px 8px 0 0;font-weight:700}
+table.tbl th,table.tbl td{padding:8px 10px;border-bottom:1px solid var(--border-soft);text-align:left;
+  vertical-align:top}
+table.tbl th{background:var(--panel-2);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted)}
+table.tbl tfoot td{font-weight:800}
+.checks{list-style:none;padding:0;margin:10px 0 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;padding:7px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.checks li:last-child{border-bottom:none}
+.checks .mark{flex:none;width:20px;height:20px;border-radius:999px;display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;background:var(--panel-2);color:var(--muted);border:1px solid var(--border-soft)}
+.checks li.ok .mark{background:var(--good);border-color:var(--good);color:#fff}
+.checks small{display:block;color:var(--muted);font-size:.79rem;margin-top:2px}
+footer{border-top:1px solid var(--border);padding:18px 0 30px;font-size:.82rem;color:var(--muted)}
+@media print{
+  .toolbar,.btn,.no-print{display:none !important}
+  body{background:#fff}
+  .card{box-shadow:none;break-inside:avoid}
+  textarea{border:1px solid #999;min-height:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Practice case</span>
+    <h1>Harbor &amp; Pine Garden Centers</h1>
+    <p>A regional retailer losing ground while its own stores cannot see each other&rsquo;s stock. Apply the
+      five competitive forces and the value chain, recommend one initiative, and compare it against a real
+      company you can read about.</p>
+  </div>
+</header>
+
+<div class="toolbar no-print">
+  <div class="wrap toolbar-inner">
+    <label for="who">Your name<input type="text" id="who" placeholder="Type your name"></label>
+    <button type="button" class="btn" id="exportBtn">Export my work</button>
+    <button type="button" class="btn ghost" id="printBtn">Print or save as PDF</button>
+    <button type="button" class="btn danger" id="clearBtn">Clear everything</button>
+    <span class="save-status" id="saveStatus">Saved in this browser as you type.</span>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section class="card">
+      <span class="kicker">Scenario</span>
+      <h2>A garden retailer whose busiest eight weeks are also its worst</h2>
+      <p><b>Harbor &amp; Pine Garden Centers is not a real company.</b> It is invented for this exercise, the
+        way the practice examples in the lecture modules are, and every organisation, number and quotation in
+        it is hypothetical.</p>
+      <p>You have been hired as an analyst at Harbor &amp; Pine Garden Centers, a mid-sized regional retailer
+        selling plants, garden supplies, outdoor furniture and seasonal décor. Harbor &amp; Pine operates
+        <b>14 stores across two states</b> and has relied on in-person sales for more than fifteen years. Over
+        the last three years the company has lost share steadily: online plant and garden sellers now ship
+        living stock directly to a customer&rsquo;s door, two national chains have enlarged their garden
+        departments, and freight from the growers has risen every season.</p>
+      <p>Leadership is uneasy. The eight-week spring peak produces almost half the year&rsquo;s revenue, and
+        during it the checkout queues run long enough that staff watch customers abandon loaded carts. No store
+        can see another store&rsquo;s stock, so a customer is told an item is unavailable while a store twelve
+        miles away holds forty of them. There is no online ordering, no record of what any customer has bought
+        before, and no way to tell which of the fourteen stores is quietly unprofitable until the year closes.
+        Before investing in new technology, the executive team wants to understand <b>how information systems
+        could strengthen Harbor &amp; Pine&rsquo;s competitive position and support its long-term
+        strategy</b>.</p>
+
+      <h3 style="margin:18px 0 0;font-size:1rem">What the executives have told you</h3>
+      <ul class="facts">
+        <li>Roughly 46 percent of annual revenue arrives in the eight weeks of spring, and about a fifth of
+          spring transactions are abandoned at the queue on the busiest weekends.</li>
+        <li>Stock is counted by hand at each store on a Sunday; by the following Friday the count is
+          &ldquo;more of a rumour than a number,&rdquo; in the operations manager&rsquo;s words.</li>
+        <li>Plants are perishable inventory: a tray unsold at the wrong end of the season is scrapped, and last
+          year scrapped stock came to about 7 percent of purchases.</li>
+        <li>Deliveries arrive from eleven growers on eleven schedules, and freight has risen faster than the
+          prices Harbor &amp; Pine can charge.</li>
+        <li>Landscapers and small contractors buy in volume, ask for terms, and account for a growing share of
+          revenue &mdash; but nobody can say how much, because there is no customer record.</li>
+        <li>The company has a website with photographs, opening hours and a telephone number.</li>
+      </ul>
+
+      <div class="callout">Nothing in this scenario is drawn from any real company. If a detail sounds familiar
+        for reasons outside this exercise, that is a coincidence &mdash; analyse this Harbor &amp; Pine and only
+        this one, using the evidence above plus any assumption you are willing to state in writing.</div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">Before you start</span>
+      <h2>Choose a company to compare against</h2>
+      <p>Choose <b>one real retail or e-commerce company</b> to use as a point of comparison with Harbor &amp;
+        Pine. Look at its competitive landscape, what it has done with technology, and the difficulties it is
+        working through now. The goal is not admiration; it is to gather enough understanding to draw a clear
+        parallel, and then to use that parallel to sharpen your view of where technology would make the greatest
+        strategic difference at Harbor &amp; Pine.</p>
+      <div class="callout warn">Pick a company whose relevant practice is actually <i>documented</i> somewhere
+        you can read. A famous company whose inner workings are undescribed gives you a name and nothing else,
+        and a lesson that only works at that company&rsquo;s budget or footprint is not a lesson that transfers
+        to fourteen garden centres.</div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">Your tasks</span>
+      <h2>Four tasks, one analysis</h2>
+      <p>Work them in order. Each one depends on the one before it, which is also the order a real analyst is
+        obliged to work in: name the pressure before naming the fix, and name the activity before naming the
+        product.</p>
+
+      <div class="task">
+        <span class="points">6 pts</span>
+        <h3>Task 1 &middot; Apply the five competitive forces</h3>
+        <p>Evaluate the competitive pressures facing Harbor &amp; Pine. For <b>each of the five forces</b>,
+          write one or two sentences saying whether it is weak, moderate or strong, and give the evidence from
+          the scenario &mdash; or a reasonable assumption you state plainly &mdash; that supports the rating.
+          Finish with one sentence naming the <b>single strongest force</b> and saying why it beats the other
+          four.</p>
+        <textarea id="t1" data-key="t1" placeholder="Rivalry among existing competitors: &#10;Threat of new entrants: &#10;Bargaining power of buyers: &#10;Bargaining power of suppliers: &#10;Threat of substitutes: &#10;&#10;The strongest pressure is … because …"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">6 pts</span>
+        <h3>Task 2 &middot; Use the value chain to find the opportunities</h3>
+        <p>Using the value chain, identify <b>at least two internal areas</b> &mdash; primary activities or
+          support bands &mdash; where information systems could create an operational or customer-focused
+          advantage. For each area: name the activity, describe the specific weakness the scenario points to,
+          and say briefly what a system would change there. Two is a floor rather than a target: the second area
+          is what shows you scanned the chain instead of stopping at your first idea, and it becomes the
+          alternative your recommendation was preferred over.</p>
+        <textarea id="t2" data-key="t2" placeholder="Area 1 — activity: &#10;   the weakness: &#10;   what a system would change: &#10;&#10;Area 2 — a genuinely different activity: &#10;   the weakness: &#10;   what a system would change:"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">8 pts</span>
+        <h3>Task 3 &middot; Recommend exactly one IT initiative</h3>
+        <p>Recommend <b>one</b> initiative, drawn from one of the areas you named, that would directly support
+          Harbor &amp; Pine&rsquo;s strategic goals. Do not list options and let the reader choose &mdash; one
+          initiative is a decision, three are a wish list. Cover all four parts:</p>
+        <ul>
+          <li><b>What it does</b> &mdash; concrete enough that somebody could cost it and later judge whether it
+            shipped. Not &ldquo;improve our digital capabilities.&rdquo;</li>
+          <li><b>Which activity it belongs to, and where the saving appears</b> &mdash; these are frequently not
+            the same activity, and naming both is what stops the obvious objection.</li>
+          <li><b>Which force it answers</b> &mdash; tie it back to Task 1 explicitly. A recommendation that
+            cannot be traced to a pressure is a preference.</li>
+          <li><b>How you would know it worked</b> &mdash; one measure, with the number you expect it to move,
+            and the date you would look at it.</li>
+        </ul>
+        <textarea id="t3" data-key="t3" placeholder="What it does: &#10;&#10;The activity it belongs to, and where the saving appears: &#10;&#10;The force it answers, from Task 1: &#10;&#10;The measure and the date:"></textarea>
+      </div>
+
+      <div class="task">
+        <span class="points">5 pts</span>
+        <h3>Task 4 &middot; Compare against the real company, in 150 to 200 words</h3>
+        <p>Write a short summary explaining how the two companies complement each other and what Harbor &amp;
+          Pine can draw from the comparison. Say what the company you chose actually did, what makes it worth
+          comparing even though the two are almost certainly a different size, and the <b>one lesson</b> that
+          would still make sense at fourteen stores. Stay inside the word band: shorter usually means the
+          evidence went missing, longer usually means history and admiration crept in.</p>
+        <textarea id="t4" data-key="t4" placeholder="The company I am comparing with Harbor & Pine is …"></textarea>
+        <div class="wc-row">
+          <span class="wc-badge" id="wcBadge">0 words</span>
+          <span id="wcMsg" style="color:var(--muted)">Aim for 150&ndash;200 words.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card no-print">
+      <span class="kicker">Before you hand it in</span>
+      <h2>Check the shape of what you wrote</h2>
+      <p>This checks structure, not correctness &mdash; it cannot tell whether your reasoning is any good, and a
+        full row of ticks is not a grade. What it can catch is the handful of omissions that cost marks on this
+        kind of analysis every single time.</p>
+      <ul class="checks" id="shapeChecks"></ul>
+    </section>
+
+    <section class="card">
+      <span class="kicker">What to hand in</span>
+      <h2>Two deliverables</h2>
+      <ul>
+        <li><b>The framework analysis</b> &mdash; the five forces and the value chain areas, Tasks 1 and 2.</li>
+        <li><b>The written summary</b> explaining the strategic alignment between the initiative and the
+          business, Tasks 3 and 4.</li>
+      </ul>
+      <p>Use <b>Export my work</b> above to download a text file containing your name and all four answers in
+        order, or write them in your own document if you prefer &mdash; either is fine, as long as all four
+        tasks are clearly labelled. Submit it the way your instructor has asked.</p>
+    </section>
+
+    <section class="card">
+      <span class="kicker">How this is weighted</span>
+      <h2>25 points</h2>
+      <table class="tbl">
+        <caption>Points per task</caption>
+        <thead><tr><th>Task</th><th>What earns the points</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td>1 &middot; Five forces</td><td>All five forces addressed, each with evidence or a stated assumption; the strongest one named and defended against the other four</td><td>6</td></tr>
+          <tr><td>2 &middot; Value chain</td><td>At least two <i>genuinely different</i> activities, each with a specific weakness named &mdash; not the same idea written twice</td><td>6</td></tr>
+          <tr><td>3 &middot; Recommendation</td><td>Exactly one initiative, concrete enough to cost; the activity it belongs to and where the saving lands; the force it answers; a measure and a date</td><td>8</td></tr>
+          <tr><td>4 &middot; Comparison</td><td>A real, named company; a lesson that still makes sense at fourteen stores; inside the 150&ndash;200 word band</td><td>5</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Total</td><td>25</td></tr></tfoot>
+      </table>
+      <p style="font-size:.85rem;color:var(--muted)">A restated number is not reasoning. Every task is weighted
+        the way it is because it asks you to explain a judgment rather than report a fact you already had.</p>
+    </section>
+
+    <section class="card no-print">
+      <span class="kicker">If you are stuck</span>
+      <h2>Where to practise the two frameworks first</h2>
+      <ul>
+        <li><a href="../five-forces-and-value-chain.html">Five Forces and the Value Chain &mdash; a working
+          review</a>: rate an industry force by force against an analyst&rsquo;s reading, sort evidence to the
+          force it actually demonstrates, place a proposed system on the chain, and work three case studies that
+          need both models at once.</li>
+        <li><a href="../module-02-enabling-strategy-through-information-systems.html">Module 2</a>: the two
+          frameworks taught from the beginning, with the generic strategies and the alignment test that decides
+          which investments get funded.</li>
+      </ul>
+      <div class="callout good"><b>One habit worth copying from the worked cases.</b> Write the sentence
+        &ldquo;the strongest force is X, and the evidence is Y&rdquo; before you write anything about technology.
+        Nearly every weak analysis of this kind is a product recommendation that was decided first and given a
+        diagnosis afterwards.</div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Harbor &amp; Pine Garden Centers is a hypothetical practice scenario. Your work is saved in
+    this browser only, on this computer &mdash; nothing is uploaded anywhere. Export or print before you close
+    the tab if you want to keep a copy.</div>
+</footer>
+
+<script>
+/* ============================================================================
+   Everything below runs in the reader's own browser. Nothing is uploaded, and
+   nothing is graded here — the checklist reports the SHAPE of an answer, which
+   is the part a reader can verify without an instructor in the room.
+   ========================================================================== */
+var KEY = "harbor-pine-practice-case-v1";
+var FIELDS = ["who", "t1", "t2", "t3", "t4"];
+
+function $(id){ return document.getElementById(id); }
+function words(s){ s = (s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+
+/* ------------------------------------------------------------- persistence */
+function load(){
+  var raw = null;
+  try{ raw = localStorage.getItem(KEY); }catch(e){}
+  if(!raw) return;
+  var data = {};
+  try{ data = JSON.parse(raw) || {}; }catch(e){ return; }
+  FIELDS.forEach(function(id){ if(typeof data[id] === "string") $(id).value = data[id]; });
+}
+var saveTimer = null;
+function save(){
+  var data = {};
+  FIELDS.forEach(function(id){ data[id] = $(id).value; });
+  try{
+    localStorage.setItem(KEY, JSON.stringify(data));
+    $("saveStatus").textContent = "Saved in this browser · " +
+      new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+  }catch(e){
+    $("saveStatus").textContent = "This browser is not saving — export before you close the tab.";
+  }
+}
+function queueSave(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(save, 400);
+}
+
+/* --------------------------------------------------------- the word counter */
+function refreshWordCount(){
+  var n = words($("t4").value);
+  var badge = $("wcBadge"), msg = $("wcMsg");
+  badge.textContent = n + (n === 1 ? " word" : " words");
+  badge.className = "wc-badge" + (n === 0 ? "" : n < 150 ? " low" : n > 200 ? " high" : " ok");
+  msg.textContent = n === 0 ? "Aim for 150–200 words."
+    : n < 150 ? "Under the band — usually a sign the evidence or the lesson is missing."
+    : n > 200 ? "Over the band — history and admiration are the usual culprits."
+    : "Inside the band.";
+}
+
+/* ------------------------------------------------------------ shape checks */
+var FORCE_WORDS = [
+  {label:"rivalry", re:/rival/i},
+  {label:"new entrants", re:/entrant|new entr/i},
+  {label:"buyer power", re:/buyer|customer power|bargaining power of (the )?(buyers|customers)/i},
+  {label:"supplier power", re:/supplier|grower power/i},
+  {label:"substitutes", re:/substitut/i}
+];
+var ACTIVITY_WORDS = [
+  {label:"inbound logistics", re:/inbound/i},
+  {label:"operations", re:/operations?\b/i},
+  {label:"outbound logistics", re:/outbound/i},
+  {label:"sales and marketing", re:/sales|marketing/i},
+  {label:"service", re:/\bservice\b|after the sale|complaint/i},
+  {label:"firm infrastructure", re:/firm infrastructure|administration|general management/i},
+  {label:"human resources", re:/human resource|\bhr\b|staffing|rostering/i},
+  {label:"technology development", re:/technology development|research and development|\br&d\b/i},
+  {label:"procurement", re:/procurement|purchasing decision|buying decision/i}
+];
+var VAGUE = ["improve our", "digital capabilit", "leverage", "synergy", "best in class",
+             "state of the art", "cutting edge", "modernis", "moderniz", "transform our",
+             "next generation", "world class"];
+var TIME_RE = /\b(day|days|week|weeks|month|months|quarter|quarters|season|seasons|year|years|spring|autumn|fall|january|february|march|april|may|june|july|august|september|october|november|december)\b/i;
+var NUM_RE = /\d|\b(half|third|quarter|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fourteen|dozen)\b/i;
+
+function matched(list, text){
+  return list.filter(function(item){ return item.re.test(text); });
+}
+
+var CHECKS = [
+  {label:"Your name is on it",
+   hint:"The export writes it at the top of the file.",
+   test:function(v){ return v.who.trim().length >= 2; }},
+  {label:"All five forces are addressed in Task 1",
+   hint:function(v){
+     var missing = FORCE_WORDS.filter(function(f){ return !f.re.test(v.t1); }).map(function(f){ return f.label; });
+     return missing.length ? "Not yet mentioned: " + missing.join(", ") + "." : "All five are named.";
+   },
+   test:function(v){ return matched(FORCE_WORDS, v.t1).length === 5; }},
+  {label:"One force is named as the strongest",
+   hint:"A rating of all five with no verdict leaves the reader to choose, which is the job you were given.",
+   test:function(v){ return /strongest|most damage|greatest pressure|dominant force/i.test(v.t1); }},
+  {label:"Task 1 cites something observable",
+   hint:"A share, a count, a frequency — something a reader could check rather than a feeling.",
+   test:function(v){ return NUM_RE.test(v.t1) && words(v.t1) >= 60; }},
+  {label:"Task 2 names two genuinely different activities",
+   hint:function(v){
+     var found = matched(ACTIVITY_WORDS, v.t2).map(function(a){ return a.label; });
+     return found.length ? "Found: " + found.join(", ") + "." : "Name the activities in the model's own words.";
+   },
+   test:function(v){ return matched(ACTIVITY_WORDS, v.t2).length >= 2 && words(v.t2) >= 50; }},
+  {label:"Task 3 recommends one concrete initiative",
+   hint:"Concrete means somebody could cost it. Vague phrasing such as “improve our digital capabilities” fails here.",
+   test:function(v){
+     if(words(v.t3) < 40) return false;
+     var low = v.t3.toLowerCase();
+     for(var i = 0; i < VAGUE.length; i++){ if(low.indexOf(VAGUE[i]) !== -1) return false; }
+     return true;
+   }},
+  {label:"Task 3 traces back to a force from Task 1",
+   hint:"Name the force in the recommendation itself. A fix with no pressure behind it is a preference.",
+   test:function(v){ return matched(FORCE_WORDS, v.t3).length >= 1; }},
+  {label:"Task 3 gives a measure and a date",
+   hint:"The number you expect to move, and when you would look at it.",
+   test:function(v){ return NUM_RE.test(v.t3) && TIME_RE.test(v.t3); }},
+  {label:"Task 4 names a real company and stays in the band",
+   hint:function(v){
+     var n = words(v.t4);
+     return n === 0 ? "150 to 200 words." : n < 150 ? (150 - n) + " words short of the band."
+       : n > 200 ? (n - 200) + " words over the band." : "Inside the band.";
+   },
+   test:function(v){ var n = words(v.t4); return n >= 150 && n <= 200; }}
+];
+
+function values(){
+  return {who:$("who").value, t1:$("t1").value, t2:$("t2").value, t3:$("t3").value, t4:$("t4").value};
+}
+
+function refreshChecks(){
+  var v = values();
+  var host = $("shapeChecks");
+  host.innerHTML = "";
+  CHECKS.forEach(function(c){
+    var ok = c.test(v);
+    var li = document.createElement("li");
+    if(ok) li.className = "ok";
+    var hint = typeof c.hint === "function" ? c.hint(v) : c.hint;
+    li.innerHTML = '<span class="mark">' + (ok ? "✓" : "·") + "</span>" +
+      "<span>" + c.label + "<small>" + hint + "</small></span>";
+    host.appendChild(li);
+  });
+}
+
+/* ------------------------------------------------------------------ export */
+function exportText(){
+  var v = values();
+  var stamp = new Date().toLocaleDateString();
+  var out = [
+    "Harbor & Pine Garden Centers — practice framework analysis",
+    v.who.trim() ? "Prepared by: " + v.who.trim() : "Prepared by: (no name given)",
+    stamp, "",
+    "TASK 1 — THE FIVE COMPETITIVE FORCES", "", v.t1.trim() || "(not answered)", "",
+    "TASK 2 — VALUE CHAIN AREAS", "", v.t2.trim() || "(not answered)", "",
+    "TASK 3 — THE RECOMMENDED INITIATIVE", "", v.t3.trim() || "(not answered)", "",
+    "TASK 4 — COMPARISON SUMMARY (" + words(v.t4) + " words)", "", v.t4.trim() || "(not answered)", ""
+  ].join("\n");
+  var blob = new Blob([out], {type:"text/plain;charset=utf-8"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  var who = v.who.trim().replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  a.href = url;
+  a.download = (who ? who + "-" : "") + "harbor-and-pine-case.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
+
+/* ------------------------------------------------------------------- wiring */
+FIELDS.forEach(function(id){
+  $(id).addEventListener("input", function(){
+    queueSave();
+    refreshChecks();
+    if(id === "t4") refreshWordCount();
+  });
+});
+$("exportBtn").addEventListener("click", exportText);
+$("printBtn").addEventListener("click", function(){ window.print(); });
+$("clearBtn").addEventListener("click", function(){
+  if(!window.confirm("Clear your name and all four answers on this computer? This cannot be undone.")) return;
+  FIELDS.forEach(function(id){ $(id).value = ""; });
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  refreshChecks();
+  refreshWordCount();
+  $("saveStatus").textContent = "Cleared.";
+});
+
+load();
+refreshChecks();
+refreshWordCount();
+</script>
+</body>
+</html>

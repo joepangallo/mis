@@ -124,7 +124,7 @@ chapter; this page is where a reader goes to actually practise them. Like the mo
 game it is one self-contained file with no CDN, no fonts, no scripts and no network of any kind, and
 it inherits the theme the reader last set on a module page.
 
-Ten sections, six of them graded activities tracked by a counter in the header:
+Eleven sections, seven of them graded activities tracked by a counter in the header:
 
 - **Up close** &mdash; an interactive five-force diagram and a nine-activity value chain map. Selecting
   a force gives its definition, the conditions that make it strong, what the internet did to it, the
@@ -144,6 +144,12 @@ Ten sections, six of them graded activities tracked by a counter in the header:
   re-scores every proposal, which is business/IT alignment made arithmetic.
 - **Place the system** &mdash; nine systems into nine activities, including the two that catch everybody:
   procurement against inbound logistics, and a human resources system whose saving lands in operations.
+- **Case studies** &mdash; three hypothetical firms (a commercial print shop, an independent hotel, a cleaning
+  contractor) that cannot be answered with one framework. Each carries a brief, a strip of facts, a costed chain
+  as an exhibit, and three decisions: which force is doing the damage, which activity can answer it, and what to
+  commit to. The debrief on each case stays shut until every decision is made, then gives the reasoning and a
+  model written answer. Between them the three teach that the symptom is not the force, that the largest cost is
+  rarely the target, and that the activity owning the system and the activity owning the saving often differ.
 - **Build the analysis** &mdash; a guided writer that checks the *shape* of what the reader produces
   (a force named exactly, evidence carrying a number, two genuinely different areas, exactly one concrete
   initiative, a measure and a date) and assembles a copyable summary as they type.
@@ -161,6 +167,27 @@ four positions, and every link resolving to a file that exists.
 ```sh
 node --test five-forces-and-value-chain.test.mjs
 ```
+
+## Practice case studies
+
+`practice-case-study/` holds full-length practice analyses in the shape of a written framework study &mdash;
+scenario, four tasks, two deliverables &mdash; for readers who have finished Module 2 and the workshop above.
+Each is one self-contained HTML file that saves the reader&rsquo;s work in their own browser, counts the words
+in the summary, exports a plain-text file with every answer in order, and prints cleanly.
+
+- [`practice-case-study.html`](practice-case-study/practice-case-study.html) &mdash; **Riverside Professional
+  Development**, a training provider whose certifications are being met a different way. Built so that one force
+  clearly dominates.
+- [`practice-case-harbor-and-pine.html`](practice-case-study/practice-case-harbor-and-pine.html) &mdash;
+  **Harbor &amp; Pine Garden Centers**, fourteen garden centres losing share while their own stores cannot see
+  each other&rsquo;s stock. Built so that **two** forces are defensible as the strongest, which moves the mark
+  onto the argument rather than the label. Adds a live shape checklist &mdash; all five forces addressed, a
+  strongest one named, two genuinely different activities, one concrete initiative traced back to a force, a
+  measure with a date, and the summary inside its word band &mdash; and links back to the workshop and Module 2.
+
+Both firms are invented, say so on the page, and share no detail with any assessment. Instructor grading notes
+sit beside each page and are **gitignored deliberately**, so a model answer cannot reach a student repository by
+a careless `git add`.
 
 ## Course materials
 
