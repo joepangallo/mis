@@ -91,8 +91,8 @@ before choosing a new one &mdash; a literal list here would drift the next time 
 
 ## Activity kinds
 
-`quiz` · `sort` · `match` · `order` · `fill` · `explore` · `diagram` · `sim` · `selfcheck`, plus the three
-runnable kinds described below: `formula` · `sql` · `code`.
+`quiz` · `sort` · `match` · `order` · `fill` · `explore` · `diagram` · `sim` · `selfcheck` · `case`, plus the
+three runnable kinds described below: `formula` · `sql` · `code`.
 
 Every kind renders a complete answer summary into the page for readers without JavaScript, so the
 page stays usable — and printable — with scripting off.
@@ -105,6 +105,23 @@ page stays usable — and printable — with scripting off.
 per-section activity-key prefixes and objectives, its objective names, which sections are application
 supplements, and the output filename. Pass `--module=modules/<id>` to `build.mjs`, `check.mjs`,
 `check-pdf.mjs` and `regen-manifest.mjs`; with no flag they operate on Module 1 exactly as before.
+
+## The mini case study
+
+`case` is the kind Module 4 is built around, and the one to reach for when the point is a judgement
+rather than a definition. It carries a `brief` (the situation, in forty to ninety words), a strip of
+`facts`, an optional `exhibit` &mdash; a small table of figures the reader has to actually read
+&mdash; a short list of `questions` that are ordinary four-option decisions held to exactly the quiz
+bar, and a `debrief`.
+
+The debrief is the part that matters pedagogically: the runtime keeps it shut until every decision has
+an answer, and shows a running count until then, so a reader cannot read the conclusion and then pick
+the option that matches it. On paper there is nothing to hold it back for, so the static fallback
+prints the brief, the facts, the exhibit, every decision with its answer, and the debrief in full.
+
+Its decisions join the same pool as inline quiz questions when `check.mjs` measures the option-length
+tell, because a case decision that can be answered by picking the longest option is the same defect
+wherever it appears.
 
 ## Activity kinds that run code
 

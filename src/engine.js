@@ -244,6 +244,81 @@ function build(key, cfg, host){
    ====================================================================== */
 var RENDER = {};
 
+/* ---- one multiple-choice question --------------------------------------
+   Shared by the quiz kind and by the decisions inside a mini case study, so a
+   question behaves identically wherever it appears: every option explains
+   itself once the answer lands, including the ones that were not chosen, and
+   the question can be retried on its own without disturbing its neighbours.
+   `onChange` receives the chosen index, or null when the question is retried. */
+function choiceQuestion(q, qi, onChange){
+  var wrap = el("div", "q");
+  var head = el("div", "q-head");
+  head.appendChild(el("span", "q-num", String(qi + 1)));
+  head.appendChild(el("span", "q-text", txt(q.q)));
+  wrap.appendChild(head);
+
+  var list = el("ul", "opts");
+  var fb = el("div", "fb");
+  fb.setAttribute("role", "status");
+  fb.setAttribute("aria-live", "polite");
+  fb.tabIndex = -1;
+  fb.hidden = true;
+  var buttons = [];
+  var chosen = null;
+
+  q.opts.forEach(function(optText, oi){
+    var li = el("li");
+    var b = el("button", "opt");
+    b.type = "button";
+    b.appendChild(el("span", "opt-key", LETTERS[oi]));
+    var span = el("span", null, txt(optText));
+    b.appendChild(span);
+    b.addEventListener("click", function(){
+      if(chosen !== null) return;
+      chosen = oi;
+      var right = (oi === q.a);
+      buttons.forEach(function(bb, bi){
+        bb.disabled = true;
+        bb.classList.add(bi === q.a ? "is-correct" : (bi === oi ? "is-wrong" : "is-muted"));
+        if(q.why && q.why[bi]){
+          var w = el("span", "opt-why", (bi === q.a ? "<b>Correct.</b> " + whyText(q.why[bi]) : txt(q.why[bi])));
+          bb.querySelector("span:last-child").appendChild(w);
+        }
+      });
+      fb.hidden = false;
+      fb.className = "fb " + (right ? "ok" : "no");
+      fb.innerHTML = right
+        ? "<b>That is the one.</b> Read the other three as well &mdash; each says what it genuinely is."
+        : "<b>Not quite.</b> The right answer is <b>" + LETTERS[q.a] + "</b>. Every option below now explains itself.";
+      var again = el("button", "act-reset retry-question", "Try this question again");
+      again.type = "button";
+      again.addEventListener("click", function(){
+        chosen = null;
+        buttons.forEach(function(bb, bi){
+          bb.disabled = false;
+          bb.className = "opt";
+          var last = bb.querySelector("span:last-child");
+          var w = last.querySelector(".opt-why");
+          if(w) w.remove();
+        });
+        fb.hidden = true;
+        fb.innerHTML = "";
+        onChange(null);
+      });
+      fb.appendChild(again);
+      onChange(oi);
+      fb.focus();
+    });
+    buttons.push(b);
+    li.appendChild(b);
+    list.appendChild(li);
+  });
+
+  wrap.appendChild(list);
+  wrap.appendChild(fb);
+  return wrap;
+}
+
 /* ---- quiz ---------------------------------------------------------------
    Multiple choice where every option explains itself after the answer lands,
    including the three that were not chosen. Knowing why a wrong answer is
@@ -253,71 +328,10 @@ RENDER.quiz = function(body, cfg, key){
   var answered = new Array(qs.length).fill(null);
 
   qs.forEach(function(q, qi){
-    var wrap = el("div", "q");
-    var head = el("div", "q-head");
-    head.appendChild(el("span", "q-num", String(qi + 1)));
-    head.appendChild(el("span", "q-text", txt(q.q)));
-    wrap.appendChild(head);
-
-    var list = el("ul", "opts");
-    var fb = el("div", "fb");
-    fb.setAttribute("role", "status");
-    fb.setAttribute("aria-live", "polite");
-    fb.tabIndex = -1;
-    fb.hidden = true;
-    var buttons = [];
-
-    q.opts.forEach(function(optText, oi){
-      var li = el("li");
-      var b = el("button", "opt");
-      b.type = "button";
-      b.appendChild(el("span", "opt-key", LETTERS[oi]));
-      var span = el("span", null, txt(optText));
-      b.appendChild(span);
-      b.addEventListener("click", function(){
-        if(answered[qi] !== null) return;
-        answered[qi] = oi;
-        var right = (oi === q.a);
-        buttons.forEach(function(bb, bi){
-          bb.disabled = true;
-          bb.classList.add(bi === q.a ? "is-correct" : (bi === oi ? "is-wrong" : "is-muted"));
-          if(q.why && q.why[bi]){
-            var w = el("span", "opt-why", (bi === q.a ? "<b>Correct.</b> " + whyText(q.why[bi]) : txt(q.why[bi])));
-            bb.querySelector("span:last-child").appendChild(w);
-          }
-        });
-        fb.hidden = false;
-        fb.className = "fb " + (right ? "ok" : "no");
-        fb.innerHTML = right
-          ? "<b>That is the one.</b> Read the other three as well &mdash; each says what it genuinely is."
-          : "<b>Not quite.</b> The right answer is <b>" + LETTERS[q.a] + "</b>. Every option below now explains itself.";
-        var again = el("button", "act-reset retry-question", "Try this question again");
-        again.type = "button";
-        again.addEventListener("click", function(){
-          answered[qi] = null;
-          buttons.forEach(function(bb, bi){
-            bb.disabled = false;
-            bb.className = "opt";
-            var last = bb.querySelector("span:last-child");
-            var w = last.querySelector(".opt-why");
-            if(w) w.remove();
-          });
-          fb.hidden = true;
-          fb.innerHTML = "";
-          score();
-        });
-        fb.appendChild(again);
-        score();
-        fb.focus();
-      });
-      buttons.push(b);
-      li.appendChild(b);
-      list.appendChild(li);
-    });
-
-    wrap.appendChild(list);
-    wrap.appendChild(fb);
-    body.appendChild(wrap);
+    body.appendChild(choiceQuestion(q, qi, function(chosen){
+      answered[qi] = chosen;
+      score();
+    }));
   });
 
   function score(){
@@ -923,6 +937,112 @@ RENDER.selfcheck = function(body, cfg, key){
     body.appendChild(row);
   });
   report(key, 0, items.length);
+};
+
+
+/* ---- case ---------------------------------------------------------------
+   A mini case study: a short brief, a strip of facts, an optional exhibit with
+   figures the reader has to actually read, and a small set of analyst
+   decisions. The debrief is held back until every decision has been made, so
+   the point of the case is worked out rather than read first.               */
+RENDER.case = function(body, cfg, key){
+  var qs = cfg.questions || [];
+  var answered = new Array(qs.length).fill(null);
+
+  var brief = el("div", "case-brief");
+  brief.appendChild(el("p", "case-situation", txt(cfg.brief)));
+  body.appendChild(brief);
+
+  if((cfg.facts || []).length){
+    var facts = el("dl", "case-facts");
+    cfg.facts.forEach(function(f){
+      /* Each label and value is wrapped so one fact is one grid cell. Left as bare dt and dd
+         siblings, the grid counts them separately and a four-fact strip becomes eight columns
+         that push the activity wider than the page. */
+      var pair = el("div", "case-fact");
+      pair.appendChild(el("dt", null, txt(f.k)));
+      pair.appendChild(el("dd", null, txt(f.v)));
+      facts.appendChild(pair);
+    });
+    body.appendChild(facts);
+  }
+
+  if(cfg.exhibit){
+    var ex = cfg.exhibit;
+    var exhibit = el("div", "case-exhibit");
+    exhibit.appendChild(el("p", "case-exhibit-name", txt(ex.name)));
+    var scroll = el("div", "tbl-wrap");
+    var table = el("table", "tbl");
+    table.appendChild(el("caption", null, txt(ex.caption)));
+    var thead = el("thead"), hrow = el("tr");
+    /* Authored column headings, so txt() is right here. The loop variable is deliberately
+       not the single letter the SQL result-header builder uses: check.mjs matches on that
+       exact expression to catch a reader-chosen alias being rendered without escaping. */
+    (ex.headers || []).forEach(function(heading){
+      var th = el("th", null, txt(heading));
+      th.scope = "col";
+      hrow.appendChild(th);
+    });
+    thead.appendChild(hrow);
+    table.appendChild(thead);
+    var tbody = el("tbody");
+    (ex.rows || []).forEach(function(r){
+      var tr = el("tr");
+      r.forEach(function(cell){ tr.appendChild(el("td", null, txt(cell))); });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    scroll.appendChild(table);
+    exhibit.appendChild(scroll);
+    body.appendChild(exhibit);
+  }
+
+  var decisions = el("div", "case-decisions");
+  body.appendChild(decisions);
+
+  var debrief = el("div", "case-debrief");
+  debrief.setAttribute("role", "status");
+  debrief.tabIndex = -1;
+  body.appendChild(debrief);
+
+  function paintDebrief(){
+    var done = 0;
+    answered.forEach(function(a){ if(a !== null) done++; });
+    debrief.innerHTML = "";
+    if(done < qs.length){
+      /* The locked panel is a running count that changes on every answer. Announcing it would
+         talk over the feedback the question itself has just published, so the region stays
+         silent until there is something worth saying. */
+      debrief.setAttribute("aria-live", "off");
+      debrief.className = "case-debrief is-locked";
+      debrief.appendChild(el("p", "case-locked",
+        "<b>What this case was about</b> opens once all " + qs.length +
+        " decisions have an answer &mdash; " + done + " of " + qs.length + " so far."));
+      return;
+    }
+    debrief.setAttribute("aria-live", "polite");
+    debrief.className = "case-debrief is-open";
+    debrief.appendChild(el("p", "case-debrief-head", "What this case was really about"));
+    debrief.appendChild(el("p", null, txt(cfg.debrief)));
+  }
+
+  qs.forEach(function(q, qi){
+    decisions.appendChild(choiceQuestion(q, qi, function(chosen){
+      var wasComplete = answered.indexOf(null) === -1;
+      answered[qi] = chosen;
+      var n = 0;
+      answered.forEach(function(a){ if(a !== null) n++; });
+      report(key, n, qs.length);
+      paintDebrief();
+      /* The debrief announces itself through its live region rather than by taking focus, so a
+         reader working through the decisions with a keyboard is not thrown to the bottom of the
+         activity the moment the last one lands. */
+      if(!wasComplete && n === qs.length) debrief.scrollIntoView({block: "nearest"});
+    }));
+  });
+
+  report(key, 0, qs.length);
+  paintDebrief();
 };
 
 

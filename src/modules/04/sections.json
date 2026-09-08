@@ -1,0 +1,24 @@
+{
+  "outputFile": "module-04-electronic-commerce-and-fintech.html",
+  "title": "Module 4 · Electronic Commerce, Fintech, and Trust Online",
+  "sections": [
+    { "id": "s41a", "title": "What electronic commerce actually is", "prefix": "ec", "objective": "4.1" },
+    { "id": "s41b", "title": "Who is on each side of the transaction", "prefix": "typ", "objective": "4.1" },
+    { "id": "s41c", "title": "Fintech: money without the middle", "prefix": "fin", "objective": "4.1" },
+    { "id": "s45a", "title": "Paying online without handing over everything", "prefix": "pay", "objective": "4.5" },
+    { "id": "s45b", "title": "Cryptocurrency, blockchain, and trust without a middleman", "prefix": "cry", "objective": "4.5" },
+    { "id": "s45c", "title": "Card-not-present: chargebacks, screening, and fraud signals", "prefix": "rsk", "objective": "4.5" },
+    { "id": "s45d", "title": "Legal ground: consumers, tax, and intellectual property", "prefix": "law", "objective": "4.5" },
+    { "id": "s46", "title": "The ecosystem behind a storefront, and the store on the street", "prefix": "eco", "objective": "4.6" },
+    { "id": "s47", "title": "Turning this chapter into an analysis", "prefix": "ana", "objective": "4.7" }
+  ],
+  "objectives": ["4.1", "4.5", "4.6", "4.7"],
+  "objectiveNames": {
+    "4.1": "Electronic commerce and fintech in digital business",
+    "4.5": "Payment security and legal compliance in electronic commerce",
+    "4.6": "The commerce ecosystem and the physical store",
+    "4.7": "Turning the chapter into a written analysis"
+  },
+  "supplements": ["s46", "s47"],
+  "id": "04"
+}

@@ -1,0 +1,116 @@
+{
+ "policy": {
+  "core": "Objectives 4.1 and 4.5, their vocabulary, their tables and their factual cases trace to the supplied Chapter 4 material. That material carries two of the chapter's learning objectives - LO 4.1, on defining electronic commerce and fintech, and LO 4.5, on payment security and legal compliance - together with the chapter's Technology Today, Security Matters and Industry Analysis features. Objectives 4.2 through 4.4 are not present in the supplied file and are not reconstructed anywhere in this module. Section numbering follows the objectives the source actually carries rather than inventing the missing ones.",
+  "supplement": "Applications 4.6 and 4.7 are explicitly labeled application supplements, not textbook learning objectives. 4.6 assembles the chapter's own Technology Today feature on the commerce ecosystem and its Industry Analysis feature on retailing, both of which sit outside the two objective bodies, and adds no claim the chapter does not already make. 4.7 rehearses the shape of a written strategy analysis on a hypothetical firm, using the competitive-forces and value-chain vocabulary the course met earlier and the evidence this chapter supplies, and exercises the course's own spreadsheet and database objectives on invented order data.",
+  "hypotheticals": "Practice situations are signposted as hypothetical. They may supply the qualitative conditions a reader needs in order to reason, and they may carry invented figures clearly presented as invented, but they may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim. Real organizations are named only where the chapter itself names them, and only for what the chapter says about them.",
+  "currentLaw": "This module asserts no current law. The chapter names a Supreme Court ruling, a federal trade regulator, state-level regulation, and an attempt at harmonization across the European Union. The module teaches the mechanism each of those illustrates - that a duty can attach to where the customer is rather than to where the seller is, and that reaching a sales threshold can create a tax obligation without any physical presence - and attributes the specifics to the chapter rather than restating them as the law in force. Nothing here is advice, and every legal question in the module resolves to consulting somebody qualified in the relevant jurisdiction.",
+  "datedFigures": "The chapter carries a number of point-in-time figures: transaction volumes, fraud losses, cart abandonment rates, card processing percentages and the scale of one named breach. Where the module uses them it attributes them to the chapter as a snapshot and teaches the ordering, the ratio or the mechanism rather than the digits. The consolidated list is in qualifications below."
+ },
+ "sources": {
+  "chapter4": {
+   "citation": "Valacich & Schneider, Information Systems Today, Chapter 4 (foundations of electronic commerce and fintech; securing payments and navigating legal issues in electronic commerce), supplied as a local chapter file carrying LO 4.1 and LO 4.5 together with the chapter's Technology Today, Security Matters and Industry Analysis features.",
+   "localFile": "../../../book/Ch 4.docx"
+  },
+  "courseObjectives": {
+   "citation": "The eleven course objectives supplied with the course materials. Objective 3 names competitive advantage through changing the marketplace; objective 5 names internet technology for electronic commerce, communicating with employees and working with business partners; objective 8 names individual and organizational consequences; objective 9 names security breaches and computer crimes; objectives 10 and 11 name the database and spreadsheet work.",
+   "localFile": "../../../book/Course Objectives.docx",
+   "relationship": "Scopes which course objectives this module may honestly claim, decides that the two application supplements exist at all, and supplies the wording of the eleven objectives reproduced in the module's on-page course-objective map."
+  },
+  "porter1985": {
+   "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press.",
+   "relationship": "Supplement 4.7 uses the competitive-forces and value-chain vocabulary that originates here and that the course met in its strategy chapter. This module teaches no new framework; it supplies the electronic-commerce evidence those frameworks are applied to."
+  },
+  "assessmentShape": {
+   "citation": "Program signature-assessment brief for this course's strategy analysis (SLO-1: align IT operations with organizational goals). Deliverables: a framework analysis using the competitive forces and the value chain, and one written comparison summary of 150 to 200 words.",
+   "relationship": "Supplement 4.7 rehearses the shape of that deliverable - which pressures to name, how many value-creating areas to identify, exactly one recommended initiative, and a summary of that length - on a hypothetical firm invented for the purpose. The graded case itself is never named, described, characterised, or pre-solved anywhere in the module, and no detail unique to it appears on any page."
+  },
+  "courseDataWork": {
+   "citation": "The course's own database work in SQLite and its spreadsheet work, which is where course objectives 10 and 11 are exercised.",
+   "relationship": "Supplement 4.7 puts a runnable sheet and a runnable query in front of the reader over invented storefront order data, so the chapter's judgement questions are answered from figures rather than from impressions. It prepares for that work rather than replacing it, and introduces no textbook learning objective."
+  }
+ },
+ "fragments": {
+  "s41a": [
+   "chapter4"
+  ],
+  "s41b": [
+   "chapter4"
+  ],
+  "s41c": [
+   "chapter4"
+  ],
+  "s45a": [
+   "chapter4"
+  ],
+  "s45b": [
+   "chapter4"
+  ],
+  "s45c": [
+   "chapter4"
+  ],
+  "s45d": [
+   "chapter4"
+  ],
+  "s46": [
+   "chapter4",
+   "courseObjectives"
+  ],
+  "s47": [
+   "chapter4",
+   "courseObjectives",
+   "porter1985",
+   "assessmentShape",
+   "courseDataWork"
+  ],
+  "glossary": [
+   "chapter4"
+  ],
+  "final": [
+   "chapter4",
+   "courseObjectives",
+   "porter1985",
+   "courseDataWork"
+  ],
+  "shell": [
+   "chapter4",
+   "courseObjectives"
+  ]
+ },
+ "objectives": {
+  "4.1": [
+   "chapter4"
+  ],
+  "4.5": [
+   "chapter4"
+  ],
+  "4.6": [
+   "chapter4",
+   "courseObjectives"
+  ],
+  "4.7": [
+   "chapter4",
+   "courseObjectives",
+   "porter1985",
+   "assessmentShape",
+   "courseDataWork"
+  ]
+ },
+ "qualifications": [
+  "The supplied chapter file carries only LO 4.1 and LO 4.5. Objectives 4.2, 4.3 and 4.4 are absent from it and are not reconstructed, referenced as taught, or numbered anywhere in this module.",
+  "The chapter describes one named payment service as owned by the online auction company it grew up with. That ownership ended when the payment company was separated into an independent business in 2015, so the module names the two firms' shared history rather than a current corporate relationship.",
+  "The chapter's transaction-volume figures - manufacturers' electronic-commerce shipments and wholesalers' electronic-commerce sales, both for 2022 - are point-in-time and are presented as the chapter's snapshot. What the module teaches from them is the ordering: business-to-business volume is far larger than business-to-consumer volume, which is the part that stays true when the digits move.",
+  "The chapter's identity-fraud cost figure is given for a single year and for one country. The module attributes it as such and teaches why card-not-present transactions carry the exposure rather than teaching the number.",
+  "The chapter reports that more than half of online shopping carts are abandoned, citing reports rather than a measurement of its own. Abandonment rates vary widely by sector, device and basket size, so the module presents this as the chapter's figure and teaches the causes it lists.",
+  "The chapter's range for card processing fees, between one and three percent of the purchase amount, varies by card type, merchant category, region and negotiated terms. The module uses it to show why a middleman's fee makes very small payments uneconomic, not as a rate to quote.",
+  "The chapter describes cryptocurrency transactions as anonymous. On a public ledger they are pseudonymous: the addresses carry no name, but every transaction is permanently visible and addresses can often be linked to people by other means. The module says pseudonymous and explains the difference, because treating a public ledger as anonymous is exactly the mistake that has cost people their privacy.",
+  "The chapter says cryptocurrencies use encryption technologies to secure transactions. The mechanisms that actually do this work are cryptographic hashing and digital signatures rather than encryption in the sense of hiding message contents; the ledger is deliberately readable by everyone. The module names the mechanism accurately and keeps the chapter's point, which is that no central authority is required.",
+  "The chapter's account of a named ticketing company's breach reports a figure for affected customers that originated with the group advertising the stolen data for sale, and the antitrust proceedings it mentions were ongoing rather than concluded. The module attributes both to the chapter, teaches the mechanism - a database breach followed by account takeovers and transfers of the tickets themselves - and draws no conclusion about any company's conduct.",
+  "The chapter names several fintech firms as examples. Companies of this kind are acquired, renamed and wound up frequently, and at least one of the chapter's examples has since been absorbed into a larger firm. The module uses the categories - crowdfunding, online-only banking, mobile payment processing, peer-to-peer lending, small-business lending, digital investment management - and names a company only where the chapter's point depends on it.",
+  "The chapter states that several large online retailers announced they would accept a cryptocurrency in 2014 and that those trials were terminated. Acceptance has since been reintroduced and withdrawn in various places by various firms; the module keeps the chapter's structural point, that use for ordinary purchases has stayed small relative to the attention paid to it, and does not track the current position of any named company.",
+  "The tax discussion follows the chapter, including a 2018 ruling and the economic-nexus idea it established. Thresholds, exemptions and marketplace-facilitator rules differ by state and change often, and international treatment differs again. The module teaches the shape of the obligation and says explicitly that the specifics are a question for somebody qualified in the relevant jurisdiction.",
+  "The chapter's fraud indicators are one card network's published guidance. They are signals that raise or lower a score, not tests that establish anything, and several of them - a foreign address, a free email provider, an unfamiliar location - describe enormous numbers of entirely legitimate customers. The module presents them as inputs to a judgement and makes the cost of a false decline explicit in both directions.",
+  "The chapter's Industry Analysis describes in-store technologies - self-scanning, tags read at a distance, checkout-free stores, contactless payment, beacons and augmented-reality fitting rooms - at different stages of adoption, some widespread and some rare. The module presents them as a range of responses available to a physical retailer rather than as the current state of retailing.",
+  "The chapter's claim that tags read at a distance may soon replace scanning every item is softened. Adoption is uneven and turns on whether an item is valuable enough to justify the cost of a tag, which is the same qualification the infrastructure chapter's material required.",
+  "Every figure in a mini case, an exhibit, the runnable sheet and the runnable query in this module is invented for practice on a hypothetical firm. None of them is reported data about any company, and each activity says so."
+ ]
+}

@@ -9,6 +9,7 @@ Interactive, self-contained study modules for an introductory information system
 | 1 | [`module-01-managing-in-the-digital-world.html`](module-01-managing-in-the-digital-world.html) | Chapter 1 Objectives 1.1–1.4: the digital world and digital density · what an information system is · the dual nature of IS in organizational success and failure · computer ethics, privacy and intellectual property · plus three clearly labeled application supplements: Porter&rsquo;s strategy frameworks, deciding where AI belongs in a business workflow, and the chapter&rsquo;s concepts expressed as runnable code |
 | 2 | [`module-02-enabling-strategy-through-information-systems.html`](module-02-enabling-strategy-through-information-systems.html) | Chapter 2 Objectives 2.1&ndash;2.3: decision-making levels and functional areas &middot; automating, organizational learning and strategy &middot; the five competitive forces &middot; generic strategies, resources and the value chain &middot; business and revenue models, platforms and network effects &middot; innovation &middot; plus four application supplements: AI in the strategy workflow, an analyst&rsquo;s toolkit of **runnable** spreadsheet and SQL exercises, strategy as code, and a closing rehearsal that runs the whole analysis as one deliverable |
 | 3 | [`module-03-information-systems-infrastructure.html`](module-03-information-systems-infrastructure.html) | Chapter 3 Objectives 3.2&ndash;3.4: what an IS infrastructure is made of &mdash; hardware, system software and storage &middot; networks, and how the internet and the web actually carry a request &middot; intranets, extranets and data centres &middot; why infrastructure ages, and the pressures that force it to change &middot; cloud computing, its characteristics and its service models &middot; plus two clearly labeled application supplements: where the data itself lives, bridging to the course&rsquo;s SQLite work, and the internet as a business tool |
+| 4 | [`module-04-electronic-commerce-and-fintech.html`](module-04-electronic-commerce-and-fintech.html) | Chapter 4 Objectives 4.1 and 4.5: what electronic commerce is, the electronic marketplace and disintermediation &middot; business-to-consumer, business-to-business, consumer-to-consumer and e-government trade &middot; fintech and what it displaces &middot; payment services, mobile and peer-to-peer payment &middot; cryptocurrency, the blockchain, and what a trusted middleman was actually for &middot; card-not-present risk, chargebacks, risk scores and the cost of a false decline &middot; consumer protection, online sales tax and intellectual property including digital rights management &middot; plus two clearly labeled application supplements: the platform, payment and fulfillment ecosystem behind a storefront together with the technology answering back on the shop floor, and a rehearsal that turns the chapter into a written strategy analysis. **This module is deliberately case-led** &mdash; about a third of the reading of Modules 1&ndash;3 and roughly twice the practice, with a mini case study in every section |
 
 Each module ships as **one HTML file with nothing external** — no CDN, no fonts, no scripts, no
 network of any kind. Open it from a hard drive, a flash drive, or any static host and it works.
@@ -18,10 +19,10 @@ A print-ready PDF companion sits beside it carrying the same lesson plus every a
 
 - **Lesson prose** written for a reader with no business or computing background: define the idea,
   then name it, then give an example they already recognise.
-- **Interactive activities** inline with the reading, not bolted on at the end — multiple choice,
-  classification, matching, sequencing, cloze, reveal cards, tabbed diagrams, branching decision
-  scenarios, and self-checks. On every question **each option explains itself**, including the ones
-  the reader did not choose.
+- **Interactive activities** inline with the reading, not bolted on at the end — mini case studies,
+  multiple choice, classification, matching, sequencing, cloze, reveal cards, tabbed diagrams,
+  branching decision scenarios, and self-checks. On every question **each option explains itself**,
+  including the ones the reader did not choose.
 - **A searchable glossary** of the chapter vocabulary, filterable by objective.
 - **A closing challenge** of situations rather than definitions, scored per objective so a weak area
   is visible instead of averaged into a single number.
@@ -46,6 +47,9 @@ node src/check.mjs --module=modules/02  # the same checks against Module 2
 
 node src/build.mjs --module=modules/03  # regenerate Module 3
 node src/check.mjs --module=modules/03  # the same checks against Module 3
+
+node src/build.mjs --module=modules/04  # regenerate Module 4
+node src/check.mjs --module=modules/04  # the same checks against Module 4
 ```
 
 One generator serves every module. Module 1's sources sit directly in `src/`; each later module gets
@@ -56,6 +60,11 @@ module means adding that directory, not copying the generator.
 Two activity kinds actually execute what the reader types &mdash; a spreadsheet formula evaluator and
 a SQL SELECT engine, both running in the page with no network and no library. Each covers what the
 chapter teaches and refuses clearly when asked for anything outside it.
+
+A third kind carries Module 4: the **mini case study**. A short brief, a strip of facts, an exhibit of
+figures the reader has to actually read, two or three decisions an analyst would really have to make,
+and a debrief that stays shut until every decision is answered &mdash; so the point of the case is
+worked out rather than read first.
 
 `check.mjs` is the guard rail. Besides validating every activity against its schema, it fails the
 build on the mistakes that matter here: an activity defined but never placed, a paragraph that has

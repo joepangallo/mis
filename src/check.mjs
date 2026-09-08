@@ -263,6 +263,43 @@ for (const [k, a] of Object.entries(ACT)) {
       need(nonempty(t.explain), `${at} task ${i}: no explanation for a correct answer`);
       need(nonempty(t.hint), `${at} task ${i}: no hint for a wrong answer`);
     });
+  } else if (a.kind === "case") {
+    /* A mini case is a brief, a strip of facts, an optional exhibit of figures, and a
+       small set of analyst decisions. The decisions are ordinary multiple choice and are
+       held to exactly the same bar as a quiz question, so they join the same pool the
+       option-length tell is measured over. */
+    need(nonempty(a.brief), `${at}: no brief`);
+    need(nonempty(a.debrief), `${at}: no debrief`);
+    need(words(a.brief) >= 25, `${at}: the brief is too thin to reason from`);
+    need(words(a.debrief) >= 25, `${at}: the debrief does not say what the case taught`);
+    need(Array.isArray(a.facts) && a.facts.length >= 3, `${at}: needs at least three facts`);
+    (a.facts || []).forEach((f, i) => need(nonempty(f.k) && nonempty(f.v), `${at} fact ${i}: missing k/v`));
+    need(distinct((a.facts || []).map((f) => f.k)), `${at}: duplicate fact label`);
+    if (a.exhibit) {
+      need(nonempty(a.exhibit.name) && nonempty(a.exhibit.caption), `${at}: exhibit is missing a name or caption`);
+      need(Array.isArray(a.exhibit.headers) && a.exhibit.headers.length >= 2, `${at}: exhibit needs at least two columns`);
+      need((a.exhibit.headers || []).every(nonempty), `${at}: exhibit has an empty column heading`);
+      need(Array.isArray(a.exhibit.rows) && a.exhibit.rows.length >= 2, `${at}: exhibit needs at least two rows`);
+      (a.exhibit.rows || []).forEach((r, i) => need(Array.isArray(r) && r.length === (a.exhibit.headers || []).length,
+        `${at} exhibit row ${i}: has ${(r || []).length} cells, headers declare ${(a.exhibit.headers || []).length}`));
+    }
+    need(Array.isArray(a.questions) && a.questions.length >= 2, `${at}: a case needs at least two decisions`);
+    (a.questions || []).forEach((q, i) => {
+      need(nonempty(q.q), `${at} q${i+1}: question is empty`);
+      need(Array.isArray(q.opts) && q.opts.length === 4, `${at} q${i+1}: opts is not 4`);
+      need(Array.isArray(q.why) && q.why.length === 4, `${at} q${i+1}: why is not 4`);
+      need(Number.isInteger(q.a) && q.a >= 0 && q.a < 4, `${at} q${i+1}: bad answer index ${q.a}`);
+      need((q.opts || []).every(nonempty), `${at} q${i+1}: an option is empty`);
+      need((q.why || []).every(nonempty), `${at} q${i+1}: an explanation is empty`);
+      need(distinct(q.opts || []), `${at} q${i+1}: options are not distinct`);
+      need(distinct(q.why || []), `${at} q${i+1}: explanations are not distinct`);
+      (q.why || []).forEach((w, wi) => need(words(w) >= 10, `${at} q${i+1} why ${wi}: explanation is too thin to teach the misconception`));
+      (q.opts || []).forEach((o, oi) => {
+        if (GIVEAWAY.test(String(o)) && oi !== q.a)
+          meh(`${at} q${i+1} opt ${oi}: absolute wording may give it away`);
+      });
+      inlineQuizItems.push({ q, at: `${at} q${i+1}` });
+    });
   } else if (a.kind === "selfcheck") {
     need(Array.isArray(a.items) && a.items.length > 0, `${at}: no items`);
     (a.items||[]).forEach((it,i) => need(nonempty(it.t) && nonempty(it.hint), `${at} item ${i}: missing t/hint`));
@@ -389,6 +426,58 @@ for (const o of OBJ) if ((byObj[o] || 0) < 4) meh(`final: objective ${o} carries
 lengthTell("final", fq.map((q, i) => ({ q, at: `final q${i+1}` })));
 lengthTell("inline quizzes", inlineQuizItems);
 
+/* The final challenge has always been checked for answers clustering at one letter. Everything
+   inside the reading was not, and every module drifts the same way: an author writes the correct
+   option first and then invents three wrong ones after it. A reader who notices can score most of
+   a section by pressing the same key, which is the same defect the option-length tell describes by
+   another route. Simulations and cloze blanks count too - both render in authored order. */
+function positionSkew(label, positions, width) {
+  const total = positions.reduce((n, v) => n + v, 0);
+  if (total < 8) return;
+  for (let p = 0; p < width; p++)
+    if (positions[p] > total * 0.45)
+      meh(`${label}: ${positions[p]}/${total} correct answers sit at position ${"ABCD"[p]}`);
+}
+const inlinePos = [0, 0, 0, 0], simPos = [0, 0, 0, 0], fillPos = [0, 0, 0, 0];
+for (const a of Object.values(ACT)) {
+  if (a.kind === "quiz" || a.kind === "case")
+    (a.questions || []).forEach((q) => { if (Number.isInteger(q.a) && q.a < 4) inlinePos[q.a]++; });
+  if (a.kind === "sim")
+    (a.steps || []).forEach((st) => {
+      const i = (st.opts || []).findIndex((o) => o.ok);
+      if (i >= 0 && i < 4) simPos[i]++;
+    });
+  if (a.kind === "fill")
+    (a.blanks || []).forEach((b) => { if (Number.isInteger(b.a) && b.a < 4) fillPos[b.a]++; });
+  /* One activity answered entirely at one position is gameable on its own, whatever the module
+     total looks like. */
+  const single = (label, xs) => {
+    if (xs.length >= 3 && new Set(xs).size === 1)
+      meh(`${a.kind} ${label}: all ${xs.length} answers sit at position ${"ABCD"[xs[0]]}`);
+  };
+  if (a.kind === "quiz" || a.kind === "case") single(a.title, (a.questions || []).map((q) => q.a));
+  if (a.kind === "sim") single(a.title, (a.steps || []).map((st) => (st.opts || []).findIndex((o) => o.ok)));
+  if (a.kind === "fill") single(a.title, (a.blanks || []).map((b) => b.a));
+}
+/* A simulation's options are graded the same way a quiz's are, and its stronger call is written first
+   and written fullest for the same reason: the author knows the answer and puts the qualifying clauses
+   in it. Measure them on the same scale. */
+const simItems = [];
+for (const [k, a] of Object.entries(ACT)) {
+  if (a.kind !== "sim") continue;
+  (a.steps || []).forEach((st, i) => {
+    const opts = st.opts || [];
+    const ok = opts.findIndex((o) => o.ok);
+    if (ok < 0) return;
+    simItems.push({ q: { opts: opts.map((o) => o.t), a: ok }, at: `${k} (sim) step ${i + 1}` });
+  });
+}
+lengthTell("simulation decisions", simItems);
+
+positionSkew("inline questions", inlinePos, 4);
+positionSkew("simulation decisions", simPos, 4);
+positionSkew("cloze blanks", fillPos, 4);
+
 /* ---- rendered page hygiene ---- */
 let freshPage = null;
 const scratch = mkdtempSync(join(tmpdir(), "mis-check-"));
@@ -509,6 +598,9 @@ else {
   need(page.includes('toggle.setAttribute("aria-controls", detail.id)'), "explore runtime lacks aria-controls");
   need(page.includes('sidebar.setAttribute("inert", "")'), "closed mobile navigation is not removed from keyboard focus");
   need(page.includes('var outcomes = el("div", "sim-outcomes")'), "simulations do not reveal all option outcomes");
+  need(page.includes('debrief.className = "case-debrief is-locked"'), "mini cases do not hold the debrief back until every decision is answered");
+  need(page.includes('debrief.setAttribute("aria-live", "polite")'), "the mini-case debrief is not announced when it opens");
+  need(page.includes('debrief.setAttribute("aria-live", "off")'), "the mini-case debrief announces its locked progress counter on every answer, talking over the question's own feedback");
   need(page.includes('if(finalEntry){ finalEntry.total = qs.length; }'), "final registry entry is not guarded against reset duplication");
   const ids = new Map();
   for (const m of page.matchAll(/\sid="([^"]+)"/g)) ids.set(m[1], (ids.get(m[1]) || 0) + 1);

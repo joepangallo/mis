@@ -149,6 +149,27 @@ function fallback(key, a) {
         `<pre class="act-answer"><code>${escCode(ex.solution)}</code></pre>` +
         (ex.explain ? `<p class="mini">${esc(ex.explain)}</p>` : ""));
     });
+  } else if (K === "case") {
+    /* A mini case prints as the brief, the facts, the exhibit, every decision with its
+       answer, and the debrief the interactive version holds back until the decisions
+       are made. On paper there is nothing to hold it back for. */
+    parts.push(`<p>${esc(a.brief)}</p>`);
+    if ((a.facts || []).length)
+      parts.push(`<dl>` + a.facts.map((f) => `<div><dt><b>${esc(f.k)}</b></dt><dd>${esc(f.v)}</dd></div>`).join("") + `</dl>`);
+    if (a.exhibit)
+      parts.push(`<p class="mini"><b>${esc(a.exhibit.name)}</b> &mdash; ${esc(a.exhibit.caption)}</p>` +
+        `<div class="tbl-wrap"><table class="tbl"><thead><tr>` +
+        (a.exhibit.headers || []).map((h) => `<th scope="col">${esc(h)}</th>`).join("") +
+        `</tr></thead><tbody>` +
+        (a.exhibit.rows || []).map((r) => `<tr>` + r.map((c) => `<td>${esc(c)}</td>`).join("") + `</tr>`).join("") +
+        `</tbody></table></div>`);
+    (a.questions || []).forEach((q, i) => {
+      parts.push(`<p><b>${i + 1}.</b> ${esc(q.q)}</p><ul>` +
+        q.opts.map((o, oi) =>
+          `<li><b>${L[oi]}.</b> ${esc(o)}${oi === q.a ? " <b>&mdash; correct.</b> " : " &mdash; "}${oi === q.a ? whyText((q.why || [])[oi]) : esc((q.why || [])[oi])}</li>`
+        ).join("") + `</ul>`);
+    });
+    parts.push(`<p><b>What this case was really about.</b> ${esc(a.debrief)}</p>`);
   } else if (K === "selfcheck") {
     parts.push(`<ul>` + (a.items || []).map((it) =>
       `<li>${esc(it.t)} <span class="mini">${esc(it.hint)}</span></li>`).join("") + `</ul>`);
