@@ -67,6 +67,11 @@ independently builds to a temporary file and byte-compares it with the committed
 activity and static fallback exactly once, enforces the manifest and provenance maps, validates
 nonempty and distinct schema content, and scans for network references and student-facing leaks.
 
+The network scan treats every `href`, `src` or `action` as a network reference unless it is a fragment,
+a `data:` URI, or a bare sibling file name ending in `.html` — the last of which exists so a module can
+link to practice material sitting beside it. A sibling link is additionally required to resolve to a
+file that is really there, so renaming a linked page fails the check rather than the reader.
+
 ## Source boundaries
 
 Objectives 1.1–1.4, their vocabulary, and factual cases come from the local Chapter 1 PDF. The
