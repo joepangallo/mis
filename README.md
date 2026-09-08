@@ -116,6 +116,52 @@ that exists.
 node --test modules-1-3-jeopardy.test.mjs
 ```
 
+## Strategy frameworks workshop
+
+[`five-forces-and-value-chain.html`](five-forces-and-value-chain.html) is a standalone, deep
+treatment of the two frameworks the written analysis is built on. Module 2 introduces them inside the
+chapter; this page is where a reader goes to actually practise them. Like the modules and the review
+game it is one self-contained file with no CDN, no fonts, no scripts and no network of any kind, and
+it inherits the theme the reader last set on a module page.
+
+Ten sections, six of them graded activities tracked by a counter in the header:
+
+- **Up close** &mdash; an interactive five-force diagram and a nine-activity value chain map. Selecting
+  a force gives its definition, the conditions that make it strong, what the internet did to it, the
+  systems that answer it, and the force it is most often confused with. Selecting an activity gives its
+  definition, its reading in a service business, its cost drivers and the systems that typically pay there.
+- **Rate an industry** &mdash; five situations (a campus coffee shop, a regional airline, an industrial
+  fastener supplier, a subscription film service, a regional grocery chain), each rated on twenty driver
+  sliders phrased so that higher always means more pressure. Bars and bands update live, the strongest
+  force is named, a single maximum driver inside a merely moderate force is flagged, and a comparison
+  puts the reader&rsquo;s reading beside an analyst&rsquo;s with the reasoning for every row. Between them
+  the five situations make each of the five forces the strongest one somewhere.
+- **Sort the evidence** &mdash; eight observations from a bookshop, none of which name a force, assigned
+  and then explained both ways: why it is that force, and which one it is usually mistaken for.
+- **Fund an initiative** &mdash; a costed value chain and six proposals against a fixed budget and a
+  stated strategy. The panel keeps score on committed capital, annual benefit, payback, strategy fit and
+  whether anything in the portfolio answers the force actually squeezing the firm; switching the strategy
+  re-scores every proposal, which is business/IT alignment made arithmetic.
+- **Place the system** &mdash; nine systems into nine activities, including the two that catch everybody:
+  procurement against inbound logistics, and a human resources system whose saving lands in operations.
+- **Build the analysis** &mdash; a guided writer that checks the *shape* of what the reader produces
+  (a force named exactly, evidence carrying a number, two genuinely different areas, exactly one concrete
+  initiative, a measure and a date) and assembles a copyable summary as they type.
+- **Self-check** &mdash; ten situations rather than definitions, every option explaining itself, scored
+  per topic rather than as one number.
+- **Reference** &mdash; the vocabulary of both frameworks, filterable.
+
+It teaches the shape of a written framework analysis and never its wording: no case name, no institution,
+no course code. `five-forces-and-value-chain.test.mjs` enforces that alongside the content contract
+&mdash; five forces with four drivers each, an analyst note that cannot contradict the band its own
+numbers produce, a simulator that can be solved but not by buying everything, two strategies that
+genuinely disagree, every placement covering the chain exactly once, correct answers spread across all
+four positions, and every link resolving to a file that exists.
+
+```sh
+node --test five-forces-and-value-chain.test.mjs
+```
+
 ## Course materials
 
 The textbook chapter, syllabus, and assessment documents are deliberately **not** in this

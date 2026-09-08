@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Five Forces &amp; the Value Chain &mdash; a working review</title>
+<meta name="description" content="An interactive review of Porter's Five Forces and the Value Chain Model: what each one is, worked examples, a force rater, an evidence sort, a value chain investment simulator, and a guided analysis builder.">
+<style>
+/* ============================================================================
+   THEME TOKENS
+   The same palette the study modules use, so arriving here from a module does
+   not feel like switching products. Two additions: a "chain" green for value
+   chain surfaces and a "force" violet for competitive-force surfaces, so the
+   reader can tell at a glance which of the two frameworks a panel belongs to.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd; --panel-3:#ece3d1;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f;  --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --plum:#7a3d86; --plum-soft:#7a3d861a; --plum-line:#7a3d8655;
+  --chain:#2f6b3d; --chain-soft:#2f6b3d16; --chain-line:#2f6b3d55;
+  --force:#5a3fa8; --force-soft:#5a3fa816; --force-line:#5a3fa855;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#1e2433; --bg-soft:#242b3c; --panel:#293042; --panel-2:#323950; --panel-3:#39415a;
+  --border:#46506c; --border-soft:#394157;
+  --text:#f2f4fa; --text-dim:#c8cfe0; --muted:#a6aec4;
+  --accent:#7cc7f0; --accent-strong:#1d5d8c; --accent-soft:#7cc7f022; --accent-line:#7cc7f055;
+  --good:#2fd39f; --good-soft:#2fd39f22;
+  --bad:#ff8a94;  --bad-soft:#ff8a9422;
+  --warn:#f5a524; --warn-soft:#f5a52422;
+  --plum:#d8a6e4; --plum-soft:#d8a6e422; --plum-line:#d8a6e455;
+  --chain:#6fd08c; --chain-soft:#6fd08c1c; --chain-line:#6fd08c55;
+  --force:#b3a1f5; --force-soft:#b3a1f51c; --force-line:#b3a1f555;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%; margin:0}
+body{background:var(--bg); color:var(--text); min-height:100%;
+  font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit; color:inherit}
+a{color:var(--accent)} a:hover{text-decoration:underline}
+.sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
+
+/* ------------------------------------------------------------------ chrome */
+.app{min-height:100%; display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:9px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:20}
+.brand{display:flex; align-items:baseline; gap:10px; margin-right:auto; min-width:0}
+.brand b{font-size:1.02rem; letter-spacing:-.01em; white-space:nowrap}
+.brand span{font-size:.68rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.stat{display:flex; align-items:baseline; gap:6px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.stat i{font-style:normal; font-size:.6rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.stat b{font-size:.9rem; font-variant-numeric:tabular-nums}
+
+.tabs{position:sticky; top:49px; z-index:19; background:var(--bg-soft);
+  border-bottom:1px solid var(--border); overflow-x:auto; -webkit-overflow-scrolling:touch}
+.tabs-inner{display:flex; gap:3px; padding:7px 12px; min-width:max-content}
+.tab{border:1px solid transparent; background:transparent; border-radius:99px; cursor:pointer;
+  padding:6px 11px; font-size:.8rem; font-weight:700; color:var(--text-dim); white-space:nowrap;
+  display:flex; align-items:center; gap:7px; transition:background .14s, color .14s, border-color .14s}
+.tab:hover{background:var(--panel-2); color:var(--text)}
+.tab[aria-selected="true"]{background:var(--panel); color:var(--text); border-color:var(--border);
+  box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.tab u{text-decoration:none; font-size:.6rem; font-weight:800; letter-spacing:.06em;
+  color:var(--muted); font-variant-numeric:tabular-nums}
+.tab .dot{width:7px; height:7px; border-radius:99px; background:var(--border); flex:none}
+.tab.done .dot{background:var(--good)}
+
+.stage{flex:1; padding:22px 18px 56px; display:flex; justify-content:center}
+.wrap{width:100%; max-width:1060px}
+.foot{padding:12px 18px 18px; border-top:1px solid var(--border-soft);
+  font-size:.75rem; color:var(--muted); display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+.foot a{font-weight:700}
+.pager{display:flex; justify-content:space-between; gap:12px; margin-top:24px}
+
+/* ------------------------------------------------------------------ blocks */
+.btn{border:1px solid var(--border); background:var(--panel-2); border-radius:10px;
+  padding:8px 14px; cursor:pointer; font-weight:650; font-size:.85rem;
+  transition:transform .1s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--accent-line)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.sm{padding:5px 11px; font-size:.78rem}
+.btn[disabled]{opacity:.45; cursor:default; transform:none}
+.btn.ghost{background:transparent}
+
+h1,h2,h3,h4{letter-spacing:-.015em}
+.hero{margin:6px 0 20px}
+.hero h1{margin:0 0 10px; font-size:1.95rem}
+.hero p{margin:0; max-width:70ch; color:var(--text-dim)}
+.eyebrow{display:inline-block; font-size:.66rem; font-weight:800; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:7px}
+.eyebrow.force{color:var(--force)} .eyebrow.chain{color:var(--chain)}
+
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); margin:0 0 16px}
+.panel > h2{margin:0 0 10px; font-size:1.15rem}
+.panel > h3{margin:20px 0 8px; font-size:1rem}
+.panel p{margin:0 0 11px; max-width:78ch}
+.panel p:last-child{margin-bottom:0}
+.lede{font-size:1.02rem; color:var(--text-dim)}
+.panel ul,.panel ol{margin:0 0 12px; padding-left:22px} .panel li{margin:6px 0}
+.keys{list-style:none; padding:0 !important}
+.keys li{padding:9px 12px; background:var(--panel-2); border:1px solid var(--border-soft);
+  border-radius:10px; margin:7px 0; font-size:.92rem}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft);
+  border-radius:10px; padding:12px 14px; margin:14px 0; font-size:.9rem}
+.callout.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.callout.good{border-left-color:var(--good); background:var(--good-soft)}
+.callout b.tagline{display:block; margin-bottom:4px}
+.takeaway{border:1px dashed var(--accent-line); background:var(--accent-soft);
+  border-radius:12px; padding:12px 14px; font-size:.93rem; margin:16px 0 0 !important}
+.grid2{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tbl-wrap{overflow-x:auto; margin:0 0 14px; border:1px solid var(--border-soft); border-radius:12px}
+table.tbl{border-collapse:collapse; width:100%; font-size:.88rem; min-width:520px}
+table.tbl th,table.tbl td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl th{background:var(--panel-2); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+table.tbl tr:last-child td{border-bottom:none}
+code{background:var(--panel-2); border:1px solid var(--border-soft); border-radius:5px;
+  padding:1px 5px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.86em}
+
+/* --------------------------------------------------------- forces diagram */
+.forceboard{display:grid; gap:10px; grid-template-columns:1fr 1fr 1fr;
+  grid-template-areas:"ent ent ent" "sup mid buy" "sub sub sub"; margin:6px 0 14px}
+.fcell{border:1px solid var(--border); background:var(--panel-2); border-radius:14px;
+  padding:13px 14px; cursor:pointer; text-align:left; transition:transform .12s, border-color .15s, background .15s}
+.fcell:hover{border-color:var(--force-line); background:var(--force-soft); transform:translateY(-1px)}
+.fcell[aria-pressed="true"]{border-color:var(--force); background:var(--force-soft);
+  box-shadow:0 0 0 2px var(--force-soft)}
+.fcell b{display:block; font-size:.95rem; margin-bottom:3px}
+.fcell span{font-size:.79rem; color:var(--muted); display:block; line-height:1.45}
+.fcell u{text-decoration:none; display:inline-block; font-size:.6rem; font-weight:800;
+  letter-spacing:.07em; text-transform:uppercase; color:var(--force); margin-bottom:5px}
+.fcell.mid{background:var(--force); color:#fff; cursor:pointer}
+.fcell.mid u{color:#fff; opacity:.8} .fcell.mid span{color:#fff; opacity:.85}
+html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell.mid span,html[data-theme="dark"] .fcell.mid u{color:#161b28}
+.f-ent{grid-area:ent} .f-sup{grid-area:sup} .f-mid{grid-area:mid} .f-buy{grid-area:buy} .f-sub{grid-area:sub}
+@media(max-width:640px){.forceboard{grid-template-columns:1fr;
+  grid-template-areas:"ent" "sup" "mid" "buy" "sub"}}
+
+.detail{border:1px solid var(--force-line); background:var(--force-soft); border-radius:14px;
+  padding:16px 18px; margin:0 0 6px}
+.detail h3{margin:0 0 4px; font-size:1.05rem}
+.detail .qline{font-size:.82rem; color:var(--muted); margin:0 0 10px; font-style:italic}
+.detail h4{margin:14px 0 5px; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.detail ul{margin:0; padding-left:20px; font-size:.9rem} .detail li{margin:5px 0}
+.detail p{font-size:.92rem; margin:0 0 8px}
+
+/* ------------------------------------------------------------ force rater */
+.rater{display:grid; gap:16px; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+@media(max-width:900px){.rater{grid-template-columns:1fr}}
+.fgroup{border:1px solid var(--border-soft); background:var(--panel-2); border-radius:13px;
+  padding:12px 14px; margin:0 0 11px}
+.fgroup > header{display:flex; align-items:baseline; gap:9px; margin:0 0 9px; flex-wrap:wrap}
+.fgroup > header b{font-size:.94rem}
+.fgroup > header .score{margin-left:auto; font-size:.74rem; font-weight:800; letter-spacing:.05em;
+  text-transform:uppercase; padding:2px 9px; border-radius:99px; border:1px solid var(--border)}
+.driver{display:grid; grid-template-columns:1fr 168px; gap:6px 12px; align-items:center;
+  padding:7px 0; border-top:1px dashed var(--border-soft)}
+.driver:first-of-type{border-top:none}
+.driver label{font-size:.85rem; line-height:1.45}
+.driver .ctl{display:flex; align-items:center; gap:8px}
+.driver input[type=range]{width:110px; accent-color:var(--force)}
+.driver .val{font-size:.72rem; font-weight:800; color:var(--muted); width:52px; text-align:right}
+@media(max-width:520px){.driver{grid-template-columns:1fr}}
+.bars{display:flex; flex-direction:column; gap:9px; margin:10px 0 0}
+.bar{display:grid; grid-template-columns:132px 1fr 62px; gap:9px; align-items:center; font-size:.82rem}
+.bar .track{height:16px; border-radius:99px; background:var(--panel-3); overflow:hidden; border:1px solid var(--border-soft)}
+.bar .fill{display:block; height:100%; width:0; border-radius:99px; background:var(--force); transition:width .35s ease}
+.bar .fill.hi{background:var(--bad)} .bar .fill.mid{background:var(--warn)} .bar .fill.lo{background:var(--good)}
+.bar .num{text-align:right; font-variant-numeric:tabular-nums; font-weight:750; color:var(--muted)}
+.bar b{overflow-wrap:anywhere}
+.verdict{border:1px solid var(--border); background:var(--panel-2); border-radius:13px; padding:14px 15px; margin:12px 0 0}
+.verdict h4{margin:0 0 6px; font-size:.98rem}
+.verdict p{font-size:.9rem; margin:0 0 8px}
+.chips{display:flex; gap:7px; flex-wrap:wrap; margin:0 0 12px}
+.chip{border:1px solid var(--border); background:var(--panel-2); border-radius:99px;
+  padding:6px 13px; font-size:.8rem; font-weight:650; cursor:pointer}
+.chip:hover{border-color:var(--accent-line)}
+.chip[aria-pressed="true"]{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.cmp{display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:.82rem; margin:8px 0 0}
+.cmp > div{padding:8px 10px; border-radius:9px; background:var(--panel-3); border:1px solid var(--border-soft)}
+
+/* ------------------------------------------------------------ evidence sort */
+.cards{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.evcard{border:1px solid var(--border); background:var(--panel-2); border-radius:13px; padding:12px 13px}
+.evcard p{font-size:.88rem; margin:0 0 9px}
+.evcard select{width:100%; padding:7px 9px; border-radius:9px; border:1px solid var(--border); background:var(--panel)}
+.evcard .fb{font-size:.83rem; margin:9px 0 0; padding:9px 11px; border-radius:9px; display:none}
+.evcard.right .fb{display:block; background:var(--good-soft); border:1px solid var(--good); color:var(--text)}
+.evcard.wrong .fb{display:block; background:var(--bad-soft); border:1px solid var(--bad); color:var(--text)}
+.evcard.right{border-color:var(--good)} .evcard.wrong{border-color:var(--bad)}
+.rowbtns{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 0; align-items:center}
+.tally{font-size:.85rem; font-weight:700; color:var(--muted)}
+
+/* ------------------------------------------------------------- value chain */
+.chainmap{margin:6px 0 14px}
+.chain-primary{display:grid; gap:6px; grid-template-columns:repeat(5,1fr)}
+@media(max-width:820px){.chain-primary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.chain-primary{grid-template-columns:1fr}}
+.chain-support{display:grid; gap:6px; grid-template-columns:repeat(4,1fr); margin-top:6px}
+@media(max-width:820px){.chain-support{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.chain-support{grid-template-columns:1fr}}
+.acell{border:1px solid var(--border); background:var(--panel-2); border-radius:12px;
+  padding:11px 12px; cursor:pointer; text-align:left; transition:transform .12s, border-color .15s, background .15s}
+.acell:hover{border-color:var(--chain-line); background:var(--chain-soft); transform:translateY(-1px)}
+.acell[aria-pressed="true"]{border-color:var(--chain); background:var(--chain-soft); box-shadow:0 0 0 2px var(--chain-soft)}
+.acell b{display:block; font-size:.86rem; line-height:1.3; margin-bottom:3px}
+.acell span{display:block; font-size:.74rem; color:var(--muted); line-height:1.4}
+.acell u{text-decoration:none; font-size:.58rem; font-weight:800; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--chain); display:block; margin-bottom:4px}
+.bandlabel{font-size:.64rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:14px 0 5px}
+.detail.chain{border-color:var(--chain-line); background:var(--chain-soft)}
+
+/* --------------------------------------------------------------- simulator */
+.sim{display:grid; gap:16px; grid-template-columns:minmax(0,1fr) minmax(0,320px)}
+@media(max-width:900px){.sim{grid-template-columns:1fr}}
+.opt{border:1px solid var(--border); background:var(--panel-2); border-radius:12px;
+  padding:11px 13px; margin:0 0 9px; display:grid; grid-template-columns:22px 1fr; gap:10px; cursor:pointer}
+.opt:hover{border-color:var(--accent-line)}
+.opt.on{border-color:var(--accent); background:var(--accent-soft)}
+.opt input{margin-top:3px; accent-color:var(--accent); width:16px; height:16px}
+.opt b{display:block; font-size:.9rem}
+.opt .meta{display:block; font-size:.76rem; color:var(--muted); margin-top:3px}
+.opt .why{display:block; font-size:.82rem; margin-top:6px; color:var(--text-dim)}
+.readout{position:sticky; top:110px; border:1px solid var(--border); background:var(--panel-2);
+  border-radius:14px; padding:14px 15px}
+.readout h4{margin:0 0 10px; font-size:.95rem}
+.kv{display:flex; justify-content:space-between; gap:10px; font-size:.85rem; padding:6px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.kv:last-of-type{border-bottom:none}
+.kv b{font-variant-numeric:tabular-nums}
+.kv.bad b{color:var(--bad)} .kv.good b{color:var(--good)}
+.meter{height:10px; border-radius:99px; background:var(--panel-3); overflow:hidden;
+  border:1px solid var(--border-soft); margin:8px 0 4px}
+.meter i{display:block; height:100%; width:0; background:var(--good); transition:width .3s}
+.meter i.over{background:var(--bad)}
+
+/* ------------------------------------------------------------------ builder */
+.field{margin:0 0 14px}
+.field label{display:block; font-size:.84rem; font-weight:750; margin:0 0 5px}
+.field .hint{font-size:.79rem; color:var(--muted); margin:0 0 6px}
+.field input[type=text],.field textarea,.field select{width:100%; padding:9px 11px; border-radius:10px;
+  border:1px solid var(--border); background:var(--panel-2); color:var(--text)}
+.field textarea{min-height:74px; resize:vertical; line-height:1.55}
+.checks{list-style:none; padding:0; margin:0}
+.checks li{display:flex; gap:9px; align-items:flex-start; font-size:.85rem; padding:6px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.checks li:last-child{border-bottom:none}
+.checks .mark{flex:none; width:19px; height:19px; border-radius:99px; display:grid; place-items:center;
+  font-size:.7rem; font-weight:800; background:var(--panel-3); color:var(--muted); border:1px solid var(--border-soft)}
+.checks li.ok .mark{background:var(--good); border-color:var(--good); color:#fff}
+.preview{white-space:pre-wrap; font-size:.9rem; line-height:1.6; background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:12px; padding:14px 15px; min-height:80px}
+
+/* --------------------------------------------------------------------- quiz */
+.q{border:1px solid var(--border-soft); background:var(--panel-2); border-radius:13px;
+  padding:14px 15px; margin:0 0 12px}
+.q > p.stem{font-size:.93rem; font-weight:650; margin:0 0 10px}
+.q .opts{display:flex; flex-direction:column; gap:7px}
+.q .o{border:1px solid var(--border); background:var(--panel); border-radius:10px; padding:9px 12px;
+  text-align:left; cursor:pointer; font-size:.87rem; line-height:1.45}
+.q .o:hover{border-color:var(--accent-line)}
+.q .o.correct{border-color:var(--good); background:var(--good-soft)}
+.q .o.picked-wrong{border-color:var(--bad); background:var(--bad-soft)}
+.q .o .exp{display:none; font-size:.82rem; color:var(--text-dim); margin-top:6px}
+.q.answered .o .exp{display:block}
+.q.answered .o{cursor:default}
+.scorecard{border:1px solid var(--border); background:var(--panel-2); border-radius:13px; padding:14px 16px; margin:14px 0 0}
+.scorecard h4{margin:0 0 8px}
+
+/* ------------------------------------------------------------------ glossary */
+.gsearch{width:100%; max-width:420px; padding:9px 12px; border-radius:10px;
+  border:1px solid var(--border); background:var(--panel-2); color:var(--text); margin:0 0 12px}
+.gitem{border-bottom:1px solid var(--border-soft); padding:11px 0}
+.gitem:last-child{border-bottom:none}
+.gitem b{display:block; font-size:.93rem}
+.gitem p{font-size:.86rem; margin:4px 0 0; color:var(--text-dim)}
+.gitem .ex{font-size:.83rem; margin:5px 0 0; color:var(--muted); font-style:italic}
+.gnone{font-size:.88rem; color:var(--muted); padding:12px 0}
+
+.section{display:none} .section.active{display:block}
+@media print{
+  .tabs,.topbar,.pager,.btn{display:none !important}
+  .section{display:block !important; page-break-after:always}
+  .panel{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<header class="topbar">
+  <div class="brand">
+    <b>Five Forces &amp; the Value Chain</b>
+    <span>A working review</span>
+  </div>
+  <div class="stat"><i>Activities done</i><b id="doneStat">0 / 6</b></div>
+  <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="tabs-inner" role="tablist" id="tablist"></div>
+</nav>
+
+<main class="stage">
+  <div class="wrap">
+    <div class="sr-only" role="status" aria-live="polite" id="liveStatus"></div>
+
+<!-- ══════════════════════════════════════════════════ 1 · ORIENTATION ═══ -->
+<section class="section" id="sec-orient" role="tabpanel" aria-labelledby="tab-orient" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow">Start here</span>
+    <h1>Two frameworks, two different questions</h1>
+    <p class="lede">Both of these are tools for deciding where to spend money. They are not rival
+      theories, and they are not interchangeable. One looks outward at the industry you are stuck in.
+      The other looks inward at the work you actually do. Used together they answer a question a
+      manager can act on: <b>given the pressure we are under, which piece of our own work should we
+      fix first?</b></p>
+  </div>
+
+  <div class="grid2">
+    <div class="panel" style="border-color:var(--force-line)">
+      <span class="eyebrow force">Outside in</span>
+      <h2>Porter&rsquo;s Five Forces</h2>
+      <p>A model of <b>why an industry is profitable or brutal</b>, built from five sources of
+        pressure: rivals, new entrants, buyers, suppliers, and substitutes. Rate each one, and the
+        strongest is the pressure your strategy has to answer.</p>
+      <p><b>The question it answers:</b> where are we competing, and what is squeezing us hardest?</p>
+      <p><b>What it never tells you:</b> what to build. It names a condition, not a product.</p>
+    </div>
+    <div class="panel" style="border-color:var(--chain-line)">
+      <span class="eyebrow chain">Inside out</span>
+      <h2>The Value Chain Model</h2>
+      <p>A map of <b>every activity inside the organization that adds value</b>, from receiving
+        supplies through to looking after the customer after the sale, plus the support bands that
+        serve all of them. Cost each activity, and you can see where a system would pay.</p>
+      <p><b>The question it answers:</b> which of our own activities is worth improving?</p>
+      <p><b>What it never tells you:</b> whether the improvement matters to the market.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>How the two connect</h2>
+    <p>Run them in order and each one supplies what the other is missing. A force names the pressure;
+      a value chain activity is where you can actually do something about it; the initiative is the
+      system you build there; the measure is what makes the claim checkable later.</p>
+    <ol class="steps">
+      <li><b>Diagnose the pressure.</b> Rate the five forces from observable evidence, and name the
+        strongest one.</li>
+      <li><b>Locate the work.</b> Walk the value chain and find the activities that touch that
+        pressure, with their costs.</li>
+      <li><b>Name one initiative.</b> A concrete system in a named activity, not &ldquo;improve our
+        digital capabilities.&rdquo;</li>
+      <li><b>Attach a measure and a date.</b> The number you expect to move, and when you will look.</li>
+    </ol>
+    <div class="callout"><b class="tagline">Why the order matters</b>
+      A vendor shortlist assembled before the force is named is a set of products hunting for a
+      problem. The diagnosis is what makes one product better than another rather than just newer.</div>
+    <p class="takeaway">Five Forces tells you <b>what you are up against</b>. The value chain tells you
+      <b>what you can do about it with the resources you already own</b>. A recommendation that skips
+      either half is a preference, not an analysis.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What is in this review</h2>
+    <ul class="keys">
+      <li><b>Up close</b> &mdash; click through each force and each value chain activity: what it means,
+        what makes it strong, what it looks like in a service business, and the systems that answer it.</li>
+      <li><b>Worked examples</b> &mdash; a full rating of one industry and a full costed chain for
+        another, with the reasoning shown rather than summarised.</li>
+      <li><b>Six graded activities</b> &mdash; a force rater with real driver questions, an evidence
+        sort, an investment simulator with a budget, a placement drill, a guided analysis builder,
+        and a scenario self-check. The counter in the header tracks how many you have finished.</li>
+    </ul>
+    <p class="lede">Nothing here is submitted or collected anywhere. Answers live in this page only
+      and reset when you reload, so every attempt is a fresh one.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 2 · THE FORCES ═══ -->
+<section class="section" id="sec-forces" role="tabpanel" aria-labelledby="tab-forces" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow force">Framework one &middot; up close</span>
+    <h1>The five forces, one at a time</h1>
+    <p class="lede">The centre box is the fight you can see. The four around it are the pressures that
+      decide how much that fight is worth winning. Select any box to open it.</p>
+  </div>
+
+  <div class="panel">
+    <div class="forceboard" id="forceboard" role="group" aria-label="The five competitive forces"></div>
+    <div id="forceDetail" aria-live="polite"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Reading the model without misreading it</h2>
+    <ul class="keys">
+      <li><b>Strong force means low profit, not lost cause.</b> Strong pressure means the industry
+        gives its profit away &mdash; to buyers as discounts, to suppliers as costs, to entrants as lost
+        share. Firms still win inside brutal industries; they just have to earn it somewhere specific.</li>
+      <li><b>Substitutes come from outside your industry.</b> Another coffee shop is a rival. An energy
+        drink, a home espresso machine, and simply staying at your desk are substitutes. The distinction
+        matters because price cuts do not win back a customer who left the category.</li>
+      <li><b>The answer expires.</b> The internet changed all five forces at once: it widened buyer
+        choice, lowered entry barriers, opened supplier access, and made substitution easy. Any rating
+        is a photograph of one industry on one day.</li>
+      <li><b>Rate from evidence you could show someone.</b> &ldquo;Rivalry feels intense&rdquo; is an
+        opinion. &ldquo;Every promotion we ran last quarter was matched within a week while volume stayed
+        flat&rdquo; is a finding.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Worked example &mdash; a hypothetical regional parcel-delivery firm</h2>
+    <p>Read how each rating is argued. Notice that every line names something observable, and that the
+      conclusion changes what the firm should build.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Force</th><th>Rating</th><th>The evidence behind the rating</th></tr></thead>
+      <tbody>
+        <tr><td><b>Rivalry</b></td><td>Strong</td><td>Four established carriers quote the same lanes; the
+          last three contract renewals were decided by price alone, and each discount was matched inside
+          a fortnight.</td></tr>
+        <tr><td><b>New entrants</b></td><td>Moderate</td><td>A van and an app get somebody started, but
+          overnight coverage of the whole region needs depots and night sorting that a newcomer cannot
+          rent quickly.</td></tr>
+        <tr><td><b>Buyer power</b></td><td>Strong</td><td>Two retail chains supply 46&nbsp;percent of
+          revenue, both run annual tenders, and both have moved volume away mid-contract before.</td></tr>
+        <tr><td><b>Supplier power</b></td><td>Moderate</td><td>Fuel and vehicles are commodity purchases,
+          but a single telematics vendor holds the tracking data and raised its per-vehicle fee twice.</td></tr>
+        <tr><td><b>Substitutes</b></td><td>Weak</td><td>Digital delivery has already taken what it can
+          take &mdash; documents. Physical goods still have to physically move.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout good"><b class="tagline">What the diagnosis produced</b>
+      Two forces are strong, and they point the same way: revenue is concentrated in buyers who can
+      leave, in a market where the only argument anyone makes is price. So the initiative has to give
+      those accounts something they would lose by leaving, and it has to be something a matched
+      discount cannot copy &mdash; delivery data the buyer's own systems come to depend on, not a lower
+      quote. A rating exercise that stopped at &ldquo;rivalry is strong&rdquo; would have recommended
+      cutting prices, which is the one move every rival can match by Friday.</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 3 · FORCE RATER ═══ -->
+<section class="section" id="sec-rate" role="tabpanel" aria-labelledby="tab-rate" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow force">Activity one &middot; interactive</span>
+    <h1>Rate an industry yourself</h1>
+    <p class="lede">Pick a business, read the situation, then rate each driver from what the situation
+      actually says. The bars update as you move the sliders, and the strongest force is named for you.
+      When you are done, compare your reading against an analyst&rsquo;s and see where you differ.</p>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">Choose a situation</h3>
+    <div class="chips" id="scenarioChips" role="group" aria-label="Choose an industry"></div>
+    <div id="scenarioBrief" class="callout"></div>
+    <div class="rater">
+      <div id="raterForm"></div>
+      <div>
+        <div class="readout" id="raterReadout">
+          <h4>Your reading</h4>
+          <div class="bars" id="raterBars"></div>
+          <div class="verdict" id="raterVerdict"></div>
+          <div class="rowbtns">
+            <button type="button" class="btn primary sm" id="compareBtn">Compare with an analyst</button>
+            <button type="button" class="btn sm ghost" id="resetRateBtn">Reset sliders</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="compareOut"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Where the sliders come from</h2>
+    <p>Each force is rated from four drivers, and every driver is phrased so that <b>higher always
+      means more pressure on you</b>. That is the discipline the model asks for: you are not scoring
+      how much you like the industry, you are counting conditions.</p>
+    <ul class="keys">
+      <li><b>0&ndash;1, weak</b> &mdash; the condition is mostly absent. This force is not what is
+        squeezing the firm.</li>
+      <li><b>2&ndash;3, moderate</b> &mdash; present and worth watching, but the firm still sets its own
+        terms most of the time.</li>
+      <li><b>4&ndash;5, strong</b> &mdash; the condition decides outcomes. Terms are set by somebody
+        other than you.</li>
+    </ul>
+    <div class="callout warn"><b class="tagline">A caution about averages</b>
+      A force can be strong on one decisive driver and mild on the other three. If a single buyer holds
+      half your revenue, buyer power is strong no matter how the other sliders sit. Use the average as a
+      first read, then argue with it &mdash; the verdict panel flags any single driver you rated at the
+      top.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ 4 · EVIDENCE SORT ═══ -->
+<section class="section" id="sec-evidence" role="tabpanel" aria-labelledby="tab-evidence" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow force">Activity two &middot; interactive</span>
+    <h1>Sort the evidence to the right force</h1>
+    <p class="lede">Rating a force is easy once the evidence is sorted, and sorting it is where most
+      analyses go wrong &mdash; particularly the line between a rival and a substitute, and between a
+      demanding buyer and a crowded market. Assign each observation, then check.</p>
+  </div>
+
+  <div class="panel">
+    <div class="callout"><b class="tagline">The situation</b>
+      A hypothetical independent bookshop in a university town has watched its margin fall for three
+      years. The owner has written down eight things that happened. None of them mention a force by
+      name, which is exactly the problem an analyst is paid to solve.</div>
+    <div class="cards" id="evCards"></div>
+    <div class="rowbtns">
+      <button type="button" class="btn primary" id="evCheck">Check my sorting</button>
+      <button type="button" class="btn ghost" id="evReset">Start over</button>
+      <span class="tally" id="evTally"></span>
+    </div>
+    <div id="evSummary"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 5 · VALUE CHAIN ═══ -->
+<section class="section" id="sec-chain" role="tabpanel" aria-labelledby="tab-chain" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow chain">Framework two &middot; up close</span>
+    <h1>The value chain, one activity at a time</h1>
+    <p class="lede">The top row is the flow a product takes on its way to a customer, left to right.
+      The bands underneath serve every stage rather than one, which is why they are drawn as bands.
+      Select any activity to open it.</p>
+  </div>
+
+  <div class="panel">
+    <div class="chainmap">
+      <div class="bandlabel">Primary activities &mdash; the product passes through these in order</div>
+      <div class="chain-primary" id="chainPrimary" role="group" aria-label="Primary activities"></div>
+      <div class="bandlabel">Support activities &mdash; these serve every stage above</div>
+      <div class="chain-support" id="chainSupport" role="group" aria-label="Support activities"></div>
+    </div>
+    <div id="chainDetail" aria-live="polite"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Value chain analysis in three steps</h2>
+    <p>The model is a drawing. The <b>analysis</b> is what you do with the drawing, and it runs in a
+      fixed order for a reason: each step is impossible without the one before it.</p>
+    <ol class="steps">
+      <li><b>Draw the chain.</b> Write out every activity, function and process where value is or
+        should be added. Nobody improves a step that was never written down.</li>
+      <li><b>Cost each area and find what drives the cost.</b> A cost with no known driver can be
+        complained about but not managed. &ldquo;Delivery costs $340,000&rdquo; is a number;
+        &ldquo;delivery costs $340,000 and 60&nbsp;percent of it is drivers idling between stops&rdquo;
+        is a target.</li>
+      <li><b>Decide what to optimise.</b> Only now is naming a system reasonable, because only now can
+        you say what it is supposed to change and by how much.</li>
+    </ol>
+    <div class="callout warn"><b class="tagline">The most common mistake</b>
+      Starting at step three. A proposal that opens with a product name has skipped the drawing and the
+      costing, so nothing in it can be checked &mdash; there is no baseline to compare against later.</div>
+  </div>
+
+  <div class="panel">
+    <h2>It was built for factories and still fits a service business</h2>
+    <p>The names come from manufacturing, so a hotel, a clinic or a software firm has to translate them.
+      The translation is part of the analysis, not a distraction from it. Here is the same chain read
+      three ways.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Activity</th><th>A furniture maker</th><th>A hotel</th><th>A subscription software firm</th></tr></thead>
+      <tbody>
+        <tr><td><b>Inbound logistics</b></td><td>Timber and fittings arriving at the yard</td><td>Supplies arriving, and reservations being taken and held</td><td>Customer data and content being imported at sign-up</td></tr>
+        <tr><td><b>Operations</b></td><td>Cutting, assembly, finishing</td><td>Check-in, housekeeping, breakfast service</td><td>Running the platform and shipping releases</td></tr>
+        <tr><td><b>Outbound logistics</b></td><td>Loading and shipping the finished pieces</td><td>Catering and event service delivering the occasion</td><td>Provisioning the account and delivering the software</td></tr>
+        <tr><td><b>Sales and marketing</b></td><td>Trade shows, dealer network</td><td>Promotion, courting conventions and business meetings</td><td>Trials, demonstrations, renewals outreach</td></tr>
+        <tr><td><b>Service</b></td><td>Warranty repairs and spare parts</td><td>Resolving complaints after the guest has left</td><td>Support desk, onboarding help, account management</td></tr>
+      </tbody>
+    </table></div>
+    <p>Some organisations have no inbound or outbound logistics worth the name and classify activities
+      differently. The support bands, however, look much the same everywhere. The chain is a tool for
+      analysis, not a law &mdash; but if you rename an activity you must say what you moved into it.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Worked example &mdash; costing a hypothetical regional bakery supplier</h2>
+    <p>Annual figures, drawn from one year of accounts. The right-hand column is what turns the chain
+      from a diagram into a decision: the driver is the thing a system could actually change.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Activity</th><th>Annual cost</th><th>Share</th><th>What drives it</th></tr></thead>
+      <tbody>
+        <tr><td>Inbound logistics</td><td>$410,000</td><td>17%</td><td>Flour and butter bought in small emergency lots at premium prices, because nobody knows stock levels until a baker runs out</td></tr>
+        <tr><td>Operations</td><td>$980,000</td><td>41%</td><td>Overtime on night shifts, and batches scrapped when an order changes after mixing has begun</td></tr>
+        <tr><td>Outbound logistics</td><td>$340,000</td><td>14%</td><td>Routes planned by hand each evening; drivers idle between stops and two vans run half empty</td></tr>
+        <tr><td>Sales and marketing</td><td>$260,000</td><td>11%</td><td>Field reps re-entering orders taken on paper, with no record of what a café ordered last month</td></tr>
+        <tr><td>Service</td><td>$150,000</td><td>6%</td><td>Credits issued for short or late deliveries, most of them unexplained by the time anyone looks</td></tr>
+        <tr><td>Support bands (all four)</td><td>$260,000</td><td>11%</td><td>Administration, hiring and training, systems upkeep, and the buying function itself</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><b class="tagline">Reading the table like an analyst</b>
+      The biggest number is not automatically the target. Operations is 41&nbsp;percent of cost, but part
+      of that is the product itself &mdash; bread has to be baked. Outbound logistics is less than half
+      the size and almost all of it is waste that a routing system could take out. The question is never
+      &ldquo;where is the most money spent?&rdquo; It is &ldquo;where is the most money spent on things a
+      customer would not miss?&rdquo;</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 6 · SIMULATOR ═══ -->
+<section class="section" id="sec-invest" role="tabpanel" aria-labelledby="tab-invest" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow chain">Activity three &middot; interactive</span>
+    <h1>Spend the budget on the right activity</h1>
+    <p class="lede">Same bakery supplier, one year later. There is a fixed budget, six proposals, and a
+      stated strategy. Choose the set you would fund. The panel keeps score on cost, annual benefit,
+      payback, and whether your picks actually fit the strategy the firm says it is following.</p>
+  </div>
+
+  <div class="panel">
+    <div class="callout"><b class="tagline">The brief</b>
+      Revenue is $4.2&nbsp;million on costs of $2.4&nbsp;million. The strongest force in this market is
+      <b>buyer power</b>: eleven café chains account for most of the volume and re-tender every year.
+      The board has released <b>$150,000</b> of capital and wants a payback inside two years.
+      Switch the strategy below and watch the fit scores change &mdash; the same system is not equally
+      worth building under both.</div>
+
+    <div class="chips" id="strategyChips" role="group" aria-label="Choose the firm's strategy"></div>
+
+    <div class="sim">
+      <div id="simOptions"></div>
+      <div>
+        <div class="readout">
+          <h4>Portfolio</h4>
+          <div class="kv"><span>Budget</span><b>$150,000</b></div>
+          <div class="kv" id="kvSpend"><span>Committed</span><b>$0</b></div>
+          <div class="meter"><i id="spendMeter"></i></div>
+          <div class="kv" id="kvBenefit"><span>Annual benefit</span><b>$0</b></div>
+          <div class="kv" id="kvPayback"><span>Payback</span><b>&mdash;</b></div>
+          <div class="kv" id="kvFit"><span>Strategy fit</span><b>&mdash;</b></div>
+          <div class="kv" id="kvForce"><span>Answers the strong force</span><b>&mdash;</b></div>
+          <div class="rowbtns">
+            <button type="button" class="btn primary sm" id="simCheck">Review my portfolio</button>
+            <button type="button" class="btn sm ghost" id="simReset">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="simVerdict"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The test your portfolio just took</h2>
+    <p><b>Business/IT alignment</b> is the name for it: an organisation funds the systems that match
+      what it is trying to be, not the systems that are most impressive. Money and time are finite, so a
+      firm competing on low cost normally refuses a system that differentiates on quality, however good
+      that system is &mdash; and a firm competing on service refuses the one that only shaves pennies.</p>
+    <ul class="keys">
+      <li><b>Strategic necessity is the exception.</b> Some investments must be made regardless of fit,
+        because the firm cannot operate without them. Calling something a necessity is a strong claim
+        and should be argued, not assumed.</li>
+      <li><b>The system is not the change.</b> Any significant implementation needs matching change in
+        processes, roles and habits. Routing software that drivers ignore saves nothing.</li>
+      <li><b>A bad business model survives good software.</b> An information system can only be as
+        effective as the model it serves.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 7 · PLACEMENT ═══ -->
+<section class="section" id="sec-place" role="tabpanel" aria-labelledby="tab-place" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow chain">Activity four &middot; interactive</span>
+    <h1>Put each system where it belongs</h1>
+    <p class="lede">Naming a system by the activity it improves is what makes a proposal argueable.
+      Nine hypothetical systems, nine activities. Some are deliberately close together &mdash; buying
+      something and receiving it are different activities, and so are marketing to a customer and
+      looking after one.</p>
+  </div>
+
+  <div class="panel">
+    <div class="cards" id="placeCards"></div>
+    <div class="rowbtns">
+      <button type="button" class="btn primary" id="placeCheck">Check my placements</button>
+      <button type="button" class="btn ghost" id="placeReset">Start over</button>
+      <span class="tally" id="placeTally"></span>
+    </div>
+    <div id="placeSummary"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ 8 · BUILDER ═══ -->
+<section class="section" id="sec-build" role="tabpanel" aria-labelledby="tab-build" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow">Activity five &middot; interactive</span>
+    <h1>Build the analysis end to end</h1>
+    <p class="lede">This is the shape the whole review has been driving at: one strongest force with
+      evidence, two genuinely different value chain areas, exactly one recommended initiative, and a
+      measure with a date. Fill it in for any business you like &mdash; one of the situations from the
+      rater, or somewhere you have worked. The checklist beside it grades the <em>shape</em> of what you
+      write, and the summary at the bottom assembles itself as you type.</p>
+  </div>
+
+  <div class="panel">
+    <div class="grid2">
+      <div>
+        <div class="field">
+          <label for="bizName">The organisation</label>
+          <p class="hint">A real firm, a hypothetical one, or a place you have worked.</p>
+          <input type="text" id="bizName" placeholder="A regional bakery supplier">
+        </div>
+        <div class="field">
+          <label for="bForce">Strongest force</label>
+          <select id="bForce">
+            <option value="">Choose one of the five</option>
+            <option>Rivalry among existing competitors</option>
+            <option>Threat of new entrants</option>
+            <option>Bargaining power of buyers</option>
+            <option>Bargaining power of suppliers</option>
+            <option>Threat of substitute products or services</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bEvidence">The observable evidence for that force</label>
+          <p class="hint">Something you could show someone: a share, a count, a pattern over time.
+            Include at least one number.</p>
+          <textarea id="bEvidence" placeholder="Eleven café chains account for 62 percent of revenue and all eleven re-tendered last year, two of them mid-contract."></textarea>
+        </div>
+        <div class="field">
+          <label for="bArea1">The value chain area you recommend acting on</label>
+          <select id="bArea1"><option value="">Choose an activity</option></select>
+        </div>
+        <div class="field">
+          <label for="bArea2">The other area you examined, and set aside</label>
+          <p class="hint">A second, genuinely different area is what turns a hunch into a scan, and it
+            gives the recommendation something it was preferred over.</p>
+          <select id="bArea2"><option value="">Choose a different activity</option></select>
+        </div>
+        <div class="field">
+          <label for="bInitiative">The one recommended initiative</label>
+          <p class="hint">Concrete enough to be costed. Not &ldquo;improve our digital capabilities.&rdquo;</p>
+          <textarea id="bInitiative" placeholder="One order record covering all eleven accounts, with automatic reordering from each café's own purchase history."></textarea>
+        </div>
+        <div class="field">
+          <label for="bMeasure">The measure &mdash; the number you expect to move</label>
+          <input type="text" id="bMeasure" placeholder="Contract renewal rate, from 71 percent to 85 percent">
+        </div>
+        <div class="field">
+          <label for="bDate">And when you will check it</label>
+          <input type="text" id="bDate" placeholder="At the end of the next tender cycle, 12 months after launch">
+        </div>
+      </div>
+      <div>
+        <div class="readout" style="top:110px">
+          <h4>Shape check</h4>
+          <ul class="checks" id="buildChecks"></ul>
+          <div class="kv" style="margin-top:10px"><span>Summary length</span><b id="wordCount">0 words</b></div>
+          <div class="meter"><i id="wordMeter"></i></div>
+          <p class="hint" style="margin:6px 0 0">A summary of this kind sits comfortably between about 100 and
+            200 words. Shorter usually means the evidence went missing; longer usually means history and
+            admiration crept in, and those are the sentences that name nothing anyone could act on.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Your analysis, assembled</h3>
+    <div class="preview" id="buildPreview">Fill in the fields above and the summary appears here.</div>
+    <div class="rowbtns">
+      <button type="button" class="btn primary" id="copyBuild">Copy the summary</button>
+      <button type="button" class="btn ghost" id="clearBuild">Clear the form</button>
+      <span class="tally" id="copyNote"></span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>What the checklist is actually looking for</h2>
+    <ul class="keys">
+      <li><b>A force named exactly.</b> One of the five, in the model&rsquo;s own words. Not
+        &ldquo;competition,&rdquo; which could mean any of three of them.</li>
+      <li><b>Evidence carrying a number.</b> A share, a count, a frequency, a trend. Without one the
+        rating cannot be argued with, which sounds like a strength and is a weakness.</li>
+      <li><b>Two different areas.</b> Two support bands are usually the same idea twice; a primary
+        activity and a support band, or two ends of the flow, are a real scan.</li>
+      <li><b>One initiative.</b> Three initiatives is a wish list. One is a decision, and a decision is
+        the only thing a board can approve.</li>
+      <li><b>A measure and a date.</b> A measure with no date can be defended forever. A date with no
+        measure has nothing to check.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 9 · SELF-CHECK ═══ -->
+<section class="section" id="sec-check" role="tabpanel" aria-labelledby="tab-check" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow">Activity six &middot; interactive</span>
+    <h1>Self-check &mdash; situations, not definitions</h1>
+    <p class="lede">Ten scenarios of the kind that actually cause trouble: a force that looks like
+      another one, an activity that sits next door to the obvious answer, a recommendation that is
+      missing the one thing that would make it fundable. Every option explains itself, including the
+      ones you did not choose.</p>
+  </div>
+  <div class="panel">
+    <div id="quizList"></div>
+    <div class="rowbtns">
+      <button type="button" class="btn ghost" id="quizReset">Try the set again</button>
+      <span class="tally" id="quizTally"></span>
+    </div>
+    <div id="quizScore"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 10 · REFERENCE ═══ -->
+<section class="section" id="sec-ref" role="tabpanel" aria-labelledby="tab-ref" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow">Reference</span>
+    <h1>Quick reference</h1>
+    <p class="lede">The vocabulary of both frameworks in one place, each with a plain definition and an
+      example. Type to filter.</p>
+  </div>
+  <div class="panel">
+    <label class="sr-only" for="gSearch">Filter the reference</label>
+    <input type="search" id="gSearch" class="gsearch" placeholder="Filter — try &ldquo;switching&rdquo; or &ldquo;logistics&rdquo;">
+    <div id="glossaryList"></div>
+  </div>
+  <div class="panel">
+    <h2>The one-page version</h2>
+    <ol class="steps">
+      <li><b>Five Forces, outside in.</b> Rivalry, new entrants, buyers, suppliers, substitutes. Rate
+        each from observable evidence; name the strongest.</li>
+      <li><b>Value chain, inside out.</b> Inbound logistics, operations, outbound logistics, sales and
+        marketing, service, over four support bands: firm infrastructure, human resources, technology
+        development, procurement. Draw it, cost it, then choose.</li>
+      <li><b>Join them.</b> The force says what is squeezing you; the activity says where you can push
+        back; the initiative is one concrete system in that activity.</li>
+      <li><b>Make it checkable.</b> A measure and a date, or it is a preference.</li>
+    </ol>
+  </div>
+</section>
+
+    <div class="pager">
+      <button type="button" class="btn" id="prevBtn">&larr; Back</button>
+      <button type="button" class="btn primary" id="nextBtn">Next &rarr;</button>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>Nothing here is submitted or collected. Answers stay in this browser and reset on reload.</span>
+  <a href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+  <a href="modules-1-3-jeopardy.html">Review game</a>
+</footer>
+</div>
+
+<script>
+/* ============================================================================
+   ALL DATA IS DEFINED FIRST, LOGIC AFTERWARDS.
+   Nothing in this file is loaded from a network. Open it from a hard drive, a
+   flash drive or any static host and every activity works.
+   ========================================================================== */
+
+/* -------------------------------------------------------------- the forces */
+var FORCES = [
+  {
+    id:"rivalry", name:"Rivalry among existing competitors", pos:"mid",
+    tag:"The centre", short:"The firms already selling what you sell",
+    question:"How hard are the firms already in this industry fighting each other for the same buyers?",
+    means:"The contest among sellers already inside your industry, which shows up as competition in "+
+      "price, distribution and service, because all of you are chasing the same buyers. When rivalry is "+
+      "strong the industry gives its profit to customers in the form of discounts nobody can stop matching.",
+    strongWhen:[
+      "The firms taking your customers have sold in this industry for years",
+      "Discounting is the only move anyone reaches for, and each promotion is matched within days",
+      "Volume stays flat while margin falls",
+      "Nothing in your offer takes a rival long to copy"
+    ],
+    internet:"Comparison and reach made price the most visible attribute of all, so rivalry usually "+
+      "intensified: a competitor two states away is now one tab away.",
+    systems:[
+      "Systems that move the contest off price &mdash; accurate stock information, so the advertised item is genuinely on the shelf",
+      "Systems that make an experience hard to copy &mdash; saved preferences, order history, a service record a rival cannot import"
+    ],
+    confuse:"Confused with substitutes. A rival sells the same kind of thing you do. A substitute meets "+
+      "the same need with a different kind of thing, and it usually comes from an industry you do not track."
+  },
+  {
+    id:"entrants", name:"Threat of new entrants", pos:"ent",
+    tag:"From above", short:"Firms that could start competing tomorrow",
+    question:"How easily could a firm that is not in this business today start taking your customers?",
+    means:"The chance that firms not competing with you today will start tomorrow. Entry brings increased "+
+      "capacity to the industry, reduced prices and decreased market share for everybody already there &mdash; "+
+      "and the threat does its damage before anyone actually arrives, because it caps what you dare charge.",
+    strongWhen:[
+      "The firms taking your customers were not in this business last year",
+      "Little capital, licensing or specialist equipment is needed to begin",
+      "Nothing you hold &mdash; scale, expertise, loyalty &mdash; would take a newcomer long to reproduce",
+      "Distribution is open: a newcomer can reach your customers on the same platforms you use"
+    ],
+    internet:"Entry barriers fell almost everywhere. Storefronts, payment, delivery and advertising can "+
+      "all be rented by the month, so capital and premises stopped protecting anybody.",
+    systems:[
+      "Systems that build what a newcomer cannot simply buy &mdash; accumulated customer history, saved orders, reordering that runs on its own",
+      "Systems that raise the standard of service to a level a two-person startup cannot match on day one"
+    ],
+    confuse:"Confused with rivalry. If the firm taking your customers was already in this industry, that "+
+      "is rivalry. If it appeared this year from outside, that is entry."
+  },
+  {
+    id:"buyers", name:"Bargaining power of buyers", pos:"buy",
+    tag:"On the right", short:"The people who buy from you",
+    question:"How much can your customers dictate your price, quality and terms?",
+    means:"The ability of the people who buy from you to push back on your terms. It arrives as reduced "+
+      "prices, demands for increased quality and demands for more services at no extra charge. Power comes "+
+      "from concentration &mdash; a few big accounts &mdash; or from the ease of walking away.",
+    strongWhen:[
+      "Buyers compare your price against alternatives in seconds and leave over small differences",
+      "A few large accounts hold most of your revenue and use that leverage at every renewal",
+      "Switching to another seller costs the buyer almost nothing",
+      "What you sell is hard to tell apart from what the next firm sells"
+    ],
+    internet:"Buyer power rose sharply. Price, stock and reviews became visible to everyone at once, and "+
+      "switching often became a single click.",
+    systems:[
+      "Systems that give a customer something to lose by leaving &mdash; a loyalty record, offers built from that household&rsquo;s own purchases",
+      "Systems that embed you in the buyer&rsquo;s own operation &mdash; delivery data their systems come to depend on"
+    ],
+    confuse:"Confused with rivalry. Buyers leaving because a rival undercut you is rivalry showing up in "+
+      "your revenue. Buyers dictating terms because they could leave is buyer power, and it operates even "+
+      "when nobody actually leaves."
+  },
+  {
+    id:"suppliers", name:"Bargaining power of suppliers", pos:"sup",
+    tag:"On the left", short:"The firms you buy from",
+    question:"How much can the firms you buy from set the terms of the relationship?",
+    means:"The ability of your suppliers to decide how the relationship runs. It reaches you as increased "+
+      "costs and reduced quality in the very things you resell, and it is the force most often missed, "+
+      "because it shows up in the cost line rather than in lost sales.",
+    strongWhen:[
+      "Few firms can supply what you need",
+      "The input is a large share of your cost and cannot easily be substituted",
+      "Your costs rise or your quality slips on the supplier&rsquo;s schedule rather than yours",
+      "Nobody in your company can state what the firm buys in total, so buying power is never used"
+    ],
+    internet:"Access to suppliers widened for everyone, which weakened this force in commodity purchasing "+
+      "&mdash; but only for firms organised enough to see their own buying and act on it.",
+    systems:[
+      "Systems that show and consolidate your own buying &mdash; one purchasing record covering every location",
+      "Systems that keep qualified alternatives ready &mdash; three approved substitute suppliers, priced, before you need them"
+    ],
+    confuse:"Confused with inbound logistics on the value chain. The supplier&rsquo;s power over your "+
+      "terms is a force; the work of receiving and storing what they sent is an activity."
+  },
+  {
+    id:"substitutes", name:"Threat of substitute products or services", pos:"sub",
+    tag:"From below", short:"A different kind of thing that meets the same need",
+    question:"What else could a customer do instead, without buying from this industry at all?",
+    means:"A different kind of product or service meeting the same underlying need, usually offered by an "+
+      "industry you do not monitor. The table of consequences is the harshest of the five: product returns, "+
+      "decreased market share, and customers lost for life.",
+    strongWhen:[
+      "Price cuts stop working, because the customers you lost are not shopping in your industry at all",
+      "The whole category is shrinking rather than just your share of it",
+      "The alternative is cheaper or more convenient, and improving quickly",
+      "Customers show no attachment to the traditional way of meeting the need"
+    ],
+    internet:"Substitution accelerated wherever a physical product carried information &mdash; recorded "+
+      "music, maps, film, mail, printed reference &mdash; because the digital version cost almost nothing "+
+      "to deliver one more time.",
+    systems:[
+      "Systems that extend your offer into the substitute&rsquo;s territory &mdash; online ordering, dependable delivery windows, a subscription serving the same need the new way",
+      "Systems that make the physical version do something the digital one cannot"
+    ],
+    confuse:"Confused with new entrants. An entrant sells your product; a substitute sells a different "+
+      "product that makes yours unnecessary. Cinema&rsquo;s entrant is another cinema; its substitute is a "+
+      "sofa and a subscription."
+  }
+];
+
+/* ------------------------------------------------------- drivers per force */
+var DRIVERS = {
+  rivalry:[
+    "Several firms sell essentially the same thing to the same buyers",
+    "A price cut by one firm is matched by the others within days",
+    "Overall demand in this market is flat or shrinking",
+    "Nothing in your offer is hard for a rival to imitate"
+  ],
+  entrants:[
+    "Starting up here needs little capital, premises or equipment",
+    "No licence, permit or regulation slows a newcomer down",
+    "A newcomer can reach your customers through channels already open to them",
+    "What you have built &mdash; brand, scale, know-how &mdash; could be reproduced quickly"
+  ],
+  buyers:[
+    "Buyers can compare your price against alternatives in seconds",
+    "A few large accounts hold most of your revenue",
+    "Switching to another seller costs a buyer almost nothing",
+    "What you sell is hard to tell apart from the next firm&rsquo;s version"
+  ],
+  suppliers:[
+    "Only a few firms can supply what you need",
+    "The input is a large share of your cost and hard to substitute",
+    "Changing supplier would be slow, costly or disruptive",
+    "Your supplier could plausibly sell straight to your customers"
+  ],
+  substitutes:[
+    "A different kind of product meets the same underlying need",
+    "The substitute is cheaper or more convenient than what you sell",
+    "Customers are willing to try the alternative",
+    "The substitute is improving quickly"
+  ]
+};
+
+/* ------------------------------------------------------- rater scenarios */
+var SCENARIOS = [
+  {
+    id:"coffee", label:"Campus coffee shop",
+    brief:"An independent coffee shop sits two minutes from a university gate. Four other cafés and two "+
+      "chains work the same three streets. Every one of them ran a loyalty promotion last term and each "+
+      "was matched within the week. Student numbers have been flat for four years. Beans come from any of "+
+      "a dozen roasters at similar prices; a new café opened in a converted shop unit in March, fitted out "+
+      "in six weeks.",
+    analyst:{rivalry:[5,5,4,4], entrants:[4,3,4,4], buyers:[4,1,5,4], suppliers:[2,2,2,1], substitutes:[4,3,3,2]},
+    notes:{
+      rivalry:"Strongest. Six sellers, one small pool of customers, promotions matched within a week, and flat demand &mdash; every condition for rivalry is present at once.",
+      entrants:"High but not the top. A unit fitted out in six weeks proves entry is cheap, though the good sites near the gate are finite.",
+      buyers:"Individual students have no leverage as accounts, but switching costs them nothing and the products look alike, so they hold power in aggregate rather than individually.",
+      suppliers:"Weak. A dozen roasters at similar prices means no supplier sets the terms.",
+      substitutes:"Real but moderate: a flask from home, an energy drink, or the free machine in the department all meet the same need."
+    }
+  },
+  {
+    id:"airline", label:"Regional airline",
+    brief:"A short-haul carrier flies twelve routes with leased narrow-body aircraft. Fuel and leases are "+
+      "roughly half of operating cost. Two manufacturers make the aircraft it can use; the airports it "+
+      "serves allocate slots and have raised charges three years running. Fares are compared on the same "+
+      "four search sites as every competitor. Building a competing airline requires certification, aircraft "+
+      "and slots that take years to obtain.",
+    analyst:{rivalry:[4,5,3,4], entrants:[1,1,3,1], buyers:[5,2,4,4], suppliers:[5,5,5,2], substitutes:[3,3,3,2]},
+    notes:{
+      rivalry:"Strong. Fares sit side by side on the same screens and a cut is matched within hours.",
+      entrants:"Weak, and this is the one force protecting the industry: certification, aircraft and airport slots cannot be rented by the month.",
+      buyers:"Strong in aggregate. No passenger matters individually, but all of them compare four sites and switch for a few dollars.",
+      suppliers:"Strongest. Two aircraft makers, a lease market, airports raising charges at will, and fuel priced by somebody else &mdash; half the cost base is set by firms the airline cannot replace.",
+      substitutes:"Moderate. Rail, driving and a video call each take some journeys, but not the long ones."
+    }
+  },
+  {
+    id:"fasteners", label:"Industrial fastener supplier",
+    brief:"A family firm supplies specialist bolts to machinery manufacturers. Three customers account for "+
+      "68 percent of revenue and all three run annual tenders; one moved half its volume to a rival "+
+      "mid-contract last year. The bolts are made to a published standard, so a competitor can quote the "+
+      "identical part. Steel is bought from several mills at market prices. Nobody has invented a machine "+
+      "that does not need bolts.",
+    analyst:{rivalry:[4,4,3,5], entrants:[2,2,3,2], buyers:[3,5,4,5], suppliers:[2,2,2,1], substitutes:[1,1,1,2]},
+    notes:{
+      rivalry:"Strong. A published standard means every quote is comparable, so price does most of the talking.",
+      entrants:"Moderate at most. Tooling, certification and a track record with machinery makers take time to assemble.",
+      buyers:"Strongest, and it is the concentration that does it: three accounts hold 68 percent of revenue and one has already proved it will move mid-contract.",
+      suppliers:"Weak. Steel from several mills at market prices leaves no mill in charge.",
+      substitutes:"Very weak. Adhesives and welding take a few applications, but machines that come apart for service still need fasteners."
+    }
+  },
+  {
+    id:"streaming", label:"Subscription film service",
+    brief:"A mid-sized streaming service licenses most of its catalogue from studios that now run their own "+
+      "services. Subscribers cancel and return between seasons; cancelling takes one click. Short-form video, "+
+      "gaming and social feeds occupy the same evening hours and are free. Launching a rival service is "+
+      "expensive but perfectly possible for any large technology firm, and three have done it.",
+    analyst:{rivalry:[5,4,3,3], entrants:[2,2,4,3], buyers:[4,1,5,4], suppliers:[4,5,3,5], substitutes:[5,5,4,5]},
+    notes:{
+      rivalry:"Strong. Half a dozen services chase the same subscription, and content spend is the discount war of this industry.",
+      entrants:"Moderate. Capital is a real barrier, but a large technology firm already owns the distribution and the billing relationship.",
+      buyers:"Strong in aggregate. One click to cancel means every renewal is a fresh decision.",
+      suppliers:"Strong, and dangerous: the studios that license the catalogue now compete downstream, which is supplier power plus forward integration.",
+      substitutes:"Strongest. The competitor for an evening is not another film service &mdash; it is a free feed, a game, or a phone. Price cuts do not win back an hour spent elsewhere."
+    }
+  },
+  {
+    id:"grocery", label:"Regional grocery chain",
+    brief:"Eleven supermarkets serve a county where two national discounters have just bought sites. The "+
+      "discounters can open a fitted store in five months, buy at national scale, and advertise nationally. "+
+      "Shoppers already price-check on their phones in the aisle. Suppliers are the usual national brands "+
+      "plus local growers. Home delivery and meal kits take a slice of the weekly shop but not the bulk.",
+    analyst:{rivalry:[4,4,3,4], entrants:[3,4,5,4], buyers:[4,1,5,4], suppliers:[3,3,2,3], substitutes:[3,2,3,3]},
+    notes:{
+      rivalry:"Strong and about to get stronger, but today the eleven stores mostly split the county between them.",
+      entrants:"Strongest. Two national discounters with sites bought, five-month fit-outs, national buying scale and open advertising channels &mdash; nothing local slows them down.",
+      buyers:"Strong in aggregate: phones in the aisle mean every price is compared, though no single shopper matters.",
+      suppliers:"Moderate. National brands set terms; local growers do not.",
+      substitutes:"Moderate. Delivery services and meal kits take a slice, but the weekly shop is stubborn."
+    }
+  }
+];
+
+/* ------------------------------------------------------ evidence sort data */
+var EVIDENCE = [
+  {t:"Three other bookshops within a mile ran the same 20 percent staff-pick promotion within a fortnight of ours, and all four of us are selling fewer books than last year.",
+   f:"rivalry", why:"Same industry, same product, matched discounting, shrinking pie. That is rivalry in its plainest form.",
+   trap:"It is tempting to call this substitutes because sales fell, but the firms taking the sales are other bookshops."},
+  {t:"Customers photograph a cover in the aisle, find it cheaper online in about eight seconds, and buy it there while standing in the shop.",
+   f:"buyers", why:"Instant comparison and near-zero switching cost is buyer power. The buyer sets the price the shop must beat.",
+   trap:"The online seller is a rival, but what the observation actually records is how much leverage the shopper now holds."},
+  {t:"Two of the three students who used to buy paper textbooks now rent the same titles as ebooks for a term, and one has stopped reading books outside the syllabus entirely in favour of video.",
+   f:"substitutes", why:"A different kind of product &mdash; a rented licence, a video &mdash; meeting the same underlying need. Cutting the price of a paperback does not win these readers back.",
+   trap:"Not rivalry: the reader has left the category, not switched shops."},
+  {t:"The wholesaler that supplies 70 percent of our stock raised its minimum order twice this year and now delivers on Tuesdays only.",
+   f:"suppliers", why:"One firm supplying most of what you resell, changing the terms on its own schedule, is textbook supplier power.",
+   trap:"It shows up as a cost and a nuisance, which is why this force is the one most often left out of an analysis."},
+  {t:"A pop-up shop selling secondhand and remaindered titles opened in a vacant unit opposite in six weeks, with a market stall the month before that.",
+   f:"entrants", why:"A firm that was not in this business last year is now competing, and the fit-out took six weeks. Low barriers, new capacity.",
+   trap:"Once it has been trading for a few years it becomes a rival; today its significance is how easily it arrived."},
+  {t:"The three biggest reading-group orders, worth a fifth of annual revenue, all asked for a 15 percent discount at renewal and hinted they had quotes.",
+   f:"buyers", why:"Concentration plus a credible threat to leave. A fifth of revenue in three accounts is leverage, whether or not they ever use it.",
+   trap:"The quotes come from rivals, but the force being demonstrated is what those accounts can extract from you."},
+  {t:"A national chain with 200 branches has taken the lease on the corner site and will open in the spring.",
+   f:"entrants", why:"A firm not competing here today, arriving with capacity and scale. The threat is already doing damage: nobody will raise a price this quarter.",
+   trap:"It becomes rivalry the day it opens. Before that it is entry, and the distinction changes what you build now."},
+  {t:"Our card processor is the only one that works with the shop&rsquo;s point-of-sale system, and its per-transaction fee went up again in January.",
+   f:"suppliers", why:"A supplier you cannot replace without replacing something else, raising its price at will. Switching cost is what converts a vendor into a power.",
+   trap:"It is not an operations problem to be absorbed; it is a force to be answered, for instance by making the till system replaceable."}
+];
+
+/* ------------------------------------------------- value chain activities */
+var CHAIN = [
+  {id:"inbound", band:"primary", name:"Inbound logistics", blurb:"Receiving what was purchased and getting it inside",
+   means:"Everything that happens to an input between the supplier&rsquo;s van and the moment the input is usable: receiving, checking, storing, and knowing what you hold. None of it is sellable yet.",
+   service:"In a hotel this covers supplies arriving <em>and</em> reservations being taken and held, because a booking is an input that arrives and has to be kept until it is used.",
+   drivers:["Emergency purchases at premium prices because stock levels are unknown","Spoilage and write-offs","Time spent counting things"],
+   systems:["Inventory and warehouse management","Supplier portals and electronic ordering","Barcode or tag capture at the door"]},
+  {id:"operations", band:"primary", name:"Operations", blurb:"Turning supplies into the product or service",
+   means:"Integrating supplies into the products and services the customer actually buys. In a factory it is the line; in a service business it is the service being performed.",
+   service:"For a hotel: checking guests in and out, cleaning rooms, preparing breakfast. A clean, ready, served room <em>is</em> the product.",
+   drivers:["Rework and scrap","Overtime caused by uneven scheduling","Idle capacity between jobs"],
+   systems:["Scheduling and production planning","Quality tracking","Computer-aided design and simulation before tooling is cut"]},
+  {id:"outbound", band:"primary", name:"Outbound logistics", blurb:"Getting the finished thing to the customer",
+   means:"Distributing the finished product or service out to the buyer: picking, loading, routing, delivering, or in a service business, staging the occasion where the customer receives it.",
+   service:"For a hotel this covers catering and event service &mdash; the point at which the finished offering reaches the guest.",
+   drivers:["Miles driven and time idling between stops","Half-empty vehicles","Failed first deliveries"],
+   systems:["Route optimisation and vehicle tracking","Delivery scheduling with customer-visible windows","Proof-of-delivery capture"]},
+  {id:"marketing", band:"primary", name:"Sales and marketing", blurb:"Making customers aware and giving them a reason to choose",
+   means:"Everything that turns a person who could buy into a person who does: advertising, the sales force, pricing, promotions, the ordering experience itself.",
+   service:"For a hotel: promoting the property and courting business meetings and conventions, so that rooms are booked before anyone cleans them.",
+   drivers:["Cost per order taken","Orders re-entered by hand from paper","Promotions run without knowing what a customer bought last time"],
+   systems:["Customer relationship management","Online ordering and self-service quoting","Campaign and pricing analysis"]},
+  {id:"service", band:"primary", name:"Service", blurb:"Looking after the customer after the sale",
+   means:"What happens once the money has changed hands: installation, support, warranty, complaints, and the record of all of it. It is the activity most often starved and most visible to a buyer deciding whether to renew.",
+   service:"For a hotel, the activities performed after the guest has left, such as registering and resolving complaints.",
+   drivers:["Credits and refunds issued without explanation","Repeat contacts about the same problem","Time to resolve"],
+   systems:["Case and ticket tracking","Self-service status and history for the customer","Warranty and returns records"]},
+  {id:"firm", band:"support", name:"Administration and firm infrastructure", blurb:"Running the organisation as a whole",
+   means:"General management, planning, finance, accounting, legal and quality management &mdash; the costs that belong to the organisation rather than to any one product.",
+   service:"Identical in shape almost everywhere, which is why the support bands transfer between industries more easily than the primary flow does.",
+   drivers:["Month-end closing time","Reports assembled by hand","Decisions waiting on numbers"],
+   systems:["Financial reporting and decision support","Planning and budgeting systems","Document and contract management"]},
+  {id:"hr", band:"support", name:"Human resources", blurb:"Who is hired, trained and scheduled",
+   means:"Recruiting, hiring, training, developing and scheduling the people who perform every activity above, plus the cost of losing them and starting again.",
+   service:"In service businesses this band is frequently where the real advantage lives, because the product is delivered by a person.",
+   drivers:["Turnover and the cost of replacing experience","Time to productivity for a new hire","Overtime caused by bad rostering"],
+   systems:["Employee self-service portals","Rostering and time capture","Training and certification tracking"]},
+  {id:"tech", band:"support", name:"Technology development", blurb:"Improving the product and building the systems",
+   means:"Product research and development, process improvement, and the building of the information systems the rest of the chain runs on. It is a support band because it serves every stage, not one.",
+   service:"A hotel&rsquo;s version might be redesigning the check-in process; a manufacturer&rsquo;s is design and simulation before anything is cut.",
+   drivers:["Time from idea to something customers can use","Rework caused by testing late","Systems nobody can change safely"],
+   systems:["Design and simulation tools","Development and release tooling","Private cloud capacity for experiments"]},
+  {id:"procure", band:"support", name:"Procurement", blurb:"The buying decision itself",
+   means:"Deciding what to buy, from whom, and on what terms &mdash; for every activity in the chain, not only for raw materials. Note carefully: this is the decision, not the physical receiving, which is inbound logistics.",
+   service:"A hotel procures linen, food, energy and agency staff; the negotiation is procurement, the delivery is inbound logistics.",
+   drivers:["Prices paid above contract because buying is fragmented","Number of suppliers for the same item","Contracts renewed without review"],
+   systems:["One purchasing record covering every location","Supplier evaluation and qualified alternatives","Spend analysis"]}
+];
+
+/* --------------------------------------------- investment simulator options */
+var SIM_OPTIONS = [
+  {id:"routing", name:"Route optimisation and vehicle tracking", act:"Outbound logistics", cost:45000, benefit:62000,
+   fitLow:3, fitDiff:1, answersForce:false,
+   why:"Attacks the cost driver directly: hand-planned routes, idling and half-empty vans. It saves money in a low-cost strategy and does very little for a firm trying to be chosen on service &mdash; unless the tracking is exposed to the customer, which this proposal does not do."},
+  {id:"portal", name:"Customer ordering portal with each café&rsquo;s own history and automatic reordering", act:"Sales and marketing", cost:55000, benefit:48000,
+   fitLow:1, fitDiff:3, answersForce:true,
+   why:"The only proposal that gives a concentrated buyer something to lose by leaving: their own order history, standing orders and delivery data living in your system. It answers buyer power, which the brief names as the strongest force."},
+  {id:"inventory", name:"Stock visibility across the bakery and the two depots", act:"Inbound logistics", cost:30000, benefit:41000,
+   fitLow:3, fitDiff:2, answersForce:false,
+   why:"Ends the emergency lots bought at premium prices when a baker runs out. A clean cost saving, and it also steadies quality, so it is respectable under either strategy."},
+  {id:"crm", name:"A field sales tablet replacing paper order pads", act:"Sales and marketing", cost:25000, benefit:22000,
+   fitLow:2, fitDiff:2, answersForce:false,
+   why:"Removes double entry and speeds order capture. Useful housekeeping, but it improves how <em>you</em> take an order rather than what the buyer gets, so it does not answer the strong force."},
+  {id:"claims", name:"Delivery-claim tracking so credits can be explained", act:"Service", cost:20000, benefit:26000,
+   fitLow:2, fitDiff:3, answersForce:true,
+   why:"Credits for short and late deliveries are being issued unexplained. Tracking them recovers money and gives the account manager something to show a buyer at renewal, which is why it partly answers buyer power."},
+  {id:"oven", name:"A high-end finishing line for premium pastry lines", act:"Operations", cost:120000, benefit:70000,
+   fitLow:0, fitDiff:3, answersForce:false,
+   why:"A genuine differentiator that would let the firm sell a product rivals cannot match &mdash; and a poor fit for a low-cost strategy, which is exactly the alignment trap the model warns about. Note the price: funding this leaves almost nothing for anything else."}
+];
+
+/* ------------------------------------------------------- placement drill */
+var PLACEMENTS = [
+  {t:"A system that shows every depot&rsquo;s stock level in real time so nobody buys an emergency pallet of flour at a premium.", a:"inbound",
+   why:"The waste is happening between the supplier&rsquo;s van and the mixing bowl &mdash; receiving and holding inputs is inbound logistics."},
+  {t:"One purchasing record covering all fourteen locations, with three qualified alternate suppliers priced in advance.", a:"procure",
+   why:"This is the buying decision itself, not the physical receiving. Consolidating spend and holding alternatives is procurement."},
+  {t:"Software that simulates a chair frame and stresses the joints before any tooling is cut.", a:"tech",
+   why:"Improving the product and the process before production is technology development, a support band that serves the whole chain."},
+  {t:"Delivery windows the customer can see, with a text when the van is twenty minutes away.", a:"outbound",
+   why:"The finished product is on its way to the buyer. Everything about that journey is outbound logistics."},
+  {t:"A record of every complaint, what was done about it, and whether it happened to that customer before.", a:"service",
+   why:"It all happens after the sale, which is what the service activity covers."},
+  {t:"A portal where a customer can see their own order history and set up a standing order.", a:"marketing",
+   why:"It takes orders and gives a reason to keep buying. Ordering and the buying experience sit in sales and marketing, even though the delivery it triggers does not."},
+  {t:"A rostering system that stops the same three bakers absorbing every night shift.", a:"hr",
+   why:"Who is scheduled and trained to do the work is the human resources band, even though the overtime shows up in operations."},
+  {t:"A scheduling system that stops a batch being mixed before the order is confirmed.", a:"operations",
+   why:"Turning inputs into the product is operations, and scrapped batches are an operations cost driver."},
+  {t:"A dashboard that closes the month in two days instead of nine.", a:"firm",
+   why:"Finance and general management belong to the organisation as a whole, which is the administration and firm infrastructure band."}
+];
+</script>
+
+<script>
+/* ------------------------------------------------------------- self-check */
+var QUIZ = [
+  {q:"A cinema&rsquo;s admissions have fallen for six straight quarters. The other two cinemas in town report the same fall, and a third closed. Discounting Tuesday tickets did nothing. Which force is doing the damage?",
+   a:2,
+   opts:["Rivalry among existing competitors","Bargaining power of buyers","Threat of substitute products or services","Threat of new entrants"],
+   why:["Rivalry would show as your share moving to the cinema across town. Here every cinema is falling together, and one has already gone.",
+        "Buyers do hold power over price, but buyer power redistributes profit inside the industry. It does not shrink the whole category at once.",
+        "Right. The category is contracting, not being redistributed, and a price cut had no effect &mdash; the classic signature of customers meeting the same need a different way, at home.",
+        "A new entrant would add capacity to the industry. Capacity here is leaving it."]},
+  {q:"Three customers account for 68 percent of a component maker&rsquo;s revenue. All three run annual tenders and one moved half its volume mid-contract last year. What should the analysis name as the strongest force, and why?",
+   a:1,
+   opts:["Rivalry, because the volume moved to a competitor","Buyer power, because a small number of accounts can dictate terms and have proved they will move","Supplier power, because losing volume raises the cost of steel per unit","New entrants, because the competitor that took the volume must be new"],
+   why:["The volume did move to a competitor, but rivalry describes the contest between sellers. What makes this firm vulnerable is the concentration of its revenue, which would hurt just as much with only one rival.",
+        "Right. Concentration plus a demonstrated willingness to switch is buyer power, and it operates at every renewal whether or not anyone actually leaves.",
+        "Unit costs may rise, but nothing in the situation says a supplier changed its terms. Suppliers here sell a commodity from several mills.",
+        "Nothing says the competitor is new. An established rival winning a tender is not entry."]},
+  {q:"A haulier&rsquo;s only telematics vendor has raised its per-vehicle fee twice in a year, and the tracking data cannot be exported into any other system. Which force is this, and what kind of initiative answers it?",
+   a:0,
+   opts:["Supplier power &mdash; and the answer is to make the vendor replaceable, for instance by requiring exportable data and qualifying an alternative","Rivalry &mdash; and the answer is to cut prices to protect share","Buyer power &mdash; and the answer is a loyalty programme for the haulier&rsquo;s own customers","Substitutes &mdash; and the answer is to stop tracking vehicles"],
+   why:["Right. Few alternatives plus a high switching cost is supplier power, and the initiative has to attack the switching cost rather than the fee.",
+        "Rivalry is a contest with other hauliers. Nothing here involves a competitor, and cutting prices would simply pass the vendor&rsquo;s increase into the margin.",
+        "Buyer power runs in the other direction &mdash; it is what the haulier&rsquo;s customers hold over the haulier. The vendor is upstream.",
+        "A substitute meets the same customer need a different way. Abandoning tracking is not a substitute, it is surrender of a capability."]},
+  {q:"A pop-up selling the same products opened opposite in six weeks, and a national chain has taken the lease on the corner site for the spring. What makes these observations belong to the threat of new entrants rather than rivalry?",
+   a:3,
+   opts:["They are smaller than the incumbent, and rivalry only counts between firms of similar size","They sell at lower prices, and price competition is always classified as entry","They have not opened yet, and only trading firms count as rivals","Neither was competing in this market before, and how quickly they arrived is what the observation measures"],
+   why:["Size has nothing to do with it. A small established competitor is still a rival.",
+        "Price competition is the usual evidence for rivalry, not for entry. The classification turns on who is doing the competing.",
+        "One of them is already trading. The pop-up opened; it still counts as entry today because of how recently and how easily it arrived.",
+        "Right. Entry is about firms that were not in this business and how low the barriers were. Once they have been trading for a while they simply become rivals."]},
+  {q:"Which of these is a substitute for a commuter rail operator, as the model uses the word?",
+   a:2,
+   opts:["A competing rail franchise bidding for the same route","A coach company running the same corridor","An employer&rsquo;s decision to let staff work from home three days a week","A rail union negotiating a pay settlement"],
+   why:["A different operator selling rail journeys is a rival, competing inside the same industry.",
+        "This is the closest wrong answer. A coach is a different mode, but it is still a firm selling the same journey to the same commuter &mdash; most analysts treat it as a rival in a broadly defined transport industry, and it is certainly not what makes the category shrink.",
+        "Right. Working from home meets the underlying need &mdash; being able to do the job &mdash; without buying any journey from anybody. The trip disappears rather than moving to another seller.",
+        "A union is a supplier of labour exercising bargaining power, not a substitute product."]},
+  {q:"In a hotel, where does handling a reservation belong on the value chain?",
+   a:0,
+   opts:["Inbound logistics, because a booking is an input that arrives and must be held until it is used","Operations, because taking a booking is part of running the hotel","Sales and marketing, because a booking is a sale","Service, because looking after the guest starts at the booking"],
+   why:["Right. This is the translation the model asks a service business to make: reservations arrive and are stored exactly as supplies are, before anything is delivered.",
+        "Operations is the guest being checked in, the room being cleaned, the breakfast served &mdash; the product itself being produced.",
+        "Marketing is what caused the guest to consider the hotel. The arrival and holding of the booking that results is an inbound activity.",
+        "Service in this model covers activities after the guest has left, such as resolving complaints."]},
+  {q:"A firm negotiates a three-year contract with a linen supplier and separately builds a receiving dock that checks deliveries in. Which value chain activities are these, in order?",
+   a:1,
+   opts:["Inbound logistics, then procurement","Procurement, then inbound logistics","Both are procurement, because both concern a supplier","Both are inbound logistics, because both concern goods arriving"],
+   why:["The order is reversed. Deciding what to buy and on what terms comes first and is procurement.",
+        "Right. Procurement is the buying decision, wherever in the chain it happens. Inbound logistics is the physical receiving, checking and storing.",
+        "Building and running a receiving dock is not a buying decision; it is the handling of what was bought.",
+        "Negotiating a contract involves no goods at all. It is the decision that precedes them."]},
+  {q:"Night-shift overtime is eating a bakery&rsquo;s margin because the same three staff absorb every late shift. A rostering system is proposed. Which activity does the initiative belong to, and where does the saving appear?",
+   a:3,
+   opts:["Human resources, and the saving appears in human resources","Operations, and the saving appears in operations","Technology development, and the saving appears everywhere","Human resources, and the saving appears in operations"],
+   why:["The system is a human resources system, but the overtime is not an HR cost &mdash; it is paid to produce the product.",
+        "The cost sits in operations, but the system that fixes it is about who is scheduled, which is the human resources band.",
+        "Technology development builds systems in general. Naming it that way loses the specific activity being improved, which is the whole point of placing an initiative.",
+        "Right, and this pairing is worth remembering: the activity a system belongs to and the activity where the money moves are frequently different, and a proposal should name both."]},
+  {q:"A study names buyer power as the strongest force with evidence, examines two value chain areas, and recommends one concrete system. A reviewer sends it back. What is most likely missing?",
+   a:2,
+   opts:["A second recommended initiative, so the board has a choice","A longer history of the firm, to give the reader context","A measure and a date, so the recommendation can be checked later","A different force, because buyer power is rarely the strongest"],
+   why:["One initiative is a decision; several are a wish list. Offering a choice moves the decision back onto the reader.",
+        "History is the material most often cut from these summaries, because it names nothing anyone could act on.",
+        "Right. Without the number you expect to move and the date you will look at it, the recommendation can be defended forever and judged never.",
+        "Buyer power is extremely common as the strongest force, particularly where revenue is concentrated in a few accounts."]},
+  {q:"A firm whose stated strategy is overall low-cost leadership is offered a system that would let it sell a premium, visibly higher-quality version of its product. The payback is good. What does the alignment test say?",
+   a:1,
+   opts:["Fund it, because a good payback settles the question on its own","Normally refuse it, because the investment does not serve the position the firm has chosen to compete from","Fund it, because differentiation is always worth more than cost leadership","Refuse it permanently, because a low-cost firm may never invest in quality"],
+   why:["Payback is necessary and not sufficient. Money and time are limited, so the firm funds the investments that most support what it is trying to be.",
+        "Right. This is business/IT alignment: a low-cost leader values investments that drive costs down over those that do not, however sound the numbers look in isolation.",
+        "Neither position is superior. Each is a different answer to the same competitive conditions.",
+        "Too absolute. An investment can be a strategic necessity &mdash; something the firm must do to survive &mdash; or the firm can deliberately change position, which is a decision to argue rather than assume."]}
+];
+
+/* -------------------------------------------------------------- reference */
+var GLOSSARY = [
+  {t:"Five Forces model", d:"A framework for judging how attractive an industry is, built from five sources of competitive pressure: rivalry, new entrants, buyers, suppliers and substitutes.", e:"Rating all five for a regional airline shows supplier power, not rivalry, setting half the cost base."},
+  {t:"Rivalry among existing competitors", d:"The contest between firms already selling in your industry, showing up in price, distribution and service.", e:"Four carriers quoting the same lanes, each matching the others&rsquo; discounts within a fortnight."},
+  {t:"Threat of new entrants", d:"The chance that firms not competing today will start tomorrow, adding capacity and pushing prices down.", e:"A pop-up shop trading within six weeks in a vacant unit opposite."},
+  {t:"Barriers to entry", d:"Whatever makes starting up hard: capital, licensing, scale, expertise, customer loyalty, access to distribution. The internet lowered most of them.", e:"Aircraft certification and airport slots, which cannot be rented by the month."},
+  {t:"Bargaining power of buyers", d:"The ability of customers to push back on price, quality and terms, coming from concentration or from the ease of walking away.", e:"Three accounts holding 68 percent of revenue and re-tendering every year."},
+  {t:"Bargaining power of suppliers", d:"The ability of the firms you buy from to set the terms, reaching you as higher costs and lower quality in what you resell.", e:"A sole telematics vendor raising its per-vehicle fee twice in a year."},
+  {t:"Threat of substitutes", d:"A different kind of product or service meeting the same underlying need, usually from an industry you do not monitor. Consequences include customers lost for life.", e:"Working from home rather than commuting: the journey is not bought from anybody."},
+  {t:"Switching cost", d:"What it costs a customer &mdash; in money, time, data or disruption &mdash; to move to another seller. Low switching costs raise buyer power; systems that raise them defend against it.", e:"A café whose standing orders, history and delivery windows all live in its supplier&rsquo;s portal."},
+  {t:"Value chain", d:"The whole set of activities inside an organisation that add value, from supplies coming in through to looking after the customer after the sale.", e:"For a hotel: supplies and reservations in, rooms cleaned and served, events delivered, complaints resolved."},
+  {t:"Value chain analysis", d:"Examining those activities to find where value is added and what it costs to add it, then choosing which to optimise. Draw it, cost it, then decide.", e:"Finding that hand-planned routing, not baking, is what is quietly eating a bakery&rsquo;s profit."},
+  {t:"Primary activities", d:"The five activities a product passes through on its way to a customer: inbound logistics, operations, outbound logistics, sales and marketing, and service.", e:"Timber arriving, being cut and assembled, shipped, sold through dealers, then repaired under warranty."},
+  {t:"Support activities", d:"The four bands serving every primary activity rather than one: administration and firm infrastructure, human resources, technology development, and procurement.", e:"A rostering system helps every stage that employs anybody."},
+  {t:"Inbound logistics", d:"Receiving, checking, storing and knowing what you hold, before any of it is sellable.", e:"Stock visibility that ends emergency purchases at premium prices."},
+  {t:"Operations", d:"Integrating supplies into the products and services the customer buys.", e:"Checking guests in, cleaning rooms, preparing breakfast."},
+  {t:"Outbound logistics", d:"Distributing the finished product or service out to the customer.", e:"Routing vans and giving the customer a delivery window they can see."},
+  {t:"Sales and marketing", d:"Making customers aware of the offer, giving them a reason to choose it, and taking the order.", e:"A portal where a café sets up a standing order from its own purchase history."},
+  {t:"Service", d:"Everything after the sale: support, warranty, complaints, and the record of them.", e:"Delivery-claim tracking that explains a credit instead of simply issuing it."},
+  {t:"Procurement", d:"The buying decision itself &mdash; what to buy, from whom, on what terms &mdash; as distinct from the physical receiving.", e:"One purchasing record covering fourteen locations with three qualified alternates."},
+  {t:"Technology development", d:"Product research, process improvement and the building of the systems the chain runs on.", e:"Simulating a chair frame before any tooling is cut."},
+  {t:"Cost driver", d:"The thing that makes an activity cost what it costs. A cost with no known driver can be complained about but not managed.", e:"Sixty percent of delivery cost being drivers idling between stops."},
+  {t:"Business/IT alignment", d:"The degree to which an information system investment serves the strategy the organisation has chosen. Firms fund what fits and refuse what does not, however good the payback.", e:"A low-cost leader declining a system that differentiates on premium quality."},
+  {t:"Strategic necessity", d:"An investment the organisation must make to survive, whether or not it matches the overall strategy.", e:"Card payment acceptance for a retailer whose customers have stopped carrying cash."},
+  {t:"Payback period", d:"How long an investment takes to return its cost out of the benefit it produces. A first filter, never the whole argument.", e:"A $45,000 routing system saving $62,000 a year pays back in about nine months."},
+  {t:"Measure and date", d:"The number a recommendation expects to move and when it will be checked. Without both, a system can be defended forever and judged never.", e:"Renewal rate from 71 to 85 percent, checked at the end of the next tender cycle."}
+];
+</script>
+
+<script>
+/* ============================================================================
+   HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function el(tag, cls, html){
+  var n = document.createElement(tag);
+  if(cls) n.className = cls;
+  if(html !== undefined) n.innerHTML = html;
+  return n;
+}
+function announce(t){ $("liveStatus").textContent = t; }
+function money(n){ return "$" + n.toLocaleString("en-US"); }
+function forceById(id){ for(var i=0;i<FORCES.length;i++){ if(FORCES[i].id===id) return FORCES[i]; } return null; }
+function chainById(id){ for(var i=0;i<CHAIN.length;i++){ if(CHAIN[i].id===id) return CHAIN[i]; } return null; }
+function hasNumber(s){ return /\d/.test(s) || /\b(half|third|quarter|two|three|four|five|six|seven|eight|nine|ten|dozen)\b/i.test(s); }
+
+/* ============================================================================
+   THEME — this page's own choice first, then whatever theme was last set on a
+   study module, so a dark reading session does not flip back to light here.
+   ========================================================================== */
+var THEME_KEY = "mis-strategy-lab-theme-v1";
+function applyTheme(theme){
+  var dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-label", dark ? "Switch to the light theme" : "Switch to the dark theme");
+}
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  if(saved === "dark" || saved === "light"){ applyTheme(saved); return; }
+  var inherited = null;
+  try{ inherited = localStorage.getItem("mis-ch1-theme-v1"); }catch(e){}
+  applyTheme(inherited === "dark" ? "dark" : "light");
+})();
+$("themeBtn").addEventListener("click", function(){
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ============================================================================
+   SECTION NAVIGATION
+   ========================================================================== */
+var SECTIONS = [
+  {id:"orient",   label:"Start here"},
+  {id:"forces",   label:"The five forces"},
+  {id:"rate",     label:"Rate an industry", act:true},
+  {id:"evidence", label:"Sort the evidence", act:true},
+  {id:"chain",    label:"The value chain"},
+  {id:"invest",   label:"Fund an initiative", act:true},
+  {id:"place",    label:"Place the system", act:true},
+  {id:"build",    label:"Build the analysis", act:true},
+  {id:"check",    label:"Self-check", act:true},
+  {id:"ref",      label:"Reference"}
+];
+var doneSet = {};
+var current = 0;
+
+(function buildTabs(){
+  var list = $("tablist");
+  SECTIONS.forEach(function(s, i){
+    var b = el("button", "tab");
+    b.type = "button";
+    b.id = "tab-" + s.id;
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-controls", "sec-" + s.id);
+    b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    b.innerHTML = (s.act ? '<span class="dot"></span>' : "") + "<span>" + s.label + "</span>";
+    b.addEventListener("click", function(){ go(i); });
+    b.addEventListener("keydown", function(ev){
+      if(ev.key === "ArrowRight"){ ev.preventDefault(); go(Math.min(SECTIONS.length-1, i+1), true); }
+      if(ev.key === "ArrowLeft"){ ev.preventDefault(); go(Math.max(0, i-1), true); }
+    });
+    list.appendChild(b);
+  });
+})();
+
+function go(i, focusTab){
+  current = i;
+  SECTIONS.forEach(function(s, j){
+    var sec = $("sec-" + s.id), tab = $("tab-" + s.id);
+    sec.classList.toggle("active", i === j);
+    tab.setAttribute("aria-selected", i === j ? "true" : "false");
+  });
+  $("prevBtn").disabled = i === 0;
+  $("nextBtn").disabled = i === SECTIONS.length - 1;
+  $("nextBtn").textContent = i === SECTIONS.length - 1 ? "End of the review" : "Next →";
+  var tab = $("tab-" + SECTIONS[i].id);
+  if(tab.scrollIntoView) tab.scrollIntoView({block:"nearest", inline:"center"});
+  if(focusTab) tab.focus();
+  window.scrollTo({top:0, behavior:"instant" in document.documentElement.style ? "instant" : "auto"});
+  announce(SECTIONS[i].label);
+}
+$("prevBtn").addEventListener("click", function(){ if(current > 0) go(current - 1); });
+$("nextBtn").addEventListener("click", function(){ if(current < SECTIONS.length - 1) go(current + 1); });
+
+function markDone(id){
+  if(doneSet[id]) return;
+  doneSet[id] = true;
+  var tab = $("tab-" + id);
+  if(tab) tab.classList.add("done");
+  var n = 0;
+  SECTIONS.forEach(function(s){ if(s.act && doneSet[s.id]) n++; });
+  $("doneStat").textContent = n + " / 6";
+  announce("Activity complete. " + n + " of 6 finished.");
+}
+go(0);
+
+/* ============================================================================
+   SECTION 2 — THE FORCE BOARD
+   ========================================================================== */
+(function buildForceBoard(){
+  var board = $("forceboard");
+  FORCES.forEach(function(f){
+    var b = el("button", "fcell f-" + f.pos + (f.pos === "mid" ? " mid" : ""));
+    b.type = "button";
+    b.setAttribute("aria-pressed", "false");
+    b.dataset.force = f.id;
+    b.innerHTML = "<u>" + f.tag + "</u><b>" + f.name + "</b><span>" + f.short + "</span>";
+    b.addEventListener("click", function(){ openForce(f.id); });
+    board.appendChild(b);
+  });
+  openForce("rivalry");
+})();
+
+function openForce(id){
+  var f = forceById(id);
+  var cells = document.querySelectorAll("#forceboard .fcell");
+  for(var i=0;i<cells.length;i++){
+    cells[i].setAttribute("aria-pressed", cells[i].dataset.force === id ? "true" : "false");
+  }
+  var d = el("div", "detail");
+  d.innerHTML =
+    "<h3>" + f.name + "</h3>" +
+    '<p class="qline">' + f.question + "</p>" +
+    "<p>" + f.means + "</p>" +
+    "<h4>This force is strong when</h4><ul>" +
+      f.strongWhen.map(function(s){ return "<li>" + s + "</li>"; }).join("") + "</ul>" +
+    "<h4>What the internet did to it</h4><p>" + f.internet + "</p>" +
+    "<h4>Systems that answer it</h4><ul>" +
+      f.systems.map(function(s){ return "<li>" + s + "</li>"; }).join("") + "</ul>" +
+    "<h4>Most often confused with</h4><p>" + f.confuse + "</p>";
+  var host = $("forceDetail");
+  host.innerHTML = "";
+  host.appendChild(d);
+  announce(f.name + " opened.");
+}
+
+/* ============================================================================
+   SECTION 3 — THE FORCE RATER
+   ========================================================================== */
+var rate = { scenario:SCENARIOS[0], values:{}, touched:{}, compared:false };
+
+function bandOf(avg){ return avg < 2 ? "Weak" : (avg < 3.5 ? "Moderate" : "Strong"); }
+function bandClass(avg){ return avg < 2 ? "lo" : (avg < 3.5 ? "mid" : "hi"); }
+function avgOf(arr){ var s = 0; for(var i=0;i<arr.length;i++) s += arr[i]; return s / arr.length; }
+
+(function buildScenarioChips(){
+  var host = $("scenarioChips");
+  SCENARIOS.forEach(function(s, i){
+    var c = el("button", "chip");
+    c.type = "button";
+    c.textContent = s.label;
+    c.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+    c.addEventListener("click", function(){
+      rate.scenario = s;
+      var chips = host.querySelectorAll(".chip");
+      for(var k=0;k<chips.length;k++) chips[k].setAttribute("aria-pressed", chips[k] === c ? "true" : "false");
+      resetRatings();
+      $("scenarioBrief").innerHTML = '<b class="tagline">' + s.label + "</b>" + s.brief;
+      announce(s.label + " loaded. Sliders reset.");
+    });
+    host.appendChild(c);
+  });
+  $("scenarioBrief").innerHTML = '<b class="tagline">' + SCENARIOS[0].label + "</b>" + SCENARIOS[0].brief;
+})();
+
+function resetRatings(){
+  rate.values = {}; rate.touched = {}; rate.compared = false;
+  FORCES.forEach(function(f){ rate.values[f.id] = [2,2,2,2]; });
+  var inputs = document.querySelectorAll("#raterForm input[type=range]");
+  for(var i=0;i<inputs.length;i++){
+    inputs[i].value = 2;
+    inputs[i].parentNode.querySelector(".val").textContent = labelFor(2);
+  }
+  $("compareOut").innerHTML = "";
+  refreshRater();
+}
+
+function labelFor(v){
+  v = Number(v);
+  if(v <= 1) return v + " · weak";
+  if(v <= 3) return v + " · moderate";
+  return v + " · strong";
+}
+
+(function buildRaterForm(){
+  var host = $("raterForm");
+  FORCES.forEach(function(f){
+    rate.values[f.id] = [2,2,2,2];
+    var g = el("div", "fgroup");
+    var head = el("header", null, "<b>" + f.name + '</b><span class="score" id="score-' + f.id + '">Moderate 2.0</span>');
+    g.appendChild(head);
+    DRIVERS[f.id].forEach(function(text, idx){
+      var row = el("div", "driver");
+      var lid = "drv-" + f.id + "-" + idx;
+      row.innerHTML = '<label for="' + lid + '">' + text + '</label>' +
+        '<div class="ctl"><input type="range" min="0" max="5" step="1" value="2" id="' + lid + '">' +
+        '<span class="val">2 · moderate</span></div>';
+      var input = row.querySelector("input");
+      input.addEventListener("input", function(){
+        rate.values[f.id][idx] = Number(input.value);
+        rate.touched[f.id + "-" + idx] = true;
+        row.querySelector(".val").textContent = labelFor(input.value);
+        refreshRater();
+      });
+      g.appendChild(row);
+    });
+    host.appendChild(g);
+  });
+})();
+
+function touchedCount(){
+  var n = 0;
+  for(var k in rate.touched){ if(rate.touched[k]) n++; }
+  return n;
+}
+
+function refreshRater(){
+  var bars = $("raterBars");
+  bars.innerHTML = "";
+  var best = null;
+  FORCES.forEach(function(f){
+    var a = avgOf(rate.values[f.id]);
+    if(!best || a > best.avg) best = {f:f, avg:a};
+    var row = el("div", "bar");
+    row.innerHTML = "<b>" + f.name.split(" ")[0].replace("Bargaining", "Buyer/supplier") + "</b>" +
+      '<span class="track"><i class="fill ' + bandClass(a) + '" style="width:' + (a/5*100) + '%"></i></span>' +
+      '<span class="num">' + a.toFixed(1) + "</span>";
+    row.querySelector("b").textContent = shortName(f);
+    bars.appendChild(row);
+    var chip = $("score-" + f.id);
+    if(chip){
+      chip.textContent = bandOf(a) + " " + a.toFixed(1);
+      chip.style.color = a >= 3.5 ? "var(--bad)" : (a >= 2 ? "var(--warn)" : "var(--good)");
+      chip.style.borderColor = "currentColor";
+    }
+  });
+  var ties = FORCES.filter(function(f){ return Math.abs(avgOf(rate.values[f.id]) - best.avg) < 0.001; });
+  var decisive = [];
+  FORCES.forEach(function(f){
+    var a = avgOf(rate.values[f.id]);
+    if(a < 3.5){
+      rate.values[f.id].forEach(function(v, i){
+        if(v === 5) decisive.push(shortName(f) + " — &ldquo;" + DRIVERS[f.id][i] + "&rdquo;");
+      });
+    }
+  });
+  var v = $("raterVerdict");
+  var html = "<h4>Strongest force: " + (ties.length > 1 ? ties.map(shortName).join(" and ") : shortName(best.f)) + "</h4>";
+  html += "<p>Rated <b>" + bandOf(best.avg) + "</b> at " + best.avg.toFixed(1) + " out of 5. " +
+    (ties.length > 1
+      ? "Two forces are level, which is a legitimate finding &mdash; but a written analysis has to pick one and say why the other came second."
+      : "That is the pressure the strategy has to answer, and the recommendation should be traceable back to it.") + "</p>";
+  if(decisive.length){
+    html += '<p style="color:var(--warn)"><b>Watch the averages.</b> You rated a driver at the maximum inside a force whose average is only moderate: ' +
+      decisive.join("; ") + ". One decisive condition can make a force strong on its own.</p>";
+  }
+  html += '<p class="hint" style="font-size:.79rem;color:var(--muted)">Drivers rated so far: ' + touchedCount() + " of 20.</p>";
+  v.innerHTML = html;
+}
+
+function shortName(f){
+  return {rivalry:"Rivalry", entrants:"New entrants", buyers:"Buyer power",
+          suppliers:"Supplier power", substitutes:"Substitutes"}[f.id];
+}
+
+$("resetRateBtn").addEventListener("click", function(){ resetRatings(); });
+
+$("compareBtn").addEventListener("click", function(){
+  var s = rate.scenario;
+  var yourBest = null, theirBest = null;
+  FORCES.forEach(function(f){
+    var y = avgOf(rate.values[f.id]), t = avgOf(s.analyst[f.id]);
+    if(!yourBest || y > yourBest.v) yourBest = {f:f, v:y};
+    if(!theirBest || t > theirBest.v) theirBest = {f:f, v:t};
+  });
+  var rows = FORCES.map(function(f){
+    var y = avgOf(rate.values[f.id]), t = avgOf(s.analyst[f.id]);
+    var gap = Math.abs(y - t);
+    var flag = gap >= 1.25 ? ' style="border-color:var(--warn)"' : "";
+    return "<tr" + flag + "><td><b>" + shortName(f) + "</b></td>" +
+      "<td>" + bandOf(y) + " " + y.toFixed(1) + "</td>" +
+      "<td>" + bandOf(t) + " " + t.toFixed(1) + "</td>" +
+      "<td>" + s.notes[f.id] + "</td></tr>";
+  }).join("");
+  var agree = yourBest.f.id === theirBest.f.id;
+  var out = el("div", "panel");
+  out.style.marginTop = "16px";
+  out.innerHTML = "<h2>Your reading beside an analyst&rsquo;s &mdash; " + s.label + "</h2>" +
+    "<div class=\"callout " + (agree ? "good" : "warn") + "\"><b class=\"tagline\">" +
+      (agree ? "You named the same strongest force" : "You named a different strongest force") + "</b>" +
+      "You said <b>" + shortName(yourBest.f) + "</b>; the analyst says <b>" + shortName(theirBest.f) + "</b>. " +
+      (agree
+        ? "Now check the rest of the table: agreeing on the winner while disagreeing about two other forces still changes what a firm would build."
+        : "Read the analyst&rsquo;s note for both forces below. The useful question is not who is right &mdash; it is which observable fact in the brief one of you weighted differently.") +
+    "</div>" +
+    '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Force</th><th>You</th><th>Analyst</th>' +
+    "<th>Why the analyst rated it that way</th></tr></thead><tbody>" + rows + "</tbody></table></div>" +
+    '<p class="hint" style="font-size:.82rem;color:var(--muted)">Rows outlined in amber are where you and the analyst are more than a band apart. Those are the ones worth arguing about.</p>';
+  var host = $("compareOut");
+  host.innerHTML = "";
+  host.appendChild(out);
+  out.scrollIntoView({block:"start", behavior:"smooth"});
+  if(touchedCount() >= 12) markDone("rate");
+  else announce("Comparison shown. Rate at least twelve drivers to complete this activity.");
+});
+refreshRater();
+</script>
+
+<script>
+/* ============================================================================
+   SECTION 4 — EVIDENCE SORT
+   ========================================================================== */
+(function buildEvidence(){
+  var host = $("evCards");
+  EVIDENCE.forEach(function(item, i){
+    var card = el("div", "evcard");
+    var sid = "ev-" + i;
+    var opts = FORCES.map(function(f){
+      return '<option value="' + f.id + '">' + shortName(f) + "</option>";
+    }).join("");
+    card.innerHTML = "<p>" + item.t + "</p>" +
+      '<label class="sr-only" for="' + sid + '">Which force does observation ' + (i+1) + " show?</label>" +
+      '<select id="' + sid + '"><option value="">Which force is this?</option>' + opts + "</select>" +
+      '<div class="fb"></div>';
+    card.querySelector("select").addEventListener("change", function(){
+      card.classList.remove("right", "wrong");
+      $("evSummary").innerHTML = "";
+    });
+    host.appendChild(card);
+  });
+})();
+
+$("evCheck").addEventListener("click", function(){
+  var cards = document.querySelectorAll("#evCards .evcard");
+  var right = 0, unanswered = 0;
+  for(var i=0;i<cards.length;i++){
+    var sel = cards[i].querySelector("select");
+    var item = EVIDENCE[i];
+    var fb = cards[i].querySelector(".fb");
+    cards[i].classList.remove("right", "wrong");
+    if(!sel.value){ unanswered++; continue; }
+    if(sel.value === item.f){
+      right++;
+      cards[i].classList.add("right");
+      fb.innerHTML = "<b>" + shortName(forceById(item.f)) + ".</b> " + item.why;
+    }else{
+      cards[i].classList.add("wrong");
+      fb.innerHTML = "<b>This one is " + shortName(forceById(item.f)) + ".</b> " + item.why +
+        " <em>" + item.trap + "</em>";
+    }
+  }
+  $("evTally").textContent = right + " of " + EVIDENCE.length + " sorted correctly" +
+    (unanswered ? " · " + unanswered + " not yet assigned" : "");
+  var msg = "";
+  if(unanswered){
+    msg = '<div class="callout warn">Assign every observation, then check again. An analyst does not get to leave a fact unclassified because it is awkward.</div>';
+  }else if(right === EVIDENCE.length){
+    msg = '<div class="callout good"><b class="tagline">All eight</b>You separated rivals from substitutes and demanding buyers from crowded markets, which is where most of these analyses come apart. Now notice what the sorted pile says: three observations point at buyers and entrants, and the shop&rsquo;s answer has to come from there.</div>';
+    markDone("evidence");
+  }else{
+    msg = '<div class="callout">Read the notes on the ones you missed, change the answers, and check again. The two hardest lines in the model are rival against substitute, and buyer power against rivalry.</div>';
+    markDone("evidence");
+  }
+  $("evSummary").innerHTML = msg;
+  announce(right + " of " + EVIDENCE.length + " correct.");
+});
+$("evReset").addEventListener("click", function(){
+  var cards = document.querySelectorAll("#evCards .evcard");
+  for(var i=0;i<cards.length;i++){
+    cards[i].classList.remove("right", "wrong");
+    cards[i].querySelector("select").value = "";
+    cards[i].querySelector(".fb").innerHTML = "";
+  }
+  $("evTally").textContent = "";
+  $("evSummary").innerHTML = "";
+});
+
+/* ============================================================================
+   SECTION 5 — THE VALUE CHAIN MAP
+   ========================================================================== */
+(function buildChain(){
+  CHAIN.forEach(function(a){
+    var host = a.band === "primary" ? $("chainPrimary") : $("chainSupport");
+    var b = el("button", "acell");
+    b.type = "button";
+    b.dataset.act = a.id;
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = "<u>" + (a.band === "primary" ? "Primary" : "Support") + "</u><b>" + a.name +
+      "</b><span>" + a.blurb + "</span>";
+    b.addEventListener("click", function(){ openChain(a.id); });
+    host.appendChild(b);
+  });
+  openChain("inbound");
+})();
+
+function openChain(id){
+  var a = chainById(id);
+  var cells = document.querySelectorAll(".acell");
+  for(var i=0;i<cells.length;i++){
+    cells[i].setAttribute("aria-pressed", cells[i].dataset.act === id ? "true" : "false");
+  }
+  var d = el("div", "detail chain");
+  d.innerHTML = "<h3>" + a.name + "</h3>" +
+    '<p class="qline">' + (a.band === "primary"
+      ? "A primary activity: the product passes through it on the way to the customer."
+      : "A support band: it serves every primary activity rather than one.") + "</p>" +
+    "<p>" + a.means + "</p>" +
+    "<h4>In a service business</h4><p>" + a.service + "</p>" +
+    "<h4>What drives the cost here</h4><ul>" +
+      a.drivers.map(function(s){ return "<li>" + s + "</li>"; }).join("") + "</ul>" +
+    "<h4>Systems that typically pay here</h4><ul>" +
+      a.systems.map(function(s){ return "<li>" + s + "</li>"; }).join("") + "</ul>";
+  var host = $("chainDetail");
+  host.innerHTML = "";
+  host.appendChild(d);
+  announce(a.name + " opened.");
+}
+
+/* ============================================================================
+   SECTION 6 — INVESTMENT SIMULATOR
+   ========================================================================== */
+var BUDGET = 150000;
+var sim = { strategy:"low", picked:{} };
+var STRATEGIES = [
+  {id:"low",  label:"Overall low-cost leadership", note:"The firm intends to win on price, so it values what drives cost down."},
+  {id:"diff", label:"Differentiation on service and quality", note:"The firm intends to be chosen for something other than price, so it values what a buyer can feel."}
+];
+
+(function buildStrategyChips(){
+  var host = $("strategyChips");
+  STRATEGIES.forEach(function(s, i){
+    var c = el("button", "chip");
+    c.type = "button";
+    c.textContent = s.label;
+    c.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+    c.addEventListener("click", function(){
+      sim.strategy = s.id;
+      var chips = host.querySelectorAll(".chip");
+      for(var k=0;k<chips.length;k++) chips[k].setAttribute("aria-pressed", chips[k] === c ? "true" : "false");
+      renderSimOptions();
+      refreshSim();
+      $("simVerdict").innerHTML = "";
+      announce(s.label + " selected. Fit scores updated.");
+    });
+    host.appendChild(c);
+  });
+})();
+
+function fitOf(o){ return sim.strategy === "low" ? o.fitLow : o.fitDiff; }
+function fitWord(n){ return ["Poor fit","Weak fit","Reasonable fit","Strong fit"][n]; }
+
+function renderSimOptions(){
+  var host = $("simOptions");
+  host.innerHTML = "";
+  SIM_OPTIONS.forEach(function(o){
+    var lab = el("label", "opt" + (sim.picked[o.id] ? " on" : ""));
+    lab.innerHTML = '<input type="checkbox"' + (sim.picked[o.id] ? " checked" : "") + '>' +
+      "<span><b>" + o.name + "</b>" +
+      '<span class="meta">' + o.act + " · costs " + money(o.cost) + " · returns " + money(o.benefit) +
+        " a year · " + fitWord(fitOf(o)) + " with this strategy" +
+        (o.answersForce ? " · answers buyer power" : "") + "</span>" +
+      '<span class="why">' + o.why + "</span></span>";
+    var box = lab.querySelector("input");
+    box.addEventListener("change", function(){
+      sim.picked[o.id] = box.checked;
+      lab.classList.toggle("on", box.checked);
+      refreshSim();
+    });
+    host.appendChild(lab);
+  });
+}
+
+function simTotals(){
+  var cost = 0, benefit = 0, fitSum = 0, n = 0, force = false;
+  SIM_OPTIONS.forEach(function(o){
+    if(!sim.picked[o.id]) return;
+    cost += o.cost; benefit += o.benefit; fitSum += fitOf(o); n++;
+    if(o.answersForce) force = true;
+  });
+  return {cost:cost, benefit:benefit, fit:n ? fitSum / n : 0, n:n, force:force};
+}
+
+function refreshSim(){
+  var t = simTotals();
+  $("kvSpend").innerHTML = "<span>Committed</span><b>" + money(t.cost) + "</b>";
+  $("kvSpend").className = "kv" + (t.cost > BUDGET ? " bad" : "");
+  var pct = Math.min(100, t.cost / BUDGET * 100);
+  var meter = $("spendMeter");
+  meter.style.width = pct + "%";
+  meter.className = t.cost > BUDGET ? "over" : "";
+  $("kvBenefit").innerHTML = "<span>Annual benefit</span><b>" + money(t.benefit) + "</b>";
+  var months = t.benefit > 0 ? Math.round(t.cost / t.benefit * 12) : 0;
+  $("kvPayback").innerHTML = "<span>Payback</span><b>" + (t.n ? months + " months" : "—") + "</b>";
+  $("kvPayback").className = "kv" + (t.n ? (months <= 24 ? " good" : " bad") : "");
+  $("kvFit").innerHTML = "<span>Strategy fit</span><b>" + (t.n ? t.fit.toFixed(1) + " / 3" : "—") + "</b>";
+  $("kvFit").className = "kv" + (t.n ? (t.fit >= 2 ? " good" : " bad") : "");
+  $("kvForce").innerHTML = "<span>Answers the strong force</span><b>" + (t.n ? (t.force ? "Yes" : "No") : "—") + "</b>";
+  $("kvForce").className = "kv" + (t.n ? (t.force ? " good" : " bad") : "");
+}
+
+$("simReset").addEventListener("click", function(){
+  sim.picked = {};
+  renderSimOptions();
+  refreshSim();
+  $("simVerdict").innerHTML = "";
+});
+
+$("simCheck").addEventListener("click", function(){
+  var t = simTotals();
+  var notes = [];
+  if(t.n === 0){
+    $("simVerdict").innerHTML = '<div class="callout warn">Nothing is selected yet. Choose the proposals you would fund, then review.</div>';
+    return;
+  }
+  if(t.cost > BUDGET){
+    notes.push(["warn", "You are over budget by " + money(t.cost - BUDGET) + ".",
+      "A portfolio that cannot be funded is not a recommendation. Either drop something or argue for more capital, and say which."]);
+  }else{
+    notes.push(["good", "Within budget, with " + money(BUDGET - t.cost) + " uncommitted.",
+      "Leaving a little unspent is defensible. Leaving most of it unspent means you have not answered the question you were asked."]);
+  }
+  var months = Math.round(t.cost / t.benefit * 12);
+  notes.push([months <= 24 ? "good" : "warn", "Payback in about " + months + " months.",
+    months <= 24 ? "That clears the board&rsquo;s two-year test." :
+      "The board asked for payback inside two years. This portfolio does not clear that on the numbers alone, so it needs an argument beyond the cash."]);
+  notes.push([t.force ? "good" : "warn",
+    t.force ? "Something here answers the strongest force." : "Nothing here answers the strongest force.",
+    t.force ? "Buyer power is what the brief names as strongest, and at least one of your picks gives a concentrated buyer something to lose by leaving."
+            : "Every pick saves the firm money without changing anything the eleven café chains would notice at the next tender. A cheaper firm with the same offer is still re-tendered every year."]);
+  var strat = sim.strategy === "low" ? STRATEGIES[0] : STRATEGIES[1];
+  notes.push([t.fit >= 2 ? "good" : "warn", "Strategy fit " + t.fit.toFixed(1) + " out of 3 under " + strat.label.toLowerCase() + ".",
+    t.fit >= 2 ? "The portfolio matches the position the firm says it is competing from, which is what business/IT alignment asks."
+               : "Several of these investments pull against the stated strategy. That is not automatically wrong &mdash; it may be a strategic necessity, or the strategy may be the thing that is wrong &mdash; but it has to be argued, not slipped through on payback."]);
+  if(sim.picked.oven && sim.strategy === "low"){
+    notes.push(["warn", "The premium finishing line under a low-cost strategy.",
+      "This is the alignment trap in its purest form: a genuinely good system, well argued on its own numbers, serving a position the firm has not chosen. It also consumes four fifths of the budget."]);
+  }
+  if(sim.picked.oven && sim.strategy === "diff"){
+    notes.push(["good", "The premium finishing line under a differentiation strategy.",
+      "Now it fits the position &mdash; but at " + money(120000) + " it crowds out almost everything else, so the case has to be that this one system is worth more than the four it displaces."]);
+  }
+  if(!sim.picked.inventory){
+    notes.push(["warn", "You passed on stock visibility.",
+      "It is the cheapest proposal with a return above its cost in year one, and it removes a driver &mdash; emergency purchasing &mdash; rather than merely trimming a number. Passing on it needs a reason."]);
+  }
+  var html = '<div class="panel" style="margin-top:16px"><h2>Review of your portfolio</h2>';
+  html += '<div class="kv"><span>Committed</span><b>' + money(t.cost) + " of " + money(BUDGET) + "</b></div>";
+  html += '<div class="kv"><span>Annual benefit</span><b>' + money(t.benefit) + "</b></div>";
+  html += '<div class="kv"><span>Proposals funded</span><b>' + t.n + " of " + SIM_OPTIONS.length + "</b></div>";
+  notes.forEach(function(n){
+    html += '<div class="callout ' + (n[0] === "good" ? "good" : "warn") + '"><b class="tagline">' + n[1] + "</b>" + n[2] + "</div>";
+  });
+  html += '<p class="takeaway">There is no single right portfolio here, and the simulator does not pretend there is. There is a portfolio you can defend: inside the budget, paying back inside the board&rsquo;s window, aligned with the stated strategy, and containing at least one thing that answers the force actually squeezing the firm.</p></div>';
+  $("simVerdict").innerHTML = html;
+  $("simVerdict").scrollIntoView({block:"start", behavior:"smooth"});
+  markDone("invest");
+});
+renderSimOptions();
+refreshSim();
+
+/* ============================================================================
+   SECTION 7 — PLACEMENT DRILL
+   ========================================================================== */
+(function buildPlacements(){
+  var host = $("placeCards");
+  var opts = CHAIN.map(function(a){
+    return '<option value="' + a.id + '">' + a.name + (a.band === "support" ? " (support)" : "") + "</option>";
+  }).join("");
+  PLACEMENTS.forEach(function(p, i){
+    var card = el("div", "evcard");
+    var sid = "pl-" + i;
+    card.innerHTML = "<p>" + p.t + "</p>" +
+      '<label class="sr-only" for="' + sid + '">Which activity does system ' + (i+1) + " improve?</label>" +
+      '<select id="' + sid + '"><option value="">Which activity does it improve?</option>' + opts + "</select>" +
+      '<div class="fb"></div>';
+    card.querySelector("select").addEventListener("change", function(){
+      card.classList.remove("right", "wrong");
+      $("placeSummary").innerHTML = "";
+    });
+    host.appendChild(card);
+  });
+})();
+
+$("placeCheck").addEventListener("click", function(){
+  var cards = document.querySelectorAll("#placeCards .evcard");
+  var right = 0, unanswered = 0;
+  for(var i=0;i<cards.length;i++){
+    var sel = cards[i].querySelector("select");
+    var p = PLACEMENTS[i];
+    var fb = cards[i].querySelector(".fb");
+    cards[i].classList.remove("right", "wrong");
+    if(!sel.value){ unanswered++; continue; }
+    if(sel.value === p.a){
+      right++;
+      cards[i].classList.add("right");
+      fb.innerHTML = "<b>" + chainById(p.a).name + ".</b> " + p.why;
+    }else{
+      cards[i].classList.add("wrong");
+      fb.innerHTML = "<b>It belongs to " + chainById(p.a).name + ", not " + chainById(sel.value).name + ".</b> " + p.why;
+    }
+  }
+  $("placeTally").textContent = right + " of " + PLACEMENTS.length + " placed correctly" +
+    (unanswered ? " · " + unanswered + " not yet placed" : "");
+  var msg;
+  if(unanswered){
+    msg = '<div class="callout warn">Place every system, then check again.</div>';
+  }else if(right === PLACEMENTS.length){
+    msg = '<div class="callout good"><b class="tagline">All nine</b>Including the two that catch nearly everybody: the buying decision is procurement while the receiving is inbound logistics, and a rostering system is a human resources system even though the overtime it saves is an operations cost.</div>';
+    markDone("place");
+  }else{
+    msg = '<div class="callout">Read the notes, fix the ones you missed, and check again. If a system feels like it belongs in two places, name the activity where the <em>cost</em> moves and say so explicitly &mdash; that is what a real proposal does.</div>';
+    markDone("place");
+  }
+  $("placeSummary").innerHTML = msg;
+  announce(right + " of " + PLACEMENTS.length + " correct.");
+});
+$("placeReset").addEventListener("click", function(){
+  var cards = document.querySelectorAll("#placeCards .evcard");
+  for(var i=0;i<cards.length;i++){
+    cards[i].classList.remove("right", "wrong");
+    cards[i].querySelector("select").value = "";
+    cards[i].querySelector(".fb").innerHTML = "";
+  }
+  $("placeTally").textContent = "";
+  $("placeSummary").innerHTML = "";
+});
+</script>
+
+<script>
+/* ============================================================================
+   SECTION 8 — THE ANALYSIS BUILDER
+   ========================================================================== */
+(function fillAreaSelects(){
+  ["bArea1", "bArea2"].forEach(function(id){
+    var sel = $(id);
+    CHAIN.forEach(function(a){
+      var o = document.createElement("option");
+      o.value = a.id;
+      o.textContent = a.name + (a.band === "support" ? " (support)" : "");
+      sel.appendChild(o);
+    });
+  });
+})();
+
+var VAGUE = ["improve our", "digital capabilit", "leverage", "synergy", "best in class",
+             "state of the art", "cutting edge", "modernis", "moderniz", "transform our",
+             "next generation", "world class"];
+var TIMEWORDS = /\b(month|months|quarter|quarters|year|years|week|weeks|season|cycle|january|february|march|april|may|june|july|august|september|october|november|december|q1|q2|q3|q4)\b/i;
+
+function words(s){ return s.trim() ? s.trim().split(/\s+/).length : 0; }
+
+var CHECKS = [
+  {id:"org",   label:"An organisation is named",
+   test:function(v){ return v.name.length >= 2; }},
+  {id:"force", label:"One of the five forces is named exactly",
+   test:function(v){ return !!v.force; }},
+  {id:"ev",    label:"The evidence is observable and carries a number",
+   test:function(v){ return words(v.evidence) >= 10 && hasNumber(v.evidence); }},
+  {id:"areas", label:"Two genuinely different value chain areas were examined",
+   test:function(v){ return v.a1 && v.a2 && v.a1 !== v.a2; }},
+  {id:"one",   label:"Exactly one initiative, concrete enough to be costed",
+   test:function(v){
+     if(words(v.initiative) < 8) return false;
+     var low = v.initiative.toLowerCase();
+     for(var i=0;i<VAGUE.length;i++){ if(low.indexOf(VAGUE[i]) !== -1) return false; }
+     return true;
+   }},
+  {id:"meas",  label:"A measure with a number in it",
+   test:function(v){ return v.measure.length >= 4 && hasNumber(v.measure); }},
+  {id:"date",  label:"A date or timeframe for checking it",
+   test:function(v){ return TIMEWORDS.test(v.date) || /\d/.test(v.date); }}
+];
+
+function builderValues(){
+  return {
+    name:$("bizName").value.trim(),
+    force:$("bForce").value,
+    evidence:$("bEvidence").value.trim(),
+    a1:$("bArea1").value,
+    a2:$("bArea2").value,
+    initiative:$("bInitiative").value.trim(),
+    measure:$("bMeasure").value.trim(),
+    date:$("bDate").value.trim()
+  };
+}
+
+/* A reader typically types the timeframe as a sentence ("At the end of the next
+   cycle"), and it is being spliced into the middle of one. Lower the first letter
+   unless it is a month, a proper noun the reader capitalised deliberately, or a digit. */
+var MONTHS = /^(january|february|march|april|may|june|july|august|september|october|november|december|q[1-4])\b/i;
+function lcFirst(s){
+  if(!s || MONTHS.test(s) || /^\d/.test(s)) return s;
+  if(s.length > 1 && s[1] === s[1].toUpperCase() && /[A-Za-z]/.test(s[1])) return s; // an acronym
+  return s.charAt(0).toLowerCase() + s.slice(1);
+}
+
+function buildSummary(v){
+  if(!v.name && !v.force && !v.evidence && !v.initiative) return "";
+  var org = v.name || "The organisation";
+  var a1 = v.a1 ? chainById(v.a1).name.toLowerCase() : "the recommended activity";
+  var a2 = v.a2 ? chainById(v.a2).name.toLowerCase() : "a second activity";
+  var lines = [];
+  lines.push(org + " — competitive position and one recommended initiative");
+  lines.push("");
+  lines.push("Strongest force. " + (v.force || "[force not yet named]") + ". " +
+    (v.evidence || "[evidence not yet given]"));
+  lines.push("");
+  lines.push("Value chain. Two areas were examined: " + a1 + ", and " + a2 + ". " +
+    "The initiative is placed in " + a1 + "; " + a2 +
+    " was examined and set aside as the weaker of the two opportunities.");
+  lines.push("");
+  lines.push("Recommendation. " + (v.initiative || "[initiative not yet stated]"));
+  lines.push("");
+  lines.push("How it will be judged. " + (v.measure || "[measure not yet given]") + ", checked " +
+    (v.date ? lcFirst(v.date) : "[no date given]") + ".");
+  return lines.join("\n");
+}
+
+function refreshBuilder(){
+  var v = builderValues();
+  var list = $("buildChecks");
+  list.innerHTML = "";
+  var passed = 0;
+  CHECKS.forEach(function(c){
+    var ok = c.test(v);
+    if(ok) passed++;
+    var li = el("li", ok ? "ok" : "");
+    li.innerHTML = '<span class="mark">' + (ok ? "✓" : "·") + "</span><span>" + c.label + "</span>";
+    list.appendChild(li);
+  });
+  var text = buildSummary(v);
+  $("buildPreview").textContent = text || "Fill in the fields above and the summary appears here.";
+  var w = text ? words(text) : 0;
+  $("wordCount").textContent = w + (w === 1 ? " word" : " words");
+  var meter = $("wordMeter");
+  meter.style.width = Math.min(100, w / 200 * 100) + "%";
+  meter.className = (w > 0 && (w < 100 || w > 200)) ? "over" : "";
+  if(passed === CHECKS.length) markDone("build");
+}
+
+["bizName", "bForce", "bEvidence", "bArea1", "bArea2", "bInitiative", "bMeasure", "bDate"]
+  .forEach(function(id){
+    $(id).addEventListener("input", refreshBuilder);
+    $(id).addEventListener("change", refreshBuilder);
+  });
+
+$("copyBuild").addEventListener("click", function(){
+  var text = $("buildPreview").textContent;
+  var note = $("copyNote");
+  function done(){ note.textContent = "Copied to the clipboard."; setTimeout(function(){ note.textContent = ""; }, 2600); }
+  function fail(){ note.textContent = "Select the summary and copy it manually."; }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, fallback);
+  }else{ fallback(); }
+  function fallback(){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      ok ? done() : fail();
+    }catch(e){ fail(); }
+  }
+});
+$("clearBuild").addEventListener("click", function(){
+  ["bizName", "bEvidence", "bInitiative", "bMeasure", "bDate"].forEach(function(id){ $(id).value = ""; });
+  $("bForce").value = ""; $("bArea1").value = ""; $("bArea2").value = "";
+  refreshBuilder();
+});
+refreshBuilder();
+
+/* ============================================================================
+   SECTION 9 — SELF-CHECK
+   ========================================================================== */
+var QUIZ_TOPICS = ["The five forces","The five forces","The five forces","The five forces","The five forces",
+                   "The value chain","The value chain","The value chain",
+                   "Putting them together","Putting them together"];
+var quizState = {};
+
+function renderQuiz(){
+  var host = $("quizList");
+  host.innerHTML = "";
+  quizState = {};
+  QUIZ.forEach(function(item, qi){
+    var q = el("div", "q");
+    q.innerHTML = '<p class="stem">' + (qi + 1) + ". " + item.q + "</p>";
+    var opts = el("div", "opts");
+    item.opts.forEach(function(text, oi){
+      var b = el("button", "o");
+      b.type = "button";
+      b.innerHTML = "<span>" + text + '</span><span class="exp">' + item.why[oi] + "</span>";
+      b.addEventListener("click", function(){
+        if(q.classList.contains("answered")) return;
+        q.classList.add("answered");
+        quizState[qi] = oi;
+        var buttons = opts.querySelectorAll(".o");
+        for(var k=0;k<buttons.length;k++){
+          if(k === item.a) buttons[k].classList.add("correct");
+          else if(k === oi) buttons[k].classList.add("picked-wrong");
+        }
+        updateQuizTally();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts);
+    host.appendChild(q);
+  });
+  $("quizTally").textContent = "";
+  $("quizScore").innerHTML = "";
+}
+
+function updateQuizTally(){
+  var answered = 0, right = 0, missed = {};
+  QUIZ.forEach(function(item, qi){
+    if(quizState[qi] === undefined) return;
+    answered++;
+    if(quizState[qi] === item.a) right++;
+    else missed[QUIZ_TOPICS[qi]] = (missed[QUIZ_TOPICS[qi]] || 0) + 1;
+  });
+  $("quizTally").textContent = right + " correct of " + answered + " answered";
+  if(answered === QUIZ.length){
+    var lines = [];
+    ["The five forces","The value chain","Putting them together"].forEach(function(topic){
+      var total = 0, wrong = missed[topic] || 0;
+      QUIZ_TOPICS.forEach(function(t){ if(t === topic) total++; });
+      lines.push("<li><b>" + topic + ":</b> " + (total - wrong) + " of " + total +
+        (wrong ? " — worth rereading that section" : "") + "</li>");
+    });
+    $("quizScore").innerHTML = '<div class="scorecard"><h4>' + right + " correct out of " + QUIZ.length +
+      "</h4><ul>" + lines.join("") +
+      "</ul><p>Reported per topic rather than as one number, because an average hides the one thing you need to go back to.</p></div>";
+    markDone("check");
+  }
+}
+$("quizReset").addEventListener("click", function(){ renderQuiz(); announce("Self-check reset."); });
+renderQuiz();
+
+/* ============================================================================
+   SECTION 10 — REFERENCE
+   ========================================================================== */
+function renderGlossary(filter){
+  var host = $("glossaryList");
+  host.innerHTML = "";
+  var f = (filter || "").trim().toLowerCase();
+  var shown = 0;
+  GLOSSARY.forEach(function(g){
+    var hay = (g.t + " " + g.d + " " + g.e).toLowerCase().replace(/&[a-z]+;/g, "");
+    if(f && hay.indexOf(f) === -1) return;
+    shown++;
+    var item = el("div", "gitem");
+    item.innerHTML = "<b>" + g.t + "</b><p>" + g.d + '</p><p class="ex">Example: ' + g.e + "</p>";
+    host.appendChild(item);
+  });
+  if(!shown) host.appendChild(el("div", "gnone", "Nothing matches that. Try a shorter word."));
+}
+$("gSearch").addEventListener("input", function(){ renderGlossary(this.value); });
+renderGlossary("");
+</script>
+</body>
+</html>
