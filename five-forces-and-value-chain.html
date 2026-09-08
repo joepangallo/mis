@@ -267,6 +267,29 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
 .preview{white-space:pre-wrap; font-size:.9rem; line-height:1.6; background:var(--panel-2);
   border:1px solid var(--border-soft); border-radius:12px; padding:14px 15px; min-height:80px}
 
+/* -------------------------------------------------------------------- cases */
+.case{border:1px solid var(--border); background:var(--panel); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); margin:0 0 18px}
+.case > h2{margin:0 0 6px; font-size:1.12rem}
+.case .brief{font-size:.95rem; color:var(--text-dim); margin:0 0 12px}
+.case h4{margin:16px 0 7px; font-size:.7rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.facts{list-style:none; padding:0; margin:0}
+.facts li{position:relative; padding:8px 12px 8px 30px; background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:10px; margin:6px 0; font-size:.88rem}
+.facts li::before{content:""; position:absolute; left:13px; top:16px; width:7px; height:7px;
+  border-radius:99px; background:var(--accent)}
+.case .decisions{margin-top:6px}
+.case .q{background:var(--panel-2)}
+.case .steps-left{font-size:.8rem; color:var(--muted); font-weight:700}
+.debrief{border:1px solid var(--good); background:var(--good-soft); border-radius:13px;
+  padding:15px 16px; margin:14px 0 0}
+.debrief h3{margin:0 0 8px; font-size:1rem}
+.debrief p{font-size:.92rem; margin:0 0 10px}
+.model{background:var(--panel); border:1px dashed var(--accent-line); border-radius:11px;
+  padding:12px 14px; font-size:.9rem; line-height:1.62}
+.model b{display:block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:6px}
+
 /* --------------------------------------------------------------------- quiz */
 .q{border:1px solid var(--border-soft); background:var(--panel-2); border-radius:13px;
   padding:14px 15px; margin:0 0 12px}
@@ -309,7 +332,7 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
     <b>Five Forces &amp; the Value Chain</b>
     <span>A working review</span>
   </div>
-  <div class="stat"><i>Activities done</i><b id="doneStat">0 / 6</b></div>
+  <div class="stat"><i>Activities done</i><b id="doneStat">0 / 7</b></div>
   <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
 </header>
 
@@ -383,9 +406,10 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
         what makes it strong, what it looks like in a service business, and the systems that answer it.</li>
       <li><b>Worked examples</b> &mdash; a full rating of one industry and a full costed chain for
         another, with the reasoning shown rather than summarised.</li>
-      <li><b>Six graded activities</b> &mdash; a force rater with real driver questions, an evidence
-        sort, an investment simulator with a budget, a placement drill, a guided analysis builder,
-        and a scenario self-check. The counter in the header tracks how many you have finished.</li>
+      <li><b>Seven graded activities</b> &mdash; a force rater with real driver questions, an evidence
+        sort, an investment simulator with a budget, a placement drill, three full case studies that
+        need both frameworks at once, a guided analysis builder, and a scenario self-check. The counter
+        in the header tracks how many you have finished.</li>
     </ul>
     <p class="lede">Nothing here is submitted or collected anywhere. Answers live in this page only
       and reset when you reload, so every attempt is a fresh one.</p>
@@ -697,10 +721,44 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ 8 · BUILDER ═══ -->
-<section class="section" id="sec-build" role="tabpanel" aria-labelledby="tab-build" tabindex="-1">
+<!-- ══════════════════════════════════════════════════════ 8 · CASES ═══ -->
+<section class="section" id="sec-cases" role="tabpanel" aria-labelledby="tab-cases" tabindex="-1">
   <div class="hero">
     <span class="eyebrow">Activity five &middot; interactive</span>
+    <h1>Case studies &mdash; both frameworks at once</h1>
+    <p class="lede">Three situations that cannot be answered with one model. Each opens with a brief, a
+      strip of facts, and a costed chain you have to actually read. Then come the decisions an analyst
+      would really have to make: which force is doing the damage, which activity can answer it, and what
+      to commit to. The debrief on each case stays shut until every decision is made, because the point
+      of a case is worked out rather than read.</p>
+  </div>
+
+  <div class="callout warn"><b class="tagline">How to work these</b>
+    Decide before you click. Every option carries an explanation, including the ones you did not choose,
+    so a wrong answer is worth as much as a right one &mdash; but only if you committed to something
+    first. All three firms are hypothetical.</div>
+
+  <div id="caseList"></div>
+
+  <div class="panel">
+    <h2>What the three cases were teaching</h2>
+    <ul class="keys">
+      <li><b>The symptom is not the force.</b> Falling margin looked like rivalry in all three, and was
+        rivalry in none of them. Rate from the evidence, not from the feeling.</li>
+      <li><b>The largest cost is rarely the target.</b> Operations was the biggest line in two of the
+        three cases; in neither was it the answer. Ask what the customer would miss.</li>
+      <li><b>The activity that owns the system and the activity that owns the saving differ.</b> Name
+        both, in writing, and the objection disappears before it is raised.</li>
+      <li><b>The second area earns its place.</b> Examining an area and setting it aside is evidence
+        that a scan happened, and it hands the reader the alternative your recommendation beat.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ 9 · BUILDER ═══ -->
+<section class="section" id="sec-build" role="tabpanel" aria-labelledby="tab-build" tabindex="-1">
+  <div class="hero">
+    <span class="eyebrow">Activity six &middot; interactive</span>
     <h1>Build the analysis end to end</h1>
     <p class="lede">This is the shape the whole review has been driving at: one strongest force with
       evidence, two genuinely different value chain areas, exactly one recommended initiative, and a
@@ -797,10 +855,10 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ 9 · SELF-CHECK ═══ -->
+<!-- ══════════════════════════════════════════════════ 10 · SELF-CHECK ═══ -->
 <section class="section" id="sec-check" role="tabpanel" aria-labelledby="tab-check" tabindex="-1">
   <div class="hero">
-    <span class="eyebrow">Activity six &middot; interactive</span>
+    <span class="eyebrow">Activity seven &middot; interactive</span>
     <h1>Self-check &mdash; situations, not definitions</h1>
     <p class="lede">Ten scenarios of the kind that actually cause trouble: a force that looks like
       another one, an activity that sits next door to the obvious answer, a recommendation that is
@@ -817,7 +875,7 @@ html[data-theme="dark"] .fcell.mid{color:#161b28} html[data-theme="dark"] .fcell
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ 10 · REFERENCE ═══ -->
+<!-- ═══════════════════════════════════════════════════ 11 · REFERENCE ═══ -->
 <section class="section" id="sec-ref" role="tabpanel" aria-labelledby="tab-ref" tabindex="-1">
   <div class="hero">
     <span class="eyebrow">Reference</span>
@@ -1219,6 +1277,188 @@ var PLACEMENTS = [
   {t:"A dashboard that closes the month in two days instead of nine.", a:"firm",
    why:"Finance and general management belong to the organisation as a whole, which is the administration and firm infrastructure band."}
 ];
+
+/* ------------------------------------------------------------- case studies
+   Three situations that cannot be answered with one framework. Each one runs
+   the same way an analyst would have to run it: read the brief, read the
+   exhibit, decide which force is doing the damage, decide which activity on
+   the chain can answer it, and only then commit to something buildable. The
+   debrief stays shut until every decision has been made, so the reasoning is
+   worked out rather than read first. */
+var CASES = [
+  {
+    id:"print",
+    name:"Case one · a family-run commercial print shop",
+    brief:"Twenty-two staff, one press hall, forty years in the same county. The shop prints brochures, "+
+      "business forms, signage and short-run packaging for local firms. Revenue has fallen 31 percent in "+
+      "four years and the owner has cut brochure prices twice with no effect. The two other printers in "+
+      "the county are shrinking as well; one has dropped a shift.",
+    facts:[
+      "Brochure and business-form revenue is down 48 percent in four years; signage and short-run packaging are up 22 percent.",
+      "A 10 percent discount campaign last spring produced three additional orders.",
+      "Corporate customers say the brochures now go out as email attachments and the forms are filled in on a website.",
+      "Setup and make-ready take 40 percent of press hours, and setup costs the same whether the run is 200 pieces or 20,000."
+    ],
+    exhibit:{
+      caption:"The shop&rsquo;s chain, costed from last year&rsquo;s accounts",
+      cols:["Activity","Annual cost","What drives it"],
+      rows:[
+        ["Inbound logistics","$180,000","Paper and ink bought at market prices from three merchants"],
+        ["Operations","$760,000","Press labour, and the setup that takes 40 percent of press hours"],
+        ["Outbound logistics","$120,000","Local delivery in two vans, mostly full"],
+        ["Sales and marketing","$140,000","Two representatives working from a printed catalogue"],
+        ["Service","$40,000","Reprints where the shop got it wrong"],
+        ["Support bands","$130,000","Administration, hiring, systems, and buying"]
+      ]
+    },
+    decisions:[
+      {q:"Every printer in the county is shrinking, and a price cut moved almost nothing. Which force is doing the damage?",
+       a:2,
+       opts:["Rivalry among existing competitors","Bargaining power of buyers","Threat of substitute products or services","Threat of new entrants"],
+       why:["Rivalry would move this shop&rsquo;s work to the printer across town. All three are shrinking together, which is a different disease.",
+            "Customers are certainly price-aware, but buyer power moves profit around inside an industry. It does not make the whole industry smaller while a discount goes unanswered.",
+            "Right. The work did not move to another printer, it stopped being printed: a PDF and a web form meet the same need without buying anything from this industry. That is also why the discount failed &mdash; the lost customers are not shopping here at all.",
+            "A new entrant would add printing capacity. Capacity in this county is leaving."]},
+      {q:"Operations is the largest line at $760,000. What does the exhibit actually justify treating as the target?",
+       a:1,
+       opts:["The whole of operations, because it is the biggest number on the page","The setup share of operations, because it is cost the customer would never miss and it is what makes short runs unprofitable","Inbound logistics, because paper is bought from three merchants and could be consolidated","Service, because reprints are pure waste"],
+       why:["Most of operations is printing, and printing is the product. The question is never where the most money is spent, it is where the most money is spent on things a customer would not miss.",
+            "Right. Setup is 40 percent of press hours and costs the same on a run of 200 as on a run of 20,000 &mdash; which is precisely why the growing short-run work looks unprofitable today.",
+            "Consolidating paper buying is sound procurement housekeeping, but $180,000 of commodity input bought from three merchants is not where this shop&rsquo;s future is decided.",
+            "Reprints are waste and worth fixing, but at $40,000 they cannot carry a strategy, and nothing in the brief says errors are rising."]},
+      {q:"Put the force and the activity together. Which initiative follows?",
+       a:0,
+       opts:["Scheduling and imposition software that batches short runs so setup is shared, making the signage and packaging work profitable to chase","A further 15 percent cut on brochure prices to win back the lost corporate work","A larger, faster press, so the shop can print more per hour","A redesigned website with the catalogue on it and no ordering"],
+       why:["Right. The substitute has taken the long-run printed word, so the growth is in what cannot be emailed &mdash; and the only thing standing between this shop and that growth is the setup cost the exhibit exposes.",
+            "The brief already ran this experiment twice. Price does not retrieve a customer who has left the category, and it hands away the margin on the work that remains.",
+            "Speed per hour is not the constraint. Setup is, and a bigger press makes each setup more expensive, not less, while demand for long runs is falling.",
+            "Marketing gloss with no ordering attached changes nothing about what the shop can profitably make. Fix the economics first, then advertise what you can now do."]}
+    ],
+    debrief:{
+      head:"What the two frameworks did that neither could do alone",
+      paras:[
+        "The force explains the fall and kills the obvious answer: a shrinking category is a substitution problem, and price cuts inside a shrinking category simply pay customers to leave more cheaply. That diagnosis is worth money on its own, because it stops the shop repeating the discount for a third time.",
+        "But a force never says what to build. Only the costed chain shows that setup, not printing, is what makes the growing short-run work look unattractive &mdash; and short-run work is exactly the work a PDF cannot substitute. The recommendation lives where those two findings meet."
+      ],
+      model:"Substitution has taken the long-run printed word: brochure and form revenue is down 48 percent in four years while every printer in the county shrinks and a 10 percent discount produced three orders. Setup consumes 40 percent of press hours at a fixed cost per run, which is what makes the growing short-run signage and packaging work unprofitable, so the shop should buy scheduling and imposition software that batches short runs, and judge it on setup falling from 40 to 25 percent of press hours and short-run orders per month, reviewed two quarters after it goes live."
+    }
+  },
+  {
+    id:"hotel",
+    name:"Case two · a ninety-room independent hotel",
+    brief:"Occupancy is healthy at 74 percent and the rooms are full most weekends, yet margin has fallen "+
+      "for three years. Sixty-two percent of room nights now arrive through two online travel platforms "+
+      "that charge 17 to 20 percent commission. Both have raised commission twice in two years, and the "+
+      "hotel&rsquo;s listing is ranked lower whenever it advertises a cheaper rate on its own site.",
+    facts:[
+      "Two platforms deliver 62 percent of room nights; commission cost $410,000 last year.",
+      "The hotel&rsquo;s own website shows photographs and a telephone number, with no live availability and no way to book.",
+      "Guests who book direct spend 22 percent more on food and events than guests who arrive through a platform.",
+      "Nine percent of guests are repeat visitors, and the hotel keeps no record of what any of them asked for last time."
+    ],
+    exhibit:{
+      caption:"The hotel&rsquo;s chain, with the manufacturing names translated",
+      cols:["Activity","Annual cost","What sits here"],
+      rows:[
+        ["Inbound logistics","$260,000","Supplies arriving, and reservations arriving and being held until used"],
+        ["Operations","$1,340,000","Front desk, housekeeping, breakfast &mdash; the room itself being produced"],
+        ["Outbound logistics","$310,000","Catering and event service, where the finished occasion reaches the guest"],
+        ["Sales and marketing","$500,000","$410,000 of platform commission, plus $90,000 of advertising"],
+        ["Service","$60,000","Complaints and follow-up after the guest has left"],
+        ["Support bands","$240,000","Administration, hiring, systems, and buying"]
+      ]
+    },
+    decisions:[
+      {q:"Which force does the evidence in this brief point at most directly?",
+       a:3,
+       opts:["Rivalry &mdash; other hotels in the same town are competing for the same guests","Bargaining power of buyers &mdash; guests compare prices and switch easily","Threat of substitutes &mdash; short-term rental flats meet the same need","Bargaining power of suppliers &mdash; two platforms supply most of the demand and set the terms"],
+       why:["Rivalry is real in any hotel market, but nothing in the brief is about a competing hotel. Occupancy is fine; it is the cost of filling the rooms that changed.",
+            "Guests do compare and switch, and that pressure is genuine. It is not, however, what raised commission twice or what punishes the hotel for quoting a cheaper direct rate.",
+            "Short-term rentals are a real substitute for this industry and belong in a full analysis. The evidence given, though, describes a channel that is squeezing a hotel whose rooms are still being filled.",
+            "Right. Two firms supply the majority of demand, they raise their price at will, they cannot easily be replaced, and they retaliate when the hotel tries to sell around them. That is supplier power in its most modern form."]},
+      {q:"A booking is an input that arrives and is held until it is used, which is inbound logistics. So where does the $410,000 of commission belong?",
+       a:1,
+       opts:["Inbound logistics, because that is where reservations sit on this chain","Sales and marketing, because commission is what the hotel pays to have the order taken","Operations, because the platforms are part of running the hotel","Support bands, because the platforms are a system the whole hotel depends on"],
+       why:["Handling the reservation once it exists is inbound logistics. This money is not spent handling reservations, it is spent obtaining them.",
+            "Right, and the distinction is the whole point of the exercise. Getting a customer to place the order is sales and marketing; receiving and holding the booking that results is inbound logistics. The exhibit puts commission with advertising because both buy demand.",
+            "Operations is the room being cleaned, the guest being checked in, breakfast being served &mdash; the product itself. No commission is paid to do any of that.",
+            "The support bands carry costs that belong to the organisation as a whole. A commission paid per booking is as direct a selling cost as exists."]},
+      {q:"Which initiative answers the force, in the activity you just named, without gambling the hotel?",
+       a:2,
+       opts:["Leave both platforms and rely on the hotel&rsquo;s own name","Match the platform rate exactly everywhere, so guests have no reason to book through them","Build direct booking with live availability, plus a guest record that remembers what a repeat visitor asked for, and move the channel mix deliberately","Renovate twenty rooms to a premium standard and raise the rate"],
+       why:["The platforms supply 62 percent of room nights. Walking away from a supplier you have no substitute for is not a strategy, it is an occupancy crisis. Build the alternative channel first.",
+            "Matching the rate concedes the argument. Nothing then distinguishes the direct channel, and the hotel keeps paying commission on the same bookings.",
+            "Right. It creates the substitute for the platform inside the hotel&rsquo;s own chain, and the guest record raises the switching cost for the 9 percent who already come back. Note it also captures the 22 percent higher food and event spend that direct guests already show.",
+            "A renovation may be a fine investment in its own right, but it changes nothing about who controls the channel or what the commission costs."]}
+    ],
+    debrief:{
+      head:"Why this one is so easy to misdiagnose",
+      paras:[
+        "Every visible symptom &mdash; falling margin, price pressure, guests choosing on price &mdash; looks like rivalry or buyer power, and a manager who names either will end up cutting the rate. The force analysis, done on the evidence rather than the symptom, finds an upstream supplier that is not selling rooms or beds but demand itself.",
+        "The chain then does something the force analysis cannot: it tells you the commission is a selling cost, not a handling cost, so the answer is built in sales and marketing rather than in the reservations desk. And it shows the second prize sitting in outbound logistics, because the direct guest who spends 22 percent more on food and events is the same guest."
+      ],
+      model:"Supplier power over the booking channel is the strongest force: two platforms deliver 62 percent of room nights, charge $410,000 a year in commission, have raised that twice in two years, and lower the hotel&rsquo;s ranking when it quotes a cheaper direct rate. Commission sits in sales and marketing rather than in the reservations handling of inbound logistics, so the hotel should build direct booking with live availability and a guest record that remembers a returning visitor, and judge it on direct bookings rising from 38 to 50 percent of room nights within twelve months."
+    }
+  },
+  {
+    id:"janitorial",
+    name:"Case three · a commercial cleaning contractor",
+    brief:"One hundred and eighty cleaners service fourteen office buildings under annual contracts. Three "+
+      "property managers control nine of the fourteen, and all three re-tender every year; the last two "+
+      "renewals were decided on price alone. One contract was lost outright last year, and the reason given "+
+      "was &ldquo;inconsistent staff&rdquo;. Annual turnover among cleaners is 68 percent.",
+    facts:[
+      "Three property managers hold nine of the fourteen contracts, and re-tender annually.",
+      "One hundred and twenty-two cleaners left last year; each replacement costs about $1,900 in recruiting, induction and supervisor time.",
+      "Complaints from a building run about three times higher in the first month after a cleaner changes than in any later month.",
+      "The firm has never lost a contract from a building whose cleaning team stayed the same all year."
+    ],
+    exhibit:{
+      caption:"The contractor&rsquo;s chain &mdash; a service business, so two activities are thin and one band is not",
+      cols:["Activity","Annual cost","What sits here"],
+      rows:[
+        ["Inbound logistics","$210,000","Cleaning supplies and equipment received and stored"],
+        ["Operations","$3,100,000","Cleaner wages and site supervision &mdash; the service being performed"],
+        ["Outbound logistics","$70,000","Mobilising a team onto a new site"],
+        ["Sales and marketing","$180,000","Preparing bids and attending tenders"],
+        ["Service","$150,000","Complaint handling and re-cleans"],
+        ["Human resources (support)","$290,000","Recruiting, inducting and rostering, including $232,000 of replacement cost"],
+        ["Other support bands","$160,000","Administration, systems, and buying"]
+      ]
+    },
+    decisions:[
+      {q:"Which force is strongest here, and what is the evidence for it?",
+       a:1,
+       opts:["Rivalry, because the last two renewals were decided on price","Buyer power, because three customers hold nine of fourteen contracts and re-tender every year","Threat of new entrants, because anyone can buy a mop and bid","Supplier power, because cleaning supplies are bought from a distributor"],
+       why:["Price-based renewals are evidence of rivalry, and rivalry is genuinely present. But rivalry alone would not put nine contracts in three pairs of hands, which is what makes every renewal an event.",
+            "Right. Concentration is the condition: three decision makers control most of the revenue, they re-tender annually, and one has already demonstrated it will move the business. Rivalry supplies the alternatives they are choosing among.",
+            "Entry is easy in this industry, which caps prices, but the contracts are not being lost to newcomers. They are being re-decided by the same three customers.",
+            "Supplies are $210,000 of commodity purchasing from a distributor. Nothing in the brief suggests a supplier is dictating anything."]},
+      {q:"The money sits in operations and the complaints are recorded in service. Where should the initiative be built?",
+       a:3,
+       opts:["Operations, because that is where $3.1 million of wages and supervision sits","Service, because that is where the complaints arrive","Sales and marketing, because that is where the contract is actually lost","The human resources band, because who is hired, inducted and rostered is what produces the turnover behind both"],
+       why:["Operations is where the cost lands, and naming it is half right &mdash; but the wage bill is the service being delivered. The controllable part of it is being created somewhere else.",
+            "Service records the consequence. A better complaint system would describe the problem more accurately without changing how often it happens.",
+            "The tender is where the loss becomes visible. By then the evidence the customer is judging &mdash; a year of inconsistent staff &mdash; has already been produced.",
+            "Right, and this is the pairing worth remembering: the system belongs to human resources, the saving appears in operations and service, and a proposal should name both. Turnover of 68 percent costs $232,000 directly and produces the inconsistency that lost a contract."]},
+      {q:"Which version of the recommendation could a board actually approve?",
+       a:2,
+       opts:["&ldquo;Improve our people capabilities to become the employer of choice in the region.&rdquo;","&ldquo;Buy new uniforms and equipment so cleaners take more pride in the work.&rdquo;","&ldquo;Rostering and retention tracking that keeps a named team on each site, judged on ninety-day retention rising from 46 to 70 percent and on renewal of the three concentrated contracts, reviewed after the next tender round.&rdquo;","&ldquo;Reduce our bid price by five percent to protect the nine contracts at the next renewal.&rdquo;"],
+       why:["It names no activity, no system, no number and no date. Nobody could cost it, build it, or ever say whether it worked.",
+            "It might help morale a little, and it costs real money. But it does not touch rostering, induction or the concentration of contracts, so no one could show it moved anything.",
+            "Right. One concrete system in a named activity, a number that is expected to move, and a date on which somebody will look &mdash; and the measure is tied to the force, because renewal by three concentrated buyers is what the firm is actually trying to survive.",
+            "Cutting the bid concedes the only ground the firm has. It also invites the same demand next year, from customers who have learned that pressure works."]}
+    ],
+    debrief:{
+      head:"The support band as the answer",
+      paras:[
+        "Analysts reach for a primary activity because that is where the flow and the money are. Here the entire recommendation lives in a support band, and the case is only arguable because both frameworks were used: buyer power says the firm must win an annual re-tender decided by three people, and the chain says the thing those three people complain about is manufactured by turnover, in human resources.",
+        "Notice what the second value chain area does for the argument. Service was examined and set aside &mdash; not ignored &mdash; and saying so is what shows a scan happened rather than a hunch. It also gives the board the alternative the recommendation was preferred over."
+      ],
+      model:"Buyer power is the strongest force: three property managers hold nine of fourteen contracts, re-tender annually, and one has already moved its business, citing inconsistent staff. Turnover of 68 percent costs $232,000 a year in replacement and produces complaints at three times the normal rate in a cleaner&rsquo;s first month on a site, so the initiative belongs in the human resources band rather than in service, which was examined and set aside: rostering and retention tracking that keeps a named team on each building, judged on ninety-day retention rising from 46 to 70 percent and on renewal of the three concentrated contracts at the next tender round."
+    }
+  }
+];
 </script>
 
 <script>
@@ -1378,6 +1618,7 @@ var SECTIONS = [
   {id:"chain",    label:"The value chain"},
   {id:"invest",   label:"Fund an initiative", act:true},
   {id:"place",    label:"Place the system", act:true},
+  {id:"cases",    label:"Case studies", act:true},
   {id:"build",    label:"Build the analysis", act:true},
   {id:"check",    label:"Self-check", act:true},
   {id:"ref",      label:"Reference"}
@@ -1430,8 +1671,8 @@ function markDone(id){
   if(tab) tab.classList.add("done");
   var n = 0;
   SECTIONS.forEach(function(s){ if(s.act && doneSet[s.id]) n++; });
-  $("doneStat").textContent = n + " / 6";
-  announce("Activity complete. " + n + " of 6 finished.");
+  $("doneStat").textContent = n + " / 7";
+  announce("Activity complete. " + n + " of 7 finished.");
 }
 go(0);
 
@@ -1969,7 +2210,116 @@ $("placeReset").addEventListener("click", function(){
 
 <script>
 /* ============================================================================
-   SECTION 8 — THE ANALYSIS BUILDER
+   SECTION 8 — CASE STUDIES
+   Each case renders as brief, facts, costed exhibit, then its decisions. The
+   debrief button stays disabled until every decision in that case has been
+   answered, so the reasoning cannot be read before it has been attempted.
+   ========================================================================== */
+var caseState = {};
+
+function renderCases(){
+  var host = $("caseList");
+  host.innerHTML = "";
+  caseState = {};
+  CASES.forEach(function(c){
+    caseState[c.id] = {};
+    var panel = el("div", "case");
+    var rows = c.exhibit.rows.map(function(r){
+      return "<tr>" + r.map(function(cell, i){
+        return "<td>" + (i === 0 ? "<b>" + cell + "</b>" : cell) + "</td>";
+      }).join("") + "</tr>";
+    }).join("");
+    panel.innerHTML =
+      "<h2>" + c.name + "</h2>" +
+      '<p class="brief">' + c.brief + "</p>" +
+      "<h4>What the owner can tell you</h4>" +
+      '<ul class="facts">' + c.facts.map(function(f){ return "<li>" + f + "</li>"; }).join("") + "</ul>" +
+      "<h4>Exhibit &mdash; " + c.exhibit.caption + "</h4>" +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr>' +
+        c.exhibit.cols.map(function(h){ return "<th>" + h + "</th>"; }).join("") +
+      "</tr></thead><tbody>" + rows + "</tbody></table></div>" +
+      "<h4>Your decisions</h4>" +
+      '<div class="decisions" id="dec-' + c.id + '"></div>' +
+      '<div class="rowbtns">' +
+        '<button type="button" class="btn primary" id="deb-' + c.id + '" disabled>Show the debrief</button>' +
+        '<span class="steps-left" id="left-' + c.id + '"></span>' +
+      "</div>" +
+      '<div id="out-' + c.id + '"></div>';
+    host.appendChild(panel);
+
+    var decHost = panel.querySelector("#dec-" + c.id);
+    c.decisions.forEach(function(d, di){
+      var q = el("div", "q");
+      q.innerHTML = '<p class="stem">' + (di + 1) + ". " + d.q + "</p>";
+      var opts = el("div", "opts");
+      d.opts.forEach(function(text, oi){
+        var b = el("button", "o");
+        b.type = "button";
+        b.innerHTML = "<span>" + text + '</span><span class="exp">' + d.why[oi] + "</span>";
+        b.addEventListener("click", function(){
+          if(q.classList.contains("answered")) return;
+          q.classList.add("answered");
+          caseState[c.id][di] = oi;
+          var all = opts.querySelectorAll(".o");
+          for(var k = 0; k < all.length; k++){
+            if(k === d.a) all[k].classList.add("correct");
+            else if(k === oi) all[k].classList.add("picked-wrong");
+          }
+          refreshCase(c);
+        });
+        opts.appendChild(b);
+      });
+      q.appendChild(opts);
+      decHost.appendChild(q);
+    });
+
+    panel.querySelector("#deb-" + c.id).addEventListener("click", function(){
+      showDebrief(c);
+    });
+    refreshCase(c);
+  });
+}
+
+function answeredIn(c){
+  var n = 0;
+  for(var k in caseState[c.id]){ if(caseState[c.id][k] !== undefined) n++; }
+  return n;
+}
+
+function refreshCase(c){
+  var done = answeredIn(c), total = c.decisions.length;
+  var btn = $("deb-" + c.id), left = $("left-" + c.id);
+  btn.disabled = done < total;
+  left.textContent = done < total
+    ? (total - done) + (total - done === 1 ? " decision left" : " decisions left")
+    : "All decisions made — the debrief is open.";
+  if(done === total) checkCasesComplete();
+}
+
+function showDebrief(c){
+  var right = 0;
+  c.decisions.forEach(function(d, di){ if(caseState[c.id][di] === d.a) right++; });
+  var out = $("out-" + c.id);
+  out.innerHTML =
+    '<div class="debrief"><h3>' + c.debrief.head + "</h3>" +
+    "<p><b>" + right + " of " + c.decisions.length + " decisions matched the analyst&rsquo;s.</b> " +
+      (right === c.decisions.length
+        ? "Read the debrief anyway &mdash; agreeing on the answer is not the same as holding the argument."
+        : "Reread the option explanations above alongside this; the useful question is which fact you weighted differently.") + "</p>" +
+    c.debrief.paras.map(function(p){ return "<p>" + p + "</p>"; }).join("") +
+    '<div class="model"><b>What a written answer looks like</b>' + c.debrief.model + "</div></div>";
+  out.querySelector(".debrief").scrollIntoView({block:"nearest", behavior:"smooth"});
+  announce("Debrief opened for " + c.name);
+}
+
+function checkCasesComplete(){
+  var all = CASES.every(function(c){ return answeredIn(c) === c.decisions.length; });
+  if(all) markDone("cases");
+}
+renderCases();
+
+/* ============================================================================
+   SECTION 9 — THE ANALYSIS BUILDER
    ========================================================================== */
 (function fillAreaSelects(){
   ["bArea1", "bArea2"].forEach(function(id){
@@ -2114,7 +2464,7 @@ $("clearBuild").addEventListener("click", function(){
 refreshBuilder();
 
 /* ============================================================================
-   SECTION 9 — SELF-CHECK
+   SECTION 10 — SELF-CHECK
    ========================================================================== */
 var QUIZ_TOPICS = ["The five forces","The five forces","The five forces","The five forces","The five forces",
                    "The value chain","The value chain","The value chain",
@@ -2180,7 +2530,7 @@ $("quizReset").addEventListener("click", function(){ renderQuiz(); announce("Sel
 renderQuiz();
 
 /* ============================================================================
-   SECTION 10 — REFERENCE
+   SECTION 11 — REFERENCE
    ========================================================================== */
 function renderGlossary(filter){
   var host = $("glossaryList");

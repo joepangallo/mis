@@ -38,7 +38,7 @@ function pageData(){
   assert.equal(dataBlocks.length, 2, "expected exactly two declaration-only data blocks");
   return new Function(
     `"use strict";\n${dataBlocks.join("\n")}\n` +
-    "return { FORCES, DRIVERS, SCENARIOS, EVIDENCE, CHAIN, SIM_OPTIONS, PLACEMENTS, QUIZ, GLOSSARY };"
+    "return { FORCES, DRIVERS, SCENARIOS, EVIDENCE, CHAIN, SIM_OPTIONS, PLACEMENTS, CASES, QUIZ, GLOSSARY };"
   )();
 }
 
@@ -205,6 +205,63 @@ test("every system places into a real activity, and the drill covers the whole c
 });
 
 /* ============================================================================
+   CASE STUDIES
+   ========================================================================== */
+test("every case carries a brief, facts, a costed exhibit and decisions", () => {
+  assert.ok(data.CASES.length >= 3, "three cases at least");
+  for(const c of data.CASES){
+    assert.ok(nonEmpty(c.name) && nonEmpty(c.brief), `${c.id}: needs a name and a brief`);
+    assert.ok(c.brief.split(/\s+/).length >= 40, `${c.id}: the brief must carry enough to reason from`);
+    assert.ok(c.facts.length >= 3, `${c.id}: needs a strip of facts`);
+    assert.ok(c.exhibit.rows.length >= 5, `${c.id}: the exhibit must cost most of the chain`);
+    for(const row of c.exhibit.rows){
+      assert.equal(row.length, c.exhibit.cols.length, `${c.id}: an exhibit row does not match its columns`);
+    }
+    assert.ok(c.decisions.length >= 3, `${c.id}: at least three decisions`);
+  }
+});
+
+test("every case needs BOTH frameworks, and its model answer is checkable", () => {
+  for(const c of data.CASES){
+    const text = c.decisions.map(d => d.q + " " + d.opts.join(" ")).join(" ").toLowerCase();
+    assert.ok(/force|rivalry|entrant|buyer|supplier|substitut/.test(text),
+      `${c.id}: no decision asks which force is at work`);
+    assert.ok(/logistics|operations|marketing|service|procurement|human resources|band/.test(text),
+      `${c.id}: no decision asks where on the value chain the answer lives`);
+    assert.ok(/\d/.test(c.debrief.model), `${c.id}: the model answer must carry a number`);
+    assert.ok(/(month|year|quarter|tender|review)/i.test(c.debrief.model),
+      `${c.id}: the model answer must say when the result gets checked`);
+  }
+});
+
+test("every case decision is answerable and explains all four options", () => {
+  for(const c of data.CASES){
+    for(const d of c.decisions){
+      assert.equal(d.opts.length, 4, `${c.id}: four options expected`);
+      assert.equal(d.why.length, 4, `${c.id}: every option must explain itself`);
+      assert.ok(Number.isInteger(d.a) && d.a >= 0 && d.a < 4, `${c.id}: invalid answer index`);
+      assert.ok(/right/i.test(d.why[d.a]), `${c.id}: the correct option should confirm itself`);
+    }
+    assert.ok(new Set(c.decisions.map(d => d.a)).size >= 2,
+      `${c.id}: the answer sits in the same position in every decision`);
+  }
+});
+
+test("the case firms are hypothetical and no real company is given invented facts", () => {
+  assert.ok(/hypothetical/i.test(html), "the page must say the case firms are hypothetical");
+  const prose = data.CASES.map(c => c.brief + " " + c.facts.join(" ")).join(" ");
+  assert.equal(prose.match(/\b(Amazon|Netflix|Walmart|Google|Apple|Uber|Airbnb|Marriott|Hilton)\b/), null,
+    "a case must not attribute facts to a real company");
+});
+
+test("a case debrief cannot be read before its decisions are made", () => {
+  assert.ok(html.includes('id="deb-'), "each case renders a debrief button");
+  assert.ok(html.includes('" disabled>Show the debrief</button>'), "the debrief button renders disabled");
+  assert.ok(html.includes("btn.disabled = done < total"),
+    "the debrief must stay shut until every decision in that case is answered");
+});
+
+/* ============================================================================
    SELF-CHECK
    ========================================================================== */
 test("every question has four options, a valid answer, and an explanation for each option", () => {
@@ -263,10 +320,10 @@ test("nothing institution-specific, and every link resolves", () => {
   }
 });
 
-test("all six activities are wired to the progress counter", () => {
+test("all seven activities are wired to the progress counter", () => {
   const sections = new Function(`"use strict";${html.match(/var SECTIONS = \[[\s\S]*?\];/)[0]}return SECTIONS;`)();
   const activities = sections.filter(s => s.act).map(s => s.id);
-  assert.equal(activities.length, 6, "the header promises six activities");
+  assert.equal(activities.length, 7, "the header promises seven activities");
   for(const id of activities){
     assert.ok(html.includes(`markDone("${id}")`), `${id} never marks itself complete`);
     assert.ok(html.includes(`id="sec-${id}"`), `${id} has no section`);
