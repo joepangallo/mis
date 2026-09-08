@@ -127,6 +127,8 @@ PROSE.s21d = `
 <p class="takeaway">Position first, then the resources and capabilities that make it deliverable, then the value chain activity where a system would pay, then the alignment test a proposal must survive to be funded.</p>
 
 <div class="activity" data-activity="vchQuiz2"></div>
+
+<div class="callout"><p><b>Practise both frameworks on real situations.</b> A companion page, <a href="five-forces-and-value-chain.html">Five Forces and the Value Chain &mdash; a working review</a>, takes the two models in this section and turns them into work: an interactive diagram of each, a rater that scores five industries force by force against an analyst&rsquo;s reading, an evidence sort, a budgeted investment simulator that tests business/IT alignment, three full case studies that need both models to answer, and a guided builder for the write-up.</p></div>
 `;
 
 ACT.vchStrategy = {

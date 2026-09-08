@@ -574,7 +574,15 @@ else {
   ]) need(present.test(page), `page no longer escapes ${what} — if this moved or was renamed, update this list`);
   for (const m of page.matchAll(/\b(?:src|href|poster|data|action|formaction)\s*=\s*(["'])(.*?)\1/gi)) {
     const value = m[2].trim();
-    if (value && !value.startsWith("#") && !value.startsWith("data:")) bad(`page attribute contains a non-local reference: ${JSON.stringify(value.slice(0,100))}`);
+    if (value && !value.startsWith("#") && !value.startsWith("data:")) {
+      /* A link to a sibling page in this repository is still zero-network, and the modules do
+         point at each other's practice material. Allow exactly that shape — a bare file name
+         ending in .html, no scheme, no slash, no parent traversal — and prove the file is
+         really there, so a renamed page is caught here rather than by a reader hitting a 404. */
+      const sibling = /^[A-Za-z0-9][A-Za-z0-9._-]*\.html$/.test(value);
+      if (!sibling) bad(`page attribute contains a non-local reference: ${JSON.stringify(value.slice(0,100))}`);
+      else if (!existsSync(join(dirname(PAGE), value))) bad(`page links to a sibling page that does not exist: ${JSON.stringify(value)}`);
+    }
   }
   /* srcset is a comma-separated candidate list, so it needs splitting before each URL is
      judged; left unchecked it was a live network request the rest of these rules could not see. */
