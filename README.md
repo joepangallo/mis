@@ -84,6 +84,38 @@ same fail-closed rule to the printable companion. GitHub Actions runs the ordina
 committed generated page of **every** module, one matrix job each, so a stale build or structural drift
 cannot merge unnoticed in any of them.
 
+## Review game
+
+[`modules-1-3-jeopardy.html`](modules-1-3-jeopardy.html) is a two-round Jeopardy board covering
+Modules 1 to 3, for use once the reading is done rather than instead of it. Like the modules it is one
+self-contained file with no CDN, no fonts, no scripts and no network of any kind, and it inherits the
+theme the reader last set on a module page.
+
+- **Round one, $200&ndash;$1,000 &mdash; what the terms mean.** Parts and people, the catalogue of
+  systems, the digital world, ethics and consequences, and infrastructure parts.
+- **Round two, Double Jeopardy, $400&ndash;$2,000 &mdash; what you do with them.** Competitive forces,
+  the value chain, generic strategies and business models, cloud service models and the pressures that
+  push an organization toward them, and **the shape of the written framework analysis itself** &mdash;
+  rating all five forces, at least two genuinely distinct value chain areas, exactly one recommended
+  initiative, the word band on the comparison, and the measure and timeframe that make a
+  recommendation checkable later.
+- **Final Jeopardy** is business/IT alignment, which is what the whole analysis is in service of.
+
+Every clue is tagged with the course objectives it serves and the module to reread on a miss, so the
+results screen reports **per objective** rather than as one number, and says plainly that objectives 6,
+10 and 11 are not on the board because Modules 1&ndash;3 do not teach them. Each revealed answer carries
+a sentence saying why it is that term and not the one next to it.
+
+The board teaches the shape of the graded deliverable, never its wording: no case name, no institution,
+no course code. `modules-1-3-jeopardy.test.mjs` enforces that alongside the board contract &mdash; two
+5&times;5 rounds with round two worth double, answers phrased as questions, no duplicated clue or answer,
+every clue tagged and every covered objective actually asked about, and every link resolving to a file
+that exists.
+
+```sh
+node --test modules-1-3-jeopardy.test.mjs
+```
+
 ## Course materials
 
 The textbook chapter, syllabus, and assessment documents are deliberately **not** in this

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modules 1&ndash;3 Jeopardy</title>
+<meta name="description" content="A two-round Jeopardy-style review game covering Modules 1 to 3 — information systems, the digital world, ethics, strategy, infrastructure and the cloud — scored against the course objectives and the four moves the written framework analysis asks for.">
+<style>
+/* ============================================================================
+   THEME TOKENS — the same palette as the study modules, so moving from a
+   module into this review game does not feel like switching products. The
+   board colours are the one addition: a deep blue-violet that reads as a game
+   show rather than as more reading.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f;  --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --plum:#7a3d86; --plum-soft:#7a3d861a;
+  --board:#1b2a55; --board-2:#25397a; --board-text:#fff;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#1e2433; --bg-soft:#242b3c; --panel:#293042; --panel-2:#323950;
+  --border:#46506c; --border-soft:#394157;
+  --text:#f2f4fa; --text-dim:#c8cfe0; --muted:#a6aec4;
+  --accent:#7cc7f0; --accent-strong:#1d5d8c; --accent-soft:#7cc7f022; --accent-line:#7cc7f055;
+  --good:#2fd39f; --good-soft:#2fd39f22;
+  --bad:#ff8a94;  --bad-soft:#ff8a9422;
+  --warn:#f5a524; --warn-soft:#f5a52422;
+  --plum:#d8a6e4; --plum-soft:#d8a6e422;
+  --board:#101a38; --board-2:#1a2a5e; --board-text:#fff;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%; margin:0}
+body{background:var(--bg); color:var(--text); min-height:100%;
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+button{font:inherit; color:inherit}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+.app{min-height:100%; display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:10px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:5}
+.brand{display:flex; align-items:baseline; gap:10px; margin-right:auto; min-width:0}
+.brand b{font-size:1.05rem; letter-spacing:-.01em}
+.brand span{font-size:.7rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.stat{display:flex; align-items:baseline; gap:6px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.stat i{font-style:normal; font-size:.62rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.stat b{font-size:.95rem; font-variant-numeric:tabular-nums}
+.btn{border:1px solid var(--border); background:var(--panel-2); border-radius:10px;
+  padding:8px 14px; cursor:pointer; font-weight:650; font-size:.86rem;
+  transition:transform .1s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--accent-line)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.good{background:var(--good); border-color:var(--good); color:#fff}
+.btn.sm{padding:5px 11px; font-size:.78rem}
+.btn[disabled]{opacity:.45; cursor:default}
+button:focus-visible,[role="button"]:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
+.stage{flex:1; padding:18px 18px 40px; display:flex; flex-direction:column; align-items:center}
+.wrap{width:100%; max-width:1000px}
+.foot{padding:10px 18px 16px; border-top:1px solid var(--border-soft);
+  font-size:.75rem; color:var(--muted); display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+.foot a{font-weight:700}
+
+.hero{text-align:center; margin:8px 0 20px}
+.hero h1{margin:0 0 8px; font-size:1.9rem; letter-spacing:-.02em}
+.hero p{margin:0 auto; max-width:62ch; color:var(--text-dim); font-size:.95rem}
+.eyebrow{display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:8px}
+
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); width:100%}
+.panel + .panel{margin-top:14px}
+.panel h2{margin:0 0 10px; font-size:1.1rem}
+.panel p{margin:0 0 10px}
+.panel ul{margin:0; padding-left:22px}
+.panel li{margin:6px 0}
+.cats-preview{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); margin:10px 0 4px}
+.cats-preview .chip{background:var(--panel-2); border:1px solid var(--border-soft);
+  border-radius:12px; padding:11px 12px; text-align:center; font-weight:750; font-size:.83rem}
+.round-label{font-size:.66rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:14px 0 4px}
+.center-row{display:flex; justify-content:center; gap:12px; margin-top:18px; flex-wrap:wrap}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft);
+  border-radius:10px; padding:12px 14px; margin:12px 0 0; font-size:.9rem}
+.callout.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.callout b.tagline{display:block; margin-bottom:4px}
+
+/* ---------------------------------------------------------------- board */
+.round-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin:0 0 10px}
+.round-head h2{margin:0; font-size:1.25rem}
+.round-head span{font-size:.82rem; color:var(--muted)}
+.board-scroll{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;
+  border-radius:16px; box-shadow:var(--shadow)}
+.board{display:grid; grid-template-columns:repeat(5,minmax(158px,1fr)); gap:4px;
+  background:var(--board-2); min-width:800px; padding:4px}
+.board .cat{background:var(--board); color:var(--board-text); text-align:center;
+  font-weight:800; font-size:.76rem; letter-spacing:.02em; padding:12px 8px;
+  display:flex; align-items:center; justify-content:center; min-height:66px; line-height:1.25}
+.tile{background:var(--board); color:var(--board-text); border:none; border-radius:4px;
+  font-size:1.45rem; font-weight:800; padding:22px 6px; cursor:pointer;
+  font-variant-numeric:tabular-nums; transition:background .12s}
+.tile:hover:not([disabled]){background:var(--board-2)}
+.tile[disabled]{background:transparent; color:var(--border-soft); cursor:default; opacity:.55}
+html[data-theme="dark"] .tile[disabled]{color:#2c3663}
+
+/* ---------------------------------------------------------------- dialog */
+dialog{border:none; border-radius:18px; padding:0; background:var(--panel); color:var(--text);
+  width:min(660px,92vw); box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(20,16,10,.55)}
+html[data-theme="dark"] dialog::backdrop{background:rgba(0,0,0,.65)}
+.dlg-inner{padding:24px 26px 22px}
+.dlg-eyebrow{font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 8px}
+.dlg-clue{font-size:1.2rem; line-height:1.5; font-weight:650; margin:0 0 18px}
+.dlg-answer{font-size:1.1rem; line-height:1.5; font-weight:650; color:var(--good);
+  background:var(--good-soft); border:1px solid var(--good); border-radius:12px;
+  padding:12px 14px; margin:0 0 14px}
+.dlg-why{font-size:.9rem; line-height:1.55; color:var(--text-dim); background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:12px; padding:11px 14px; margin:0 0 18px}
+.dlg-why b{color:var(--text)}
+.dlg-row{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.dlg-row.spread{justify-content:space-between}
+.wager-row{display:flex; align-items:center; gap:10px; margin:0 0 8px}
+.wager-row input{font:inherit; font-size:1.1rem; font-weight:750; width:130px;
+  padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--panel-2);
+  color:var(--text)}
+.wager-hint{font-size:.82rem; color:var(--muted); margin:0 0 18px}
+
+/* ---------------------------------------------------------------- results */
+.results{text-align:center}
+.results .score{font-size:3rem; font-weight:800; margin:6px 0; color:var(--accent)}
+.results .best{color:var(--muted); font-size:.9rem; margin-bottom:6px}
+.tbl-wrap{width:100%; overflow-x:auto; margin-top:10px}
+table.tbl{width:100%; border-collapse:collapse; font-size:.88rem; text-align:left}
+table.tbl th,table.tbl td{padding:8px 10px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl thead th{background:var(--panel-2); font-size:.7rem; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted); border-bottom:1px solid var(--border)}
+table.tbl td.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pill{display:inline-block; padding:2px 9px; border-radius:99px; font-size:.72rem; font-weight:800}
+.pill.ok{background:var(--good-soft); color:var(--good)}
+.pill.mid{background:var(--warn-soft); color:var(--warn)}
+.pill.low{background:var(--bad-soft); color:var(--bad)}
+.pill.none{background:var(--panel-2); color:var(--muted)}
+
+[hidden]{display:none !important}
+@media (max-width:640px){
+  .hero h1{font-size:1.5rem}
+  .tile{font-size:1.15rem; padding:16px 4px}
+  .board .cat{font-size:.68rem}
+  .stage{padding:14px 12px 32px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <b>Modules 1&ndash;3 Jeopardy</b>
+      <span id="roundStat">Review game</span>
+    </div>
+    <div class="stat"><i>Score</i><b id="scoreStat">$0</b></div>
+    <div class="stat" id="bestStat" hidden><i>Best</i><b id="bestStatValue">$0</b></div>
+    <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
+  </header>
+
+  <main class="stage">
+    <div class="sr-only" role="status" aria-live="polite" id="liveStatus"></div>
+
+    <!-- ============================== INTRO ============================== -->
+    <section class="wrap" id="screenIntro">
+      <div class="hero">
+        <span class="eyebrow">Modules 1, 2 and 3 &middot; review</span>
+        <h1>Modules 1&ndash;3 Jeopardy</h1>
+        <p>Fifty clues over two boards plus a Final Jeopardy capstone. The first board is the
+          vocabulary you have to have &mdash; systems, the digital world, ethics, infrastructure.
+          The second board is the work you have to do with it &mdash; competitive forces, the value
+          chain, generic strategies, the cloud, and the four moves a written framework analysis asks
+          for. Pick a category and a dollar value, decide your answer, then reveal it and grade
+          yourself honestly.</p>
+      </div>
+
+      <div class="panel">
+        <h2>How to play</h2>
+        <ul>
+          <li><b>Goal:</b> clear both boards and bank as much money as you can. You choose the
+            category and the value, the same way the real game works.</li>
+          <li><b>Every clue is a statement.</b> Your answer is phrased as a question &mdash;
+            &ldquo;What is the value chain?&rdquo; not &ldquo;The value chain.&rdquo;</li>
+          <li><b>Answer honestly.</b> Nothing is typed and nothing is graded for you. Decide your
+            answer, tap <b>Reveal answer</b>, then say whether you actually had it.</li>
+          <li><b>No penalty for a miss</b> on the boards. This is a study tool, not an elimination
+            game: right answers add the tile's value, misses just move on. Final Jeopardy is the one
+            place a wrong answer costs you, because you chose the wager.</li>
+          <li><b>Every answer explains itself.</b> Under each answer is a sentence saying why it is
+            that one and not the term next to it, because the near-miss is what the exam tests.</li>
+          <li><b>The score is not the point.</b> At the end you get a breakdown by course objective,
+            so a weak area shows up as a named objective to reread instead of disappearing into one
+            number.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>The two boards</h2>
+        <p class="round-label">Round one &middot; $200&ndash;$1,000 &middot; what the terms mean</p>
+        <div class="cats-preview" id="catsPreview1"></div>
+        <p class="round-label">Round two &middot; Double Jeopardy &middot; $400&ndash;$2,000 &middot; what you do with them</p>
+        <div class="cats-preview" id="catsPreview2"></div>
+        <div class="callout">
+          <b class="tagline">The last category is the written assignment, not more vocabulary</b>
+          <b>Building the Recommendation</b> asks about the shape of the framework analysis itself:
+          how many forces you rate, how many value chain areas count, how many initiatives you
+          recommend, how long the comparison runs, and what makes a recommendation checkable later.
+          Those clues are worth playing even if you already know every definition on the first board.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Which course objectives this board covers</h2>
+        <p>Every clue is tagged with the course objectives it serves, and the results screen reports
+          them separately. Modules 1 to 3 do not reach all eleven, and this board does not pretend
+          otherwise &mdash; the three it leaves alone are listed at the bottom so you know where they
+          are covered instead.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Clues</th></tr></thead>
+            <tbody id="objPreviewBody"></tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <b class="tagline">Not on this board</b>
+          <b>Objective 6</b> (outline the life cycle of an information system) is not taught in
+          Modules 1&ndash;3. <b>Objective 10</b> (build a database application in SQLite) and
+          <b>Objective 11</b> (advanced spreadsheet functions for a decision support system) are
+          served by the course's separate database and spreadsheet work rather than by a reading
+          module, so they are not reviewed here either.
+        </div>
+      </div>
+
+      <div class="center-row">
+        <button type="button" class="btn primary" id="startBtn">Start the game</button>
+        <a class="btn" href="module-01-managing-in-the-digital-world.html">Module 1</a>
+        <a class="btn" href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+        <a class="btn" href="module-03-information-systems-infrastructure.html">Module 3</a>
+      </div>
+    </section>
+
+    <!-- ============================== BOARD ============================== -->
+    <section class="wrap" id="screenBoard" hidden>
+      <div class="round-head">
+        <h2 id="roundTitle">Round one</h2>
+        <span id="roundSub"></span>
+      </div>
+      <div class="board-scroll">
+        <div class="board" id="board"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn sm" id="rulesBtn">How to play</button>
+      </div>
+    </section>
+
+    <!-- ============================== ROUND BREAK ============================== -->
+    <section class="wrap" id="screenBreak" hidden>
+      <div class="hero">
+        <span class="eyebrow">Round one complete</span>
+        <h1>Double Jeopardy</h1>
+        <p>The first board is clear. Your score is <b id="breakScoreLabel">$0</b>. The second board
+          is worth double, and it stops asking what the terms mean and starts asking what you do
+          with them.</p>
+      </div>
+      <div class="panel">
+        <h2>What changes</h2>
+        <ul>
+          <li><b>Values double</b> &mdash; $400 through $2,000.</li>
+          <li><b>The clues stop being definitions.</b> Most of them describe a situation and ask you
+            to name what is going on, which is the form the material takes once you are the person
+            being asked.</li>
+          <li><b>Your score carries over.</b> Nothing from round one is lost.</li>
+        </ul>
+        <div class="cats-preview" id="catsPreview2b"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="round2Btn">Start Double Jeopardy</button>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL ============================== -->
+    <section class="wrap" id="screenFinal" hidden>
+      <div class="hero">
+        <span class="eyebrow">Both boards clear</span>
+        <h1>Final Jeopardy</h1>
+        <p>One last clue, and it is the one the whole course is built around &mdash; wager what you
+          are willing to risk.</p>
+      </div>
+      <div class="panel">
+        <h2 id="finalCatLabel">The Big Picture</h2>
+        <p>Your current score is <b id="finalScoreLabel">$0</b>. Choose a wager from $0 up to your
+          full score. Unlike the boards, a wrong answer here costs you the wager.</p>
+        <div class="wager-row">
+          <label for="wagerInput"><b>Wager $</b></label>
+          <input type="number" id="wagerInput" min="0" step="1" value="0" inputmode="numeric">
+        </div>
+        <p class="wager-hint" id="wagerHint"></p>
+        <div class="dlg-row">
+          <button type="button" class="btn primary" id="lockWagerBtn">Lock in wager</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS ============================== -->
+    <section class="wrap" id="screenResults" hidden>
+      <div class="panel results">
+        <h2>Final score</h2>
+        <div class="score" id="resultsScore">$0</div>
+        <div class="best" id="resultsBest"></div>
+        <div class="best" id="resultsTally"></div>
+      </div>
+      <div class="panel">
+        <h2>How you did, by course objective</h2>
+        <p>One number hides a weak area; this table does not. A clue counts toward every objective it
+          serves, so the totals here add up to more than fifty-one.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Right</th><th class="num">Asked</th><th>Result</th></tr></thead>
+            <tbody id="objResultBody"></tbody>
+          </table>
+        </div>
+        <div class="callout" id="objAdvice"></div>
+      </div>
+      <div class="panel">
+        <h2>Where to go back to</h2>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Module</th><th class="num">Right</th><th class="num">Asked</th><th>What it covers on this board</th></tr></thead>
+            <tbody id="modResultBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="playAgainBtn">Play again</button>
+        <a class="btn" href="module-01-managing-in-the-digital-world.html">Module 1</a>
+        <a class="btn" href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+        <a class="btn" href="module-03-information-systems-infrastructure.html">Module 3</a>
+        <a class="btn" href="practice-case-study/practice-case-study.html">Practice case study</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Nothing here is submitted or collected. Your best score is saved in this browser only.</span>
+    <a href="module-01-managing-in-the-digital-world.html">Module 1</a>
+    <a href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+    <a href="module-03-information-systems-infrastructure.html">Module 3</a>
+  </footer>
+</div>
+
+<!-- ============================== CLUE DIALOG ============================== -->
+<dialog id="clueDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow" id="clueEyebrow">Category &middot; $200</p>
+    <p class="dlg-clue" id="clueText"></p>
+    <p class="dlg-answer" id="clueAnswer" hidden></p>
+    <p class="dlg-why" id="clueWhy" hidden></p>
+    <div class="dlg-row" id="clueRevealRow">
+      <button type="button" class="btn primary" id="revealBtn">Reveal answer</button>
+    </div>
+    <div class="dlg-row spread" id="clueGradeRow" hidden>
+      <button type="button" class="btn" id="missBtn">I missed it</button>
+      <button type="button" class="btn good" id="gotItBtn">I got it right</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============================== FINAL CLUE DIALOG ============================== -->
+<dialog id="finalDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow">Final Jeopardy &middot; Wager: <span id="finalWagerLabel">$0</span></p>
+    <p class="dlg-clue" id="finalClueText"></p>
+    <p class="dlg-answer" id="finalAnswerText" hidden></p>
+    <p class="dlg-why" id="finalWhyText" hidden></p>
+    <div class="dlg-row" id="finalRevealRow">
+      <button type="button" class="btn primary" id="finalRevealBtn">Reveal answer</button>
+    </div>
+    <div class="dlg-row spread" id="finalGradeRow" hidden>
+      <button type="button" class="btn" id="finalMissBtn">I missed it</button>
+      <button type="button" class="btn good" id="finalGotItBtn">I got it right</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================================
+   COURSE OBJECTIVES
+   The eleven the course is graded against. Every clue names the ones it serves
+   in its `co` array, which is what makes the results breakdown possible.
+   Objectives 6, 10 and 11 are deliberately absent: the first is not taught in
+   Modules 1-3, and the last two belong to the course's separate database and
+   spreadsheet work.
+   ========================================================================== */
+var OBJECTIVES = {
+  1:"Describe what a company's information systems department does",
+  2:"Discuss how companies use information systems to manage internal operations and to make decisions",
+  3:"Discuss how companies use information technology for competitive advantage by changing their marketplace",
+  4:"Apply a working knowledge of computer hardware, software, database technology and computer networks",
+  5:"Delineate how businesses use internet technology for electronic commerce, communicating with employees and working with business partners",
+  7:"Recognize a business problem which might be solved using information technology, then work with the information systems team on a solution",
+  8:"Describe the individual and organizational consequences of the use of information technology",
+  9:"Recognize security breaches and computer crimes"
+};
+
+var MODULES = {
+  1:{ label:"Module 1 · Managing in the Digital World",
+      covers:"The digital world and digital density, what an information system is, the people and the catalogue of systems, the dual nature of IS, and computer ethics.",
+      href:"module-01-managing-in-the-digital-world.html" },
+  2:{ label:"Module 2 · Enabling Strategy Through Information Systems",
+      covers:"Competitive forces, generic strategies, resources and capabilities, the value chain, business and revenue models, platforms and innovation.",
+      href:"module-02-enabling-strategy-through-information-systems.html" },
+  3:{ label:"Module 3 · Information Systems Infrastructure",
+      covers:"Hardware, system software and storage, networks and the web, intranets and extranets, why infrastructure ages, and cloud computing.",
+      href:"module-03-information-systems-infrastructure.html" },
+  0:{ label:"The framework analysis itself",
+      covers:"The shape of the written deliverable: rating all five forces, at least two genuinely distinct value chain areas, exactly one initiative, and a comparison inside a word band.",
+      href:"practice-case-study/practice-case-study.html" }
+};
+
+/* ============================================================================
+   ROUND ONE — what the terms mean.
+   Every clue traces to Module 1's or Module 3's own reading. `co` lists the
+   course objectives it serves; `mod` names the module to reread on a miss.
+   ========================================================================== */
+var ROUND1 = [
+  { name:"Parts and People", clues:[
+    {value:200, co:[2], mod:1,
+      clue:"Raw symbols such as characters and numbers with no meaning attached to them &mdash; the string 465889727 sitting by itself tells you nothing at all.",
+      answer:"What is data?",
+      why:"Data are the input. They stay nearly worthless until something processes them and supplies a context."},
+    {value:400, co:[2], mod:1,
+      clue:"The same digits shown as 465-88-9727 inside a field labeled SSN in John Doe's record. Formatted, organized, or processed until it represents a piece of reality.",
+      answer:"What is information?",
+      why:"Information answers who, what, where and when. The digits did not change; the context did."},
+    {value:600, co:[2], mod:1,
+      clue:"Understanding that one Social Security number identifies exactly one person, so two records sharing one must be an error &mdash; the ability to form an opinion from information and decide or predict from it.",
+      answer:"What is knowledge?",
+      why:"Knowledge is the third step up from data. It also covers the rules you apply to organize or manipulate data for a task."},
+    {value:800, co:[1,7], mod:1,
+      clue:"Analyze business requirements and select the information systems that meet those needs &mdash; the job description of this role, the usual bridge between the person with the problem and the people who build.",
+      answer:"What is an IS analyst (a systems analyst)?",
+      why:"It is the role course objective 7 describes from the other side: you recognize the business problem, this person turns it into a system requirement."},
+    {value:1000, co:[1,2], mod:1,
+      clue:"Hardware, software, and telecommunications networks. This term names the technology portion only &mdash; the servers, the app and the campus Wi-Fi, but not the registrar who maintains the records.",
+      answer:"What is information technology (IT)?",
+      why:"An information system is IT <i>plus</i> the people who use it and the organization it sits inside. The chapter notes the two terms are increasingly used interchangeably anyway."}
+  ]},
+  { name:"Name That System", clues:[
+    {value:200, co:[2], mod:1,
+      clue:"A grocery checkout register on a network, and student registration. This category processes day-to-day business event data at the operational level, and everything else in the catalogue feeds on what it records.",
+      answer:"What is a transaction processing system (TPS)?",
+      why:"It is the foundation. Besides processing the transaction it generates the data the firm later learns from &mdash; which is why the coupon on the back of your receipt is related to what you just bought."},
+    {value:400, co:[2], mod:1,
+      clue:"Inventory management and planning; the weekly report telling a store manager which sizes sold out. This category turns the record of daily transactions into detailed reports for managing a firm or one part of it.",
+      answer:"What is a management information system (MIS)?",
+      why:"It sits directly on top of the transaction processing system. The same phrase is also the name of the academic field."},
+    {value:600, co:[2], mod:1,
+      clue:"Product demand forecasting; loan and investment analysis. This category supplies analysis tools and database access to support quantitative decision making rather than reporting what already happened.",
+      answer:"What is a decision support system (DSS)?",
+      why:"A management information system reports; a decision support system models. That difference is why building one is a separate course objective."},
+    {value:800, co:[2], mod:1,
+      clue:"Financial, operations and human resource management running on one system. This category supports and integrates <i>all</i> facets of the business &mdash; planning, manufacturing, sales and marketing &mdash; instead of one function.",
+      answer:"What is enterprise resource planning (ERP)?",
+      why:"The giveaway is the word <i>integrates</i>. A functional area information system serves one part of the firm; this one deliberately spans them."},
+    {value:1000, co:[2,5], mod:1,
+      clue:"Sales force automation and lead generation. This category supports the interaction between the firm and its customers, which is why it is the usual answer when the complaint is that nobody can see a customer's history.",
+      answer:"What is customer relationship management (CRM)?",
+      why:"Do not confuse it with supply chain management, which coordinates suppliers, production and distribution &mdash; the other direction entirely."}
+  ]},
+  { name:"The Digital World", clues:[
+    {value:200, co:[8], mod:1,
+      clue:"A run used to produce nothing; now one run produces pace, route, heart rate, elevation and a sleep score the moment your watch syncs. This is the amount of connected data produced by each unit of activity.",
+      answer:"What is digital density?",
+      why:"As it rises, ordinary actions throw off data that can be linked together &mdash; which is what makes new services and new business models possible."},
+    {value:400, co:[8], mod:1,
+      clue:"A student who can only get online at the public library falls behind a classmate with home broadband. This gap falls hardest on rural communities, older people, people with disabilities, and developing countries.",
+      answer:"What is the digital divide?",
+      why:"It is a consequence of information technology on people rather than on firms, which is exactly what course objective 8 asks you to describe."},
+    {value:600, co:[8], mod:1,
+      clue:"Peter Drucker coined this term in 1959 for a professional whose core job is creating, changing, or pulling together knowledge rather than making or moving physical things.",
+      answer:"What is a knowledge worker?",
+      why:"Drucker predicted they would be paid better and hold more bargaining power than earlier agricultural and industrial workers. The society built around them is the knowledge society."},
+    {value:800, co:[8], mod:1,
+      clue:"Tablets were built and sold as consumer gadgets first, and only later became standard equipment in warehouses, showrooms, cockpits and hospitals. That direction of travel has a name.",
+      answer:"What is the consumerization of IT?",
+      why:"It runs the opposite way to the old pattern, and it is why companies now have to watch the consumer market to see what will change how they operate."},
+    {value:1000, co:[8], mod:1,
+      clue:"Building a spreadsheet and emailing it is the lesser of these two. This greater one is being able to teach yourself new technologies as they appear and judge what they will do to your work and your life.",
+      answer:"What is computer fluency?",
+      why:"Computer literacy is operating today's tools; fluency goes past it, because the tools keep changing. The chapter says literacy alone is no longer enough."}
+  ]},
+  { name:"Ethics, Risk and Consequences", clues:[
+    {value:200, co:[8], mod:1,
+      clue:"Deciding not to log in with a classmate's credentials to reach a research database your account does not cover. These are the standards of right and wrong conduct that apply specifically to computer use.",
+      answer:"What is computer ethics?",
+      why:"It covers who may read whose files, who owns data about you, and what counts as stealing when nothing physical is taken."},
+    {value:400, co:[8], mod:1,
+      clue:"Songs, software, writing, photographs and product designs &mdash; creations of the mind with commercial value, which digital copying makes easy to take and share without permission, attribution or payment.",
+      answer:"What is intellectual property?",
+      why:"The problem is not that copying is possible but that it is perfect and free, so nothing is missing afterwards to signal that anything was taken."},
+    {value:600, co:[8], mod:1,
+      clue:"Ticking the box that says yes, send me deal emails, is this one. Its opposite is the arrangement where collection has already started and the burden is on you to say stop.",
+      answer:"What is opt in (as against opt out)?",
+      why:"The difference is who has to act. Under opt in nothing is supposed to happen until you actively say yes."},
+    {value:800, co:[9], mod:1,
+      clue:"This attack locks up an organization's data and demands payment to release it &mdash; and paying does not guarantee getting the data back, which is why backups, tested recovery, and staff awareness are the real answer.",
+      answer:"What is ransomware?",
+      why:"It is the one class of computer crime Modules 1&ndash;3 actually work through, alongside the duty to protect data against unauthorized access, disclosure or destruction."},
+    {value:1000, co:[8,3], mod:1,
+      clue:"A company can buy exactly what its competitor bought and get a completely different result. This two-word phrase names the chapter's point that the same investment carries one firm past its rivals and sinks another.",
+      answer:"What is the dual nature (of information systems)?",
+      why:"Both outcomes happen for reasons, and the reasons are usually the people and organizational halves rather than the technology half."}
+  ]},
+  { name:"Infrastructure Parts", clues:[
+    {value:200, co:[4], mod:3,
+      clue:"Hardware, system software, storage, networking and data centers &mdash; the five things the chapter counts as the foundation everything else in an organization is built on.",
+      answer:"What is the information systems infrastructure?",
+      why:"The chapter's claim is that it creates value by enabling efficiency, effectiveness and, increasingly, agility &mdash; which is what makes it a management question rather than a technical one."},
+    {value:400, co:[4], mod:3,
+      clue:"It is not the internet. The internet is the network of networks; this is one very successful system of interlinked documents running on top of it, and in effect a graphical interface to it.",
+      answer:"What is the World Wide Web?",
+      why:"Getting these two the wrong way round is the single most common mistake in the chapter's vocabulary, and it makes the rest of the networking section unreadable."},
+    {value:600, co:[4], mod:3,
+      clue:"Your request is broken into these small chunks, they are routed separately, and they are reassembled at the far end before anyone sees them &mdash; which is what TCP/IP does in both directions.",
+      answer:"What are packets?",
+      why:"Breaking data up is what allows it to be routed and moved efficiently. The reply comes back the same way."},
+    {value:800, co:[4,5], mod:3,
+      clue:"Same web technology, different audience: this one uses authentication or a firewall so only authorized employees can see it. Open it to two or more firms doing business together and it becomes an extranet instead.",
+      answer:"What is an intranet?",
+      why:"The technology has no opinion about who is at the other end. What separates internet, intranet and extranet is who is authorized &mdash; a decision a person takes, not a machine."},
+    {value:1000, co:[4], mod:3,
+      clue:"99.999 percent &mdash; which works out at just over five minutes of downtime in a year, and constrains everything from component design to the choice of site.",
+      answer:"What is five-nines availability?",
+      why:"It is the target data-intensive organizations aim for. Notice it is a target with a cost, not a setting somebody switches on."}
+  ]}
+];
+
+/* ============================================================================
+   ROUND TWO — Double Jeopardy: what you do with the terms.
+   The first four categories trace to Modules 2 and 3. The fifth is about the
+   written framework analysis itself: how many forces you rate, how many value
+   chain areas count, how many initiatives you recommend, and what makes a
+   recommendation checkable later.
+   ========================================================================== */
+var ROUND2 = [
+  { name:"Where the Pressure Comes From", clues:[
+    {value:400, co:[3], mod:2,
+      clue:"Porter's 1979 model draws one circle and four boxes: rivalry among existing firms in the middle, with buyers, new entrants, substitutes and suppliers each pressing inward. Name the model.",
+      answer:"What are the five competitive forces?",
+      why:"The model's claim is that these five influence the profit potential of an industry, so a firm can be competently run and still earn very little."},
+    {value:800, co:[3], mod:2,
+      clue:"The companies taking your customers were not in this business last year, and nothing you hold &mdash; capital, scale, expertise, loyalty &mdash; would take a newcomer long to reproduce. Name the strong force.",
+      answer:"What is the threat of new entrants?",
+      why:"The fingerprint is that the competitor is <i>new</i> and your barriers are low. The answer is to build something a newcomer cannot assemble in a quarter."},
+    {value:1200, co:[3], mod:2,
+      clue:"Price cuts stop working, because the customers you lost are not shopping in your industry at all, and the whole category shrinks rather than just your share of it.",
+      answer:"What is the threat of substitutes?",
+      why:"A rival sells what you sell, so a better price can win the customer back. A substitute meets the same need from another industry, so your discount reaches nobody &mdash; the chapter calls that customer lost for life."},
+    {value:1600, co:[3], mod:2,
+      clue:"The chapter says this confusion costs the most. Both look like a competitor taking share, but one means the industry is crowded and you need a reason beyond price, and the other means your barriers to entry are low.",
+      answer:"What is rivalry mistaken for new entrants?",
+      why:"They lead to opposite investments, which is why the diagnosis has to be made from what you can observe rather than from whichever name comes to mind first."},
+    {value:2000, co:[3,7], mod:2,
+      clue:"Force first, technology second, investment third. Name the step this ordering forbids you from taking until the first one is done.",
+      answer:"What is opening a vendor website (naming the technology)?",
+      why:"Naming the strongest force narrows the shopping list before anyone shops. Each force has a family of systems that answers it, and picking a system first means you cannot say what it is for."}
+  ]},
+  { name:"Along the Value Chain", clues:[
+    {value:400, co:[3], mod:2,
+      clue:"Inbound logistics, operations, outbound logistics, sales and marketing, and service. This half of the chain is drawn left to right as a flow, because a product passes through it on its way to a customer.",
+      answer:"What are the primary activities?",
+      why:"The flow shape is the point: each of these happens to the product in order, which is why a weakness in one shows up downstream in the next."},
+    {value:800, co:[3], mod:2,
+      clue:"Administration and firm infrastructure, human resources, technology and systems development, and procurement. These are drawn as bands underneath the chain rather than as steps in it.",
+      answer:"What are the support activities?",
+      why:"They are underneath because they serve every stage rather than one, which also means they are billable to no single product."},
+    {value:1200, co:[3,7], mod:2,
+      clue:"Three steps in this order: flesh out every activity where value is or should be added, determine the costs and what drives them, then decide which activities to optimize.",
+      answer:"What is value chain analysis?",
+      why:"Nobody improves a step that was never written down, and a cost with no known driver can be complained about but not managed. Naming a system is only reasonable at step three."},
+    {value:1600, co:[3], mod:2,
+      clue:"In the chapter's hotel, checking guests in and out, cleaning rooms, and preparing breakfast all land in this single primary activity.",
+      answer:"What is operations?",
+      why:"A clean, ready, served room <i>is</i> the product. The model was built for manufacturing but the mapping still works &mdash; a reservation arriving is inbound logistics."},
+    {value:2000, co:[3], mod:2,
+      clue:"This support activity is the buying decision itself. Do not confuse it with the primary activity that physically receives what was bought and gets it inside.",
+      answer:"What is procurement (not inbound logistics)?",
+      why:"Deciding what to buy and from whom serves the whole firm; receiving the goods happens to one product on its way through the chain."}
+  ]},
+  { name:"How to Compete", clues:[
+    {value:400, co:[3], mod:2,
+      clue:"Walmart is the chapter's example of this generic strategy: offer the best prices in the industry, to a broad market.",
+      answer:"What is a low-cost leadership strategy?",
+      why:"Each generic strategy is a promise the company's later spending has to keep. This one means every proposal gets judged on whether it lowers cost."},
+    {value:800, co:[3], mod:2,
+      clue:"Dell sits at the centre of the figure, where the quadrants overlap: reasonably good quality at competitive prices, rather than the absolute cheapest or the most distinctive.",
+      answer:"What is a best-cost provider strategy?",
+      why:"A chosen middle is not the same as no middle. A company that has never said whether it competes on price or on uniqueness has no test to apply to the next proposal."},
+    {value:1200, co:[3], mod:2,
+      clue:"Proprietary technology, brand equity and a loyal customer base are resources. Design quality and efficient operations are these &mdash; something the firm <i>does</i> rather than something it owns.",
+      answer:"What are capabilities?",
+      why:"An asset nobody uses well never becomes a distinctive competency. Both have to be superior to competitors' &mdash; anything a rival can order this afternoon fails that test."},
+    {value:1600, co:[3,5], mod:2,
+      clue:"The company supplies neither the product nor the service. It coordinates two sides &mdash; those who produce and those who consume &mdash; so they create value for each other, which makes the network effect decide whether it lives.",
+      answer:"What is a platform-based business model?",
+      why:"Because it is a two-sided market, growth on one side pulls the other along: that is the cross-side network effect."},
+    {value:2000, co:[3,7], mod:2,
+      clue:"Not every system a firm funds is chosen freely. This is the investment it has no real choice about &mdash; something it must do to survive, whether or not it lines up neatly with the strategy.",
+      answer:"What is a strategic necessity?",
+      why:"It is the honest exception to business/IT alignment, and worth naming in an analysis so a required spend is not mistaken for a strategic one."}
+  ]},
+  { name:"Own It or Rent It", clues:[
+    {value:400, co:[4], mod:3,
+      clue:"On-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Name what these five define.",
+      answer:"What are the five characteristics of cloud computing?",
+      why:"They are a definition, not a sales list: something missing one of them &mdash; a hosted service you must phone to resize, say &mdash; is not really cloud computing."},
+    {value:800, co:[4], mod:3,
+      clue:"You get processing, storage and networking, and nothing above them. You still choose the operating system, manage your own licences, and carry relatively high setup costs.",
+      answer:"What is infrastructure as a service (IaaS)?",
+      why:"Most control, most responsibility. It is the right answer when you are genuinely building something custom, and the wrong one when you just need software to exist."},
+    {value:1200, co:[4], mod:3,
+      clue:"The customer uses only the application, with no knowledge of or control over the infrastructure beneath it and usually limited ability to configure it. It is the easiest model to adopt.",
+      answer:"What is software as a service (SaaS)?",
+      why:"Nothing has to be maintained or updated by the customer. Between the two sits PaaS, where the provider supplies the platform and you run your own application on it."},
+    {value:1600, co:[4,7], mod:3,
+      clue:"Buy for the peak and you own idle machines; buy for the average and you fail on the busiest day. Name the infrastructure pressure that forces this choice, made worse because capacity is bought in whole units.",
+      answer:"What is fluctuating demand (demand spikes)?",
+      why:"It is the elasticity argument. Temporary staff can be hired for a December rush and released afterwards; a server room cannot."},
+    {value:2000, co:[4,7], mod:3,
+      clue:"It does not guarantee resources will be available. It promises levels of performance, warranty and disaster recovery, and provides refunds or discounts when they are missed.",
+      answer:"What is a service-level agreement (SLA)?",
+      why:"That makes it mainly a way of settling disputes. Reading one as a guarantee of uptime is the mistake the chapter is warning against."}
+  ]},
+  { name:"Building the Recommendation", clues:[
+    {value:400, co:[3,7], mod:0,
+      clue:"The first task of the framework analysis. Doing it properly means saying weak, moderate or strong for all five &mdash; not naming only the worst one and skipping the rest.",
+      answer:"What is applying Porter's Five Forces?",
+      why:"A force named with no tie to the situation earns nothing, and so does restating the situation without rating all five. The rating is the analysis."},
+    {value:800, co:[3,7], mod:0,
+      clue:"&ldquo;Our website is outdated&rdquo; and &ldquo;customers cannot find us online&rdquo; fail this requirement, because they are one complaint said twice rather than two of these.",
+      answer:"What are two genuinely distinct value chain areas?",
+      why:"The task asks for at least two internal areas where IT could create an operational or customer-focused advantage, and each needs a weakness actually attached to it."},
+    {value:1200, co:[7,3], mod:0,
+      clue:"The number of IT initiatives the third task asks you to recommend. A shopping list is not an answer to it.",
+      answer:"What is one?",
+      why:"One recommendation forces you to choose, and a choice is what the five-forces and value chain work was for. Four half-argued ideas beat nothing but lose to one defended one."},
+    {value:1600, co:[3,7], mod:0,
+      clue:"The written comparison with a real company has to land inside this band &mdash; short enough that every sentence has to earn its place, long enough that a lesson has to be stated rather than gestured at.",
+      answer:"What is 150 to 200 words?",
+      why:"The lesson that transfers is a practice, not a scale-dependent solution: what a large firm let its customers do for themselves, rather than the size of the system it built to do it."},
+    {value:2000, co:[7,2], mod:0,
+      clue:"&ldquo;Improve enrollment&rdquo; fails; &ldquo;share of enrollments completed online within two semesters&rdquo; passes. Name the part of a recommendation that makes the difference.",
+      answer:"What is a measure with a timeframe?",
+      why:"Without it nobody can tell later whether the initiative worked, which means nobody can defend having funded it. It is the fourth part, after the system, its classification, and how it will be built or rented."}
+  ]}
+];
+
+var FINAL = {
+  category:"The Big Picture",
+  co:[2,3,7],
+  mod:2,
+  clue:"Making sure the information systems an organization builds or buys actually match the strategy it is pursuing. It is what a five-forces finding, a value chain area and a funded initiative are all in service of &mdash; and companies generally do not want a system that fights the strategy even if it would save time or money.",
+  answer:"What is business/IT alignment?",
+  why:"It is the whole point of the framework analysis, and of the course objective that sits above it: align what the technology does with what the organization is trying to be."
+};
+
+var ROUNDS = [
+  { title:"Round one", sub:"$200 to $1,000 · what the terms mean", cats:ROUND1 },
+  { title:"Double Jeopardy", sub:"$400 to $2,000 · what you do with them", cats:ROUND2 }
+];
+
+var THEME_KEY = "mis-jeopardy-theme-v1";
+var BEST_KEY = "mis-jeopardy-best-v1";
+
+/* ============================================================================
+   STATE
+   ========================================================================== */
+var state = {
+  score:0,
+  round:0,             /* index into ROUNDS */
+  answered:{},         /* "round-cat-clue" -> true */
+  results:[],          /* {co:[], mod:n, correct:bool} for every resolved clue */
+  activeCat:-1,
+  activeClue:-1,
+  finalWager:0
+};
+
+function tilesInRound(r){
+  return ROUNDS[r].cats.reduce(function(sum, c){ return sum + c.clues.length; }, 0);
+}
+function answeredInRound(r){
+  var n = 0, prefix = r + "-";
+  for(var k in state.answered){ if(state.answered.hasOwnProperty(k) && k.indexOf(prefix) === 0) n++; }
+  return n;
+}
+
+/* ============================================================================
+   DOM HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return (n < 0 ? "-$" : "$") + Math.abs(n).toLocaleString(); }
+function announce(text){ $("liveStatus").textContent = text; }
+function stripTags(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent || ""; }
+
+/* ============================================================================
+   THEME — read this page's own saved choice first, then inherit whatever theme
+   the reader last set on a study module, so the game does not flip back to
+   light after a dark reading session.
+   ========================================================================== */
+function applyTheme(theme){
+  var dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-label", dark ? "Switch to the light theme" : "Switch to the dark theme");
+}
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  if(saved === "dark" || saved === "light"){ applyTheme(saved); return; }
+  var moduleTheme = null;
+  try{ moduleTheme = localStorage.getItem("mis-ch1-theme-v1"); }catch(e){}
+  applyTheme(moduleTheme === "dark" ? "dark" : "light");
+})();
+$("themeBtn").addEventListener("click", function(){
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ============================================================================
+   BEST SCORE
+   ========================================================================== */
+function loadBest(){
+  var raw = null;
+  try{ raw = localStorage.getItem(BEST_KEY); }catch(e){}
+  var n = parseInt(raw, 10);
+  return isNaN(n) ? 0 : n;
+}
+function saveBest(n){
+  try{ localStorage.setItem(BEST_KEY, String(n)); }catch(e){}
+}
+function refreshBestStat(){
+  var best = loadBest();
+  if(best > 0){
+    $("bestStat").hidden = false;
+    $("bestStatValue").textContent = fmt(best);
+  }
+}
+refreshBestStat();
+
+function refreshScore(){ $("scoreStat").textContent = fmt(state.score); }
+
+/* ============================================================================
+   INTRO SCREEN
+   ========================================================================== */
+function renderCatsPreview(boxId, cats){
+  var box = $(boxId);
+  if(!box) return;
+  box.innerHTML = "";
+  cats.forEach(function(c){
+    var chip = document.createElement("div");
+    chip.className = "chip";
+    chip.textContent = c.name;
+    box.appendChild(chip);
+  });
+}
+
+/* Count every clue against every objective it serves, so the intro table is
+   generated from the clue data rather than typed out and left to drift. */
+function objectiveCounts(){
+  var counts = {};
+  ROUNDS.forEach(function(r){
+    r.cats.forEach(function(cat){
+      cat.clues.forEach(function(q){
+        q.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+      });
+    });
+  });
+  FINAL.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+  return counts;
+}
+
+function renderObjPreview(){
+  var counts = objectiveCounts();
+  var body = $("objPreviewBody");
+  body.innerHTML = "";
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = "<b>" + n + ".</b> " + OBJECTIVES[n];
+    var td2 = document.createElement("td");
+    td2.className = "num";
+    td2.textContent = String(counts[n] || 0);
+    tr.appendChild(td1); tr.appendChild(td2);
+    body.appendChild(tr);
+  });
+}
+
+function showScreen(id){
+  ["screenIntro","screenBoard","screenBreak","screenFinal","screenResults"].forEach(function(s){
+    $(s).hidden = (s !== id);
+  });
+}
+
+/* ============================================================================
+   BOARD
+   ========================================================================== */
+function tileKey(r, ci, qi){ return r + "-" + ci + "-" + qi; }
+
+function renderBoard(){
+  var round = ROUNDS[state.round];
+  $("roundTitle").textContent = round.title;
+  $("roundSub").textContent = round.sub;
+  $("roundStat").textContent = round.title;
+  var board = $("board");
+  board.innerHTML = "";
+  round.cats.forEach(function(cat){
+    var head = document.createElement("div");
+    head.className = "cat";
+    head.textContent = cat.name;
+    board.appendChild(head);
+  });
+  for(var r = 0; r < 5; r++){
+    round.cats.forEach(function(cat, ci){
+      var q = cat.clues[r];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tile";
+      var key = tileKey(state.round, ci, r);
+      var done = !!state.answered[key];
+      btn.textContent = done ? "" : fmt(q.value);
+      btn.disabled = done;
+      btn.setAttribute("aria-label", cat.name + " for " + fmt(q.value) + (done ? " (already played)" : ""));
+      if(!done){
+        btn.addEventListener("click", function(catIdx, clueIdx){
+          return function(){ openClue(catIdx, clueIdx); };
+        }(ci, r));
+      }
+      board.appendChild(btn);
+    });
+  }
+}
+
+/* ============================================================================
+   CLUE DIALOG
+   ========================================================================== */
+var clueDialog = $("clueDialog");
+
+function openClue(ci, qi){
+  state.activeCat = ci;
+  state.activeClue = qi;
+  var cat = ROUNDS[state.round].cats[ci];
+  var q = cat.clues[qi];
+  $("clueEyebrow").textContent = cat.name + " · " + fmt(q.value);
+  $("clueText").innerHTML = q.clue;
+  $("clueAnswer").hidden = true;
+  $("clueAnswer").textContent = q.answer;
+  $("clueWhy").hidden = true;
+  $("clueWhy").innerHTML = "<b>Why:</b> " + q.why;
+  $("clueRevealRow").hidden = false;
+  $("clueGradeRow").hidden = true;
+  announce(cat.name + " for " + fmt(q.value) + ". " + stripTags(q.clue));
+  clueDialog.showModal();
+  $("revealBtn").focus();
+}
+
+$("revealBtn").addEventListener("click", function(){
+  $("clueAnswer").hidden = false;
+  $("clueWhy").hidden = false;
+  $("clueRevealRow").hidden = true;
+  $("clueGradeRow").hidden = false;
+  announce("Answer: " + $("clueAnswer").textContent + " " + stripTags($("clueWhy").innerHTML));
+  $("gotItBtn").focus();
+});
+
+function resolveClue(correct){
+  var ci = state.activeCat, qi = state.activeClue;
+  if(ci < 0 || qi < 0) return;
+  var q = ROUNDS[state.round].cats[ci].clues[qi];
+  state.answered[tileKey(state.round, ci, qi)] = true;
+  state.results.push({ co:q.co, mod:q.mod, correct:!!correct });
+  if(correct){
+    state.score += q.value;
+    announce("Correct. Plus " + fmt(q.value) + ". Score is now " + fmt(state.score) + ".");
+  } else {
+    announce("No penalty. Score stays " + fmt(state.score) + ".");
+  }
+  refreshScore();
+  clueDialog.close();
+  state.activeCat = -1;
+  state.activeClue = -1;
+  renderBoard();
+  if(answeredInRound(state.round) >= tilesInRound(state.round)){
+    setTimeout(finishRound, 350);
+  }
+}
+$("gotItBtn").addEventListener("click", function(){ resolveClue(true); });
+$("missBtn").addEventListener("click", function(){ resolveClue(false); });
+
+/* A clue must be resolved, not dodged — Escape and backdrop-cancel are blocked
+   so a miss cannot be swallowed for free once the answer has been seen. */
+clueDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+/* ============================================================================
+   ROUND FLOW
+   ========================================================================== */
+function finishRound(){
+  if(state.round < ROUNDS.length - 1){
+    $("breakScoreLabel").textContent = fmt(state.score);
+    renderCatsPreview("catsPreview2b", ROUNDS[state.round + 1].cats);
+    showScreen("screenBreak");
+    $("roundStat").textContent = "Round one complete";
+    announce("Round one is clear. Score " + fmt(state.score) + ". Double Jeopardy is next.");
+    $("round2Btn").focus();
+  } else {
+    goToFinal();
+  }
+}
+
+$("round2Btn").addEventListener("click", function(){
+  state.round += 1;
+  renderBoard();
+  showScreen("screenBoard");
+  announce("Double Jeopardy. Choose a category and a value.");
+});
+
+$("rulesBtn").addEventListener("click", function(){
+  showScreen("screenIntro");
+  $("startBtn").textContent = "Back to the board";
+});
+
+$("startBtn").addEventListener("click", function(){
+  if($("startBtn").textContent === "Back to the board"){
+    $("startBtn").textContent = "Start the game";
+    showScreen("screenBoard");
+    return;
+  }
+  startGame();
+});
+
+function startGame(){
+  state.score = 0;
+  state.round = 0;
+  state.answered = {};
+  state.results = [];
+  state.finalWager = 0;
+  refreshScore();
+  renderBoard();
+  showScreen("screenBoard");
+  announce("New game started. Round one: choose a category and a value.");
+}
+
+/* ============================================================================
+   FINAL JEOPARDY
+   ========================================================================== */
+function goToFinal(){
+  $("roundStat").textContent = "Final Jeopardy";
+  $("finalCatLabel").textContent = FINAL.category;
+  $("finalScoreLabel").textContent = fmt(state.score);
+  var maxWager = Math.max(0, state.score);
+  var input = $("wagerInput");
+  input.min = 0;
+  input.max = maxWager;
+  input.value = maxWager > 0 ? Math.round(maxWager / 2) : 0;
+  input.disabled = maxWager <= 0;
+  $("wagerHint").textContent = maxWager > 0
+    ? "You can wager from $0 up to your full score of " + fmt(maxWager) + ". A wrong answer costs you the wager."
+    : "Your score is $0, so this one is for practice only — a correct answer will not add anything, but give it a real shot anyway.";
+  showScreen("screenFinal");
+  announce("Both boards are clear. Final Jeopardy: choose your wager.");
+}
+
+$("lockWagerBtn").addEventListener("click", function(){
+  var maxWager = Math.max(0, state.score);
+  var w = parseInt($("wagerInput").value, 10);
+  if(isNaN(w) || w < 0) w = 0;
+  if(w > maxWager) w = maxWager;
+  state.finalWager = w;
+  openFinalClue();
+});
+
+var finalDialog = $("finalDialog");
+function openFinalClue(){
+  $("finalWagerLabel").textContent = fmt(state.finalWager);
+  $("finalClueText").innerHTML = FINAL.clue;
+  $("finalAnswerText").hidden = true;
+  $("finalAnswerText").textContent = FINAL.answer;
+  $("finalWhyText").hidden = true;
+  $("finalWhyText").innerHTML = "<b>Why:</b> " + FINAL.why;
+  $("finalRevealRow").hidden = false;
+  $("finalGradeRow").hidden = true;
+  announce("Final Jeopardy, wager " + fmt(state.finalWager) + ". " + stripTags(FINAL.clue));
+  finalDialog.showModal();
+  $("finalRevealBtn").focus();
+}
+$("finalRevealBtn").addEventListener("click", function(){
+  $("finalAnswerText").hidden = false;
+  $("finalWhyText").hidden = false;
+  $("finalRevealRow").hidden = true;
+  $("finalGradeRow").hidden = false;
+  announce("Answer: " + $("finalAnswerText").textContent + " " + stripTags($("finalWhyText").innerHTML));
+  $("finalGotItBtn").focus();
+});
+finalDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+function resolveFinal(correct){
+  state.results.push({ co:FINAL.co, mod:FINAL.mod, correct:!!correct });
+  state.score += correct ? state.finalWager : -state.finalWager;
+  finalDialog.close();
+  showResults();
+}
+$("finalGotItBtn").addEventListener("click", function(){ resolveFinal(true); });
+$("finalMissBtn").addEventListener("click", function(){ resolveFinal(false); });
+
+/* ============================================================================
+   RESULTS — the score, then the two breakdowns that actually tell the reader
+   what to do next: by course objective, and by module to reread.
+   ========================================================================== */
+function verdict(right, asked){
+  var pct = asked === 0 ? 0 : right / asked;
+  if(asked === 0) return { cls:"none", label:"Not asked" };
+  if(pct >= 0.8) return { cls:"ok", label:"Solid" };
+  if(pct >= 0.5) return { cls:"mid", label:"Shaky" };
+  return { cls:"low", label:"Reread this" };
+}
+
+function tallyBy(pick){
+  var t = {};
+  state.results.forEach(function(res){
+    var keys = pick(res);
+    keys.forEach(function(k){
+      if(!t[k]) t[k] = { right:0, asked:0 };
+      t[k].asked += 1;
+      if(res.correct) t[k].right += 1;
+    });
+  });
+  return t;
+}
+
+function renderObjResults(){
+  var t = tallyBy(function(res){ return res.co; });
+  var body = $("objResultBody");
+  body.innerHTML = "";
+  var weak = [];
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var row = t[n] || { right:0, asked:0 };
+    var v = verdict(row.right, row.asked);
+    if(v.cls === "low" || v.cls === "mid") weak.push(n);
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = "<b>" + n + ".</b> " + OBJECTIVES[n];
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = String(row.right);
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = String(row.asked);
+    var td4 = document.createElement("td");
+    td4.innerHTML = '<span class="pill ' + v.cls + '">' + v.label + "</span>";
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+    body.appendChild(tr);
+  });
+  var advice = $("objAdvice");
+  if(weak.length === 0){
+    advice.innerHTML = "<b class=\"tagline\">Nothing weak enough to send you back</b>" +
+      "Every objective on this board came out solid. The useful next step is not another pass through the " +
+      "vocabulary but the practice case study, where the same four moves have to be written out rather than recognised.";
+  } else {
+    advice.innerHTML = "<b class=\"tagline\">Objectives worth a second pass</b>" +
+      "You came out shaky or weak on " + weak.map(function(n){ return "objective " + n; }).join(", ") +
+      ". The module table underneath says which reading covers each of them, and the missed clues themselves " +
+      "name the section &mdash; a miss in <i>Building the Recommendation</i> points at the practice case study rather than at a chapter.";
+  }
+}
+
+function renderModResults(){
+  var t = tallyBy(function(res){ return [res.mod]; });
+  var body = $("modResultBody");
+  body.innerHTML = "";
+  [1,2,3,0].forEach(function(m){
+    var row = t[m] || { right:0, asked:0 };
+    var info = MODULES[m];
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = '<a href="' + info.href + '">' + info.label + "</a>";
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = String(row.right);
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = String(row.asked);
+    var td4 = document.createElement("td"); td4.textContent = info.covers;
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+    body.appendChild(tr);
+  });
+}
+
+function showResults(){
+  refreshScore();
+  $("roundStat").textContent = "Game over";
+  $("resultsScore").textContent = fmt(state.score);
+  var best = loadBest();
+  if(state.score > best){
+    saveBest(state.score);
+    $("resultsBest").textContent = "New best score.";
+  } else {
+    $("resultsBest").textContent = "Best score: " + fmt(best);
+  }
+  refreshBestStat();
+  var right = state.results.filter(function(r){ return r.correct; }).length;
+  $("resultsTally").textContent = right + " of " + state.results.length + " clues answered correctly.";
+  renderObjResults();
+  renderModResults();
+  showScreen("screenResults");
+  announce("Game over. Final score " + fmt(state.score) + ". " + right + " of " + state.results.length + " correct.");
+}
+
+$("playAgainBtn").addEventListener("click", startGame);
+
+/* ============================================================================
+   INIT
+   ========================================================================== */
+renderCatsPreview("catsPreview1", ROUND1);
+renderCatsPreview("catsPreview2", ROUND2);
+renderObjPreview();
+refreshScore();
+showScreen("screenIntro");
+})();
+</script>
+</body>
+</html>
