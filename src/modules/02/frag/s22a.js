@@ -2,87 +2,60 @@
 PROSE.s22a = `
 <span class="eyebrow">Section 2&ndash;2a</span>
 <h2>Business models in the digital world</h2>
-<p class="lede">Before anyone can argue about which technology a company should buy, the company has to be able to say plainly how it makes its living: who it serves, what it offers them, how the offer reaches them, and where the money comes from and where it goes. That plain statement is the <b>business model</b>, and technology investments have to be aligned with it.</p>
+<p class="lede">Before anyone argues about which technology to buy, the company has to say plainly how it makes its living: who it serves, what it offers, how the offer reaches them, and where the money comes from and goes.</p>
 
 <h3>What a business model actually is</h3>
-<p>A <b>business model</b> is a summary of a business&rsquo;s strategic direction that outlines how the objectives will be achieved. It specifies the <b>value proposition</b> as well as how a company will create, deliver, and capture value, and it identifies nine things: customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partners, and cost structure.</p>
-<p>Three verbs sit inside that definition, and it is worth slowing down on them, because a company can be good at one and fail at another.</p>
+<p>A <b>business model</b> is a summary of a business&rsquo;s strategic direction that outlines how the objectives will be achieved. It specifies the <b>value proposition</b> and how a company will create, deliver and capture value.</p>
 <ul class="keys">
-<li><b>Create value</b> &mdash; make something somebody genuinely wants, because a repaired bicycle, an hour of streaming, or a ride across town is worth something to the person receiving it and nothing at all if no one wants it.</li>
-<li><b>Deliver value</b> &mdash; get that something into the customer&rsquo;s hands, because a repair nobody can reach and an app nobody can install create value that never arrives.</li>
-<li><b>Capture value</b> &mdash; keep a share of it as income, because a company that creates and delivers value but never captures any of it runs out of money while its customers are still delighted.</li>
+<li><b>Create value</b> &mdash; make something somebody genuinely wants, because a repaired bicycle or a ride across town is worth nothing if nobody wants it.</li>
+<li><b>Deliver value</b> &mdash; get that something into the customer&rsquo;s hands, because a repair nobody can reach creates value that never arrives.</li>
+<li><b>Capture value</b> &mdash; keep a share of it as income, because a firm that never captures any runs out of money while its customers are delighted.</li>
 </ul>
-
-<p>The chapter compresses the whole idea into five questions. Walk them in this order, because each answer narrows the next one.</p>
+<p>A company can be good at one of those verbs and fail at another. The chapter compresses the whole idea into five questions, asked in this order because each answer narrows the next.</p>
 <ol class="steps">
-<li><b>What does a company do?</b> Name the product or service in words a stranger would understand, because everything below is meaningless until this is settled.</li>
-<li><b>How does a company uniquely do it?</b> Say what makes this offer different from the one next door, because a model that could describe any competitor is not a strategy.</li>
-<li><b>What are the key resources and activities needed?</b> List the assets you must have and the work you must perform, because promises you cannot staff or equip are not promises.</li>
-<li><b>In what way, or ways, does the company get paid for doing it?</b> Say who hands over money and when, because the customer and the payer are not always the same person.</li>
-<li><b>What are the costs involved?</b> Add up what running all of the above consumes, because a model that earns well and spends more is still a failing model.</li>
+<li><b>What does the company do?</b> Name the product in words a stranger would understand.</li>
+<li><b>How does it uniquely do it?</b> A model that could describe any competitor is not a strategy.</li>
+<li><b>What key resources and activities are needed?</b> Promises you cannot staff or equip are not promises.</li>
+<li><b>In what ways does it get paid?</b> The customer and the payer are not always the same person.</li>
+<li><b>What are the costs involved?</b> A model that earns well and spends more is still failing.</li>
 </ol>
-
-<p>Those answers are not an academic exercise. How a company answers these questions dictates how and where information systems investments can be utilized to execute a competitive strategy and sustain an advantage over competitors. Generally speaking, anything that has to do with the day-to-day functioning of the organization is part of its business model, and information systems can be used to support and execute many aspects of it.</p>
+<p>How a company answers dictates where information systems investments can execute a competitive strategy. Anything to do with the day-to-day functioning of the organization is part of its business model.</p>
 
 <div class="activity" data-activity="bmcQuiz1"></div>
 
 <h3>The nine components</h3>
-<p>The chapter breaks a proper business model into nine components. Each one plays a critical role in shaping all aspects of the business, including the expenses, revenues, operating strategies, corporate structure, and sales and marketing procedures. The table gives each component, what it means, and the question it answers.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Component</th><th>Description</th><th>Questions to ask</th></tr></thead>
-<tbody>
-<tr><td><b>Customer segments</b></td><td>The customers targeted with the product/service offering</td><td>Who will be our target customers? Who are the most important customers?</td></tr>
-<tr><td><b>Value proposition</b></td><td>The utility that the product/service has to offer to customers</td><td>Why do customers need our product/service? What problems will our product/service solve? Why would customers choose our product/service over our competitors&rsquo; products/services?</td></tr>
-<tr><td><b>Channels</b></td><td>The ways in which the product/service offerings reach the target customers</td><td>How will our customers be reached? Which channels are best in terms of cost and convenience for the customers?</td></tr>
-<tr><td><b>Customer relationships</b></td><td>The relationships formed with the target customers</td><td>What types of relationships do we build with our customers, such as one-off versus long-term? How do we maintain these relationships?</td></tr>
-<tr><td><b>Revenue streams</b></td><td>The way a firm generates income</td><td>How do we generate income? What are we selling? What are customers willing to pay for?</td></tr>
-<tr><td><b>Key resources</b></td><td>The most important assets needed to make the business model work</td><td>What key resources are needed to enable our value proposition, channels, customer relationships, and revenue streams?</td></tr>
-<tr><td><b>Key activities</b></td><td>The most important activities needed to make the business model work</td><td>What key activities are needed to enable our value proposition, channels, customer relationships, and revenue streams?</td></tr>
-<tr><td><b>Key partners</b></td><td>The network of partners and suppliers needed to make the business model work</td><td>Who are our key partners and suppliers? What resources do they offer, and what activities do they perform?</td></tr>
-<tr><td><b>Cost structure</b></td><td>The costs incurred when operating the business model</td><td>What are the costs incurred when operating the business model? Which resources and activities are most expensive?</td></tr>
-</tbody>
-</table></div>
-
-<p>It helps to read the nine in two halves. The first five face the customer and describe the promise the company is making, and each one has an example you already know. The split into halves is a reading aid rather than something the chapter numbers, but it keeps the outward promise clearly separate from the machinery that has to keep it.</p>
+<p>The chapter breaks a proper business model into nine components, each shaping expenses, revenues, operating strategy and structure. Read them in two halves. The first five face the customer and describe the promise being made.</p>
 <ul class="keys">
-<li><b>Customer segments</b> &mdash; the customers you are targeting, named rather than assumed, because a model that serves two different groups has to say so: Uber connects people in need of rides with drivers willing to give one, and both groups have to appear in its model.</li>
-<li><b>Value proposition</b> &mdash; the utility your offering has for those customers, which is your answer to why they would choose you: Walmart answers with price, pursuing low-cost leadership by offering the best prices in its industry, while Porsche, Nordstrom, and IBM answer by trying to provide better products or services than their competitors.</li>
-<li><b>Channels</b> &mdash; the ways the offering actually reaches those customers, chosen on cost and on convenience for the customer, which is why Amazon uses the web as an economic medium to reach a large customer base rather than opening a counter in every town.</li>
-<li><b>Customer relationships</b> &mdash; what kind of connection you form and how you keep it, because a one-off sale and a long-term relationship demand different work: Uber uses a rider&rsquo;s past behavior to learn her preferences and provide personalized ride recommendations, which only pays off across many rides.</li>
-<li><b>Revenue streams</b> &mdash; the way the firm generates income and what customers will actually pay for, and the answers differ sharply: Netflix charges a monthly or annual fee for use of the service, while Google&rsquo;s services are free to the user and paid for by a third party.</li>
+<li><b>Customer segments</b> &mdash; the customers targeted, named rather than assumed: Uber has to name both riders and drivers in its model.</li>
+<li><b>Value proposition</b> &mdash; the utility the offering has for those customers, the answer to why they choose you. Walmart answers with price; Porsche answers with the product.</li>
+<li><b>Channels</b> &mdash; the ways the offering reaches customers, chosen on cost and convenience, which is why Amazon uses the web rather than a counter in every town.</li>
+<li><b>Customer relationships</b> &mdash; what kind of connection you form and how you keep it, since a one-off sale and a long-term relationship demand different work.</li>
+<li><b>Revenue streams</b> &mdash; how the firm generates income and what customers will pay for: Netflix charges a monthly fee, while Google is free and paid for by a third party.</li>
 </ul>
-
-<p>The remaining four face inward. They describe what the company must have, do, borrow, and spend in order to keep the promise the first five just made.</p>
+<p>The remaining four face inward. They describe what the company must have, do, borrow and spend to keep the promise the first five just made.</p>
 <ul class="keys">
-<li><b>Key resources</b> &mdash; the most important assets the model needs, which the chapter illustrates elsewhere with proprietary technology, brand equity, and a loyal and established customer base, because a promise resting on an asset you do not have is a wish.</li>
-<li><b>Key activities</b> &mdash; the most important things the company must actually do, such as the work Uber&rsquo;s app performs when it automatically matches riders with drivers and anticipates surges in demand so it can change pricing accordingly, because owning an asset and never using it changes nothing.</li>
-<li><b>Key partners</b> &mdash; the network of partners and suppliers you depend on, together with what they supply and what they do, which is the arrangement the chapter calls affiliate marketing: Amazon&rsquo;s Associates program pays businesses that bring or refer customers to it, typically through revenue sharing, so that reach is real but borrowed.</li>
-<li><b>Cost structure</b> &mdash; what operating the whole arrangement costs and which resources and activities are the most expensive, because this is the component that decides whether the other eight can survive contact with a bank statement.</li>
+<li><b>Key resources</b> &mdash; the most important assets the model needs, such as proprietary technology or brand equity, because a promise resting on an asset you lack is a wish.</li>
+<li><b>Key activities</b> &mdash; the most important work the firm must perform, such as Uber&rsquo;s matching of riders to drivers, because owning an asset and never using it changes nothing.</li>
+<li><b>Key partners</b> &mdash; the suppliers you depend on and what they do. Amazon&rsquo;s Associates program is <b>affiliate marketing</b>: paying businesses that refer customers, usually through revenue sharing.</li>
+<li><b>Cost structure</b> &mdash; what operating the arrangement costs and which resources are most expensive, which decides whether the other eight survive contact with a bank statement.</li>
 </ul>
+<p>Open each component and read the questions the chapter attaches to it.</p>
 
 <div class="activity" data-activity="bmcExplore"></div>
 
-<p>Once the nine are clear, the fastest way to test yourself is to work backwards: read the question the chapter attaches to a component, then name the component from the question alone. That direction is harder than reciting the list, and it is the direction a real conversation runs in, because people describe their difficulties as questions long before anyone knows which box the answer belongs in.</p>
+<p>Now work backwards: read a question and name the component from the question alone. That is the direction a real conversation runs in, because people describe difficulties as questions long before anyone knows which box the answer belongs in.</p>
 
 <div class="activity" data-activity="bmcMatch"></div>
 
 <h3>Why the pieces interlock</h3>
-<p>Beginners treat the nine components as nine independent boxes to fill in. They are not independent, and the chapter&rsquo;s own questions show the wiring.</p>
-<p>Look again at the questions for key resources and key activities. Both ask what is needed <i>to enable our value proposition, channels, customer relationships, and revenue streams</i> &mdash; so those two components are defined by the first five and cannot be settled before them. Then look at cost structure, which asks which resources and activities are most expensive. Cost is the shadow cast by the choices already made.</p>
-<p>That wiring means a change in one place travels. Five common moves show how far.</p>
-<ul class="keys">
-<li><b>Change the customer segment</b> &mdash; and the channel usually has to change with it, because a route that is convenient for a walk-in neighbour may be unreachable for a customer thirty miles away.</li>
-<li><b>Change the channel</b> &mdash; and key resources and key activities change immediately, because reaching people a new way requires assets and daily work that the old way never needed.</li>
-<li><b>Change the revenue stream</b> &mdash; and the customer relationship changes with it, because charging once at the counter and charging every month create very different expectations about what happens after the sale.</li>
-<li><b>Change a key partner</b> &mdash; and you have quietly changed your resources and your risks, because a capability you borrow can be withdrawn on terms you do not control.</li>
-<li><b>Try to change only the cost structure</b> &mdash; and you will find you cannot, because costs are produced by the resources and activities you chose, so cutting the number without changing the choices only breaks the promise.</li>
-</ul>
+<p>Beginners treat the nine as independent boxes. The chapter&rsquo;s own questions show the wiring: key resources and key activities both ask what is needed to enable the value proposition, channels, relationships and revenue streams, so they cannot be settled first. Cost structure is the shadow cast by choices already made.</p>
+<p>That wiring means a change in one place travels. Change the customer segment and the channel changes with it, because a route convenient for a neighbour is unreachable for a customer thirty miles away.</p>
+<p>Change the revenue stream and the customer relationship changes too, because charging once and charging monthly create different expectations about what follows the sale. Try to change only the cost structure and you find you cannot: costs are produced by the resources and activities already chosen, so cutting the number only breaks the promise.</p>
 <p class="takeaway">A business model is not nine separate answers; it is nine answers that all have to be true at the same time, which is why a single change is never really a single change.</p>
 
 <div class="activity" data-activity="bmcSim"></div>
 
-<div class="callout tip"><b>How to write one down.</b> Take a business you know and answer the nine questions in a single page, in the order the table gives them. Wherever an answer is &ldquo;everyone,&rdquo; &ldquo;the usual,&rdquo; or &ldquo;we will figure that out,&rdquo; you have found the part of the model that has not been decided yet &mdash; and almost always the part where an information system either helps or is wasted.</div>
+<div class="callout tip"><p><b>How to write one down.</b> Take a business you know and answer the nine questions on a single page. Wherever an answer is &ldquo;everyone,&rdquo; &ldquo;the usual,&rdquo; or &ldquo;we will figure that out,&rdquo; you have found the part that has not been decided &mdash; and almost always the part where a system either helps or is wasted.</p></div>
 
 <div class="activity" data-activity="bmcQuiz2"></div>
 `;

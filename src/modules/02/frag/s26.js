@@ -2,7 +2,9 @@
 PROSE.s26 = `<span class="eyebrow">Application supplement &middot; 2&ndash;6</span>
 <h2>Strategy as code, and questions a database can answer</h2>
 
-<p class="lede">The analysis in this module produces claims: this force binds us, that activity is where the margin goes, this revenue model suits what we sell. Each of those claims is a calculation somebody is doing in their head, usually inconsistently. This supplement writes four of them down as functions, and then goes back to the database for the harder questions a single table could not answer.</p>
+<p class="lede">The analysis in this module produces claims: this force binds us, that activity is where the margin goes, this revenue model suits what we sell. Each of those is a calculation somebody is doing in their head, usually inconsistently.</p>
+
+<p>This supplement writes four of them down as functions, then goes back to the database for the harder questions a single table could not answer.</p>
 
 <div class="callout info"><b>How this supplement relates to the chapter.</b> Nothing here adds to the chapter&rsquo;s material. The five forces, the value chain, the revenue models and the discipline of committing to a measure are all from the sections above; what this section adds is an executable form of each, so that a claim can be checked rather than asserted. The queries extend the previous supplement from one table to three.</div>
 

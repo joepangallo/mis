@@ -2,88 +2,60 @@
 PROSE.s21c = `
 <span class="eyebrow">Section 2&ndash;1c</span>
 <h2>Where to compete: analyzing competitive forces</h2>
-<p class="lede">Every company has more ideas than money. Before anyone can sensibly say which system to build, somebody has to say what is actually pressing on the business &mdash; and this section teaches the framework the chapter uses to say it.</p>
+<p class="lede">Every company has more ideas than money. Before anyone can sensibly say which system to build, somebody has to say what is actually pressing on the business.</p>
 
-<p>Organizations struggle with identifying the best uses of their resources to execute their strategy. Some companies have a competitive advantage simply by being the first to enter a market, which is what the chapter calls a <b>first-mover advantage</b>. Most organizations never get that opening. They must compete within established industries, against firms that were already there and customers who already have habits.</p>
-
-<p>Because every industry is different, organizations need to analyze the competitive forces within their industry to better understand where to focus their resources. An <b>industry</b> is simply the set of firms selling the same kind of product to the same kind of customer, and the analysis asks one narrow question: of everything squeezing this industry, which pressure is doing the most damage to us right now?</p>
+<p>A few firms hold a competitive advantage simply by being first into a market &mdash; a <b>first-mover advantage</b>. Most never get that opening and must compete inside an established <b>industry</b>: the set of firms selling the same kind of product to the same kind of customer.</p>
 
 <h3>The five primary competitive forces</h3>
-<p>The framework the chapter uses is Porter&rsquo;s (1979) notion of the five primary competitive forces. Read them as five separate directions that pressure can arrive from, rather than as five names to memorize.</p>
+<p>Porter&rsquo;s (1979) model names five directions pressure arrives from. Each entry pairs the force with what living under it does to a firm.</p>
 <ul class="keys">
-<li><b>Traditional rivals within your industry</b> &mdash; the rivalry among competing sellers already inside your industry, which shows up as competition in price, product distribution, and service, because all of you are chasing the same buyers.</li>
-<li><b>Threat of new entrants into your market</b> &mdash; the chance that firms not competing with you today will start tomorrow, which brings increased capacity in the industry, reduced prices, and decreased market share for everyone already there.</li>
-<li><b>Customers&rsquo; bargaining power</b> &mdash; the ability of the people who buy from you to push back on your terms, which arrives as reduced prices, a need for increased quality, and demand for more services.</li>
-<li><b>Suppliers&rsquo; bargaining power</b> &mdash; the ability of the firms you buy from to set the terms of the relationship, which reaches you as increased costs and reduced quality in the very things you resell.</li>
-<li><b>Threat of substitute products or services from other industries</b> &mdash; a different kind of product meeting the same underlying need, which brings product returns from customers, decreased market share, and losing customers for life.</li>
+<li><b>Traditional rivals within your industry</b> &mdash; the sellers already inside your industry chasing the same buyers, which shows up as competition in price, product distribution and service.</li>
+<li><b>Threat of new entrants into your market</b> &mdash; firms not competing with you today that could start tomorrow, bringing increased capacity, reduced prices and decreased market share.</li>
+<li><b>Customers&rsquo; bargaining power</b> &mdash; the ability of buyers to push back on your terms, arriving as reduced prices, a need for increased quality and demand for more services.</li>
+<li><b>Suppliers&rsquo; bargaining power</b> &mdash; the ability of the firms you buy from to set the terms, which reaches you as increased costs and reduced quality.</li>
+<li><b>Threat of substitute products or services from other industries</b> &mdash; a different kind of product meeting the same need, bringing product returns, decreased market share and customers lost for life.</li>
 </ul>
-<p>The chapter draws this as one circle and four boxes: rivalry among existing firms sits at the center, and bargaining power of buyers, threat of new entrants, threat of substitute products or services, and bargaining power of suppliers each press inward on it. The picture carries the model&rsquo;s claim &mdash; five forces influence the profit potential of an industry, so a firm can be competently run and still earn very little if the forces around it are severe.</p>
+<p>The chapter draws rivalry at the center with the other four pressing inward. Together they influence the profit potential of an industry, so a competently run firm can still earn very little. Open each force in turn.</p>
 
 <div class="activity" data-activity="frcForces"></div>
 
-<h3>What each force does to a firm, and what the internet did to each force</h3>
-<p>Table 2.3 sets every force beside two things: what living with it implies for a firm, and how the internet has influenced it. Read the middle column as the damage and the right column as the reason the damage grew.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Competitive force</th><th>Implication for firm</th><th>Influence of the internet</th></tr></thead>
-<tbody>
-<tr><td><b>Traditional rivals within your industry</b></td><td>Competition in price, product distribution, and service</td><td>Increase of competitors due to wider geographic reach; customers can more easily compare products, so competition focuses more on price.</td></tr>
-<tr><td><b>Threat of new entrants into your market</b></td><td>Increased capacity in the industry, reduced prices, and decreased market share</td><td>Reduced barriers to entry, as the internet reduces the difficulty of obtaining critical resources or entering new markets.</td></tr>
-<tr><td><b>Customers&rsquo; bargaining power</b></td><td>Reduced prices, need for increased quality, and demand for more services</td><td>Wider choices for customers lead to lower switching costs and higher bargaining power of customers.</td></tr>
-<tr><td><b>Suppliers&rsquo; bargaining power</b></td><td>Increased costs and reduced quality</td><td>Companies have equal access to suppliers; easier to find new suppliers; suppliers have access to more potential buyers.</td></tr>
-<tr><td><b>Threat of substitute products or services from other industries</b></td><td>Product returns from customers, decreased market share, and losing customers for life</td><td>New substitutes are created by the internet and other information technologies.</td></tr>
-</tbody>
-</table></div>
-
-<p>One pattern runs straight down the right-hand column: almost every entry describes the internet making a force stronger, not weaker. Wider reach adds competitors, easier comparison pushes the fight toward price, barriers to entry fall, switching costs drop, suppliers reach more potential buyers, and information technologies create substitutes that did not exist before.</p>
-<p class="takeaway">The same technology that hands a firm new ways to compete hands its rivals, its customers, its suppliers, and firms in other industries exactly the same gift, which is why this analysis has to be redone rather than filed.</p>
+<p>Table 2.3 adds a third column: what the internet did to each force. One pattern runs down it. Wider reach adds competitors, easy comparison pushes the fight toward price, barriers to entry fall, switching costs drop, suppliers reach more buyers, and technology creates substitutes that did not exist.</p>
+<p class="takeaway">The same technology that hands a firm new ways to compete hands its rivals, customers, suppliers and firms in other industries exactly the same gift, which is why this analysis has to be redone rather than filed.</p>
 
 <div class="activity" data-activity="frcQuiz1"></div>
 
 <h3>Telling which force is the strong one</h3>
-<p>A single lost sale can be told as a story about almost any of the five, so the real skill is not reciting the list but choosing between them from what you can actually observe. Each force leaves a different fingerprint.</p>
+<p>A lost sale can be told as a story about almost any of the five. The skill is choosing between them from what you can observe, and each leaves a different fingerprint.</p>
 <ul class="keys">
-<li><b>Rivalry is the strong force when</b> &mdash; the companies taking your customers have sold in this industry for years, discounting is the only move anyone reaches for, and each promotion is matched within days while volume stays flat and margin falls.</li>
-<li><b>New entrants are the strong force when</b> &mdash; the companies taking your customers were not in this business last year, and nothing you hold &mdash; capital, scale, expertise, customer loyalty &mdash; would take a newcomer long to reproduce.</li>
-<li><b>Customers&rsquo; bargaining power is the strong force when</b> &mdash; buyers compare your price against alternatives in seconds and leave over small differences, or a few large accounts hold most of your revenue and use that leverage at every renewal.</li>
-<li><b>Suppliers&rsquo; bargaining power is the strong force when</b> &mdash; few firms can supply what you need, your costs rise or your quality slips on their schedule rather than yours, and nobody in your company can state what the firm buys in total.</li>
-<li><b>Substitutes are the strong force when</b> &mdash; price cuts stop working because the customers you lost are not shopping in your industry at all, and the whole category shrinks rather than just your share of it.</li>
+<li><b>Rivalry</b> &mdash; the firms taking your customers have sold here for years, discounting is the only move anyone reaches for, and every promotion is matched within days.</li>
+<li><b>New entrants</b> &mdash; the firms taking your customers were not in this business last year, and nothing you hold would take a newcomer long to reproduce.</li>
+<li><b>Customers&rsquo; bargaining power</b> &mdash; buyers compare prices in seconds and leave over small differences, or a few large accounts hold most of your revenue.</li>
+<li><b>Suppliers&rsquo; bargaining power</b> &mdash; few firms can supply what you need, and your costs rise or your quality slips on their schedule rather than yours.</li>
+<li><b>Substitutes</b> &mdash; price cuts stop working because the customers you lost are not shopping in your industry at all, and the whole category shrinks.</li>
 </ul>
-<p>The confusion that costs the most is rivalry mistaken for new entrants. Both look like a competitor taking share, but rivalry says the industry is crowded and you must give buyers a reason beyond price, while an entrant says your barriers to entry are low and the answer is to build something a newcomer cannot assemble in a quarter.</p>
-<p>The second confusion is a rival mistaken for a substitute. A rival sells what you sell, so a better price or a better shelf can win the customer back; a substitute meets the same need from another industry, so the departing customer never compares the two prices and your discount reaches nobody.</p>
+<p>Two confusions cost the most. Rivalry mistaken for new entrants sends you discounting when the real answer is to build something a newcomer cannot assemble in a quarter. A substitute mistaken for a rival is worse: the departing customer never compares the two prices, so your discount reaches nobody.</p>
 
 <div class="activity" data-activity="frcSort"></div>
 
 <h3>From the force to the technology, in that order</h3>
-<p>The chapter is explicit about what the model is for: Porter&rsquo;s five-forces model of competition can help you determine which forces may be most important and which specific technologies could be used to address those forces, and you then use that knowledge as the basis for identifying particular investments. The sequence is the lesson &mdash; force first, technology second, investment third.</p>
-<p>Each force therefore has a family of systems that answers it, so naming the force narrows the shopping list before anyone opens a vendor website.</p>
-<ul class="keys">
-<li><b>Against traditional rivals</b> &mdash; systems that move the contest off price, such as accurate stock information so the advertised item is genuinely on the shelf, because when competition focuses more on price, a firm that competes only on price keeps nothing it wins.</li>
-<li><b>Against new entrants</b> &mdash; systems that build what a newcomer cannot simply buy, such as accumulated customer history, saved orders, and reordering that runs on its own, because the internet already lowered the barriers that permits and capital used to provide.</li>
-<li><b>Against customers&rsquo; bargaining power</b> &mdash; systems that give a customer something to lose by leaving, such as a loyalty record and offers built from that household&rsquo;s own purchases, because wider choice has already driven switching costs down.</li>
-<li><b>Against suppliers&rsquo; bargaining power</b> &mdash; systems that let a firm see and consolidate its own buying and compare qualified alternatives, such as one purchasing record covering every location, because equal access to suppliers only helps a company able to act on it.</li>
-<li><b>Against substitutes</b> &mdash; systems that extend your offer into the substitute&rsquo;s territory, such as online ordering, dependable delivery windows, and subscriptions serving the same need the new way, because the table describes a customer lost this way as a customer lost for life.</li>
-</ul>
+<p>The chapter is explicit about what the model is for. Five-forces analysis tells you which forces matter most and which technologies could address them, and that becomes the basis for identifying investments. Force first, technology second, investment third.</p>
+<p>Naming the force narrows the shopping list before anyone opens a vendor website. Strong supplier power calls for one purchasing record covering every location; strong customer power calls for a loyalty record that gives a buyer something to lose. Run the simulation.</p>
 
 <div class="activity" data-activity="frcSim"></div>
 
 <h3>Turning a finding into something a decision maker can fund</h3>
-<p>A finding is not yet a proposal. Turning one into a recommendation an executive can approve takes four parts, and they have to arrive in this order.</p>
+<p>A finding is not yet a proposal. Four parts turn one into a recommendation an executive can approve, in this order.</p>
 <ol class="steps">
-<li><b>Name the force</b> exactly, using one of the chapter&rsquo;s five names, because a recommendation that opens with a technology has skipped the diagnosis and cannot be checked against anything.</li>
-<li><b>Give the observable evidence</b> that this force is the strong one, such as promotions matched within a week or a sole supplier lengthening lead times, because evidence is what keeps a meeting from being two opinions.</li>
-<li><b>State the initiative concretely</b> &mdash; not &ldquo;improve our digital capabilities&rdquo; but &ldquo;one purchasing record covering all fourteen locations, with three qualified alternate suppliers&rdquo; &mdash; because only a concrete initiative can be costed and built.</li>
-<li><b>Commit to a measure and a date</b>, naming the number you expect to move and when you will check it, because a system with no defined result can be defended forever and judged never.</li>
+<li><b>Name the force</b> exactly, using one of the five names, because a recommendation opening with a technology has skipped the diagnosis.</li>
+<li><b>Give the observable evidence</b> that this force is the strong one, because evidence is what keeps a meeting from being two opinions.</li>
+<li><b>State the initiative concretely</b> &mdash; not &ldquo;improve our digital capabilities&rdquo; but one purchasing record across all fourteen locations &mdash; because only that can be costed.</li>
+<li><b>Commit to a measure and a date</b>, because a system with no defined result can be defended forever and judged never.</li>
 </ol>
-<div class="callout tip"><b>Say it in one sentence.</b> Because [force] is the strongest force on us, shown by [evidence], we should build [initiative], and we will judge it by [measure] on [date]. If any slot is empty, what you are holding is a preference rather than a recommendation.</div>
+<div class="callout tip"><p><b>Say it in one sentence.</b> Because [force] is the strongest force on us, shown by [evidence], we should build [initiative], and we will judge it by [measure] on [date]. If any slot is empty, what you are holding is a preference rather than a recommendation.</p></div>
 
 <div class="activity" data-activity="frcExplore"></div>
 
-<div class="callout warn"><b>Two limits worth saying out loud.</b> The analysis tells you where to aim, and it does not do more than that:
-<ul class="keys">
-<li><b>It names conditions, not products</b> &mdash; the model identifies which forces matter most and which kinds of technology could address them, so a vendor shortlist assembled before the force is named is a set of products hunting for a problem.</li>
-<li><b>The answer expires</b> &mdash; the internet altered all five forces at once, so any diagnosis is a photograph of an industry on one particular day, and a firm that files it away ends up defending a position that has already moved.</li>
-</ul></div>
+<div class="callout warn"><p><b>Two limits worth saying out loud.</b> The model names conditions rather than products, so a vendor shortlist assembled before the force is named is a set of products hunting for a problem. And the answer expires: any diagnosis is a photograph of one particular day.</p></div>
 
 <div class="activity" data-activity="frcQuiz2"></div>
 `;

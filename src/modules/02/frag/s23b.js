@@ -2,97 +2,76 @@
 PROSE.s23b = `
 <span class="eyebrow">Section 2&ndash;3b</span>
 <h2>Innovating in practice</h2>
-<p class="lede">Knowing that innovation matters is the easy part. This section is the hard part: why innovating with information systems so often fails, what a disciplined process for doing it looks like, and what an organization must change about itself first.</p>
+<p class="lede">Knowing that innovation matters is easy. This is the hard part: why innovating with information systems so often fails, what a disciplined process looks like, and what an organization must change first.</p>
 
 <h3>Nobody sees it coming</h3>
-<p>In 1999 Sir John Maddox, a physicist who edited the journal <i>Nature</i> for 22 years, was quoted in <i>Scientific American</i> saying that the most important discoveries of the next 50 years are likely to be ones we cannot now even conceive. The internet makes his point: in 1999 it was not on the radar screens of many business organizations, and firms with websites were mostly providing an electronic brochure.</p>
-<p>The chapter&rsquo;s answer is structural. Organizations that want to stay relevant must become <b>bimodal</b>: one part exploits existing capabilities and technologies, a focus on <b>earning</b>, while another discovers and develops new interactions or service offerings enabled by increasing digital density, a focus on <b>learning</b>.</p>
+<p>In 1999 the internet was not on most firms&rsquo; radar and company websites were electronic brochures. The chapter&rsquo;s answer is structural: a firm that wants to stay relevant must become <b>bimodal</b>, one part exploiting existing capabilities &mdash; <b>earning</b> &mdash; while another discovers new offerings &mdash; <b>learning</b>.</p>
 
 <h3>Four reasons innovating is hard</h3>
-<p>The chapter gives four separate reasons that innovating with information systems is harder than it looks, and they are genuinely different problems rather than four ways of saying one thing.</p>
+<p>These are genuinely different problems rather than four ways of saying one thing.</p>
 <ul class="keys">
-<li><b>Successful innovation is difficult</b> &mdash; systems are often bought from or built by someone else, so a firm typically cannot patent its use of one, the way a soft-drink company can patent a cola formula.</li>
-<li><b>Innovation is often fleeting</b> &mdash; even an in-house system uses hardware, software, and networking components rivals can also buy, so smart rivals quickly duplicate or improve on any use that visibly wins.</li>
-<li><b>Innovation is often risky</b> &mdash; choosing among innovative investments always entails risk, because the option most experts call superior is not always the one the market settles on.</li>
-<li><b>Innovation choices are often difficult</b> &mdash; picking a technology is like hitting one of several equally attractive fast-moving targets, because forecasting the growth, use, and importance of an emerging technology has defeated experts and organizations again and again.</li>
+<li><b>Successful innovation is difficult</b> &mdash; systems are usually bought from someone else, so a firm cannot patent its use of one the way a soft-drink maker patents a formula.</li>
+<li><b>Innovation is often fleeting</b> &mdash; even an in-house system uses parts rivals can buy, so a visible win is quickly duplicated or improved on.</li>
+<li><b>Innovation is often risky</b> &mdash; the option most experts call superior is not always the one the market settles on.</li>
+<li><b>Innovation choices are often difficult</b> &mdash; forecasting the growth and importance of an emerging technology has defeated experts again and again.</li>
 </ul>
-<p>The patent point is where intuition usually fails. The data in a system may be proprietary; the system itself typically is not, particularly when purchased from a vendor. One exception matters: a system developed by a consultant or an outsourcing partner is proprietary to the organization.</p>
-<p>Two things do resist copying. Amazon&rsquo;s patented &ldquo;one-click&rdquo; ordering process has been successfully defended in the courts, and it is often difficult to copy the &ldquo;secret sauce&rdquo; key to how a system functions or succeeds.</p>
-<p>Risk is easiest to see in consumer electronics. Most experts agreed Sony&rsquo;s Betamax had better recording and playback quality than JVC&rsquo;s VHS, and VHS won the marketplace anyway; later, Sony&rsquo;s Blu-ray beat the HD DVD format Microsoft and Toshiba backed. For an organization the same choice is far riskier, given the size and mission-critical nature of the investment.</p>
-<p>Forecasting is why the choices stay hard. The 1994 <i>Technology Forecast</i> from the consulting firm Price Waterhouse, now PwC, mentioned the word internet on five pages of a 750-page document; the next year more than 75 pages addressed it, and by the 1997 briefing it was pervasive throughout.</p>
+<p>The patent point is where intuition fails. The data in a system may be proprietary; the system itself usually is not, unless a consultant built it for you. Amazon&rsquo;s one-click ordering is the exception, patented and defended in court.</p>
+<p>As for risk: most experts preferred Betamax and VHS won anyway. As for forecasting: a 1994 technology report mentioned the internet on five of its 750 pages.</p>
 
 <div class="activity" data-activity="iprHard"></div>
 
 <h3>What actually lasts</h3>
-<p>So what survives contact with a competitor? If you use information systems for operating efficiencies, rivals can just as easily adopt the same types of systems and achieve the same gains. Two routes hold up longer.</p>
+<p>If you use systems for operating efficiencies, rivals adopt the same systems and get the same gains. Two routes last longer.</p>
 <ul class="keys">
-<li><b>Make the product or service unique</b> &mdash; the Israeli tech startup Waze built a routing and navigation algorithm combining map data, real-time traffic information, and crowdsourced data, and Google purchased the app in 2013.</li>
-<li><b>Raise the customer&rsquo;s switching costs</b> &mdash; Salesforce.com stores the entire history of a firm&rsquo;s interactions with each customer, so switching to a rival would cost significant time and money and take years to rebuild.</li>
+<li><b>Make the product unique</b> &mdash; Waze combined map data, live traffic and crowdsourced reports into one routing algorithm, and Google bought it.</li>
+<li><b>Raise the customer&rsquo;s switching costs</b> &mdash; Salesforce stores a firm&rsquo;s entire history with each customer, so leaving would cost years of rebuilding.</li>
 </ul>
-<p class="takeaway">Efficiency gains are borrowable; a customer&rsquo;s accumulated history is not, which is why the chapter treats uniqueness and switching costs as the durable forms of advantage.</p>
+<p class="takeaway">Efficiency gains are borrowable; a customer&rsquo;s accumulated history is not, which is why uniqueness and switching costs are the durable forms of advantage.</p>
 
 <h3>The lean startup methodology</h3>
-<p>Traditionally companies would develop a product and then try to find a market for it, which the chapter calls inside-out thinking. Innovative companies reverse it, in outside-in thinking: they focus on the ends, meaning the customer&rsquo;s <b>job-to-be-done</b> and the friction points preventing the customer from accomplishing their goals.</p>
-<p>That reversal matters more now because incumbents face competition from many small, nimble startups, not just a few traditional rivals. The <b>lean startup methodology</b>, pioneered by Eric Ries, gives the response a shape: a company first searches for a viable product and business model, and executes that model only after finding a fit between product and market.</p>
+<p>Companies traditionally built a product and then looked for a market &mdash; inside-out thinking. Outside-in thinking starts from the customer&rsquo;s <b>job-to-be-done</b> instead. The <b>lean startup methodology</b>, pioneered by Eric Ries, gives it a shape: search for a viable product and business model, execute only after finding product-market fit.</p>
 <ul class="keys">
-<li><b>Customer discovery</b>, in search &mdash; you establish whether the perceived problem actually exists, whether a market for a solution exists, and whether your envisioned solution addresses it, which means &ldquo;getting out of the building&rdquo; before building anything.</li>
-<li><b>Customer validation</b>, in search &mdash; you test whether customers would be willing to pay, using a minimum viable product, because a finished product is an expensive way to learn you were wrong.</li>
-<li><b>Customer creation</b>, in execution &mdash; you test whether it is possible to establish a repeatable business model, now that the product has stopped being the open question.</li>
-<li><b>Company building</b>, in execution &mdash; the final step builds the company and scales operations and the organization around an already validated model.</li>
+<li><b>Customer discovery</b>, in search &mdash; establish whether the problem exists and whether your solution addresses it, which means getting out of the building.</li>
+<li><b>Customer validation</b>, in search &mdash; test whether customers would pay, because a finished product is an expensive way to learn you were wrong.</li>
+<li><b>Customer creation</b>, in execution &mdash; test whether a repeatable business model can be established, now the product is no longer the open question.</li>
+<li><b>Company building</b>, in execution &mdash; scale operations and the organization around a model already validated.</li>
 </ul>
-<p>A <b>minimum viable product</b> (MVP) contains just the features needed to demonstrate how your solution meets the problem, so its purpose is to test a hypothesis cheaply.</p>
-<p>If a hypothesis fails during the search, it is time to <b>pivot</b> &mdash; change direction while staying grounded in what you learned. Instagram began as Burbn, an app of features from check-ins to gaming; when users did not value them, the founders stripped it to photo sharing and commenting.</p>
-<p>Those iterations form the <b>build-measure-learn</b> cycle, which enables <b>validated learning</b>: empirically testing hypotheses through customer feedback to improve future iterations. You build the MVP quickly, measure by collecting data such as questionnaire responses, then learn by deciding whether to pivot or persevere. Established companies from Alaska Airlines to Philips to 3M use the method too.</p>
+<p>A <b>minimum viable product</b> contains just the features needed to show how your solution meets the problem. When a hypothesis fails it is time to <b>pivot</b>: Instagram began as Burbn and was stripped to photo sharing when users ignored the rest.</p>
+<p>Those iterations form the <b>build-measure-learn</b> cycle, which enables <b>validated learning</b> &mdash; testing hypotheses empirically through customer feedback.</p>
 
 <div class="activity" data-activity="iprProcess"></div>
 
 <h3>Open innovation</h3>
-<p>Because innovating internally is this hard, organizations increasingly realize the potential for innovation often exists outside their boundaries, and they try to harness the creativity of external stakeholders. <b>Open innovation</b> is the process of integrating external stakeholders into the innovation process.</p>
-<p>Eli Lilly created InnoCentive, where companies post scientific problems, everybody can take a shot at them, and a reward is usually paid to a successful solver. P&amp;G, Lego with Lego Ideas, and Heineken with Brewhouse have also used open innovation to solicit ideas for novel products, services, or processes.</p>
-<p>What that arrangement changes is worth stating precisely.</p>
-<ul class="keys">
-<li><b>The research network becomes ad hoc</b> &mdash; companies rely less on a dedicated research-and-development department or on hiring specialists, because the problem is posted rather than staffed.</li>
-<li><b>Contributors work on their own terms</b> &mdash; people use spare time and expertise to solve problems and earn rewards, so effort arrives from outside the payroll.</li>
-<li><b>The price is openness</b> &mdash; the arrangement often involves making organizational data and knowledge accessible to outsiders, so benefits must be balanced against the potential drawbacks.</li>
-</ul>
+<p><b>Open innovation</b> integrates external stakeholders into the innovation process. Eli Lilly created InnoCentive, where firms post scientific problems and a reward goes to a successful solver; Lego and Heineken run their own versions.</p>
+<p>The research network becomes ad hoc rather than a staffed department, and contributors work on their own time. The price is openness: company data and knowledge reach outsiders.</p>
 
 <div class="activity" data-activity="iprQuiz1"></div>
 
 <h3>What an organization needs in place</h3>
-<p>Established organizations can benefit from radical approaches to innovation, but that sometimes requires fundamental changes to the organization itself: its processes, resources, and risk tolerance must be capable of adapting to and sustaining the development and implementation process.</p>
+<p>Radical approaches sometimes require fundamental changes to the organization itself, in three areas.</p>
 <ul class="keys">
-<li><b>Process requirements</b> &mdash; organizational processes and incentive systems must change, because developing an MVP with agile approaches requires close collaboration of cross-functional teams, which is uncommon in established organizations.</li>
-<li><b>Resource requirements</b> &mdash; the firm needs enough employees with the relevant knowledge, skills, and time to quickly build MVPs, or able systems partners to outsource that development to.</li>
-<li><b>Risk tolerance requirements</b> &mdash; members must tolerate risk and uncertainty and be willing to test products that may not meet customers&rsquo; requirements, and to fail fast if needed.</li>
+<li><b>Process requirements</b> &mdash; incentives must change, because building an MVP requires cross-functional collaboration uncommon in established firms.</li>
+<li><b>Resource requirements</b> &mdash; enough employees with the knowledge, skills and time to build MVPs quickly, or partners who can.</li>
+<li><b>Risk tolerance requirements</b> &mdash; members must tolerate uncertainty, test products that may miss the mark, and fail fast.</li>
 </ul>
-<p>Two details are easy to skip and expensive to miss. Accountability and incentives belong at the team level rather than the individual level, because an experiment is a shared act. And the method needs a startup-like budgeting model, where funds are approved as a project moves through the stages, or can quickly be cut if the anticipated results do not appear.</p>
-<p>Risk tolerance reaches further than products: open innovation typically requires sharing organizational knowledge with outside partners. Where people within the organization desire low risk, gambling on cutting-edge innovations with a lean startup approach will probably not be tolerable.</p>
+<p>Two details are easy to skip. Incentives belong at team level, because an experiment is a shared act. And funds are released stage by stage, then cut when results fail to appear.</p>
 
 <div class="activity" data-activity="iprReady"></div>
 
 <h3>Three ways to think about radical innovations</h3>
-<p>The chapter closes by turning three familiar habits around, each uncomfortable on purpose.</p>
-<ul class="keys">
-<li><b>Put technology ahead of strategy</b> &mdash; with increasing digital density, technology is so important to strategy and success that you begin there, because retrofitting technology into an aging strategy is, many would argue, doomed.</li>
-<li><b>Think in terms of problems before designing solutions</b> &mdash; drop inside-out thinking for outside-in thinking, because customers understand their problems well but are not experts in solutions or in new technologies.</li>
-<li><b>Innovation is continuous</b> &mdash; innovative companies constantly look for the next new thing and keep getting out of the building to test new hypotheses, because the rate of technology evolution will not slow down.</li>
-</ul>
-<p>Steve Jobs of Apple is quoted on the second point: you cannot just ask people what they want and then give it to them, because by the time you build it they will want something new. If your customers already know about a technology, your competitors probably do too, so it is not the one to rest your advantage on.</p>
-<p>The third point is the troubling one. If you lead an industry you must continually learn to embrace and exploit radical innovations, potentially destroying your existing core business while building a new business around the innovation. If you fail to do this, your competition may do it for you.</p>
+<p>Put technology ahead of strategy, because retrofitting it into an aging strategy is arguably doomed. Think in problems before solutions, because customers understand their problems but not technologies. And treat innovation as continuous: a leader must keep embracing radical innovations, potentially destroying its own core business, or the competition will.</p>
 
 <div class="activity" data-activity="iprInvest"></div>
 
 <h3>Startups and crowdfunding</h3>
-<p><b>Startups</b> are typically technology-based new ventures with high potential for scalability and growth, often cofounded by entrepreneurs, developers, or designers with a promising idea. They were long built around services or platforms enabled by information systems, but 3D printing has enabled hardware startups built around physical objects, from Coin&rsquo;s electronic credit card to the Square Reader.</p>
-<p>Prototyping quickly is not the whole job. Reaching manufactured stock also requires knowledge of the business environment, connections with the business community, and often substantial financial resources, and startups seek that support in four places.</p>
+<p><b>Startups</b> are technology-based new ventures with high potential for scalability and growth. Reaching manufactured stock needs connections and money, from four places.</p>
 <ul class="keys">
-<li><b>Startup incubators</b> &mdash; they provide various types of education and other resources, which is what an unproven idea usually needs first.</li>
-<li><b>Startup accelerators</b> &mdash; they typically provide education, investment, and intense mentorship for cohorts of startups, so money and guidance arrive together.</li>
-<li><b>Angel investors</b> &mdash; they can be a valuable source of funding, but often provide only limited education or mentorship, so the venture supplies its own direction.</li>
-<li><b>Crowdfunding</b> &mdash; through platforms such as Kickstarter or Indiegogo, it secures business financing from individuals in the marketplace, the &ldquo;crowd,&rdquo; typically for a consumer-based product.</li>
+<li><b>Startup incubators</b> &mdash; education and other resources, which is what an unproven idea needs first.</li>
+<li><b>Startup accelerators</b> &mdash; education, investment and intense mentorship for a whole cohort, so money and guidance arrive together.</li>
+<li><b>Angel investors</b> &mdash; a valuable source of funding, but with limited mentorship, so the venture finds its own direction.</li>
+<li><b>Crowdfunding</b> &mdash; platforms such as Kickstarter raise financing from individuals in the marketplace, usually for a consumer product.</li>
 </ul>
-<p>Crowdfunding has one rule that makes it unlike ordinary investment. Backers pledge a certain amount in return for certain benefits, generally one count of the item backed. If, and only if, the campaign reaches its funding goal are backers charged and the product produced; otherwise the campaign fails and nobody is charged. Kickstarter has helped fund more than 280,000 projects totaling more than US$8 billion in pledges.</p>
-<p><b>Equity crowdfunding</b>, sometimes called crowdinvesting, secures financing the same way but changes what comes back: backers receive equity in return for their investment rather than a product.</p>
+<p>Crowdfunding has one rule unlike ordinary investment: only if the campaign reaches its goal are backers charged and the product made. <b>Equity crowdfunding</b> works the same way but returns equity instead of a product.</p>
 <p class="takeaway">Innovation, as this chapter treats it, is not a flash of cleverness; it is a search process with a budget model, a team structure, and a tolerance for being wrong in public.</p>
 
 <div class="activity" data-activity="iprQuiz2"></div>

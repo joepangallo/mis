@@ -2,133 +2,74 @@
 PROSE.s21d = `
 <span class="eyebrow">Section 2&ndash;1d</span>
 <h2>How to compete: strategy, resources, and the value chain</h2>
-<p class="lede">The five forces tell a company where the pressure in its industry comes from. They never say what to do about it. This section is the other half: once a company knows what it is up against, how does it choose what to be good at, and which systems are worth the money?</p>
+<p class="lede">The five forces say where the pressure comes from, never what to do about it. This section is the other half: how a firm chooses what to be good at, and which systems pay.</p>
 
 <h3>Choosing a generic strategy</h3>
-<p>To achieve superior returns, a company has to position itself within the industry it operates in so that it can counter the effects of the five forces. Figure 2.12 lays the common positions out as a grid built on two questions: is the differentiating attribute <b>low cost</b> or <b>uniqueness</b>, and is the market focus <b>narrow</b> or <b>broad</b>?</p>
-<p>Three named strategies sit inside that grid, and each is a promise the company&rsquo;s later spending has to keep.</p>
+<p>To earn superior returns a firm must position itself against the five forces. Figure 2.12 asks two questions: is the differentiating attribute <b>low cost</b> or <b>uniqueness</b>, and is the market focus <b>narrow</b> or <b>broad</b>?</p>
 <ul class="keys">
-<li><b>Low-cost leadership strategy</b> &mdash; the organization offers the best prices in its industry on its goods and/or services, which is how the chapter describes Walmart.</li>
-<li><b>Differentiation strategy</b> &mdash; the organization tries to provide better products or services than its competitors, as Porsche, Nordstrom, and IBM do, so the customer is paying for something rivals have not matched.</li>
-<li><b>Best-cost provider strategy</b> &mdash; a middle-of-the-road position offering products or services of reasonably good quality at competitive prices, as Dell does, placed at the center of the figure where the quadrants overlap.</li>
+<li><b>Low-cost leadership strategy</b> &mdash; the organization offers the best prices in its industry on its goods and services, as Walmart does.</li>
+<li><b>Differentiation strategy</b> &mdash; the organization provides better products or services than competitors, as Porsche, Nordstrom and IBM do, so the customer pays for something rivals lack.</li>
+<li><b>Best-cost provider strategy</b> &mdash; a middle position offering reasonably good quality at competitive prices, as Dell does, where the quadrants overlap.</li>
 </ul>
-<p>Differentiation comes in two widths: a company might aim it broadly at many types of consumers, or focus on one segment, as Apple did for years with high-quality computers for home and educational markets. Crossing that choice with the two axes produces the five general types the figure names.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Type of strategy</th><th>Where it sits in Figure 2.12</th><th>What the customer is promised</th><th>Chapter&rsquo;s example</th></tr></thead>
-<tbody>
-<tr><td><b>Overall low-cost leadership</b></td><td>Broad market, low cost</td><td>The best prices in the industry, for everyone</td><td>Walmart</td></tr>
-<tr><td><b>Broad differentiation</b></td><td>Broad market, uniqueness</td><td>Better products than competitors, for many types of consumers</td><td>Porsche, Nordstrom, IBM (the chapter names no width)</td></tr>
-<tr><td><b>Focused low-cost leadership</b></td><td>Narrow market, low cost</td><td>The lowest price inside one slice of the market</td><td>The chapter names none</td></tr>
-<tr><td><b>Focused differentiation</b></td><td>Narrow market, uniqueness</td><td>Something better, built for one segment</td><td>Apple, for years, in home and educational computers</td></tr>
-<tr><td><b>Best-cost provider</b></td><td>The center, where the quadrants overlap</td><td>Reasonably good quality at competitive prices</td><td>Dell</td></tr>
-</tbody>
-</table></div>
+<p>Either attribute can be aimed broadly or focused on one segment, as Apple did in home and educational computers, giving the figure five types. Place a few firms on the grid.</p>
 
 <div class="activity" data-activity="vchStrategy"></div>
 
-<div class="callout warn"><p><b>A chosen middle is not the same as no middle.</b> The best-cost provider position is a real strategy with a real promise: reasonably good quality at competitive prices, held steady.</p>
-<p>A company that has never said whether it competes on price or on uniqueness, and for whom, has no test to apply to the next proposal, so the budget goes to whoever argues best.</p></div>
+<div class="callout warn"><p><b>A chosen middle is not the same as no middle.</b> A firm that never said whether it competes on price or uniqueness has no test for the next proposal, so the budget goes to whoever argues best.</p></div>
 
 <h3>Resources and capabilities: the second lens</h3>
-<p>Position tells the market what to expect; it does not make the company able to deliver. Whichever generic strategy an organization pursues, it must have resources and/or capabilities superior to those of its competitors in order to gain or sustain a competitive advantage.</p>
+<p>Position tells the market what to expect; it does not make the firm able to deliver. Whichever strategy it pursues, a firm needs resources or capabilities superior to its rivals&rsquo;.</p>
 <ul class="keys">
-<li><b>Resources</b> &mdash; the organization&rsquo;s specific assets used to achieve cost or product differentiation from competitors, such as proprietary technology, brand equity, or a loyal and established customer base.</li>
-<li><b>Capabilities</b> &mdash; the organization&rsquo;s ability to leverage those resources in the marketplace, such as design quality or efficient operations, so a capability is something a company does rather than something it owns.</li>
-<li><b>Distinctive competencies</b> &mdash; what resources and capabilities produce together, such as innovation, agility, quality, or low cost, and they are what makes the product valuable to customers relative to competitors.</li>
-<li><b>Superior value creation</b> &mdash; what the chain is aiming at, which occurs when an organization can provide products at a lower cost or with superior, differentiated benefits to the customer.</li>
+<li><b>Resources</b> &mdash; specific assets used to achieve cost or product differentiation, such as proprietary technology, brand equity or a loyal customer base.</li>
+<li><b>Capabilities</b> &mdash; the ability to leverage those resources in the marketplace, such as design quality: something a firm does, not something it owns.</li>
+<li><b>Distinctive competencies</b> &mdash; what resources and capabilities produce together, such as innovation, agility or quality, and what makes a product valuable relative to competitors.</li>
+<li><b>Superior value creation</b> &mdash; the aim of the whole chain, reached when a firm provides products at lower cost or with differentiated benefits.</li>
 </ul>
-<p>Figure 2.13 draws that as a chain: resources and capabilities feed distinctive competencies, competencies produce a cost or differentiation advantage, and that advantage earns the name sustained competitive advantage. An asset nobody uses well never becomes a competency.</p>
-<p>What separates a lasting advantage from a temporary one is comparative: the resources and capabilities have to be superior to those of competitors, not merely present. Anything a rival can order this afternoon fails that test.</p>
-<p>Figure 2.14 gives eight sources of competitive advantage, one company each.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Source of advantage</th><th>Company the chapter names</th></tr></thead>
-<tbody>
-<tr><td><b>Quality</b></td><td>Toyota</td></tr>
-<tr><td><b>Service</b></td><td>IBM</td></tr>
-<tr><td><b>User base</b></td><td>Facebook</td></tr>
-<tr><td><b>Proprietary</b></td><td>Coca-Cola</td></tr>
-<tr><td><b>Innovation</b></td><td>Apple</td></tr>
-<tr><td><b>Brand</b></td><td>Nike</td></tr>
-<tr><td><b>Value</b></td><td>Nintendo</td></tr>
-<tr><td><b>Data</b></td><td>Uber</td></tr>
-</tbody>
-</table></div>
-
-<p>Several of those sources are informational rather than physical. For many organizations, the chapter says, information systems are at the heart of the different resources, capabilities, or distinctive competencies.</p>
+<p>Figure 2.13 draws the sequence: resources and capabilities feed competencies, which produce a cost or differentiation advantage. An asset nobody uses well never becomes a competency, and anything a rival can order this afternoon is not superior. Several of Figure 2.14&rsquo;s eight sources are informational, so systems often sit inside the resources themselves.</p>
 
 <div class="activity" data-activity="vchQuiz1"></div>
 
 <h3>Analyzing the value chain</h3>
-<p>To find where inside the company a system would actually pay, managers use value chain analysis. Think of an organization as a big input/output process: supplies are purchased and brought in, integrated into products and services it markets, sells, and distributes, with customer service after the sale.</p>
-<p>Throughout that process, opportunities arise for employees to use information systems to add value by acquiring supplies more effectively, improving products, and selling more products. That set of activities is the <b>value chain</b>. Value has a plain meaning here: the analysis asks what each activity adds for the customer and what it costs to do.</p>
-<p><b>Value chain analysis</b> is the process of analyzing an organization&rsquo;s activities to determine where value is added to products and/or services and what costs are incurred for doing so. It runs in three steps.</p>
-<ol class="steps">
-<li><b>Draw the chain first</b> &mdash; flesh out each activity, function, and process where value is or should be added and performance can be improved, because nobody improves a step that was never written down.</li>
-<li><b>Then find the costs</b> &mdash; determine the costs in each area and the factors that drive them or make them fluctuate, because a cost with no known driver can be complained about but not managed.</li>
-<li><b>Then decide what to optimize</b> &mdash; determine which activities need optimizing to improve performance, cut costs, and gain or sustain competitive advantage, which is the first point at which naming a system is reasonable.</li>
-</ol>
-<p>The chain has two halves. The <b>primary activities</b> run left to right as a flow, because a product passes through them on its way to a customer. The <b>support activities</b> are bands drawn underneath, because they serve every stage rather than one.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Activity</th><th>Half of the chain</th><th>What the name covers</th></tr></thead>
-<tbody>
-<tr><td><b>Inbound logistics</b></td><td>Primary</td><td>Receiving what was purchased and getting it inside, before any of it is sellable</td></tr>
-<tr><td><b>Operations</b></td><td>Primary</td><td>Integrating supplies into the products and services the customer buys</td></tr>
-<tr><td><b>Outbound logistics</b></td><td>Primary</td><td>Distributing the finished product or service out to the customer</td></tr>
-<tr><td><b>Sales and marketing</b></td><td>Primary</td><td>Making customers aware and giving them a reason to choose it</td></tr>
-<tr><td><b>Service</b></td><td>Primary</td><td>Looking after the customer after the sale</td></tr>
-<tr><td><b>Administration and firm infrastructure</b></td><td>Support</td><td>Running the organization as a whole, billable to no single product</td></tr>
-<tr><td><b>Human resources</b></td><td>Support</td><td>Who is hired, trained, and scheduled to do the work above</td></tr>
-<tr><td><b>Product research and development, technology, and systems development</b></td><td>Support</td><td>Improving the product and building the systems the chain runs on</td></tr>
-<tr><td><b>Procurement</b></td><td>Support</td><td>The buying decision itself, not the physical receiving of goods</td></tr>
-</tbody>
-</table></div>
-
-<p>The model was built for manufacturing but applies to service industries too, sometimes with different activities. The chapter walks through a hotel, and that mapping repays slow reading.</p>
+<p>Think of an organization as one input/output process: supplies are bought and brought in, integrated into products it markets, sells and distributes, with service after the sale. That set of activities is the <b>value chain</b>, and employees can add value at any point along it.</p>
+<p><b>Value chain analysis</b> determines where value is added and what costs are incurred doing so. Draw the chain, find each area&rsquo;s costs and their drivers, then decide which activities to optimize &mdash; only then is naming a system reasonable.</p>
+<p>The chain has two halves. <b>Primary activities</b> run left to right as a flow a product passes through; <b>support activities</b> are bands underneath, serving every stage.</p>
 <ul class="keys">
-<li><b>Inbound logistics</b> &mdash; receiving supplies, and handling reservations, because a booking is an input that arrives and must be held until it is used.</li>
-<li><b>Operations</b> &mdash; checking guests in or out, cleaning rooms, and preparing breakfast, since a clean, ready, served room is the product itself.</li>
-<li><b>Outbound logistics</b> &mdash; work the chapter says might be performed by the hotel&rsquo;s catering or event service, because that is where the finished offering reaches the guest.</li>
-<li><b>Sales and marketing</b> &mdash; promoting the hotel and attracting business meetings and conventions, so rooms are booked before they can be cleaned.</li>
-<li><b>Service</b> &mdash; the activities performed after the guest has left, such as registering or resolving guest complaints.</li>
+<li><b>Inbound logistics</b> (primary) &mdash; receiving what was purchased, before any of it is sellable.</li>
+<li><b>Operations</b> (primary) &mdash; integrating supplies into the products and services customers buy.</li>
+<li><b>Outbound logistics</b> (primary) &mdash; distributing the finished product or service to the customer.</li>
+<li><b>Sales and marketing</b> (primary) &mdash; making customers aware and giving them a reason to choose it.</li>
+<li><b>Service</b> (primary) &mdash; looking after the customer once the sale has been made.</li>
+<li><b>Administration and firm infrastructure</b> (support) &mdash; running the organization, billable to no single product.</li>
+<li><b>Human resources</b> (support) &mdash; who is hired, trained and scheduled to do the work above.</li>
+<li><b>Product research and development, technology, and systems development</b> (support) &mdash; improving the product and building the systems.</li>
+<li><b>Procurement</b> (support) &mdash; the buying decision itself, not the physical receiving of goods.</li>
 </ul>
-<p>Other organizations may lack inbound and/or outbound logistics altogether and may classify activities differently, while the supporting activities are likely to resemble those of other organizations. The chain is a tool for analysis, not a law.</p>
+<p>Built for manufacturing, the model fits services: a hotel&rsquo;s inbound logistics include reservations. Some firms lack logistics activities entirely. Build a chain and see.</p>
 
 <div class="activity" data-activity="vchChain"></div>
 
-<h3>The role of information systems in value chain analysis</h3>
-<p>Because information systems can automate and optimize many activities along the chain, using them has become one of the primary ways organizations improve their value chains. Figure 2.15 places ordinary systems on a sample chain.</p>
-<ul class="keys">
-<li><b>Systems laid across the primary flow</b> &mdash; supply chain management and customer relationship management systems run along the whole flow, with the website, Facebook, and X, because those touch goods coming in and customers going out.</li>
-<li><b>Connections between businesses</b> &mdash; many organizations use the internet to connect electronically, exchanging orders, invoices, and receipts in real time, which takes waiting out of the seams between activities.</li>
-<li><b>Connections with customers</b> &mdash; organizations use social media such as blogs, X, or Instagram to connect with customers, so marketing and service stop being one-way announcements.</li>
-<li><b>Systems beneath the support bands</b> &mdash; the figure shows a private cloud and computer-aided design systems supporting those bands, and names a financial decision support system, an employee self-service portal, and a supply chain management system alongside them.</li>
-</ul>
-<p>Name a proposed system by the activity it improves. &ldquo;A better app&rdquo; cannot be argued about; &ldquo;a system that cuts the cost driver in inbound logistics&rdquo; can be costed, funded, or refused.</p>
+<h3>The role of information systems in the chain</h3>
+<p>Figure 2.15 lays supply chain and customer relationship management across the whole flow and puts a private cloud beneath the support bands.</p>
+<p>Name a proposed system by the activity it improves. &ldquo;A better app&rdquo; cannot be argued about; &ldquo;a system that cuts the cost driver in inbound logistics&rdquo; can be costed, funded or refused.</p>
 
 <div class="activity" data-activity="vchSort"></div>
 
 <h3>The technology/strategy fit</h3>
-<p>If a system does things faster and saves money, who cares whether it matches the strategy? Money and time are limited. If money grew on trees an organization would build every system it could imagine; in reality it acquires only those adding the most value, meaning the ones that help it automate and learn <i>and</i> carry strategic value.</p>
-<p>Managers once treated information systems as a necessary service, a necessary evil, and a distasteful expense to be minimized. Successful managers now treat them as a competitive asset to be nurtured and invested in, an enabler of opportunities and a mechanism for executing the business model.</p>
-<p>The test has a name, <b>business/IT alignment</b>, and organizations try to maximize it: in most cases they do not want systems that fail to match the strategy, even when those systems offer real automating and learning benefits.</p>
-<p>The chapter&rsquo;s illustration is blunt. A firm whose strategy is overall low-cost leadership probably does not want a system that differentiates its products on high quality, because a low-cost leader values the investments that drive costs down over those that do not.</p>
-<p>Two qualifications stop this from becoming a rule applied without thinking.</p>
+<p>If money grew on trees a firm would build every system it could imagine. In reality it buys only those adding the most value &mdash; ones that automate and learn <i>and</i> carry strategic value. That test is <b>business/IT alignment</b>.</p>
+<p>A firm pursuing low-cost leadership probably does not want a system that differentiates its products on high quality, because it values investments that drive costs down. Two qualifications stop that becoming a thoughtless rule.</p>
 <ul class="keys">
-<li><b>Strategic necessity</b> &mdash; organizations sometimes have no choice about investments that may or may not coincide with their overall strategy, and the chapter calls such an investment a strategic necessity: something the organization must do to survive.</li>
-<li><b>The change comes with the system</b> &mdash; implementing a new or innovative system is not sufficient by itself, because any significant implementation needs commensurate, significant organizational change in processes, roles, culture, and mindset.</li>
+<li><b>Strategic necessity</b> &mdash; an investment the organization must make to survive, whether or not it matches the overall strategy.</li>
+<li><b>The change comes with the system</b> &mdash; a significant implementation needs matching change in processes, roles, culture and mindset.</li>
 </ul>
-<p>Underneath it all is a floor: an information system can be only as effective as the business model it serves, and bad business models cannot be overcome by good information systems.</p>
+<p>Underneath it all is a floor: a system is only as effective as the business model it serves, and bad business models are not overcome by good systems.</p>
 
 <div class="activity" data-activity="vchOrder"></div>
 
-<p class="takeaway">Position first, then the resources and capabilities that make it deliverable, then the value chain activity where a system would pay, then the alignment test a proposal must survive to be funded.</p>
+<p class="takeaway">Position first, then the resources that make it deliverable, then the value chain activity where a system would pay, then the alignment test a proposal must survive.</p>
 
 <div class="activity" data-activity="vchQuiz2"></div>
 
-<div class="callout"><p><b>Practise both frameworks on real situations.</b> A companion page, <a href="five-forces-and-value-chain.html">Five Forces and the Value Chain &mdash; a working review</a>, takes the two models in this section and turns them into work: an interactive diagram of each, a rater that scores five industries force by force against an analyst&rsquo;s reading, an evidence sort, a budgeted investment simulator that tests business/IT alignment, three full case studies that need both models to answer, and a guided builder for the write-up.</p></div>
+<div class="callout"><p><b>Practise both frameworks.</b> A companion page, <a href="five-forces-and-value-chain.html">Five Forces and the Value Chain &mdash; a working review</a>, turns the two models into work: interactive diagrams, a force-by-force rater, an evidence sort, a budgeted investment simulator and three case studies.</p></div>
 `;
 
 ACT.vchStrategy = {

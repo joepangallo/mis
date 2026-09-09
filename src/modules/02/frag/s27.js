@@ -3,114 +3,78 @@ PROSE.s27 = `
 <span class="eyebrow">Application supplement &middot; 2&ndash;7</span>
 <h2>Putting the whole analysis together</h2>
 
-<p class="lede">Everything before this section teaches one move at a time: name the force, place a system in the value chain, tell a fundable recommendation from a vague one. A finished piece of analysis is not one move. It is four of them joined so that each one carries the next, and the joins are where the credibility lives. This supplement rehearses the whole shape on one hypothetical firm, end to end, including the part almost nobody practises &mdash; the short piece of writing at the end.</p>
+<p class="lede">Everything before this teaches one move at a time. A finished analysis is four moves joined so each carries the next, and the joins are where credibility lives. This supplement rehearses that shape on one hypothetical firm.</p>
 
-<div class="callout info"><b>How this supplement relates to the chapter.</b> Chapter 2 supplies the frameworks and this module has already taught them: the five competitive forces in one section, the value chain in the next. What the chapter never does is say what a finished analysis looks like once the frameworks are written down together &mdash; how many areas to name, how many initiatives to recommend, and how long the closing argument should run. That shape comes from the way analyses of this kind are commissioned and read, so it appears here as a labeled supplement rather than as a fourth chapter learning objective.</div>
+<div class="callout info"><p><b>How this supplement relates to the chapter.</b> Chapter 2 supplies the frameworks and the sections above teach them. What it never says is what a finished analysis looks like once they are written down together.</p></div>
 
 <h3>The four parts, and the arithmetic between them</h3>
-
-<p>A brief of this kind arrives as four requests. They look independent and they are not: each one is built out of the answer to the one before it, which is why an analysis that is strong in three places can still fall apart at a join.</p>
-
+<p>A brief arrives as four requests. They look independent and are not: each is built out of the answer before it.</p>
 <ol class="steps">
-<li><b>Name the pressure.</b> Apply the five competitive forces to the firm, give every force a sentence, and then argue that one of them is doing the damage &mdash; naming the observation that makes it the strongest rather than simply asserting that it is.</li>
-<li><b>Find the areas.</b> Walk the value chain and name <b>at least two</b> internal activities where a system could create an operational or customer-focused advantage, each with the evidence that put it on the list.</li>
-<li><b>Recommend the initiative.</b> Choose <b>exactly one</b> thing to build, sitting inside one of the areas you just named, described concretely enough to cost, and attached to the measure and the date that will decide whether it worked.</li>
-<li><b>Write the comparison.</b> Set the firm beside a real company you can actually read about, say where the two are alike and where they differ, and finish with the practice that carries across &mdash; in <b>150 to 200 words</b>, which is shorter than it sounds.</li>
+<li><b>Name the pressure.</b> Apply the five forces, give each a sentence, then argue that one is doing the damage &mdash; naming the observation that makes it strongest.</li>
+<li><b>Find the areas.</b> Walk the value chain and name <b>at least two</b> internal activities where a system could create an advantage, each with its evidence.</li>
+<li><b>Recommend the initiative.</b> Choose <b>exactly one</b> thing to build, inside an area you named, concrete enough to cost, with a measure and a date.</li>
+<li><b>Write the comparison.</b> Set the firm beside a real company you can read about, say where they are alike and differ, and finish with the practice that carries across &mdash; in <b>150 to 200 words</b>.</li>
 </ol>
-
-<p>Two of those numbers pull against each other on purpose. At least two areas, and exactly one initiative: a floor on the searching and a ceiling on the proposing. Readers who mark work of this kind are looking for both, and the commonest failures are a scan that stopped at one idea and a recommendation that turned into a shopping list.</p>
-
-<ul class="keys">
-<li><b>Two areas is a floor because one area is not a scan</b> &mdash; a single area could be the first thing that occurred to you, and nobody reading it can tell whether you examined the rest of the chain or stopped at the first leak you noticed.</li>
-<li><b>One initiative is a ceiling because recommending is choosing</b> &mdash; three proposals hand the decision back to the reader, hide which one the analysis actually believes in, and make the work impossible to be wrong about, since something in a list of three will always look like it worked.</li>
-<li><b>The initiative has to come out of the areas you named</b> &mdash; if the recommendation appears from nowhere, the value chain section was decoration, and the reader is entitled to ask what the diagram was for.</li>
-<li><b>The area you do not build still earns its place</b> &mdash; it is the alternative your recommendation was preferred over, which is what turns a preference into a choice somebody can argue with.</li>
-</ul>
-
-<p>Read the four parts below one at a time. Each card shows what the part has to contain, a version that does the job, a version that does not, and the reason a reader needs it at all.</p>
+<p>Read the four parts one at a time. Each card shows what the part must contain and a version that fails.</p>
 
 <div class="activity" data-activity="delExplore"></div>
 
+<p>Two of those numbers pull against each other on purpose: a floor on the searching, a ceiling on the proposing.</p>
+<ul class="keys">
+<li><b>Two areas is a floor because one area is not a scan</b> &mdash; one area could be the first thing that occurred to you, and no reader can tell whether you examined the rest.</li>
+<li><b>One initiative is a ceiling because recommending is choosing</b> &mdash; three proposals hand the decision back to the reader and make the work impossible to be wrong about.</li>
+</ul>
+<p>The initiative must come out of an area you named, or the value chain section was decoration. The area you do not build is the alternative your recommendation beat.</p>
+
 <h3>Running it once, on a firm with no stake in your answer</h3>
-
-<p>The fastest way to learn the shape is to run it on something invented, where nothing is riding on the conclusion and you can afford to make the wrong call and read why it was wrong.</p>
-
-<p>The practice situation below is hypothetical. It has been built only to give the four moves something to work on, and every fact in it exists because the exercise needed one.</p>
+<p>The practice situation below is hypothetical, built to give the four moves something to work on. You can afford the wrong call and read why it was wrong.</p>
 
 <div class="activity" data-activity="delSim"></div>
 
 <h3>Which sentence belongs in which part</h3>
-
-<p>Once the thinking is done, the analysis has to be laid out, and this is where a good piece of work most often loses its shape. A finding about an internal activity drifts into the forces section; the measure gets separated from the initiative it was supposed to judge; a paragraph of company history opens the summary and eats a quarter of the word budget.</p>
-
-<p>Sorting sentences into the part they belong in is a mechanical skill, and it is worth practising mechanically. Some of the sentences below belong nowhere at all, which is the hardest call and the one that buys the most room.</p>
+<p>Once the thinking is done the analysis has to be laid out, and this is where good work loses its shape. A finding about an internal activity drifts into the forces section; the measure gets separated from the initiative it judges.</p>
+<p>Some sentences below belong nowhere at all, which is the hardest call and buys the most room.</p>
 
 <div class="activity" data-activity="delSort"></div>
 
-<h3>The summary, and a word band you can actually check</h3>
-
-<p>A range of 150 to 200 words is roughly six to eight sentences. That is the whole budget, and five things have to fit inside it: the pressure, the first area, the second area, the initiative, and the lesson that carries across from the company you compared with.</p>
-
-<p>Divide it out and each of those gets somewhere between thirty and forty words &mdash; about one sentence each, with a little left over. Nothing else fits. Company history does not fit, admiration for the larger company does not fit, and a general observation about how technology is changing every industry costs fifteen words and returns none.</p>
-
+<h3>The summary, and a word band you can check</h3>
+<p>A range of 150 to 200 words is six to eight sentences, and five things must fit: the pressure, the two areas, the initiative, and the lesson that carries across.</p>
+<p>That leaves thirty to forty words each &mdash; one sentence. Company history does not fit, and an observation about technology changing every industry costs fifteen words and returns none.</p>
 <p class="takeaway">A word band is not a formatting rule. It is a forced choice about what the analysis is for, and the first thing it cuts is background.</p>
-
-<p>The draft below is the write-up of the practice run you have just finished, laid out in the six parts it was built from. Read the first five straight through and you have the summary as it would be handed over; the sixth is the paragraph the writer was tempted to add at the end.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th scope="col">Part of the summary</th><th scope="col">Draft wording (hypothetical)</th></tr></thead>
-<tbody>
-<tr><th scope="row">1. The pressure</th><td>The force squeezing this rental business hardest is the threat of new entrants: national booking platforms arrived in our region last year, and nothing we hold keeps a contractor from renting elsewhere next week.</td></tr>
-<tr><th scope="row">2. First value chain area</th><td>In sales and marketing, every rental still begins as a phone call, so a customer who cannot reach anyone simply calls the next firm on the list and we never learn that the request happened.</td></tr>
-<tr><th scope="row">3. Second value chain area</th><td>In operations, machines wait in the yard for a service check nobody has scheduled, so equipment that could be earning revenue stands still for days and the fleet looks smaller than it really is.</td></tr>
-<tr><th scope="row">4. The one initiative</th><td>We recommend one initiative: a reservation system that publishes true fleet availability and lets a customer hold a machine without speaking to anyone, judged by the share of rentals booked outside counter hours at the end of the next quarter.</td></tr>
-<tr><th scope="row">5. The comparison and the lesson</th><td>The national platform we compared ourselves with competes on availability rather than on price, and the practice that transfers is publishing what is genuinely free today instead of promising to check the yard and call back.</td></tr>
-<tr><th scope="row">6. Background the writer added</th><td>This business has served contractors in the region for many years and staff often mention the reputation it has built for looking after regular customers, which the owners believe explains why it came through earlier downturns in construction.</td></tr>
-</tbody>
-</table></div>
-
-<p>Spreadsheets have no word-count function, so a count has to be built out of what they do have. Measure the text as it stands, measure it again with every space removed, and the difference is the number of gaps between words; add one and you have the words. Build three columns on that draft below &mdash; the count for each part, the running total, and the verdict against the band.</p>
+<p>Spreadsheets have no word-count function, so build one: measure the text, measure it again with spaces removed, and the difference is the gaps between words. Add one.</p>
 
 <div class="activity" data-activity="delCount"></div>
 
-<div class="callout exam"><b class="tagline">What the finished column tells you</b>Read the verdict column downwards. The draft is under the band for its first four parts, crosses into it at 179 words only when the comparison is written, and leaves it again at 217 the moment a paragraph of company history is added at the end. That is the usual life of a summary of this length: it is not short because you have said too little about the business, it is long because you have said too much about it.</div>
+<div class="callout exam"><p><b>What the finished column tells you.</b> The draft stays under the band for four parts, reaches 179 words when the comparison is written, and leaves it at 217 once company history is added. Such a summary runs long because you said too much about the business.</p></div>
 
 <h3>Choosing the company you set beside it</h3>
-
-<p>The comparison is the part students most often treat as decoration, picking a company they admire and describing it. It is not decoration. The other company is a measuring instrument: it exists in the analysis to show what a firm under the same pressure did about it, so that a practice can be lifted across.</p>
-
-<p>Four things make a company usable for that job, and only one of them is about the company being impressive:</p>
-
+<p>The comparison is not decoration. The other company is a measuring instrument, showing what a firm under the same pressure did. Four things make one usable.</p>
 <ul class="keys">
-<li><b>Enough of it is published</b> &mdash; you need to be able to describe the specific practice accurately, which means articles, filings or the company&rsquo;s own material about how the thing actually works, not just a logo everyone recognises.</li>
-<li><b>It faces the same pressure</b> &mdash; the point of comparison is what somebody did about a force you are also under, so a company whose hardest force is completely different will not teach you much about yours.</li>
-<li><b>It is close enough in what it does</b> &mdash; a practice carries across most reliably when the value chain looks similar, because then the activity you are improving is genuinely the same activity.</li>
-<li><b>Its size does not matter, and its reachability does</b> &mdash; a firm many times larger is fine, because what transfers is a practice rather than a budget; a direct local competitor is usually useless, because nothing about how it works is visible from outside.</li>
+<li><b>Enough of it is published</b> &mdash; you need material describing how the practice works, not a logo everyone recognises.</li>
+<li><b>It faces the same pressure</b> &mdash; a company whose hardest force is different will not teach you much about yours.</li>
+<li><b>It is close enough in what it does</b> &mdash; a practice carries across when the value chain looks similar.</li>
+<li><b>Size does not matter, reachability does</b> &mdash; a far larger firm is fine, but a local competitor is useless because nothing is visible.</li>
 </ul>
-
-<p>Having chosen one, compare on fixed axes rather than impressions. Three axes are enough, and they are the three this module has already taught:</p>
-
+<p>Then compare on fixed axes rather than impressions. Three are enough.</p>
 <ol class="steps">
-<li><b>Which force each firm faces hardest</b> &mdash; this is what establishes that the two situations are comparable at all, and it is the sentence that earns the rest of the paragraph.</li>
-<li><b>Which value chain activity each strengthens with technology</b> &mdash; and whether it is the same activity, because a practice moved between different activities usually stops making sense.</li>
-<li><b>What each measures to know it worked</b> &mdash; the measure is the most portable thing in the whole comparison, since it survives every difference in size and market.</li>
+<li><b>Which force each firm faces hardest</b> &mdash; this establishes that the two situations are comparable at all.</li>
+<li><b>Which value chain activity each strengthens</b> &mdash; and whether it is the same one, because a practice moved between activities stops making sense.</li>
+<li><b>What each measures to know it worked</b> &mdash; the most portable thing here, surviving every difference in size.</li>
 </ol>
-
-<p>Two words in a brief of this kind are worth reading carefully. <b>Complement</b> asks what each firm does that the other does not, which is a two-way question rather than a ranking. <b>Lessons that transfer</b> asks for a practice that still makes sense once the budget, the scale and the brand are stripped away.</p>
+<p><b>Complement</b> asks what each firm does that the other does not, two-way rather than a ranking. <b>Lessons that transfer</b> asks for a practice that survives once budget and brand are stripped away.</p>
 
 <div class="activity" data-activity="delQuiz"></div>
 
-<p>Knowing the rule is not the same as catching it in someone else&rsquo;s draft. The rules above stay abstract until you have used them to judge a report you did not write, about a company you have not seen before &mdash; which is closer to the situation the graded version puts you in than one more pass over the same rental company is. None of the six companies below is real; each is invented for exactly this question.</p>
+<p>Knowing a rule is not the same as catching it in a draft you did not write. None of the six companies below is real.</p>
 
 <div class="activity" data-activity="delApply"></div>
 
 <h3>Before you hand it over</h3>
-
-<p>The last thing worth building is the habit of checking the shape before anyone else does. The list below is the shape itself, turned into questions you can answer honestly in about two minutes.</p>
+<p>The last habit is checking the shape before anyone else does &mdash; that shape, as questions you can answer in two minutes.</p>
 
 <div class="activity" data-activity="delCheck"></div>
 
-<p class="takeaway">The frameworks are the easy half. What separates a finished analysis from a set of diagrams is that every part points at the next one: the force chooses the areas, the areas choose the initiative, the initiative is what the comparison is testing, and the last sentence names the one thing somebody could start doing.</p>
+<p class="takeaway">The frameworks are the easy half. What separates a finished analysis from a set of diagrams is that every part points at the next: the force chooses the areas, the areas choose the initiative, and the last sentence names one thing somebody could start doing.</p>
 `;
 
 ACT.delExplore = {

@@ -2,92 +2,67 @@
 PROSE.s25 = `<span class="eyebrow">Application supplement &middot; 2&ndash;5</span>
 <h2>The analyst&rsquo;s toolkit: getting the evidence yourself</h2>
 
-<p class="lede">Every framework in this module ends in a claim &mdash; buyer power is our strongest force, inbound logistics is where the margin is leaking, this category is where our value is disappearing. A claim without evidence is a preference. This supplement is about producing the evidence yourself, with two tools that sit on almost every analyst&rsquo;s desk: a spreadsheet and a database query.</p>
+<p class="lede">Every framework in this module ends in a claim &mdash; buyer power is our strongest force, inbound logistics is where the margin leaks. A claim without evidence is a preference. This supplement is about producing that evidence yourself.</p>
 
-<div class="callout info"><b>How this supplement relates to the chapter.</b> Chapter 2 teaches the analysis &mdash; the competitive forces, the value chain, the business model. It also sets its own end-of-chapter exercises in a spreadsheet and a database, because the analysis has to be fed. This section takes the chapter&rsquo;s exercises and makes them runnable: you type a real formula or a real query on this page and watch it work on real rows. It is a labeled supplement because the tools serve the chapter&rsquo;s analysis rather than being a fourth learning objective of their own.</div>
+<div class="callout info"><p><b>How this supplement relates to the chapter.</b> Chapter 2 teaches the analysis and sets its own exercises in a spreadsheet and a database, because the analysis has to be fed. Here you type a real formula or query and watch it run on real rows.</p></div>
 
 <h3>Why an analyst touches the data directly</h3>
-
-<p>It is tempting to think of data work as somebody else&rsquo;s job &mdash; that an analyst asks and a technical team answers. In practice the gap between the question and the answer is where most of the time goes, and the person who can close it themselves is the person whose recommendation arrives while the decision is still open.</p>
-
-<p>Two skills close most of that gap, and both appear in this chapter&rsquo;s own exercises:</p>
-
-<ul class="keys">
-<li><b>Cleaning and reshaping text</b> &mdash; real data arrives inconsistent, with stray spaces, mixed capitalisation and invisible characters, and none of it can be grouped or matched until it is made uniform, which is why the chapter opens its spreadsheet exercise on exactly that problem.</li>
-<li><b>Asking a database a precise question</b> &mdash; a query turns a stored record into an answer about the business, and the discipline of writing one forces you to say exactly which rows and which columns your claim actually rests on.</li>
-</ul>
-
-<p class="takeaway">The chapter puts the business case plainly: clean contact data matters because it makes communication, customer segmentation and personalized marketing possible, and those are the things a competitive advantage is built out of.</p>
+<p>The gap between the question and the answer is where most of the time goes. The person who can close it themselves is the one whose recommendation arrives while the decision is still open.</p>
+<p>Two skills close most of that gap: cleaning inconsistent text until it can be grouped, and writing a query that says which rows a claim rests on.</p>
 
 <h3>Part one: cleaning text in a spreadsheet</h3>
-
-<p>A spreadsheet function takes a value and returns a new one; it never changes the original. That is why cleaning is done in new columns rather than by editing the raw data in place &mdash; the original stays available when someone asks where a number came from.</p>
-
-<p>The chapter names the functions this kind of work needs. These are the ones the exercises below use:</p>
-
+<p>A spreadsheet function takes a value and returns a new one; it never changes the original, so cleaning happens in new columns. These are the functions the exercises use.</p>
 <ul class="keys">
-<li><b>TRIM</b> &mdash; removes extra spaces from a string, leaving only single spaces between words, which matters because a trailing space makes two otherwise identical addresses look like two different customers.</li>
-<li><b>CLEAN</b> &mdash; removes non-printable characters that may sit in raw data without being visible in the sheet, so a value that looks correct but refuses to match another one usually needs this.</li>
-<li><b>LOWER</b> &mdash; standardises capitalisation, and its companions UPPER and PROPER do the same job in the other directions, because a system that treats two capitalisations as two values will double-count a customer.</li>
-<li><b>FIND</b> &mdash; returns the position of one piece of text inside another, counting from one, and it is case sensitive; SEARCH does the same job without caring about case.</li>
-<li><b>LEFT, RIGHT and LEN</b> &mdash; take characters from the start of a string, from its end, and count how many there are, which together let you split a value at a marker you have located.</li>
+<li><b>TRIM</b> &mdash; removes extra spaces, because a trailing space makes two identical addresses look like different customers.</li>
+<li><b>CLEAN</b> &mdash; removes non-printable characters, so a value that looks correct but refuses to match another usually needs it.</li>
+<li><b>LOWER</b> &mdash; standardises capitalisation, as UPPER and PROPER do in other directions, because two capitalisations double-count a customer.</li>
+<li><b>FIND</b> &mdash; returns the position of one piece of text inside another, counting from one; it is case sensitive, SEARCH is not.</li>
+<li><b>LEFT, RIGHT and LEN</b> &mdash; take characters from the start, from the end, and count them, which together split a value at a marker.</li>
 </ul>
-
-<p>Start with the cleaning step. The raw column below is deliberately untidy, in the way exported contact data usually is. Fill each column with one formula and watch it run down every row &mdash; the formula is written once for row 2 and applied to the rest, which is exactly how it behaves in a real sheet.</p>
+<p>The raw column below is deliberately untidy. Write one formula for row 2 and watch it run down every row.</p>
 
 <div class="activity" data-activity="tkClean"></div>
 
 <h3>Splitting a value at a marker</h3>
-
-<p>Once the addresses are uniform, they can be taken apart. The username is everything before the <b>@</b> and the domain is everything after it, but neither has a fixed length, so you cannot simply take the first eight characters. You have to find the marker first and measure from it.</p>
-
-<p>That is the whole idea behind the two formulas the chapter gives, and it is worth reading them slowly, because the same pattern splits a product code, a postcode or a file name:</p>
-
+<p>Once the addresses are uniform they can be taken apart. The username is everything before the <b>@</b> and the domain everything after, but neither has a fixed length, so you must find the marker and measure from it.</p>
 <ol class="steps">
-<li><b>Locate the marker.</b> FIND returns the position of the <b>@</b> counting from one, so in <code>priya.raman@northside.edu</code> it returns 12, because the twelfth character is the <b>@</b> itself.</li>
-<li><b>Take everything before it.</b> The username is one character shorter than the marker&rsquo;s position, which is why the formula subtracts one: LEFT of eleven characters gives <code>priya.raman</code> and stops just before the <b>@</b>.</li>
-<li><b>Take everything after it.</b> The domain&rsquo;s length is the whole string minus the marker&rsquo;s position, so LEN minus FIND gives the number of characters to take from the right &mdash; no counting by hand, and it works on an address of any length.</li>
+<li><b>Locate the marker.</b> FIND returns the position of the <b>@</b> counting from one, so in <code>priya.raman@northside.edu</code> it returns 12.</li>
+<li><b>Take everything before it.</b> The username is one character shorter than that position, so LEFT of eleven gives <code>priya.raman</code>.</li>
+<li><b>Take everything after it.</b> LEN minus FIND gives the number of characters to take from the right, and it works on an address of any length.</li>
 </ol>
-
-<p>Work the three columns below. The addresses have already been cleaned, so you can concentrate on the splitting.</p>
+<p>Work the three columns below. The addresses are already cleaned, so concentrate on the splitting.</p>
 
 <div class="activity" data-activity="tkParse"></div>
 
-<div class="callout exam"><b class="tagline">The habit worth keeping</b>Notice that nothing in those formulas mentions a specific address. They describe a <b>rule</b> &mdash; find the marker, measure from it &mdash; which is why one formula handles six rows or sixty thousand. Writing rules rather than answers is the difference between a spreadsheet that scales and one that has to be redone every month.</div>
+<div class="callout exam"><p><b>The habit worth keeping.</b> Nothing in those formulas mentions a specific address. They describe a <b>rule</b> &mdash; find the marker, measure from it &mdash; which is why one formula handles six rows or sixty thousand.</p></div>
+
+<p class="takeaway">Clean contact data matters because it makes communication, customer segmentation and personalized marketing possible, and those are what a competitive advantage is built out of.</p>
 
 <h3>Part two: asking a database a business question</h3>
-
-<p>A spreadsheet is the right tool while the data is small and you are still shaping it. Once records are shared, updated by several people and expected to stay consistent, they belong in a database, and you get at them with a query.</p>
-
-<p>A query has a fixed shape, and reading it in the right order makes it far less mysterious than it looks:</p>
-
+<p>A spreadsheet is right while the data is small. Once records are shared, updated by several people and expected to stay consistent, they belong in a database, and you reach them with a query. A query has a fixed shape.</p>
 <ul class="keys">
-<li><b>SELECT</b> names the columns you want back, and an expression such as <code>PurchasePrice - CurrentValue</code> can be one of them, given a name with AS.</li>
-<li><b>FROM</b> names the table the rows come from, and is the part that actually decides what you are counting.</li>
-<li><b>WHERE</b> keeps only the rows that satisfy a condition, so it runs before anything is totalled and quietly determines every number that follows.</li>
-<li><b>GROUP BY</b> collapses the surviving rows into one row per distinct value, which is what lets COUNT, SUM, AVG, MIN and MAX report per category rather than per record.</li>
-<li><b>HAVING</b> filters those grouped rows, and it exists because WHERE has already finished its work by the time the totals exist.</li>
-<li><b>ORDER BY</b> sorts the result, and LIMIT keeps only the first few rows, which together answer questions phrased as &ldquo;the worst three&rdquo; or &ldquo;the largest.&rdquo;</li>
+<li><b>SELECT</b> names the columns you want back, and an expression such as <code>PurchasePrice - CurrentValue</code> can be one of them.</li>
+<li><b>FROM</b> names the table the rows come from, and decides what you are actually counting.</li>
+<li><b>WHERE</b> keeps only rows satisfying a condition, running before anything is totalled and quietly determining every number that follows.</li>
+<li><b>GROUP BY</b> collapses surviving rows into one per distinct value, which lets COUNT, SUM and AVG report per category rather than per record.</li>
+<li><b>HAVING</b> filters those grouped rows, and exists because WHERE has finished its work by the time totals exist.</li>
+<li><b>ORDER BY</b> sorts the result and LIMIT keeps the first few, which answers questions phrased as &ldquo;the worst three.&rdquo;</li>
 </ul>
-
-<p>The table below is an asset register of the kind the chapter&rsquo;s database exercise describes: an item, what it is, its condition, what it cost and what it is worth now. Everything on this page is a hypothetical practice situation, invented so the queries have something to bite on. Open the tables, then answer each question with a query &mdash; any query that returns the right answer is accepted, not just the one that was expected.</p>
+<p>The table below is an asset register: an item, what it is, its condition, what it cost and what it is worth now. Everything here is a hypothetical practice situation, invented so the queries have something to bite on. Any query returning the right answer is accepted.</p>
 
 <div class="activity" data-activity="tkAssets"></div>
 
 <h3>From a result set back to the analysis</h3>
-
-<p>A query result is not yet a finding, and a finding is not yet a recommendation. The last query above returns a number per department; on its own it is a fact nobody has to act on. It becomes useful only when it is attached to the analysis this module has been building.</p>
-
-<p>The chain runs in one direction, and skipping a link is what makes a proposal easy to refuse:</p>
-
+<p>A query result is not yet a finding, and a finding is not yet a recommendation. The chain runs in one direction, and skipping a link is what makes a proposal easy to refuse.</p>
 <ol class="steps">
-<li><b>The result</b> is what the query returned &mdash; for instance that one department holds most of the assets recorded in poor or fair condition.</li>
-<li><b>The finding</b> is what that means in the business &mdash; equipment in that part of the operation is being run past the point where it works reliably.</li>
-<li><b>The framework</b> says where it bites &mdash; if that equipment sits in inbound logistics or operations, the value chain tells you the cost is landing on an activity the customer eventually pays for.</li>
-<li><b>The recommendation</b> names the initiative, the measure and the date, which is the same discipline the earlier sections asked for and the only form a decision-maker can actually approve or reject.</li>
+<li><b>The result</b> is what the query returned &mdash; that one department holds most of the assets recorded in poor or fair condition.</li>
+<li><b>The finding</b> is what that means &mdash; equipment there is being run past the point where it works reliably.</li>
+<li><b>The framework</b> says where it bites &mdash; if that equipment sits in inbound logistics, the cost lands on an activity the customer eventually pays for.</li>
+<li><b>The recommendation</b> names the initiative, the measure and the date, which is the only form a decision-maker can approve or reject.</li>
 </ol>
 
-<div class="activity" data-activity="tkQuiz"></div>`;
+<div class="activity" data-activity="tkQuiz"></div>
+`;
 
 ACT.tkClean = {"kind": "formula", "label": "Spreadsheet", "title": "Make the addresses uniform", "how": "Type one formula for row 2 in each column, then run it; it is applied to every row the way a filled-down formula behaves in a real sheet.", "objective": "2.5", "headers": ["Raw email", "Trimmed", "Cleaned and lowercased"], "data": [["  Priya.Raman@NORTHSIDE.EDU ", "", ""], ["J.OKAFOR@wexler-foods.com  ", "", ""], [" sam.lindqvist@Northside.edu", "", ""], ["  D.Marchetti@wexler-foods.COM ", "", ""], ["hana.ito@BRIGHTWAY.ORG  ", "", ""], [" t.abara@brightway.org ", "", ""]], "tasks": [{"column": 1, "prompt": "Column B: remove the stray spaces from the raw address, leaving the text otherwise untouched.", "placeholder": "=TRIM(A2)", "expect": "=TRIM(A2)", "hint": "One function does this on its own, and it takes the raw cell in column A as its only argument.", "explain": "TRIM strips the leading and trailing spaces that came in with the export. The capitalisation is left alone, which is the next problem."}, {"column": 2, "prompt": "Column C: produce the fully standardised address, with no stray spaces and nothing capitalised.", "placeholder": "=LOWER(TRIM(A2))", "expect": "=LOWER(TRIM(A2))", "hint": "You need two functions, one inside the other. Work from the inside out: clean the spaces first, then change the case of that result.", "explain": "Nesting runs the inner function first and hands its result to the outer one, so the spaces go and the case is standardised in a single formula. Now two records for the same person will match."}]};
 

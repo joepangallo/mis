@@ -3,106 +3,67 @@ PROSE.s24 = `
 <span class="eyebrow">Application supplement &middot; 2&ndash;4</span>
 <h2>AI in the strategy workflow</h2>
 
-<p class="lede">Imagine two regional chains subscribing to the same artificial intelligence service in the same week. One asks it what the company should do and believes the answer. The other uses it to assemble the evidence, then argues in a room full of people about what that evidence means. Same subscription, different <b>place in the workflow</b>. This supplemental section is about choosing that place deliberately.</p>
+<p class="lede">Two chains subscribe to the same service in the same week. One asks it what the company should do and believes the answer. The other uses it to assemble evidence, then argues about what that evidence means.</p>
 
-<div class="callout info"><b>How this supplement relates to the chapter.</b> Chapter 2 is about how information systems create value and how they win advantage, and it names the conditions that make an advantage last or fade &mdash; the technology/strategy fit, the ten types of innovation, and the plain warning that innovation is often fleeting because rivals can copy it. Artificial intelligence appears in the chapter only in passing, monitoring equipment alongside IoT sensors and imagining a shopping assistant that has not arrived yet. What this section adds is <b>where AI fits inside that same analysis</b> &mdash; the analysis does not change just because the technology is new. That is why this appears as a labeled supplement rather than as a fourth chapter learning objective.</div>
+<div class="callout info"><p><b>How this supplement relates to the chapter.</b> Chapter 2 names the conditions that make an advantage last or fade. AI appears in it only in passing. What this adds is where AI fits inside the same analysis.</p></div>
 
 <h3>The question this section answers</h3>
-
-<p>Chapter 2 gives an information system three ways to add value. <b>Automating</b> is doing things faster, <b>organizational learning</b> is doing things better, and <b>supporting strategy</b> is doing things smarter. The chapter draws them as three bars of business value added, with automating the shortest and strategizing the tallest.</p>
-
-<p>Artificial intelligence is not a fourth bar. It is a new means to those same three ends, so a proposal to buy it answers exactly the questions any other system answers.</p>
-
+<p>Chapter 2 gives a system three ways to add value: <b>automating</b> is faster, <b>organizational learning</b> is better, <b>supporting strategy</b> is smarter. AI is not a fourth bar; it is a new means to those same three ends.</p>
 <ul class="keys">
-<li><b>Faster</b> &mdash; the tool shortens work people already do, such as condensing a year of customer complaints into a readable list, and that is an automating benefit measured in time and cost like any other.</li>
-<li><b>Better</b> &mdash; the tool helps the organization use past behavior and data to improve a business process, such as noticing that those complaints cluster in one region, which is what the chapter calls organizational learning.</li>
-<li><b>Smarter</b> &mdash; the tool serves the plan the company chose for gaining or sustaining advantage over rivals, because a system that strengthens no chosen activity is not supporting a strategy at all.</li>
+<li><b>Faster</b> &mdash; it shortens work people already do, such as condensing a year of complaints into a readable list.</li>
+<li><b>Better</b> &mdash; it helps the firm use past data to improve a process, such as noticing those complaints cluster in one region.</li>
+<li><b>Smarter</b> &mdash; it serves the plan the firm chose, because a system that strengthens no chosen activity supports no strategy.</li>
 </ul>
-
-<p>The chapter is blunt about which of the three has to be present. A proposed system that will not clearly deliver strategic value, while also helping people work smarter and save money along the way, is not likely to be funded. Nothing about the letters A and I exempts a purchase from that test.</p>
+<p>A system that will not clearly deliver strategic value is not likely to be funded. Nothing about the letters A and I exempts a purchase from that test.</p>
 
 <h3>Where AI enters the strategy workflow</h3>
-
-<p>Strategy work has a shape. Someone gathers evidence about what is squeezing the business, someone turns that evidence into a claim about which force or which activity matters, and someone executes the initiative that follows. AI can enter all three of those places, and it enters each one differently.</p>
-
-<ol class="steps">
-<li><b>Gathering the evidence</b> &mdash; it reads and condenses a great deal of material quickly, such as a stack of supplier contracts or a year of messages, which shortens the slowest part of a diagnosis without making any of that material true.</li>
-<li><b>Analysing the evidence</b> &mdash; it can lay out how the same pattern reads as rivalry, as a new entrant, and as a substitute, which is useful precisely because one lost sale can honestly be told as a story about any of the five forces.</li>
-<li><b>Executing the initiative</b> &mdash; it can carry the repetitive work inside whatever system the company decides to build, such as sorting arriving messages by topic, and this is where most of the measurable hours are actually saved.</li>
-</ol>
-
-<p>There is a fourth step it does not enter. Choosing which force to answer, and what the company will therefore not do, is an executive-level decision, and the chapter calls those decisions <b>unstructured</b> because few or no procedures for them can be specified in advance.</p>
+<p>Strategy work has a shape: gather evidence, turn it into a claim about which force or activity matters, then execute. AI enters all three places. It reads and condenses material quickly, lays out how one pattern reads as rivalry or as a substitute, and carries repetitive work inside whatever system gets built.</p>
+<p>There is a fourth step it does not enter. Choosing which force to answer is an executive decision, which the chapter calls <b>unstructured</b> because few procedures can be specified in advance.</p>
 
 <div class="activity" data-activity="aiwEntry"></div>
 
 <h3>Augment, automate, or leave it alone</h3>
-
-<p>The previous module offered a three-way decision for any piece of work. Strategy work is itself a set of tasks, so the same three words apply to it, and the vocabulary is kept identical on purpose so that the two modules agree rather than compete.</p>
-
+<p>Strategy work is itself a set of tasks, so the same three-way decision applies.</p>
 <ul class="keys">
-<li><b>Augment</b> &mdash; the system drafts, ranks or summarizes and a person decides, which suits work where a starting point saves real time but the judgment still matters, such as a first pass over three years of sales figures.</li>
-<li><b>Automate</b> &mdash; the system acts on its own inside limits written before launch, which suits high-volume, low-stakes, reversible work, such as pulling competitors&rsquo; published prices into one weekly list.</li>
-<li><b>Leave it alone</b> &mdash; the task stays entirely with people because the stakes or the sensitivity are too high, such as choosing the generic strategy the firm will pursue, or anything resting on material that must not leave the company.</li>
+<li><b>Augment</b> &mdash; the system drafts or summarizes and a person decides, which suits work where a starting point saves time but judgment matters.</li>
+<li><b>Automate</b> &mdash; the system acts alone inside limits written before launch, which suits high-volume, low-stakes, reversible work.</li>
+<li><b>Leave it alone</b> &mdash; the task stays with people because the stakes are too high, such as choosing the generic strategy itself.</li>
 </ul>
-
-<p>Most strategy work belongs in the first bucket, because an analysis is only worth as much as the argument a named person can make for it out loud, in a room, to people who disagree.</p>
+<p>Most strategy work belongs in the first bucket, because an analysis is worth only as much as the argument a named person can make for it out loud.</p>
 
 <div class="activity" data-activity="aiwMode"></div>
 
 <div class="activity" data-activity="aiwQuiz1"></div>
 
 <h3>Why buying AI is not the same as gaining advantage</h3>
-
-<p>This is the heart of the section, and the chapter answers it directly. Innovation is often fleeting: even a system built in house is assembled from hardware, software and networking components that others can also purchase, so rivals can copy it and the advantage is short-lived.</p>
-
-<p>A service any competitor can subscribe to the same afternoon is the clearest possible case of that warning. It is a commodity, and a commodity is where an advantage cannot live.</p>
-
-<p>What a rival cannot buy is everything around the subscription. The chapter locates advantage in <b>resources</b> such as proprietary technology, brand equity and a loyal, established customer base, and in <b>capabilities</b>, meaning the organization&rsquo;s ability to leverage those resources in the marketplace. Three of those stay yours.</p>
-
+<p>Innovation is often fleeting: an in-house system is assembled from components others can also buy, so rivals copy it. A service any competitor can subscribe to the same afternoon is a commodity, and a commodity is where an advantage cannot live.</p>
+<p>What a rival cannot buy is everything around the subscription. The chapter locates advantage in <b>resources</b> and in <b>capabilities</b>, the ability to leverage those resources. Three things stay yours.</p>
 <ul class="keys">
-<li><b>Your data</b> &mdash; the record of what your customers actually did would take a competitor years to accumulate, which is why the chapter lists data among the sources of competitive advantage and gives Uber as its example.</li>
-<li><b>Your processes</b> &mdash; the chapter insists that any significant implementation demands commensurate, significant organizational change, so the firm that redesigns the work around a tool gets a result the firm that merely installs it never sees.</li>
-<li><b>Your people</b> &mdash; capabilities such as design quality or efficient operations exist in the people who exercise them, and resources plus capabilities are what produce the distinctive competencies a strategy is built on.</li>
+<li><b>Your data</b> &mdash; the record of what your customers actually did would take a competitor years to accumulate.</li>
+<li><b>Your processes</b> &mdash; the firm that redesigns the work gets a result the firm that merely installs the tool never sees.</li>
+<li><b>Your people</b> &mdash; capabilities such as design quality live in the people who exercise them, and produce distinctive competencies.</li>
 </ul>
-
-<p>Then there is the fit. The chapter&rsquo;s <b>technology/strategy fit</b> says organizations do not want systems that fail to match their strategy, even when those systems offer real automating and learning benefits. Its own illustration is a firm pursuing overall low-cost leadership, which probably does not want a system that differentiates its products on high quality.</p>
-
-<p class="takeaway">A purchase that does not serve the strategy the company chose is spending, not strategy &mdash; and the chapter&rsquo;s name for the narrow exception is <b>strategic necessity</b>, something an organization must do to survive whether or not it matches the plan.</p>
+<p class="takeaway">A purchase that does not serve the chosen strategy is spending, not strategy &mdash; and the narrow exception is <b>strategic necessity</b>, something a firm must do to survive whether or not it matches the plan.</p>
 
 <p class="mini">The run below is a <b>hypothetical</b> practice situation, invented so the reasoning has something to bite on; no real company is described.</p>
+
 <div class="activity" data-activity="aiwInvest"></div>
 
 <h3>AI as more than a product feature</h3>
-
-<p>Chapter 2 lists ten types of innovation, and two of them are worth setting side by side here. A <b>product performance innovation</b> creates a novel product or improves an existing one through differentiation. A <b>process innovation</b> changes the primary processes used to produce products or services.</p>
-
-<p>In an established company, AI usually lands as the second kind. The tool rarely becomes the thing the customer buys; it changes how that thing is made, sold or supported. The chapter&rsquo;s examples of process innovation are Toyota pioneering lean production and Zara moving fashion from initial design to stores in three weeks.</p>
-
-<p>That difference decides who has to be involved.</p>
-
-<ul class="split">
-<li><b>A product change</b> is owned by the people who design and sell the product, and customers deliver the verdict on it.</li>
-<li><b>A process change</b> lands on the people doing the work, so their managers, their steps and their measures all have to change with it.</li>
-</ul>
-
-<p>The chapter also explains why one type is rarely enough. Product performance innovations can often be easily copied, so companies frequently combine several types at once. Dell is the worked example, combining a profit model innovation in collecting money before building the product, a process innovation in the built-to-order model, and a channel innovation in selling computers online rather than in stores.</p>
+<p>A <b>product performance innovation</b> creates a novel product or differentiates an existing one. A <b>process innovation</b> changes how products are produced, as Toyota did with lean production. In an established company AI usually lands as the second kind: it rarely becomes the thing the customer buys.</p>
+<p>That difference decides who has to be involved. A product change is owned by the people who design and sell it, and customers deliver the verdict; a process change lands on the people doing the work, so their steps and measures change too.</p>
 
 <h3>What goes wrong in strategy work specifically</h3>
-
-<p>These are not general complaints about the technology. Each failure damages a strategic analysis in particular, and each has a control that belongs inside the workflow rather than in a policy document nobody opens.</p>
-
+<p>Each failure below damages a strategic analysis in particular.</p>
 <ul class="keys">
-<li><b>Evidence nobody verified</b> &mdash; a confident summary of a market or a contract can contain a claim that is simply not in the source, so a person who can check has to check the figures, dates and terms before any of it reaches a recommendation.</li>
-<li><b>Bias in the customer data underneath</b> &mdash; an analysis of customer behavior can only describe the customers the company recorded, so a conclusion built on that record silently ignores whoever the company has never served.</li>
-<li><b>Confidential strategy material leaving</b> &mdash; a strategy document names what a firm intends to do next, and an outside service is still outside, which is the same balance the chapter asks companies to strike when open innovation makes organizational data and knowledge accessible to external stakeholders.</li>
-<li><b>Accountability</b> &mdash; a person still owns the recommendation, because a board asked to fund an initiative is entitled to ask who believes this and why, and no committee can act on the answer that the system suggested it.</li>
+<li><b>Evidence nobody verified</b> &mdash; a confident summary can contain a claim that is not in the source, so someone able to check must check first.</li>
+<li><b>Bias in the data underneath</b> &mdash; an analysis of customer behavior describes only the customers the firm recorded, and ignores whoever it never served.</li>
+<li><b>Confidential material leaving</b> &mdash; a strategy document names what a firm intends to do next, and an outside service is still outside.</li>
+<li><b>Accountability</b> &mdash; a person still owns the recommendation, because a board funding an initiative may ask who believes this and why.</li>
 </ul>
+<p>Whether or not a machine helped produce it, a recommendation is judged the way it always was: name the force or activity, give the evidence, state the initiative, commit to a measure and a date.</p>
 
-<h3>The discipline this module keeps returning to</h3>
-
-<p>Whether or not a machine helped produce it, a recommendation is judged the same way it was judged before any of this existed. Name the force or the activity, give the evidence, state the initiative, then commit to a measure and a date.</p>
-
-<div class="callout tip"><b>Say it in one sentence.</b> Because [force or activity] is [strong or weak], shown by [evidence], we should build [initiative], which we will judge by [measure] at [date]. AI can help you fill every slot in that sentence. It cannot be the person who says it, and it cannot be the person answerable when the date arrives.</div>
+<div class="callout tip"><p><b>Say it in one sentence.</b> Because [force or activity] is [strong or weak], shown by [evidence], we should build [initiative], which we will judge by [measure] at [date]. AI can help fill every slot. It cannot be the person answerable when the date arrives.</p></div>
 
 <div class="activity" data-activity="aiwQuiz2"></div>
 `;

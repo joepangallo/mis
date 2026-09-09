@@ -2,116 +2,65 @@
 PROSE.s21a = `
 <span class="eyebrow">Section 2&ndash;1a</span>
 <h2>How an organization is arranged for deciding</h2>
-<p class="lede">Before anyone can say which information system a company needs, they have to say who is asking. A cashier, a store manager, and a chief executive all work for the same firm and all want information &mdash; but different information, on different clocks, for different reasons. This section maps the organization first, so every system has somewhere to sit.</p>
+<p class="lede">Before anyone can say which information system a company needs, they have to say who is asking. A cashier, a store manager and a chief executive all work for the same firm and all want information &mdash; but different information, on different clocks, for different reasons.</p>
 
-<h3>Business processes: what a company actually does all day</h3>
-<p>Companies do not exist to own technology; they exist to do things, and the things they do have a name. <b>Business processes</b> are the activities an organization performs to reach its business goals, and they come in two kinds.</p>
+<h3>What a company actually does all day</h3>
+<p>Companies do not exist to own technology; they exist to do things. <b>Business processes</b> are the activities an organization performs to reach its business goals, and they come in two kinds.</p>
 <ul class="keys">
-<li><b>Core activities</b> &mdash; the activities that transform inputs and produce outputs, because that transformation is the thing a customer eventually pays for: flour and labor become a loaf, and an order becomes a delivered package.</li>
-<li><b>Supporting activities</b> &mdash; the activities that enable the core activities to take place, because nobody bakes the loaf if payroll never runs, the oven is never repaired, and no baker was ever hired.</li>
+<li><b>Core activities</b> &mdash; the activities that transform inputs into outputs, because that transformation is the thing a customer eventually pays for: flour and labor become a loaf.</li>
+<li><b>Supporting activities</b> &mdash; the activities that enable the core activities to happen, because nobody bakes the loaf if payroll never runs and no baker was ever hired.</li>
 </ul>
-<p>A broad range of information is needed to support those processes, which is why structure comes first: it shows which type of system supports which process, and how much value each one delivers.</p>
 
 <h3>Three levels, three different questions</h3>
-<p>Every organization is composed of different decision-making levels. The usual drawing is a pyramid: a wide <b>operational level</b> at the bottom, a narrower <b>managerial level</b> in the middle, and a narrow <b>executive level</b> at the top.</p>
-<p>The shape matters less than what follows from it. Each level has different responsibilities and, therefore, different informational needs &mdash; which is why each level is commonly supported by a different type of information system.</p>
-
-<h3>The operational level: running the day</h3>
-<p>At the operational level of a firm, the routine, day-to-day business processes and the interactions with customers occur. This is the checkout lane, the loading dock, the order screen. The chapter&rsquo;s figure states three facts about it.</p>
-<ul class="keys">
-<li><b>Who</b> &mdash; foremen and supervisors, the managers closest to the work, who make day-to-day decisions that are highly structured and recurring.</li>
-<li><b>What the systems do</b> &mdash; they automate routine and repetitive activities and events, such as processing sales transactions, and improve the efficiency of business processes at the customer interface.</li>
-<li><b>Why</b> &mdash; to improve organizational efficiency, meaning the extent to which goals are accomplished faster, at lower cost, or with relatively little time and effort.</li>
-</ul>
-<p>The unit of work here is the transaction. A <b>transaction</b> is anything that occurs as part of a firm&rsquo;s daily business of which it must keep a record: a sale rung up, an item received, a shift clocked. The clock is short too, since operational planning typically has a time frame of a few hours or days.</p>
-<p>Because activities here are clearly delineated and well focused, optimizing them can offer quick returns on the investment, and the same systems help managers find the underlying causes of performance problems.</p>
-
-<h3>The managerial level: running a function</h3>
-<p>At the managerial level &mdash; also called the <b>tactical level</b> &mdash; functional managers such as marketing, finance, manufacturing, and human resource managers monitor and control operational-level activities and pass information up to higher levels. The chapter calls them <b>midlevel managers</b>.</p>
-<ul class="keys">
-<li><b>Who</b> &mdash; midlevel managers and functional managers, who typically focus on problems inside one business function such as marketing or finance.</li>
-<li><b>What the systems do</b> &mdash; they automate the monitoring and controlling of operational activities, so a manager can see what the level below is producing.</li>
-<li><b>Why</b> &mdash; to improve organizational effectiveness, meaning the extent to which goals or tasks are accomplished well, in service of the organization&rsquo;s strategic objectives.</li>
-</ul>
-<p>A managerial decision is usually contained within the business function, is moderately complex, and has a time horizon of a few days to a few months &mdash; a horizon with its own name, <b>tactical planning</b>. The chapter&rsquo;s example is a marketing manager at Nike allocating the advertising budget for the next business quarter.</p>
-<p>Managers here watch a few numbers rather than every transaction. The metrics deemed most critical to assessing progress toward a certain goal are called <b>key performance indicators</b>, or KPIs, and they are displayed on <b>digital dashboards</b>.</p>
-<p>The chapter&rsquo;s illustration is a production manager at Nike whose business intelligence system supplies analytics and forecasts on multiple product lines, inventory levels, and overall production capacity. The manager builds several hypothetical production schedules, then runs predictive analyses on each to compare inventory levels and potential sales profitability.</p>
-
-<h3>The executive level: running the company</h3>
-<p>At the executive level &mdash; also called the <b>strategic level</b> &mdash; managers face the long-term questions: which products to produce, which countries to compete in, and what strategy to follow. The people here are the president and chief executive officer, the chief information officer, vice presidents, and possibly the board.</p>
-<ul class="keys">
-<li><b>Who</b> &mdash; executive-level managers, who must weigh the ramifications of any decision for the overall organization rather than for one department.</li>
-<li><b>What the systems do</b> &mdash; they supply aggregate summaries of past organizational data and projections of the future, rather than individual records.</li>
-<li><b>Why</b> &mdash; to improve organizational strategy and planning, which is a longer and broader job than either efficiency or effectiveness.</li>
-</ul>
-<p>Executive-level decisions deal with complex problems whose consequences are broad and long-term. Deciding to develop a new product, or discontinue an existing one, can have vast effects on the organization&rsquo;s levels of employment and profitability. Three things follow for the systems.</p>
-<ul class="keys">
-<li><b>Balancing KPIs</b> &mdash; some indicators here focus on balancing performance across the organization, staggering product launches so spikes in demand do not hit the supply chain all at once.</li>
-<li><b>Benchmarking KPIs</b> &mdash; others benchmark the organization&rsquo;s performance against its competitors, because a rising number means little until you know what rivals did.</li>
-<li><b>Unstructured data</b> &mdash; the systems must take in global economic factors, demographic changes, and changing customer tastes and preferences, none of which arrive as tidy rows of transactions.</li>
-</ul>
-<p>Executives also engage in <b>environmental scanning</b>, assessing how new information systems could help the organization offer new products or services and support its strategy.</p>
-
-<h3>Reading the three levels side by side</h3>
-<p>Set out together, the differences stop looking like job titles and start reading like a design brief.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Level</th><th>Who works there</th><th>What the systems do</th><th>Why</th><th>Decision type</th><th>Planning horizon</th></tr></thead>
-<tbody>
-<tr><td><b>Operational</b></td><td>Foremen and supervisors</td><td>Automate routine and repetitive activities and events</td><td>Improve organizational efficiency</td><td>Structured</td><td>A few hours or days</td></tr>
-<tr><td><b>Managerial</b><br><span class="mini">tactical</span></td><td>Midlevel and functional managers</td><td>Automate the monitoring and controlling of operational activities</td><td>Improve organizational effectiveness</td><td>Semistructured</td><td>A few days to a few months</td></tr>
-<tr><td><b>Executive</b><br><span class="mini">strategic</span></td><td>Executives: the CEO, CIO, vice presidents, possibly the board</td><td>Provide aggregate summaries of past data and projections of the future</td><td>Improve organizational strategy and planning</td><td>Unstructured</td><td>Long-term</td></tr>
-</tbody>
-</table></div>
-
-<div class="callout tip"><p><b>Efficiency is not effectiveness.</b> <b>Efficiency</b> is the extent to which goals are accomplished faster, at lower cost, or with relatively little time and effort, and it belongs to the operational level. <b>Effectiveness</b> is the extent to which goals or tasks are accomplished <i>well</i>, and it belongs to the managerial level. A warehouse shipping the wrong item in record time is efficient, not effective.</p></div>
-
-<p>The diagram redraws each level on its own, so you can recall who, what, why, and the decision type without the table in front of you.</p>
+<p>Every organization is composed of decision-making levels, usually drawn as a pyramid: a wide <b>operational level</b> at the bottom, a narrower <b>managerial level</b> (also called <b>tactical</b>) in the middle, and a narrow <b>executive level</b> (also called <b>strategic</b>) at the top.</p>
+<p>Each level carries different responsibilities and therefore different informational needs, which is why each is served by a different type of system. Work through the three one at a time.</p>
 
 <div class="activity" data-activity="lvlLevels"></div>
 
-<p>Test the three levels against a few situations before turning to the decisions.</p>
+<p>Set out together, the differences stop reading like job titles and start reading like a design brief.</p>
+
+<div class="tbl-wrap"><table class="tbl">
+<thead><tr><th>Level</th><th>Who works there</th><th>What its systems do</th><th>Why</th><th>Decision type</th><th>Horizon</th></tr></thead>
+<tbody>
+<tr><td><b>Operational</b></td><td>Foremen, supervisors</td><td>Automate routine, repetitive activities</td><td>Improve efficiency</td><td>Structured</td><td>Hours or days</td></tr>
+<tr><td><b>Managerial</b><br><span class="mini">tactical</span></td><td>Midlevel, functional managers</td><td>Monitor and control operational activity</td><td>Improve effectiveness</td><td>Semistructured</td><td>Days to months</td></tr>
+<tr><td><b>Executive</b><br><span class="mini">strategic</span></td><td>CEO, CIO, vice presidents</td><td>Summarize the past, project the future</td><td>Improve strategy and planning</td><td>Unstructured</td><td>Long-term</td></tr>
+</tbody>
+</table></div>
+
+<p>Four terms travel with that table, and each belongs to a particular row of it.</p>
+<ul class="keys">
+<li><b>Transaction</b> &mdash; anything in a firm&rsquo;s daily business of which it must keep a record: a sale rung up, an item received, a shift clocked. It is the operational level&rsquo;s unit of work.</li>
+<li><b>Tactical planning</b> &mdash; the managerial horizon of a few days to a few months, such as a marketing manager at Nike allocating next quarter&rsquo;s advertising budget.</li>
+<li><b>Key performance indicators</b> &mdash; the metrics deemed most critical to assessing progress toward a goal, displayed on <b>digital dashboards</b> so a manager watches a few numbers instead of every transaction.</li>
+<li><b>Environmental scanning</b> &mdash; the executive habit of assessing how new information systems could support the strategy or open new products and services.</li>
+</ul>
+
+<div class="callout tip"><p><b>Efficiency is not effectiveness.</b> <b>Efficiency</b> is accomplishing goals faster, at lower cost, or with little time and effort, and it belongs to the operational level. <b>Effectiveness</b> is accomplishing them <i>well</i>, and it belongs to the managerial level. A warehouse shipping the wrong item in record time is efficient, not effective.</p></div>
+
+<p>Executive KPIs do two further jobs: balancing performance across the organization so demand spikes do not all hit the supply chain at once, and benchmarking the firm against its competitors. Test the levels against a few situations.</p>
 
 <div class="activity" data-activity="lvlQuiz1"></div>
 
 <h3>Structured, semistructured, and unstructured decisions</h3>
-<p>The levels differ in more than seniority. The decisions themselves have different shapes, and the shape determines how much of the decision a machine can take over.</p>
+<p>The decisions themselves have different shapes, and the shape determines how much of the decision a machine can take over.</p>
 <ul class="keys">
-<li><b>Structured decisions</b> &mdash; those in which the procedures to follow for a given situation can be specified in advance, so they can be programmed directly into operational information systems and made with little or no human intervention.</li>
-<li><b>Semistructured decisions</b> &mdash; those in which some procedures can be specified in advance, but not to the extent where a specific recommendation can be made, because the problems and solutions are not clear-cut and often require judgment and expertise.</li>
-<li><b>Unstructured decisions</b> &mdash; those in which few or no procedures can be specified in advance, because the problems are relatively complex and nonroutine and their consequences reach the whole organization.</li>
+<li><b>Structured decisions</b> &mdash; the procedures for a given situation can be specified in advance, so they can be programmed into operational systems and made with little or no human intervention.</li>
+<li><b>Semistructured decisions</b> &mdash; some procedures can be specified in advance, but not far enough to yield a specific recommendation, because the problems require judgment and expertise.</li>
+<li><b>Unstructured decisions</b> &mdash; few or no procedures can be specified in advance, because the problems are complex and nonroutine and their consequences reach the whole organization.</li>
 </ul>
-<p>The chapter&rsquo;s smallest example is the clearest. An inventory system in a mall shoe store tracks stock and orders more when levels drop below a specified point, and the store&rsquo;s operational managers simply confirm the order was needed. The rule existed before the situation did, so software can carry it.</p>
+<p>The chapter&rsquo;s smallest example is the clearest. An inventory system in a mall shoe store reorders when stock drops below a set point, and operational managers simply confirm the order was needed. The rule existed before the situation did, so software can carry it.</p>
 <p class="takeaway">The less a procedure can be written down in advance, the higher in the organization the decision travels, and the more the system shifts from deciding to informing.</p>
 
 <div class="activity" data-activity="lvlSort"></div>
 
 <h3>Functional areas and the systems that serve them</h3>
-<p>Decision-making levels cut the organization horizontally. Functional areas cut it vertically. A <b>functional area</b> is a discrete area of an organization that focuses on a specific set of activities.</p>
-<p>Two examples show how different those sets of activities can be. People in marketing focus on activities that promote the organization and its products in a way that attracts and retains customers, while people in accounting and finance manage and control its capital assets and financial resources.</p>
-<p>Because the activities differ, the systems differ. <b>Functional area information systems</b> are designed to support the unique business processes of specific functional areas, and the chapter&rsquo;s Table 2.1 names four of them.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Functional area</th><th>Information system</th><th>Sample applications</th></tr></thead>
-<tbody>
-<tr><td><b>Accounting and finance</b></td><td>Systems used for managing, controlling, and auditing the financial resources of the organization</td><td>Accounts payable; expense accounts; cash management; payroll processing</td></tr>
-<tr><td><b>Human resources</b></td><td>Systems used for managing, controlling, and auditing the human resources of the organization</td><td>Recruiting and hiring; education and training; benefits management; employee termination; workforce planning</td></tr>
-<tr><td><b>Marketing</b></td><td>Systems used for managing new product development, distribution, pricing, promotional effectiveness, and sales forecasting of the products and services offered by the organization</td><td>Market research and analysis; new product development; promotion and advertising; pricing and sales analysis; product location analysis</td></tr>
-<tr><td><b>Production and operations</b></td><td>Systems used for managing, controlling, and auditing the production and operations resources of the organization</td><td>Inventory management; cost and quality tracking; materials and resource planning; job costing; resource utilization</td></tr>
-</tbody>
-</table></div>
-
-<p>The two cuts meet in one picture. The chapter&rsquo;s Figure 2.6 puts five functional area systems along the base &mdash; accounting, financial, human resource, marketing, and operational &mdash; and stacks applications above them by how demanding the decision is.</p>
-<ul class="keys">
-<li><b>Transaction processing and basic reporting</b> &mdash; payroll processing in accounting, cash management in finance, an employee skill inventory in human resources, pricing and sales analysis in marketing, and manufacturing resource utilization in operations.</li>
-<li><b>Tactical and managerial control</b> &mdash; order processing in accounting, financial forecasting in finance, compensation analysis in human resources, sales force automation in marketing, and inventory management in operations.</li>
-<li><b>More complex planning and coordination</b> &mdash; portfolio management and ratio analysis in finance, personnel forecasting in human resources, advertising and promotion planning in marketing, and manufacturing resource planning in operations.</li>
-</ul>
-<p>Read the two cuts together and you get a grid: the function names the column and the level names the row. Naming both narrows a vague request such as &ldquo;we need better reporting&rdquo; down to a single cell.</p>
-<p class="takeaway">Ask which function owns the process and which level makes the call; those two answers describe the system before a single vendor is contacted.</p>
+<p>Decision levels cut the organization horizontally; functional areas cut it vertically. A <b>functional area</b> is a discrete area of an organization focused on a specific set of activities &mdash; marketing promotes the organization and its products to attract and retain customers, while accounting and finance control its capital assets and financial resources.</p>
+<p>Because the activities differ, the systems differ. <b>Functional area information systems</b> support the unique business processes of specific functional areas: accounting and finance, human resources, marketing, and production and operations. Each also reaches upward, from a basic transaction record through tactical control to complex planning. Match the eight below.</p>
 
 <div class="activity" data-activity="lvlAreas"></div>
 
+<p class="takeaway">Ask which function owns the process and which level makes the call; those two answers describe the system before a single vendor is contacted.</p>
 <p>One last pass over this section&rsquo;s vocabulary, from KPIs to functional area systems.</p>
 
 <div class="activity" data-activity="lvlQuiz2"></div>

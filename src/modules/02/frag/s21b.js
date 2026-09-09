@@ -2,117 +2,69 @@
 PROSE.s21b = `
 <span class="eyebrow">Section 2&ndash;1b</span>
 <h2>Automating, learning, and strategizing</h2>
-<p class="lede">Three companies can buy identical software for completely different reasons. One wants the same work done faster. One wants to learn whether the work is worth doing at all. One wants to change what it competes on. The chapter treats these as a ladder, where each rung adds more value than the one below.</p>
+<p class="lede">Three companies can buy identical software for different reasons. One wants the work done faster. One wants to learn whether the work is worth doing. One wants to change what it competes on. The chapter treats these as a ladder.</p>
 
-<p>Deployed across an organization&rsquo;s decision-making levels and functional areas, an information system can add value in three general ways: by enabling <b>automating</b> activities, by enabling <b>learning</b>, and by enabling the execution of <b>organizational strategy</b>. These are not necessarily mutually exclusive, but the chapter holds that each is progressively more useful to the firm and adds more value to the business.</p>
-
-<p>The shorthand worth memorizing is faster, better, smarter. These are ambitions rather than product categories: one system can be defended and measured on any of the three, and people make that choice, not the software.</p>
+<p>An information system adds value in three general ways: by enabling <b>automating</b>, by enabling <b>learning</b>, and by enabling the execution of <b>organizational strategy</b>. They are not mutually exclusive, but each rung adds more value. The shorthand is faster, better, smarter.</p>
 
 <div class="activity" data-activity="alsLadder"></div>
 
 <h3>Automating: doing things faster</h3>
-<p>Someone with an <b>automating</b> perspective thinks of technology as a way to complete a task inside an organization faster, more cheaply, and perhaps with greater accuracy or consistency. What they are buying is <b>efficiency</b> &mdash; the extent to which goals are accomplished faster, at lower cost, or with relatively little time and effort. The work itself is never questioned; only what it costs.</p>
-
-<p>The chapter&rsquo;s worked example is a bank screening loan applications. A person with an automating mentality makes three moves, and not one of them changes who decides or on what grounds.</p>
+<p>An <b>automating</b> perspective sees technology as a way to complete a task faster, more cheaply and perhaps more accurately. What it buys is <b>efficiency</b> &mdash; goals accomplished faster, at lower cost, or with little effort. The work itself is never questioned; only what it costs.</p>
+<p>The chapter&rsquo;s example is a bank screening loan applications, where that mentality makes three moves and none changes who decides.</p>
 <ul class="keys">
-<li><b>Put the applications into a computer database</b> &mdash; so the people deciding on the loans process them faster, more easily, and with fewer errors than they could from a stack of paper.</li>
-<li><b>Let customers apply online</b> &mdash; because an application completed from home arrives already entered, which removes the trip home and back from the schedule.</li>
-<li><b>Redeploy the people the change frees</b> &mdash; moving from a manual to an automated loan process may enable the organization to deploy employees more efficiently, which is where the further cost savings come from.</li>
+<li><b>Put the applications into a database</b> &mdash; so the deciders process them faster and with fewer errors than from a stack of paper.</li>
+<li><b>Let customers apply online</b> &mdash; because an application completed at home arrives already entered, removing a step from the schedule.</li>
+<li><b>Redeploy the people it frees</b> &mdash; moving off a manual process lets the firm deploy employees more efficiently, which is where the further savings come from.</li>
 </ul>
-
-<p>Automation is not confined to paperwork. With increasing digital density, almost every sector can gain efficiency: sensors monitoring machinery or product flows throughout production can tremendously improve a manufacturing company&rsquo;s performance. Operational-level systems automate repetitive activities and also gather valuable data for higher decision-making levels, which is the hinge into the next rung.</p>
-
-<h3>The same process, three times over</h3>
-<p>The table takes one loan application through three versions of the same process. Read down a column to see one whole process; read across a row to watch a single activity change.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Primary activity</th><th>Manual loan process</th><th>Technology-supported process</th><th>Fully automated process</th></tr></thead>
-<tbody>
-<tr><td><b>Complete and submit loan application</b></td><td>Customer takes the application home, completes it, and returns it (1.5 days)</td><td>Customer takes the application home, completes it, and returns it (1.5 days)</td><td>Customer fills out application from home via the web (15 minutes)</td></tr>
-<tr><td><b>Check application for errors</b></td><td>Employee does this in batches (2.5 days)</td><td>Employee does this in batches (2.5 days)</td><td>Computer does this as it is being completed (1 second)</td></tr>
-<tr><td><b>Input data from application into the information system</b></td><td>Applications are kept in paper form, although there is handling time involved (1 hour)</td><td>Employee does this in batches (2.5 days)</td><td>Done as part of the online application process (no extra time needed)</td></tr>
-<tr><td><b>Assess loan applications under $250,000 to determine whether to fund them</b></td><td>Employee does this completely by hand (15 days)</td><td>Employee does this with the help of the computer (1 hour)</td><td>Computer does this automatically (1 second)</td></tr>
-<tr><td><b>Committee decides on any loan over $250,000</b></td><td>15 days</td><td>15 days</td><td>15 days</td></tr>
-<tr><td><b>Applicant notified</b></td><td>Employee generates letters manually in batches (1 week)</td><td>Employee generates letters with the help of a computer (1 day)</td><td>System notifies applicant via email (1 second)</td></tr>
-<tr><td><b>Total time</b></td><td>Anywhere from 25&ndash;40 days, depending on size of loan</td><td>Anywhere from 5&ndash;20 days, depending on size of loan</td><td>Anywhere from 15 minutes to 15 days, depending on size of loan</td></tr>
-</tbody>
-</table></div>
+<p>The chapter runs one application through three versions of that process: manual, technology-supported and fully automated. Put the six activities in order.</p>
 
 <div class="activity" data-activity="alsLoanSteps"></div>
 
 <h3>What the totals actually show</h3>
-<p>The headline is a fall from weeks to minutes, but three quieter facts in that table teach more.</p>
+<p>The headline is a fall from 25&ndash;40 days to 15 minutes. Three quieter facts teach more.</p>
 <ul class="keys">
-<li><b>One row never moves</b> &mdash; the committee deciding any loan over $250,000 takes 15 days in all three processes, because none of the three columns changed who makes that decision.</li>
-<li><b>That row is the ceiling</b> &mdash; the fully automated process runs from 15 minutes to 15 days depending on loan size, and 15 days is exactly the committee&rsquo;s figure, so the slowest automated loan is slow for a human reason.</li>
-<li><b>One step gets worse first</b> &mdash; entering data takes about an hour in the manual process, where applications stay on paper, but 2.5 days in the technology-supported one, where an employee keys in the batches. Half-computerizing can create work where none existed.</li>
+<li><b>One row never moves</b> &mdash; the committee deciding any loan over $250,000 takes 15 days in all three processes, because no column changed who decides.</li>
+<li><b>That row is the ceiling</b> &mdash; the automated process runs from 15 minutes to 15 days, and 15 days is the committee&rsquo;s own figure, so the slowest automated loan is slow for a human reason.</li>
+<li><b>One step gets worse first</b> &mdash; data entry takes an hour on paper but 2.5 days in the technology-supported process, where an employee keys batches.</li>
 </ul>
-
-<p class="takeaway">Automation compresses the parts of a process a machine is permitted to touch and leaves everything else where it was, which is why the fully automated column reports a range instead of a number.</p>
+<p class="takeaway">Automation compresses only the parts a machine is permitted to touch and leaves the rest where it was, which is why the automated column reports a range instead of a number.</p>
 
 <div class="activity" data-activity="alsQuiz1"></div>
 
 <h3>Organizational learning: doing things better</h3>
-<p><b>Organizational learning</b> is the ability of an organization to use past behavior and data to improve its business processes. It builds on the automating mentality rather than replacing it: by analyzing the data created when a process was automated, you develop an improved understanding of the work process itself.</p>
+<p><b>Organizational learning</b> is the ability of an organization to use past behavior and data to improve its business processes. It builds on the automating rung: analyzing the data a process creates improves your understanding of the process.</p>
+<p>A loan system tracking applications by date, month and season lets the manager see more auto loans arriving each fall, staff for that shape, plan the funds they need, and study how they performed.</p>
+<p>The test is not how much data a system holds, but whether it creates data about the underlying process that can be used to monitor, control and change it. That is <b>effectiveness</b> &mdash; goals accomplished well &mdash; and it places the system at the managerial level.</p>
 
-<p>Return to the loan department. A computer-based loan processing system can track types of loan application by date, month, or season, and that single capability changes what a manager can do.</p>
-<ul class="keys">
-<li><b>Trends become visible</b> &mdash; the manager can see more auto loan applications arriving in the fall, for instance, and plan the timely staffing and training of loan department personnel around that shape.</li>
-<li><b>Money can be planned</b> &mdash; the manager can more efficiently manage the funds used to fulfill the loans, because demand stops being a surprise arriving one application at a time.</li>
-<li><b>Patterns in the decisions appear</b> &mdash; the manager can study which types of people apply at which times of year, the patterns of the decisions made, and the subsequent performance of those loans.</li>
-</ul>
+<div class="callout warn"><p><b>What automating alone can hide.</b> Suppose the criteria are poor: they approve a heavily indebted applicant so long as no payment was recently late.</p>
+<p>By hand a reviewer clears four a day and accepts about two bad loans a week. Automate that faulty process with no learning built in and the reviewer clears 12 a day, accepting up to six. The technology only magnified the business problem.</p></div>
 
-<p>The test for learning is not how much data a system holds. It is whether the system creates data about the underlying business process that can be used to monitor, control, and change that process. Speed was efficiency; this is <b>effectiveness</b>, the extent to which goals or tasks are accomplished well. Used this way, a loan processing system sits at the managerial level of the organization.</p>
+<p>Uber sits on all three rungs at once: it matches riders and drivers automatically, learns their preferences, and builds its strategy on that data.</p>
 
-<div class="callout warn">
-<p><b>What automating alone can hide.</b> If the underlying process is flawed, a learning use of technology may help you detect the problem and change it: a pattern among accepted loans can separate low-performing from high-performing ones and prompt a change to the acceptance criteria. Automate the same process with no learning built in, and you never uncover the data that would show the process is bad.</p>
-<p>The chapter puts numbers on it. Suppose the criteria are poor: they approve someone with a high level of debt as long as no payment has been late recently.</p>
-<ul>
-<li>Working by hand, a reviewer might get through four applications a day and, because of those criteria, inadvertently accept about two bad applications a week.</li>
-<li>Automate that same faulty process with no learning built in, and the reviewer might handle 12 applications a day, resulting in up to six bad applications accepted per week on average.</li>
-<li>The technology served only to magnify the existing business problem, so automating a loan process requires sound underlying business processes or the errors rapidly increase.</li>
-</ul>
-</div>
-
-<p>Learning also scales outward. Increasing digital density, together with the ability to learn from data gathered through many interactions, can increase personalization, anticipation, and coordination, and the chapter&rsquo;s example is Uber.</p>
-<ul class="keys">
-<li><b>Personalization</b> &mdash; Uber uses a rider&rsquo;s past behavior to learn about her preferences and provide personalized ride recommendations.</li>
-<li><b>Anticipation</b> &mdash; the app uses data about riders&rsquo; and drivers&rsquo; locations and a host of other factors to anticipate surges in demand and change pricing accordingly.</li>
-<li><b>Coordination</b> &mdash; that same data is then used to coordinate riders and drivers so that the matching of supply and demand is optimized.</li>
-</ul>
-<p>Plain efficiency is on that list too: the app automatically matches riders with drivers. One product doing all four at once shows why the three ways of adding value are not mutually exclusive.</p>
-
+<p>One learning technology is worth naming because it sounds futuristic and is not. A <b>digital twin</b> is a software model of a physical object, fed live sensor data so people can troubleshoot or plan maintenance on equipment they cannot reach. It is the learning rung in hardware form.</p>
 <h3>Supporting strategy: doing things smarter</h3>
-<p>Automating and improving processes both have real advantages, but in most cases the chapter argues that the best way to use an information system is to support the organization&rsquo;s strategy. <b>Organizational strategy</b> is a firm&rsquo;s plan to accomplish its mission and goals and to gain or sustain competitive advantage over rivals.</p>
-
-<p>That plan is made at the executive level through <b>strategic planning</b>: senior managers form a vision of where the organization needs to head, convert it into measurable objectives and performance targets, and craft a strategy to reach them. Someone with a strategic mentality then looks for ways to use information systems to achieve that strategy, and the chapter names four.</p>
+<p>The best use of a system, the chapter argues, is to support the firm&rsquo;s strategy. <b>Organizational strategy</b> is a firm&rsquo;s plan to accomplish its mission and goals and to gain or sustain competitive advantage over rivals.</p>
+<p>It is made at the executive level through <b>strategic planning</b>: senior managers form a vision, convert it into measurable objectives and targets, and craft a strategy to reach them. Four ways a system serves that plan.</p>
 <ul class="split">
-<li>Innovating, because a genuinely new offering changes what the company sells rather than what it costs.</li>
-<li>Streamlining operations, so that the savings serve the chosen plan instead of being an end in themselves.</li>
-<li>Optimizing the supply chain, since what a firm can promise a customer depends on what its suppliers deliver.</li>
-<li>Understanding customers better, because deep knowledge of a customer is not something a rival can simply buy.</li>
+<li>Innovating, because a new offering changes what the company sells rather than what it costs.</li>
+<li>Streamlining operations, so savings serve the chosen plan instead of being an end in themselves.</li>
+<li>Optimizing the supply chain, since what a firm promises a customer depends on its suppliers.</li>
+<li>Understanding customers better, because deep customer knowledge is not something a rival can buy.</li>
 </ul>
+<p>The funding rule follows: a system that will not clearly deliver strategic value, while also helping people work smarter and save money, is not likely to be funded. A firm parked on the automating rung only gets cheaper at work a newcomer may make unnecessary.</p>
 
-<p>This person still wants the benefits of automating and learning, and also looks for some strategic, competitive advantage from the system. The funding rule follows. In today&rsquo;s business environment, if a proposed information system will not clearly deliver strategic value &mdash; help improve the business so it can compete better &mdash; while also helping people work smarter and save money, it is not likely to be funded.</p>
-
-<p>Uber shows the top rung too. Using information systems for personalization, anticipation, and coordination is at the heart of its organizational strategy, is fundamental to its business model, and is essential to the organization&rsquo;s long-term survival. What counted as learning one rung down counts as strategy here.</p>
-
-<div class="callout info">
-<p><b>Why the top rung matters more than it used to.</b> Rather than solely improving an organization&rsquo;s efficiency, information systems now enable technology- and data-driven business model disruption: incumbents see their ways of working challenged by technology startups that approach the business in fundamentally different ways, grabbing market share and ultimately making existing business models obsolete.</p>
-<p>A firm parked on the automating rung is getting steadily cheaper at doing something a newcomer may be about to make unnecessary.</p>
-</div>
+<p>Draft a one-page pitch and see which rung it reaches.</p>
 
 <div class="activity" data-activity="alsPitch"></div>
 
 <h3>Reading the ladder correctly</h3>
-<p>Three ambitions, three payoffs, and three different questions to ask about any proposal.</p>
+<p>Three payoffs, and three questions for any proposal.</p>
 <ol class="steps">
-<li><b>Faster</b> &mdash; ask what this work costs today and what it will cost afterwards, because the payoff is efficiency, measured in time and money.</li>
-<li><b>Better</b> &mdash; ask what the system will teach you about the process itself, because the payoff is effectiveness, measured in decisions that turn out well.</li>
-<li><b>Smarter</b> &mdash; ask what the system lets you do that a rival cannot, because the payoff is competitive advantage, measured against competitors rather than last year.</li>
+<li><b>Faster</b> &mdash; ask what this work costs today and afterwards; the payoff is efficiency, measured in time and money saved.</li>
+<li><b>Better</b> &mdash; ask what the system teaches you about the process; the payoff is effectiveness, measured in decisions that turn out well.</li>
+<li><b>Smarter</b> &mdash; ask what the system lets you do that a rival cannot; the payoff is competitive advantage, measured against rivals not last year.</li>
 </ol>
-
-<p class="takeaway">Most good systems reach all three rungs, so the useful question is not which one a proposal is but how far up it reaches &mdash; and a project that answers only the first is an efficiency story told in a room that funds strategy.</p>
+<p class="takeaway">The useful question is not which rung a proposal sits on but how far up it reaches &mdash; a project that answers only the first is an efficiency story told in a room that funds strategy.</p>
 
 <div class="activity" data-activity="alsQuiz2"></div>
 `;

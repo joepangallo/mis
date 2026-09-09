@@ -2,100 +2,44 @@
 PROSE.s23a = `
 <span class="eyebrow">Section 2&ndash;3a</span>
 <h2>Innovation and what it is worth</h2>
-<p class="lede">Ask most people what innovation means and they will describe a product &mdash; a better phone, a cleverer gadget, something you could hold up on a stage. That answer is not wrong, but it turns out to be one tenth of the picture, and this section is about the other nine tenths.</p>
+<p class="lede">Ask most people what innovation means and they will describe a product &mdash; a better phone, something you could hold up on a stage. That answer is one tenth of the picture, and this section is about the other nine tenths.</p>
 
 <h3>Inventing something is not the same as innovating</h3>
-<p>For organizations, <b>innovation</b> means creating new products, processes, or services that return value to the organization. The chapter is careful about that last phrase: in contrast to merely <i>inventing</i> new products, services, or processes, innovation involves realizing the value.</p>
-<p>So a brilliant idea sitting in a notebook is an invention. It becomes an innovation at the moment it earns money, saves money, or wins a customer who would otherwise have gone elsewhere.</p>
-<p>The stakes are not academic. Innovation is key for organizations attempting to gain or sustain a competitive advantage, whether through cost or through differentiation, and the chapter aims its warning squarely at the companies currently winning.</p>
-
-<div class="callout warn">
-<p><b>Being the leader is not protection.</b> Companies that lead their markets or own strong brands often tend to find it difficult to react appropriately to new trends, and Cisco&rsquo;s former chief executive John Chambers predicted that almost half of today&rsquo;s leading businesses might not see the next decade. Read that as a statement about two different skills, since leading a market and reacting to a change in it are not the same job.</p>
-</div>
+<p>For organizations, <b>innovation</b> means creating new products, processes or services that return value to the organization. In contrast to merely <i>inventing</i>, innovation involves realizing the value. A brilliant idea in a notebook is an invention; it becomes an innovation when it earns money, saves money, or wins a customer who would have gone elsewhere.</p>
+<div class="callout warn"><p><b>Being the leader is not protection.</b> Companies that lead their markets or own strong brands often find it hard to react to new trends. Cisco&rsquo;s former chief executive predicted that almost half of today&rsquo;s leading businesses might not see the next decade. Leading a market and reacting to a change in it are not the same job.</p></div>
 
 <h3>Two sizes of innovation</h3>
 <p>Not every innovation redraws an industry. The chapter sorts them by how new the underlying technology is and by what happens to whatever came before.</p>
 <ul class="keys">
-<li><b>Incremental innovation</b> &mdash; enhancing or upgrading an existing product, service, or process, which the chapter calls the most common form of innovation because it works with what a company already sells and already knows how to build.</li>
-<li><b>Radical innovation</b> &mdash; also called <b>disruptive innovation</b>, it uses a markedly new or different technology to reach new customer segments or to give existing customers significantly greater benefits, and it eventually marginalizes or replaces the products and services that were there before.</li>
+<li><b>Incremental innovation</b> &mdash; enhancing or upgrading an existing product, service or process. The chapter calls it the most common form, because it works with what a firm already sells.</li>
+<li><b>Radical innovation</b> &mdash; also called <b>disruptive innovation</b>, it uses a markedly new technology to reach new customer segments or give existing customers significantly greater benefits, eventually marginalizing what came before.</li>
 </ul>
-<p>Telling them apart in a real case takes three questions, asked in this order.</p>
-<ol class="steps">
-<li><b>Is the technology markedly new or different?</b> A faster version of the same machine is an upgrade; a machine that works on an entirely different principle is not, which is the first thing separating the two.</li>
-<li><b>Who gets the benefit?</b> Radical innovation reaches customer segments the old product never served, or hands existing customers a significantly greater benefit rather than a slightly better one.</li>
-<li><b>What happens to the incumbent?</b> If the older product or service is eventually marginalized or replaced, the change was radical; if the older product simply keeps selling in a better version, the change was incremental.</li>
-</ol>
-
-<h3>What radical innovation has already done</h3>
-<p>The chapter lists nineteen radical innovations beside the technology each one displaced or pushed to the margins, and all nineteen are reproduced below. Read them as pairs, and read the right-hand column as an industry that once looked permanent.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Radical innovation</th><th>Displaced or marginalized technology</th></tr></thead>
-<tbody>
-<tr><td>Digital photography</td><td>Chemical photography</td></tr>
-<tr><td>Desktop publishing</td><td>Traditional publishing</td></tr>
-<tr><td>Online stock brokerage</td><td>Full-service stock brokerage</td></tr>
-<tr><td>Online retailing</td><td>Brick-and-mortar retailing</td></tr>
-<tr><td>Free, downloadable greeting cards</td><td>Printed greeting cards</td></tr>
-<tr><td>Distance education</td><td>Classroom education</td></tr>
-<tr><td>Unmanned aircraft</td><td>Manned aircraft</td></tr>
-<tr><td>Nurse practitioners</td><td>Medical doctors</td></tr>
-<tr><td>Semiconductors</td><td>Vacuum tubes</td></tr>
-<tr><td>Automobiles</td><td>Horses</td></tr>
-<tr><td>Airplanes</td><td>Trains</td></tr>
-<tr><td>Compact discs</td><td>Cassettes and records</td></tr>
-<tr><td>MP3 players, music downloading, streaming</td><td>Compact discs and music stores</td></tr>
-<tr><td>Smartphones</td><td>MP3 players, dedicated GPS navigation</td></tr>
-<tr><td>Mobile telephony</td><td>Wire-line telephony</td></tr>
-<tr><td>Tablets</td><td>Notebook computers</td></tr>
-<tr><td>Xbox, PlayStation, smartphones</td><td>Desktop computers</td></tr>
-<tr><td>3D printing</td><td>CNC milling</td></tr>
-<tr><td>Camera drones</td><td>Helicopters for aerial filming and photography</td></tr>
-</tbody>
-</table></div>
-
-<p>Three things in that table are easy to read past, and each one changes how you should think about your own industry.</p>
-<ul class="keys">
-<li><b>The chain does not stop</b> &mdash; compact discs displaced cassettes and records, then music downloading and streaming displaced compact discs and music stores, and smartphones then displaced MP3 players and dedicated navigation units, so today&rsquo;s radical innovation can end up as a future entry in the right-hand column.</li>
-<li><b>Displaced is not the same as deleted</b> &mdash; the chapter&rsquo;s own heading says displaced <i>or marginalized</i>, and pairs such as distance education against classroom education, or nurse practitioners against medical doctors, describe a shift in share rather than an extinction.</li>
-<li><b>Not every entry is a computer</b> &mdash; automobiles displacing horses and airplanes displacing trains sit on the same list, because what makes an innovation radical is what it does to a market, not whether it happens to be digital.</li>
-</ul>
+<p>Sort a handful of real changes into the two piles.</p>
 
 <div class="activity" data-activity="invSort"></div>
 
+<p>Three questions separate them in a live case. Is the technology markedly new, or is this a faster version of the same machine? Does the benefit reach segments the old product never served? And is the older product eventually marginalized, or does it keep selling in a better version?</p>
+<p>The chapter lists nineteen radical innovations beside what each displaced: digital photography against chemical, online retailing against brick-and-mortar, smartphones against MP3 players and dedicated navigation. Three things in that list are easy to read past.</p>
+<ul class="keys">
+<li><b>The chain does not stop</b> &mdash; compact discs displaced cassettes, streaming displaced discs, and smartphones displaced MP3 players, so today&rsquo;s radical innovation becomes a future entry in the right-hand column.</li>
+<li><b>Displaced is not deleted</b> &mdash; the heading says displaced <i>or marginalized</i>, and pairs such as distance education against classroom education describe a shift in share rather than an extinction.</li>
+<li><b>Not every entry is a computer</b> &mdash; automobiles displaced horses and airplanes displaced trains, because what makes an innovation radical is what it does to a market, not whether it is digital.</li>
+</ul>
+
 <h3>Why &ldquo;we built a better product&rdquo; is a fragile plan</h3>
-<p>Here is the trap the chapter is most concerned with. When people hear innovation, they often think only about innovative products or services &mdash; and products and services, even radical ones, can easily be copied.</p>
-<p>Focusing only on them is therefore a dangerous path. Many leading companies, ranging from Apple to Dyson, all too frequently end up in lawsuits trying to protect their innovations from copycats, which is an expensive way to defend an advantage.</p>
-<p>Successful organizations go beyond product and service innovation and add other kinds, such as new ways of earning revenue or entirely new business models. In their book <i>Ten Types of Innovation</i>, Keeley and colleagues set out ten distinct places a company can innovate to gain or sustain competitive advantage.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Type of innovation</th><th>What it changes</th><th>Examples the chapter gives</th></tr></thead>
-<tbody>
-<tr><td><b>Profit model</b></td><td>Finding novel ways of generating revenues from offerings</td><td>Dropbox using a freemium approach; Microsoft offering 365 on a subscription basis; GE selling &ldquo;thrust as a service&rdquo;</td></tr>
-<tr><td><b>Network</b></td><td>Harnessing the capabilities and strengths of others</td><td>GlaxoSmithKline or Lego using open innovation for new product or service ideas; Netflix running contests for improving its movie recommendation algorithm; luxury hotels partnering with fashion designers</td></tr>
-<tr><td><b>Structure</b></td><td>Using the company&rsquo;s talent and assets in innovative ways</td><td>Southwest Airlines focusing on one aircraft type; Google allowing employees to use up to 20 percent of work time for personal projects</td></tr>
-<tr><td><b>Process</b></td><td>Changing primary processes used to produce products or services</td><td>Toyota pioneering lean production; Zara moving fashion from initial design to stores in 3 weeks</td></tr>
-<tr><td><b>Product performance</b></td><td>Creating novel products or improving existing products through differentiation</td><td>Dyson&rsquo;s Airblade hand dryers; Corning&rsquo;s &ldquo;unbreakable&rdquo; Gorilla Glass; Coke&rsquo;s customizable Coke bottles</td></tr>
-<tr><td><b>Product system</b></td><td>Creating bundles of complementary offerings</td><td>Microsoft bundling individual office programs into the 365 suite; Apple offering developer tools and an app store so developers can create novel apps; Marriott letting users test drive GoPro HERO action cams</td></tr>
-<tr><td><b>Service</b></td><td>Supporting and enhancing the value of an offering</td><td>Zappos&rsquo;s WOW philosophy of delivering excellent customer service; Men&rsquo;s Wearhouse offering customers the ability to purchase free lifetime pressing</td></tr>
-<tr><td><b>Channel</b></td><td>Using innovative ways to connect offerings with customers</td><td>Niketown offering immersive experiences; Nespresso partnering with hotels and airlines</td></tr>
-<tr><td><b>Brand</b></td><td>Positioning the brand in innovative ways</td><td>The Virgin family of brands; German discount grocer Aldi&rsquo;s Trader Joe&rsquo;s markets</td></tr>
-<tr><td><b>Customer engagement</b></td><td>Developing meaningful connections with customers</td><td>Swarm encouraging users to frequently &ldquo;check in&rdquo; to places; Apple tying customers to its ecosystem</td></tr>
-</tbody>
-</table></div>
-
-<div class="callout exam">
-<p><b>Count the rows.</b> Product performance &mdash; the new-and-better-product row that most people mean by the word innovation &mdash; is one entry out of ten. The other nine change how the money is made, whose capabilities are borrowed, how the firm is organized, how the work gets done, what the offering is bundled with, what happens after the sale, how the offering reaches you, what the name stands for, and what the relationship feels like.</p>
-</div>
+<p>When people hear innovation they think of innovative products and services &mdash; and products, even radical ones, are easily copied. Companies from Apple to Dyson end up in lawsuits defending them, which is an expensive way to hold an advantage.</p>
+<p>Successful organizations add other kinds: new ways of earning revenue, or entirely new business models. Keeley and colleagues set out ten distinct places a company can innovate &mdash; profit model, network, structure, process, product performance, product system, service, channel, brand and customer engagement. Open each and read its examples.</p>
 
 <div class="activity" data-activity="invExplore"></div>
 
-<p>Four pairs on that list get confused constantly, and keeping them apart is most of the skill.</p>
+<div class="callout exam"><p><b>Count the rows.</b> Product performance &mdash; the new-and-better-product row most people mean by the word &mdash; is one entry out of ten. The other nine change how money is made, whose capabilities are borrowed, how the firm is organized, how work gets done, what the offering is bundled with, and what the relationship feels like.</p></div>
+
+<p>Four pairs get confused constantly, and keeping them apart is most of the skill.</p>
 <ul class="keys">
-<li><b>Product performance against product system</b> &mdash; product performance innovation creates novel products or differentiates existing ones, as Dyson did with its Airblade hand dryers, while product system innovation bundles complementary offerings, as Microsoft did by combining individual office programs into one suite.</li>
-<li><b>Channel against network</b> &mdash; channel innovation finds new ways to connect the offering with customers, as Nespresso did by partnering with hotels and airlines, while network innovation harnesses the capabilities and strengths of others, as Lego did by using open innovation for new product ideas.</li>
-<li><b>Brand against customer engagement</b> &mdash; brand innovation positions the name in a new way, as the Virgin family of brands does, while customer engagement innovation builds a meaningful ongoing connection, as Apple does by tying customers into its ecosystem.</li>
-<li><b>Profit model against process</b> &mdash; profit model innovation changes how revenue is generated, as Microsoft did by offering 365 on a subscription basis, while process innovation changes how the thing is produced, as Toyota did by pioneering lean production.</li>
+<li><b>Product performance against product system</b> &mdash; Dyson differentiates a single product; Microsoft bundled individual office programs into one suite.</li>
+<li><b>Channel against network</b> &mdash; Nespresso partners with hotels to reach customers; Lego uses <b>open innovation</b> to borrow other people&rsquo;s ideas.</li>
+<li><b>Brand against customer engagement</b> &mdash; Virgin positions a name across industries; Apple ties customers into an ecosystem they stay inside.</li>
+<li><b>Profit model against process</b> &mdash; Microsoft changed how revenue arrives by selling 365 by subscription; Toyota changed how the thing is produced with lean production.</li>
 </ul>
 
 <div class="activity" data-activity="invMatch"></div>
@@ -103,22 +47,23 @@ PROSE.s23a = `
 <div class="activity" data-activity="invQuiz1"></div>
 
 <h3>Combining types is what makes an advantage stick</h3>
-<p>Because product performance innovations can often be copied easily, companies frequently combine several types at once to sustain a competitive advantage. The chapter offers two cases worth studying side by side.</p>
-<ul class="keys">
-<li><b>Apple</b> &mdash; typically known for its product innovations, and the design and functionality of those products have been widely imitated, yet other companies find it difficult to copy Apple&rsquo;s product system innovations or its customer engagement innovations.</li>
-<li><b>Dell</b> &mdash; challenged established computer manufacturers by combining profit model innovation, collecting money before building the product, with process innovation in the built-to-order model and channel innovation in selling computers online rather than in stores, as well as other types of innovation the chapter does not name.</li>
-</ul>
-<p class="takeaway">A rival who copies your product has copied one row of ten; a rival who wants to copy several rows at once has to rebuild the company, which is why combinations outlast clever products.</p>
+<p>Because product innovations are copied easily, companies combine several types at once. Apple&rsquo;s designs have been widely imitated, yet rivals struggle to copy its product system and customer engagement innovations together. Dell challenged established manufacturers by combining profit model innovation &mdash; collecting money before building &mdash; with built-to-order process innovation and online channel innovation.</p>
+<p class="takeaway">A rival who copies your product has copied one row of ten; a rival who wants several rows at once has to rebuild the company, which is why combinations outlast clever products.</p>
 
 <h3>Where information systems come in</h3>
-<p>Most, if not all, of these innovations are enabled by information systems, and several of them would not be possible without one. The chapter gives three examples that make the dependency concrete.</p>
+<p>Two display technologies show what redeploying an existing capability looks like, and the difference between them is the whole point.</p>
 <ul class="keys">
-<li><b>Airbnb</b> &mdash; platform-based business models such as this one would not be possible without the internet, because the platform&rsquo;s entire job is to connect two groups of people who would otherwise never find each other.</li>
-<li><b>Uber</b> &mdash; its business model could not exist without the mobile devices carried by riders and drivers, and its dynamic pricing feature, called surge pricing, would not work without real-time analysis and prediction of traffic conditions and demand for services.</li>
-<li><b>Manufacturers of physical goods</b> &mdash; process innovations enabled by robotics and the Industrial Internet of Things offer improvements in efficiency, product quality, agility, and flexibility, allowing companies to mass-produce customized products.</li>
+<li><b>Augmented reality</b> layers computer-generated information on top of what somebody is actually looking at, so a technician sees the schematic over the machine rather than beside it.</li>
+<li><b>A virtual reality headset</b> replaces the view entirely with a generated environment, which is why architects use one to walk a client through a building that has not been built.</li>
 </ul>
-<p>That is why an organization often has to deploy new, state-of-the-art technologies, or redeploy existing ones in clever new ways, to gain or sustain a competitive advantage.</p>
-<p>A firm can choose instead to keep continually upgrading its older systems rather than investing in new ones. The chapter&rsquo;s warning is about what those improvements buy: often, at best, only a short-lived competitive edge.</p>
+
+<p>Most of these innovations are enabled by information systems, and several would be impossible without one.</p>
+<ul class="keys">
+<li><b>Airbnb</b> &mdash; a platform-based model like this could not exist without the internet, because its entire job is connecting two groups who would never find each other.</li>
+<li><b>Uber</b> &mdash; surge pricing needs real-time analysis and prediction of traffic and demand, and the model needs the mobile devices riders and drivers already carry.</li>
+<li><b>Manufacturers</b> &mdash; robotics and the Industrial Internet of Things bring efficiency, quality and flexibility, letting firms mass-produce customized products.</li>
+</ul>
+<p>So a firm often has to deploy state-of-the-art technology, or redeploy what it has in a clever new way. Continually upgrading older systems instead buys, at best, a short-lived edge.</p>
 
 <div class="activity" data-activity="invQuiz2"></div>
 `;

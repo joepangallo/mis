@@ -2,133 +2,69 @@
 PROSE.s22b = `
 <span class="eyebrow">Section 2&ndash;2b</span>
 <h2>Revenue models, platforms, and network effects</h2>
-<p class="lede">A business model says what a company does. This half of the story answers the blunt part: in what way does the company get paid, and who stands on the other side of that payment? Several of the answers below were impractical until digital delivery made one more customer nearly free to serve.</p>
+<p class="lede">A business model says what a company does. This half answers the blunt part: how does it get paid, and who stands on the other side of that payment?</p>
 
 <h3>The revenue model: how the money arrives</h3>
-<p>A <b>revenue model</b> describes how the firm will earn revenue, generate profits, and produce a superior return on invested capital. Even nonprofits need one, because something has to pay for the work. Sales, transaction fees, and advertising existed offline; the internet enabled or enhanced others, such as affiliate marketing.</p>
-<p>The table lists the typical revenue models in the digital world and who uses each.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Revenue type</th><th>Description</th><th>Who is doing this?</th></tr></thead>
-<tbody>
-<tr><td><b>Affiliate marketing</b></td><td>Paying businesses that bring or refer customers to another business; revenue sharing is typically used.</td><td>Amazon&rsquo;s Associates program</td></tr>
-<tr><td><b>Advertising</b></td><td>Free services are provided to customers and paid for by a third party.</td><td>Google, Instagram, X, TikTok</td></tr>
-<tr><td><b>Subscription</b></td><td>Users pay a monthly or yearly recurring fee for the use of the product or service.</td><td>Netflix, Microsoft 365, Dropbox, Spotify, Adobe Creative Cloud</td></tr>
-<tr><td><b>Transaction fees / brokerage</b></td><td>A commission is paid to the business for aiding in the transaction.</td><td>PayPal, eBay, Airbnb, Uber</td></tr>
-<tr><td><b>Traditional sales</b></td><td>A consumer buys a product or service from the website, or makes in-app purchases.</td><td>Amazon, Zappos, Nordstrom, TikTok</td></tr>
-<tr><td><b>Freemium</b></td><td>Basic services are offered for free, but a premium is charged for special features.</td><td>Flickr, iCloud, Dropbox</td></tr>
-</tbody>
-</table></div>
-
-<p>Read each row by asking whose hand the money leaves. Five of the rows sort into four groups.</p>
+<p>A <b>revenue model</b> describes how a firm will earn revenue, generate profits and produce a superior return on invested capital. Even nonprofits need one. Read each by asking whose hand the money leaves.</p>
 <ul class="keys">
-<li><b>The customer pays for the thing</b> &mdash; traditional sales, because a shopper buys the product from the website or in the app.</li>
-<li><b>The customer pays for the time</b> &mdash; subscription, because the fee recurs monthly or yearly for continued use, as at Netflix.</li>
-<li><b>Somebody outside the deal pays</b> &mdash; advertising, because a third party covers the cost, which is why Google charges users nothing.</li>
-<li><b>The firm is paid for arranging someone else&rsquo;s deal</b> &mdash; brokerage commissions the transaction, as at PayPal, and affiliate marketing pays for the referral.</li>
+<li><b>The customer pays for the thing</b> &mdash; traditional sales, where a shopper buys the product on the website or in the app.</li>
+<li><b>The customer pays for the time</b> &mdash; subscription, where a fee recurs monthly or yearly for continued use, as at Netflix.</li>
+<li><b>Somebody outside the deal pays</b> &mdash; advertising, where a third party covers the cost, which is why Google charges users nothing.</li>
+<li><b>The firm is paid for arranging another&rsquo;s deal</b> &mdash; brokerage commissions the transaction, and <b>affiliate marketing</b> pays for the referral, as Amazon&rsquo;s Associates program does.</li>
 </ul>
-<p>Freemium is the sixth and the odd one out, because it splits one product into a free version and a paid one.</p>
+<p>Freemium is the sixth and the odd one out: it splits one product into a free version and a paid one.</p>
 
 <div class="activity" data-activity="revSort"></div>
 
 <h3>Why giving it away became a real strategy</h3>
-<p>In a competitive marketplace, price is set by <b>marginal cost</b> &mdash; the cost of producing one additional unit of output. The building blocks of a digital product are processing, storage, and bandwidth; those costs have fallen, and cloud computing turned many into variable costs.</p>
-<p>When serving one more user costs almost nothing, an organization may give limited versions away free to build a large customer base and charge a premium for unrestricted ones, typically by subscription. That is <b>freemium</b>, and what the free version withholds varies.</p>
+<p>In a competitive marketplace price is set by <b>marginal cost</b>, the cost of one additional unit. A digital product is built from processing, storage and bandwidth, and those costs have fallen hard.</p>
+<p>When one more user costs almost nothing, a firm can give limited versions away to build a customer base and charge for unrestricted ones. That is <b>freemium</b>. What the free version withholds varies.</p>
 <ul class="keys">
-<li><b>Features</b> &mdash; the free version does less, so whoever needs the missing capability pays.</li>
-<li><b>Bandwidth</b> &mdash; data moves more slowly, which bites hardest on the heaviest users.</li>
-<li><b>Storage</b> &mdash; Dropbox and iCloud limit free capacity and sell subscriptions to larger accounts.</li>
-<li><b>Number of users</b> &mdash; the free version covers one person or a small team, so a growing group outgrows it.</li>
-<li><b>Class of user</b> &mdash; the product or service is restricted to a certain class of users, such as educational users, so anyone outside that group has to pay for it.</li>
+<li><b>Features</b> &mdash; the free version simply does less, so whoever needs the missing capability pays.</li>
+<li><b>Storage</b> &mdash; Dropbox and iCloud cap free capacity and sell subscriptions to larger accounts.</li>
+<li><b>Number of users</b> &mdash; the free tier covers one person, so a growing team outgrows it.</li>
+<li><b>Class of user</b> &mdash; the service is restricted to a group such as educational users.</li>
 </ul>
-<p>Choosing that line is the hard part. Free offerings must be compelling enough to attract users, yet if too many features are free, few will pay for the premium version. Often a process of fine tuning and adjustment is needed, and it is hardest when the change reduces the service level of the free offering &mdash; as when the calendar app Fantastical moved previously free features into its premium offering.</p>
-<div class="callout info"><p><b>Free games are the extreme case.</b> Mobile games such as Candy Crush or Honor of Kings download free and sell <b>in-app purchases</b> of extra features, content, or in-game currency. In 2024 alone, Honor of Kings took in more than US$1.8 billion globally that way, and players gain too, since developers depend on that revenue and keep upgrading the game.</p></div>
+<p>Drawing that line is the hard part. The free offer must be compelling, yet if too much is free few will pay, and moving a free feature behind the wall costs goodwill.</p>
+<div class="callout info"><p><b>Free games are the extreme case.</b> Mobile games download free and sell <b>in-app purchases</b> of features, content or in-game currency. Honor of Kings took more than US$1.8 billion that way in 2024.</p></div>
 
 <div class="activity" data-activity="revQuiz1"></div>
 
 <h3>Pipes and platforms</h3>
-<p>Traditionally, many business models functioned like <b>pipes</b>: the firm produced a product and pushed it out to customers, so value flowed in one direction and the firm, not the customer, was the one producing it.</p>
-<p>Increasing digital density enabled another shape. A <b>platform-based business model</b> does not provide the product or service itself; it coordinates others &mdash; businesses and users &mdash; to co-create value, building a digital ecosystem where some users produce and others consume. People uploading to Instagram or Pinterest produce what others consume, and Uber and Airbnb depend on users to offer and take the rides and rooms.</p>
-<p>What gets exchanged on a platform is wider than most people assume.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Value created or exchanged</th><th>Examples</th></tr></thead>
-<tbody>
-<tr><td><b>Products</b></td><td>Amazon Marketplace, eBay</td></tr>
-<tr><td><b>Services</b></td><td>Airbnb, Uber</td></tr>
-<tr><td><b>Payments</b></td><td>Square, PayPal, Venmo, Zelle</td></tr>
-<tr><td><b>Investments and funding</b></td><td>Kickstarter, Lending Club</td></tr>
-<tr><td><b>Content</b></td><td>Wikipedia, X, YouTube, TikTok</td></tr>
-<tr><td><b>Communication</b></td><td>WhatsApp, Zoom</td></tr>
-<tr><td><b>Collaboration</b></td><td>Dropbox</td></tr>
-<tr><td><b>Social relationships</b></td><td>Facebook, LinkedIn</td></tr>
-</tbody>
-</table></div>
-
-<p>Serving producers and consumers at once creates a <b>two-sided market</b>, whose success depends on the network effect. Who pays is a separate decision: Airbnb charges a transaction fee to both parties, while YouTube charges a third party, the advertisers.</p>
-<p class="takeaway">The two shapes are not rivals on a shelf &mdash; many pipeline businesses already carry platform elements such as user reviews, so the question is how much platform a business model should contain.</p>
+<p>Traditionally business models worked like <b>pipes</b>: the firm produced a product and pushed it out, and value flowed one way.</p>
+<p>A <b>platform-based business model</b> does not provide the product itself; it coordinates others to co-create value, so some users produce and others consume. Uber and Airbnb depend on users to offer the rides and rooms.</p>
+<p>Serving producers and consumers at once creates a <b>two-sided market</b>. Who pays is separate: Airbnb charges both parties, while YouTube charges advertisers.</p>
 
 <div class="activity" data-activity="revPipeVsPlatform"></div>
 
 <h3>Network effects, and which side they come from</h3>
-<p>A network effect is what happens to a platform&rsquo;s value when the number of people on it changes. The chapter separates two kinds, and the only difference is which side the newcomers join.</p>
+<p>A network effect is what happens to a platform&rsquo;s value when the number of people on it changes. The chapter separates two kinds by which side the newcomers join.</p>
 <ul class="keys">
-<li><b>Same-side network effects</b> &mdash; the increase or decrease in value as users join on the same side of the network, so people doing what you do change what the platform is worth to you.</li>
-<li><b>Cross-side network effects</b> &mdash; the change in value for a user if users join on the other side, so the people you are matched with change what it is worth.</li>
+<li><b>Same-side network effects</b> &mdash; the increase or decrease in value as users join on the same side, so people doing what you do change what the platform is worth to you.</li>
+<li><b>Cross-side network effects</b> &mdash; the change in value when users join the other side, so the people you are matched with change what it is worth.</li>
 </ul>
-<p>Notice the phrase increase or decrease. Same-side effects run both ways, and the chapter supplies an example of each.</p>
-<ul class="split">
-<li>Positive: as more users switch to iOS, everyone benefits from wider compatibility of its Keynote presentation format.</li>
-<li>Negative: as more riders use Uber, competition for available rides increases, which is what surge pricing manages.</li>
-</ul>
-<p>Cross-side effects run between the two sides, and the chapter&rsquo;s example arrives as a pair pointing opposite ways: the app store becomes more useful for users as more apps are added, and app developers are more likely to develop iOS apps as more users use iOS. Each side is why the other shows up.</p>
-<p>So a platform has value only where users participate in production or consumption, and it must attract producers and consumers alike. That is why these firms evaluate the various same-side and cross-side effects carefully rather than chase a user count.</p>
-
-<div class="callout info"><p><b>Reasoning from the mechanism, not a claim the chapter makes.</b> The chapter defines the two effects but never describes a market tipping to one winner, so check this rather than memorize it. If each consumer who joins makes the platform more attractive to producers, and each producer makes it more attractive to consumers, the platform slightly ahead keeps getting easier to join, and an early lead compounds. Expect concentration, not a guarantee: a negative same-side effect, a regulator, or a stronger local rival can interrupt the loop.</p></div>
+<p>Note the phrase increase or decrease. More iOS users means wider Keynote compatibility; more Uber riders means more competition for the same rides.</p>
+<p>Cross-side effects arrive as a pair: the app store grows more useful as apps are added, and developers build for iOS as more users adopt it. Each side is why the other shows up.</p>
 
 <div class="activity" data-activity="revMatch"></div>
 
 <h3>The sharing economy</h3>
-<p>Many platforms match providers and customers directly, with no traditional middleman &mdash; <b>disintermediation</b>. As individuals began sharing physical goods and services this way, not only content, many concluded we are moving toward a <b>sharing economy</b>, sometimes called a collaborative economy. The chapter takes its definition from a dictionary: an economic system in which assets or services are shared between private individuals, either free or for a fee, typically by means of the internet.</p>
-<p>The claim underneath is that ownership is not what counts; access to the asset is. Three consequences follow.</p>
-<ul class="keys">
-<li><b>Assets get used harder</b> &mdash; research cited in the chapter found that one vehicle on a car-sharing platform such as Free2Move, a subsidiary of the multinational automaker Stellantis, can replace up to 13 privately owned vehicles, and for some people Uber replaces the need to own one.</li>
-<li><b>Goods last longer</b> &mdash; platforms such as Craigslist or eBay encourage selling used goods, extending the usable life of many products.</li>
-<li><b>The definition blurs</b> &mdash; the Lyft scooters show the boundary between true sharing and refined renting becoming hard to draw.</li>
-</ul>
-<p>Early sharing-economy thinking included social goals such as waste reduction and greater human interaction, which matter less now. The benefits usually cited today are practical ones: more flexible work arrangements, and the chance to earn extra income by renting out an apartment through Airbnb or driving for Uber.</p>
-<p>These business models are not without criticism. In the <b>gig economy</b>, workers are not employed by the company but hired only for short-term, temporary jobs, and rights fought for since the Industrial Revolution are often neglected: no protection against discrimination, no social security, little job security, limited income opportunity. Uber and Airbnb have also sought advantage over traditional businesses by breaking, or at least bypassing, existing laws and regulations, which can often be regarded as unfair competition.</p>
+<p>Many platforms match providers and customers directly, with no middleman &mdash; <b>disintermediation</b>. As individuals began sharing physical goods this way, many concluded we are moving toward a <b>sharing economy</b>, or collaborative economy: assets or services shared between private individuals, free or for a fee, over the internet.</p>
+<p>Access matters more than ownership there. One car-sharing vehicle can replace up to 13 privately owned cars, and the benefits cited are practical: flexible work and extra income.</p>
+<p>These models draw criticism. In the <b>gig economy</b> workers are not employed but hired for short-term jobs, and rights fought for since the Industrial Revolution are neglected: no discrimination protection, no social security, little job security.</p>
 
 <div class="activity" data-activity="revBreaks"></div>
 
-<h3>When things go wrong: out-disrupting the disrupter</h3>
-<div class="callout warn">
-<p>Uber built a successful business in many locations by using social, mobile, and Big Data to disrupt local transportation, and protected taxi monopolies struggled to react. Many locales fought back in legislatures or in court, and Uber has been sued countless times. In China a competitor tried the other approach: out-disrupting Uber.</p>
-<ul class="keys">
-<li><b>The rival was itself a merger</b> &mdash; DiDi Kuaidi combined the taxi-hailing services of Alibaba and Tencent, China&rsquo;s internet giants, so it began with scale.</li>
-<li><b>It widened the platform</b> &mdash; renamed DiDi Chuxing, it let users pick a taxi, private car, shared car, shuttle van, or bus, and in 2025 had more than 550 million users globally in the ride-sharing market.</li>
-<li><b>Regulation settled it</b> &mdash; as Amazon and Google learned before, regulation in China often favors local businesses, and Uber could not beat a state-backed rival.</li>
-</ul>
-<p>In mid-2016 Uber withdrew from the Chinese market, selling all its assets to its competitor for a minority stake. DiDi Chuxing kept advancing and is on the cusp of launching a self-driving taxi.</p>
-</div>
+<div class="callout warn"><p><b>Out-disrupting the disrupter.</b> In China, DiDi Chuxing merged Alibaba&rsquo;s and Tencent&rsquo;s hailing services, widened the platform to taxis, private cars, vans and buses, and had the regulator&rsquo;s favor. Uber withdrew in 2016 for a minority stake.</p></div>
 
 <h3>Service-based business models and XaaS</h3>
-<p>Digital density enabled one more shift: selling the use of a product rather than the product, sometimes called <b>XaaS</b>, or X as a service. A manufacturer that used a pipe model to build and sell goods can instead offer two kinds of service.</p>
+<p>Digital density enabled one more shift: selling the use of a product rather than the product, called <b>XaaS</b>, or X as a service. A manufacturer can offer two kinds of service.</p>
 <ul class="keys">
-<li><b>Equipment services</b> &mdash; offering the product itself as a service, or operations and optimization services, so the customer buys an outcome rather than a machine.</li>
-<li><b>Information services</b> &mdash; selling data or insights generated by the customer&rsquo;s usage of the product, which is revenue from something the product already produced.</li>
+<li><b>Equipment services</b> &mdash; the product offered as a service, so the customer buys an outcome rather than a machine.</li>
+<li><b>Information services</b> &mdash; selling data or insights generated by the customer&rsquo;s usage of the product.</li>
 </ul>
-<p>Jet engines are the clearest case. Rolls-Royce and GE traditionally sold engines to aircraft owners; because the bargaining power of buyers is high, that market is competitive, and much of their revenue came from maintenance and spare parts.</p>
-<p>Under a service-based model, GE is paid for guaranteeing continuous uptime &mdash; essentially thrust as a service. The customer buys neither engine nor spare parts and pays for hours of usage, turning fixed costs into variable ones, and the manufacturer earns only while engines run, so it gains a reason to improve the design and do preventive maintenance.</p>
-<p>None of it works without the Internet of Things: sensors throughout the engines, connected to the internet, let GE monitor performance, predict failure, and schedule maintenance. Philips does the same on the ground, providing lighting as a service to dozens of parking garages of the Washington Metropolitan Area Transit Authority, which needs no upfront capital while Philips earns from the energy savings.</p>
-<p>The transition is hard, and the difficulties are internal rather than technical.</p>
-<ul class="keys">
-<li><b>The manufacturing goal inverts</b> &mdash; rather than minimizing build cost, the firm focuses on life span and ease of repair, because it lives with the product.</li>
-<li><b>Selling changes shape</b> &mdash; a product sale negotiates price and features, while a service needs new pricing models, new business processes, and service level agreements.</li>
-<li><b>Capacity gets harder</b> &mdash; managing inventories and capacity is tougher, because demand for services fluctuates as a build-and-ship schedule does not.</li>
-<li><b>The buyer is different</b> &mdash; the segment targeted for products is often not the one buying services, forcing changes to marketing.</li>
-</ul>
-<p class="takeaway">Across freemium, platforms, and XaaS the same move repeats: the firm stops charging once for an object and gets paid instead for continued access, participation, or performance.</p>
+<p>GE traditionally sold jet engines and earned on spare parts. Under a service model it is paid for guaranteeing uptime &mdash; thrust as a service. The customer pays for hours flown, so the manufacturer earns only while engines run and gains a reason to improve the design. Sensors reporting over the internet make it possible.</p>
+<p class="takeaway">Across freemium, platforms and XaaS the same move repeats: the firm stops charging once for an object and gets paid instead for continued access, participation, or performance.</p>
 
 <div class="activity" data-activity="revQuiz2"></div>
 `;
