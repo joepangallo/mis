@@ -23,7 +23,18 @@ PROSE.s32e = `
 <h3>What a page is actually made of</h3>
 <p>A page is written in <b>Hypertext Markup Language</b>, or HTML, the standard method of specifying the structure and content of web pages, using codes called <b>HTML tags</b> &mdash; in angle brackets, usually paired &mdash; that tell the browser how to present it.</p>
 <p><b>HTML5</b> is the chapter&rsquo;s name for the current version, which added multimedia without extra software. <b>Cascading style sheets</b>, or CSS, specify formatting and layout: HTML says what a document&rsquo;s parts are, CSS says how they look, so one change restyles a thousand pages.</p>
-<p>Match the chapter&rsquo;s eight tags to what each one does.</p>
+<p>The eight tags the chapter uses are worth having in front of you, because none of them can be worked out from first principles &mdash; they are conventions.</p>
+<ul class="list-tight">
+<li><b>&lt;html&gt;</b> &mdash; the whole document; everything else sits inside it</li>
+<li><b>&lt;head&gt;</b> &mdash; title, styles and metadata that are not displayed</li>
+<li><b>&lt;body&gt;</b> &mdash; the visible part, everything the reader actually sees</li>
+<li><b>&lt;p&gt;</b> &mdash; a paragraph, which is how the browser knows where to break text</li>
+<li><b>&lt;b&gt;</b> &mdash; bold on at the opening tag, off at the closing one</li>
+<li><b>&lt;table&gt;</b> &mdash; lay the enclosed content out in rows and columns</li>
+<li><b>&lt;a href&gt;</b> &mdash; a hyperlink carrying the reader to another document</li>
+<li><b>&lt;a href&gt; with mailto</b> &mdash; a link that opens a new email instead of a page</li>
+</ul>
+<p>Now match them to what each one does without looking back.</p>
 
 <div class="activity" data-activity="webTags"></div>
 

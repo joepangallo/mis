@@ -23,7 +23,7 @@ PROSE.s41a = `
 <h3>Cutting out the middleman</h3>
 <p>The internet and the web then widened all of that, and selling to individual consumers became practical. The web changed how firms create and capture value: a producer that once needed somebody else to reach buyers could now reach them itself, which broke business models that had been stable for a century.</p>
 <p><b>Disintermediation</b> is the name for that: cutting out the middleman &mdash; the wholesalers and retailers that traditionally sat between a producer and its customers &mdash; and reaching customers directly. Airlines selling seats on their own sites are one example, and direct-to-consumer brands are another.</p>
-<p>Selling direct is not the only outcome. Many producers who leave a wholesaler behind list inside an <b>electronic marketplace</b> instead &mdash; a shared venue such as Amazon or Etsy, where many sellers reach many buyers and an almost limitless range of services can be offered. It supplies the reach and charges for it.</p>
+<p>Selling direct is not the only outcome. Many producers who leave a wholesaler behind list inside an <b>electronic marketplace</b> instead, also called an <b>online marketplace</b> &mdash; a shared venue such as Amazon or Etsy, where many sellers reach many buyers and an almost limitless range of services can be offered. It supplies the reach and charges for it.</p>
 <p>Compare the three arrangements below, and watch who is carrying the cost of reaching the customer in each one.</p>
 
 <div class="activity" data-activity="ecDiagram"></div>
@@ -38,6 +38,8 @@ PROSE.s41a = `
 <p>Every one of those is work, and disintermediation hands it to the producer along with the margin. The case below is a hypothetical workshop weighing exactly that move, with invented figures.</p>
 
 <div class="activity" data-activity="ecCase"></div>
+
+<p>Selling online also lets the price itself move. <b>Dynamic pricing</b> sets a price that follows demand rather than a published list, which earns the seller more when demand is high and is among the practices customers most often name when a market stops feeling fair.</p>
 
 <h3>Why an online presence stopped being optional</h3>
 <p>Two properties explain why an online presence became a strategic necessity for most companies, and neither of them is about fashion.</p>

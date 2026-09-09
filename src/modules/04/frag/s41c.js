@@ -34,6 +34,8 @@ PROSE.s41c = `
 
 <p class="takeaway">A bank sells breadth. A fintech firm sells depth. Almost every argument in this section is really about which of the two a particular customer needs at a particular moment.</p>
 
+<p>One of those narrow firms is worth naming because the phrase recurs. <b>Peer-to-peer lending</b> matches people with money to lend against people who want to borrow it, so the platform underwrites nothing and takes a fee for the introduction.</p>
+
 <h3>Four money jobs in one small business</h3>
 <p>Strip a small trading business down and its money handling is four separate jobs. They feel like one job because a single bank account has always covered all four of them.</p>
 <ul class="keys">

@@ -20,7 +20,19 @@ PROSE.s34c = `
 
 <h3>Ten questions to put to a provider</h3>
 <p>A prior decision comes first: which applications, services or data should move at all. No single provider meets every need.</p>
-<p>For each candidate the chapter lists ten criteria: availability, reliability, scalability, viability, security, privacy, compliance, diversity of offerings, openness and cost. Treat them as questions &mdash; one you cannot phrase as a question you will not ask.</p>
+<p>For each candidate the chapter lists ten criteria. Treat them as questions to carry into a meeting: one you cannot phrase as a question is one you will not ask.</p>
+<ul class="list-tight">
+<li><b>Availability</b> &mdash; what uptime is promised, and what happens in the hours it is not met</li>
+<li><b>Reliability</b> &mdash; what is backed up, and how fast you could reach it</li>
+<li><b>Scalability</b> &mdash; whether your peaks and your three-year volumes are absorbed</li>
+<li><b>Viability</b> &mdash; what it would cost you if this provider stopped trading</li>
+<li><b>Security</b> &mdash; how data is protected, and whether access can be evidenced</li>
+<li><b>Privacy</b> &mdash; who may see records, and under what conditions</li>
+<li><b>Compliance</b> &mdash; whether your sector's duties permit where the data would sit</li>
+<li><b>Diversity of offerings</b> &mdash; whether one relationship covers what you will need next</li>
+<li><b>Openness</b> &mdash; how you would get terabytes back out, how long, at what charge</li>
+<li><b>Cost</b> &mdash; the true figure once licences, power, facilities and staff are counted</li>
+</ul>
 
 <div class="activity" data-activity="decCriteria"></div>
 
@@ -41,6 +53,13 @@ PROSE.s34c = `
 <li><b>Auditing who touched the data is very hard</b> &mdash; possibly impossible, and knowing who reached a record is often the substance of an obligation.</li>
 </ul>
 <p>Control is the other half. In a rented infrastructure control over data is reduced, legal rights fewer, and providers may be required to hand records to law enforcement. Firms holding medical records often keep those in their own building.</p>
+<p>None of that moves the duty. Renting the machines does not rent out the obligation, and three families of rule reach the customer rather than the provider.</p>
+<ul class="keys">
+<li><b>Financial reporting duties</b> are law, and they require an organization to show that the records behind its published figures were controlled and have not been altered.</li>
+<li><b>Health information duties</b> are also law, and they permit cloud use while requiring a written agreement with the provider and specified safeguards, so the arrangement is conditional rather than forbidden.</li>
+<li><b>Payment card rules</b> are an industry standard rather than legislation, enforced through the contract with the card networks, which is a different kind of pressure with a similar effect.</li>
+</ul>
+<p>The manager's question is therefore never whether the provider is compliant. It is which of the customer's own obligations the provider can evidence, and what the contract says when a regulator asks.</p>
 
 <h3>Getting out again</h3>
 <p>Openness, or interoperability, is noticed last and felt hardest. Providers store data differently, which makes moving between them extremely difficult and can lock a company in. Their tools make moving easier &mdash; inward.</p>

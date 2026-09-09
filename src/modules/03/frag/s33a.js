@@ -10,6 +10,8 @@ PROSE.s33a = `
 <p class="takeaway">Ask what the organization can no longer do, not what has failed. Obsolescence is a capability gap, and a fleet with a perfect maintenance record can have an enormous one.</p>
 
 <h3>Generations of computing</h3>
+<p>Before any of this, an organization's memory was paper in cabinets. Finding one record meant knowing where somebody had filed it, two people could not consult it at once, and what the filing clerk knew left the building when they did.</p>
+<p>That is the problem the first computers were bought to solve. They were not productivity gadgets; they were a storage and retrieval answer, which is why the eras that follow are worth reading as successive answers to the same question.</p>
 <p>Shifts in computing eras came from fundamental changes in how the technology worked, and each is a <b>generation of computing</b>: vacuum tubes, transistors, integrated circuits, cheap multimedia computers, widespread internet access, mobile connectivity, and now artificial intelligence and quantum computing.</p>
 <p>Put the shifts in order. The chain of era names is the clue: mainframe, personal, interpersonal, internetworking, cloud.</p>
 

@@ -25,7 +25,8 @@ PROSE.s21d = `
 <li><b>Distinctive competencies</b> &mdash; what resources and capabilities produce together, such as innovation, agility or quality, and what makes a product valuable relative to competitors.</li>
 <li><b>Superior value creation</b> &mdash; the aim of the whole chain, reached when a firm provides products at lower cost or with differentiated benefits.</li>
 </ul>
-<p>Figure 2.13 draws the sequence: resources and capabilities feed competencies, which produce a cost or differentiation advantage. An asset nobody uses well never becomes a competency, and anything a rival can order this afternoon is not superior. Several of Figure 2.14&rsquo;s eight sources are informational, so systems often sit inside the resources themselves.</p>
+<p>Figure 2.13 draws the sequence: resources and capabilities feed competencies, which produce a cost or differentiation advantage. An asset nobody uses well never becomes a competency, and anything a rival can order this afternoon is not superior.</p>
+<p>The chapter lists eight sources such an advantage can come from &mdash; quality, service, speed, cost, differentiation, innovation, customer relationships and information itself. Several are informational, which is why systems so often sit inside the resource rather than beside it.</p>
 
 <div class="activity" data-activity="vchQuiz1"></div>
 

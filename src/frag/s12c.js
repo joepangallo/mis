@@ -43,12 +43,13 @@ PROSE.s12c = `
 <tr><td><b>Electronic commerce system</b></td><td>Enables customers to buy goods and services from a firm&rsquo;s website</td></tr>
 </tbody>
 </table></div>
-<p>The transaction processing system is the foundation, and it also generates enormous amounts of data to learn from.</p>
+<p>The transaction processing system is the foundation, and it also generates enormous amounts of data to learn from. Follow one supermarket through three of the categories and the difference between them stops being vocabulary.</p>
 <ul>
-<li>Your grocery store scans bar codes, then prints coupons on the receipt for related products.</li>
-<li>Amazon processes thousands of transactions an hour, feeding warehouses that produce recommendations for later customers.</li>
+<li><b>Transaction processing</b> &mdash; the checkout scans a bar code and records that this item, at this price, sold at this moment.</li>
+<li><b>Management information</b> &mdash; Monday's report tells the store manager which lines moved last week, built from nothing but those scans.</li>
+<li><b>Decision support</b> &mdash; a model asks how many to order before a holiday weekend, testing options against the same history.</li>
 </ul>
-<p>That data feeds the management information, decision support, business intelligence, and knowledge management systems. Pair each category with its purpose.</p>
+<p>Each rung answers a different question from one set of records: what happened, what has been happening, and what should we do. That is also why the same data feeds the business intelligence and knowledge management systems. Pair each category with its purpose.</p>
 
 <div class="activity" data-activity="orgMatch"></div>
 

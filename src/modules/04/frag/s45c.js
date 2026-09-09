@@ -18,7 +18,7 @@ PROSE.s45c = `
 <li><b>Transaction volume</b> &mdash; how much is being bought, set against what this shop and this buyer normally do.</li>
 <li><b>Network address</b> &mdash; the customer&rsquo;s address on the network and the geographic location it resolves to.</li>
 </ul>
-<p>The chapter also passes on one card network&rsquo;s published indicators; it names Visa. Two groups concern appearance: meaningless email strings at free providers, and addresses that disagree, reach high-risk destinations, or misspell street names.</p>
+<p>The chapter also passes on one card network&rsquo;s published <b>fraud indicators</b>; it names Visa. Two groups concern appearance: meaningless email strings at free providers, and addresses that disagree, reach high-risk destinations, or misspell street names.</p>
 <p>The third is pattern: orders larger than usual, several of the same item, mostly big-ticket goods, repeated orders on one card, several cards shipping to one address, and overnight delivery, which shortens the seller&rsquo;s window.</p>
 <p class="takeaway">None of these is a test. Each moves a score, and most describe enormous numbers of ordinary customers. The cost of refusing a real buyer &mdash; the sale, the margin, the customer &mdash; belongs beside the cost of fraud.</p>
 <p>Below are single facts about one order. Decide which way each moves the score.</p>

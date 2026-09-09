@@ -34,6 +34,8 @@ PROSE.s22b = `
 <p>Traditionally business models worked like <b>pipes</b>: the firm produced a product and pushed it out, and value flowed one way.</p>
 <p>A <b>platform-based business model</b> does not provide the product itself; it coordinates others to co-create value, so some users produce and others consume. Uber and Airbnb depend on users to offer the rides and rooms.</p>
 <p>Serving producers and consumers at once creates a <b>two-sided market</b>. Who pays is separate: Airbnb charges both parties, while YouTube charges advertisers.</p>
+<p>Work one example all the way through and the shape becomes usable. On a video platform the producer contributes the video, the consumer contributes attention, the advertiser contributes the money, and the platform contributes only the matching &mdash; which is why it owns no studio and still takes a share of everything.</p>
+<div class="callout info"><b>Reasoning from the mechanism, not from the chapter.</b> Because each new user makes the platform more valuable to the other side, the feedback can push a market toward one dominant player. That is a tendency rather than a law: it stalls where users happily belong to several platforms at once, where buyers and sellers cluster into niches, or where switching stays cheap. Asking what would interrupt the feedback is the move, not assuming a single winner.</div>
 
 <div class="activity" data-activity="revPipeVsPlatform"></div>
 

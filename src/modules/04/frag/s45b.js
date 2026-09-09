@@ -18,7 +18,7 @@ PROSE.s45b = `
 
 <h3>A payment with nobody in the middle</h3>
 <p><b>Cryptocurrencies</b> are virtual currencies that no central bank issues, using cryptographic techniques to secure transactions and to generate new units of the currency. The chapter is even-handed about them: they are often described as serving mainly illicit trade, and they have various legitimate applications too.</p>
-<p>The claim worth testing is a narrow one. The technology under the best-known cryptocurrency requires no trusted middleman, which cuts the cost of a transfer to a negligible amount and makes both very small payments and international transfers practical.</p>
+<p>The claim worth testing is a narrow one. The technology under the best-known cryptocurrency requires no trusted middleman, which cuts the cost of a transfer to a negligible amount and makes both <b>micropayments</b> &mdash; payments too small to survive a percentage fee &mdash; and international transfers practical.</p>
 <p>It was launched around 2008 by a developer working under a pseudonym. Payment processing is handled by thousands of computers around the world, each running the same open source software, so there is no head office, no opening hours and no national holidays.</p>
 <p>A transfer is announced to that network, and any computer that wants to verify it may. Two words are worth having in advance: a <b>digital signature</b> proves that the holder of a sending address authorised that particular transfer, and a <b>block</b> is the batch of verified transfers added to the record in one go.</p>
 <p>Blocks are added only when a majority of the machines holding the record accept them. The sequence below is one payment, from request to permanent record.</p>
@@ -26,11 +26,11 @@ PROSE.s45b = `
 <div class="activity" data-activity="cryOrder"></div>
 
 <h3>What indelible and public mean together</h3>
-<p>The record those computers keep is a <b>blockchain</b>: an indelible, decentralized public ledger to which transactions are added in blocks, standing as proof of every transaction ever made.</p>
+<p>The record those computers keep is a <b>blockchain</b>: an indelible public ledger held across a <b>decentralized peer-to-peer network</b>, to which transactions are added in blocks, standing as proof of every transaction ever made.</p>
 <p>Two descriptions in common use are worth correcting here, because both hide what the design is actually doing.</p>
 <ul class="keys">
 <li><b>Pseudonymous, not anonymous</b> &mdash; no names appear on the ledger, only addresses, but every transaction sits there permanently for anyone to read, and an address can often be tied to a person by other means. A permanent public record cannot also be a private one.</li>
-<li><b>Hashing and signatures, not secrecy</b> &mdash; hashing links each block to the one before it, so the history cannot be quietly rewritten by anybody. Nothing is concealed, because a ledger has to be readable by everybody to be checkable by everybody.</li>
+<li><b>Hashing and signatures, not secrecy</b> &mdash; a <b>cryptographic hash</b> links each block to the one before it, so the history cannot be quietly rewritten by anybody. Nothing is concealed, because a ledger has to be readable by everybody to be checkable by everybody.</li>
 </ul>
 <p>Entries once made cannot be deleted. That is the property that makes tampering hard, and it is the same property that makes a mistake permanent: there is no middleman left to reverse a payment sent to the wrong address.</p>
 

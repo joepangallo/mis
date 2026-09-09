@@ -44,6 +44,7 @@ PROSE.s41b = `
 <div class="activity" data-activity="typSort"></div>
 
 <h3>Where the money actually is</h3>
+<p>Two channel names cut across all four directions. <b>Mobile commerce</b> is any of this conducted from a phone or tablet, and <b>social commerce</b> is trade that runs through a social platform, where the recommendation and the purchase sit in the same place.</p>
 <p>Most people meet electronic commerce as B2C, because that is the part of it they can see. By revenue it is the smaller half, and not by a little. B2B is the largest form of all, because a great many firms trade with other firms and never with a consumer.</p>
 <p>The chapter reports 2022 figures for United States manufacturers&rsquo; electronic-commerce shipments and for wholesalers&rsquo; electronic-commerce sales, each measured in trillions of dollars. Learn the ordering rather than the digits: business-to-business volume dwarfs the consumer-facing volume, and a figure like that is a snapshot of one year.</p>
 <p>The second thing to carry away is that one firm is rarely one type. Take a consumer-facing company &mdash; the chapter&rsquo;s example is a clothing and home furnishing retailer &mdash; and follow a single product through it.</p>

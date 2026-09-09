@@ -30,7 +30,17 @@ PROSE.s34b = `
 <div class="activity" data-activity="svcSort"></div>
 
 <h3>The line that decides everything</h3>
-<p>Learners go wrong memorizing which brand belongs to which model; brands move, and providers sell all three. The durable test is <b>what do my people still look after on Monday morning?</b> Three things catch people out.</p>
+<p>Learners go wrong memorizing which brand belongs to which model; brands move, and providers sell all three. The durable test is <b>what do my people still look after on Monday morning?</b> One comparison answers it.</p>
+<div class="tbl-wrap"><table class="tbl">
+<thead><tr><th>Who looks after it</th><th>Infrastructure</th><th>Platform</th><th>Software</th></tr></thead>
+<tbody>
+<tr><td>Facility, hardware, network</td><td>Provider</td><td>Provider</td><td>Provider</td></tr>
+<tr><td>Operating system, database, runtime</td><td><b>You</b></td><td>Provider</td><td>Provider</td></tr>
+<tr><td>The application itself</td><td><b>You</b></td><td><b>You</b></td><td>Provider</td></tr>
+<tr><td>Your data, and who may see it</td><td><b>You</b></td><td><b>You</b></td><td><b>You</b></td></tr>
+</tbody>
+</table></div>
+<p>Read the bottom row first: it never moves. Three things then catch people out.</p>
 <ul class="keys">
 <li><b>No rung takes away your data or decisions</b> &mdash; which records exist, who may see them and what they mean is still your problem.</li>
 <li><b>Higher is not better</b> &mdash; less work and less control, and which matters depends on whether the thing is distinctive work or plumbing.</li>

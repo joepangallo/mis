@@ -18,10 +18,12 @@ PROSE.s45a = `
 
 <div class="activity" data-activity="payOrder"></div>
 
+<p>The padlock the shopper looks for has a name: <b>secure sockets layer (SSL) encryption</b>, which scrambles the card details in transit so they cannot be read between the browser and the seller. It protects the journey, not the shop at the other end of it.</p>
+
 <h3>The moment the sale is lost</h3>
 <p>Keeping transactions secure is one of the most important parts of selling to consumers, of consumers trading with each other, and of any purchase made on a phone. Money moves at that moment, and so does everything needed to move it.</p>
 <p>The chapter is blunt about the human half of the problem. People are reluctant to change their habits online, and they hand sensitive information to sites they know nothing about. As a snapshot of what that costs, the chapter reports that identity fraud cost Americans about US$23 billion in 2023.</p>
-<p>Shoppers who feel that unease respond by leaving. The chapter reports that more than half of online shopping carts are abandoned, and it names four reasons sitting behind most of it.</p>
+<p>Shoppers who feel that unease respond by leaving. The chapter reports that more than half of online shopping carts are abandoned, which is <b>shopping cart abandonment</b>, and it names four reasons sitting behind most of it.</p>
 <ul class="keys">
 <li><b>Security concerns</b> &mdash; the shopper is not sure this seller can be trusted with a card number, and walking away from a cart costs them nothing at all.</li>
 <li><b>Impatience</b> &mdash; the purchase was a passing intention rather than a plan, and every extra second gives that intention time to fade.</li>

@@ -24,8 +24,9 @@ PROSE.s46 = `
 <div class="activity" data-activity="ecoCase"></div>
 
 <h3>The store on the street</h3>
-<p>Now the shop you can walk into. Decades ago, large chains installed computerized point-of-sale inventory systems: a bar code scan captures the sale and deducts the item from stock, so the retailer sees in real time what to reorder.</p>
+<p>Now the shop you can walk into. Decades ago, large chains installed computerized <b>point-of-sale (POS) systems</b>: a bar code scan captures the sale and deducts the item from stock, so the retailer sees in real time what to reorder.</p>
 <p>Two things follow from that scan. Checkout gets quicker and shelves run empty less often, which customers feel as satisfaction rather than as a system. Every later change moved the scan.</p>
+<p>The scan itself is being replaced. <b>Radio frequency identification (RFID)</b> tags are read at a distance and several at once, so a trolley can be totalled without unpacking it &mdash; where the goods are valuable enough to justify a tag on each one.</p>
 <ul class="split">
 <li>Self-checkout, saving time and labour cost</li>
 <li>Scanning into the cart, paying at the counter</li>
@@ -44,10 +45,12 @@ PROSE.s46 = `
 
 <div class="activity" data-activity="ecoDiagram"></div>
 
+<p>Two answers to the online price run alongside the technology. <b>Price matching</b> promises to meet a competitor’s advertised price, which defends the sale and surrenders the margin; and <b>third-party fulfillment</b> hands warehousing, shipping and returns to an outside firm, buying speed the shop could not build.</p>
+
 <h3>What the shop still has to answer</h3>
 <p>That third journey has a name. In showrooming, a customer examines a product in person, then leaves to order it online for less. Storefronts cost billions to build and maintain, an online seller carries no such cost, and the store never recoups it.</p>
 <p>Two large chains named in the chapter encouraged the comparison rather than fighting it: browse the shelves, check prices online, and they will match the price and add personal service, keeping the customer and selling something else alongside.</p>
-<p>Other in-store technology pushes the same way. Fitting rooms use augmented reality to show how an item would look or to suggest something to go with it, and small radio beacons hand a shopper an offer while the goods are in front of them.</p>
+<p>Other in-store technology pushes the same way. Fitting rooms use augmented reality to show how an item would look or to suggest something to go with it, and <b>sales beacons</b> &mdash; small radio transmitters &mdash; hand a shopper an offer while the goods are in front of them.</p>
 <p>The chapter closes with three questions rather than answers. How can technology help a physical retailer compete with an online seller? How should it answer the criticism that tags track purchasing habits too closely? And how does a store avoid feeling sterile as people are replaced?</p>
 <p class="takeaway">Every technology here moves work somewhere: to the customer, to a supplier, or to a sensor. The decision is not whether the work moves, but what the store puts in the place it left.</p>
 

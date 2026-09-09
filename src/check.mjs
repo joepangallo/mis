@@ -401,6 +401,45 @@ GLOSSARY.forEach(g => {
   if (g.d && g.t && new RegExp("^\\s*" + g.t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + "\\b", "i").test(g.d))
     meh(`glossary "${g.t}": definition restates the term`);
 });
+/* Every glossary term must be introduced somewhere in the reading. A term that exists only in
+   the vocabulary list is one a student meets for the first time as an entry in a glossary, and an
+   activity that "carries" it does not count: activities reveal their explanations only after an
+   answer. This check exists because three separate density passes each reported complete coverage
+   and each was wrong - eleven terms across two modules had no teaching passage at all, some of
+   them predating the edit. A coverage claim has to be mechanical, not asserted. */
+{
+  const readingText = IDS.map((id) => plain(PROSE[id] || "")).join(" ");
+  const introduced = (term) => {
+    /* Normalise the term exactly the way plain() normalises the reading, or an entity such as
+       &rsquo; in the headword fails against the same apostrophe in the prose. */
+    const core = plain(term).replace(/\s*\(.*?\)/g, " ").replace(/\s+/g, " ").trim();
+    if (!core) return true;
+    const variants = new Set();
+    const add = (v, min = 3) => {
+      const t = v.replace(/\s+/g, " ").trim();
+      if (t.length >= min) { variants.add(t); variants.add(t + "s"); variants.add(t.replace(/s$/, "")); variants.add(t.replace(/y$/, "ies")); }
+    };
+    add(core, 1);
+    /* A parenthetical usually holds the abbreviation the prose may use instead. */
+    for (const m of String(plain(term)).matchAll(/\(([^)]+)\)/g)) add(m[1]);
+    /* Compound headwords - "X and Y", "X/Y" - are introduced if either half is. */
+    for (const half of core.split(/\s+and\s+|\//)) add(half, 5);
+    /* A headword often ends in a generic noun the prose drops: the reading says
+       "card-not-present" where the glossary says "card-not-present transaction".
+       Allow one such tail to fall away, but never reduce a term to a single word,
+       so "mobile commerce" is not satisfied by the word "commerce". */
+    const GENERIC_TAIL = /\s+(transaction|transactions|system|systems|law|laws|model|models|service|services|tool|tools|technology|technologies|effect|effects|site|sites|software|application|applications)$/;
+    if (GENERIC_TAIL.test(core)) {
+      const head = core.replace(GENERIC_TAIL, "");
+      if (head.includes(" ") || head.includes("-")) add(head, 5);
+    }
+    return [...variants].some((f) => readingText.includes(f));
+  };
+  const orphans = GLOSSARY.filter((g) => !introduced(g.t)).map((g) => g.t);
+  if (orphans.length)
+    bad(`${orphans.length} glossary term(s) are never introduced in the reading: ${JSON.stringify(orphans.slice(0, 8))}`);
+}
+
 const fq = FINAL.questions || [];
 need(fq.length === MANIFEST.finalQuestionCount, `final has ${fq.length} questions; manifest requires ${MANIFEST.finalQuestionCount}`);
 const byObj = {}, byPos = {0:0,1:0,2:0,3:0};
