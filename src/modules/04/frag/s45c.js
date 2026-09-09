@@ -188,9 +188,9 @@ ACT.rskSim = {
     {
       situation: "A US$3,100 order for two compressor control units arrives at ten in the evening. Billing and shipping addresses differ, the buyer has asked for overnight delivery, and the screening service returns a middling score. Nothing can leave the building before tomorrow afternoon. What do you do first?",
       opts: [
-        {t: "Use the shipping window: check the security code, find earlier orders, and call the buyer.", ok: true, out: "Right. The transaction date is the date the goods ship, so a physical order comes with a verification window that a download would not have had. Spend it on the security-code result, this buyer&rsquo;s earlier orders and the number on the order; the chapter&rsquo;s two responses are to verify or to reject."},
         {t: "Decline the order. Two published indicators are present and the amount is well above average.", ok: false, out: "Two indicators are two signals, not a finding. Both of them describe large numbers of legitimate buyers, and the refusal costs the sale, the margin and probably the customer, who orders somewhere else tonight."},
         {t: "Ship it tonight to protect the delivery promise, and watch the account for a dispute.", ok: false, out: "This spends the only advantage the supplier had. The window exists precisely because the goods have not moved yet; once they have, the exposure is the amount, the merchandise, the processing costs and the fee."},
+        {t: "Use the shipping window: check the security code, find earlier orders, and call the buyer.", ok: true, out: "Right. The transaction date is the date the goods ship, so a physical order comes with a verification window that a download would not have had. Spend it on the security-code result, this buyer&rsquo;s earlier orders and the number on the order; the chapter&rsquo;s two responses are to verify or to reject."},
         {t: "Ask the buyer to email photographs of the card and an identity document before anything ships.", ok: false, out: "That creates a file of sensitive images the supplier must now protect, and card rules already forbid keeping the security code. A call to the number on the order answers the same question and keeps nothing."}
       ]
     },
@@ -206,17 +206,17 @@ ACT.rskSim = {
     {
       situation: "Seven weeks later a chargeback arrives, and it is not fraud. The buyer says the control units were not the version shown on the product page and that they could not find how to return them inside the supplier&rsquo;s window. The money, the goods, the processing costs and a fee are all gone.",
       opts: [
-        {t: "Answer the dispute with the order record, and log what actually caused it.", ok: true, out: "Right. Answer it with the record and the product page as it stood. The reason is the useful part: this dispute was produced by a product page and a returns window, not by a stolen card. The log is what tells you that once there are ten of them."},
         {t: "Write the loss off quietly, since a dispute this old is not worth the paperwork.", ok: false, out: "Writing it off keeps the loss and throws away the information. A supplier that never records why disputes happen cannot tell description problems from card fraud, and will keep buying the wrong remedy."},
         {t: "Block this buyer and refuse every future order with mismatched addresses.", ok: false, out: "The buyer here is a real customer with a complaint about the goods. Blocking them punishes the one person in the story who paid, and the address rule would refuse many more like them."},
-        {t: "Ask the screening service why its risk score did not catch this order.", ok: false, out: "There was nothing there for it to catch. Screening estimates whether the cardholder authorized the purchase; it has no view at all of whether the product page described what shipped."}
+        {t: "Ask the screening service why its risk score did not catch this order.", ok: false, out: "There was nothing there for it to catch. Screening estimates whether the cardholder authorized the purchase; it has no view at all of whether the product page described what shipped."},
+        {t: "Answer the dispute with the order record, and log what actually caused it.", ok: true, out: "Right. Answer it with the record and the product page as it stood. The reason is the useful part: this dispute was produced by a product page and a returns window, not by a stolen card. The log is what tells you that once there are ten of them."}
       ]
     },
     {
       situation: "The supplier reviews a year of disputes. Roughly two thirds read like this one: descriptions, returns and shipping terms. The rest are card fraud. There is budget for one change this quarter. What gets it?",
       opts: [
-        {t: "Rewrite the product pages, the returns window and the shipping terms on the site.", ok: true, out: "Right. The chapter is explicit that unclear store policies, product descriptions, shipping terms and currencies cause chargebacks and can be minimized through good web store design. Put them where a buyer sees them before paying: two thirds of this supplier&rsquo;s losses live there."},
         {t: "Buy a stricter screening tier and hold every order the score puts above the middle.", ok: false, out: "This buys more of a defence the supplier already has, aimed at the smaller share of its losses, and every extra hold adds delay and false declines for customers who were going to pay."},
+        {t: "Rewrite the product pages, the returns window and the shipping terms on the site.", ok: true, out: "Right. The chapter is explicit that unclear store policies, product descriptions, shipping terms and currencies cause chargebacks and can be minimized through good web store design. Put them where a buyer sees them before paying: two thirds of this supplier&rsquo;s losses live there."},
         {t: "Require a verification call before shipping any order above a set value.", ok: false, out: "Calls are a reasonable tool for a doubtful order, and the chapter recommends them there. As a blanket rule they slow every large sale, irritate good customers, and still say nothing about the descriptions."},
         {t: "Stop shipping to any delivery address that does not match the billing address.", ok: false, out: "Gifts, offices, workshops and travelling buyers all fail that rule. It turns a signal into a policy, refusing a great deal of ordinary business to prevent a fraction of one third of the losses."}
       ]
@@ -234,31 +234,31 @@ ACT.rskQuiz = {
     {
       q: "An order is charged back to a hypothetical shop. Beyond the money for the sale, what else does the chapter say the merchant loses?",
       opts: [
-        "The merchandise, the processing costs, and a chargeback fee",
         "The processing costs only, since the goods are returned to the seller",
         "The tax already remitted on the sale and the cost of the shipping label",
-        "Nothing further, because the card issuer absorbs the merchandise loss"
+        "Nothing further, because the card issuer absorbs the merchandise loss",
+        "The merchandise, the processing costs, and a chargeback fee"
       ],
-      a: 0,
+      a: 3,
       why: [
-        "Correct. The chapter lists four losses at once, and adds that a high chargeback rate can bring higher bank fees or the closure of the merchant account.",
         "Disputed goods usually do not come back, and even when they do the sale, the fee and the processing costs are gone. Treating a chargeback as a return understates it badly.",
         "Tax and postage are real costs, but they are not the list the chapter gives, and naming them misses the fee and the merchandise that make a chargeback expensive.",
-        "The merchant is financially responsible for a disputed transaction, which is exactly why issuers charge it back to the merchant rather than absorbing the loss themselves."
+        "The merchant is financially responsible for a disputed transaction, which is exactly why issuers charge it back to the merchant rather than absorbing the loss themselves.",
+        "Correct. The chapter lists four losses at once, and adds that a high chargeback rate can bring higher bank fees or the closure of the merchant account."
       ]
     },
     {
       q: "A hypothetical shop adds five more fields to its checkout so the screening service has more to weigh. What does the chapter say it should expect?",
       opts: [
-        "Better screening and more abandoned carts, to be weighed against each other",
         "Better screening with no effect on how many shoppers finish the checkout",
+        "Better screening and more abandoned carts, to be weighed against each other",
         "Weaker screening, because the extra fields give a determined fraudster more to imitate",
         "No change either way, since screening rests on the network address alone"
       ],
-      a: 0,
+      a: 1,
       why: [
-        "Correct. The chapter says screening works best when the merchant collects as much data as possible, and that doing so may lead some customers to abandon their carts.",
         "Lengthy checkout is one of the reasons the chapter gives for cart abandonment, alongside security concerns and comparison shopping. More fields is not a free improvement.",
+        "Correct. The chapter says screening works best when the merchant collects as much data as possible, and that doing so may lead some customers to abandon their carts.",
         "Extra fields do not weaken a score; more variables generally sharpen it. The cost of collecting them is paid in abandoned carts rather than in accuracy.",
         "The network address is one variable among several, listed beside address agreement, timing and transaction volume. No screening service rests on that one alone."
       ]

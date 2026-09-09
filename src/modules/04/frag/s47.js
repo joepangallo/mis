@@ -151,8 +151,8 @@ ACT.anaSim = {
     {
       situation: "You have a week with the supplier&rsquo;s records before you write anything. What do you come back with?",
       opts: [
-        {t: "Delivered competitor prices, basket abandonment, dispute counts, channel fees and the revenue split", ok: true, out: "Right. Each of these can be counted, each attaches to a force or to a value-chain activity, and each can be checked by somebody who doubts you. Evidence is what separates an analysis from an opinion."},
         {t: "A written summary of what the counter staff and the sales reps believe is going wrong", ok: false, out: "Staff judgement is worth having and will help you read the numbers later. On its own a list of beliefs cannot be checked, and it tends to describe the day rather than locate a pressure."},
+        {t: "Delivered competitor prices, basket abandonment, dispute counts, channel fees and the revenue split", ok: true, out: "Right. Each of these can be counted, each attaches to a force or to a value-chain activity, and each can be checked by somebody who doubts you. Evidence is what separates an analysis from an opinion."},
         {t: "A review of the marketplace storefront, noting every feature the firm&rsquo;s own site lacks", ok: false, out: "This produces a feature list, and a feature list quietly becomes the recommendation. You end up proposing technology because a rival has it rather than because a force demands it."},
         {t: "The whole order file exported, so that nothing at all is left out of the analysis", ok: false, out: "Completeness is not evidence. Without a question in mind you cannot tell which columns matter, and the work stalls in the data rather than in the argument you were asked for."}
       ]
@@ -160,18 +160,18 @@ ACT.anaSim = {
     {
       situation: "Your first draft says: visitors leave the site before paying, and the maker now sells the same cases direct. What is missing?",
       opts: [
-        {t: "It names no force. Say which pressure each of those two observations is evidence of", ok: true, out: "Right. As drafted the sentence describes the day. Naming buyer power and disintermediation, and placing abandonment inside the value chain, is what lets a reader argue with you and what makes a recommendation follow from something."},
         {t: "Nothing. It states two observed facts, and an analysis should stay close to its evidence", ok: false, out: "Staying close to the evidence is right, but an analysis is more than the evidence. A description that names no pressure gives the reader nowhere to go and no way to test whether you are correct."},
         {t: "A stronger opening claim, such as calling this an existential threat to the firm", ok: false, out: "Force of language is not force in the framework sense. Escalating the wording adds urgency without adding a diagnosis, and it makes the whole piece harder to trust."},
-        {t: "More figures, so add the abandonment share and the dispute count to that sentence", ok: false, out: "More numbers in the same sentence still leave it a description. The figures belong in the evidence; the sentence exists to say which pressure they are evidence of."}
+        {t: "More figures, so add the abandonment share and the dispute count to that sentence", ok: false, out: "More numbers in the same sentence still leave it a description. The figures belong in the evidence; the sentence exists to say which pressure they are evidence of."},
+        {t: "It names no force. Say which pressure each of those two observations is evidence of", ok: true, out: "Right. As drafted the sentence describes the day. Naming buyer power and disintermediation, and placing abandonment inside the value chain, is what lets a reader argue with you and what makes a recommendation follow from something."}
       ]
     },
     {
       situation: "You have three candidate initiatives you like, and the brief asks for one. What do you write?",
       opts: [
-        {t: "One initiative, with the force it answers, what it costs, and what you would watch", ok: true, out: "Right. A single recommendation can be costed, argued and later judged. The other two can be named in a sentence as deliberately not chosen, which is itself an analytical move rather than a hedge."},
         {t: "All three, ranked in order, so the owners can pick whichever suits the budget", ok: false, out: "Ranking looks generous and quietly hands the decision back to the reader. It also hides which pressure you were answering, and no single option ever gets costed properly."},
         {t: "The most ambitious of the three, since a bolder call shows a firmer grasp", ok: false, out: "Ambition is not a criterion. The recommendation has to answer the pressure the evidence showed, and a bold initiative aimed at the wrong force is worse than a modest one aimed at the right one."},
+        {t: "One initiative, with the force it answers, what it costs, and what you would watch", ok: true, out: "Right. A single recommendation can be costed, argued and later judged. The other two can be named in a sentence as deliberately not chosen, which is itself an analytical move rather than a hedge."},
         {t: "A new customer application, because the marketplace has one and the firm does not", ok: false, out: "This is technology with no force behind it. If you cannot say which pressure the application relieves and where it sits in the value chain, the reader has no reason to accept it."}
       ]
     },

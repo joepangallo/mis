@@ -92,15 +92,15 @@ ACT.typCase = {
     {
       q: "The resale area carries the company&rsquo;s branding and sits one click from the shop, so shoppers treat it as part of the store. Which type are those transactions, and what is the company doing there?",
       opts: [
-        "B2C, because the used machines reach ordinary consumers through the company&rsquo;s own storefront and branding",
         "C2C, with the company running a platform that enables the sale and charges a fee",
+        "B2C, because the used machines reach ordinary consumers through the company&rsquo;s own storefront and branding",
         "B2B, because the sellers are equipment owners rather than ordinary shoppers",
         "Not electronic commerce at all, since the company sells nothing of its own there"
       ],
-      a: 1,
+      a: 0,
       why: [
-        "The branding belongs to the company, but the seller does not. A consumer on each side makes this consumer to consumer, whoever designed the page it happens on.",
         "Correct. Both parties are individuals, so the exchange is consumer to consumer, and the company&rsquo;s role is the platform business model: it enables the transaction and earns a fee for doing so.",
+        "The branding belongs to the company, but the seller does not. A consumer on each side makes this consumer to consumer, whoever designed the page it happens on.",
         "Business to business needs an organization on both sides. Two machine owners trading with each other are consumers here, however much equipment they happen to own.",
         "Money moves over a digital network in exchange for goods, which is electronic commerce by the chapter&rsquo;s definition, and the fee the company keeps is real revenue."
       ]
@@ -125,16 +125,16 @@ ACT.typCase = {
       q: "The founder plans one identical storefront for all four streams: the same catalog, the same checkout, the same card payment at the end. What does that decision cost the company most?",
       opts: [
         "Nothing that can be measured, since every buyer wants a fast checkout above everything else",
-        "The stream earning the most, whose buyers work by purchase order",
         "The resale area, which cannot function without a card payment at its checkout",
-        "The college contract, which is too small a share of revenue to design around"
+        "The college contract, which is too small a share of revenue to design around",
+        "The stream earning the most, whose buyers work by purchase order"
       ],
-      a: 1,
+      a: 3,
       why: [
         "Speed matters to a home buyer choosing one machine. A chain buying two dozen roasters a year is working to a budget cycle and an approval process instead.",
-        "Correct. The cafe contracts earn the most and behave the least like retail: negotiated prices, purchase orders and invoices rather than a card typed into a checkout.",
         "The resale area does need a payment path, and card payment suits it well, because the amounts involved are close to ordinary retail purchases.",
-        "Share of revenue is not the same as fit. The district buys on a purchase order much as the chains do, so one design decision serves or fails both of them."
+        "Share of revenue is not the same as fit. The district buys on a purchase order much as the chains do, so one design decision serves or fails both of them.",
+        "Correct. The cafe contracts earn the most and behave the least like retail: negotiated prices, purchase orders and invoices rather than a card typed into a checkout."
       ]
     }
   ],
@@ -215,15 +215,15 @@ ACT.typQuiz = {
       q: "How do business-to-consumer and business-to-business commerce compare in revenue, according to the chapter?",
       opts: [
         "B2C is larger, because far more people shop online than there are businesses to trade with",
-        "B2B is the larger of the two by a wide margin",
         "The two are close, since most firms sell to consumers and to businesses alike",
+        "B2B is the larger of the two by a wide margin",
         "The chapter offers no comparison, because the two are measured on different bases"
       ],
-      a: 1,
+      a: 2,
       why: [
         "Shopper numbers are not revenue. A great many firms trade with other firms and never with a consumer, and their orders are far larger than a household&rsquo;s.",
-        "Correct. The chapter treats business-to-business commerce as by far the largest form by revenue, and reports United States shipment and wholesale figures in the trillions for 2022.",
         "Many consumer-facing firms do trade both ways, which is true and useful, but it says nothing about the relative size of the two totals.",
+        "Correct. The chapter treats business-to-business commerce as by far the largest form by revenue, and reports United States shipment and wholesale figures in the trillions for 2022.",
         "The chapter does compare them, and gives figures for a single year to do it. Those figures are a snapshot, which is a reason to learn the ordering rather than the digits."
       ]
     },
@@ -246,15 +246,15 @@ ACT.typQuiz = {
     {
       q: "A marketplace lets private owners list secondhand goods to other private buyers, charges its sellers a fee, holds the buyer&rsquo;s money until delivery, and never owns any of the goods. How should its transactions and its own role be described?",
       opts: [
-        "B2C transactions, since the marketplace is the party collecting payment from the buyer",
         "C2C transactions, with the marketplace running a platform business model",
+        "B2C transactions, since the marketplace is the party collecting payment from the buyer",
         "B2B transactions, because the sellers are paying fees to the marketplace as a business",
         "C2C transactions in which the marketplace is one of the two parties"
       ],
-      a: 1,
+      a: 0,
       why: [
-        "Collecting the payment is a service the marketplace performs. The goods belong to the seller throughout, and that seller is another consumer rather than a firm.",
         "Correct. Both parties to the sale are individuals, so the exchange is consumer to consumer, and the host earns a fee for enabling it rather than for selling anything.",
+        "Collecting the payment is a service the marketplace performs. The goods belong to the seller throughout, and that seller is another consumer rather than a firm.",
         "A fee paid by a seller is a business arrangement with the host, but the transaction being classified is the sale of goods between two people.",
         "A party to the sale would own the goods and carry the risk attached to them. Enabling the sale and holding the money briefly is a different role entirely."
       ]

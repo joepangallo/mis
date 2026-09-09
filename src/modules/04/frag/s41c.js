@@ -127,15 +127,15 @@ ACT.finFill = {
     {
       before: "The chapter&rsquo;s term for innovative technologies transforming financial services is ",
       after: ", and its effect on electronic commerce was to simplify online payments, streamline financing for sellers, and add products such as digital wallets.",
-      choices: ["fintech", "e-government", "the electronic marketplace"],
-      a: 0,
+      choices: ["e-government","fintech","the electronic marketplace"],
+      a: 1,
       why: "Fintech is the chapter&rsquo;s own word, and it names the technologies rather than any one company. E-government is the use of information systems to give citizens and organizations access to public services, which is a different form of electronic commerce. The electronic marketplace is the space where offerings meet buyers, not the technology reshaping financial services."
     },
     {
       before: "Whereas a traditional bank provides a wide range of services, a fintech company typically ",
       after: ".",
-      choices: ["focuses on one service and does it very well", "offers every one of the same services more cheaply", "sells its service through the banks it competes with"],
-      a: 0,
+      choices: ["offers every one of the same services more cheaply","sells its service through the banks it competes with","focuses on one service and does it very well"],
+      a: 2,
       why: "That single sentence is the structural difference the section is built on, and it explains both the depth these firms reach and the number of relationships their customers end up holding. Matching a bank service for service would make the firm a bank, which is the opposite of the pattern. Selling through the incumbent describes a supplier relationship rather than a competitor bypassing one."
     },
     {
@@ -148,15 +148,15 @@ ACT.finFill = {
     {
       before: "Electronic commerce today reaches beyond business-to-business and business-to-consumer trade to take in ",
       after: ", with most major banks and investment firms providing those services online.",
-      choices: ["banking, brokerage, lending and investment", "shipping, warehousing and returns handling", "advertising, branding and market research"],
-      a: 0,
+      choices: ["advertising, branding and market research","shipping, warehousing and returns handling","banking, brokerage, lending and investment"],
+      a: 2,
       why: "The chapter widens the definition to the financial transaction itself, which is why fintech sits inside this objective at all. Shipping and warehousing are logistics that support a sale rather than transactions conducted online in their own right. Advertising and research are activities around the sale, and the chapter treats them as events leading up to a purchase."
     },
     {
       before: "Fintech services enhance the customer experience and also ",
       after: ", which is why a wait that felt ordinary a few years ago can now read as a fault.",
-      choices: ["reshape what customers expect on ease and speed", "reduce how many transactions people make", "settle the regulatory questions underneath"],
-      a: 0,
+      choices: ["reduce how many transactions people make","reshape what customers expect on ease and speed","settle the regulatory questions underneath"],
+      a: 1,
       why: "The chapter names ease of payment and speed as the expectations these services shape, and an expectation set in one industry is then carried into every other. Volumes have risen rather than fallen as paying became easier, so the second choice reverses the effect. Regulation is untouched by any of this: who may hold money and on what terms is decided elsewhere."
     }
   ]
@@ -196,16 +196,16 @@ ACT.finCase = {
     {
       q: "Reading Exhibit A, which of the four jobs does the specialist clearly win, and on what grounds?",
       opts: [
-        "Financing, because the bank&rsquo;s decision lands after the supplier&rsquo;s deadline",
         "The surplus, because a much higher advertised rate on a balance is a plain gain",
         "In-person cards, because a smaller share of each sale is taken by the specialist",
+        "Financing, because the bank&rsquo;s decision lands after the supplier&rsquo;s deadline",
         "Online cards, because the money reaches the account on the same working day"
       ],
-      a: 0,
+      a: 2,
       why: [
-        "Correct. The bank is cheaper on rate and useless on timing: a decision in about ten weeks cannot fund a purchase due in eight, so the dearer option is the only one that does the job at all.",
         "The rate on the idle balance is genuinely better and probably worth taking, but 3.4% against 0.1% on about US$4,000 comes to roughly US$130 across a whole year, and the last column raises a protection question the bank balance does not have.",
         "Read the cost column again. The specialist takes 2.6% of each sale against the bank&rsquo;s 1.9%, so it is dearer per sale; what it removes is the monthly fee, which is a different argument entirely.",
+        "Correct. The bank is cheaper on rate and useless on timing: a decision in about ten weeks cannot fund a purchase due in eight, so the dearer option is the only one that does the job at all.",
         "Exhibit A shows two working days against the bank&rsquo;s three. That is an improvement of one day, which is worth having and is nowhere near the difference between a purchase happening and not happening."
       ]
     },
@@ -228,17 +228,17 @@ ACT.finCase = {
     {
       q: "One of the pair says the move means the business no longer has to think about any of this. Which reply is right?",
       opts: [
-        "Reconciling the four services and the rules about who holds the money are still theirs",
         "Automation across the four services means that the monthly bookkeeping now takes care of itself",
         "The providers take on the tax duties along with the payments they process",
-        "The narrower each provider is, the fewer records the business has to keep"
+        "The narrower each provider is, the fewer records the business has to keep",
+        "Reconciling the four services and the rules about who holds the money are still theirs"
       ],
-      a: 0,
+      a: 3,
       why: [
-        "Correct. Fintech changed where each job is done and how fast the money moves. It did not remove the reconciling, and it did not answer whether any scheme protects a balance held outside a bank, which is a question for somebody qualified in this jurisdiction.",
         "Each service will report its own activity cleanly enough. None of them sees the other three, so the single view of the business that a lender or a tax return needs still has to be assembled by somebody or by a tool bought for the purpose.",
         "A payment processor moves money and reports what it moved. What is owed, to whom and where follows from the business and the places it sells into, and that obligation stays with the owners throughout.",
-        "Narrow providers keep excellent records of their own slice and none at all of anybody else&rsquo;s, so the number of records the business has to hold goes up when four services replace one account."
+        "Narrow providers keep excellent records of their own slice and none at all of anybody else&rsquo;s, so the number of records the business has to hold goes up when four services replace one account.",
+        "Correct. Fintech changed where each job is done and how fast the money moves. It did not remove the reconciling, and it did not answer whether any scheme protects a balance held outside a bank, which is a question for somebody qualified in this jurisdiction."
       ]
     }
   ],
@@ -255,15 +255,15 @@ ACT.finQuiz = {
     {
       q: "A customer compares a large bank with a firm that does nothing but process card payments. Which difference is the one the chapter draws between them?",
       opts: [
-        "The bank covers a wide range of services; the specialist covers one and does it well",
         "The bank is supervised by regulators, while a payments specialist answers to nobody at all",
+        "The bank covers a wide range of services; the specialist covers one and does it well",
         "The specialist works with businesses, while the bank looks after private individuals",
         "The specialist is a smaller bank, offering the same range of services to fewer customers"
       ],
-      a: 0,
+      a: 1,
       why: [
-        "Correct. Breadth against depth is the structural difference the chapter states, and nearly everything else about fintech follows from it, including why customers end up holding several relationships.",
         "Both are supervised, and the chapter draws no such line. Regulation varies by activity and jurisdiction, which is a real question for a business, but it is not what separates a bank from a narrow firm here.",
+        "Correct. Breadth against depth is the structural difference the chapter states, and nearly everything else about fintech follows from it, including why customers end up holding several relationships.",
         "Plenty of specialist firms serve consumers directly, and banks serve businesses of every size. Who the customer is does not distinguish the two, and the chapter names categories on both sides of that line.",
         "A narrow firm is not a miniature bank. It aims to serve very large numbers of customers with a single service done well, so what marks it out is the range it offers rather than the size of its customer base."
       ]
@@ -271,17 +271,17 @@ ACT.finQuiz = {
     {
       q: "An investing app lets a customer buy shares directly from a phone, with no broker taking the order. Which idea from this chapter does that illustrate?",
       opts: [
-        "Disintermediation, since a step in the chain is removed rather than made cheaper",
         "Consumer-to-consumer commerce, because the trade happens between two private individuals",
         "Digital investment management, since software rather than an adviser picks the holdings",
-        "Business-to-business commerce, since the app and the exchange are both firms"
+        "Business-to-business commerce, since the app and the exchange are both firms",
+        "Disintermediation, since a step in the chain is removed rather than made cheaper"
       ],
-      a: 0,
+      a: 3,
       why: [
-        "Correct. The chapter presents fintech as disintermediation applied to money: an intermediary is taken out of the path, exactly as an airline selling its own seats removes a travel agent.",
         "Consumer-to-consumer trade describes people transacting with each other, as on an online auction site. The customer here is dealing through a firm, and the counterparty is a market rather than a neighbour.",
         "That category covers a portfolio a service builds and rebalances for the customer from a short questionnaire. Here the customer chooses the trade, and what the app takes out of the path is the broker.",
-        "The customer is an individual buying for themselves, which makes this business-to-consumer. Firms are certainly involved in the plumbing, but the transaction the question describes ends with a consumer."
+        "The customer is an individual buying for themselves, which makes this business-to-consumer. Firms are certainly involved in the plumbing, but the transaction the question describes ends with a consumer.",
+        "Correct. The chapter presents fintech as disintermediation applied to money: an intermediary is taken out of the path, exactly as an airline selling its own seats removes a travel agent."
       ]
     },
     {
