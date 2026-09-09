@@ -18,7 +18,7 @@ jobs:
         # One entry per module. The empty string is Module 1, whose sources live
         # directly in src/. Adding a module here is the only step needed to put
         # its committed page under the same guard as the others.
-        module: ["", "--module=modules/02", "--module=modules/03", "--module=modules/04"]
+        module: ["", "--module=modules/02", "--module=modules/03", "--module=modules/04", "--module=modules/05"]
     name: Verify ${{ matrix.module == '' && 'module 1' || matrix.module }}
     steps:
       - uses: actions/checkout@v7

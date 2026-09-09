@@ -1,0 +1,85 @@
+{
+  "outputFile": "module-05-collaboration-and-social-media.html",
+  "title": "Module 5 \u00b7 Collaboration, Social Media, and Competitive Position",
+  "sections": [
+    {
+      "id": "s51a",
+      "title": "Why collaboration became a strategic problem",
+      "prefix": "col",
+      "objective": "5.1"
+    },
+    {
+      "id": "s51b",
+      "title": "Inside the firewall: intranets, portals, and search",
+      "prefix": "net",
+      "objective": "5.1"
+    },
+    {
+      "id": "s52a",
+      "title": "The web that answers back",
+      "prefix": "web",
+      "objective": "5.2"
+    },
+    {
+      "id": "s52b",
+      "title": "Communicating and cooperating in public",
+      "prefix": "coo",
+      "objective": "5.2"
+    },
+    {
+      "id": "s52c",
+      "title": "Collaborating at scale",
+      "prefix": "con",
+      "objective": "5.2"
+    },
+    {
+      "id": "s52d",
+      "title": "Connecting at scale",
+      "prefix": "soc",
+      "objective": "5.2"
+    },
+    {
+      "id": "s53a",
+      "title": "Making it work inside a company",
+      "prefix": "adp",
+      "objective": "5.3"
+    },
+    {
+      "id": "s53b",
+      "title": "When it goes wrong, and how fast",
+      "prefix": "crs",
+      "objective": "5.3"
+    },
+    {
+      "id": "s54",
+      "title": "Collaboration read through the five forces and the value chain",
+      "prefix": "str",
+      "objective": "5.4"
+    },
+    {
+      "id": "s55",
+      "title": "Turning this chapter into the written analysis",
+      "prefix": "ana",
+      "objective": "5.5"
+    }
+  ],
+  "objectives": [
+    "5.1",
+    "5.2",
+    "5.3",
+    "5.4",
+    "5.5"
+  ],
+  "objectiveNames": {
+    "5.1": "Why communication and collaboration are strategic",
+    "5.2": "The technologies that carry collaboration, and their business impact",
+    "5.3": "Managing social media inside an organization",
+    "5.4": "Collaboration read through the five forces and the value chain",
+    "5.5": "Turning the chapter into a written strategy analysis"
+  },
+  "supplements": [
+    "s54",
+    "s55"
+  ],
+  "id": "05"
+}

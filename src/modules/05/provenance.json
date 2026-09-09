@@ -1,0 +1,138 @@
+{
+ "policy": {
+  "core": "Objectives 5.1, 5.2 and 5.3, their vocabulary, their tables and their factual cases trace to the supplied Chapter 5 material. That material carries three of the chapter's learning objectives - LO 5.1, on the strategic importance of organizational communication and collaboration; LO 5.2, on the technologies that support them and their business impact; and LO 5.3, on applying digital collaboration to coordination, knowledge sharing and decision making - together with the chapter's Sustainability, Technology Today and Tomorrow, Security Matters, What's In It For You, Ethical Dilemma, When Things Go Wrong and Industry Analysis features. No learning objective absent from the supplied file is reconstructed or numbered anywhere in this module.",
+  "supplement": "Applications 5.4 and 5.5 are explicitly labeled application supplements, not textbook learning objectives. 5.4 reads the chapter's own technologies through the five competitive forces and the value chain, frameworks the course met in its strategy chapter; it introduces no new framework and makes no claim about a technology that the chapter does not already make. 5.5 rehearses the shape of a written strategy analysis on a hypothetical firm and exercises the course's own spreadsheet and database objectives on invented collaboration data.",
+  "hypotheticals": "Practice situations are signposted as hypothetical. They may supply the qualitative conditions a reader needs in order to reason, and they may carry invented figures clearly presented as invented, but they may not invent a real company, purport to report a real-world statistic, or blur a scenario assumption into a factual claim. Real organizations are named only where the chapter itself names them, and only for what the chapter says about them.",
+  "currentLaw": "This module asserts no current law. The chapter names one United States financial-reporting statute as an example of a compliance obligation that collaboration tools can put at risk, and it discusses defamation and harassment through reported disputes rather than through statute. The module teaches the mechanism each of those illustrates - that widening who can share widens what can leak, and that a post reaches a jurisdiction the poster never considered - and attributes the specifics to the chapter rather than restating them as the law in force. Nothing here is advice, and every legal question in the module resolves to consulting somebody qualified in the relevant jurisdiction.",
+  "datedFigures": "The chapter carries a large number of point-in-time figures: user counts for several social networks, follower counts, review and booking volumes, one company's quarterly revenue, crowdfunding totals, videoconferencing hardware prices and form-processing costs. Where the module uses them it attributes them to the chapter as a snapshot and teaches the ordering, the ratio or the mechanism rather than the digits. The consolidated list is in qualifications below."
+ },
+ "sources": {
+  "chapter5": {
+   "citation": "Valacich & Schneider, Information Systems Today, Chapter 5 (enhancing collaboration using social media), supplied as a local chapter file carrying LO 5.1, LO 5.2 and LO 5.3 together with the chapter's Sustainability, Technology Today and Tomorrow, Security Matters, What's In It For You, Ethical Dilemma, When Things Go Wrong and Industry Analysis features.",
+   "localFile": "../../../book/Ch 5.docx"
+  },
+  "courseObjectives": {
+   "citation": "The eleven course objectives supplied with the course materials. Objective 2 names managing internal operations and making decisions; objective 3 names competitive advantage through changing the marketplace; objective 5 names internet technology for electronic commerce, communicating with employees and working with business partners; objective 8 names individual and organizational consequences; objective 9 names security breaches and computer crimes; objective 7 names recognising a business problem and working with the information systems team; objectives 10 and 11 name the database and spreadsheet work.",
+   "localFile": "../../../book/Course Objectives.docx",
+   "relationship": "Scopes which course objectives this module may honestly claim, decides that the two application supplements exist at all, and supplies the wording of the eleven objectives reproduced in the module's on-page course-objective map."
+  },
+  "porter1985": {
+   "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press.",
+   "relationship": "Supplement 5.4 uses the five-forces and value-chain vocabulary that originates here and that the course met in its strategy chapter, and supplement 5.5 applies it. This module teaches no new framework; it supplies the collaboration and social-media evidence those frameworks are applied to."
+  },
+  "porterMillar1985": {
+   "citation": "Porter, M. E., & Millar, V. E. (1985). How Information Gives You Competitive Advantage. Harvard Business Review, 63(4), 149-160.",
+   "relationship": "Supplement 5.4 asks where an information technology lands in the value chain rather than whether it is impressive, which is the question this work poses. It is cited because the supplement's central move - separating the information a technology carries from the physical work it supports - comes from here rather than from the chapter."
+  },
+  "surowiecki2004": {
+   "citation": "Surowiecki, J. (2004). The Wisdom of Crowds. Doubleday.",
+   "relationship": "Cited by the chapter itself for collective intelligence. The module uses it only for the idea the chapter attributes to it - that a distributed group with divergent information can outperform individual experts - and adds no claim of its own about when that does or does not hold."
+  },
+  "assessmentShape": {
+   "citation": "Program signature-assessment brief for this course's strategy analysis (SLO-1: align IT operations with organizational goals). Deliverables: a framework analysis using the competitive forces and the value chain, at least two value-creating areas, exactly one recommended technology initiative, and one written comparison summary of 150 to 200 words.",
+   "relationship": "Supplements 5.4 and 5.5 rehearse the shape of that deliverable - which pressures to rate, how many value-chain areas to identify, exactly one recommended initiative, and a comparison summary of that length - on a hypothetical firm invented for the purpose. The graded case itself is never named, described, characterised, or pre-solved anywhere in the module, and no detail unique to it appears on any page."
+  },
+  "courseDataWork": {
+   "citation": "The course's own database work in SQLite and its spreadsheet work, which is where course objectives 10 and 11 are exercised.",
+   "relationship": "Supplement 5.5 puts a runnable sheet and a runnable query in front of the reader over invented collaboration and social-media data, so the chapter's judgement questions are answered from figures rather than from impressions. It prepares for that work rather than replacing it, and introduces no textbook learning objective."
+  }
+ },
+ "fragments": {
+  "s51a": [
+   "chapter5"
+  ],
+  "s51b": [
+   "chapter5"
+  ],
+  "s52a": [
+   "chapter5"
+  ],
+  "s52b": [
+   "chapter5"
+  ],
+  "s52c": [
+   "chapter5",
+   "surowiecki2004"
+  ],
+  "s52d": [
+   "chapter5"
+  ],
+  "s53a": [
+   "chapter5"
+  ],
+  "s53b": [
+   "chapter5"
+  ],
+  "s54": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985",
+   "porterMillar1985"
+  ],
+  "s55": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985",
+   "assessmentShape",
+   "courseDataWork"
+  ],
+  "glossary": [
+   "chapter5",
+   "surowiecki2004"
+  ],
+  "final": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985",
+   "courseDataWork"
+  ],
+  "shell": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985"
+  ]
+ },
+ "objectives": {
+  "5.1": [
+   "chapter5"
+  ],
+  "5.2": [
+   "chapter5",
+   "surowiecki2004"
+  ],
+  "5.3": [
+   "chapter5"
+  ],
+  "5.4": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985",
+   "porterMillar1985"
+  ],
+  "5.5": [
+   "chapter5",
+   "courseObjectives",
+   "porter1985",
+   "assessmentShape",
+   "courseDataWork"
+  ]
+ },
+ "qualifications": [
+  "The supplied chapter file carries LO 5.1, LO 5.2 and LO 5.3 and no others. Nothing beyond those three is reconstructed, referenced as taught, or numbered anywhere in this module.",
+  "Every user, follower, booking and review count in the chapter is a point-in-time snapshot: monthly active users of one social network reported in December 2023, membership figures for two professional networks, follower counts for one software company's microblog in mid-2025, one review platform's app visitors and review total for 2024 and its revenue for a single quarter of 2025, and one accommodation platform's nights booked in 2024. The module attributes each as the chapter's snapshot and teaches the ordering and the mechanism rather than the digits, because every one of these numbers moves.",
+  "The chapter names one social bookmarking service that has since been discontinued. The module teaches social bookmarking and folksonomies as a category and names a service only where the chapter's point depends on it, because consumer social products are launched, merged and shut down faster than any textbook edition can track.",
+  "The chapter names an enterprise search product and several enterprise social products by their current names. Products in this category are renamed and absorbed frequently - one of the chapter's own examples is introduced under a former name - so the module teaches the capability and attributes any product name to the chapter.",
+  "The chapter's cost figures for processing a human-resources form - a paper form, a telephone-based form and an intranet self-service form - come from one benefits administration vendor and are undated. The module uses them for the ordering they establish, that each channel costs roughly an order of magnitude less than the one before it, and presents the amounts as the chapter's illustration rather than as current prices.",
+  "The chapter's price range for dedicated videoconferencing systems spans several thousand United States dollars to half a million. Prices in this category have fallen sharply as software videoconferencing became adequate for most meetings; the module keeps the chapter's structural point, that a dedicated room system is a capital purchase while desktop videoconferencing is close to free, and does not present the range as a current quotation.",
+  "The chapter describes one company's expectation that up to half its workforce would work permanently from home by 2030. That is a stated corporate expectation, not an outcome, and several large employers have since reversed remote-work positions. The module presents it as the expectation the chapter reports and teaches the underlying point, that the pandemic proved distributed teams can work, rather than the forecast.",
+  "The chapter reports character limits, posting features and product names for one microblogging service that has been renamed and repeatedly re-specified. The module teaches microblogging as a category - short status updates broadcast in near real time to subscribers, tagged by topic - and attributes any specific limit or feature to the chapter.",
+  "The chapter's account of social media use by terrorist organizations describes propaganda production, distribution and recruitment. The module teaches the mechanism the chapter identifies - that cheap production and free global distribution lower the cost of reaching an audience for any message, including one a platform would rather not carry - and makes no claim about the current scale of any group's activity or about the effectiveness of any government's response.",
+  "The chapter's crowdfunding failures include totals raised, backer counts and units shipped for three named campaigns, together with the status of one investigation. Those figures and that status are as the chapter reports them; the module teaches the pattern - that a contribution buys a promise rather than a product - and draws no conclusion about any individual's conduct.",
+  "The chapter's account of the Gamergate harassment campaign, of a musician's complaint video, of a passenger's complaint letter and of a pizza company's response to a staff video reports figures for views and shares and describes disputed conduct. The module attributes all of it to the chapter, teaches the response playbook the chapter draws from it, and makes no finding about any person or company involved.",
+  "The chapter states that a majority of a certain profession's contributors to one online encyclopedia are men from two continents and that systematic bias results. The module reports this as the chapter's characterisation of a known limitation and teaches the general point, that a peer-produced source inherits the composition of the people who choose to contribute to it.",
+  "The chapter describes the semantic web as largely unrealized and Web 3.0 as contested. The module presents both as forecasts rather than as a state of affairs, and separates the part that has demonstrably happened - structured markup improving search results - from the part that has not.",
+  "The chapter's generational characterisations, of millennials as comfortable with social tools and of older workers as less so, are broad generalisations about large populations and describe tendencies rather than individuals. The module keeps the chapter's managerial point, that a workforce's composition changes the odds an internal social tool is adopted, and states explicitly that it is a tendency rather than a rule about any person.",
+  "The five-forces and value-chain readings in supplement 5.4 are analytical applications, not claims the chapter makes. Where the supplement says a technology raises an entry barrier or sits in a particular value-chain activity, that is an argument the reader is being taught to construct and to contest, and each one is presented with the evidence it would need in order to hold.",
+  "Every figure in a mini case, an exhibit, the runnable sheet and the runnable query in this module is invented for practice on a hypothetical organization. None of them is reported data about any company, and each activity says so."
+ ]
+}
