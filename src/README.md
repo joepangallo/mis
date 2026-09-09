@@ -113,7 +113,7 @@ supplements, and the output filename. Pass `--module=modules/<id>` to `build.mjs
 
 ## The mini case study
 
-`case` is the kind Module 4 is built around, and the one to reach for when the point is a judgement
+`case` is the kind Modules 4 and 5 are built around, and the one to reach for when the point is a judgement
 rather than a definition. It carries a `brief` (the situation, in forty to ninety words), a strip of
 `facts`, an optional `exhibit` &mdash; a small table of figures the reader has to actually read
 &mdash; a short list of `questions` that are ordinary four-option decisions held to exactly the quiz
