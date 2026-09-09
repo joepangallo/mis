@@ -2,119 +2,68 @@
 PROSE.s32b = `
 <span class="eyebrow">Section 3&ndash;2b</span>
 <h2>Hardware: the machines and the things that are not computers</h2>
-<p class="lede">Everything a business does with technology finally happens on a physical object that somebody bought, plugged in, put somewhere, and will one day have to throw away. That object is the first component of an infrastructure, and it is the one people underestimate, because half of it does not look like a computer at all: no screen, no keyboard, nobody sitting at it.</p>
+<p class="lede">Everything a business does with technology finally happens on a physical object somebody bought and plugged in. That object is the first component of an infrastructure, and the one people underestimate, because half of it looks nothing like a computer.</p>
 
 <h3>What hardware is, and why one kind is never enough</h3>
-<p>Start with what the word covers. <b>Hardware</b> is the physical machinery of an information system &mdash; the computers that run the applications and databases an organization needs in order to process its transactions and analyze its business data. If you can trip over it, unplug it, or drop it, it is hardware.</p>
-<p>Organizations carry out hundreds or thousands of activities belonging to many different business processes, and those activities make very different demands. So a company does not buy one kind of computer. It buys several kinds, deliberately, and the differences between them are what this section is about.</p>
-<p>You already know this from your own life. The phone in your pocket and the machine that answers when you tap the button to buy something are both computers, and swapping them would be absurd in either direction. The phone could not serve a hundred thousand shoppers at once, and nobody wants to carry a shop&rsquo;s order system around in a coat.</p>
-
-<h3>The six classes of computer</h3>
-<p>The chapter sorts the computers used inside organizations into six general classes. One warning before the list: the chapter&rsquo;s own sentence announces six classes and then names five, adding mobile devices afterwards as though they were an afterthought rather than a class. Its comparison table has six rows. Count six.</p>
+<p><b>Hardware</b> is the physical machinery of an information system: the computers running the applications and databases an organization needs to process transactions and analyze business data.</p>
+<p>Business activities make different demands, so a company deliberately buys several kinds of machine. The chapter names six classes &mdash; its own sentence announces six and lists five, adding mobile devices afterwards.</p>
 <ul class="keys">
-<li><b>Personal computer</b> &mdash; the machine used for personal computing and small business computing, serving one person at a time, and the reference point against which every other class ends up being described.</li>
-<li><b>Workstation</b> &mdash; a single-user machine built for medical, engineering, architectural, animation or graphics work, optimized for visualizing and rendering three-dimensional models with a fast processor, large memory and advanced video hardware.</li>
-<li><b>Server</b> &mdash; any computer on a network that makes access to files, printing, communications and other services available to the other users of that network, optimized for many people using it at the same moment.</li>
-<li><b>Mainframe</b> &mdash; a large computer used as the main, central computing system of a major organization, optimized for high availability, heavy shared use and security, and used for mission-critical work such as transaction processing.</li>
-<li><b>Supercomputer</b> &mdash; the most expensive and most powerful class of computer, used mainly to help solve massive scientific problems and, the chapter is explicit, typically not used by business organizations at all.</li>
-<li><b>Mobile device</b> &mdash; tablets and smartphones, which have stopped being a personal convenience sitting beside the infrastructure and become part of it, because a great deal of real work is now done on them.</li>
+<li><b>Personal computer</b> &mdash; used for personal and small-business computing, serving one person, and the reference point other classes get described against.</li>
+<li><b>Workstation</b> &mdash; a single-user machine for medical, engineering or animation work, with the processor and video hardware that rendering three-dimensional models needs.</li>
+<li><b>Server</b> &mdash; any computer on a network making files, printing and other services available to that network&rsquo;s users, optimized for a thousand or more at once.</li>
+<li><b>Mainframe</b> &mdash; the central computing system of a major organization, serving ten thousand simultaneous users, built for availability and mission-critical transaction processing.</li>
+<li><b>Supercomputer</b> &mdash; the most powerful and expensive class, up to twenty times a mainframe, bought for massive scientific problems and typically not used by businesses.</li>
+<li><b>Mobile device</b> &mdash; tablets and smartphones, no longer a convenience beside the infrastructure but part of it, because real work now happens on them.</li>
 </ul>
-<p>The chapter compares the six on five measures at once, and the comparison rewards reading slowly. Treat the memory and cost columns as the chapter&rsquo;s snapshot of a moving market rather than as current figures; they drift every year, and the low end of the mobile row is already a museum piece.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Class</th><th>Simultaneous users</th><th>Physical size</th><th>Typical use</th><th>Memory</th><th>Typical cost</th></tr></thead>
-<tbody>
-<tr><td><b>Supercomputer</b></td><td>One to many</td><td>From the size of a car to several rooms</td><td>Scientific research</td><td>1,000+ TB</td><td>Up to US$200 million</td></tr>
-<tr><td><b>Mainframe</b></td><td>10,000+</td><td>Like a refrigerator</td><td>Transaction processing and enterprise-wide applications</td><td>Up to 40 TB</td><td>Up to US$10 million</td></tr>
-<tr><td><b>Server</b></td><td>1,000+</td><td>From a slab mounted in a rack to something that fits on a desk</td><td>Providing websites, or access to databases, applications and files</td><td>Up to 512 GB</td><td>Up to US$50,000</td></tr>
-<tr><td><b>Workstation</b></td><td>Typically one</td><td>From a desktop machine to the size of a filing cabinet</td><td>Engineering, medical and graphic design work</td><td>Up to 512 GB</td><td>Up to US$10,000</td></tr>
-<tr><td><b>Personal computer</b></td><td>One</td><td>Fits on a desk</td><td>Personal productivity</td><td>8 GB to 128 GB</td><td>Up to US$5,000</td></tr>
-<tr><td><b>Mobile device</b></td><td>One</td><td>Handheld</td><td>Personal productivity</td><td>512 MB to 16 GB</td><td>Up to US$1,400</td></tr>
-</tbody>
-</table></div>
-
-<p>What survives the drift is the ordering and the ratios, and those carry most of what a manager actually needs from the table.</p>
-<ul class="keys">
-<li><b>Simultaneous users is the axis that matters</b> &mdash; a personal computer serves one person and a mainframe serves ten thousand at once, a gap of four orders of magnitude that explains nearly every other difference along the row.</li>
-<li><b>Cost follows difficulty, not size or popularity</b> &mdash; a supercomputer can cost roughly twenty times a mainframe while often serving fewer people, because it is bought for problems nothing else can finish rather than for volume of routine work.</li>
-<li><b>Two classes serve one user each and cost very differently</b> &mdash; a workstation can cost twice a personal computer and look identical from across the room, because what the extra money buys is rendering power for one demanding person.</li>
-</ul>
-<p>Pair each class with what it was optimized for, because the optimization is the part still worth knowing next year, long after the memory figures have gone stale.</p>
+<p>Pair each class with what it was optimized for; that outlasts any price figure.</p>
 
 <div class="activity" data-activity="hwClasses"></div>
 
 <h3>Servers, because almost everything you use is one</h3>
-<p>One of the six classes deserves its own paragraph, because it is the one you interact with constantly and never see. A <b>server</b> is any computer on a network that makes access to files, printing, communications and other services available to the users of that network. Every website, every shared drive and every company email system is one.</p>
-<p>What makes a server a server is not its shape, since some are no larger than a desktop machine. It is what the machine is optimized for. Because it is reached by many concurrent users, it carries more advanced processors, more memory and more disk storage than a single-user computer, and it is built for high reliability and fast network connectivity, because the machine a thousand people depend on cannot be the machine that reboots.</p>
-<p>Organizations run many servers in many configurations, and the chapter draws one distinction among them that explains a surprising amount about cost.</p>
-<ul class="keys">
-<li><b>Some hand the same page to everyone</b> &mdash; informational websites give every visitor identical content, so the machine is mostly handing out something it prepared once and can hand out again unchanged.</li>
-<li><b>Others build a page for each person</b> &mdash; a social network assembles a different page for every visitor out of that person&rsquo;s own network of friends, so the machine does fresh work for each request instead of repeating itself.</li>
-<li><b>And plenty never serve pages at all</b> &mdash; email servers, print servers and file servers do entirely different jobs, with correspondingly different requirements in processing power, network connectivity and software.</li>
-</ul>
-<p class="takeaway">A request answered from something prepared earlier and a request answered by building something new are two different amounts of machine, which is why two sites that look identical to a visitor can cost wildly different sums to run.</p>
+<p>What makes a server a server is not its shape. Many people reach it at once, so it carries more processing, memory and disk than a single-user machine, and is built for reliability and fast network connectivity.</p>
+<p>Servers differ in what one request costs them. An informational website hands every visitor content it prepared once. A social network builds a different page for each visitor. Email, print and file servers serve no pages at all.</p>
+<p class="takeaway">Two identical-looking sites can cost wildly different sums to run: one hands out something prepared earlier, the other builds something new for everyone who asks.</p>
 
 <div class="activity" data-activity="hwQuiz1"></div>
 
 <h3>The computers nobody calls computers</h3>
-<p>Everything so far has a screen and a user. Most of the computing in a modern economy has neither. The second half of the chapter&rsquo;s treatment of hardware is the machinery that does one job, invisibly, for years, and it is where the word &ldquo;computer&rdquo; stops being a useful guide.</p>
+<p>Everything so far has a screen and a user. Most computing in a modern economy has neither.</p>
 <ul class="keys">
-<li><b>Embedded system</b> &mdash; a computer designed to perform one specific set of tasks well and built into something nobody thinks of as a computer, from a media player to the unit managing engine performance or a traffic light.</li>
-<li><b>Programmable logic controller</b> &mdash; a specialized computing device used to automate machines and processes, in settings as different as a manufacturing plant and a ski lift, running one control task reliably in conditions no office machine would survive.</li>
-<li><b>Input device</b> &mdash; hardware whose job is getting data into a computer, which is what a mouse, a touch screen, a camera or a scanner at a receiving dock is for.</li>
-<li><b>Output device</b> &mdash; hardware that presents results to a person, such as a monitor, a printer or a speaker, and the reason a system that decides something nobody can read has not finished its work.</li>
-<li><b>Sensor</b> &mdash; an input technology that measures the physical world, reporting temperature, atmospheric pressure, vibration or proximity in real time, which is how a system observes instead of waiting to be told.</li>
+<li><b>Embedded system</b> &mdash; a computer built to do one set of tasks well, inside something nobody calls a computer: a media player, a traffic light.</li>
+<li><b>Programmable logic controller</b> &mdash; a specialized device automating machines and processes, in settings as different as a factory and a ski lift.</li>
+<li><b>Sensor</b> &mdash; an input technology measuring the physical world, reporting temperature, pressure, vibration or proximity in real time rather than waiting to be told.</li>
+<li><b>Input and output devices</b> &mdash; an input device gets data in, such as a mouse or a dock scanner; an output device presents results, such as a monitor.</li>
 </ul>
-<p>Sensors are why this category has exploded. The <b>Internet of Things</b> is a vast network of interconnected physical devices that collect and share data, often producing enormous volumes of it that can be gathered centrally and analyzed to give insight and control over real-world situations. Objects that were connected to nothing now report continuously.</p>
-<p>When that reporting is wired tightly enough to control something, the arrangement has its own name. A <b>cyber-physical system</b> integrates computing with physical processes, coordinating software, sensors and mechanical components closely enough to monitor and control physical activity with a high degree of autonomy and efficiency.</p>
-<p>The chapter&rsquo;s own example is one of Siemens&rsquo; electronics factories, where a combination of sensors, controllers and manufacturing machines automates about three-quarters of the production process and generates something like fifty million readings a day. Industrial devices such as intelligent product codes let products communicate directly with machines, so production processes reorganize themselves without a person intervening.</p>
+<p>Sensors are why this category exploded. The <b>Internet of Things</b> is a vast network of interconnected physical devices collecting and sharing data, often in enormous volumes.</p>
+<p>Wire that reporting tightly enough to control something and it earns a name. A <b>cyber-physical system</b> integrates computing with physical processes, coordinating software, sensors and machinery closely enough to run on its own.</p>
 
 <div class="callout warn">
-<p><b>Why this kind of system is harder to protect.</b> The chapter is careful here, and its caution transfers to everything else in this module. Cyber-physical systems present hard problems for three reasons: the systems are densely interconnected, that interconnection creates security vulnerabilities, and their actions land in the physical world.</p>
-<p>A failed web page is an inconvenience. A failed controller opens a valve, stops a line, or moves something heavy at the wrong moment. That difference is why a later section returns to vehicles, which are now computers on wheels.</p>
+<p><b>Why these are harder to protect.</b> They are densely interconnected, that interconnection creates vulnerabilities, and failures land in the physical world. A failed web page is an inconvenience; a failed controller opens a valve.</p>
 </div>
 
-<p>Sort a handful of devices into the three families now, before the vocabulary settles into a blur.</p>
+<p>Sort these devices into three families before the vocabulary blurs.</p>
 
 <div class="activity" data-activity="hwSort"></div>
 
-<h3>Tags that answer when asked</h3>
-<p>One special-purpose technology gets its own treatment in the chapter, because so much of modern logistics rests on it. <b>Radio frequency identification</b>, usually shortened to RFID, uses electromagnetic fields to move data between a reader and a small <b>tag</b> attached to an object.</p>
-<p>Tags run from a fraction of an inch across, small enough to sit beneath an animal&rsquo;s skin, up to several inches, fixed to a product or a shipping container. What they carry ranges from the name of a pet&rsquo;s owner to instructions for how a product is to be manufactured on a shop floor. The comparison the chapter draws is with the ordinary bar code, and it lists six advantages.</p>
-<ol class="steps">
-<li><b>No line of sight is needed</b> &mdash; the reader does not have to see the tag, so nothing has to be turned, unpacked, or held at exactly the right angle first.</li>
-<li><b>No hand scanning</b> &mdash; the time-consuming business of a person pointing a scanner at each item disappears, and that is where most of the labour saving comes from.</li>
-<li><b>Position stops mattering</b> &mdash; the data is readable regardless of how the item happens to be sitting, or whether the tag is plainly visible at all.</li>
-<li><b>More data fits</b> &mdash; a tag can hold considerably more than the single identifier a bar code carries, which changes what the scan can tell you.</li>
-<li><b>The data can be chosen and changed</b> &mdash; a company can program whatever it wants onto a tag, such as version, origin, location or maintenance history, and update that record later.</li>
-<li><b>Range is greater</b> &mdash; scanning can happen at a distance rather than at arm&rsquo;s length, which is what lets a doorway count a whole pallet as it passes through.</li>
-</ol>
-<p>Tags come in two kinds, and choosing between them is a straight cost decision rather than a technical one.</p>
+<h3>Tags, and the chip a budget turns on</h3>
+<p><b>Radio frequency identification</b>, or RFID, moves data by electromagnetic field between a reader and a small <b>RFID tag</b> on an object. Against a bar code it needs no line of sight, holds more data, and reads at a distance.</p>
 <ul class="keys">
-<li><b>Passive tags</b> &mdash; small and inexpensive, starting from a few cents each, carrying no battery, and typically read from up to several feet away, which suits anything shipped in bulk.</li>
-<li><b>Active tags</b> &mdash; several dollars each, containing a battery of their own, readable from hundreds of feet, which suits containers and equipment valuable enough to justify the cost.</li>
+<li><b>Passive tags</b> &mdash; a few cents each, no battery, readable from several feet, which suits anything shipped in bulk.</li>
+<li><b>Active tags</b> &mdash; several dollars each, carrying a battery, readable from hundreds of feet, which suits containers worth the cost.</li>
 </ul>
-<p>The chapter says RFID is rapidly replacing traditional bar codes. Treat that as directional rather than settled: bar codes remain entirely ordinary at a supermarket checkout, and tags win where an item is valuable enough to carry the cost of one. What is not in doubt is the capability &mdash; real-time tracking of goods and materials through a supply chain, which genuinely bridges digital records and physical operations.</p>
-
-<h3>Inside the box: why an artificial-intelligence project has a different budget line</h3>
-<p>The last piece of hardware worth a manager&rsquo;s attention is the processor, because this is where one technology proposal stops being interchangeable with another. For decades a server was essentially a large personal computer: storage holding the data, a <b>central processing unit</b> doing the calculating, and temporary memory holding instructions and intermediate results.</p>
-<p>A central processing unit is built to be versatile and to handle instructions in sequence, very quickly, each result feeding the next. That is the right design for ordinary software, where step two genuinely needs the answer from step one. Recalculating a spreadsheet is the everyday case: a formula may have to wait for the cell above it.</p>
-<p>Training a machine-learning model is not that shape of problem, and the chapter explains the difference using pictures. Rendering an image means working out the colour value and intensity of every pixel, and each pixel can be worked out without knowing anything about its neighbours. A <b>graphics processing unit</b> was designed for exactly that: thousands of small cores performing the same operation on many pieces of data at the same time.</p>
-<p>Training turns out to have the same shape, because the matrix and vector calculations underneath deep learning can largely run side by side rather than in a queue. That is the whole reason a kind of chip built for rendering images became standard equipment for machine learning, and the specialization has continued past it.</p>
+<p>Inside the box, the processor is where one proposal stops being interchangeable with another. A <b>central processing unit</b> is versatile and handles instructions in sequence, each result feeding the next &mdash; right for a formula waiting on the cell above.</p>
+<p>A <b>graphics processing unit</b> runs thousands of small cores on many pieces of data at once, because every pixel can be worked out without knowing its neighbours. Training a model has that same parallel shape.</p>
 <ul class="keys">
-<li><b>Tensor processing units</b> &mdash; custom-designed by large providers to optimize the matrix calculations that dominate deep learning, and faster than general graphics hardware on the particular work they were shaped around.</li>
-<li><b>Field-programmable gate arrays</b> &mdash; processors whose circuitry can be reconfigured after manufacture, so a team with one unusual calculation can reshape the hardware around it instead of waiting for a chip nobody will ever make.</li>
-<li><b>Neuromorphic chips</b> &mdash; designs inspired by the architecture of the human brain, aimed at improving energy efficiency and processing speed for artificial-intelligence work rather than at raw general throughput.</li>
-<li><b>Wafer-scale engines</b> &mdash; the chapter names Cerebras as an example of integrating vast numbers of cores on a single piece of silicon in order to handle very large models efficiently.</li>
+<li><b>Tensor processing units</b> &mdash; built by large providers to speed the matrix calculations that dominate deep learning, beating general graphics hardware.</li>
+<li><b>Field-programmable gate arrays</b> &mdash; processors reconfigurable after manufacture, so an unusual calculation reshapes the hardware rather than waiting for a chip.</li>
+<li><b>Neuromorphic chips</b> &mdash; designs modelled on the human brain, aimed at energy efficiency and speed for artificial-intelligence work rather than general throughput.</li>
 </ul>
-<p>The business consequence is simple, and it is worth carrying out of this section. A proposal to train models is not a proposal to buy more of the machines you already own. It is a proposal to buy a different kind of machine, at a different unit price, and the later section on what drives infrastructure change comes back to what that does to a budget.</p>
+<p>Training models is not a proposal to buy more of the machines you already own.</p>
 
 <div class="activity" data-activity="hwProcessors"></div>
 
-<h3>Where hardware stops</h3>
-<p>One sentence in the chapter marks the edge of this section and is the hinge into the next. The application software used for business processes cannot interact with all this hardware directly. It interacts with the system software, and the system software interacts with the machine.</p>
-<p>That is not a technicality. It is the reason a business can buy a program without knowing what is inside its computers, and the reason the same program runs on a laptop, on a rack-mounted server and on a handheld device. The next section takes that middle layer apart.</p>
-<p class="takeaway">Name the machine and you have named the constraint: how many people it can serve at once, whether it does one job or any job, and whether it works in sequence or in parallel. Almost every hardware argument a manager will ever sit through is one of those three questions wearing a different coat.</p>
+<p>Application software never talks to this hardware directly. It talks to the system software, which talks to the machine.</p>
+<p class="takeaway">Name the machine and you have named the constraint: how many people it serves at once, whether it does one job or any job, and whether it works in sequence or in parallel.</p>
 
 <div class="activity" data-activity="hwQuiz2"></div>
 `;

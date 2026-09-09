@@ -2,129 +2,70 @@
 PROSE.s32e = `
 <span class="eyebrow">Section 3&ndash;2e</span>
 <h2>How the internet and the web actually work</h2>
-<p class="lede">Everything in the sections before this one &mdash; the machines, the operating systems, the stored data, the wires between them &mdash; only becomes useful when something far away can reach it. So this section takes the most ordinary act in modern working life, opening a page, and pulls it apart. None of it is difficult. It is only unfamiliar, and every later argument in this module about cost, renting and risk quietly assumes you can picture what is happening here.</p>
+<p class="lede">Everything before this becomes useful only when something far away can reach it. So this section pulls apart the most ordinary act in working life: opening a page.</p>
 
 <h3>One network made out of many networks</h3>
-<p>The previous section sorted networks by how far they reach: a few metres, a building, a city, the world. The largest of them is the one you are almost certainly using right now. The <b>internet</b> is a large worldwide collection of networks that use a common protocol to communicate with each other. Notice what that definition does not say. It does not say one network, and it does not name an owner.</p>
-<p>Three things are packed into that one sentence, and each of them explains something you have probably noticed without ever being able to name it.</p>
-<ul class="keys">
-<li><b>Many networks, not one</b> &mdash; the internet is a collection, so what you connect to is your own provider&rsquo;s network, which connects to others, and so on outward until the far end is reached.</li>
-<li><b>A common protocol</b> &mdash; the only thing every participant has to share is an agreement about how to talk, which is why equipment from different decades and different manufacturers still exchanges traffic without difficulty.</li>
-<li><b>No owner named</b> &mdash; nobody is in charge of the whole of it, so there is no central office to approve a new connection and equally none to telephone when something between two networks stops working.</li>
-</ul>
-<p>The word itself records how the thing was built. <b>Internetworking</b> means connecting host computers and their networks together to form even larger networks, and that is exactly what happened: a university network here, a company network there, a home connection somewhere else, each separately owned and separately paid for, all agreeing to speak to each other the same way.</p>
-<p>The practical consequence is worth sitting with. When you send a message from a kitchen table to an office server, it crosses equipment belonging to several companies that have never heard of you, and nobody arranged any of it in advance. That is not a weakness in the design. That is the design.</p>
+<p>The <b>internet</b> is a large worldwide collection of networks using a common protocol to communicate with each other. Notice what that omits: not one network, and no owner. <b>Internetworking</b> means joining host computers and their networks into larger ones.</p>
 
 <h3>The web is not the internet</h3>
-<p>These two words are used as synonyms in ordinary speech, and they are not synonyms. The <b>World Wide Web</b> is a system of interlinked documents on the internet &mdash; or, as the chapter also puts it, a graphical user interface to the internet. The web runs on the internet in roughly the way an application runs on an operating system.</p>
-<p>Five words do most of the work here, and each one names something you already handle every day:</p>
+<p>The <b>World Wide Web</b> is a system of interlinked documents on the internet &mdash; a graphical user interface to it, the chapter says. The web runs on the internet as an application runs on an operating system.</p>
 <ul class="keys">
-<li><b>Hypertext</b> &mdash; documents that carry links to other documents, so a reader can move between them in any order rather than front to back. The chapter calls this the key feature of the web, and everything else is built on top of it.</li>
-<li><b>A web page</b> &mdash; a hypertext document, meaning it holds not only content but also the links that lead away from it. That combination is what makes it a page rather than simply a file somebody stored.</li>
-<li><b>A hyperlink</b> &mdash; a reference from one document to another that a reader can follow, which is what turns a heap of separate documents into a web instead of a library of unconnected ones.</li>
-<li><b>A web browser</b> &mdash; the software application used to locate and display web pages, including their text, graphics and multimedia content. It asks for documents and then decides how they look.</li>
-<li><b>A website</b> &mdash; a collection of interlinked web pages owned by the same organization or individual, usually hosted on a web server. The site is what an organization publishes; the page is what a visitor reads.</li>
+<li><b>Hypertext</b> &mdash; documents carrying links to other documents, so a reader moves between them in any order; the chapter calls this the web&rsquo;s key feature.</li>
+<li><b>A web page</b> &mdash; a hypertext document, holding content and the links leading away from it, which makes it a page and not a file.</li>
+<li><b>A hyperlink</b> &mdash; a reference from one document to another that a reader can follow, turning separate documents into a web.</li>
+<li><b>A web browser</b> &mdash; the application used to locate and display web pages and their text, graphics and multimedia. It asks for documents, then decides how they look.</li>
+<li><b>A website</b> &mdash; a collection of interlinked web pages owned by one organization or person, usually hosted on a web server.</li>
 </ul>
-<p>Keeping the two words apart is not pedantry. Email, a video call and a file transfer all travel over the internet without being the web at all, so &ldquo;our supplier system is on the web&rdquo; and &ldquo;our supplier system is on the internet&rdquo; describe two different arrangements carrying two different sets of risks.</p>
+<p>Email and file transfers cross the internet without being the web, so the two words name different arrangements and risks.</p>
 
 <div class="activity" data-activity="webQuiz1"></div>
 
 <h3>What a page is actually made of</h3>
-<p>Open any page, ask the browser to show you its source, and you will find the same words you were just reading, wrapped in short codes. That file is written in <b>Hypertext Markup Language</b>, or HTML: the standard method of specifying the structure and content of web pages. It is a text-based file format, which means a person can read it, and it uses codes called <b>HTML tags</b> to instruct the browser on how a document should be presented.</p>
-<p>A tag is set apart from the surrounding text with angle brackets, and most tags come in pairs, one to begin an element and one to end it. Some tags say how something should look; others say what something is, such as the page title, a heading level, or the end of a paragraph. The chapter&rsquo;s own list is short, and it is enough to read the source of a real page.</p>
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Tag</th><th>What it does</th></tr></thead>
-<tbody>
-<tr><td><code>&lt;html&gt; ... &lt;/html&gt;</code></td><td>Delineates the whole HTML document, so everything else sits inside this one pair</td></tr>
-<tr><td><code>&lt;head&gt; ... &lt;/head&gt;</code></td><td>Holds the title, scripts, styles, metadata and other elements that are not displayed on the page itself</td></tr>
-<tr><td><code>&lt;body&gt; ... &lt;/body&gt;</code></td><td>Holds the visible portion of the document, which is everything a reader actually sees</td></tr>
-<tr><td><code>&lt;b&gt; ... &lt;/b&gt;</code></td><td>Creates bold text: the first tag turns bolding on, the second turns it off again</td></tr>
-<tr><td><code>&lt;p&gt; ... &lt;/p&gt;</code></td><td>Creates a new paragraph, which is how the browser knows where to break the running text</td></tr>
-<tr><td><code>&lt;table&gt; ... &lt;/table&gt;</code></td><td>Creates a table, so the content is laid out as rows and columns rather than as prose</td></tr>
-<tr><td><code>&lt;a href=&quot;second-page.html&quot;&gt; ... &lt;/a&gt;</code></td><td>Creates a hyperlink, so the enclosed words carry the reader to another document</td></tr>
-<tr><td><code>&lt;a href=&quot;mailto:name@example.org&quot;&gt; ... &lt;/a&gt;</code></td><td>Creates a link that opens a new email message rather than a page</td></tr>
-</tbody>
-</table></div>
-<p>The addresses inside those last two are placeholders. They are printed here as inert text so that you can read the shape of a tag without anything on this page ever reaching out to a network.</p>
-<p>Two more names complete the picture. <b>HTML5</b> is the name the chapter gives the current version of the language, which added ways of structuring a page and of presenting modern multimedia without extra software installed alongside the browser. Treat that as a label rather than as a version number still being counted up: the web&rsquo;s markup is now revised continuously instead of being released in numbered editions, so there is no HTML6 waiting behind it.</p>
-<p><b>Cascading style sheets</b>, or CSS, are what developers use to specify the formatting and layout of the elements on a page.</p>
-<p>The division between those two is the transferable idea, and it is the same abstraction argument the section on operating systems made. HTML says what the parts of a document are; CSS says how they should look. Separating them is why one style change can resize every heading across a site of a thousand pages without anyone editing a thousand pages, and why the same page can be legible on a phone and on a projector.</p>
-<p>Anything you have met beyond the tags in that table &mdash; headings, images, embedded video &mdash; is a real part of modern HTML but is an addition to the chapter&rsquo;s list rather than part of it. Get the eight the chapter gives before you go looking for more.</p>
+<p>A page is written in <b>Hypertext Markup Language</b>, or HTML, the standard method of specifying the structure and content of web pages, using codes called <b>HTML tags</b> &mdash; in angle brackets, usually paired &mdash; that tell the browser how to present it.</p>
+<p><b>HTML5</b> is the chapter&rsquo;s name for the current version, which added multimedia without extra software. <b>Cascading style sheets</b>, or CSS, specify formatting and layout: HTML says what a document&rsquo;s parts are, CSS says how they look, so one change restyles a thousand pages.</p>
+<p>Match the chapter&rsquo;s eight tags to what each one does.</p>
 
 <div class="activity" data-activity="webTags"></div>
 
 <h3>Where pages live, and how one is asked for</h3>
-<p>Pages are stored on <b>web servers</b>, which process user requests for those pages using the <b>Hypertext Transfer Protocol</b>, or HTTP. A protocol, from the previous section, is simply the agreed set of rules by which two machines talk. This one is the reason a browser written by one company can read a page served by software written by another company that has never heard of it.</p>
-<p>The word &ldquo;stored&rdquo; is doing less work than it looks, and the next sentence is the most useful one in this section for anyone who will later touch a database. Web servers often employ scripting languages to assemble pages on the fly, or to retrieve data from databases and insert it into the page presented to the user.</p>
-<p>That product page you looked at last week did not exist before you asked for it. It was built, on request, out of stored rows about that one product &mdash; which is a thread the supplement on databases later in this module picks up and follows.</p>
-<p>One more thing rides along with every request, and it is the difference between privacy and none. Data travelling between a server and a user&rsquo;s computer can easily be intercepted, so organizations now routinely use <b>HTTPS</b>, the secure form of the same protocol, for anything at all sensitive.</p>
-<p>The padlock a browser shows beside an address is the browser reporting that the secure protocol is in use. Its absence on a page asking for a card number means that number crosses several unknown networks in a form anyone along the way could read.</p>
+<p>Pages sit on <b>web servers</b>, which handle requests using the <b>Hypertext Transfer Protocol</b>, or HTTP: rules letting one company&rsquo;s browser read another&rsquo;s page. Servers often build pages from databases on request, so the product page you opened did not exist until you asked.</p>
+<p>Data between server and user is easily intercepted, so organizations use <b>HTTPS</b>, the secure form of that protocol. The padlock reports it in use; without it a card number crosses unknown networks readable.</p>
 
 <h3>How a request finds one machine out of billions</h3>
-<p>Every computer or device on the internet is identified by an <b>IP address</b>, which serves as that machine&rsquo;s destination address and lets the network route messages to it. The older form is written as four numbers separated by periods, each of them between zero and 255. The newer form uses a far larger address, and it exists for a blunt reason: the world ran short of the older kind.</p>
-<p>Numbers are hard to remember and they change from time to time, so people use names instead. A <b>uniform resource locator</b>, or URL, is the address you actually type, and the chapter dissects it into three distinct parts. Take a plain address such as <code>mail.example-museum.org</code> and read it from the right:</p>
+<p>Every device carries an <b>IP address</b>, the destination the network routes to, in the older form four numbers under 256. Numbers being hard to remember, people type a <b>uniform resource locator</b> instead. Read <code>mail.example-museum.org</code> from the right.</p>
 <ul class="keys">
-<li><b>The top-level domain</b> &mdash; the suffix at the end, here <code>org</code>, which indicates the family of names this one was registered under and something about the kind of registrant.</li>
-<li><b>The domain name</b> &mdash; here <code>example-museum</code>, the part that helps a person recognize the company or individual the address belongs to. This is the piece an organization registers and pays for.</li>
-<li><b>The host name</b> &mdash; here <code>mail</code>, naming the particular web server, or group of web servers, that will answer this request. The prefix <code>www</code> normally means the default site including the home page.</li>
+<li><b>The top-level domain</b> &mdash; the suffix, here <code>org</code>, naming the family the address was registered under.</li>
+<li><b>The domain name</b> &mdash; here <code>example-museum</code>, the part identifying the organization, and the piece somebody registers and pays for.</li>
+<li><b>The host name</b> &mdash; here <code>mail</code>, naming which web server answers; <code>www</code> normally means the default site with the home page.</li>
 </ul>
-<p>That third part carries an unexpectedly practical fact. An organization registers one domain and then puts as many host names in front of it as it has services, so <code>www.example-museum.org</code>, <code>mail.example-museum.org</code> and <code>photos.example-museum.org</code> can be three entirely separate systems on three different machines, all under one registered name.</p>
-<p>A URL usually carries a path after the address as well, naming the particular resource wanted rather than the site as a whole. Something ending <code>example-museum.org/collections/textiles</code> is asking for one page in one part of the site, in the same way that a folder path names one file rather than a whole drive.</p>
-<p>Top-level domains arrive in three families, and the chapter gives examples of each.</p>
-<ul class="keys">
-<li><b>Suffixes for a kind of organization</b> &mdash; <code>com</code> is reserved for commercial organizations, <code>edu</code> for educational institutions, <code>org</code> for organizations and typically non-profit ones, and <code>gov</code> for a United States government entity.</li>
-<li><b>Country codes</b> &mdash; more than two hundred and forty two-letter suffixes, one for each country, such as <code>de</code> for Germany. These are the reason an address can tell you where a name was registered.</li>
-<li><b>Generic suffixes</b> &mdash; added as names proliferated, each naming an industry or a use. The chapter&rsquo;s examples are <code>aero</code> for the air transport industry, <code>name</code> for individuals, <code>coop</code> for business cooperatives and <code>museum</code> for museums.</li>
-</ul>
-<p>Names are registered through many different companies that compete with one another, and that is worth knowing for one reason: a suffix tells you which family of names something was registered in, not whether the registrant is honest.</p>
-<p>An address need not be typed at all, either. A <b>QR code</b> is a two-dimensional bar code with a high storage capacity, most often holding an address so that scanning it with a camera opens the page. The same code can instead trigger an action, such as starting a call to a sales representative, sending a message to a set number, or authorizing a contactless payment through a banking or payment application.</p>
-<p>Reading an address correctly is a small skill with an outsized payoff, and it is worth practising as code rather than as prose, because writing the rule down forces you to be exact about where one part of a name ends and the next begins.</p>
+<p>One registered domain can therefore carry mail, photos and the public site on separate machines. Suffixes fall into three families: organization kinds, country codes, and generic ones.</p>
+<p>A <b>QR code</b> is a two-dimensional bar code holding an address, or an action such as a payment. Write the reading rule as code, which forces exactness.</p>
 
 <div class="activity" data-activity="webAddress"></div>
 
-<p>The second function in that exercise is the whole of one very common fraud. A name such as <code>login.example-bank.com.example-attacker.net</code> contains a familiar bank&rsquo;s name in full and reads convincingly at a glance, but the registered part is the last two labels, so the site belongs to whoever registered <code>example-attacker.net</code>. Reading an address from the right rather than from the left is the habit that catches it, and it is a habit a machine can be taught in about six lines.</p>
-
-<h3>What actually travels: one request, end to end</h3>
-<p>The internet moves web pages and everything else using <b>TCP/IP</b>, the transmission control protocol and the internet protocol taken together. Its first move is counter-intuitive. It does not send your request as one piece: it breaks it into small chunks called <b>packets</b>, sends those off separately, and reassembles them at the far end.</p>
-<p>Breaking requests and files into small packets is what allows data to be routed and transferred efficiently across a network, and it buys three things at once:</p>
+<h3>What actually travels</h3>
+<p>The internet moves everything using <b>TCP/IP</b>, the transmission control protocol and internet protocol together. It never sends a request whole: it breaks it into chunks called <b>packets</b>, sends those separately, and reassembles them.</p>
 <ul class="keys">
-<li><b>Pieces travel independently</b> &mdash; different packets belonging to one file may take different routes through the network, so no single congested link gets to decide how fast the whole thing arrives.</li>
-<li><b>A failure costs a fragment rather than a file</b> &mdash; when a packet goes missing it can be sent again on its own, instead of the entire transfer having to start over from the beginning.</li>
-<li><b>Many conversations share one path</b> &mdash; because everyone&rsquo;s traffic is in small pieces, a single large download cannot occupy a link for minutes on end while everybody else waits their turn.</li>
+<li><b>Pieces travel independently</b> &mdash; packets from one file take different routes, so no congested link decides how fast it all arrives.</li>
+<li><b>A failure costs a fragment</b> &mdash; a missing packet is resent alone, instead of restarting the whole transfer.</li>
+<li><b>Many conversations share a path</b> &mdash; all traffic is in small pieces, so one download cannot occupy a link while everybody waits.</li>
 </ul>
-<p>You never see any of this happening, which is rather the point of it. It is also why trouble on a network so often shows up as something slow and intermittent rather than as something plainly broken.</p>
-<p>The eight steps below make up one complete round trip, from your keystroke to the finished page on the screen. Put them in order, then read why each one has to sit where it does.</p>
+<p>Put the eight steps of one round trip in order.</p>
 
 <div class="activity" data-activity="webOrder"></div>
 
-<h3>The same pipes carry calls, and let programs talk to each other</h3>
-<p>Once everything is packets, the difference between a telephone network and a computer network stops meaning very much. TCP/IP has allowed a convergence of computing and telecommunications, and the clearest evidence is <b>Voice over IP</b>, also called IP telephony: technologies that use internet infrastructure to place telephone or video calls. The chapter names WhatsApp, FaceTime, Zoom and Microsoft Teams among the consumer-facing examples, and notes that the versions sold to organizations add intelligent call routing, secure audio, and integration with other applications such as Salesforce or Slack.</p>
-<p>The same web protocols carry something less visible and rather more consequential. They also let applications communicate with each other, which is the basis of an <b>application programming interface</b>, or API. The idea is simple and worth stating carefully, because a great deal of modern software is assembled out of it.</p>
-<ul class="keys">
-<li><b>A service consumer</b> &mdash; the program that wants something done, such as a ride-hailing application that needs a route across a city for which it holds no map of its own.</li>
-<li><b>A service provider</b> &mdash; the program that can do it, such as a mapping service that already holds the roads and the traffic and does little else but answer that kind of question.</li>
-<li><b>Pre-specified parameters</b> &mdash; the agreed values the consumer passes across, here a pickup location and a destination, and the result that comes back, here the best route between them.</li>
-<li><b>No knowledge of the inside</b> &mdash; the consumer never has to know how the provider produces its answer, which is exactly why a small team can ship a product resting on capabilities it could never have built itself.</li>
-</ul>
-<p>A request of this kind is often just an address with values attached to the end of it, and the shape is worth seeing once.</p>
-<div class="callout info"><b>The shape of an interface request.</b> <code>directions?origin=CITY_A&amp;destination=CITY_B&amp;key=YOUR_KEY_GOES_HERE</code> &mdash; three agreed values sent across, and a route sent back. The names before each equals sign are the parameters the provider has published; the values after them are what this particular caller wants. Nothing here is a real address and nothing here is a real key.</div>
-<div class="callout warn"><b>Now look at the last value in that request.</b> The key is a credential: it identifies the account that will be billed for the work. Sitting where it does, in the middle of an address, it also travels into server logs, browser history, screenshots, chat messages and copied-and-pasted examples. Hold that thought. The cloud sections later in this module describe a company whose ordinary monthly bill became a ruinous one after exactly this kind of credential was taken and used by somebody else &mdash; and the reason that was possible is visible right here, on the page where the interface was first explained.</div>
+<h3>Calls, and programs talking to each other</h3>
+<p><b>Voice over IP</b> uses internet infrastructure to place telephone or video calls &mdash; WhatsApp, FaceTime, Zoom, Teams &mdash; because once everything is packets, telephone and computer networks stop differing.</p>
+<p>The same protocols let applications call each other. An <b>application programming interface</b> lets a consumer pass pre-specified parameters to a provider and get a result without knowing how it works: a ride-hailing app sends two points to a mapping service and gets a route.</p>
+
+<div class="callout warn"><b>Look at the last value.</b> A request such as <code>directions?origin=A&amp;destination=B&amp;key=YOUR_KEY</code> ends in a credential naming the account that gets billed &mdash; and it lands in logs, screenshots and pasted examples.</div>
 
 <h3>The part of the web you cannot search</h3>
-<p>Search engines work by following links. A program walks from page to page, collects what it finds and builds an index, so anything it can walk to becomes findable and anything it cannot walk to does not. That one mechanism explains a fact most people find surprising: the searchable part of the web is a small fraction of it.</p>
-<p>The <b>deep web</b> is those parts of the web that conventional search engines cannot index. The chapter estimates the searchable surface at as little as a hundredth of the whole; treat that as an illustration rather than a measurement, since something unindexed is by definition uncountable. The structure is what matters, and the chapter enumerates it exactly.</p>
-<ul class="keys">
-<li><b>Private areas requiring authentication</b> &mdash; a course system, an electronic textbook, a bank statement. The pages are perfectly ordinary; they simply refuse to open for anyone without an account.</li>
-<li><b>Pages generated from a database on request</b> &mdash; a product listing, a library catalogue record, a government agency&rsquo;s weather archive. There is no stored page for a program to walk to, because the page comes into existence when somebody asks a question of the data.</li>
-<li><b>Pages nothing links to</b> &mdash; a document sitting on a public server with no link anywhere in the world pointing at it. A program that navigates by following links has no route by which to arrive.</li>
-</ul>
-<p>None of that is sinister, and one consequence of it lands squarely on a manager. A company&rsquo;s own records are invisible to a search engine for the second and third reasons at once, which is why &ldquo;just search for it&rdquo; is never an answer to a question about internal information, and why organizations have to build their own ways of finding what they already hold.</p>
-<p>The <b>dark web</b> is a different thing that happens to share a syllable, and the chapter is emphatic that the two are not to be confused. It is those areas of the web used for various nefarious purposes &mdash; the chapter names trading in drugs, in stolen payment card details and in illegal material &mdash; typically reachable only with specialized browsers that anonymize the user and hide their traces.</p>
-<p class="takeaway">Put the two side by side and the confusion dissolves. The deep web is most of the ordinary web with a login screen or a database in front of it; the dark web is a small, deliberately hidden neighbourhood that most people will never have any reason to enter.</p>
+<p>Search engines walk from link to link, so what they cannot reach never becomes findable. The <b>deep web</b> is what they cannot index: pages behind authentication, pages generated from a database on request, and pages nothing links to.</p>
+
+<p>The <b>dark web</b> only shares a syllable: areas used for nefarious purposes &mdash; drugs, stolen card details, illegal material &mdash; reachable only through browsers that anonymize the user.</p>
 
 <div class="activity" data-activity="webLayers"></div>
-
-<div class="callout exam"><b class="tagline">The four confusions worth fixing before you move on</b>The internet is the network of networks, and the web is one thing running on it. HTTP is the rule for asking, and HTTPS is that same rule with the conversation sealed. The domain is what an organization registered, and the host name is which of its servers answers. And the deep web is ordinary content behind a login or a database, while the dark web is something else entirely.</div>
 
 <div class="activity" data-activity="webQuiz2"></div>
 `;

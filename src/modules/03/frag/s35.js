@@ -1,130 +1,77 @@
 /* ===== s35 ===== */
-PROSE.s35 = `<span class="eyebrow">Application supplement &middot; 3&ndash;5</span>
+PROSE.s35 = `
+<span class="eyebrow">Application supplement &middot; 3&ndash;5</span>
 <h2>Where the data itself lives: databases and SQLite</h2>
-
-<p class="lede">Everything in this module so far has been about the container: the machines, the software that drives them, the wire between them, and the room they sit in. None of it says anything about the thing all of it exists to hold. An organization&rsquo;s records are the part that cannot simply be bought again after a bad day. This supplement follows the data itself, from a folder of files to a stored set of records you can question.</p>
-
-<div class="callout info"><b>How this supplement relates to the chapter.</b> The chapter keeps brushing against databases without ever stopping on them. It defines a server as a machine that provides others with access to databases. It says web servers often assemble a page by pulling data out of a database at the moment the page is requested. It counts database management systems among the costs that growing data drives up, and then names them again as a licence the platform service model quietly removes. This section gathers those scattered mentions into one place and carries them as far as reading a stored table and asking it a question. It is a labeled supplement rather than a textbook objective, and it prepares for the database work the course does separately in SQLite rather than replacing it.</div>
-
-<h3>What the chapter already told you about data</h3>
-
-<p>Four sentences, spread across four different sections of the chapter, hold most of what a manager needs. Read together they make an argument the chapter itself never quite assembles.</p>
-
-<ul class="keys">
-<li><b>A server is defined by the fact that it serves data</b> &mdash; the chapter describes that class of computer as one built to give many users at once their websites, their applications and their access to databases, which is why it is optimized for connections rather than for one person&rsquo;s screen.</li>
-<li><b>Web pages are often built out of a database as you ask for them</b> &mdash; the page that arrives was not sitting on a disk in that form, because a program queried stored records and assembled the page around the result.</li>
-<li><b>Keeping data is a running cost rather than a purchase</b> &mdash; the chapter says that capturing more data demands more storage space, more powerful computing hardware, and database management systems to manage and analyse whatever has been kept.</li>
-<li><b>Renting a platform removes the licence, not the design</b> &mdash; on the platform service model the provider supplies and updates the database software, and the chapter names that licence as one of the things the customer no longer has to buy.</li>
-</ul>
-
-<p>Put those four together and the shape appears. Data is kept once, on a machine built to serve it; other programs ask that machine for what they need; and the arrangement costs money continuously, in space, in electricity and in software. What the chapter never says is why data is kept that way rather than in files, which is where this supplement starts.</p>
+<p class="lede">Everything so far has been the container: machines, software, wire. None of it says what all of it exists to hold. An organization&rsquo;s records are the part that cannot be bought again after a bad day. This supplement prepares for the course&rsquo;s separate SQLite work rather than replacing it.</p>
 
 <h3>Why a pile of files eventually fails</h3>
-
-<p>The earlier section on system software and storage described files and folders: a file is a block of data holding specific content, and folders group related files into a tree. For documents that works beautifully. It fails, quietly and expensively, the moment several people have to record the same kind of fact.</p>
-
-<p>Take a hypothetical community music school that lends instruments to its learners. Three members of staff each keep a spreadsheet of loans. Nothing about that is unreasonable: every file is small, readable, and belongs to the person who made it. The trouble starts with the first question that spans them.</p>
-
+<p>A file is a block of content whose meaning lives in the head of whoever made it. That works for documents and fails once several people record the same kind of fact &mdash; say a hypothetical music school where three staff each keep a loans spreadsheet.</p>
 <ul class="keys">
-<li><b>The same fact ends up stored more than once</b> &mdash; a learner&rsquo;s name and address are typed into whichever file the person on shift happened to open, so a correction made in one of them never reaches the others.</li>
-<li><b>Nothing decides which copy is authoritative</b> &mdash; when two files disagree about how many instruments are out, no rule settles it, and the disagreement is resolved by whoever sounds more certain rather than by evidence.</li>
-<li><b>The shape of a record becomes a matter of habit</b> &mdash; one file writes a date as a word and another as digits, one gains a column in March that the others never get, and a heading that meant one thing in the autumn means something slightly different by the spring.</li>
-<li><b>Questions that span the files cannot really be asked</b> &mdash; counting a year of loans means opening every file and adding by hand, which is work nobody repeats often enough to notice when a total comes out wrong.</li>
+<li><b>The same fact is stored twice</b> &mdash; an address typed into whichever file was open, so corrections never reach the others.</li>
+<li><b>Nothing decides which copy is authoritative</b> &mdash; two files disagree, and whoever sounds surer settles it.</li>
+<li><b>The shape of a record becomes habit</b> &mdash; one file dates in words, another in digits, and headings change meaning.</li>
+<li><b>Questions spanning the files cannot be asked</b> &mdash; a year of loans means opening each file and adding by hand.</li>
 </ul>
-
-<p>A <b>database</b> is the answer to exactly that failure, and it is worth defining in those terms rather than as a piece of software you install. A database is one stored, shared set of records that everyone reads and writes, held in a declared shape, and asked questions of instead of copied. The program that keeps it is a <b>database management system</b>: it enforces the shape, lets many people work at once without overwriting each other, and answers the questions.</p>
-
-<p>The difference from a file is that shape. A file is a block of content whose meaning lives in the head of whoever made it. A <b>table</b> is a declared shape: named columns, each holding one kind of value, and one row for each thing the table is about. Because the shape is declared rather than assumed, the system can refuse a record that does not fit &mdash; a loan with no borrower, or a second row claiming an identifier that already belongs to another row.</p>
+<p>A <b>database</b> answers that: one stored, shared set of records everyone reads and writes, held in a declared shape and asked questions of instead of copied. The program keeping it is a <b>database management system</b>, which enforces the shape, lets many people work at once, and answers questions.</p>
+<p>That shape is the difference. A <b>table</b> has named columns, each holding one kind of value, and one row per thing it is about, so the system can refuse a loan with no borrower.</p>
 
 <div class="activity" data-activity="dbQuiz1"></div>
 
 <h3>How to read a stored table</h3>
-
-<p>A table has only two directions and both of them are ordinary, which is why a table is easier to read than most people expect on first meeting one.</p>
-
+<p>A table has two directions, and both are ordinary.</p>
 <ul class="keys">
-<li><b>A row is one of the things the table is about</b> &mdash; one loan, one learner, one payment, recorded once, with a value in every column that applies to it.</li>
-<li><b>A column is one kind of fact</b> &mdash; every value in it means the same thing and is the same kind of thing, which is exactly what makes it possible to filter on it, sort by it, or total it.</li>
-<li><b>A key is the column that identifies the row</b> &mdash; a value no two rows may share, so that one record can be referred to from elsewhere with no ambiguity about which one is meant.</li>
-<li><b>A relationship is a column that names a row in another table</b> &mdash; a loan carries a learner identifier rather than a learner&rsquo;s name, so the name is stored once and borrowed by every loan that needs it.</li>
+<li><b>A row is one thing the table is about</b> &mdash; one loan, learner or payment, with a value in each column.</li>
+<li><b>A column is one kind of fact</b> &mdash; every value means the same thing, so you can filter, sort or total on it.</li>
+<li><b>A key identifies the row</b> &mdash; a value no two rows share, so a record is named without ambiguity.</li>
+<li><b>A relationship names a row in another table</b> &mdash; a loan carries a learner identifier, not a name, stored once.</li>
 </ul>
-
-<p>That last one is the move the files could not make. Correct a name on the learner&rsquo;s own row and every loan is correct the same instant, because no loan ever held a copy of it in the first place.</p>
-
-<p>Asking a table something is then three separate decisions, and keeping them separate is most of the skill:</p>
-
-<ol class="steps">
-<li><b>Which rows?</b> Every condition in the question &mdash; still out, this term, longer than a month &mdash; narrows the set of rows before anything else is allowed to happen.</li>
-<li><b>Which columns?</b> A question rarely wants a whole record. Naming the columns you actually need is what turns a screen of data into an answer somebody can read aloud.</li>
-<li><b>Rows, or a summary of rows?</b> How many, how much and on average are not questions about rows at all. They collapse many rows into a single value for each group.</li>
-</ol>
-
-<p>The language that writes those decisions down is <b>SQL</b>, the structured query language, and it is broadly the same language whichever database system you meet. Each decision has its own word, and reading them in this order makes a query far less mysterious than it looks:</p>
-
+<p>The language for asking is <b>SQL</b>, the structured query language, much the same in any system. Six words carry most of it.</p>
 <ul class="keys">
-<li><b>FROM</b> names the table the rows come from, and so decides what is being counted before anything else in the query happens at all.</li>
-<li><b>WHERE</b> keeps only the rows that satisfy a condition, and because it runs before any total exists it silently determines every number that follows.</li>
-<li><b>SELECT</b> names the columns that come back, and a calculation such as sessions booked minus sessions attended can be one of them, given a name of its own.</li>
-<li><b>GROUP BY</b> collapses the surviving rows into one row for each distinct value, which is what lets a count or a sum report per category instead of per record.</li>
-<li><b>HAVING</b> filters those grouped rows, and it exists because WHERE has already finished its work by the time any total has been calculated.</li>
-<li><b>ORDER BY and LIMIT</b> sort the result and keep only the first few rows, which together answer anything phrased as the busiest, the longest, or the worst three.</li>
+<li><b>FROM</b> names the table the rows come from, deciding what is counted at all.</li>
+<li><b>WHERE</b> keeps only rows meeting a condition, and running first, decides every number that follows.</li>
+<li><b>SELECT</b> names the columns returned; a calculation such as booked minus attended can be one.</li>
+<li><b>GROUP BY and HAVING</b> collapse rows into one per distinct value, then filter those totals, which WHERE cannot do.</li>
+<li><b>ORDER BY and LIMIT</b> sort and keep the first rows &mdash; the busiest, the longest, the worst three.</li>
 </ul>
-
-<p>Here is one whole query over a table of lesson sign-ups: <code>SELECT Learner, Fee FROM signups WHERE Term = 'Spring' ORDER BY Fee DESC</code>. Read it as four decisions in a row. The rows come from the sign-up table; only spring sign-ups survive; two columns come back, the learner and the fee; and the result arrives dearest first. Nothing in it names a particular learner, which is why the same query still works after another hundred sign-ups arrive.</p>
-
-<p>Before writing one yourself it is worth being deliberate about the order of thinking, because a query that runs is not the same thing as a query that answers the question you were asked.</p>
+<p>One whole query: <code>SELECT Learner, Fee FROM signups WHERE Term = 'Spring' ORDER BY Fee DESC</code>. Rows come from sign-ups, only spring survives, two columns return, dearest first &mdash; and it names no learner, so it still works after another hundred.</p>
 
 <div class="activity" data-activity="dbShape"></div>
 
 <h3>Asking one table a question</h3>
-
-<p>The table below records lesson sign-ups at that same hypothetical music school. Everything in it is invented for practice, every person named included. Each row is one sign-up, carrying the learner, the instrument, the level, the term, how many sessions were booked, how many were attended, and the fee.</p>
-
-<p>Write a query for each question and run it. Any query that returns the right answer is accepted rather than only the wording that happened to be expected, so there is more than one way through. When a query cannot run, the page says why in plain language, which teaches more than an empty result would.</p>
+<p>The table below records sign-ups at that hypothetical school; every person is invented. Each row carries learner, instrument, level, term, sessions booked and attended, and fee. Any query returning the right answer is accepted.</p>
 
 <div class="activity" data-activity="dbRows"></div>
 
-<p>Notice what the second question needed. The number of missed sessions is not stored anywhere; it is worked out from two columns at the moment you ask. Storing it as well would create a third value that can disagree with the other two, which is the trouble with the files all over again in miniature. Facts that can be derived are generally derived rather than kept.</p>
+<p>Missed sessions are stored nowhere; they are worked out from two columns as you ask. Storing the number too would create a third value that can disagree &mdash; the files again.</p>
 
 <h3>Questions no single row can answer</h3>
-
-<p>Everything so far returned rows that already existed. Two kinds of question do not work that way, and between them they cover most of what management actually asks for.</p>
-
+<p>Everything so far returned rows that already existed. Two kinds of question do not.</p>
 <ul class="keys">
-<li><b>Summaries ask about groups rather than records</b> &mdash; how many loans per instrument, or how long the average loan runs, produce one line for each group and no underlying rows at all.</li>
-<li><b>Joins ask about facts that were deliberately kept apart</b> &mdash; who the borrower is and what they borrowed are two different kinds of fact living in two tables, and a join matches them on the value they share.</li>
-<li><b>Filters can apply before or after the grouping</b> &mdash; keeping only the loans still out is a condition on rows, while keeping only the instruments borrowed more than once is a condition on a total that does not exist until the grouping has finished.</li>
+<li><b>Summaries ask about groups</b> &mdash; loans per instrument, or average length, give one line per group.</li>
+<li><b>Joins ask about facts kept apart</b> &mdash; borrower and item live in two tables, matched on the value they share.</li>
+<li><b>Filters apply before or after grouping</b> &mdash; loans still out tests rows; instruments borrowed twice tests a total.</li>
 </ul>
-
-<p>The two tables below belong to the same hypothetical school, and again every member and every loan in them is invented. One holds a row for each member, with the town they live in and the date they joined; the other holds a row for each loan, carrying a member identifier rather than a name.</p>
+<p>The two invented tables below belong to that school: one row per member with town and join date, one row per loan carrying a member identifier.</p>
 
 <div class="activity" data-activity="dbGroups"></div>
 
-<p>The last questions are the ones worth sitting with. Neither answer exists in any row: the count for each town is assembled at the moment of asking, out of records that were never entered with towns in mind. That is the practical difference between a set of files and a database &mdash; files answer the questions they were built for, and a database answers questions nobody had thought of when the records were written.</p>
+<p>Neither of the last answers exists in any row: the count per town is assembled as you ask, from records never entered with towns in mind. Files answer what they were built for; a database answers questions nobody thought of.</p>
 
-<h3>What renting takes off your hands, and what stays yours</h3>
-
-<p>The service models earlier in this module decide who installs and patches the database software. They do not decide who is responsible for the data, and that confusion is what this section exists to prevent.</p>
-
+<h3>What renting takes off your hands</h3>
+<p>The service models decide who installs and patches the database software.</p>
 <ol class="steps">
-<li><b>Infrastructure as a service.</b> You are given processing, storage and networking, and everything above that is yours: the operating system, the database software, its licence, its updates and its backups.</li>
-<li><b>Platform as a service.</b> The provider supplies and updates the platform, database management system included, so the licence and the patching stop being your problem. The chapter names that saving explicitly.</li>
-<li><b>Software as a service.</b> You use a finished application, so you choose settings and you own the records inside it, and nothing underneath is visible to you at all.</li>
+<li><b>Infrastructure as a service</b> &mdash; you get processing, storage and networking; the operating system, database software and backups are yours.</li>
+<li><b>Platform as a service</b> &mdash; the provider supplies and updates the platform, database system included, so licensing and patching are not yours.</li>
+<li><b>Software as a service</b> &mdash; you use a finished application, choose settings and own the records; nothing beneath is visible.</li>
 </ol>
-
-<p>What none of the three takes away is the design. Which records exist, how they relate to one another, what has to be unique, what a column is allowed to contain, and which questions the store must be able to answer are decisions about the organization rather than about the software. A rented platform will hold whatever shape you give it, including a poor one, and will hold it very reliably indeed.</p>
+<p>None takes away the design. Which records exist, how they relate and what must be unique are decisions about the organization. A rented platform holds whatever shape you give it, including a poor one.</p>
 
 <div class="activity" data-activity="dbQuiz2"></div>
 
 <h3>The hand-off to SQLite</h3>
-
-<p>Everything above is about reading. Building is the other half, and it is where the course goes next. <b>SQLite</b> is a database system that keeps an entire database in a single ordinary file and runs inside the program using it, with no separate server to install or keep running. That makes it an unusually honest place to learn, because nothing between you and the data is hidden behind an administrator.</p>
-
-<p>The queries on this page are the same language you will write there. What changes is that you will also decide what the tables are: which things deserve a table of their own, which column identifies a row, and which questions the design has to answer on the day somebody finally asks. Creating a database application in SQLite is the course&rsquo;s own separate work, and this supplement is the bridge to it rather than a substitute for it.</p>
-
-<p class="takeaway">The container can be rented; the meaning cannot. Somebody in the organization still has to know what a record is, which is why a section about tables belongs in a module about machines.</p>
-
-<div class="callout exam"><b class="tagline">What to carry out of this section</b>One stored set of records, one home for each fact, and questions asked of the store rather than answers copied out of it. If you can say which rows a claim rests on and which columns it reads, you can defend it. If the claim arrived as a file somebody mailed you, all you can do is repeat it.</div>`;
+<p><b>SQLite</b> keeps a whole database in one ordinary file and runs inside the program using it, with no server to install and nothing hidden behind an administrator. The queries here are the same language; there you also decide what the tables are.</p>
+<p class="takeaway">The container can be rented; the meaning cannot. Somebody still has to know what a record is, which is why tables belong in a module about machines.</p>
+`;
 
 ACT.dbQuiz1 = {
   kind: "quiz",

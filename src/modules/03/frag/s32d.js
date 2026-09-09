@@ -2,112 +2,65 @@
 PROSE.s32d = `
 <span class="eyebrow">Section 3&ndash;2d</span>
 <h2>Networks: how machines share</h2>
-<p class="lede">Everything in the three sections before this one sits still. A machine, the software that drives it, a pile of stored data: none of them is worth much alone. The chapter is blunt about it &mdash; taken alone, each individual piece of technology has little value, and it is through connecting the different pieces that business value can be realized. This section is about the connecting, and it turns out to need only three things.</p>
-
-<h3>Why anything has to be connected at all</h3>
-<p>An organization runs on a great many separate pieces: servers and mainframes, personal computers and mobile devices, storage devices, even the systems that control the temperature of a room. The chapter&rsquo;s own illustration of why connecting them matters is the one worth keeping. The best-performing database in the world would be useless if the people and the applications that depend on its data could not reach it.</p>
-<p>One reason information systems became as powerful as they did is precisely this ability to interconnect. Three consequences follow from it, and the chapter states all three plainly rather than leaving them to be inferred.</p>
-<ul class="keys">
-<li><b>Stored data becomes reachable</b> &mdash; a database nobody can get to is an expense rather than an asset, so the connection is what turns a store of records into something the organization can actually use.</li>
-<li><b>People can work together</b> &mdash; interconnection lets constituents inside the organization and constituents outside it communicate and collaborate, which is why the same technology ends up serving employees and outside partners alike.</li>
-<li><b>New kinds of business become possible</b> &mdash; the chapter&rsquo;s own claim is that many innovative business models would not exist without the internet, so connection changes what a company can sell and not merely how quickly it works.</li>
-</ul>
-<p>Connection is not a feature bolted onto a system, then. For a great many organizations it is the system, which is why it is worth knowing exactly what a connection requires.</p>
+<p class="lede">Taken alone, the chapter says, each piece of technology has little value; it is by connecting the pieces that business value is realized. Many innovative business models would not exist without the internet.</p>
 
 <h3>A network is a conversation, with equipment instead of people</h3>
-<p>Start with something you already do without thinking. When you speak to someone, you form a message in your head and then <b>code</b> it into a form that can travel, which for a voice means sounds. The message is <b>transmitted</b> along a pathway, in this case the air between you. The other person receives it and <b>decodes</b> it, using ears and a brain. Three moves: code, send, decode.</p>
-<p>A computer network does exactly that with equipment. <b>Computer networking</b> is the sharing of data or services. A source produces a message, the message is encoded so that it can travel, it moves along a communication channel, and a receiver decodes it so the destination can understand it. Because the shape of the thing is the same, the requirements are the same, and the chapter names three of them.</p>
+<p>When you speak, you code a message into sounds, send it through the air, and the listener decodes it. <b>Computer networking</b> is the sharing of data or services, and it makes the same three moves &mdash; so it has the same three requirements.</p>
 <ul class="keys">
-<li><b>Something to share</b> &mdash; a sender and a receiver, which the chapter calls a source and a destination, that genuinely have a message between them; with nothing to share there is nothing for any equipment to do.</li>
-<li><b>A pathway</b> &mdash; the <b>transmission media</b>, meaning the physical route the data actually travels, whether that is a cable running through a wall or a radio signal crossing a room.</li>
-<li><b>Rules both sides follow</b> &mdash; <b>protocols</b>, which define the procedures that different computers follow when they transmit and receive data, so that whatever arrives can be interpreted at the far end.</li>
+<li><b>Something to share</b> &mdash; a source and a destination with a message between them; with nothing to share, there is nothing for equipment to do.</li>
+<li><b>A pathway</b> &mdash; the <b>transmission media</b>, the physical route data travels: a cable through a wall, or a radio signal across a room.</li>
+<li><b>Rules both sides follow</b> &mdash; <b>protocols</b>, which define the procedures computers follow when transmitting and receiving, so whatever arrives can be interpreted.</li>
 </ul>
-<p>The chapter makes the third requirement concrete with a job search. Imagine you are graduating and want work in France, so you write to employers there. One of them replies by email with everything you asked about its hiring process. The first requirement is met, because there is information to share. The second is met, because the internet carried it. But the reply is written in French, and you do not read French.</p>
-<p>Nothing failed. The message was composed, sent and delivered intact, and it is still useless, because if the message is not understood by the receiver there is no communication. What is missing is an agreed language, and the agreed language is the protocol. You and the employer settle on English, and only then does the exchange do any work.</p>
-<p class="takeaway">Arrival is not communication. Two systems can be wired together perfectly and share nothing at all, because agreeing on the wire is not the same as agreeing on the language.</p>
-<p>The three requirements are worth being able to state in the chapter&rsquo;s own words, because most network failures you will ever be asked about are one of the three going missing.</p>
+<p>The chapter makes the third concrete. You write to employers in France; one replies in full. There is information to share and the internet carried it &mdash; but the reply is in French. Nothing failed; nothing was communicated.</p>
+<p class="takeaway">Arrival is not communication. Two systems can be wired together perfectly and share nothing, because agreeing on a wire is not agreeing on a language.</p>
+<p>Most network failures are one of the three requirements going missing.</p>
 
 <div class="activity" data-activity="netRequire"></div>
 
-<h3>What is actually being sent, and how much of it</h3>
-<p>Human communication is made of words. Computer communication is made of <b>bits</b>, the smallest unit of data a computer uses. Virtually any content can travel this way &mdash; a document, a photograph, a recording, a film &mdash; and as far as the network is concerned the only difference between them is how many bits there are. That number varies far more than most people expect, which is why some things appear instantly and others crawl.</p>
-<p>The chapter gives four comparisons, and reading them together is more useful than memorising any one of them.</p>
-<ul class="keys">
-<li><b>A customer&rsquo;s address</b> &mdash; only a few thousand bytes, which is part of why a system can move millions of customer records around at night without anybody noticing it happened.</li>
-<li><b>A page of text</b> &mdash; roughly fourteen thousand bytes, still small enough that its size is almost never the reason a page is slow to appear on a screen.</li>
-<li><b>A publication-quality photograph</b> &mdash; possibly more than two hundred million bytes, which is more than ten thousand pages of text standing behind a single image.</li>
-<li><b>A design file</b> &mdash; an architectural drawing or a manufacturing plant layout can run to several billion bytes, which is why engineering firms think about their connections in a way that offices sending letters never have to.</li>
-</ul>
-<p>The capacity of the path is the other half of the story. <b>Bandwidth</b> is the transmission capacity of a computer or a communications channel, measured in bits per second or in multiples of it, and it describes how much data can reliably be carried over the medium in one second. A network inside a building typically carries between a hundred million and a thousand million bits per second, which is usually far more than the connection leaving that building can manage.</p>
+<h3>What is sent, and how much of it</h3>
+<p>Computer communication is made of <b>bits</b>, the smallest unit of data a computer uses, and the only difference the network sees is how many: thousands of bytes for a customer address, fourteen thousand for a page of text, two hundred million for a photograph, billions for a design file.</p>
+<p><b>Bandwidth</b> is the transmission capacity of a channel, in bits per second. A network inside a building carries a hundred million to a thousand million of them per second &mdash; far more than the connection leaving that building.</p>
 
 <h3>Why one file takes eight seconds and the same file takes a day</h3>
-<p>The chapter takes a single file &mdash; a forty-five minute high-definition video, about one gigabyte &mdash; and asks how long it takes to arrive over six different connections. The tiers are the chapter&rsquo;s own, and they are anchored to an older broadband market, so read the ratios between the rows rather than treating any one label as current.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Connection</th><th>Time the chapter gives for one gigabyte</th></tr></thead>
-<tbody>
-<tr><td><b>Dial-up telephone modem</b></td><td>More than a day and a half</td></tr>
-<tr><td><b>Regular cable or DSL</b></td><td>About two hours and thirteen minutes</td></tr>
-<tr><td><b>High-speed cable or DSL</b></td><td>About nine minutes</td></tr>
-<tr><td><b>Fourth-generation mobile</b></td><td>About five minutes</td></tr>
-<tr><td><b>Fifth-generation mobile</b></td><td>About twenty-seven seconds</td></tr>
-<tr><td><b>Gigabit fiber</b></td><td>About eight seconds</td></tr>
-</tbody>
-</table></div>
-
-<p>One arithmetic sentence explains the entire table, and it is the part that will still be true when every figure above has been overtaken: <b>time equals size divided by rate</b>. The file never changed. Only the capacity of the path did, and a path a thousand times wider finishes the job in a thousandth of the time.</p>
-<p>There is one conversion to settle first, because storage is counted in bytes while networks are rated in bits. A byte is eight bits, so a gigabyte, being a thousand megabytes, is eight thousand megabits. That single number is why the exercise below divides eight thousand by a connection&rsquo;s rate in megabits per second and gets an answer in seconds.</p>
-<ol class="steps">
-<li><b>Put both sides into the same unit.</b> Convert the file from bytes into bits, which for one gigabyte means eight thousand megabits, because a byte holds eight bits.</li>
-<li><b>Divide the size by the rate.</b> Megabits divided by megabits per second leaves seconds, which is the answer anybody actually asked for.</li>
-<li><b>Turn the answer into something a person can act on.</b> Seconds are precise and useless in a meeting; divide by sixty for minutes, and by sixty again for hours.</li>
-</ol>
-<p>The sheet below lists the six connections with the capacity that produces each of the chapter&rsquo;s times. Write one formula for the first row and it is applied down the column, exactly the way a filled-down formula behaves in a real spreadsheet.</p>
+<p>The chapter sends one gigabyte &mdash; a forty-five-minute video &mdash; over six connections. Dial-up needs a day and a half; ordinary cable two hours; fifth-generation mobile twenty-seven seconds; gigabit fiber eight.</p>
+<p>One sentence explains all six and outlives every figure: <b>time equals size divided by rate</b>. Only the path changed, and a path a thousand times wider finishes in a thousandth of the time.</p>
+<p>One conversion first: storage is counted in bytes, networks in bits. A byte is eight bits, so a gigabyte is eight thousand megabits. Divide by megabits per second for seconds, twice by sixty for hours.</p>
+<p>Write one formula for the first row below; it fills down the column.</p>
 
 <div class="activity" data-activity="netTransfer"></div>
 
-<p>Two things in that column are worth pausing over. The first is that no judgment entered anywhere: the same three symbols produced a day and a half and produced eight seconds, so a claim about how long a transfer will take is checkable rather than arguable. The second is that the last column is simply the first two read backwards. A connection roughly eighteen thousand times faster finishes in roughly an eighteen-thousandth of the time, because that is what division does.</p>
-<p>This is also the arithmetic behind a common and expensive mistake. A business that plans to move large files between sites every night, and buys the connection it needs for ordinary office traffic, has not bought a slow network; it has bought a network that cannot finish before morning. The size of the thing being moved and the capacity of the path have to be decided together, and neither number means much without the other.</p>
-<p>Try the requirements, the bits and the arithmetic together before moving on to who is at each end of the wire.</p>
+<p>No judgment entered anywhere: the same three symbols produced a day and a half and eight seconds. The same arithmetic explains an expensive mistake &mdash; a business that moves large files overnight on a connection sized for office traffic has bought a network that cannot finish by morning.</p>
 
 <div class="activity" data-activity="netQuiz1"></div>
 
 <h3>Three roles: server, client, and peer</h3>
-<p>Machines on a network are not equals by default. The chapter gives them three roles, and the only thing separating those roles is the direction in which requests travel.</p>
+<p>Machines on a network are not equals. Three roles separate them, and the difference is which way requests travel.</p>
 <ul class="keys">
-<li><b>A server</b> &mdash; any computer on the network that makes access to files, printing, communications and other services available to the network&rsquo;s users, as the section on hardware described. Servers only provide services.</li>
-<li><b>A client</b> &mdash; any computer, or any software application such as a mail program on a laptop, that uses the services a server provides. Clients only request services, and a client usually has one user while many users share the server it talks to.</li>
-<li><b>A peer</b> &mdash; any computer that may both request and provide services, so the same machine can be a client at one moment of the day and a server at another.</li>
+<li><b>A server</b> &mdash; any computer making files, printing and other services available to a network&rsquo;s users. Servers only provide.</li>
+<li><b>A client</b> &mdash; any computer or application, such as a mail program, that uses those services. Clients only request, and serve one user.</li>
+<li><b>A peer</b> &mdash; any computer that both requests and provides, so one machine is a client one moment and a server the next.</li>
 </ul>
-<p>Once you accept that the work can happen somewhere other than the desk, the machine on the desk can become very small. <b>Thin clients</b> are microcomputers with minimal memory, storage and processing capabilities, and they use <b>desktop virtualization</b> to give a worker a virtual desktop environment that is really running on a server elsewhere.</p>
-<p>The reasons an organization does this are practical rather than technical. There are fewer copies of software to license and maintain, and it is easier to satisfy the strict privacy and data protection duties that apply in some industries and jurisdictions, because nothing of consequence is stored on the box the user actually touches. A terminal holding no data is a terminal that cannot lose any.</p>
-<p>Which roles a network hands out is also what gives the network its name, and the chapter names two arrangements.</p>
+<p>Once the work happens elsewhere, the desk machine can shrink. <b>Thin clients</b> are microcomputers with minimal memory, storage and processing, using <b>desktop virtualization</b> to give a worker a desktop running on a server. A terminal holding no data cannot lose any.</p>
 <ul class="split">
-<li><b>Client-server networks</b> &mdash; servers and clients have defined roles, and this is the typical business arrangement; with company networks and internet access everywhere, almost everyone at work is inside one whether they think about it or not.</li>
-<li><b>Peer-to-peer networks</b> &mdash; any computer or device on the network can provide services as well as request them, which is what you find in small offices and homes, where no machine is set aside to serve the others.</li>
+<li><b>Client-server networks</b> &mdash; servers and clients have defined roles; this is the typical business arrangement, and almost everyone at work is inside one.</li>
+<li><b>Peer-to-peer networks</b> &mdash; any device can provide as well as request, which is what homes and small offices run, with nothing set aside to serve.</li>
 </ul>
-<p class="takeaway">Ask of any machine on a network whether it answers requests, makes them, or does both. That one question sorts servers from clients from peers, and it names the network at the same time.</p>
 
 <h3>Networks come in sizes, and the size is really a distance</h3>
-<p>Networks are commonly classified by size, by the distance they cover and by their structure. The three the chapter treats as the common ones are separated by nothing more complicated than how far apart the two ends are, which makes them much easier to keep straight than the abbreviations suggest.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Type</th><th>What it is used for</th><th>How far it reaches</th></tr></thead>
-<tbody>
-<tr><td><b>Personal area network</b><br><span class="mini">PAN</span></td><td>Wireless communication between one person&rsquo;s devices, using technologies such as Bluetooth</td><td>Under ten meters</td></tr>
-<tr><td><b>Local area network</b><br><span class="mini">LAN</span></td><td>Sharing data, software applications or other resources between several users</td><td>Typically within a building</td></tr>
-<tr><td><b>Wide area network</b><br><span class="mini">WAN</span></td><td>Connecting multiple local area networks, often with ownership and management distributed among several parties</td><td>From several buildings to a city to worldwide</td></tr>
-</tbody>
-</table></div>
-
-<p>The wide area network is the elastic one, and the chapter gives its middle cases names. A wide area network spanning several buildings on one site is a <b>campus area network</b>; one covering the area of a city is a <b>metropolitan area network</b>; and the largest of them all is the worldwide network the next section takes apart. Notice the phrase about distributed ownership: once a network leaves your buildings, parts of the path belong to other organizations, which is a management problem as much as a technical one.</p>
-<p>The pathway can be radio rather than cable. A <b>wireless local area network</b>, almost always called a <b>Wi-Fi network</b>, is a local area network built on high-frequency radio-wave technology. Organizations install them to connect mobile devices, and wherever running a cable would be impractical or impossible; the ease of installation is why they became normal in offices and homes, and why public ones can now be found almost anywhere.</p>
-<p>The chapter also flags fifth-generation mobile networks as promising for many applications, and particularly for large numbers of connected devices, because they offer extremely low latency and high transmission speed. Latency is the delay before a response begins, as distinct from how much can be carried once it does, and it is the measure that matters when a machine is waiting on an answer before it acts.</p>
-<p>Pair each type with what it is for and how far it reaches; the distances are the part that does the work.</p>
+<p>Networks are classified by the distance they cover, which is easier to remember than the abbreviations suggest.</p>
+<ul class="keys">
+<li><b>Personal area network</b> &mdash; wireless communication between one person&rsquo;s own devices, over technologies such as Bluetooth, under ten meters.</li>
+<li><b>Local area network</b> &mdash; sharing data, applications and other resources among several users, usually within one building.</li>
+<li><b>Wide area network</b> &mdash; connecting multiple local area networks, from several buildings to worldwide, with ownership often spread across parties.</li>
+</ul>
+<p>The wide area network is elastic: across buildings on one site it is a <b>campus area network</b>, across a city a <b>metropolitan area network</b>. Once it leaves your buildings, part of the path is somebody else&rsquo;s.</p>
+<p>The pathway can be radio. A <b>wireless local area network</b>, almost always called a <b>Wi-Fi network</b>, runs on high-frequency radio waves, installed for mobile devices and wherever cable is impractical. Fifth-generation mobile suits large numbers of connected devices because its latency is very low.</p>
+<p class="takeaway">Ask whether a machine answers requests, makes them, or does both, and how far the wire must reach. Those two questions name the role, the arrangement and the network at once.</p>
+<p>Pair each type with its use and its reach.</p>
 
 <div class="activity" data-activity="netTypes"></div>
 
-<p>One last pass over the roles, the arrangements and the sizes before the next section takes the largest wide area network of all apart.</p>
+<p>One last pass over roles and sizes.</p>
 
 <div class="activity" data-activity="netQuiz2"></div>
 `;

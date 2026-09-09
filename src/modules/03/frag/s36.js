@@ -2,95 +2,61 @@
 PROSE.s36 = `
 <span class="eyebrow">Application supplement &middot; 3&ndash;6</span>
 <h2>The internet as a business tool</h2>
-<p class="lede">Everything in this section has already appeared somewhere in this module: the internet, the web, intranets and extranets, the copies of pages held near users, the interfaces that let one application ask another a question. What the chapter never does is set those pieces side by side and ask the plain business question &mdash; what does a company actually use all of this for? The answer is three things, and telling them apart comes down to one decision, taken by a person rather than by a machine.</p>
-
-<div class="callout info"><b>How this supplement relates to the chapter.</b> Chapter 3 teaches each of these parts where it belongs, as infrastructure. This supplement reassembles them around the audience being served, because that is the shape the course&rsquo;s own objective takes: using internet technology for electronic commerce, for communicating with employees, and for working with business partners. It is a labeled application supplement rather than a textbook learning objective, it adds no claim the chapter does not already make, and every organization used for practice in it is hypothetical and invented.</div>
+<p class="lede">Every part of this section has appeared already. What the chapter never does is set them side by side and ask what a company uses all of it for. The answer is three things, told apart by one decision a person takes.</p>
 
 <h3>Three jobs, one set of parts</h3>
-<p>Begin with the fact that makes this genuinely confusing rather than merely new. A browser asking a server for a page behaves in exactly the same way whether the person reading it is a shopper, a member of staff, or a supplier&rsquo;s dispatcher. Same request, same protocol, same page arriving. The technology has no opinion about who is at the other end of it.</p>
-<p>What differs is who is authorized, and that is a decision somebody in the organization has to take before any system can enforce it. The chapter&rsquo;s comparison of the internet, an intranet and an extranet, which you met earlier in this module, separates the three by focus, content, users and access rather than by what they are built from. Read that table again and it turns out to be a table of audiences.</p>
-<p>Those audiences are the three jobs, and they are worth naming plainly before anything is built for them.</p>
+<p>A browser asking for a page behaves identically whether the reader is a shopper, a member of staff or a supplier&rsquo;s dispatcher. The technology has no opinion about who is at the other end. What differs is who is authorized &mdash; a decision somebody takes before any system enforces it.</p>
 <ul class="keys">
-<li><b>Selling to customers</b> &mdash; general, public content that anyone with an internet connection may read, which is the arrangement the chapter calls the internet, and which almost every organization now depends on to take money at all.</li>
-<li><b>Communicating with employees</b> &mdash; specific, corporate and proprietary content restricted to authorized employees, which is the arrangement the chapter calls an intranet, and which quietly replaced an enormous amount of paper.</li>
-<li><b>Working with business partners</b> &mdash; communications between two or more firms doing business together, restricted to authorized partners, which is the arrangement the chapter calls an extranet and carries over the public internet.</li>
+<li><b>Selling to customers</b> &mdash; general, public content anyone connected may read, which the chapter calls the internet.</li>
+<li><b>Communicating with employees</b> &mdash; specific, proprietary content restricted to authorized employees, which the chapter calls an intranet.</li>
+<li><b>Working with business partners</b> &mdash; communications between firms doing business together, restricted to authorized partners: an extranet.</li>
 </ul>
-<p>Three audiences, one technology, one decision. Everything that follows is a consequence of that, including the expensive mistakes at the end of the section.</p>
 
 <h3>Selling to customers: almost any business is an e-business</h3>
-<p>The chapter states it without qualification: today, almost any business can be considered an e-business. That sentence is stronger than it first looks, because it does not say almost any business sells online. It says the business now runs on its data being reachable &mdash; and once that is true, the wire and the server are part of the trading position whether or not one item is ever bought on the site.</p>
-<p>A hypothetical example makes the range obvious. A veterinary practice that publishes nothing but its address, its opening hours and a booking form has still put its bookings on the internet. When that page fails to load on a Monday morning, appointments are not made and the money is not taken. Data are the lifeblood of almost all organizations, so reliably accessing them is a key concern, which is the chapter&rsquo;s reason for caring about availability at all.</p>
-<p>Four demands follow from that, and every one of them was taught earlier in this module as a piece of infrastructure rather than as a commercial requirement. Assembled, they are what selling over the internet actually asks of a company.</p>
+<p>The chapter says almost any business today can be considered an <b>e-business</b>. That is stronger than it looks: not that almost any business sells online, but that it runs on its data being reachable.</p>
+<p>A hypothetical veterinary practice publishing only its address, hours and a booking form has put its bookings on the internet. When that page fails on Monday morning, appointments are not made and money is not taken.</p>
 <ul class="keys">
-<li><b>Answering while the customer is still there</b> &mdash; operational data for a site where response time is of the essence belongs on fast disk-based storage, and on flash-based storage where access speed is of crucial importance, because a page that arrives late has already lost the sale.</li>
-<li><b>Surviving the busiest fortnight of the year</b> &mdash; firms engaged in or supporting business-to-consumer electronic commerce meet a large spike in demand before the December holidays, and the capacity that felt generous in March is what decides how that fortnight goes.</li>
-<li><b>Closing the distance</b> &mdash; the greater the geographical distance between a user and the server holding the content, the longer that content takes to arrive, which is the delay a network of servers holding copies in several locations exists to remove.</li>
-<li><b>Being available at all</b> &mdash; organizations that depend on trading electronically strive for the highest availability of their hardware, storage and networking components, and the five-nines target the chapter describes leaves just over five minutes of downtime in a year.</li>
+<li><b>Answering while the customer is there</b> &mdash; operational data belongs on fast disk, or flash where speed is crucial, because a late page loses the sale.</li>
+<li><b>Surviving the busiest fortnight</b> &mdash; consumer commerce spikes before December, and the capacity that felt generous in March decides how it goes.</li>
+<li><b>Closing the distance</b> &mdash; the further a user is from the server, the longer content takes; copies held in several locations remove it.</li>
+<li><b>Being available at all</b> &mdash; firms trading electronically strive for the highest availability, and five-nines leaves five minutes of downtime a year.</li>
 </ul>
-<p>Notice what kind of decisions those are. Not one of them is a marketing decision, and not one of them can be taken after the campaign has been booked. For a business selling over the internet the shopfront <i>is</i> the infrastructure, which is the whole of the chapter&rsquo;s argument for why a manager should care about plumbing.</p>
+<p>None of those is a marketing decision, and none can be taken after the campaign is booked. For a business selling online, the shopfront <i>is</i> the infrastructure.</p>
 
 <div class="activity" data-activity="bizQuiz1"></div>
 
-<h3>Communicating with employees: the inside of the building, from anywhere</h3>
-<p>The second audience is the organization&rsquo;s own staff, and the arrangement built for them is the intranet you met earlier: the same web technologies, secured with authentication techniques, firewalls, or both, so that proprietary material is visible only to authorized users. What is worth adding here is not the definition but the accounting &mdash; what each internal use replaced, and why the replacement costs less.</p>
-<p>The chapter names five internal uses. Read them as a column of things that somebody used to do by hand.</p>
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Internal use</th><th>What it replaces</th><th>What changes as a result</th></tr></thead>
-<tbody>
-<tr><td><b>Disseminating corporate information</b></td><td>A notice sent round the building and kept in whichever copy each person happened to save</td><td>One current copy in one place, so arguments about what the policy says stop happening</td></tr>
-<tr><td><b>Employee training</b></td><td>Scheduling everybody into a room on a day that suits almost nobody</td><td>Staff work through the material from any desk, on their own schedule</td></tr>
-<tr><td><b>Project management</b></td><td>Status reported upward, rewritten, and then redistributed downward</td><td>Every member of the project sees the same plan and the same state at the same moment</td></tr>
-<tr><td><b>Collaboration</b></td><td>Documents mailed back and forth between departments and buildings</td><td>People in different places work on one thing rather than on parallel copies of it</td></tr>
-<tr><td><b>Employee self-service</b></td><td>A form completed by a member of staff and then keyed in by somebody in an office</td><td>The work moves to the person who already knows the answer, and one keystroke disappears</td></tr>
-</tbody>
-</table></div>
-<p>Only the last row saves money you could point at in a budget, and it is the row to hold on to, because the same move reappears in the next audience. Nothing there was automated. A step was deleted, because the person who held the information was finally allowed to record it directly.</p>
-<p>Then there is the question of where the employee is standing. An intranet reachable only from a desk inside the building serves a workforce that is increasingly not inside the building, so most companies let employees use a virtual private network to connect securely to the intranet while travelling or working from home.</p>
-<p>The audience has not changed there; only the road has. It is the same promise the cloud characteristic called broad network access makes when it says a service is available from almost anywhere and from almost any web-enabled device &mdash; the same internal material, on whatever device the person happens to have with them.</p>
+<h3>Communicating with employees</h3>
+<p>The second audience is the organization&rsquo;s own staff, served by the intranet: the same web technologies, secured with authentication, firewalls or both. What is worth adding is what each internal use replaced.</p>
+<p>Disseminating corporate information replaces a notice kept in whichever copy each person saved. Training replaces scheduling everybody into a room. Project management replaces status reported upward and redistributed down. Collaboration replaces documents mailed between buildings. Self-service replaces a form completed by staff and keyed in by an office.</p>
+<p>Only the last saves money you could point at. Nothing was automated: a step was deleted, because the person holding the information could record it directly.</p>
+<p>An intranet reachable only from a desk fails a workforce increasingly elsewhere, so employees use a virtual private network to connect securely while travelling. The audience has not changed; only the road.</p>
 
 <h3>Working with partners: the second keystroke</h3>
-<p>The third audience is the other companies the organization depends on: the supplier who has to know what to ship, the haulier who has to know what to collect, the laboratory running the samples. They are not employees, so the intranet is shut to them. They are not the public, so the public site tells them nothing they need. The chapter&rsquo;s answer is the extranet &mdash; a private part of the internet reachable by authorized business partners after logging on, and usually secured with a tunnel.</p>
-<p>The interesting part is not the arrangement itself but the failure it removes. Follow one hypothetical order through two companies that share nothing, and watch where the cost appears.</p>
+<p>The third audience is the companies the organization depends on. Not employees, so the intranet is shut; not the public, so the public site is useless. The answer is the extranet: a private part of the internet reachable by authorized partners after logging on.</p>
+<p>Follow one hypothetical order through two companies that share nothing.</p>
 <ol class="steps">
-<li><b>The buyer records the order.</b> A purchasing clerk enters the quantities into the buyer&rsquo;s own system, which becomes one authoritative record, and emails a copy of it across to the supplier.</li>
-<li><b>The supplier records it again.</b> Somebody at the supplier reads that email and types the same quantities into a different system, creating a second record that merely resembles the first one.</li>
-<li><b>The buyer changes something.</b> A quantity is revised and a second email goes out, so the supplier&rsquo;s record is now a version behind, and nothing in either system says which of the two numbers counts.</li>
-<li><b>The goods arrive.</b> The disagreement surfaces in the receiving bay, the most expensive place in either company to find it, and settling it costs a phone call, a credit note, and sometimes a second lorry.</li>
+<li><b>The buyer records the order</b> &mdash; a clerk enters quantities into the buyer&rsquo;s system, creating an authoritative record, then emails a copy.</li>
+<li><b>The supplier records it again</b> &mdash; somebody types the same quantities into another system, creating a second record that merely resembles the first.</li>
+<li><b>The buyer changes something</b> &mdash; a quantity is revised, a second email goes out, and the supplier is a version behind, with nothing saying which counts.</li>
+<li><b>The goods arrive</b> &mdash; the disagreement surfaces in the receiving bay, the most expensive place to find it, costing a credit note and sometimes a second lorry.</li>
 </ol>
-<p>Nobody in that story was careless. The error was manufactured by step two, and step two exists only because two firms keep separate copies of one fact. The chapter&rsquo;s name for removing it is a single point of data entry, from which data can be updated on disparate corporate computing platforms without having to be reentered &mdash; and the benefit that sounds clerical is the one that turns up in the accounts.</p>
-<p>Three more of the chapter&rsquo;s partner benefits are worth reading as business outcomes rather than as features of a product.</p>
-<ul class="keys">
-<li><b>Automating business transactions</b> &mdash; moving orders, confirmations and invoices through a system rather than through people reduces processing costs and cycle times, which is to say both the money spent and the time spent waiting.</li>
-<li><b>Real-time data for management</b> &mdash; because transactions arrive as they happen, management can obtain real-time data with which to track and analyze business activities, instead of waiting for a summary written after the month it describes.</li>
-<li><b>Central management of documents</b> &mdash; one managed copy reduces the number of versions in circulation and the amount of out-of-date information stored in various places, which matters most when the other reader works for a different firm.</li>
-</ul>
-<p>There is a version of this same relationship with the people taken out of it altogether. An interface between applications lets one organization&rsquo;s system use a service another organization provides, without knowing how that service is produced, by passing agreed values and receiving an answer back. A shared web area lets two firms read one record; an interface lets their two systems do it unattended. The principle is identical &mdash; an agreed shape, one authoritative answer &mdash; with the browser and the clerk removed.</p>
-<p>The situations below are all hypothetical and invented. Sort each one by the audience it is really serving, because that is the decision that settles everything else about it.</p>
+<p>Nobody was careless. Step two manufactured the error, and exists only because two firms keep separate copies of one fact. The chapter&rsquo;s name for removing it is a single point of data entry, from which data updates across disparate platforms without being reentered.</p>
+<p>There is a version with the people removed. An interface lets one firm&rsquo;s system use a service another provides by passing agreed values and receiving an answer. A shared area lets two firms read one record; an interface lets their systems do it unattended.</p>
+<p>Every situation below is hypothetical. Sort each by the audience it really serves.</p>
 
 <div class="activity" data-activity="bizSort"></div>
 
 <h3>Getting the audience wrong</h3>
-<p>In practice the wrong answer here is almost never a technology. It is publishing to the wrong audience, and there are three familiar ways of doing that, each of which looks like a shortcut on the day it is taken.</p>
+<p>The wrong answer here is almost never a technology. It is publishing to the wrong audience, and there are three familiar ways.</p>
 <ul class="keys">
-<li><b>Internal material on the public site</b> &mdash; usually done to avoid the trouble of managing accounts, and it works right up until somebody notices that proprietary content has become general content and cannot be called back.</li>
-<li><b>Obscurity mistaken for restriction</b> &mdash; an unlinked page that no search engine has indexed is still reachable by anyone holding the address, which is why the chapter treats authentication and firewalls, rather than not being linked to, as what makes content private.</li>
-<li><b>Partners handed employee access</b> &mdash; the quickest way to let an outside firm see one schedule is to give it a staff login, and doing so grants that firm everything else an employee can reach along with it.</li>
+<li><b>Internal material on the public site</b> &mdash; done to avoid managing accounts, and it works until proprietary content is public and cannot be recalled.</li>
+<li><b>Obscurity mistaken for restriction</b> &mdash; an unindexed page is still reachable by anyone with the address, which is why authentication makes content private.</li>
+<li><b>Partners handed employee access</b> &mdash; the quickest way to show an outside firm one schedule grants it everything an employee can reach.</li>
 </ul>
-<p>Each of those is a decision about people wearing a technical costume. That is precisely why the person who should be answering it is somebody who understands the business rather than somebody who understands the servers.</p>
-<p>Work the four decisions below in order, and read every outcome before moving on &mdash; including the outcomes of the choices you did not make.</p>
+<p>Work the four decisions below in order, reading every outcome, including those you rejected.</p>
 
 <div class="activity" data-activity="bizSim"></div>
 
-<h3>Reading it back to the objective</h3>
-<p>The course objective this supplement serves has three clauses, and each one now has an arrangement, a set of demands on the infrastructure, and a question that decides which of the three you are in. That is the whole of it, and it fits in one table.</p>
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>The use</th><th>The arrangement</th><th>What the infrastructure has to deliver</th><th>The question that settles it</th></tr></thead>
-<tbody>
-<tr><td><b>Electronic commerce</b></td><td>The public internet</td><td>Fast storage, capacity that survives the peak, copies held near the customer, and availability</td><td>Would we be content for a stranger to read this?</td></tr>
-<tr><td><b>Communicating with employees</b></td><td>An intranet, reached from outside through a secured tunnel</td><td>Authentication, one current copy of everything, and reach to wherever the staff actually are</td><td>Is this reader on our payroll or our membership roll?</td></tr>
-<tr><td><b>Working with partners</b></td><td>An extranet, or an interface between the two firms&rsquo; systems</td><td>One authoritative record both firms work from, and transactions that arrive as they happen</td><td>Is this a firm we have agreed to do business with, and what exactly may it see?</td></tr>
-</tbody>
-</table></div>
 <p class="takeaway">One set of web technologies, three audiences, separated by who is authorized &mdash; and the separation is drawn by a manager naming the reader, not by a product being purchased.</p>
 <p>One last pass over the three uses before the module closes.</p>
 

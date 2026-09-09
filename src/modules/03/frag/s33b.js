@@ -2,132 +2,69 @@
 PROSE.s33b = `
 <span class="eyebrow">Section 3&ndash;3b</span>
 <h2>Storage, spikes, energy, and the need to move fast</h2>
-<p class="lede">The section before this one explained why equipment stops being good enough long before it stops working. This one takes the other pressures on the chapter&rsquo;s diagram, and not one of them is about age. Data accumulates and is never thrown away. Demand arrives in bursts. One upgrade produces two electricity bills. Experiments need equipment before anybody knows whether the experiment is worth running. And artificial intelligence asks for a class of machine most organizations have never bought.</p>
-
-<p>Read the five as one argument rather than five separate complaints. Each of them describes a way in which owning your own infrastructure forces a decision at the moment you have the least information. Buy for the peak and you own idle machines. Buy for the average and you fail on the busiest day. Buy before the experiment and you may be buying for a service nobody wants. Hold on to that sentence, because it is the whole reason the next objective exists.</p>
+<p class="lede">The last section explained why equipment stops being good enough before it stops working. These pressures are not about age: data accumulates, demand arrives in bursts, one upgrade produces two electricity bills, and experiments need equipment before anyone knows they will pay.</p>
+<p>Read the five as one argument: each forces a decision when you have least information. Buy for the peak and you own idle machines; buy for the average and you fail on the busiest day.</p>
 
 <div class="activity" data-activity="drvDrivers"></div>
 
 <h3>The data keeps arriving, and nothing is thrown away</h3>
-<p>The first pressure is simply volume. Organizations now collect and analyze very large amounts of data for business intelligence, for machine learning and artificial intelligence, and for other purposes such as compliance. The amount that feels like enough keeps rising, because it is judged against what competitors are doing with their data rather than against any fixed requirement.</p>
-
-<p>The chapter gives two ordinary examples of where the volume comes from, and neither one involves anything exotic.</p>
+<p>Organizations collect and analyze very large amounts of data for business intelligence, machine learning and compliance. What feels like enough keeps rising, because it is judged against what competitors do with theirs.</p>
 <ul class="keys">
-<li><b>Watching the website</b> &mdash; an organization can analyze each visitor&rsquo;s actions on its own site in order to improve how that site performs, which means recording something about every click rather than only about every sale.</li>
-<li><b>Reading everything else</b> &mdash; organizations increasingly run machine learning and artificial intelligence algorithms over structured and unstructured material drawn from media reports, social media, customer support calls and other sources.</li>
+<li><b>Watching the website</b> &mdash; analyzing visitors&rsquo; actions to improve the site means recording every click, not only every sale.</li>
+<li><b>Reading everything else</b> &mdash; running algorithms over structured and unstructured material from media, social posts and support calls.</li>
 </ul>
-
-<p>Now look at what capturing all of that actually costs, because it is three things and most people budget for one. It requires ever more storage space. It requires ever more powerful computing hardware, because the data have to be worked through and not merely held. And it requires <b>database management systems</b> for managing and analyzing what has been kept, which is software somebody has to license, configure and run.</p>
-
-<p>The same story runs along the wires. Internet bandwidth grew enormously during the dot-com boom, which allowed organizations to deliver richer and far more bandwidth-hungry content, and the chapter names video services such as YouTube and the films streamed by Netflix as creating the need for more bandwidth again.</p>
-
-<div class="callout info">
-<p><b>The chapter&rsquo;s name for this: a vicious circle.</b> Enhanced capabilities enable new applications, and those new applications in turn require a certain level of capability in both the data and the communications infrastructure. Each round of improvement manufactures the demand for the next one.</p>
-<p>If that shape looks familiar, it should. It is the same loop as the hardware-and-software treadmill in the previous section, drawn with storage and bandwidth in place of processors and operating systems. Recognizing the shape is worth more than either example, because it tells you that a purchase which ends the problem does not exist.</p>
-</div>
+<p>Capturing all that costs three things, and most budgets carry one.</p>
+<ul class="keys">
+<li><b>Storage</b> &mdash; every retained record sits on a disk somebody bought, and the pile only grows.</li>
+<li><b>Processing</b> &mdash; the data must be worked through rather than merely held, needing more powerful hardware.</li>
+<li><b>Database management systems</b> &mdash; software to manage and analyze what is kept, which somebody licenses, configures and runs.</li>
+</ul>
+<p>The same runs along the wires. Bandwidth grew enormously in the dot-com boom, letting organizations deliver richer content, and video streaming created demand for more. The chapter calls it a vicious circle: capability enables applications that demand the next round of capability.</p>
 
 <h3>Demand does not arrive evenly</h3>
-<p>The second pressure is timing. Demands for computing resources fluctuate, which leaves an organization with either too few resources at some moments or, far more often, too many idle resources most of the time. According to estimates the chapter reports &mdash; and it attributes them only to estimates, with no source of its own &mdash; as many as seven organizational infrastructures in every ten run at only about a fifth of their capacity.</p>
+<p>Demands fluctuate, leaving an organization with too few resources at some moments or, more often, too many idle. The chapter reports estimates that as many as seven infrastructures in ten run at about a fifth of capacity &mdash; a ceiling, not a typical figure.</p>
+<p>That sounds like bad purchasing until you notice the constraint. Capacity comes in whole units: a server is a whole server, a room a whole room. What you buy must cover the busiest hour of the year, so everything above average is the price of surviving December.</p>
 
-<p>Read that as the upper end of a range rather than as a typical figure. The chapter gives a ceiling and not an average, so the honest sentence is that as many as seven in ten may be running that far below capacity, not that a typical one is.</p>
+<div class="callout exam"><p><b>The sentence to carry into the cloud section.</b> It is easy to hire temporary staff for a surge in orders, and typically not easy to change an infrastructure quickly. People can be added for a season; a server room cannot.</p></div>
 
-<p>That sounds like bad purchasing until you notice the constraint underneath it. Capacity is bought in whole units. A server is a whole server, a rack is a whole rack, and a room is a whole room, so the size you buy has to cover the busiest hour of the year rather than the average hour. Everything above the average is the price of being available on the day it matters.</p>
-
-<p>The chapter&rsquo;s example of the busiest hour is seasonal. Companies engaged in or supporting business-to-consumer electronic commerce &mdash; it names Amazon and FedEx &mdash; face large spikes in demand in the pre-holiday season in December, and need increased capacity to handle them.</p>
-
-<div class="callout exam">
-<p><b>The one sentence to carry into the cloud section.</b> The chapter puts the asymmetry plainly: while it is relatively easy to hire temporary staff to handle an increase in orders, it is typically not that easy to make quick changes to the information systems infrastructure based on changing needs.</p>
-<p>People can be added for a season and released afterwards. A server room cannot. Every argument in the next objective is a way of making infrastructure behave more like the temporary staff and less like the building.</p>
-</div>
-
-<p>Growth is the same problem stretched over years instead of weeks, and it is where the diminishing space on the chapter&rsquo;s diagram actually appears: equipment accumulates while the room holding it does not. For an organization whose customer or user base is expanding, the facilities have to grow along with the computing needs, and the chapter uses the ordinary case of a company that outgrew a friend&rsquo;s garage and now operates somewhere upward of two dozen major data centers.</p>
-
-<p>Three separate costs make that growth painful, and only the first is obvious.</p>
-<ul class="keys">
-<li><b>Money</b> &mdash; renting additional facilities is expensive, and building them is far more expensive still, so the decision competes with everything else the organization might do with the same funds.</li>
-<li><b>Time</b> &mdash; significant time is needed for locating the right facilities, negotiating the contracts, and then setting up the hardware and software inside them, none of which can be compressed by wanting it more.</li>
-<li><b>Commitment</b> &mdash; long-term contracts limit the flexibility to scale the infrastructure back down in periods of lower demand, so a decision made in a good year is still being paid for in a bad one.</li>
-</ul>
+<p>Growth is the same problem over years, and where diminishing space appears: equipment accumulates while the room does not. Renting facilities is expensive and building them more so, and long contracts limit scaling back down.</p>
 
 <div class="activity" data-activity="drvQuiz1"></div>
 
 <h3>One upgrade, two electricity bills</h3>
-<p>The third pressure is energy, and the reason it deserves a heading of its own is that the cost arrives twice. As computers process data they consume electricity. Various components, the processor and the power supply among them, turn part of that electricity into heat, which is why most computers contain several fans. So more powerful hardware needs more energy to do the work, and at the same time needs more energy to be cooled while doing it.</p>
-
-<p>The chapter offers a snapshot of the quantities involved, and the snapshot is worth reading for its ratios rather than its digits.</p>
-<ul class="keys">
-<li><b>One desktop machine</b> &mdash; the chapter puts it between forty and a hundred and seventy watts while idling, rising to three hundred watts or more when it is working under full load.</li>
-<li><b>One rack of servers</b> &mdash; a single rack in a data center can easily consume fifteen to seventeen kilowatts, which the chapter compares to the electricity needed by more than ten homes.</li>
-<li><b>A room full of racks</b> &mdash; that comparison is the durable part, and it is why a data center is discussed as an electrical facility with computers in it rather than as a large office.</li>
-</ul>
-
-<div class="callout warn">
-<p><b>Read the rack figure as a floor, not a ceiling.</b> Those kilowatt figures predate the current generation of machines built for artificial intelligence work, which the chapter itself describes only two subsections later. Racks assembled for that kind of processing draw materially more than the chapter&rsquo;s number. Keep the household comparison, which still teaches the right intuition, and treat the number as the chapter&rsquo;s snapshot rather than as a current specification.</p>
-</div>
-
-<p>Why is this a management question rather than a facilities one? Because of multiplication. You may never notice one personal computer on a household electricity bill, but an organization running hundreds or thousands of them is in a different position entirely. The chapter adds an unwelcome observation: power consumption and heat emissions continue to rise as manufacturers pack more processing power into servers, often without providing much improvement in energy efficiency. Power and cooling are, in its words, significant cost factors.</p>
+<p>Computers consume electricity to process data, and components such as the processor turn part of it into heat, which is why machines contain fans. More powerful hardware needs more energy to work and more to be cooled.</p>
+<p>Read the chapter&rsquo;s snapshot for ratios: a desktop draws forty to a hundred and seventy watts idling and three hundred under load, while one rack of servers takes fifteen to seventeen kilowatts &mdash; ten homes. Artificial-intelligence racks draw more.</p>
+<p>Nobody notices one computer on a household bill; an organization running thousands does, and manufacturers keep adding processing power without matching efficiency.</p>
 
 <h3>Moving fast, and why that is an infrastructure problem</h3>
-<p>The fourth pressure is the only one that comes from strategy rather than from equipment, and it is the reason this subsection sits in an infrastructure chapter at all. Modern organizations have to innovate constantly to stay abreast of the competition. Rather than building the business around the competencies they happen to have, they are pushed to take an <b>outside-in approach</b>: start from the jobs current and future customers are trying to get done, then work back to a solution.</p>
-
-<p>Being ahead of competitors requires speed, so traditional ways of developing a product or service will not hold up over time. The chapter therefore points at an agile mindset borrowed from the startup world, and names one approach in particular.</p>
+<p>The fourth pressure comes from strategy. Rather than building around the competencies they have, organizations take an outside-in approach: start from the jobs customers want done and work back. Speed matters, so traditional development fails.</p>
 <ul class="keys">
-<li><b>Lean startup methodology</b> &mdash; an approach built on rapid cycles of devising new solutions and developing minimum viable products, so that whether a solution has the desired effect can be tested quickly rather than argued about.</li>
-<li><b>Minimum viable product</b> &mdash; the smallest version of a solution that real users can actually try, built to produce an answer cheaply rather than to be the finished thing.</li>
-<li><b>The consequence for infrastructure</b> &mdash; such experiments often need a different kind of infrastructure from the one the organization already runs, and that infrastructure has to be decided on before any answer exists.</li>
+<li><b>Lean startup methodology</b> &mdash; rapid cycles of devising solutions and building minimum viable products, testing an idea rather than arguing it.</li>
+<li><b>Minimum viable product</b> &mdash; the smallest version real users can try, built to answer cheaply rather than to be finished.</li>
+<li><b>The infrastructure consequence</b> &mdash; experiments often need different equipment from what the firm runs, chosen before any answer exists.</li>
 </ul>
-
-<p>The chapter states the conclusion directly: it makes little sense to invest time and money into infrastructure changes before even knowing whether the experiment will be a success. It then gives two examples that are deliberately unglamorous.</p>
-<ul class="keys">
-<li><b>The mobile application</b> &mdash; there is little sense in purchasing a quantity of hardware and installing web servers to support an app without knowing whether the market will accept it, or how much demand there would be to meet.</li>
-<li><b>The analytics project</b> &mdash; there is equally little sense in purchasing new workstations to run a piece of large-scale data analysis before anyone knows whether the analysis will produce the results it was expected to produce.</li>
-</ul>
-
-<p>This is a strategy argument wearing technical clothes, which is what makes it the cleanest link back to the previous module. If competitive position now depends on how quickly an organization can learn from a real attempt, then anything that slows an attempt down is a competitive problem, and a procurement cycle is exactly such a thing.</p>
+<p>The conclusion is direct: it makes little sense to invest in infrastructure before knowing whether an experiment will succeed &mdash; web servers for an app the market may reject, workstations for an analysis that may produce nothing.</p>
 
 <div class="activity" data-activity="drvCapacity"></div>
 
 <h3>Artificial intelligence asks for a different machine</h3>
-<p>The fifth pressure is the newest one on the chapter&rsquo;s diagram. <b>AI infrastructure</b> is the hardware and software used to support artificial intelligence work, and the chapter&rsquo;s claim is that it has special requirements &mdash; that it is not ordinary computing bought in larger quantities.</p>
-
-<p>The reason is the shape of the work. Training a model means processing very large amounts of data efficiently, which takes an enormous quantity of arithmetic. Because of the nature of that arithmetic, training generally does not run on the traditional processors a business already owns; it runs on graphics processors or tensor processors, which the chapter says are not normally part of a traditional infrastructure. The requirements in processing, storage and analysis differ vastly from ordinary business workloads.</p>
-
-<p>Four consequences follow for whoever has to write the budget, and each one is a place where an estimate built from last year&rsquo;s prices will be wrong.</p>
+<p><b>AI infrastructure</b> is the hardware and software supporting artificial-intelligence work, and it has special requirements rather than being ordinary computing in bulk. Training processes very large amounts of data, which traditional processors handle badly.</p>
 <ul class="keys">
-<li><b>Unit price</b> &mdash; the chapter prices a single widely used training processor in the region of twenty-five thousand US dollars and its successor a little above that. Set that beside the comparison table this module worked through under the previous objective, where a personal computer reaches five thousand dollars and a workstation ten thousand: one such processor costs several times the dearest personal computer and more than twice a workstation, and a training rig needs many of them.</li>
-<li><b>Quantity and time</b> &mdash; researchers estimated that training an early version of a well-known generative model might have taken more than a month running on a thousand such processors at once.</li>
-<li><b>Storage</b> &mdash; the storage requirements, in capacity and also in speed, often exceed those of traditional systems, so the usual disks are wrong on two counts rather than one.</li>
-<li><b>People</b> &mdash; the data scientists doing the work draw on particular machine learning libraries and frameworks, which is a hiring and training cost sitting behind the hardware cost.</li>
+<li><b>Unit price</b> &mdash; the chapter prices one training processor near twenty-five thousand dollars, several times the dearest personal computer; a rig needs many.</li>
+<li><b>Quantity and time</b> &mdash; researchers estimated that training an early generative model took a month on a thousand such processors at once.</li>
+<li><b>Storage</b> &mdash; requirements in capacity and speed exceed traditional systems, so the usual disks are wrong twice over.</li>
+<li><b>People</b> &mdash; data scientists draw on particular machine learning libraries, a hiring cost behind the hardware cost.</li>
 </ul>
-
-<div class="callout warn">
-<p><b>Handle the very large figures with care.</b> Prices for these processors move constantly and street prices diverge sharply from list prices, so treat the chapter&rsquo;s numbers as a snapshot that fixes the order of magnitude and nothing finer.</p>
-<p>The chapter also reports that the company it calls Facebook, whose corporate parent renamed itself Meta in 2021, would build data centers with computing power equivalent to hundreds of thousands of these processors. That was an announced plan rather than a finished building, and this module says so rather than reporting it as an accomplished fact.</p>
-<p>What survives all of that qualification is the shape of the argument, and the shape is what you are being taught: this work needs different silicon, at a unit price far above a business machine, in quantities that only make sense to own if you intend to train continuously.</p>
-</div>
-
-<p>The chapter&rsquo;s bottom line for a manager is short. For an organization new to this kind of work, an AI infrastructure means large costs together with real development and integration difficulties, which is precisely the situation in which renting rather than buying deserves a hearing.</p>
+<p>Treat those figures as a snapshot fixing an order of magnitude. What survives is the shape: different silicon, far dearer than a business machine, worth owning only if you train continuously.</p>
 
 <div class="activity" data-activity="drvQuiz2"></div>
 
-<h3>Five pressures, one shape</h3>
-<p>Put them side by side and the same structure appears in every one, which is the reason to learn them together rather than as a list to be memorized.</p>
-<ol class="steps">
-<li><b>Each one is continuous</b> &mdash; data keeps arriving, demand keeps moving, energy keeps being consumed, competitors keep experimenting, and none of that stops when a purchase order is signed.</li>
-<li><b>Each one forces a commitment early</b> &mdash; capacity, facilities, contracts and specialized hardware all have to be chosen before the information that would settle the choice is available.</li>
-<li><b>Each one punishes both directions</b> &mdash; too much capacity is money sitting idle, too little is a service that fails, and there is no single figure that is safe in both a quiet March and a busy December.</li>
-</ol>
-
-<p>Before moving on, test whether you can spot which pressure is at work from the symptom alone. That is the skill the rest of this module keeps asking for, because a manager is almost never told which driver they are looking at.</p>
+<p class="takeaway">All five pressures are continuous, all force a commitment before the deciding information exists, and all punish both directions &mdash; idle money one way, a failed service the other.</p>
+<p>Test whether you can name the pressure from the symptom alone.</p>
 
 <div class="activity" data-activity="drvSort"></div>
 
-<h3>Where the chapter goes next</h3>
-<p>The chapter closes this objective with its own transition, and it is worth reading as a question rather than a summary. Given all of these issues, organizations have been looking for ways to manage their infrastructure that enhance flexibility and agility while reducing costs. The next objective is the answer the industry settled on.</p>
-
-<p class="takeaway">Every driver in this section is a mismatch between how fast a business need changes and how slowly an owned infrastructure can change with it.</p>
-
-<p class="takeaway">That is why the next objective is not about better machines. It is about somebody else owning them.</p>
+<p class="takeaway">Every driver here is a mismatch between how fast a business need changes and how slowly an owned infrastructure changes with it. The next objective is not about better machines, but about somebody else owning them.</p>
 `;
 
 ACT.drvDrivers = {

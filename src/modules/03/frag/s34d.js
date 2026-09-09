@@ -2,116 +2,76 @@
 PROSE.s34d = `
 <span class="eyebrow">Section 3&ndash;4d</span>
 <h2>What the cloud made possible</h2>
-<p class="lede">Renting infrastructure changed more than the invoice. Once processing, storage and network capacity could be summoned in minutes and dropped again just as quickly, a set of arrangements that used to be impractical became ordinary. This section covers the four the chapter names: software assembled from blocks rather than written as one piece, many small machines pointed at one enormous problem, copies of content kept close to the people asking for them, and a deliberate effort to use less power doing all of it.</p>
+<p class="lede">Once capacity could be summoned in minutes and dropped again, impractical arrangements became ordinary: software assembled from blocks, many machines aimed at one problem, content kept near its readers, and a push to use less power.</p>
 
 <h3>One program that does everything</h3>
-<p>The traditional way to build business software was to write one large program containing every feature it would ever need. The chapter calls this a <b>monolithic application</b>: built as a single unit, with the entire application code held in a single code base.</p>
-<p>That sounds like a criticism, and at first it is not. A single code base is relatively easy to develop, test and deploy, because there is one thing to build, one thing to check and one thing to install.</p>
-<p>The cost arrives later. The very property that makes the application easy to ship makes it inflexible and very difficult to adapt to changing business or user needs, because the part you want to change is bolted to every part you do not.</p>
-<p>Two consequences follow from that single code base, and they pull in opposite directions.</p>
+<p>The traditional way to build business software was one large program holding every feature: a <b>monolithic application</b>, built as a single unit with the entire code in one base.</p>
 <ul class="keys">
-<li><b>Everything ships together</b> &mdash; one build, one test run and one installation cover the whole application, which is genuinely simpler than coordinating a dozen separate pieces.</li>
-<li><b>Everything changes together</b> &mdash; altering one feature means rebuilding, retesting and redeploying the entire program, so a small business change carries the risk of the whole system with it.</li>
+<li><b>Everything ships together</b> &mdash; one build, one test and one installation cover the whole application, simpler than coordinating a dozen pieces.</li>
+<li><b>Everything changes together</b> &mdash; altering one feature means rebuilding the whole program, so a small change carries the risk of the entire system.</li>
 </ul>
+<p>The second is why a monolith is hard to adapt: the part you want to change is bolted to every part you do not.</p>
 
 <h3>Building out of blocks instead</h3>
-<p>The alternative is to stop writing one program and start assembling one. The chapter&rsquo;s image is a model built out of Lego blocks: a <b>modular architecture</b> means choosing individual building blocks that are best suited for a particular need and connecting them using APIs.</p>
-<p>The blocks have names. A <b>packaged business capability</b>, usually shortened to PBC, is an individual building block designed to perform a well-specified business function &mdash; processing payments, say, or managing orders. On a technical level a PBC is itself composed of smaller blocks called <b>microservices</b>, each doing one narrow job.</p>
-<p>Because different vendors offer competing blocks for the same function, an organization can pick whichever suits it, an approach the chapter calls <b>best of breed</b>. Its own figure shows four such capabilities side by side: managing orders, managing inventory, managing customers, and processing payments.</p>
+<p>The alternative is to assemble a program rather than write one. A <b>modular architecture</b> means choosing the building blocks best suited to a need and connecting them through APIs, like a model made of Lego.</p>
+<p>A <b>packaged business capability</b>, or PBC, is one such block performing a well-specified function such as processing payments, itself made of smaller <b>microservices</b>. Vendors offer competing blocks, so a firm picks best of breed.</p>
 
-<div class="callout info">
-<p><b>Why you do not care how the oil gets changed.</b> The chapter&rsquo;s explanation of an interface is the plainest one in the book. You cannot be an expert in everything, so it is probably more effective to have someone change your car&rsquo;s oil for you &mdash; the dealership, an independent garage, an oil-change service, or a friend.</p>
-<p>All that matters to you is that the service will be provided at the expected level of quality and cost, and you typically do not care if different providers do things differently or use different tools. An API is that same agreement written down for software: what you ask for, what comes back, and silence about everything in between.</p>
-</div>
+<div class="callout info"><p><b>Why you do not care how the oil gets changed.</b> Somebody else changes your car&rsquo;s oil. All that matters is the expected quality and cost, not the tools. An interface is that agreement written down for software.</p></div>
 
-<p>The chapter&rsquo;s worked case is Uber, which built its systems as separate components for driver management, passenger management, trip management, billing and payment processing, all connected through APIs. Because the components are separate, each one could be changed relatively easily when the business process behind it changed.</p>
-<p>Then comes the caveat, which the chapter does not bury. Assembling an application out of hosted blocks avoids reinventing the wheel, but a modular approach demands tremendous effort and expertise to plan the architecture, to select the right components from hundreds or thousands of available blocks, and to orchestrate and deploy them together.</p>
-<p class="takeaway">Modularity moves the difficulty rather than removing it: far less code to write, far more to choose between and connect &mdash; and the chapter says that integration can be extremely complex, time-consuming, and well beyond the means of small enterprises.</p>
-
-<p>Three questions on that trade-off, before the section turns to a very different use of many machines.</p>
+<p>Uber built driver management, trip management, billing and payments as separate components joined by APIs, so each could change when its process did. But modularity demands expertise to plan the architecture, select components from thousands, and orchestrate them.</p>
+<p class="takeaway">Modularity moves the difficulty rather than removing it: less code to write, far more to choose and connect.</p>
 
 <div class="activity" data-activity="advQuiz1"></div>
 
 <h3>Many small machines, one enormous problem</h3>
-<p>Some organizations need more computing performance than any ordinary arrangement can supply. The chapter&rsquo;s examples are all simulations of events that are expensive, dangerous or impossible to stage for real.</p>
+<p>Some organizations need more performance than an ordinary arrangement supplies, usually to simulate events that are expensive, dangerous or impossible to stage.</p>
 <ul class="keys">
-<li><b>Crash and design simulation</b> &mdash; car manufacturers such as General Motors&rsquo; German subsidiary Opel and the Japanese manufacturer Toyota use large supercomputers to simulate automobile crashes and to evaluate design changes for vibrations and wind noise.</li>
-<li><b>Research modelling</b> &mdash; facilities such as Oak Ridge National Laboratory use supercomputers to model neutron transport inside nuclear reactors and to study climate change scenarios.</li>
-<li><b>Earth science</b> &mdash; other organizations use comparable capacity to simulate earthquakes, where the alternative to a simulation is waiting for the real event and measuring the damage afterwards.</li>
+<li><b>Crash and design simulation</b> &mdash; manufacturers simulate crashes and test designs for vibration and wind noise before metal is bent.</li>
+<li><b>Research modelling</b> &mdash; laboratories model neutron transport inside nuclear reactors and study climate scenarios.</li>
+<li><b>Earth science</b> &mdash; earthquake simulation, where the alternative is waiting for the real event.</li>
 </ul>
-<p>The obvious answer is a supercomputer, and the chapter spends a paragraph explaining why that answer so often fails. Speed alone does not settle it, because some complex simulations take a year or longer to calculate even on a supercomputer.</p>
-<p>Cost settles the rest. The fastest supercomputers can cost more than US$200 million, and the chapter is careful to say that the purchase price does not represent the total cost of ownership, which also carries personnel, facilities, storage and software. An organization needing such a machine only occasionally struggles to justify any of that, so historically it either rented time on somebody else&rsquo;s supercomputer or decided not to solve the problem at all.</p>
-<p><b>Grid computing</b> is the third answer: combining the computing power of a large number of smaller, independent, networked computers &mdash; often regular desktop machines &mdash; into a cohesive system able to solve problems that only supercomputers could previously solve. Large computing tasks are broken into small chunks, and individual computers complete them.</p>
+<p>The obvious answer is a supercomputer, and it fails twice. Some simulations take a year even on one, and the fastest cost more than US$200 million &mdash; a purchase price that is not the total cost of ownership, which also carries staff and facilities.</p>
+<p><b>Grid computing</b> is the third answer: combining many smaller, independent, networked computers, often ordinary desktops, into one system solving problems only supercomputers could. Large tasks break into chunks that individual machines complete.</p>
 
-<div class="callout exam">
-<p><b>The line to remember.</b> Grid computing and cloud computing both make use of distributed resources, which is exactly why they get confused. The chapter separates them by what the resources are aimed at: in a grid, the resources are typically applied to a single large problem, whereas a cloud serves many separate customers doing many separate things.</p>
-</div>
+<div class="callout exam"><p><b>The line to remember.</b> Grid and cloud both use distributed resources, which is why they get confused. In a grid they go to a single large problem; a cloud serves many customers doing many things.</p></div>
 
-<p>The chapter&rsquo;s exemplar machine, the Summit supercomputer, is described as performing more than 200,000 trillion calculations per second. Read that as an illustration of scale rather than a record, since it has been surpassed several times since the figure was written.</p>
-<p>The sequence below is the chapter&rsquo;s argument in order. Reassembling it is the quickest way to see that a grid is a last answer rather than a first one.</p>
+<p>Reassemble the argument in order; a grid is a last answer, not a first one.</p>
 
 <div class="activity" data-activity="advOrder"></div>
 
 <h3>When the computers are inside a moving object</h3>
-<p>The hardware section of this module described cyber-physical systems and the chapter&rsquo;s warning that their faults land in the physical world. Its own security box makes that concrete, and it repays reading as a supply-chain argument rather than as a scare story.</p>
 
-<div class="callout warn">
-<p><b>Car hacking.</b> A modern vehicle contains a number of control units &mdash; essentially small computers &mdash; operating and integrating the engine and transmission, airbags, steering and braking, remote keyless entry and much else, all coupled together through a maze of networks. Vehicles also carry Bluetooth for hands-free calling, and sometimes a Wi-Fi hotspot for passengers.</p>
-<p>Researchers have repeatedly demonstrated breaking into these onboard systems. The chapter&rsquo;s explanation is not about clever attackers: there is a tremendous amount of programming code in a modern vehicle, most of it from a broad range of vendors, which makes it virtually impossible for a manufacturer to understand every potential vulnerability in what it ships.</p>
-<p>The counter-argument is given fairly. A successful break-in typically is not easy, often requiring several researchers several months, so some regard the danger as more hype than reality. The chapter&rsquo;s own verdict is that the truth is likely somewhere in the middle, because others can learn from a successful effort and greatly shorten the learning curve.</p>
-</div>
+<div class="callout warn"><p><b>Car hacking.</b> A modern vehicle holds many control units &mdash; small computers running engine, airbags, steering and braking &mdash; coupled through a maze of networks, plus Bluetooth and Wi-Fi.</p>
+<p>Researchers have repeatedly broken in. The reason is not clever attackers: a vehicle holds a tremendous amount of code, most from many vendors, so no manufacturer understands every vulnerability it ships.</p></div>
 
-<p>The response the chapter reports is collective rather than clever, and it comes in three parts, none of which any single manufacturer can carry out alone.</p>
-<ul class="keys">
-<li><b>Standardize the approach</b> &mdash; technology and vehicle component vendors work together on common ways of building and securing these systems, so that every supplier is not quietly inventing its own.</li>
-<li><b>Share what gets found</b> &mdash; information about vulnerabilities moves between vendors and manufacturers, which is what shortens the gap between a flaw being discovered somewhere and being repaired everywhere.</li>
-<li><b>Secure the supply chain</b> &mdash; making supply chains harder to tamper with keeps counterfeit parts out of the vehicle, which is the physical version of the same code-provenance problem.</li>
-</ul>
-<p>The transferable lesson for a manager is that a security question about a connected product is usually a question about where the code came from. If most of what runs inside the product arrived from suppliers, then knowing what you shipped is a purchasing and record-keeping problem before it is a technical one.</p>
 
 <h3>Keeping the content near the people who want it</h3>
-<p>Distance costs time. The chapter states it plainly: the larger the geographical distance between a user and the web server hosting some content, the longer that content takes to transmit. Streaming media makes the delay obvious, but every part of a page pays it.</p>
-<p>A <b>content delivery network</b> answers that by providing a network of servers in various geographical locations which store copies of particular websites. When a request arrives, the delivery server closest to that user answers it, which speeds delivery significantly and is normally unnoticed by the person browsing. It also saves bandwidth, and offers performance that would otherwise be too expensive for an organization to provide alone.</p>
-<p>Content delivery networks have since evolved into <b>edge computing</b>, where not only data storage but also processing moves away from a centralized location out to the edges of the network, in order to minimize latency. Reduced network traffic and lower costs come with it, and both matter more as the number of connected devices grows.</p>
-<p>Why that delay matters is clearest in the chapter&rsquo;s four examples, which escalate deliberately.</p>
+<p>Distance costs time: the further a user is from the server holding the content, the longer it takes. A <b>content delivery network</b> answers that with servers in many geographical locations storing copies of particular websites, so the closest one answers each request.</p>
+<p>These became <b>edge computing</b>, where storage and processing move to the edges of the network to minimize latency, with less traffic and lower cost.</p>
 <ol class="steps">
-<li><b>Annoying</b> &mdash; higher latency reduces the usability of a home assistant such as Amazon&rsquo;s Alexa, because a pause before every answer turns a conversation into a wait.</li>
-<li><b>Impractical</b> &mdash; it makes automated stock trading nearly impossible, since the entire purpose of that arrangement is acting before somebody slower does.</li>
-<li><b>Dangerous</b> &mdash; it makes the operation of autonomous vehicles nearly impossible, because a vehicle deciding what to do next cannot wait for a round trip across a continent.</li>
-<li><b>Fatal</b> &mdash; the chapter ends with a patient wearing an internet-connected EKG vest monitoring vital functions, where the delay can result in life or death.</li>
+<li><b>Annoying</b> &mdash; latency spoils a home assistant, because a pause before every answer turns a conversation into a wait.</li>
+<li><b>Impractical</b> &mdash; automated stock trading becomes impossible, since the point is acting before somebody slower does.</li>
+<li><b>Dangerous</b> &mdash; autonomous vehicles become impossible, because a car cannot wait for a round trip across a continent.</li>
+<li><b>Fatal</b> &mdash; a patient in an internet-connected EKG vest, where the delay can result in life or death.</li>
 </ol>
-<p>Notice what the last two share with the vehicle in the security box. Once computing is embedded in something physical, the network stops being a convenience and becomes part of the safety argument.</p>
-<p>Four arrangements are now on the table, along with the interfaces that connect them. Each answers a particular problem, and pairing them is how you keep them apart.</p>
+<p>Pair each arrangement with the problem it answers.</p>
 
 <div class="activity" data-activity="advMatch"></div>
 
 <h3>Using less power to do the same work</h3>
-<p>Energy is the last of the trends, and the chapter is careful to name two separate reasons organizations act on it.</p>
+<p>Organizations act on energy for two reasons: scrutiny over their contribution to climate change, and savings on energy, water, waste and carbon taxes. <b>Green computing</b> covers both &mdash; using computing resources more efficiently, and using information systems to cut environmental impacts elsewhere.</p>
 <ul class="keys">
-<li><b>The reputational driver</b> &mdash; organizations are increasingly scrutinized for their contribution to societal issues such as climate change, and executives conclude they cannot afford the consequences of inaction for the company&rsquo;s reputation.</li>
-<li><b>The financial driver</b> &mdash; efforts of this kind can save money on energy and water use, waste disposal and carbon taxes, and may attract grants, rebates or free technical advice, so they can reach the bottom line rather than only the brochure.</li>
+<li><b>Virtualization</b> &mdash; several computing environments on one machine, consolidating barely used servers onto a few well-used ones, cutting power and cooling.</li>
+<li><b>Shared provider infrastructure</b> &mdash; the cloud is argued to cut consumption, because one provider&rsquo;s infrastructure is shared rather than idling everywhere.</li>
+<li><b>Power management</b> &mdash; software recovering the energy wasted by desktops idling overnight, invisible until measured.</li>
+<li><b>Printing less</b> &mdash; discouraging staff from printing emails and documents cuts paper waste.</li>
 </ul>
-<p><b>Green computing</b> is the chapter&rsquo;s name for both halves of the response: using computing resources more efficiently to reduce environmental impacts, and using information systems to reduce negative environmental impacts elsewhere. The short version is doing the same work, or more of it, with less.</p>
-<p>Four tactics carry most of the weight, and the first is the reason this discussion sits inside a chapter about the cloud.</p>
-<ul class="keys">
-<li><b>Virtualization</b> &mdash; running several separate computing environments on one physical machine, so that many servers each using a fraction of their capacity are consolidated onto a few well-used ones, which lowers the power bill and the cooling bill together.</li>
-<li><b>Shared provider infrastructure</b> &mdash; cloud computing has been argued to reduce energy consumption, because the provider&rsquo;s infrastructure is shared among many users instead of sitting idle in each of their buildings.</li>
-<li><b>Power management</b> &mdash; software on individual desktops recovers the energy otherwise wasted by machines left idling or on standby overnight, which stays invisible until somebody measures it.</li>
-<li><b>Printing less</b> &mdash; discouraging staff from printing emails and business documents reduces paper waste, and the chapter supports this with an unsourced figure for annual paper use that is not repeated here.</li>
-</ul>
-<p>Retiring the equipment is the part organizations forget. Companies cannot simply send old machines to a landfill, so the first decision is when equipment should be retired and the next is what becomes of it.</p>
-<p>Old computers must be wiped of all user data before they leave the building. Specialist firms, which the chapter calls IT asset disposition vendors, wipe the drives and then either refurbish and resell usable equipment or dismantle it to recycle valuable raw materials and dispose of hazardous waste properly.</p>
-
-<div class="callout tip">
-<p><b>A tension the chapter leaves open.</b> Green computing credits the cloud with lowering energy consumption, because one provider&rsquo;s shared infrastructure replaces many idle private ones. The same chapter describes an enormous new appetite for computing power to train AI models, running on hardware that draws far more than the machines beside it.</p>
-<p>Both statements can be true at once, and the chapter never reconciles them. So carry the question with you: when a workload moves to a shared provider, is less energy actually being used, or has the saving simply been spent on work nobody was doing before?</p>
-</div>
-
-<p>That is the fourth and last of the trends. The cards below set all four side by side, including what each one demands in return, which is the half a proposal usually leaves out.</p>
+<p>Retiring equipment is the forgotten part. Old machines cannot go to landfill and must be wiped of user data; specialist firms resell them or dismantle them to recycle materials and handle hazardous waste.</p>
+<p>The cards set all four trends side by side, with what each asks in return.</p>
 
 <div class="activity" data-activity="advExplore"></div>
 
-<p>One last check across the whole section, mixing the four trends with the security box that sits between them.</p>
+<p>One last check across the four trends and the security box.</p>
 
 <div class="activity" data-activity="advQuiz2"></div>
 `;

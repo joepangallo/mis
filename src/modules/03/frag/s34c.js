@@ -2,112 +2,72 @@
 PROSE.s34c = `
 <span class="eyebrow">Section 3&ndash;4c</span>
 <h2>Deciding well: what to ask before you move</h2>
-<p class="lede">Renting an infrastructure can be arranged in an afternoon, with a card, a web page and nobody&rsquo;s signature. That speed is the appeal, and it is also the difficulty: a decision that once took months of meetings now takes minutes, so the thinking has to happen somewhere else. This section is that thinking &mdash; the chapter&rsquo;s own cautionary case, the questions worth putting to a provider before depending on one, and the honest argument about what any of it costs.</p>
+<p class="lede">Renting an infrastructure takes an afternoon and a card. That speed is the appeal and the difficulty: a decision that once took months now takes minutes, so the thinking moves elsewhere.</p>
 
 <h3>The bill nobody was watching</h3>
-<p>The chapter introduces cloud computing with a warning rather than a sales pitch, and the warning is worth taking seriously precisely because nobody in it does anything obviously foolish.</p>
-<p>A small software company &mdash; the chapter deliberately does not name it, and neither will this page &mdash; ran a translation application. It did not own the translation engine. Its application sent text out to another company&rsquo;s service and received the translated text back, reaching that service with an <b>interface key</b>: a short secret string that identifies the paying customer on every single request.</p>
-<p>The company&rsquo;s usual spend was around US$1,500 a month. Then one bill, covering roughly six weeks, came to about US$450,000. According to the founders, somebody appeared to have stolen the key and used it to request nineteen billion characters of translation. Every one of those characters was charged to the company that owned the key, because charging the key holder is exactly what the key is for. The budget the company had built its year around was gone, and it was left asking the provider for leniency.</p>
-<p>The chapter sets a second, quieter case beside it. A startup doubled its user base and expanded its rented infrastructure to keep up, but never put cost management practices in place while it was growing. Resources were over-provisioned, there was no real-time monitoring, and the rising cost went unnoticed until the monthly bill arrived. Nothing was stolen in that one. It was simply nobody&rsquo;s job to look.</p>
-<p>Read both cases against the five characteristics from the earlier sections and the mechanism is plain. Three of them are doing the damage, and all three are features that were sold as benefits.</p>
+<p>A small software company ran a translation application. It sent text to another company&rsquo;s service, reaching it with an <b>interface key</b> &mdash; a short secret string identifying the paying customer on every request.</p>
+<p>Its usual spend was US$1,500 a month. Then one six-week bill came to US$450,000: somebody had apparently stolen the key and requested nineteen billion characters, all charged to the key holder, because that is what a key is for.</p>
+<p>A quieter case sits beside it. A startup doubled its users and expanded its rented infrastructure without cost management. Resources were over-provisioned, nothing was monitored, and the cost went unnoticed until the bill came. Nothing was stolen; nobody was watching.</p>
+<p>Read both against the five characteristics. Three did the damage, and all three were sold as benefits.</p>
 <ul class="keys">
-<li><b>On-demand self-service</b> &mdash; resources can be obtained without negotiating with anybody, which also means they can be obtained without anybody inside the organization approving the spending.</li>
-<li><b>Rapid elasticity</b> &mdash; capacity scales up almost instantly and often automatically, so a runaway stream of requests meets no ceiling of the kind a room full of owned machines would have imposed.</li>
-<li><b>Measured service</b> &mdash; the meter runs for whoever presents the credential, and it never asks whether the work being requested is work the business actually wanted done.</li>
+<li><b>On-demand self-service</b> &mdash; resources arrive without negotiation, and so without anybody inside the organization approving the spending.</li>
+<li><b>Rapid elasticity</b> &mdash; capacity scales instantly, so a runaway stream of requests meets no ceiling that owned machines would impose.</li>
+<li><b>Measured service</b> &mdash; the meter runs for whoever presents the credential, never asking whether the business wanted the work done.</li>
 </ul>
-<p>That is why the chapter&rsquo;s conclusion is about vigilance rather than avoidance. Cloud computing offers scalability and flexibility, and without proper oversight a company can quickly find itself facing financial trouble that threatens its operations and its growth. The five defences it recommends are ordinary management practices rather than technical measures, which is the part worth noticing.</p>
-<ol class="steps">
-<li><b>Put cost monitoring tools in place</b>, so that what is being spent is visible while it is being spent rather than only when the billing period closes.</li>
-<li><b>Review resource allocations regularly</b>, because the second case was not an attack at all: it was capacity that made sense once and was never revisited.</li>
-<li><b>Set budget alerts</b> that fire on anomalies, so an unusual pattern raises a flag on the day it starts instead of the day the invoice arrives.</li>
-<li><b>Educate teams on cost awareness</b> and build a culture of accountability, since the person who provisions a resource in seconds is rarely the person who later reads the bill.</li>
-<li><b>Read the fine print</b> to know what you are getting into and what you may be liable for, which is the only one of the five that has to happen before anything is switched on.</li>
-</ol>
-<p>One thread ties this back several sections. The thing stolen in the first case was an interface key of exactly the kind shown earlier sitting inside a request, in plain readable text, where anything able to see the request can see it too. The security failure and the spending failure were one event, not two.</p>
-<p>The exercise below walks a hypothetical firm through four moments where one of those five defences was the thing that was missing. The firm is invented; only the shape of the failure is the chapter&rsquo;s.</p>
+<p>The advice is vigilance, not avoidance, and the five defences are management, not technology: monitor cost as it is spent, review allocations, alert on anomalies, teach cost awareness, and read the fine print first.</p>
 
 <div class="activity" data-activity="decRunaway"></div>
 
 <h3>Ten questions to put to a provider</h3>
-<p>Before any criterion matters there is a prior decision, and the chapter states it first: <b>which applications, services or data should move at all</b>. That is not one answer but many, because there is typically no single provider that can meet all of an organization&rsquo;s needs. Organizations end up partnering with several, choosing an infrastructure, a platform or a finished application for each need and combining public and private arrangements, for the plain reason that no one solution fits everything.</p>
-<p>Once something is a candidate to move, the chapter lists the long-term, strategic issues management should weigh when comparing public providers. There are ten of them. They are easier to use as questions than as a row of nouns, because a criterion you cannot phrase as a question is one you will not actually ask.</p>
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Criterion</th><th>The question it makes you ask</th><th>What a weak answer sounds like</th></tr></thead>
-<tbody>
-<tr><td><b>Availability</b></td><td>What uptime is promised, and how would we keep trading during the hours it is missed?</td><td>&ldquo;They are one of the biggest providers in the world, so they do not go down.&rdquo;</td></tr>
-<tr><td><b>Reliability</b></td><td>What backups are taken of the servers and the storage, and will we have enough bandwidth to reach large amounts of our own data?</td><td>&ldquo;It is all in the cloud, so presumably it is backed up.&rdquo;</td></tr>
-<tr><td><b>Scalability</b></td><td>Can this provider carry our storage and transaction volumes as they are now and as we expect them to be?</td><td>&ldquo;It is the cloud. Scaling is what it does.&rdquo;</td></tr>
-<tr><td><b>Viability</b></td><td>If this provider stopped trading, what would it cost us in money and time to stand everything up somewhere else?</td><td>&ldquo;They have plenty of investors, so that will not happen.&rdquo;</td></tr>
-<tr><td><b>Security</b></td><td>How is our data protected from outside intruders, and how would we audit who has reached it?</td><td>&ldquo;Their website says security is their highest priority.&rdquo;</td></tr>
-<tr><td><b>Privacy</b></td><td>How is the privacy of the people whose records these are protected once the records sit on shared hardware?</td><td>&ldquo;It is our account, so nobody else can see any of it.&rdquo;</td></tr>
-<tr><td><b>Compliance</b></td><td>Does storing this particular data here satisfy the duties that apply to our industry and to the places we operate in?</td><td>&ldquo;The provider has a compliance page, so we are covered.&rdquo;</td></tr>
-<tr><td><b>Diversity of offerings</b></td><td>Can one provider cover what we need now and what we will need next, or are we about to manage several relationships?</td><td>&ldquo;We will pick the best tool for each job and sort the rest out later.&rdquo;</td></tr>
-<tr><td><b>Openness</b></td><td>If we wanted to leave in three years, how would the data get out, how long would that take and what would the transfer be charged at?</td><td>&ldquo;We would just copy it across.&rdquo;</td></tr>
-<tr><td><b>Cost</b></td><td>What does the metered bill actually cover, and what does the same work truly cost us when we do it ourselves?</td><td>&ldquo;The monthly figure is less than we paid for the server.&rdquo;</td></tr>
-</tbody>
-</table></div>
-<p>Those ten are not a checklist invented for this page. They are the chapter&rsquo;s direct answer to the third question its opening case asked the reader: what factors should organizations consider when building on infrastructure provided in the cloud. The rest of this section is the discussion behind four of them &mdash; availability, security, openness and cost &mdash; because those are where the chapter has most to say and where managers most often go wrong.</p>
+<p>A prior decision comes first: which applications, services or data should move at all. No single provider meets every need.</p>
+<p>For each candidate the chapter lists ten criteria: availability, reliability, scalability, viability, security, privacy, compliance, diversity of offerings, openness and cost. Treat them as questions &mdash; one you cannot phrase as a question you will not ask.</p>
 
 <div class="activity" data-activity="decCriteria"></div>
 
 <h3>What an agreement actually promises</h3>
-<p>Availability is where most organizations start, and the chapter is blunt about it. As examples from the largest public providers have shown, not even they are immune from problems: a hardware failure, a programming error, or a network outage somewhere in between. The useful question is therefore not whether an outage will happen but what the customer has arranged for the day it does.</p>
-<p>The instrument that is supposed to answer that is the <b>service-level agreement</b>: a contract specifying the level of service to be provided in terms of performance, measured for instance as uptime, along with warranties, disaster recovery and so on. It reads like a guarantee. It is not one, and the chapter says so plainly.</p>
+<p>Not even the largest providers escape hardware failures, programming errors or outages, so the question is not whether one happens but what was arranged for the day it does.</p>
+<p>The <b>service-level agreement</b> is meant to answer that: a contract specifying service levels such as uptime, with warranties and disaster recovery. It reads like a guarantee and is not one.</p>
 <ul class="keys">
-<li><b>It does not guarantee that resources will be available</b> &mdash; it promises certain service levels and provides refunds or discounts when those promises are missed, which makes it mostly a way of settling disputes once something has already gone wrong.</li>
-<li><b>A refund is not compensation</b> &mdash; refunds and discounts normally cover only the fees paid for the service, and can never offset the opportunity cost of the business lost while the service was unavailable.</li>
-<li><b>Self-service cuts both ways</b> &mdash; doing everything yourself is an advantage until something breaks, because help is not always guaranteed to be there, so support arrangements matter most for the applications the organization cannot trade without.</li>
-<li><b>The customer still has to plan</b> &mdash; being caught by a negative event is usually too costly in lost business or goodwill, so organizations are expected to take their own precautions, including replicating their cloud-based infrastructure in more than one location.</li>
+<li><b>It does not guarantee availability</b> &mdash; it promises levels and refunds when missed, settling disputes after the fact.</li>
+<li><b>A refund is not compensation</b> &mdash; refunds cover fees paid, never business lost while the service was down.</li>
+<li><b>Self-service cuts both ways</b> &mdash; doing it yourself is an advantage until something breaks, because help is not guaranteed.</li>
+<li><b>The customer still has to plan</b> &mdash; organizations take precautions, including replicating the infrastructure in more than one location.</li>
 </ul>
-<p>The chapter then insists on a counterpoint, and leaving it out would make the criticism dishonest. An organization also has to ask how well it could hold that uptime itself, and at what cost. Often the honest answer is that even when a provider misses its promised levels, it still delivers better uptime than a poorly managed operation in the organization&rsquo;s own building would have. Neither arrangement is safe by default. One of them simply puts the failure somewhere you cannot walk to.</p>
-<p>The usual resolution in practice is a hybrid one: keep certain applications in-house and move others to the public cloud. That is the same answer the previous section arrived at from the other direction, and it is worth noticing that the chapter reaches it twice by two different routes.</p>
 
 <h3>Sharing a building you cannot see</h3>
-<p>Security, privacy and compliance are three separate criteria that get discussed together because they all follow from one structural fact. A public cloud is, by definition, shared: different companies running different applications on the same hardware.</p>
-<p>Two consequences follow, and neither is a criticism of any particular provider.</p>
+<p>Security, privacy and compliance follow from one fact: a public cloud is shared, with different companies running different applications on the same hardware.</p>
 <ul class="keys">
-<li><b>You cannot say exactly where the data physically are</b> &mdash; resources are pooled and assigned dynamically, so a customer rents capacity without knowing which machine in which building holds its records at any given moment.</li>
-<li><b>Auditing who has touched the data is extremely difficult</b> &mdash; the chapter goes as far as saying it may be impossible, which matters because knowing who reached a record is often the entire substance of an obligation.</li>
+<li><b>You cannot say where the data physically are</b> &mdash; resources are pooled and assigned dynamically, so you never know which machine holds the records.</li>
+<li><b>Auditing who touched the data is very hard</b> &mdash; possibly impossible, and knowing who reached a record is often the substance of an obligation.</li>
 </ul>
-<p>Control is the other half of it. With an infrastructure of its own a company has complete control over its own data. That control is reduced in a rented one, organizations have fewer legal rights over data stored in the cloud, and providers may be asked to hand data held on their servers to law enforcement, leaving the customer with little say in the matter.</p>
-<p>The weight of this falls hardest on organizations holding sensitive records &mdash; the chapter names medical and legal work &mdash; which is why some of them keep precisely those records in their own building while renting everything else.</p>
-<p>Compliance needs care in the other direction. The chapter names rules on financial reporting, rules on the handling of health information, and an industry standard for card payments as examples of duties an organization may have to satisfy. What matters for a decision is the shape of such a duty rather than its name.</p>
-<ul class="keys">
-<li><b>Duties of this kind are not universal</b> &mdash; requirements apply in particular industries and particular jurisdictions, so the first question is which of them reach this organization and this data at all.</li>
-<li><b>They can decide geography</b> &mdash; a duty may dictate where records are permitted to sit physically, which is one reason some providers let a customer specify the geographic region its resources are drawn from.</li>
-<li><b>A provider cannot answer them on your behalf</b> &mdash; whether an arrangement satisfies a duty is a question for the organization&rsquo;s own advisers rather than for a marketing page, and the accountability stays with the organization either way.</li>
-</ul>
+<p>Control is the other half. In a rented infrastructure control over data is reduced, legal rights fewer, and providers may be required to hand records to law enforcement. Firms holding medical records often keep those in their own building.</p>
 
 <h3>Getting out again</h3>
-<p>Openness, sometimes called interoperability, is the criterion noticed last and felt hardest. Most providers use different infrastructures and different ways of storing data, which makes moving data between them extremely difficult and can leave a company locked in to whichever provider it happened to start with. The chapter makes a dry observation worth repeating: providers do offer tools to make moving data easier &mdash; into their own infrastructure.</p>
-<p>A second force is physical rather than commercial. Moving terabytes from one provider to another takes real time on whatever bandwidth exists, and providers often charge for transferring data into or out of their infrastructure. A migration that was budgeted as a weekend of copying can turn out to be months of transfer with an invoice of its own attached.</p>
-<p class="takeaway">Ask the exit question at the beginning, while you still have the leverage to negotiate the answer. Once the data are large and the applications are built around one provider&rsquo;s way of doing things, the cost of leaving stops being a choice and becomes a fact.</p>
+<p>Openness, or interoperability, is noticed last and felt hardest. Providers store data differently, which makes moving between them extremely difficult and can lock a company in. Their tools make moving easier &mdash; inward.</p>
+<p>The second force is physical. Moving terabytes takes real time on the bandwidth available, and providers charge for transfers in or out. A weekend of copying becomes months, with an invoice attached.</p>
+<p class="takeaway">Ask the exit question at the beginning, while you still have leverage. Once the data are large and the applications built around one provider, the cost of leaving stops being a choice and becomes a fact.</p>
 
 <div class="activity" data-activity="decQuiz"></div>
 
-<p>The chapter&rsquo;s own case teaches the vocabulary. Five new organizations, none of them real and none of them the one above, ask you to use it cold: pick the service model, name the pressure, or judge the migration before you read why.</p>
+<p>Five new organizations, none of them real, ask you to use this vocabulary cold.</p>
 
 <div class="activity" data-activity="decApply"></div>
 
 <h3>What it actually costs</h3>
-<p>The upside is real and easy to state. Under a metered model an organization pays for the resources it uses and can scale up or down as it needs to, which gives it control over what is being consumed and unusual transparency about what each part of the infrastructure costs. Owned equipment tells you nothing comparable. A server in a cupboard costs the same on a busy day as on an idle one, and no invoice ever breaks that down for you.</p>
-<p>What the chapter refuses to do is claim the metered bill is smaller. Its own words are that there is considerable disagreement over whether moving to the public cloud is ultimately cheaper than maintaining an infrastructure of your own. It also explains why the argument never settles, and that explanation is the most useful thing in this section.</p>
-<p>The comparison is unfair in one specific direction. The rented figure is exact, because the monthly cost of a rented server is a number printed on a bill. The in-house figure usually is not, because many organizations do not know what it truly costs to run a comparable server of their own once everything is counted.</p>
+<p>Metered billing shows what each part costs. Owned equipment tells you nothing comparable: a server in a cupboard costs the same busy or idle.</p>
+<p>The chapter will not claim the metered bill is smaller; there is considerable disagreement over whether the cloud is ultimately cheaper. The comparison is unfair one way: the rented figure is exact, the in-house figure is not.</p>
 <ul class="keys">
-<li><b>The machine itself</b> &mdash; the one element nearly every quick comparison includes, usually as a purchase price divided by however many years somebody expects the machine to last.</li>
-<li><b>Software licences</b> &mdash; for the operating system, the database engine and anything else the machine has to run, which under an infrastructure service remain the customer&rsquo;s responsibility.</li>
-<li><b>Electricity</b> &mdash; counted twice over, because the machine draws power to do the work and the cooling draws power again to remove the heat that work produced.</li>
-<li><b>The facility</b> &mdash; the share of floor space, power distribution, cooling plant and physical security that this one machine occupies inside a building somebody has to pay for.</li>
-<li><b>The staff</b> &mdash; the fraction of the people who install, patch, monitor, back up and eventually replace it, often the largest of the five figures and the one least likely to have been written down anywhere.</li>
+<li><b>The machine itself</b> &mdash; the element every quick comparison includes, its price divided by the years it should last.</li>
+<li><b>Software licences</b> &mdash; for the operating system and database engine, which under an infrastructure service stay yours.</li>
+<li><b>Electricity</b> &mdash; counted twice: the machine draws power, and the cooling draws power to remove the heat.</li>
+<li><b>The facility</b> &mdash; this machine&rsquo;s share of floor space, power distribution, cooling and physical security.</li>
+<li><b>The staff</b> &mdash; the fraction who install, patch, monitor, back up and replace it, usually the largest figure and least written down.</li>
 </ul>
-<p>Work the comparison honestly and it may still come out either way. The chapter names one company, the online game developer Zynga, that moved out of a public cloud and back into an infrastructure it owned. Read that as one company reaching one conclusion about its own workload at one moment, not as evidence about the general case &mdash; which is exactly what the chapter&rsquo;s own sentence about considerable disagreement concedes.</p>
-<p>Two consequences are worth carrying away. Using rented capacity only for periods of peak demand is a genuinely sensible arrangement, and the chapter notes that it adds another layer of complexity to the operation, so somebody has to run it and that somebody costs money too. And moving to a rented infrastructure shifts the cost structure towards operational expenditure, which changes the organization&rsquo;s financial model rather than merely changing where its invoices come from.</p>
-<p>The exercise below builds the in-house figure one element at a time, which is what an analyst has to do before any comparison means anything at all. It is a hypothetical sheet: every figure in it is invented for practice.</p>
+<p>One game developer moved back out of a public cloud into equipment it owned. Build the in-house figure on the hypothetical sheet below; every number is invented.</p>
 
 <div class="activity" data-activity="decCost"></div>
 
-<p>The chapter&rsquo;s own conclusion is that there are various issues to consider and that each organization must make informed choices about how to harness what the cloud offers while minimizing the drawbacks. That is not a dodge. It is the honest shape of the decision: ten criteria, no single provider that answers all of them well, and a hybrid arrangement waiting at the end of most of the arguments.</p>
-<p class="takeaway">Nobody signs up for a runaway bill, a migration they cannot afford, or an outage they have no plan for. They sign up for something quick and cheap, and postpone the questions that would have surfaced all three.</p>
+<p class="takeaway">Nobody signs up for a runaway bill, an unaffordable migration or an outage with no plan. They sign up for something quick and cheap, postponing the questions that would have surfaced all three.</p>
 
 <div class="activity" data-activity="decReady"></div>
 `;

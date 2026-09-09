@@ -2,81 +2,59 @@
 PROSE.s32a = `
 <span class="eyebrow">Section 3&ndash;2a</span>
 <h2>Why infrastructure is a management question</h2>
-<p class="lede">A city works because of things almost nobody looks at: pipes under the road, cables under the pavement, a power station somewhere outside town. You notice them on the day one of them stops. Organizations have the same layer underneath them, made of machines and programs and wire instead of concrete, and this module is about that layer &mdash; what it is made of, why it never stays finished, and who ends up paying for it.</p>
+<p class="lede">A city works because of things nobody looks at: pipes under the road, cables under the pavement, a power station somewhere outside town. You notice them the day one of them stops. Organizations have the same layer underneath them, built from machines and programs and wire, and this module is about that layer.</p>
 
-<h3>Infrastructure is the part you only see when it breaks</h3>
-<p>Start with the ordinary meaning of the word. A city&rsquo;s infrastructure is the shared foundation everything else is built on. You do not lay your own roads when you open a shop; you rely on the ones already there, and your shop is only ever as good as they are.</p>
-<p>An organization&rsquo;s technology works the same way. The <b>information systems infrastructure</b> is the shared foundation of machines, programs, storage and connections that every application in the company runs on. No single department owns it, everyone depends on it, and most of the time nobody thinks about it at all.</p>
-<p>That last part is exactly why it is a management question and not a purely technical one. Decisions about a foundation are made once and lived with for years, they are expensive to reverse, and they quietly settle what the business is able to attempt later. Somebody who cannot name the parts cannot judge a proposal about them.</p>
+<h3>The part you only see when it breaks</h3>
+<p>You do not lay your own roads when you open a shop; you rely on the ones already there. An organization&rsquo;s technology works the same way. The <b>information systems infrastructure</b> is the shared foundation of machines, programs, storage and connections that every application in the company runs on.</p>
+<p>No department owns it, everyone depends on it, and nobody thinks about it until it stops. That is what makes it a management question: foundation decisions are expensive to reverse, and they quietly settle what the business is able to attempt later.</p>
 
 <h3>The companies you know for something else</h3>
-<p>The chapter opens with a handful of companies nearly everybody in the developed world can name, and it names each one for the product you would think of first: Apple for its laptops, phones and tablets, Microsoft for its operating system and productivity software, Facebook for its social network, Google for its search engine.</p>
-<p>Then it points out how little that captures. Google also works on driverless cars and other technologies, on life sciences, on investment capital, and on space exploration through its investments in SpaceX. Many of those ventures, in the chapter&rsquo;s own phrase, did not fall neatly under a search engine company, and billions of dollars were going into research projects that investors did not always view favourably.</p>
-<p>The answer was structural. A holding company called <b>Alphabet</b> was created, placing around a dozen companies under one umbrella &mdash; the robotics business Intrinsic, the life sciences company Verily, the autonomous driving company Waymo, and the others the chapter groups as the &ldquo;Other Bets&rdquo; &mdash; so that financial reporting now shows where revenue is generated and where investments in new ideas are being made.</p>
-<p>Then comes the sentence this whole module hangs from. Beyond the holding company itself, what unites those very different businesses is <b>the need for a reliable and high-performing information systems infrastructure</b>. A robotics company and a search engine have almost nothing in common except that neither of them works if the machines underneath it do not.</p>
-<p>The chapter reports the scale of what Google built for itself, and two things in that report should be read differently.</p>
+<p>The chapter opens with Apple, Microsoft, Facebook and Google, then points out how little the obvious product captures. Google also works on driverless cars, life sciences, investment capital and space exploration, so a holding company called <b>Alphabet</b> was created to place around a dozen businesses under one umbrella and show investors where money is earned and where it is being spent.</p>
+<p>What unites a robotics company and a search engine is one thing: the need for a reliable and high-performing infrastructure. It creates value three ways &mdash; efficiency, effectiveness and agility &mdash; and some of these firms rent theirs out.</p>
 <ul class="keys">
-<li><b>The count is a snapshot</b> &mdash; the chapter gives a number of data center locations across a number of countries in the opening case and a different, smaller figure later on, so read it as a few dozen major sites spread over many countries rather than as an exact tally that will still be right next year.</li>
-<li><b>The reason is not a snapshot</b> &mdash; those sites exist so that people all over the world get a fast and reliable answer, and speed and reliability at that scale are bought with buildings, electricity and network capacity rather than with clever programming alone.</li>
+<li><b>Rented out</b> &mdash; Google, Microsoft with Azure and Amazon with Amazon Web Services each built a fast, reliable infrastructure for their own operations, then sold capacity on it to everybody else.</li>
+<li><b>Kept in-house</b> &mdash; Apple runs its data centers only for users of its own ecosystem, and the owner of the Facebook app uses its own only for that network and its generative artificial intelligence models.</li>
+<li><b>The judgment underneath</b> &mdash; renting your foundation out turns a cost into revenue, and it also turns you into a supplier with customers, outages and support obligations you did not have before.</li>
 </ul>
-
-<h3>Selling the thing you had to build anyway</h3>
-<p>Having built that foundation for its own products, Google now rents it to other organizations as <b>cloud computing</b> services, ranging from basic computing, storage and networking through to analytics, artificial intelligence and security. Module 2 gave this move a name &mdash; a capability built for internal use turned into something customers pay for &mdash; and here it is again, down in the plumbing.</p>
-<p>The chapter is careful to say that Google is not alone in doing this, and equally careful to say that not everybody does it. That contrast is the most useful part of the whole case.</p>
-<ul class="keys">
-<li><b>Rented out</b> &mdash; Google, Microsoft with Azure and Amazon with Amazon Web Services each built a high-performing, reliable infrastructure to support their own operating model, and now capitalize on that investment by selling capacity on it to everybody else.</li>
-<li><b>Kept in-house</b> &mdash; Apple uses its data centers only to host services for users of the Apple ecosystem, and the company that owns the Facebook app, whose corporate parent renamed itself Meta in 2021, uses its own only to power that social network and its generative artificial intelligence models.</li>
-<li><b>The judgment underneath</b> &mdash; either choice can be the right one, because renting your foundation out turns a cost into revenue, but it also turns you into a supplier with customers, outages and support obligations that you did not have the week before.</li>
-</ul>
-<p>The chapter closes the case by asking the student three questions. They are worth writing down, because they turn out to be the map of this entire module.</p>
-<ol class="steps">
-<li><b>How does a company benefit from a well-functioning infrastructure?</b> That is objective 3.2 &mdash; the five components and what each one contributes &mdash; which is the rest of this section and the five sections that follow it.</li>
-<li><b>Why would companies use cloud computing?</b> That is objective 3.3 and the first half of objective 3.4: what goes wrong when you own the foundation yourself, and what renting somebody else&rsquo;s actually fixes.</li>
-<li><b>What should an organization consider when it builds on infrastructure provided by somebody else?</b> That is the second half of objective 3.4, where the module stops describing the cloud and starts asking what to establish before signing anything.</li>
-</ol>
+<p>Three questions about that case before the components arrive.</p>
 
 <div class="activity" data-activity="infQuiz1"></div>
 
 <h3>The five parts, named once</h3>
-<p>This objective takes the infrastructure apart into five components and then walks them in order. You are not expected to understand them yet; the point of naming them here is that from now on every unfamiliar thing in this module is one of these five, or a decision about one of these five.</p>
+<p>This objective takes the infrastructure apart into five components. From here on, every unfamiliar thing in this module is one of these five, or a decision about one of them.</p>
 <ul class="keys">
-<li><b>Hardware</b> &mdash; the physical machines that run the applications and databases an organization needs, from the phone in a pocket to the racks of servers that answer everybody at once.</li>
-<li><b>System software</b> &mdash; the programs that control the basic operations of those machines, so that an application can ask for something to be saved without knowing what kind of disk is fitted.</li>
-<li><b>Storage</b> &mdash; the place data stays when the day ends and the power goes off, which is a different question from where it is being used while somebody is working on it.</li>
-<li><b>Networking</b> &mdash; the sharing of data or services between machines, which is what turns five separate pieces of equipment into something an organization can actually use.</li>
-<li><b>Data centers</b> &mdash; the dedicated space the equipment lives in, with the power, the cooling and the physical security that keep it running, because all of that has to be bought by somebody.</li>
+<li><b>Hardware</b> &mdash; the physical machines that run an organization&rsquo;s applications and databases, from the phone in a pocket to racks of servers answering everybody at once.</li>
+<li><b>System software</b> &mdash; the programs that control the basic operations of those machines, so an application can save a file without knowing what kind of disk is fitted.</li>
+<li><b>Storage</b> &mdash; where data stays when the day ends and the power goes off, which is a different question from where it sits while somebody is working on it.</li>
+<li><b>Networking</b> &mdash; the sharing of data or services between machines, which is what turns separate pieces of equipment into something an organization can actually use.</li>
+<li><b>Data centers</b> &mdash; the dedicated space the equipment lives in, with the power, cooling and physical security that keep it running, all of which somebody has to buy.</li>
 </ul>
-<p>Those five are easier to hold onto if you follow one ordinary request through them. The diagram takes each component in turn and shows what it is, what its single job is, where it appears when you tap a button to place an order, and what you notice on the day it is missing.</p>
+<p>Follow one ordinary request through all five. The diagram gives each component its single job, where it appears when you tap a button to place an order, and what you notice the day it is missing.</p>
 
 <div class="activity" data-activity="infStack"></div>
 
-<h3>What a well-run infrastructure is actually worth</h3>
-<p>The objective opens with a claim about value, and it names three different kinds. Two of them you already met in Module 2, so they get one clause each here rather than a re-teaching.</p>
+<h3>Three kinds of value, one of them new</h3>
+<p>Two of the three came up in the previous module, so each gets a clause.</p>
 <ul class="keys">
-<li><b>Efficiency</b> &mdash; the extent to which goals are accomplished faster, at lower cost, or with relatively little time and effort, which is the value most people assume technology is for and the easiest of the three to measure.</li>
-<li><b>Effectiveness</b> &mdash; the extent to which goals and tasks are accomplished well, which is a different question and often a more valuable one, since a process can be fast and still produce the wrong result.</li>
-<li><b>Agility</b> &mdash; the ability to change what the organization does and to change it quickly, which the chapter says computing, storage and networking increasingly deliver, and which is the newest of the three arguments.</li>
+<li><b>Efficiency</b> &mdash; goals accomplished faster, at lower cost, or with relatively little time and effort, which is the value most people assume technology is for.</li>
+<li><b>Effectiveness</b> &mdash; goals and tasks accomplished well, which is a different question, since a process can be fast and still produce the wrong result.</li>
+<li><b>Agility</b> &mdash; the ability to change what the organization does, and to change it quickly, which computing, storage and networking increasingly deliver.</li>
 </ul>
-<p>Agility is the one worth slowing down on, because it is the reason so much of this module is about renting rather than owning. Efficiency and effectiveness both ask how well you are doing the work you already do. Agility asks a different question: how fast could you do something else instead.</p>
-<p>The chapter attributes the rising importance of agility to increasing <b>digital density</b> &mdash; more of the world, and more of every business process in it, now existing as data that something can act on. The denser that gets, the more often the answer to a business problem turns out to be a technology decision, and the more it costs to be slow at making them.</p>
-<p class="takeaway">Efficiency is doing today&rsquo;s work faster, effectiveness is doing it well, and agility is being able to do tomorrow&rsquo;s work at all. An infrastructure decision usually trades one against another, which is why it belongs to a manager rather than only to a technician.</p>
+<p>Agility is why so much of this module is about renting rather than owning. The chapter credits its rising importance to increasing <b>digital density</b> &mdash; more of the world, and more of every business process in it, now existing as data that something can act on.</p>
+<p class="takeaway">Efficiency is doing today&rsquo;s work faster, effectiveness is doing it well, and agility is being able to do tomorrow&rsquo;s work at all. An infrastructure decision trades one against another, which is why it belongs to a manager and not only to a technician.</p>
 
 <h3>Why this is your problem even if you never touch a server</h3>
-<p>The chapter puts its own answer to that in a box aimed squarely at students who do not intend to work in technology, and its argument runs in four beats. They are worth taking seriously rather than reading past, because each one describes a specific thing that goes wrong when a manager does not have this vocabulary.</p>
+<p>The chapter aims a box at students who do not intend to work in technology, and its argument runs in four beats. Each one names something specific that goes wrong when a manager lacks this vocabulary.</p>
 
 <div class="activity" data-activity="infWhy"></div>
 
-<p>Notice which of the four does the most work. The first says the subject is unavoidable, the second says it makes you easier to work with, and the fourth says it protects you personally. The third is the one that reaches back into Module 2.</p>
-<p>Businesses able to make use of cloud services, connected devices and artificial intelligence infrastructure are better placed to innovate and to respond when their market moves. The chapter&rsquo;s warning is that without this material you might simply overlook how technology could be used strategically at all, and you cannot recommend a move you are unable to picture.</p>
+<p>The third beat reaches back into strategy. Firms able to use cloud services, connected devices and artificial intelligence infrastructure respond faster when their market moves; without the vocabulary you may overlook how technology could be used strategically at all.</p>
 
 <div class="activity" data-activity="infQuiz2"></div>
 
-<h3>Where this section hands you on</h3>
-<p>The rest of objective 3.2 walks the five components in the order they were named. Hardware comes first, because everything else is a program running on a machine somewhere; then system software, then storage, then two full sections on networking, because the internet and the World Wide Web are large enough to need them; then the buildings, and the two arrangements that put the whole foundation to work for employees and for business partners.</p>
-<p>After that the module changes its question twice. Objective 3.3 asks why an infrastructure you own never stays finished, and objective 3.4 asks what changes when you rent one instead. Keep the case in this section in view while you read them: a company whose foundation was so good that other organizations started paying to use it.</p>
 <div class="callout tip">
 <b class="tagline">The habit worth forming now</b>
-<p>Every time this module introduces something new, ask which of the five components it belongs to and which of the three values it is supposed to deliver. Those two questions turn a list of unfamiliar words into a small number of recurring decisions, and they are the same two questions a manager asks when somebody arrives with a proposal and a price.</p>
+<p>When this module introduces something new, ask which of the five components it belongs to and which of the three values it should deliver. Those are the questions a manager asks when somebody arrives with a proposal and a price.</p>
 </div>
 `;
 

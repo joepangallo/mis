@@ -2,117 +2,64 @@
 PROSE.s33a = `
 <span class="eyebrow">Section 3&ndash;3a</span>
 <h2>Why infrastructure goes out of date</h2>
-<p class="lede">Nothing you met in the last six sections wears out the way a delivery van wears out. A server that has run for six years without a single fault is still a working machine, and it can still be the wrong machine. That gap &mdash; between equipment that works and equipment that is enough &mdash; is what this objective is about. This section explains why the ground under an infrastructure keeps moving. The next one puts a cost on the movement.</p>
-
-<h3>The challenge, and why it lands on a manager</h3>
-<p>Obtaining, operating, maintaining and upgrading an information systems infrastructure is a tremendous challenge for an organization. The chapter then adds the clause that turns it from a technical problem into a management one: it is especially a challenge when these tasks are <b>not part of the organization&rsquo;s core business</b>.</p>
-<p>A clinic is in the business of treating people. A freight company is in the business of moving pallets. Neither of them wants to be in the business of deciding when to replace three hundred computers, and yet both have to decide, because the equipment will not decide for them. It will simply keep running.</p>
-<p>The chapter draws the pressures as arrows pointing inward at a single building, which stands for the organization and its data center. There are seven of them, and together they are the map of everything this objective covers.</p>
-<ul class="keys">
-<li><b>Increasing obsolescence</b> &mdash; hardware and software investments stop being current well before they stop working, which is the subject of this section.</li>
-<li><b>Diminishing space</b> &mdash; equipment accumulates while the room holding it does not grow, so floor area itself eventually becomes the binding constraint.</li>
-<li><b>Expanding storage</b> &mdash; more data is captured and kept every year, every retained record has to sit on a disk that somebody bought, and the richer content built on top of it pushes more traffic through the same network at the same time.</li>
-<li><b>Expanding consumption</b> &mdash; the electricity the machines draw in order to do the work, and the electricity drawn again to remove the heat that doing the work produces, which is the pressure the chapter&rsquo;s own text calls increasing energy needs.</li>
-<li><b>Fluctuating demand</b> &mdash; the work does not arrive evenly, so capacity sized for the busiest hour sits idle through most of the others.</li>
-<li><b>Need for agility</b> &mdash; the organization has to be able to try something new without first buying all the infrastructure a success would require.</li>
-<li><b>AI infrastructure</b> &mdash; the newest of the seven, because the machines that train models are not the machines an organization already owns.</li>
-</ul>
-<p>This section takes the first of those seven on its own. The section after it takes five more of them together, because they share a shape that is much easier to see once obsolescence has been explained properly. Diminishing space is the sixth, and it gets no heading of its own there for the same reason the chapter gives it none: the room running out is discussed as part of the growth in stored data and in the facilities that have to hold it.</p>
+<p class="lede">Nothing in the last six sections wears out like a delivery van. A server that has run six years faultlessly is still a working machine, and still the wrong machine. That gap &mdash; between equipment that works and equipment that is enough &mdash; is this objective.</p>
 
 <h3>What obsolescence actually means</h3>
-<p>The everyday sense of the word is wrong here, and correcting it is most of the lesson. A thing is not obsolete because it is broken. It is obsolete because what it can do has fallen behind what is now needed. The machine has not changed at all; the requirement moved out from under it.</p>
-<p>Over the past seventy-five years, information systems have gone through many radical changes, and rapid advances in both hardware and software capability have enabled or facilitated business processes that were simply not possible before. Organizations are therefore continuously faced with the need to upgrade the infrastructure in order to gain or maintain competitive advantage &mdash; the same phrase Module 2 used about strategy, arriving here as a question about equipment.</p>
+<p>Obtaining, operating, maintaining and upgrading an infrastructure is a tremendous challenge, and one clause makes it a management problem: especially when these tasks are not part of the core business. A clinic treats people; it does not want to be deciding when to replace three hundred computers.</p>
+<p>The everyday sense is wrong. A thing is obsolete not because it is broken but because what it can do has fallen behind what is needed. The requirement moved out from under it.</p>
 <p class="takeaway">Ask what the organization can no longer do, not what has failed. Obsolescence is a capability gap, and a fleet with a perfect maintenance record can have an enormous one.</p>
 
-<h3>Before computers, so the change has something to be measured against</h3>
-<p>When an early mechanical computer driven by punched program cards was introduced in 1936, almost all business and government information systems consisted of file folders, filing cabinets and document repositories. Huge rooms were dedicated to storing those records. The consequences were not filing inconveniences; they were management problems.</p>
-<ul class="keys">
-<li><b>Information was difficult to find</b> &mdash; a fact existed somewhere in the building, and reaching it depended on knowing which cabinet and which year to open.</li>
-<li><b>Corporate knowledge was difficult to maintain</b> &mdash; only certain employees knew particular things, and when those employees left the firm, all their knowledge about the organization left with them.</li>
-<li><b>History was difficult to reconstruct</b> &mdash; the record of what had been done was only ever as complete as what somebody chose to file and could still retrieve years later.</li>
-</ul>
-<p>The computer was the solution to the information storage and retrieval problems that organizations faced up to the 1940s. Everything in this module &mdash; the hardware, the operating system, the network, the data center &mdash; descends from that one answer. That is also why the answer keeps having to be bought again.</p>
-
 <h3>Generations of computing</h3>
-<p>Shifts in computing eras were made possible by fundamental changes in the way computing technologies worked. Each of those fundamental changes is a <b>generation of computing</b>, and the chapter tabulates them.</p>
-<p>Read the table by column rather than by row. The first column is only a number. The third names the technology that changed. The fourth is the one that matters to a manager, because it says what organizations could suddenly do that they could not do before.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Generation</th><th>Time period</th><th>Major characteristic</th><th>What changed around it</th></tr></thead>
-<tbody>
-<tr><td><b>1</b></td><td>1946&ndash;1958</td><td>Vacuum tubes</td><td>The mainframe era begins; ENIAC and UNIVAC are developed</td></tr>
-<tr><td><b>2</b></td><td>1958&ndash;1964</td><td>Transistors</td><td>The mainframe era expands; UNIVAC is updated with transistors</td></tr>
-<tr><td><b>3</b></td><td>1964&ndash;1990s</td><td>Integrated circuits</td><td>The mainframe era ends and the personal computer era begins; the IBM 360 arrives with a general-purpose operating system; the microprocessor revolution brings Intel, Microsoft, Apple, the IBM PC and MS-DOS</td></tr>
-<tr><td><b>4</b></td><td>1990s&ndash;2000</td><td>Multimedia and low-cost personal computers</td><td>The personal computer era ends and the interpersonal computing era begins; high-speed microprocessors and networks; high-capacity storage; low-cost, high-performance integrated video, audio and data</td></tr>
-<tr><td><b>5</b></td><td>2000&ndash;2010</td><td>Widespread internet accessibility</td><td>The interpersonal computing era ends and the internetworking era begins; access to the internet from a broad variety of devices; prices keep dropping and performance keeps expanding</td></tr>
-<tr><td><b>6</b></td><td>2010&ndash;present</td><td>Ubiquitous mobile connectivity</td><td>Powerful mobile devices arrive; the cloud computing era begins; Big Data, the Internet of Things and social networking</td></tr>
-<tr><td><b>7</b></td><td>Present and beyond</td><td>Artificial intelligence and quantum computing</td><td>The rapid rise of AI and generative AI algorithms; quantum computing</td></tr>
-</tbody>
-</table></div>
-
-<p>Two honest notes belong beside that table. Its own caption says six generations while the table itself lists seven, the periods overlap or leave gaps, and the last row has no start year at all. Treat the periods as a teaching device that shows a direction of travel, not as settled history that could be defended date by date.</p>
-<p>Before reading on, put the shifts into order yourself. The chain of era names is the clue: mainframe, then personal, then interpersonal, then internetworking, then cloud.</p>
+<p>Shifts in computing eras came from fundamental changes in how the technology worked, and each is a <b>generation of computing</b>: vacuum tubes, transistors, integrated circuits, cheap multimedia computers, widespread internet access, mobile connectivity, and now artificial intelligence and quantum computing.</p>
+<p>Put the shifts in order. The chain of era names is the clue: mainframe, personal, interpersonal, internetworking, cloud.</p>
 
 <div class="activity" data-activity="obsGenerations"></div>
 
-<p>The same table repays a second pass with a different question. Not when each technology arrived, but what it let an organization do that it could not do the week before it existed.</p>
+<p>Now the same list, with a different question: what each generation let an organization do that it could not do before.</p>
 
 <div class="activity" data-activity="obsMatch"></div>
 
 <h3>Moore&rsquo;s law, and what it is not</h3>
-<p>In 1965, Gordon Moore, a cofounder of Intel, hypothesized that the number of transistors on a chip would double at regular intervals, and he did not limit the prediction to any specified period of time. The prediction became known as <b>Moore&rsquo;s law</b>. The evidence the chapter offers is a comparison across decades: the first processor held a couple of thousand transistors, and current models hold billions.</p>
-<p>The word &ldquo;law&rdquo; is what does the damage, because it invites a student to treat a business trend as physics. Four qualifications keep the idea usable.</p>
+<p>In 1965 Gordon Moore, a cofounder of Intel, hypothesized that transistor counts on a chip would double at regular intervals, naming no period. That became <b>Moore&rsquo;s law</b>. The first processor held a few thousand transistors; current ones hold billions.</p>
+<p>The word &ldquo;law&rdquo; does the damage, inviting students to treat a business trend as physics. Four qualifications keep it usable.</p>
 <ul class="keys">
-<li><b>It is an empirical observation, not a law of nature</b> &mdash; nothing in physics requires the doubling, and the industry has partly treated it as a roadmap it agreed to keep hitting.</li>
-<li><b>The interval has been restated</b> &mdash; the original statement described roughly annual doubling, and the two-year figure the chapter quotes came from a later revision.</li>
-<li><b>The pace has slowed</b> &mdash; the chapter half concedes this when it says gains are now shaped by technological and economic limitations rather than by engineering alone.</li>
-<li><b>The gains increasingly come from parallelism</b> &mdash; from adding more computing cores that perform tasks at the same time, rather than from one core running proportionally faster each year.</li>
+<li><b>It is an empirical observation</b> &mdash; nothing in physics requires the doubling; the industry partly treated it as a roadmap it agreed to hit.</li>
+<li><b>The interval was restated</b> &mdash; the original described roughly annual doubling; the two-year figure came from a later revision.</li>
+<li><b>The pace has slowed</b> &mdash; the chapter half concedes it, saying gains are now shaped by technological and economic limits, not engineering alone.</li>
+<li><b>Gains increasingly come from parallelism</b> &mdash; from more cores working at the same time, rather than one core running proportionally faster each year.</li>
 </ul>
-<p>The chapter also gives a figure for how many operations a current processor completes each second. It sits well below what modern processors actually do, so read it as an illustration of the idea rather than as a number worth carrying away.</p>
-<p>What survives every one of those qualifications is the shape, and the shape is the part a manager needs. Capability for a given amount of money has risen relentlessly for decades. A machine bought five years ago is therefore competing against something considerably more capable at the same price, and nothing about it has to break for that comparison to start costing the organization something.</p>
+<p>What survives is the shape. Capability per dollar has risen relentlessly for decades, so a machine bought five years ago competes against something far more capable at the same price &mdash; and nothing has to break for that to cost something.</p>
 
-<h3>Faster cycles, and devices the organization never chose</h3>
-<p>This rising capability is both a blessing and a curse. Increases in processing power enable applications that were previously not possible; at the same time, managers must continuously think about when to upgrade the hardware components of the infrastructure. Two further pressures make that timing harder than the underlying trend alone would suggest.</p>
+<h3>Faster cycles, and devices nobody chose</h3>
+<p>Rising capability is both blessing and curse: it enables applications that were impossible before, and forces managers to keep deciding when to upgrade. Two pressures make the timing harder.</p>
 <ul class="keys">
-<li><b>IT cycles have shortened sharply</b> &mdash; managers traditionally thought in terms of about five years, while manufacturers now release new versions of devices every six to twelve months.</li>
-<li><b>Consumerization of IT</b> &mdash; the devices people choose for themselves arrive at work, and the organization must then decide how to integrate, secure and support equipment it did not select.</li>
+<li><b>Cycles have shortened sharply</b> &mdash; managers traditionally planned on five years; manufacturers now release new devices every six to twelve months.</li>
+<li><b>Consumerization of IT</b> &mdash; devices people choose for themselves arrive at work, and the organization must integrate, secure and support equipment it never chose.</li>
 </ul>
-<p>The <b>consumerization of IT</b> moves part of the equipment decision away from the technology department and toward the individual employee. That is a governance change wearing the costume of a hardware change: the organization still carries every consequence of a device it never bought, never specified and cannot simply recall.</p>
+<p>The second is governance dressed as hardware: the organization carries every consequence of a device it never bought.</p>
 
 <div class="activity" data-activity="obsQuiz1"></div>
 
-<h3>Software gets old too, and it takes the hardware with it</h3>
-<p>Hardware is only half the story. Companies such as Microsoft are continuously developing new and improved software that uses the increased hardware power to help people be more productive, and each new generation of application software promises better performance and more features. That promise arrives with three strings attached.</p>
+<h3>Software gets old too, and takes the hardware with it</h3>
+<p>Each new generation of application software promises better performance and more features, using the increased hardware power. That promise arrives with three strings attached.</p>
 <ul class="keys">
-<li><b>New operating systems often require new hardware</b> &mdash; a system such as Windows 11 can use new processor architectures and offer a richer feature set than an older one such as Windows XP, but only on machines that meet its requirements.</li>
-<li><b>Older applications may stop working</b> &mdash; older-generation application software may not be compatible with the new operating system, so an upgrade to one program can strand another.</li>
-<li><b>The productivity gain is a claim, not a receipt</b> &mdash; upgrades may increase productivity, and often they do not, while the cost of making them is incurred either way.</li>
+<li><b>New operating systems often require new hardware</b> &mdash; a newer system offers a richer feature set, but only on machines meeting its requirements.</li>
+<li><b>Older applications may stop working</b> &mdash; older application software may be incompatible with the new operating system, so upgrading one program strands another.</li>
+<li><b>The productivity gain is a claim, not a receipt</b> &mdash; upgrades may raise productivity and often do not; the cost is incurred either way.</li>
 </ul>
-<p>Some of that ageing is deliberate. <b>Planned obsolescence</b> means designing a product to last only for a certain life span, and manufacturers of hardware and software both apply the concept.</p>
-<ul class="keys">
-<li><b>In hardware</b> &mdash; certain components are not built to be serviceable, so the whole device has to be replaced once one of those components breaks down.</li>
-<li><b>In software</b> &mdash; older versions may be unable to open newer file formats, or a company may simply cease support for a product, which effectively forces users to switch.</li>
-</ul>
-<p>The chapter&rsquo;s example of the second kind is a decision many organizations recently had to work through. Mainstream support for Windows 10 ended in October 2025, with paid extended security updates offered for a limited period afterwards, and the successor version carried very strict hardware requirements. Nothing about those machines changed on that date. What changed were the terms on which they could responsibly be used.</p>
+<p>Some ageing is deliberate. <b>Planned obsolescence</b> means designing a product to last only a certain life span: unserviceable components force a whole device to be replaced, and older software may be unable to open newer file formats, or support simply ends.</p>
+<p>Mainstream support for Windows 10 ended in October 2025, with paid security updates for a limited period and a successor carrying strict hardware requirements. Nothing about those machines changed that day; the terms for using them did.</p>
 
-<div class="callout warn">
-<p><b>Why an upgrade is a project, not a purchase.</b> Organizations are constantly faced with the decision of when and how to upgrade the current infrastructure, and the chapter is unusually blunt about the arithmetic. The costs run in two channels at once.</p>
-<ul>
-<li>The cost of the hardware and the software itself, which is the number that appears in the proposal.</li>
-<li>The time and resources needed for upgrading tens, hundreds or thousands of computers, which is usually the larger figure and rarely the one being argued about.</li>
-</ul>
-<p>Multiply the second channel by a fleet and you can see why an organization delays, and why delaying eventually produces a single enormous replacement instead of a series of small ones.</p>
-</div>
+<div class="callout warn"><b>Why an upgrade is a project, not a purchase.</b> Two costs run at once: the hardware and software, which is the number in the proposal, and the time to upgrade hundreds or thousands of computers, which is usually larger and rarely argued about.</div>
 
-<h3>The treadmill, and the bill it leaves outside the building</h3>
-<p>Put the two halves together and they form a loop the chapter draws as two arrows. More powerful hardware <b>enables</b> more powerful software; more powerful software then <b>requires</b> more powerful hardware. Each side is a perfectly reasonable engineering decision, and together they never stop turning.</p>
-<p>Nobody has to be acting in bad faith for this to happen, which is what makes it worth naming. A vendor writing software that uses a capable machine well is doing its job. A manager who wants the features is doing hers. The loop is a property of the arrangement, not evidence of a conspiracy, and you will meet the same shape again in the next section when richer content drives demand for bandwidth and storage.</p>
-<p>The loop also has a cost that appears on nobody&rsquo;s invoice. The rapid obsolescence of computer hardware carries a high price for the environment, in terms of the resources needed both to manufacture the new systems and to dispose of the old ones. That thread is picked up later in this module, where the responses to it are grouped under green computing.</p>
-<p>Two pictures hold this section together: the map of seven pressures you met at the start, and the loop you have just read.</p>
+<h3>The treadmill, and the bill it leaves outside</h3>
+<p>Put the halves together and they form a loop. More powerful hardware <b>enables</b> more powerful software; more powerful software then <b>requires</b> more powerful hardware. Nobody need act in bad faith; together they never stop turning.</p>
+<p>The loop also has a cost on nobody&rsquo;s invoice. Rapid hardware obsolescence is expensive for the environment, in resources to manufacture new systems and dispose of old ones &mdash; a thread picked up later under green computing.</p>
+<p>Seven pressures point at one building: obsolescence, diminishing space, expanding storage, rising energy use, fluctuating demand, the need for agility, and <b>AI infrastructure</b> &mdash; the specialized processors and unusually large, fast storage model-building needs.</p>
 
 <div class="activity" data-activity="obsDrivers"></div>
 
-<p class="takeaway">An infrastructure is not bought once. It is rented from the future in instalments, and obsolescence is the name of the instalment that falls due whether or not anything has broken.</p>
+<p class="takeaway">An infrastructure is not bought once. It is rented from the future in instalments, and obsolescence falls due whether or not anything has broken.</p>
 
 <div class="activity" data-activity="obsQuiz2"></div>
 `;

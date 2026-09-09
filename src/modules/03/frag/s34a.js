@@ -2,82 +2,68 @@
 PROSE.s34a = `
 <span class="eyebrow">Section 3&ndash;4a</span>
 <h2>Renting instead of owning</h2>
-<p class="lede">The two sections before this one were a list of the costs of ownership: machines that age, software that stops being supported, data that piles up, demand that spikes before the holidays, and a power bill that arrives whether or not anybody used the equipment. This section is the answer the industry settled on. Stop owning most of it, and buy the service instead.</p>
+<p class="lede">The last two sections listed the costs of ownership: machines that age, software that loses support, data that piles up, demand that spikes in December, and a power bill that arrives whether or not the equipment was used. This section is the industry&rsquo;s answer.</p>
 
 <h3>Nobody actually wants a mail server</h3>
-<p>The chapter opens this objective from the manager&rsquo;s side rather than the technology&rsquo;s. Running an infrastructure is hard because hardware and software keep evolving, because the demand for storage and for network bandwidth keeps rising, and because the cost of the energy underneath all of it rises too. An organization also needs dedicated staff to support the equipment, and that is a further cost on top of the equipment itself.</p>
-<p>Then comes the sentence that stings. Managing an information systems infrastructure is often <b>not among an organization&rsquo;s core competencies</b>, so other organizations may simply be better at doing it. A hospital is good at medicine and a bank is good at credit. Neither one set out to become good at cooling a room full of machines.</p>
-<p>There is a second problem in any organization old enough to have bought equipment twice. The infrastructure has grown over the years, one purchase at a time, so it ends up fragmented and difficult to consolidate. Meanwhile efficiency, effectiveness and agility are what the firm actually competes on, and those need a flexible, scalable infrastructure rather than an accumulation of past decisions.</p>
-<p>Out of that the chapter names the shift this whole objective rests on. Over the past decades there has been <b>a shift away from thinking about developing and maintaining the infrastructure toward thinking about what services the infrastructure should deliver</b>. Its own illustration is the one everybody recognises: people and organizations want to <i>use email</i>. Nobody ever wanted to purchase an email server and then deal with its administration, its maintenance, its storage and its energy consumption.</p>
-<p>Four consequences follow from that shift, and the chapter states each of them plainly.</p>
+<p>Running an infrastructure is hard: hardware and software keep evolving, storage and bandwidth demands keep rising, energy costs rise, and dedicated staff cost more again.</p>
+<p>Then the sentence that stings: managing an infrastructure is often not among an organization&rsquo;s core competencies, so others may be better at it. A hospital is good at medicine, not at cooling a room full of machines.</p>
+<p>Hence a shift away from developing and maintaining infrastructure, toward asking what services it should deliver. People want to <i>use email</i>; nobody wanted to buy an email server and then deal with its administration and energy.</p>
 <ul class="keys">
-<li><b>Buy or rent rather than build</b> &mdash; organizations increasingly obtain their applications from other parties and assume that those applications will work, instead of constructing and maintaining everything themselves.</li>
-<li><b>Except where the system is the advantage</b> &mdash; the exception the chapter names is the highly specialized system that helps a firm gain or sustain competitive advantage, and it points to Amazon and Dell as companies that build such systems for themselves.</li>
-<li><b>The infrastructure still decides what is possible</b> &mdash; even when rented, it determines how quickly new systems can be implemented and how well they will run, so handing over the lower levels frees attention rather than ending responsibility.</li>
-<li><b>Customers notice before the finance department does</b> &mdash; any lack of robustness or integration is immediately noticed by customers and other stakeholders, and the chapter names the price as lost business, lost trust and lost goodwill.</li>
+<li><b>Buy or rent rather than build</b> &mdash; organizations obtain applications from other parties and assume they work, instead of constructing everything.</li>
+<li><b>Except where the system is the advantage</b> &mdash; a specialized system that helps a firm sustain competitive advantage is worth building.</li>
+<li><b>The infrastructure still decides what is possible</b> &mdash; even rented, it governs how quickly new systems arrive and how well they run.</li>
+<li><b>Customers notice first</b> &mdash; any lack of robustness is noticed immediately, and the price is lost business, trust and goodwill.</li>
 </ul>
-
-<div class="callout tip">
-<b class="tagline">This is Module 2&rsquo;s argument, applied to plumbing</b>
-Rent the commodity, build the differentiator. A system any competitor could order this afternoon is not what makes a company different, so owning it wins nothing. A system that encodes what this firm knows and rivals do not is worth building and worth keeping. Most of what follows in this objective is that one distinction turned into a purchasing policy.
-</div>
 
 <h3>What cloud computing actually is</h3>
-<p>Two technical advances made the rest possible. Internet bandwidth grew large enough to carry real work across it, and virtualization matured enough to let one physical machine host many separate computing environments. The word itself is not technical at all: the chapter says flatly that <b>the cloud is a metaphor for the internet</b>, which is why every diagram of it is drawn as a cloud with arrows going in and coming out.</p>
+<p>Two advances made this possible: bandwidth grew large enough to carry real work, and <b>virtualization</b> matured enough for one machine to host many separate computing environments. The cloud itself is only a metaphor for the internet.</p>
 
-<div class="callout exam">
-<p><b>The definition worth learning word for word.</b> It is not the chapter&rsquo;s own wording. The chapter quotes the definition published by the United States National Institute of Standards and Technology, the federal standards body whose formulation the rest of the industry settled on.</p>
-<p>It is worth learning as that body wrote it. Cloud computing is &ldquo;a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.&rdquo;</p>
-<p>Read it as four promises. You can reach it from anywhere. You can have it when you ask. The resources are shared rather than yours. And you can start and stop without a negotiation.</p>
-</div>
+<div class="callout exam"><p><b>Learn this as written.</b> The wording is the United States National Institute of Standards and Technology&rsquo;s: <b>cloud computing</b> is &ldquo;a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.&rdquo;</p></div>
 
-<p>Notice what the definition says is being rented: networks, servers, storage, applications and services. That is the same component list this module walked through under objective 3.2, which is the honest way to understand the cloud. It is not a new kind of computing. It is the same five components, in somebody else&rsquo;s building, billed by use.</p>
-<p>Three pieces of vocabulary carry the money side of that definition, and a manager needs all three.</p>
+<p>What is rented is the component list from objective 3.2: the cloud is not new computing, but those components in somebody else&rsquo;s building, billed by use.</p>
 <ul class="keys">
-<li><b>Utility computing</b> &mdash; the model cloud computing uses: renting processing, data storage or networking from an outside provider on an as-needed basis and paying only for what is actually used, the way a household pays for electricity.</li>
-<li><b>Capital expenditure</b> &mdash; money spent up front to own equipment, committed once, years before anybody can know whether the amount of capacity purchased turned out to be the right amount.</li>
-<li><b>Operational expenditure</b> &mdash; money spent continuously to use a service, rising and falling with what the business actually did that month, and approved as a running cost rather than as a purchase.</li>
+<li><b>Utility computing</b> &mdash; renting processing, storage or networking as needed and paying only for what is used, as a household pays for electricity.</li>
+<li><b>Capital expenditure</b> &mdash; money spent up front to own equipment, committed years before anyone knows whether that capacity was right.</li>
+<li><b>Operational expenditure</b> &mdash; money spent continuously to use a service, rising and falling with what the business actually did.</li>
 </ul>
-<p>The chapter&rsquo;s summary of the financial effect is one clause long: cloud computing helps transform infrastructure costs <b>from a capital expenditure to an operational expenditure</b>. That sounds like accounting trivia and is not. It changes which budget the money leaves, who has to approve it, and how far in advance the decision has to be made. It also converts a fixed cost, paid whether or not the capacity was used, into a variable one that follows the work.</p>
+<p>The chapter&rsquo;s summary is one clause: cloud computing helps transform infrastructure costs <b>from a capital expenditure to an operational expenditure</b> &mdash; changing which budget pays and who approves.</p>
 
 <div class="activity" data-activity="cldQuiz1"></div>
 
 <h3>Two companies the chapter follows</h3>
-<p>The first one built the market. Having assembled an immense infrastructure &mdash; in information technology and in logistics both &mdash; to support its own online store, <b>Amazon</b> decided to use those resources to generate additional revenue. Individuals and organizations can now rent storage space and computing time from it on an as-needed basis. That is the same move the chapter used to open the chapter: a company selling the capability it had to build anyway.</p>
-<p>The second is the chapter&rsquo;s fullest cloud case. As <b>Airbnb</b> grew popular with travelers around the world, it found itself limited by the constraints imposed by its original service provider. Moving to a rented infrastructure let it obtain two hundred servers without negotiating service contracts and without committing to a minimum level of usage.</p>
-<p>The chapter is careful to say what the alternative would have demanded. Scaling that flexibly would have been close to impossible in a data center of its own, because of both the time and the money needed to acquire that many machines &mdash; and, as the chapter asks, at the time who knew whether the business would actually take off?</p>
-<p>That question is where the argument stops being about technology. With its own equipment the company would have had to add capacity <b>in chunks</b>, because you cannot buy a third of a server. Capacity therefore moves in steps while demand moves as a curve, the two lines cross each other constantly, and two gaps open that are never both closed at once.</p>
+<p>Having built an immense infrastructure for its own store, <b>Amazon</b> used those resources to generate revenue, renting storage and computing time to anyone &mdash; selling the capability it had to build anyway.</p>
+<p>As <b>Airbnb</b> grew popular it was limited by its original provider. Renting let it obtain two hundred servers with no contracts and no minimum usage &mdash; near impossible in its own data center, and who knew then whether the business would take off?</p>
+<p>With its own equipment a company adds capacity <b>in chunks</b>: you cannot buy a third of a server. Capacity moves in steps while demand moves as a curve, so two gaps open and are never both closed.</p>
 <ul class="keys">
-<li><b>Capacity above demand</b> &mdash; equipment that was purchased, powered, cooled and staffed while doing nothing, which is the underused capacity the chapter estimates as many as seven infrastructures in ten are carrying.</li>
-<li><b>Demand above capacity</b> &mdash; customers arriving at a system that cannot serve all of them, which costs an order today and may cost the customer for good.</li>
+<li><b>Capacity above demand</b> &mdash; equipment purchased, powered, cooled and staffed while doing nothing, which is the underuse the last section described.</li>
+<li><b>Demand above capacity</b> &mdash; customers arriving at a system that cannot serve them, costing an order today and perhaps the customer for good.</li>
 </ul>
-<p>Rented capacity closes both gaps by following the demand line instead of stepping past it. The chapter draws that as two panels side by side, and it is worth walking through one panel at a time before reading anything else about the cloud.</p>
+<p>Rented capacity closes both by following demand instead of stepping past it. Walk through one panel at a time.</p>
 
 <div class="activity" data-activity="cldCurves"></div>
 
-<p>The same reasoning is why the chapter says cloud computing has become a popular way of building an infrastructure for artificial intelligence. Those workloads fluctuate hard &mdash; heavy resource needs while a model is being trained, much lighter needs while it is merely being used &mdash; and the specialized hardware they want is expensive to own and idle between training runs. Renting a spike is cheaper than owning one.</p>
+<p>The same reasoning made the cloud popular for artificial-intelligence work: loads are heavy while a model trains and light while it is used, so specialized hardware sits idle between runs. Renting a spike beats owning one.</p>
 
 <h3>The five characteristics</h3>
-<p>The chapter says the cloud model has several unique and essential characteristics that distinguish it from an in-house infrastructure. Five are named, they are quoted from the same national standards definition as the wording above, and they are worth learning as a set rather than one at a time.</p>
+<p>Five characteristics distinguish the cloud from an in-house infrastructure, quoted from the same standards definition.</p>
 <ul class="keys">
-<li><b>On-demand self-service</b> &mdash; a customer obtains resources in a buffet-style fashion as they are needed, without lengthy negotiations and in many cases without any human interaction with the provider.</li>
-<li><b>Rapid elasticity</b> &mdash; resources are scaled up or down almost instantaneously and often automatically, in step with what the organization&rsquo;s users are actually doing.</li>
-<li><b>Broad network access</b> &mdash; the services are reached over the internet, so they are available from almost anywhere and from almost any web-enabled device.</li>
-<li><b>Resource pooling</b> &mdash; the provider manages many distributed resources and assigns them dynamically to many customers, so a customer rents capacity without knowing or controlling which machine supplied it.</li>
-<li><b>Measured service</b> &mdash; usage is monitored and the customer pays for what it used, which turns the fixed costs of an infrastructure into variable costs that are easy to track and monitor.</li>
+<li><b>On-demand self-service</b> &mdash; resources are obtained buffet-style as needed, without negotiation and often without human contact.</li>
+<li><b>Rapid elasticity</b> &mdash; resources scale up or down almost instantly, often automatically, in step with what users do.</li>
+<li><b>Broad network access</b> &mdash; services are reached over the internet, from almost anywhere and almost any web-enabled device.</li>
+<li><b>Resource pooling</b> &mdash; the provider assigns distributed resources dynamically to many customers, so you rent capacity without knowing which machine supplied it.</li>
+<li><b>Measured service</b> &mdash; usage is monitored and you pay for what you used, turning fixed costs into variable, trackable ones.</li>
 </ul>
-<p>Every one of those reads as an advantage, and every one of them has a failure mode that the chapter also describes elsewhere. Open the cards below and read all four panels of each characteristic, especially the last one.</p>
+<p>Every one reads as an advantage, and every one has a failure mode. Read all four panels of each card, especially the last.</p>
 
 <div class="activity" data-activity="cldFive"></div>
 
-<p>Now read the same list a second way and it stops being a brochure. Each characteristic is an answer to a specific problem raised in the two sections before this one, which is exactly why the chapter puts the list here rather than at the start of the chapter.</p>
-<p>Pairing them off is not decoration. Naming the problem a characteristic solves is what stops an organization from paying for a capability it has no use for, and it is the fastest way to tell a real reason for moving from a fashionable one.</p>
+<p>Read the list again and it stops being a brochure: each characteristic answers a pressure from the sections before this.</p>
 
 <div class="activity" data-activity="cldMatch"></div>
 
 <h3>What renting does not do</h3>
-<p>Two things survive the move, and the rest of this objective is about both of them. The work of choosing, integrating and managing services stays with the customer, so the technology function changes shape rather than disappearing. And the meter that makes measured service attractive keeps running whether or not anybody in the organization is reading it.</p>
-<p class="takeaway">Owning means paying in advance for a guess about capacity. Renting means paying afterwards for what actually happened &mdash; which is better arithmetic and a worse habit, because a cost nobody approved in advance is a cost nobody is necessarily watching.</p>
+<p>Two things survive the move. Choosing, integrating and managing services stays with the customer, so the technology function changes shape rather than disappearing; and the meter keeps running whether or not anybody reads it.</p>
+<p class="takeaway">Owning means paying in advance for a guess about capacity. Renting means paying afterwards for what happened &mdash; better arithmetic and a worse habit, because a cost nobody approved in advance is a cost nobody is watching.</p>
 
 <div class="activity" data-activity="cldQuiz2"></div>
 `;

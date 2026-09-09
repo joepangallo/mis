@@ -2,107 +2,69 @@
 PROSE.s32c = `
 <span class="eyebrow">Section 3&ndash;2c</span>
 <h2>System software and storage</h2>
-<p class="lede">A machine full of hardware still does nothing on its own. Something has to tell the processor to read the keyboard, the drive to save the file, and the printer to wake up &mdash; and it cannot be the spreadsheet you are working in, because the spreadsheet has no idea what machine it is running on. This section covers the software that runs the machine rather than the work, and then the place all that work ends up: storage.</p>
+<p class="lede">A machine full of hardware does nothing on its own. Something must tell the drive to save the file, and it cannot be the spreadsheet, which has no idea what machine it is running on.</p>
 
 <h3>The software that runs the machine, not the work</h3>
-<p>Sort every program on a computer into two piles. In one pile is the software the computer was bought for: the word processor, the accounting package, the browser. In the other is the software that makes the first pile possible by driving the machine itself. That second pile has a name. <b>System software</b> is the collection of programs that control the basic operations of computer hardware.</p>
-<p>The most prominent kind of system software is the <b>operating system</b>, and you already know several by name. The chapter&rsquo;s examples are Windows 11, macOS and Ubuntu Linux on computers, and Android and iOS on phones, the last two optimized for mobile devices. Its job is coordination, and it has four different things to coordinate.</p>
+<p>Sort every program into two piles. One holds the software the computer was bought for: the word processor, the browser. The other makes that pile possible. <b>System software</b> is the collection of programs controlling the basic operations of computer hardware.</p>
+<p>Its most prominent kind is the <b>operating system</b> &mdash; Windows 11, macOS and Ubuntu Linux on computers, Android and iOS on phones. Its job is coordination, and it has four things to coordinate.</p>
 <ul class="keys">
-<li><b>Hardware components</b> &mdash; the parts inside the machine that must work together, such as the processor and the monitor, which have no way of being aware of each other on their own.</li>
-<li><b>Peripherals</b> &mdash; devices attached to the computer, such as a printer, which is why any application can print without every application carrying instructions for every printer ever made.</li>
-<li><b>Application software</b> &mdash; the programs a person actually opens, which ask the operating system for what they need instead of reaching for the hardware themselves.</li>
-<li><b>Users</b> &mdash; the people giving the instructions, whose clicks and keystrokes have to be turned into something the electronics can act on.</li>
+<li><b>Hardware components</b> &mdash; the parts inside the machine, such as processor and monitor, which cannot be aware of each other on their own.</li>
+<li><b>Peripherals</b> &mdash; devices attached to the computer, such as a printer, which is why any application can print without knowing every printer made.</li>
+<li><b>Application software</b> &mdash; the programs a person opens, which ask the operating system for what they need instead of reaching for hardware.</li>
+<li><b>Users</b> &mdash; the people giving instructions, whose clicks and keystrokes must become something the electronics can act on.</li>
 </ul>
-<p>The order in that list is also the shape of the machine. A request travels from a user, into an application, down to the operating system, and only then out to the hardware and the devices attached to it. Application software never talks to hardware directly, which is the fact the rest of this section is built on.</p>
-
-<div class="callout tip"><p><b>Two piles, two questions.</b> When someone says &ldquo;the software is slow,&rdquo; the useful first question is which pile they mean. Application software is chosen by the business for the work it does; system software is chosen because of what hardware the organization owns and what it needs that hardware to support. They are bought differently, replaced on different schedules, and blamed for each other constantly.</p></div>
-
-<h3>One layer, many machines</h3>
-<p>Here is the idea worth carrying out of this section, because it explains far more than operating systems do. The operating system provides a common layer for different underlying devices, so that applications only have to be developed for different operating systems rather than for each different computer model.</p>
-<p>Count what that saves. A software company whose customers own several hundred different models of laptop does not write several hundred versions of its product. It writes one version for each operating system it supports, and every machine running that operating system is covered. This is why software is sold as a version for one operating system and a version for another, rather than a version for your exact laptop.</p>
-<p>Underneath the common layer, the differences between machines still have to be handled by somebody. <b>Device drivers</b> allow the computer to communicate with various different hardware devices: a small piece of software for one make and model, written once, that teaches the general layer how to talk to one particular thing. A printer released years after your operating system shipped works because a driver arrived for it, not because the operating system was rewritten.</p>
-<p>Operating systems are often written in <b>assembly language</b>, a very low-level computer programming language that allows the computer to operate quickly and efficiently. Part of why that language stays out of sight is deliberate: the operating system is designed to insulate you from it and to make computer operations unobtrusive.</p>
-
-<h3>What it does while you are not looking</h3>
-<p>Many tasks are common to almost all computers, and the operating system performs every one of them: getting input from a keyboard or mouse, reading from and writing to a storage device such as a hard disk drive, and presenting information to you on a monitor. It also carries out the day-to-day operations nobody notices, such as updating the system clock, printing documents, and saving data to a hard drive.</p>
-<p>The chapter&rsquo;s comparison for all of that is a fair one. Just as our brain and nervous system control breathing, heartbeat and the senses without our conscious realization, the operating system transparently controls the computer&rsquo;s basic operations. You notice it only when it stops.</p>
-<p>The part you do notice has a name too. A <b>graphical user interface</b>, or GUI, is provided by operating systems such as Windows or iOS, as well as by different versions of Linux, and it enables you to send instructions to the computer by selecting or manipulating pictures, icons and menus rather than by typing them out.</p>
-<p>The chapter&rsquo;s own example of that interface is worth walking through slowly. To copy a word processing file from a flash drive onto your computer, you point at a graphic icon of the file, then click and drag it onto an icon of your hard disk. That is the whole of what you do.</p>
-<p>Underlying the icons and the simple dragging is a complex set of coded instructions telling the electronic components of the computer that you are transferring a set of bits and bytes from the flash drive to a location on the internal hard disk. Imagine having to type that set of instructions every time you wanted to copy a file.</p>
-<p>The diagram below redraws the same relationship three ways: what the operating system stands between, why one layer can cover many machines, and what a single gesture actually sets in motion.</p>
+<p>That order is the shape of the machine: user, application, operating system, hardware. The diagram redraws the relationship three ways.</p>
 
 <div class="activity" data-activity="sysCoordinator"></div>
 
+<h3>One layer, many machines</h3>
+<p>The operating system provides a common layer over different devices, so applications are built for each operating system rather than each computer model. A firm whose customers own hundreds of laptop models writes a handful of versions.</p>
+<p>Underneath, the differences still have to be handled. <b>Device drivers</b> let a computer communicate with particular hardware: a small program for one make and model. A printer released years after your operating system works because a driver arrived.</p>
+<p>Operating systems are often written in <b>assembly language</b>, a very low-level language that lets a computer operate quickly and efficiently, and which the system exists to keep out of sight. What you see instead is a <b>graphical user interface</b>, taking instructions through pictures, icons and menus rather than typed commands.</p>
+
 <h3>Code somebody else already wrote</h3>
-<p>Operating systems are not the only software an organization needs in place before it can build anything of its own. A solid infrastructure also includes <b>frameworks and libraries</b>, which offer collections of prewritten code. The chapter names NodeJS, JQuery, React and TensorFlow; read those as its illustrations of a category rather than as a current shopping list, because the names in fashion change much faster than the idea does. Three things they buy an organization.</p>
+<p>A solid infrastructure also includes <b>frameworks and libraries</b>: collections of prewritten code such as NodeJS, JQuery, React and TensorFlow. They buy an organization three things.</p>
 <ul class="keys">
-<li><b>Development time</b> &mdash; work already solved once by somebody else is reused instead of written again, which is how a small team ships something substantial in weeks rather than years.</li>
-<li><b>Reach across platforms</b> &mdash; some frameworks enable building applications that run on different platforms, so a firm is not paying to build the same product twice for two audiences.</li>
-<li><b>Specialized capability</b> &mdash; libraries for work such as developing machine learning models put techniques within reach of teams that could never have written them from scratch.</li>
+<li><b>Development time</b> &mdash; work already solved by somebody else is reused, which is how a small team ships something substantial in weeks.</li>
+<li><b>Reach across platforms</b> &mdash; some frameworks build applications that run on several platforms, so a firm does not pay twice to reach two audiences.</li>
+<li><b>Specialized capability</b> &mdash; libraries for work such as machine learning put techniques within reach of teams that could not write them.</li>
 </ul>
-<p>Notice the managerial shape of this, because it recurs everywhere in the module. Choosing a framework is choosing a dependency. It shortens the build, and it ties the organization to somebody else&rsquo;s decisions about what to keep supporting.</p>
-<p>Before moving to storage, test the vocabulary this half of the section introduced.</p>
+<p>Choosing a framework is also choosing a dependency: it shortens the build and ties you to somebody else&rsquo;s decisions about what to keep supporting.</p>
 
 <div class="activity" data-activity="sysQuiz1"></div>
 
-<h3>Why storage is a component and not a detail</h3>
-<p>Processing and analyzing data is only half the job. Efficiently storing and retrieving it is the other half, and the amount organizations must hold keeps growing at an increasing rate. Two separate pressures push the same way. The business itself generates more data every year, and in some industries and jurisdictions regulations require organizations to keep records &mdash; business documents and internal communication such as email and instant messages included &mdash; long after anyone last had a use for them.</p>
-<p>That second pressure is a requirement about time, not about speed, and the difference is the first clue that not all stored data wants the same treatment. Keeping a decade of old correspondence on the fastest storage the organization owns is spending money to solve a problem it does not have.</p>
-
-<h3>Three kinds of data, and the four questions that separate them</h3>
-<p>The chapter distinguishes three distinct types of data by their purpose, and gives each a definition worth keeping exactly as it is written.</p>
+<h3>Storage, and the three kinds of data</h3>
+<p>Storing and retrieving data is the other half of the job, and the amount held grows every year. Some industries must keep records &mdash; email included &mdash; long after anyone needed them.</p>
 <ul class="keys">
-<li><b>Operational data</b> &mdash; data used for managing business processes, such as processing transactions, or for data analysis; this is the data the business is running on right now.</li>
-<li><b>Backup data</b> &mdash; short-term copies of organizational data, used to recover from a system-related disaster, and frequently overwritten with newer backups as time passes.</li>
-<li><b>Archival data</b> &mdash; long-term copies of organizational data, often kept for compliance and reporting purposes rather than for any current operational use.</li>
+<li><b>Operational data</b> &mdash; data used for managing business processes and for analysis; what the business is running on right now.</li>
+<li><b>Backup data</b> &mdash; short-term copies used to recover from a system-related disaster, frequently overwritten as newer backups are taken.</li>
+<li><b>Archival data</b> &mdash; long-term copies kept for compliance and reporting rather than for any current operational use.</li>
 </ul>
-<p>What actually separates them is a set of four requirements the chapter names: <b>timeliness</b>, <b>access speed</b>, <b>searchability</b> and <b>life span</b>. Ask those four questions about any pile of data and the right home for it usually answers itself.</p>
+<p>Four requirements separate them: <b>timeliness</b>, <b>access speed</b>, <b>searchability</b> and <b>life span</b>. Operational data must be current, immediate and searchable. Backups must be recent and restorable. Archives are read rarely and must simply last.</p>
+<p>The medium follows. Operational data sits on fast disk, or on flash where speed is critical, as in machine learning. Backups go somewhere secure but quick to restore. Archives go to magnetic tape.</p>
+<p>Tape is chosen for its weaknesses. Data is written sequentially, so access is slow and contents are not quickly searchable. In exchange it lasts up to 30 years, costs very little, and is removable.</p>
 
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Requirement</th><th>Operational data</th><th>Backup data</th><th>Archival data</th></tr></thead>
-<tbody>
-<tr><td><b>Timeliness</b><br><span class="mini">how current it must be</span></td><td>Current to the second; a stale figure is a wrong figure</td><td>Recent; yesterday&rsquo;s copy is useful, last year&rsquo;s is not</td><td>Old by definition; it is kept because it is old</td></tr>
-<tr><td><b>Access speed</b><br><span class="mini">how fast it must be reachable</span></td><td>Immediate, because a customer or a process is waiting</td><td>Fast enough to restore without stopping the business</td><td>Slow is acceptable; it is read rarely, if ever</td></tr>
-<tr><td><b>Searchability</b><br><span class="mini">whether it must be findable</span></td><td>Yes; the whole purpose is answering questions from it</td><td>Not really; it is restored wholesale, not queried</td><td>Not quickly, though it must be producible on request</td></tr>
-<tr><td><b>Life span</b><br><span class="mini">how long it must last</span></td><td>As long as it is current, then it is replaced</td><td>Short; a newer backup overwrites it</td><td>Years, which is the requirement everything else bends to</td></tr>
-</tbody>
-</table></div>
+<div class="callout warn"><p><b>A caution the chapter leaves out.</b> Archives are lost far more often because nothing can still read them &mdash; the format abandoned, the last drive dead &mdash; than because the tape decayed.</p></div>
 
-<p>Read that table down the columns rather than across the rows. Each column is a different set of demands, and no single storage technology satisfies all three columns well, which is precisely why organizations run more than one.</p>
-
-<h3>Matching the data to the medium</h3>
-<p>These different uses of organizational data call for different physical storage technologies, and the chapter matches each type to one.</p>
-<ul class="keys">
-<li><b>Operational data goes on fast disk</b> &mdash; typically in databases or in files, on disk-based media such as hard drives, which offer high access speeds and are preferred where data is frequently accessed or where response time is of the essence, as on an e-commerce site.</li>
-<li><b>The most demanding cases go on flash</b> &mdash; flash-based storage such as solid-state drives is used where access speed is of crucial importance, and machine learning is one such case, since it requires fast storage to analyze vast quantities of different data.</li>
-<li><b>Backups go somewhere secure but still quick</b> &mdash; organizations periodically back up data to a secure location, and storing backups on hard drives enables quick recovery without slowing the company&rsquo;s operations; some run completely redundant systems so business continues seamlessly if the primary systems fail.</li>
-<li><b>Archives go on cheap removable media</b> &mdash; data no longer used for operational purposes, such as old internal email, is archived for long-term storage, typically on magnetic tape kept away from the working systems.</li>
-</ul>
-<p>Tape deserves a closer look, because its weaknesses are the reason it is the right choice. Data is stored sequentially on magnetic tape, so access speed can be very slow and the contents are not quickly searchable. In exchange, the chapter reports a shelf life of up to 30 years, a cost very low compared with other storage media, and removability &mdash; meaning the archive is highly expandable and tapes can be stored in a secure, remote location.</p>
-
-<div class="callout warn"><p><b>A caution the chapter leaves out.</b> The shelf life quoted for tape is a figure about the medium, and it is the least of an archivist&rsquo;s worries. Archives are lost far more often because nothing can still read them &mdash; the format was abandoned, or the last working drive failed &mdash; than because the tape itself decayed. An archive lives exactly as long as the equipment and software that can open it, which is the obsolescence problem this module returns to when it turns to managerial issues.</p></div>
-
-<p>Sort a set of situations by which of the three types is in front of you, and the medium follows from the requirements rather than from habit.</p>
+<p>Sort a set of situations by which type of data is in front of you.</p>
 
 <div class="activity" data-activity="sysMedia"></div>
 
 <h3>Files, folders, and a hierarchy that is not really there</h3>
-<p>Within most general-purpose computers, digital information is organized in a structured and accessible way using files and folders. Three terms carry that structure, and the third one is the one people rarely have a name for.</p>
+<p>Within most computers, digital information is organized using files and folders. Three terms carry that structure.</p>
 <ul class="keys">
-<li><b>File</b> &mdash; a block of data that stores specific content, such as a document, an image or a spreadsheet, and the unit people name, move, share and delete without thinking about drives at all.</li>
-<li><b>Folder</b> &mdash; a grouping of related files, also called a directory, although strictly speaking a folder is the graphical element that represents a directory on the screen.</li>
-<li><b>Root directory</b> &mdash; the top of the tree, typically the drive itself, from which subdirectories branch out, with each directory able to contain files as well as other directories.</li>
+<li><b>File</b> &mdash; a block of data storing specific content, such as a document, image or spreadsheet, and the unit people name and move.</li>
+<li><b>Folder</b> &mdash; a grouping of related files, also called a directory, though strictly the folder is the graphical element representing it.</li>
+<li><b>Root directory</b> &mdash; the top of the tree, typically the drive itself, from which subdirectories branch, each holding files and further directories.</li>
 </ul>
-<p>Arranged that way they form a hierarchy shaped like a tree, and keeping it tidy pays off as it grows. Organizing directories in a logical, consistent manner &mdash; nesting course materials inside one folder, then by term, then by course &mdash; makes information easier to find, share and manage as the volume of digital content grows.</p>
-<p>Then comes the caveat that matters more than everything above it. This is a <i>logical</i> organization. Although you can reach data using files and folders, the data is not physically organized that way on the drive at all: one file may be scattered across many separate places, and two files sitting in the same folder on screen may be nowhere near each other on the disk.</p>
-<p>That gap between the arrangement you see and the arrangement that exists is the same move the operating system made at the start of this section. A common layer hides the machine so the person above it can work in ideas &mdash; folders, documents, drag and drop &mdash; instead of in hardware.</p>
-<p class="takeaway">Almost everything in this section is one idea wearing different clothes: put a layer in between, and the thing above it stops having to know how the thing below it works.</p>
+<p>But this is a <i>logical</i> arrangement only. One file may be scattered across many places on the drive, and two files in the same folder on screen may sit nowhere near each other.</p>
+<p class="takeaway">Almost everything here is one idea in different clothes: put a layer in between, and the thing above it stops having to know how the thing below it works.</p>
 
-<p>Two questions on storage requirements and two on how data is arranged, with every option explained.</p>
+<p>Four questions on storage requirements and on how data is arranged.</p>
 
 <div class="activity" data-activity="sysQuiz2"></div>
 
-<p>Finally, check what you could explain to somebody else without looking, since that is the standard the rest of the module assumes.</p>
+<p>Then check what you could explain without looking.</p>
 
 <div class="activity" data-activity="sysReady"></div>
 `;

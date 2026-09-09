@@ -2,142 +2,71 @@
 PROSE.s34b = `
 <span class="eyebrow">Section 3&ndash;4b</span>
 <h2>Service models and kinds of cloud</h2>
-<p class="lede">&ldquo;We moved to the cloud&rdquo; describes two decisions, not one. The first is how much of the machinery you hand over &mdash; some of it, most of it, or all of it. The second is whose building it sits in and who else is renting space beside you. This section takes them in that order, because the first decides what your own staff still have to do on Monday morning, and the second decides who else is on the same hardware.</p>
+<p class="lede">&ldquo;We moved to the cloud&rdquo; describes two decisions. The first is how much of the machinery you hand over. The second is whose building it sits in, and who else is renting beside you.</p>
 
 <h3>Renting covers three very different deals</h3>
-<p>Think about renting somewhere to live. You could rent a bare plot of land and put up your own building on it. You could rent an empty flat, where the walls, the wiring and the heating are somebody else&rsquo;s problem but the furniture is yours and you decide what happens in each room. Or you could take a hotel room, where everything down to the towels is provided and the only thing you bring is yourself.</p>
-<p>All three are renting, and the rent is the least interesting difference between them. What actually separates them is <b>how much of the work has already been done for you</b> and how much you are still allowed to change. Cloud computing divides along exactly that line, into the three arrangements the chapter calls <b>service models</b>. The comparison with renting a home is this module&rsquo;s way of making the idea concrete; the chapter states the models directly.</p>
-<p>To see the three cleanly, first lay out the pile of machinery they divide up. Every application anybody uses sits on top of the same stack of layers, whether the machines are in your building or somebody else&rsquo;s.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Layer, from the ground up</th><th>What is actually there</th><th>What it looks like when it is missing</th></tr></thead>
-<tbody>
-<tr><td><b>The facility</b></td><td>A room or a building, the electricity feeding it, and the cooling that carries the heat back out</td><td>The machines are fine and none of them is switched on</td></tr>
-<tr><td><b>The hardware</b></td><td>Physical servers, storage, the network between them, and a firewall in front of the lot</td><td>There is nowhere for the work to happen and nothing to hold the data</td></tr>
-<tr><td><b>The operating system</b></td><td>The program that lets everything above it use the machine without knowing anything about the machine</td><td>Nothing you install has any way to reach the processor, the disk or the network card</td></tr>
-<tr><td><b>The platform</b></td><td>The web server that answers requests, the database management system that keeps the records, and the tools an application is built with</td><td>Your application has no way to publish a page or to store a row</td></tr>
-<tr><td><b>The application</b></td><td>The thing a person actually opens: the mail, the records screen, the booking form</td><td>There is a working computer with nothing on it that anyone in the business needs</td></tr>
-<tr><td><b>Your settings and your data</b></td><td>Which accounts exist, what the fields are called, and the records themselves</td><td>The application runs perfectly and knows nothing about your organization</td></tr>
-</tbody>
-</table></div>
-
-<p>Each service model draws a line across that stack at a different height. Everything below the line is the provider&rsquo;s job; everything above it stays yours. One sentence per model is enough to hold all three in your head, and the rest of this section is those three sentences unpacked.</p>
+<p>You could rent a bare plot and build on it, rent an empty flat where the wiring is somebody else&rsquo;s problem, or take a hotel room.</p>
+<p>All three are renting. What separates them is how much work is already done and how much you may still change. Cloud computing divides on that line, into three <b>service models</b>.</p>
 <ul class="keys">
-<li><b>Infrastructure as a service</b> &mdash; you manage the operating system and everything above it, including your own software licences, and the provider stops at the hardware.</li>
-<li><b>Platform as a service</b> &mdash; you manage your own application and nothing beneath it, because the operating system, the web server and the database engine arrive already running.</li>
-<li><b>Software as a service</b> &mdash; you manage your settings and your data, and nothing else at all, because even the application is maintained and updated by somebody else.</li>
+<li><b>Infrastructure as a service</b> &mdash; you manage the operating system and everything above it, licences included; the provider stops at hardware.</li>
+<li><b>Platform as a service</b> &mdash; you manage your application and nothing beneath; the operating system, web server and database engine arrive running.</li>
+<li><b>Software as a service</b> &mdash; you manage settings and data, because even the application is maintained by somebody else.</li>
 </ul>
 
-<h3>Infrastructure as a service: you rent the machines</h3>
-<p>In <b>infrastructure as a service</b>, usually shortened to <b>IaaS</b>, only the basic capabilities of processing, storage and networking are provided. The provider owns the building, the power, the cooling and the hardware. Everything above that is yours: you choose the operating system, you install and configure what you need, and you keep track of your own software licences. Of the three models this one gives the customer the most control over the resources, and for exactly the same reason it leaves the customer the most work.</p>
-<p>The chapter&rsquo;s example is Amazon Web Services, where a customer chooses computing power, memory, operating system and storage to suit its own needs and can therefore build almost its entire infrastructure in the cloud rather than in a room of its own. Netflix moved its infrastructure onto that service in order to convert films into the many formats different devices need, to run its customer-facing website, and to host other applications it cannot operate without.</p>
-<p>Three consequences follow from renting at this level, and the chapter names all three.</p>
-<ul class="keys">
-<li><b>The greatest flexibility of the three models</b> &mdash; if your software needs a particular operating system, or a particular version of one, this is the model that lets you have it.</li>
-<li><b>Software licences remain your responsibility</b> &mdash; the provider rents you a machine, not permission to run things on it, so every licence you needed before you moved is a licence you still need.</li>
-<li><b>Setup costs are relatively high</b> &mdash; somebody in your organization still has to install, configure and maintain everything above the hardware, which is skilled work that takes time.</li>
-</ul>
-<p>Notice what the model has and has not removed. It has removed the building, the electricity, the cooling and the wait for equipment to be delivered. It has not removed a single decision about how the machine is set up, which is why the chapter pairs &ldquo;most control&rdquo; and &ldquo;highest setup cost&rdquo; in the same breath.</p>
+<h3>Infrastructure as a service</h3>
+<p>In <b>infrastructure as a service</b>, or IaaS, only processing, storage and networking are provided. You choose the operating system, configure it, and track your own licences. It gives the most control and leaves the most work, so setup costs are high.</p>
+<p>The chapter&rsquo;s example is Amazon Web Services, where a customer picks computing power, memory, operating system and storage. Netflix moved there to convert films into the formats different devices need.</p>
 
-<h3>Platform as a service: you rent the machines and the software that runs them</h3>
-<p>In <b>platform as a service</b>, or <b>PaaS</b>, customers run their own applications, typically designed using tools the service provider supplies. The user has control over the applications but limited or no control over the infrastructure underneath. What arrives is a working platform: the operating system, the web server, the database management system and the development tools, all installed, all updated, all kept running by the provider.</p>
-<p>The saving is not only in effort. Because the computing platform is provided, the customer does not have to worry about purchasing software licences &mdash; for the web servers&rsquo; operating systems, for instance, or for the database management systems &mdash; and the service provider manages the functioning and the updating of the platform. The chapter&rsquo;s example is Microsoft Azure, which it describes under its older name of Windows Azure, and which customers use to deploy applications they wrote themselves.</p>
-<div class="callout info"><b>Serverless computing, the current trend in this model.</b> A newer arrangement goes one step further and frees the customer from setting up machines at all. On a serverless platform such as Amazon&rsquo;s AWS Lambda, the customer supplies small, specific functions that can be assembled into an application; the service takes care of all management of the underlying platform, scales the work continuously, and charges on the basis of the time the functions actually run. The servers have not gone anywhere. The customer simply never meets one.</div>
-<p>The trade this model makes is worth saying out loud, because it is the one people misjudge. You have given up the ability to choose or tune the platform &mdash; its version, its configuration, sometimes its language &mdash; and in exchange you have given away the whole job of keeping that platform alive. For an organization whose distinctive work is its own application and not its own plumbing, that is usually a good trade.</p>
+<h3>Platform as a service</h3>
+<p>In <b>platform as a service</b>, or PaaS, customers run their own applications, built with the provider&rsquo;s tools, with limited control beneath. The operating system, web server, database management system and tools arrive installed and updated, so no licences are bought for them. The example is Microsoft Azure.</p>
 
-<h3>Software as a service: you rent the finished application</h3>
-<p>In <b>software as a service</b>, or <b>SaaS</b>, the customer uses only applications provided via a cloud infrastructure. There is no machine to choose, no operating system to patch, no platform to keep current. Typically the customer cares only about the application, with no knowledge of or control over the infrastructure beneath it, and typically has only a limited ability to control or configure application-specific settings.</p>
-<p>This is the model you have used already, probably today. The chapter groups its examples into five familiar kinds of application.</p>
-<ul class="keys">
-<li><b>Web-based email services</b> &mdash; the chapter names Google&rsquo;s Gmail, and nobody in your building has ever patched a mail server for you to read your mail.</li>
-<li><b>Document storage</b> &mdash; services such as Dropbox and WeTransfer, where the file goes somewhere you never see and comes back when you ask for it.</li>
-<li><b>Collaboration software</b> &mdash; the chapter names Slack and Zoom, both of which run a conversation between people in different places with no equipment on either side.</li>
-<li><b>Web-based productivity suites</b> &mdash; Zoho and Google Docs, where the document editor itself is delivered to you rather than installed by you.</li>
-<li><b>Advanced business applications</b> &mdash; customer relationship management systems such as those provided by Salesforce.com, which run a whole business function as a rented service.</li>
-</ul>
-<p>Software as a service is typically the easiest of the three to deploy, because the customer does not have to worry about maintaining or updating the software, the underlying platform or the hardware infrastructure. Some companies have gone further still and offer an entire solution as a service, providing not only software but other things around it such as expertise. The price of that ease is configurability: you get the application the provider built, adjusted only as far as its own settings allow.</p>
-<p>The quickest way to fix the three models in place is to sort real arrangements into them, so try that now before the second decision arrives.</p>
+<div class="callout info"><p><b>Serverless computing</b> goes further. On a platform such as AWS Lambda the customer supplies small functions that assemble into an application; the service manages and scales the platform, charging for the time those functions run. The servers have not gone anywhere &mdash; the customer never meets one.</p></div>
+
+<h3>Software as a service</h3>
+<p>In <b>software as a service</b>, or SaaS, the customer uses only applications delivered over a cloud infrastructure: no machine to choose, no operating system to patch, limited settings to configure.</p>
+<p>You used it today: email such as Gmail, storage such as Dropbox, collaboration such as Slack and Zoom, suites such as Google Docs, business applications such as Salesforce. It deploys most easily, and the price is configurability.</p>
+<p>Sort real arrangements into the three models.</p>
 
 <div class="activity" data-activity="svcSort"></div>
 
-<h3>The line that decides everything: who manages what</h3>
-<p>Learners reliably go wrong here in the same way: by trying to remember which brand name belongs to which model. Brands move between models and providers sell in all three. The durable test is a question about your own organization &mdash; <b>what do my people still have to look after on Monday morning?</b> Answer that, and the model names itself.</p>
-<p>Read the ladder below from the bottom. Each rung hands one more layer to the provider, and each rung takes one more decision away from you.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Arrangement</th><th>The provider looks after</th><th>You still look after</th><th>What you give up</th></tr></thead>
-<tbody>
-<tr><td><b>Owning it outright</b></td><td>Nothing &mdash; there is no provider</td><td>The facility, the power, the cooling, the hardware, the operating system, the platform, the application, the data</td><td>Nothing, except the money and the years</td></tr>
-<tr><td><b>Infrastructure as a service</b></td><td>The facility, the power, the cooling and the hardware</td><td>The operating system, your licences, the platform, the application, the data</td><td>Physical control of the machines and the ability to specify the hardware exactly</td></tr>
-<tr><td><b>Platform as a service</b></td><td>Everything up to and including the operating system, the web server, the database engine and the tools</td><td>Your own application, and the data inside it</td><td>The choice of platform, its version and much of its configuration</td></tr>
-<tr><td><b>Software as a service</b></td><td>Everything up to and including the application itself</td><td>Your settings and your data</td><td>Nearly all configuration &mdash; the application works the way the provider built it</td></tr>
-</tbody>
-</table></div>
-
-<p>Three things about that ladder catch people out, and all three are worth stating flatly rather than discovering later.</p>
+<h3>The line that decides everything</h3>
+<p>Learners go wrong memorizing which brand belongs to which model; brands move, and providers sell all three. The durable test is <b>what do my people still look after on Monday morning?</b> Three things catch people out.</p>
 <ul class="keys">
-<li><b>No rung takes away your data or your decisions</b> &mdash; even in the model that leaves you the least to manage, which records exist, who may see them and what they mean is still entirely your problem.</li>
-<li><b>Higher up the ladder is not the same as better</b> &mdash; it is less work and less control, and which of those two an organization needs more depends on whether the thing being run is its distinctive work or its plumbing.</li>
-<li><b>An organization sits on several rungs at once</b> &mdash; the same company can rent finished applications for its office work, a platform for the system its developers wrote, and raw machines for the one awkward package that needs a particular operating system.</li>
+<li><b>No rung takes away your data or decisions</b> &mdash; which records exist, who may see them and what they mean is still your problem.</li>
+<li><b>Higher is not better</b> &mdash; less work and less control, and which matters depends on whether the thing is distinctive work or plumbing.</li>
+<li><b>An organization sits on several rungs</b> &mdash; finished applications for office work, a platform for developers, raw machines for one awkward package.</li>
 </ul>
-<p class="takeaway">Handing over a layer hands over the labour of running it and the freedom to change it, in one movement, and you cannot accept the first half without accepting the second.</p>
+<p class="takeaway">Handing over a layer hands over the labour of running it and the freedom to change it in one movement. You cannot take one half without the other.</p>
 
 <div class="activity" data-activity="svcMatch"></div>
 
-<p>Before moving to the second decision, check that the three models are genuinely separate in your mind and not just three names in a row.</p>
+<p>Are the three separate in your mind?</p>
 
 <div class="activity" data-activity="svcQuiz1"></div>
 
-<h3>Public, private, and the mixture most organizations end up with</h3>
-<p>The second decision is a different question entirely: not how much you rent, but whose cloud it is and who else is in it. The chapter separates two kinds and describes a third that organizations arrive at in practice.</p>
-<p>Before the three make sense, one word they all turn on needs a definition. <b>Scalability</b> is the ability to adapt to increases or decreases in demand for processing or data storage. It is a promise rather than a physical fact, which is why it is something to test in a particular provider rather than to assume from the word &ldquo;cloud&rdquo;.</p>
+<h3>Public, private, and the mixture most organizations reach</h3>
+<p>The second decision is whose cloud it is. One word underneath needs defining: <b>scalability</b> is the ability to adapt to increases or decreases in demand for processing or data storage &mdash; a promise to test, not to assume from the word &ldquo;cloud&rdquo;.</p>
 <ul class="keys">
-<li><b>Public cloud</b> &mdash; services that any interested party can use on a pay-per-use basis, which suits work that has to scale rapidly and organizations without the capital or the people to build capacity of their own.</li>
-<li><b>Private cloud</b> &mdash; a cloud internal to one organization, which still offers self-service access to a shared pool and still bills departments for what they use, but keeps everything inside the organization&rsquo;s own control.</li>
-<li><b>Hybrid cloud</b> &mdash; some applications kept in-house and others moved to a public cloud, which the chapter describes as the approach organizations often choose once they stop looking for a single answer.</li>
+<li><b>Public cloud</b> &mdash; services any party can use pay-per-use, suiting work that must scale fast and firms without capital or staff.</li>
+<li><b>Private cloud</b> &mdash; internal to one organization, still self-service from a shared pool and billed to departments, but under its own control.</li>
+<li><b>Hybrid cloud</b> &mdash; some applications in-house and others public, where firms arrive once they stop seeking a single answer.</li>
 </ul>
-<p>The private cloud is the one most often misunderstood, so be precise about what it does and does not do. It helps an organization balance the demand and supply of computing resources across its own departments, and it gives a high degree of customizability, flexibility and control over its data and applications. What it does not do is free the organization from the issues associated with managing a cloud infrastructure. Somebody still owns the building, the power, the cooling and the machines, and that somebody is still you.</p>
-<p>The chapter contrasts the two kinds by the attributes each one tends to bring, and the contrast is more useful than either definition on its own.</p>
-
-<div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>The private cloud tends to bring</th><th>The public cloud tends to bring</th></tr></thead>
-<tbody>
-<tr><td>Capital expenditure &mdash; the equipment is bought</td><td>Operational expenditure &mdash; the capacity is billed as it is used</td></tr>
-<tr><td>Owned by the client</td><td>Owned by the service provider</td></tr>
-<tr><td>Control, privacy and security under one roof</td><td>Flexibility, elasticity and measured service</td></tr>
-<tr><td>Centralized and increasingly efficient use of what the organization already has</td><td>Standardized offerings, fast and easy setup</td></tr>
-</tbody>
-</table></div>
-
-<p>Set beside each other, those columns are the same trade the service models made, at a different level. The private column buys control and pays for it in money and effort; the public column buys speed and pays for it in standardization and in depending on somebody else. The reason the hybrid arrangement is so common is that most organizations have some work that belongs in each column, and no rule says a company has to answer once for everything it runs.</p>
-<p>Four signals tell you which column a particular application belongs in, and they are worth applying one application at a time rather than to the organization as a whole.</p>
+<p>The private cloud is most often misunderstood. It balances supply and demand across departments and gives control, but does not free the organization from managing a cloud infrastructure: somebody still owns the building, power and machines, and it is you.</p>
+<p>Private buys control and pays in money and effort; public buys speed and pays in standardization. Four signals say which an application belongs in.</p>
 <ul class="keys">
-<li><b>Demand that swings hard and without warning</b> points at the public column, because capacity that grows in minutes and shrinks again is exactly what rented, pooled equipment can do and owned equipment cannot.</li>
-<li><b>A rule about where data may sit</b> points at the private column, because internal policy or a duty that applies in a particular industry may require records to stay on machines the organization itself controls.</li>
-<li><b>No capital and no technical staff</b> points at the public column, since building a private cloud is equipment bought up front and an infrastructure somebody in the organization must then run.</li>
-<li><b>Equipment already bought and sitting idle</b> points at the private column, because pooling what the organization owns and letting departments provision from it recovers value from capacity already paid for.</li>
+<li><b>Demand that swings hard without warning</b> &mdash; points public, because capacity that grows and shrinks in minutes is what pooled rented equipment does.</li>
+<li><b>A rule about where data may sit</b> &mdash; points private, because policy or an industry duty may require records on your own machines.</li>
+<li><b>No capital and no technical staff</b> &mdash; points public, since a private cloud is equipment bought up front and then run.</li>
+<li><b>Equipment already bought and idle</b> &mdash; points private, because pooling what you own recovers value paid for.</li>
 </ul>
 
 <div class="activity" data-activity="svcQuiz2"></div>
 
 <h3>Two choices, taken together</h3>
-<p>Put the two decisions side by side and the shape of a real arrangement appears. A service model says how far up the stack somebody else is responsible; a kind of cloud says whose machines those are. They are independent, which is why an organization can rent finished applications from a public provider for its office work and still run a platform of its own inside the building for the system nobody else is allowed to touch.</p>
-<p>That is also why the chapter says there is typically no single provider that can meet all of an organization&rsquo;s needs. Organizations often have to partner with several, choosing among the three service models according to the business&rsquo;s needs and frequently combining public and private clouds. Three questions, asked about one application at a time rather than about the organization as a whole, get you most of the way to an answer.</p>
-<ol class="steps">
-<li><b>What must we still be able to change?</b> If the answer includes the operating system, you are looking at infrastructure as a service; if it is only your own application, a platform will do.</li>
-<li><b>Is this work distinctive or is it plumbing?</b> Rent the plumbing as finished software, and keep your effort for the system that makes the organization different from its competitors.</li>
-<li><b>Where is this data allowed to sit, and who else may be near it?</b> That question, and not the technology, is what usually pushes one particular application out of a public cloud and back inside the building.</li>
-</ol>
-<p>The situations below work those three questions through four cases. They are practice situations, and the last one is the arrangement the chapter says organizations most often reach.</p>
+<p>A service model says how far up the stack somebody else is responsible; a kind of cloud says whose machines those are. They are independent, so a firm can rent applications publicly and still run a platform in its own building.</p>
+<p>No single provider meets every need, so firms partner with several. Ask three questions of one application at a time: what must we still change, is this distinctive work or plumbing, and where may this data sit?</p>
 
 <div class="activity" data-activity="svcSim"></div>
-
-<div class="callout tip"><b class="tagline">What this section does not answer</b> Knowing which model and which kind you want tells you nothing about whether a particular provider is any good at delivering it. Three questions are still open, and the next section is about all three:
-<ul class="keys">
-<li><b>Will it be there when we need it</b> &mdash; not even the largest providers are immune from hardware failures, programming errors and network outages, and a promise of uptime is not the same thing as availability.</li>
-<li><b>What happens to the data</b> &mdash; once records are on somebody else&rsquo;s equipment, who can reach them, who may be compelled to hand them over, and how hard would it be to take them somewhere else.</li>
-<li><b>What will it actually cost</b> &mdash; the rented figure is exact and arrives monthly, while most organizations have never worked out what the same work truly costs them in-house.</li>
-</ul></div>
 `;
 
 ACT.svcSort = {
