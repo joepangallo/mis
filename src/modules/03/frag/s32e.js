@@ -113,7 +113,7 @@ ACT.webQuiz1 = {
       q: "The same page looks slightly different on two machines, although both asked the same server for the same address. Which division of labour explains that?",
       opts: [
         "The server sends a finished picture of the page, so a difference has to be a fault in one of the two connections",
-        "The server sends the document and its markup, and the browser interprets that markup and decides how the result is drawn on that particular screen",
+        "The server sends the document and its markup, and the browser decides how it is drawn",
         "The browser keeps pages permanently, so the second machine is showing an older copy that the server has since replaced",
         "The difference comes from the address, since a small variation in an address returns a different version of the page"
       ],

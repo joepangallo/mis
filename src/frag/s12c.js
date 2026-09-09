@@ -253,23 +253,23 @@ ACT.orgPick = {
     {
       situation: "Checkout is slow and every store rings sales on a standalone register that never talks to the network, so nobody outside the store knows what sold today.",
       opts: [
-        {t: "Install networked checkout registers that scan bar codes and record each sale &mdash; a transaction processing system", ok: true, out: "Right. This processes day-to-day business event data at the operational level, and it fixes the deeper problem: the chain finally has a record of what actually happened, which every other system will need."},
-        {t: "Buy a business intelligence system so leadership can analyze store performance", ok: false, out: "A business intelligence system analyzes Big Data to understand the business &mdash; but there is no Big Data yet. Nothing is capturing the transactions. You would be buying a telescope before there is anything in the sky."},
-        {t: "Give each store manager spreadsheet and email software to track daily sales", ok: false, out: "That is office automation: personal productivity software supporting one person&rsquo;s day-to-day work. It would produce 22 hand-typed, inconsistent files instead of one automatic, reliable stream of transaction data."}
+        {t: "Buy a business intelligence system so leadership can analyze store performance across the chain", ok: false, out: "A business intelligence system analyzes Big Data to understand the business &mdash; but there is no Big Data yet. Nothing is capturing the transactions. You would be buying a telescope before there is anything in the sky."},
+        {t: "Give each store manager spreadsheet and email software to track that store&rsquo;s daily sales", ok: false, out: "That is office automation: personal productivity software supporting one person&rsquo;s day-to-day work. It would produce 22 hand-typed, inconsistent files instead of one automatic, reliable stream of transaction data."},
+        {t: "Install networked checkout registers &mdash; a transaction processing system", ok: true, out: "Right. Registers that scan bar codes and record each sale process day-to-day business event data at the operational level. They also fix the deeper problem: the chain finally has a record of what actually happened, which every other system will need."}
       ]
     },
     {
       situation: "Transactions are now captured, but the regional manager still cannot tell which stores are about to run out of which products until a shelf is already empty.",
       opts: [
-        {t: "Add an inventory management and planning system that turns the transaction data into detailed stock reports &mdash; a management information system", ok: true, out: "Right. A management information system produces detailed information to help manage a firm or part of a firm, and inventory management and planning is its textbook application. The raw events become something a manager can act on."},
         {t: "Launch an e-commerce site so customers can order out-of-stock items online", ok: false, out: "An electronic commerce system enables customers to buy goods and services from the firm&rsquo;s website. Useful someday, but it does not tell your manager what is running low &mdash; it just moves the empty shelf online."},
+        {t: "Add inventory management and planning &mdash; a management information system", ok: true, out: "Right. A management information system produces detailed information to help manage a firm or part of a firm, and inventory management and planning is its textbook application. It turns the transaction data into detailed stock reports, so the raw events become something a manager can act on."},
         {t: "Roll out a collaboration system so store managers can email each other about shortages", ok: false, out: "A collaboration system enables people to communicate, collaborate, and coordinate &mdash; email with a shared calendar. It helps them talk about the problem; it does not produce the detailed stock information they would be talking about."}
       ]
     },
     {
       situation: "Finance must decide whether to borrow money to build a 23rd store, and wants to model demand and repayment under three different economic scenarios before committing.",
       opts: [
-        {t: "Give finance analysis tools and database access so they can model the forecast &mdash; a decision support system", ok: true, out: "Right. A decision support system provides analysis tools and access to databases to support quantitative decision making; product demand forecasting and loan and investment analysis are exactly its sample applications."},
+        {t: "Give finance analysis tools and database access &mdash; a decision support system", ok: true, out: "Right. A decision support system provides analysis tools and access to databases to support quantitative decision making, which is what finance needs to model the forecast; product demand forecasting and loan and investment analysis are exactly its sample applications."},
         {t: "Pull the answer out of the transaction processing system, since it holds all the sales data", ok: false, out: "The TPS holds the raw record of what already happened, and it is the input you need &mdash; but it processes events, it does not model futures. Data alone is not a forecast."},
         {t: "Search the company knowledge portal for what the firm did last time it expanded", ok: false, out: "A knowledge management system enables the generation, storage, sharing, and management of knowledge assets, so a portal of past answers is genuinely useful context. It just cannot run three quantitative scenarios against current demand data."}
       ]
@@ -277,9 +277,9 @@ ACT.orgPick = {
     {
       situation: "Suppliers keep shipping late, two trucks arrive at the same dock at once, and produce spoils while a store two towns over has none.",
       opts: [
-        {t: "Put in a system that coordinates suppliers, production, and distribution, starting with procurement planning &mdash; supply chain management", ok: true, out: "Right. Supply chain management supports the coordination of suppliers, product or service production, and distribution. The problem is upstream of the customer, so the system has to be upstream too."},
         {t: "Deploy customer relationship management so shoppers get told when produce is unavailable", ok: false, out: "CRM supports interaction between the firm and its customers &mdash; sales force automation, lead generation. It points downstream, toward the buyer. It would communicate the failure rather than prevent it."},
-        {t: "Deploy a geographic information system to plan better delivery routes", ok: false, out: "A geographic information system creates, stores, analyzes, and manages geographically referenced data, and route planning is its sample application, so this genuinely helps a truck get somewhere efficiently. It still does not coordinate suppliers, procurement, and distribution as a whole."}
+        {t: "Deploy a geographic information system to plan better delivery routes", ok: false, out: "A geographic information system creates, stores, analyzes, and manages geographically referenced data, and route planning is its sample application, so this genuinely helps a truck get somewhere efficiently. It still does not coordinate suppliers, procurement, and distribution as a whole."},
+        {t: "Put in supply chain management, starting with procurement planning", ok: true, out: "Right. Supply chain management supports the coordination of suppliers, product or service production, and distribution, and procurement planning is where that coordination starts. The problem is upstream of the customer, so the system has to be upstream too."}
       ]
     }
   ]

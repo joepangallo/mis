@@ -75,15 +75,15 @@ ACT.netRequire = {
     {
       before: "Computer networking is ",
       after: ", which is why a connection carrying nothing anybody wants is not doing any work.",
-      choices: ["the sharing of data or services", "the cabling installed between buildings", "the speed at which data travels"],
-      a: 0,
+      choices: ["the cabling installed between buildings", "the sharing of data or services", "the speed at which data travels"],
+      a: 1,
       why: "The chapter defines computer networking as the sharing of data or services, which keeps the definition about purpose rather than equipment. Cabling is only the second requirement, the pathway, and a network can use radio instead of any cable at all. Speed is bandwidth, which describes how well the sharing goes rather than what the sharing is."
     },
     {
       before: "The first requirement is a sender and a receiver &mdash; a source and a destination &mdash; that ",
       after: ".",
-      choices: ["have something to share", "are the same make of machine", "are in the same building"],
-      a: 0,
+      choices: ["are the same make of machine", "are in the same building", "have something to share"],
+      a: 2,
       why: "A message has to exist before anything can carry it, which is why the chapter states this requirement first. Machines of entirely different makes exchange data constantly, because that is what the third requirement, an agreed protocol, exists to make possible. Being in the same building describes a local area network, which is one type of network rather than a condition every network has to meet."
     },
     {
@@ -96,15 +96,15 @@ ACT.netRequire = {
     {
       before: "The third requirement is ",
       after: " governing communication between senders and receivers.",
-      choices: ["rules or protocols", "enough bandwidth", "a shared physical medium"],
-      a: 0,
+      choices: ["enough bandwidth", "a shared physical medium", "rules or protocols"],
+      a: 2,
       why: "Protocols define the procedures that different computers follow when they transmit and receive data, which is what makes an arriving message interpretable. Bandwidth decides how long a transfer takes and never decides whether it can be understood. A shared physical medium restates the second requirement, and the chapter is careful to keep the pathway and the rules apart precisely because a message can have the first without the second."
     },
     {
       before: "In the chapter&rsquo;s example the reply arrives intact but in a language the reader cannot decode, which shows that ",
       after: ".",
-      choices: ["if the message is not understood by the receiver, there is no communication", "the pathway must have failed somewhere along the route", "the sender never really encoded the message at all"],
-      a: 0,
+      choices: ["the pathway must have failed somewhere along the route", "if the message is not understood by the receiver, there is no communication", "the sender never really encoded the message at all"],
+      a: 1,
       why: "This is the chapter&rsquo;s own sentence, and it is the whole reason protocols are named as a separate requirement rather than assumed. The pathway plainly worked, because the email arrived complete and on time, so blaming the route misreads a delivery success as a delivery failure. The sender did encode the message, and encoded it perfectly well in French; the encoding and the decoding simply did not match."
     }
   ]

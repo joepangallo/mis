@@ -198,15 +198,15 @@ ACT.strQuiz1 = {
       q: "The practice grocer's housewares aisle is losing sales. Shoppers say they now rent a pressure washer from a tool-rental app instead of buying one. Which force is this?",
       opts: [
         "Competitive rivalry, because another company is taking sales that used to belong to the grocer",
-        "Threat of substitutes, because renting meets the same need without buying the product at all",
         "Threat of new entrants, because the rental app is new to the market",
+        "Threat of substitutes, because renting meets the same need without buying the product at all",
         "Bargaining power of buyers, because shoppers are choosing where to spend their money"
       ],
-      a: 1,
+      a: 2,
       why: [
         "Rivalry is pressure from firms selling the same product inside the same industry - another housewares retailer down the road. The rental app does not sell pressure washers at all, which is precisely what makes it something other than a rival.",
-        "Correct. A substitute satisfies the same underlying need - a clean driveway - by a different route, so demand leaves the whole product category rather than shifting between sellers inside it.",
         "A new entrant is a company that starts selling what you sell. This would be the right answer if the app opened a store selling washers. Being young or newly launched is not the test; entering your industry is.",
+        "Correct. A substitute satisfies the same underlying need - a clean driveway - by a different route, so demand leaves the whole product category rather than shifting between sellers inside it.",
         "Buyer power is the pressure customers apply while still buying from your industry, by forcing your price down or your terms up. Here they are not negotiating with anyone in the industry; they left the category."
       ]
     },
@@ -229,15 +229,15 @@ ACT.strQuiz1 = {
     {
       q: "You have concluded that buyer power is the strongest pressure on the practice grocer. Which framework do you turn to next, and for what reason?",
       opts: [
-        "The five forces again, run location by location, because exposure to the warehouse club differs across the region",
         "The value chain, because it maps the activities inside the company and shows where a system could actually be built",
+        "The five forces again, run location by location, because exposure to the warehouse club differs across the region",
         "The value chain, because it ranks the five forces from strongest to weakest",
         "Neither - move straight to comparing vendors, because the diagnosis is finished and the frameworks have nothing left to contribute"
       ],
-      a: 1,
+      a: 0,
       why: [
-        "Re-running the forces per location does sharpen a diagnosis, and it is worth doing when the evidence is thin. It still cannot produce a project, because the five forces describe conditions outside the company and never name an activity inside it.",
         "Correct. The five forces say what is squeezing the firm from outside; the value chain breaks the firm into nine internal activities, so an external finding becomes a specific place inside the business to build something.",
+        "Re-running the forces per location does sharpen a diagnosis, and it is worth doing when the evidence is thin. It still cannot produce a project, because the five forces describe conditions outside the company and never name an activity inside it.",
         "The value chain is the right framework named for the wrong reason. It contains no forces and performs no ranking - it divides the firm into five primary and four support activities.",
         "Naming a force says what is wrong outside the firm, not what to change inside it, so a shortlist assembled now is a list of products in search of a problem. This would have been right only if the diagnosis had already identified the activity the system must strengthen."
       ]
@@ -282,7 +282,7 @@ ACT.strStrategySim = {
     {
       situation: "A members-only warehouse club enters some local markets. Sales fall only at the grocer's exposed locations. Leadership asks you to name the pressure before anyone names a product.",
       opts: [
-        {t: "Threat of new entrants - a company that was not competing here is now selling the same goods to the same shoppers", ok: true, out: "Right, and the hypothetical evidence is unusually clean: only locations exposed to the club declined, which ties the loss to the entrant rather than to a region-wide cause. Naming the force this precisely lets you reject any initiative that would not touch it."},
+        {t: "Threat of new entrants - a company that did not sell here before now does", ok: true, out: "Right - a company that was not competing here is now selling the same goods to the same shoppers, and the hypothetical evidence is unusually clean: only locations exposed to the club declined, which ties the loss to the entrant rather than to a region-wide cause. Naming the force this precisely lets you reject any initiative that would not touch it."},
         {t: "Threat of substitutes - shoppers have found a different way to meet the same need", ok: false, out: "A substitute meets the need without buying from your industry at all, such as a meal kit or a restaurant. The club sells the same groceries from the same suppliers, so it competes inside the industry, not outside it. Hold that thought - a real substitute is in this region too."},
         {t: "Competitive rivalry - a competitor is taking share, which is what rivalry means", ok: false, out: "Understandable, and it is not far off, but rivalry is pressure from the firms already established in the industry. The distinguishing fact here is that this competitor was not in the market before, which is exactly what makes it an entrant. The difference matters: rivalry pushes you to defend, an entrant tells you your barriers to entry are low."}
       ]
@@ -307,7 +307,7 @@ ACT.strStrategySim = {
       situation: "The board will fund one initiative. It asks for a concise defense of the loyalty program.",
       opts: [
         {t: "'It will modernize us. Customers expect a digital experience from a grocer in this decade.'", ok: false, out: "No force, no evidence, no measure. Everything in that sentence would be equally true if the initiative were a new website, a mobile game, or nothing at all - which is why a board cannot tell whether it worked."},
-        {t: "'Buyer power is high - switching costs are near zero and we cannot identify repeat customers. A loyalty program gives us purchase history for differentiated offers. We will judge it on repeat-visit rate and share of basket at affected stores at the scheduled review.'", ok: true, out: "That is the full shape: force, evidence, initiative, measurable outcome with a review point. It can be argued with, which is the point - a proposal that cannot be argued with also cannot be evaluated. Add one caution out loud: any advantage from this is fleeting, because rivals can eventually do the same thing, so the plan must include what gets improved after launch."},
+        {t: "'Buyer power is high, so we will run a loyalty program and judge it on repeat visits.'", ok: true, out: "That is the full shape once you say the rest of it out loud: the force is buyer power, the evidence is that switching costs are near zero and the grocer cannot identify repeat customers, the initiative is a loyalty program that gives you purchase history for differentiated offers, and the measure is repeat-visit rate and share of basket at affected stores, read at the scheduled review. It can be argued with, which is the point - a proposal that cannot be argued with also cannot be evaluated. Add one caution out loud: any advantage from this is fleeting, because rivals can eventually do the same thing, so the plan must include what gets improved after launch."},
         {t: "'Two of our competitors already run loyalty programs, so we are behind and need to catch up.'", ok: false, out: "This justifies parity, never advantage, and it hands your technology roadmap to competitors. It also tells the board nothing about why the program would work here or how anyone would know if it did."}
       ]
     }

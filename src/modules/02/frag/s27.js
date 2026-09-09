@@ -136,15 +136,15 @@ ACT.delSim = {
       situation: "Three observations from the first week. Two national booking platforms began taking reservations in this region last year, and both publish live availability. The counter opens at seven and closes at five, while contractors plan their week between six and half past six in the morning. And no contractor has ever been asked to sign anything that would keep them from renting elsewhere next week.",
       opts: [
         {t: "Rivalry among existing competitors, because two rivals with the same equipment are chasing the same contractors", ok: false, out: "The platforms are not two more yards competing on price and service; they arrived in this region last year with a different way of selling. Calling this rivalry would push the firm toward matching rates, which is the response rivalry calls for and not the one this evidence asks for."},
-        {t: "The threat of new entrants, because firms that were not competing here have arrived on the strength of low barriers, and the firm holds nothing that keeps a customer", ok: true, out: "Right. Entry into this region happened last year, and the third observation says why it was easy: nothing holds a contractor from one week to the next. Naming the force this way rules out a price response and points at building something a newcomer cannot rent, which is what the value chain scan then looks for."},
         {t: "Supplier bargaining power, because the manufacturers who sell the machines set the terms of the fleet", ok: false, out: "Nothing in the three observations concerns buying machines. Supplier power shows up as terms hardening, lead times stretching, or a single maker of equipment the firm cannot substitute, and none of that was seen."},
-        {t: "The threat of substitutes, because a contractor could buy a machine outright instead of renting one", ok: false, out: "Buying instead of renting is a genuine substitute and deserves a sentence, but the evidence points at where reservations are being taken, not at contractors leaving the rental market. A substitute argument would need purchases to be rising."}
+        {t: "The threat of substitutes, because a contractor could buy a machine outright instead of renting one", ok: false, out: "Buying instead of renting is a genuine substitute and deserves a sentence, but the evidence points at where reservations are being taken, not at contractors leaving the rental market. A substitute argument would need purchases to be rising."},
+        {t: "The threat of new entrants, because outside firms arrived easily and nothing holds a contractor", ok: true, out: "Right. Firms that were not competing here arrived last year, and the barriers were low enough that very little stood in their way. The third observation says why the firm has no defence: nothing holds a contractor from one week to the next. Naming the force this way rules out a price response and points at building something a newcomer cannot rent, which is what the value chain scan then looks for."}
       ]
     },
     {
       situation: "Now walk the value chain. The evidence file holds four observations: requests arriving outside counter hours are never recorded; machines wait in the yard for a service check nobody has scheduled; delivery routing is done by one dispatcher who is rarely wrong; and the fleet is bought from three makers on annual terms the firm is happy with. Which pair goes into the analysis?",
       opts: [
-        {t: "Sales and marketing, and operations &mdash; the lost after-hours requests and the machines standing idle", ok: true, out: "Right. Each rests on an observation, each is an internal activity the firm controls, and each is somewhere a system could create an operational or customer-focused advantage. Naming both is what makes this a scan, and the one you do not build becomes the alternative your recommendation beat."},
+        {t: "Sales and marketing, and operations &mdash; the lost requests and the idle machines", ok: true, out: "Right. The lost requests are the ones that arrive outside counter hours and are never recorded; the idle machines are the ones waiting on a service check nobody has scheduled. Each rests on an observation, each is an internal activity the firm controls, and each is somewhere a system could create an operational or customer-focused advantage. Naming both is what makes this a scan, and the one you do not build becomes the alternative your recommendation beat."},
         {t: "Sales and marketing on its own, because the after-hours problem is plainly the biggest one", ok: false, out: "It may well be the biggest, and it is where the recommendation will land. But one area does not show that the rest of the chain was examined, and a reader cannot tell whether you compared anything or stopped at your first idea."},
         {t: "Outbound logistics and procurement &mdash; the dispatcher and the three suppliers", ok: false, out: "Neither observation reports a problem. A dispatcher who is rarely wrong, and terms the firm is happy with, are the parts of the chain that are working. An activity belongs on the list because something is leaking there, not because it exists."},
         {t: "All four activities, so that nothing is left out of the scan", ok: false, out: "Listing everything is close to listing nothing: it hands the reader four candidates with no ranking and no sign of judgement. Two is the floor because two proves a scan; the ceiling is however many you can actually support with evidence."}
@@ -153,17 +153,17 @@ ACT.delSim = {
     {
       situation: "Two areas are on the table and the force has been named. Leadership asks the question they were always going to ask: what should we build?",
       opts: [
-        {t: "A reservation system that publishes true fleet availability and lets a contractor hold a machine without speaking to anyone, judged by the share of rentals booked outside counter hours at the end of the next quarter", ok: true, out: "Right. It is one thing, it sits inside one of the two areas named, it answers the force the analysis called strongest, and it carries a measure and a date, so it can be argued with before it is funded and judged after."},
         {t: "A reservation system, a maintenance scheduler and a routing tool, so that both areas and the dispatcher are covered", ok: false, out: "Three initiatives is a wish list. It asks the reader to approve rather than to choose, conceals which one the analysis believes in, and guarantees that whatever happens, some part of it can be called a success."},
         {t: "An investment in modern digital infrastructure across the yard", ok: false, out: "Nobody can cost this, build it, or later say whether it worked. It names a direction rather than a system, which is exactly the difference between a preference and a recommendation."},
+        {t: "A reservation system publishing true fleet availability, judged on out-of-hours bookings next quarter", ok: true, out: "Right. It is one thing, it sits inside one of the two areas named, and it answers the force the analysis called strongest: a contractor can hold a machine without speaking to anyone. It carries a measure &mdash; the share of rentals booked outside counter hours &mdash; and a date, the end of the next quarter, so it can be argued with before it is funded and judged after."},
         {t: "A maintenance scheduler, because idle machines are the clearer waste of equipment the firm already owns", ok: false, out: "This is a defensible initiative in the second area, and it would win if the strongest force were something inside the yard. It loses because it does not touch the force that was named: a contractor who cannot book at six in the morning is still lost, however well the machines are serviced."}
       ]
     },
     {
       situation: "The summary has to set this firm beside a real company. Four candidates are proposed in the room, and each has a supporter.",
       opts: [
-        {t: "A national equipment rental company that publishes how its online booking works and reports the same pressure, even though it is many times larger", ok: true, out: "Right. Same line of business, the same pressure, and enough published about the practice you care about to describe it accurately. The difference in size is not a problem, because what transfers is a practice rather than a budget."},
         {t: "The largest technology company anyone in the room can name, because everybody has heard of it", ok: false, out: "Name recognition is not evidence. If nothing is published about the specific practice you need, the summary ends up admiring a company instead of learning anything from it."},
+        {t: "A much larger national rental company that publishes how its online booking works", ok: true, out: "Right. Same line of business, the same pressure reported publicly, and enough published about the practice you care about to describe it accurately. The difference in size is not a problem, because what transfers is a practice rather than a budget."},
         {t: "The rental yard on the other side of town, because it is the closest competitor", ok: false, out: "A close competitor is a firm you compete with, not one you can study. Nothing about how it schedules work or takes bookings is visible from outside, so there is nothing to read and nothing to compare."},
         {t: "A company from a completely unrelated industry that the writer already finds interesting", ok: false, out: "A distant industry can occasionally teach something, but it makes the transfer argument much harder to carry, and the usual result is a summary that explains the other company at length and never comes back to this one."}
       ]
@@ -172,9 +172,9 @@ ACT.delSim = {
       situation: "The last sentence of the summary is the one a reader remembers. Four drafts are on the table, and the analysis will be judged on which one closes it.",
       opts: [
         {t: "The other company is far larger and better funded than this firm, which explains the difference in their results", ok: false, out: "This states a difference and stops. It is probably true and it teaches nothing, because a gap in size is not something anybody reading this can act on."},
-        {t: "The practice that transfers is publishing what is genuinely available now rather than promising to check and call back, and it can be done at this size with the fleet records the firm already keeps", ok: true, out: "Right. It names a practice rather than a company, says why the practice survives the difference in scale, and points at something the firm could begin doing, which is what a lesson that transfers actually means."},
         {t: "This firm should aim to match the other company&rsquo;s technology within two years", ok: false, out: "This borrows an ambition rather than a lesson. It commits the firm to a target set by somebody else&rsquo;s balance sheet and says nothing about which practice is worth copying."},
-        {t: "Both companies show how important technology has become in this industry", ok: false, out: "This would fit any two companies in any industry, which is the test it fails. A sentence that could close any comparison has not compared anything."}
+        {t: "Both companies show how important technology has become in this industry", ok: false, out: "This would fit any two companies in any industry, which is the test it fails. A sentence that could close any comparison has not compared anything."},
+        {t: "The practice that transfers is publishing what is available now instead of promising to call back", ok: true, out: "Right. It names a practice rather than a company, and it can be done at this size with the fleet records the firm already keeps, which is why the practice survives the difference in scale. It points at something the firm could begin doing, which is what a lesson that transfers actually means."}
       ]
     }
   ]
@@ -261,7 +261,7 @@ ACT.delQuiz = {
       q: "A brief asks for <b>at least two</b> internal areas where technology could help. Why does the floor sit at two rather than at one?",
       opts: [
         "Because two areas give the reader a choice, and a reader offered a choice is likelier to approve something",
-        "Because naming two areas is what shows the whole chain was examined, and it gives the recommendation something it was preferred over",
+        "Because naming two areas is what shows the whole chain was examined",
         "Because a value chain has nine activities, so fewer than two would leave most of the chain undescribed",
         "Because two initiatives can then be funded together and share the cost of the same underlying system"
       ],
@@ -277,16 +277,16 @@ ACT.delQuiz = {
       q: "The same brief asks for <b>one</b> recommended initiative. An analyst has two strong candidates and wants to propose both. What is the argument against it?",
       opts: [
         "A single initiative is cheaper than several, and cost is what decision makers care about most",
-        "The reader is being asked to make one decision, and a recommendation that names three things hides which one the analysis actually believes in",
         "Building more than one system at a time is beyond what most organizations can manage in a year",
-        "The second area exists in order to be recommended later, in a follow-up study commissioned once the first initiative has been delivered and its results have been reviewed"
+        "The second area exists in order to be recommended later, in a follow-up study commissioned once the first initiative has been delivered and its results have been reviewed",
+        "The reader is being asked to make one decision, and a recommendation that names three things hides which one the analysis actually believes in"
       ],
-      a: 1,
+      a: 3,
       why: [
         "Cost matters, but the rule is not about the size of the bill. One expensive initiative is still a single recommendation, and three cheap ones are still a wish list.",
-        "Right. Recommending is choosing. Several proposals hand the choice back to the reader and make the work impossible to be wrong about, since something in the list will look like it worked.",
         "Plenty of organizations run several projects at once. The limit here is a limit on the argument being made, not on the firm&rsquo;s capacity to build things.",
-        "The second area is not a queued proposal. It is the evidence that a scan happened and the alternative against which the chosen initiative was measured."
+        "The second area is not a queued proposal. It is the evidence that a scan happened and the alternative against which the chosen initiative was measured.",
+        "Right. Recommending is choosing. Several proposals hand the choice back to the reader and make the work impossible to be wrong about, since something in the list will look like it worked."
       ]
     },
     {
@@ -294,7 +294,7 @@ ACT.delQuiz = {
       opts: [
         "A target the smaller firm should aim to reach within a fixed period",
         "A statement of how much larger and better resourced the other company is",
-        "A practice that survives the difference in size, described concretely enough that the smaller firm could start doing it",
+        "A practice that survives the difference in size and could be started now",
         "A general observation about how important technology has become across the industry"
       ],
       a: 2,
@@ -309,7 +309,7 @@ ACT.delQuiz = {
       q: "Why would a brief cap the written summary at a band as narrow as 150 to 200 words?",
       opts: [
         "It keeps the writing short enough that a busy reader will finish it, which is the reason any limit is set",
-        "It forces the words onto the comparison and the lesson, because there is no room left for company history once those are written",
+        "It forces the words onto the comparison and the lesson, leaving no room for company history",
         "It makes every summary the same length so that they can be compared with each other fairly",
         "It signals that the written part matters less than the framework analysis, which carries no limit at all"
       ],

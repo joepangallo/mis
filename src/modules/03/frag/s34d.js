@@ -318,7 +318,7 @@ ACT.advQuiz2 = {
     {
       q: "A hypothetical museum streams video to visitors on three continents from a single server in one country, and distant viewers wait noticeably longer for it to start. Which arrangement does the chapter offer, and why does it work?",
       opts: [
-        "A content delivery network, because copies held on servers in several geographical locations let the nearest one answer, which removes the delay caused by distance",
+        "A content delivery network, because copies held in several locations let the nearest one answer",
         "A private cloud, because owning the infrastructure gives the museum direct control over how quickly the video is delivered",
         "Grid computing, because dividing the video among many small machines lets them deliver the pieces in parallel",
         "A faster connection at the museum&rsquo;s own server, because the delay comes from the capacity of that connection rather than from distance"

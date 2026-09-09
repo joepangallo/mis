@@ -242,7 +242,7 @@ ACT.ethPrivacySim = {
       situation: "The store you found is one you have never used, and you cannot find a privacy policy anywhere on the site.",
       opts: [
         { t: "Order anyway; a missing policy just means a small company that has not written one yet.", ok: false, out: "A missing policy leaves you without clear notice of what is gathered, why, who receives it, or how it is protected. Applicable law may still impose duties, but you cannot evaluate the vendor's stated practices or choices before handing over the data." },
-        { t: "Buy from a competitor that publishes a clear policy, ideally one audited by an independent organization such as TRUSTe.", ok: true, out: "This is the chapter's rule: review the privacy policy of every company you do business with, and refuse those that have no clear policy. Outside monitoring adds a check the site cannot perform on itself." },
+        { t: "Buy from a competitor that publishes a clear policy.", ok: true, out: "This is the chapter's rule: review the privacy policy of every company you do business with, and refuse those that have no clear policy. Better still is a policy audited by an independent organization such as TRUSTe, because outside monitoring adds a check the site cannot perform on itself." },
         { t: "Order, but pay with a card that has a low limit so the damage is capped.", ok: false, out: "That addresses payment exposure, which is a different risk. It changes nothing about the vendor's collection of the purchase, the browsing that led to it, or the shipping address, nor does it tell you how those records may be used." }
       ]
     },
@@ -259,7 +259,7 @@ ACT.ethPrivacySim = {
       opts: [
         { t: "Log out of the store account, which should stop it from following you.", ok: false, out: "Logging out ends your session but leaves the cookies on your machine, and those are what let a site owner monitor where you go and what you do. The tracking continues while you are signed in to nothing." },
         { t: "Rely on the store's privacy policy, since it promised not to misuse your information.", ok: false, out: "A policy states intentions, not capabilities, and the chapter is blunt that data privacy statements often do not protect consumers. The tracking here is being done by a file sitting on your own machine." },
-        { t: "Manage the browser's cookie settings, use a private window, switch to a search engine such as DuckDuckGo, and turn off ad personalization.", ok: true, out: "These are the chapter's suggested privacy steps. Each limits part of the trail between what you shop for and what follows you, but none should be mistaken for complete anonymity." }
+        { t: "Manage the browser's cookie settings and turn off ad personalization.", ok: true, out: "These are the chapter's suggested privacy steps, and the list runs further: a private browsing window and a search engine such as DuckDuckGo cut the same trail from the other end. Each limits part of the path between what you shop for and what follows you, but none should be mistaken for complete anonymity." }
       ]
     },
     {
@@ -267,7 +267,7 @@ ACT.ethPrivacySim = {
       opts: [
         { t: "Post it; it is all true, and you can delete it tomorrow if you regret it.", ok: false, out: "Truth is not the constraint. The internet never forgets: posts are stored, cached by search engines, and reshared, and content stays somewhere on the web after the original page is gone. The receipt also publishes your home address to strangers." },
         { t: "Post it without the photo, since the text alone cannot identify anyone.", ok: false, out: "The photo was the worst part, so this is an improvement, but a named employee and an angry tone are exactly the regrettable material that can be devastating for a career later. The permanence problem is unchanged." },
-        { t: "Send a factual complaint through the company's support channel and keep the receipt and the employee's name out of public view.", ok: true, out: "It solves the actual problem and leaves nothing a future employer or stranger can dig up. The chapter's warning is about permanence, and this is the version of the complaint that does not follow you." }
+        { t: "Send a factual complaint through the company's support channel.", ok: true, out: "It solves the actual problem and leaves nothing a future employer or stranger can dig up, because the receipt and the employee's name stay out of public view. The chapter's warning is about permanence, and this is the version of the complaint that does not follow you." }
       ]
     }
   ]

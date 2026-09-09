@@ -254,7 +254,7 @@ ACT.sysQuiz2 = {
     {
       q: "A manager assumes that because two documents sit in the same folder on screen, they are stored next to each other on the disk. What is the chapter&rsquo;s correction, and why does it matter?",
       opts: [
-        "The folder structure is a logical organization; the data is not physically organized the same way on the drive, which is another case of a layer hiding the machine",
+        "The folder structure is logical; the data is not physically organized that way on the drive",
         "The folder structure is physical, and moving a file between folders therefore moves it across the disk surface",
         "Folders exist only in the operating system&rsquo;s memory and vanish when the machine is switched off, so nothing about them is stored at all",
         "Folders are the same thing as directories in every respect, so the question has no answer worth giving"

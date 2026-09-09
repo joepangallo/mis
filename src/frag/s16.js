@@ -321,8 +321,8 @@ ACT.aiWorkflow = {
     {
       situation: "Second decision: the mode. Drafting a reply is repetitive, the four familiar categories cover most messages, and a wrong promise about a refund or a return costs a customer relationship.",
       opts: [
-        {t: "Automate it - the system writes the reply and sends it, since the categories are familiar and the volume is high", ok: false, out: "Volume and familiarity argue for speed, and the cost of an error argues louder. An unreviewed reply can promise a refund the chain never offered, and the customer has already read it before anyone at the chain has. This is the arrangement the chapter calls a knowledge replacement."},
         {t: "Augment it - the system drafts, the agent edits and sends", ok: true, out: "Correct, and for the stated reason: the drafting is the slow part and the promise is the risky part, so the system takes the first and the agent keeps the second. This is the chapter's principle made operational - the system augments the human rather than replacing the human."},
+        {t: "Automate it - the system writes the reply and sends it, since the categories are familiar and the volume is high", ok: false, out: "Volume and familiarity argue for speed, and the cost of an error argues louder. An unreviewed reply can promise a refund the chain never offered, and the customer has already read it before anyone at the chain has. This is the arrangement the chapter calls a knowledge replacement."},
         {t: "Leave it alone - complaint replies touch customers, so no system should be near them", ok: false, out: "Leave it alone is a legitimate mode, and it is the wrong one here. It is reserved for stakes or sensitivity high enough that no review makes the risk acceptable. A routine complaint reply that a person reads before sending does not meet that bar, and refusing the help costs the team real hours for no reduction in risk."}
       ]
     },
@@ -331,7 +331,7 @@ ACT.aiWorkflow = {
       opts: [
         {t: "One rule for everything: an agent reads and approves every draft before it is sent", ok: false, out: "The universal review is the right instinct and an incomplete design. It treats a spoiled-product report exactly like a late-delivery complaint, so the message that needed a manager today sits in the same queue as everything else and is answered politely rather than escalated."},
         {t: "Approve in batches at the end of each day, so agents can review many drafts quickly", ok: false, out: "This turns the checkpoint into a formality. A reviewer moving through forty drafts to finish the day is not really deciding, and the urgent messages have now waited a full day on top of it - the review exists on the diagram but not in practice."},
-        {t: "An agent approves every draft before sending, and a routing rule sends anything mentioning illness or injury to a store manager undrafted", ok: true, out: "Right on both counts. The checkpoint sits immediately before the irreversible act, and the cases where being wrong is most expensive are pulled out of the automated path entirely rather than being handled a little more carefully inside it."}
+        {t: "An agent approves every draft, and illness or injury routes to a store manager", ok: true, out: "Right on both counts. The agent approves each draft before it is sent, so the checkpoint sits immediately before the irreversible act, and anything mentioning illness or injury reaches a store manager undrafted - the cases where being wrong is most expensive are pulled out of the automated path entirely rather than being handled a little more carefully inside it."}
       ]
     },
     {
