@@ -6,7 +6,7 @@ FINAL = {
 
     {q: "At a hypothetical instrument maker, Larchfield Controls, a calibration question needs a metallurgist in one country, a production lead in a second and a compliance officer in a third. Handled by email it takes eight days and about two hours of actual work. The operations director proposes a rule that internal email must be answered within four hours. What is wrong with that proposal?",
      opts: [
-       "It treats a turnaround problem as an effort problem, so it compresses the delay without removing it",
+       "It treats a turnaround problem as an effort problem rather than removing the delay",
        "It applies to all email rather than only to the messages that belong to a project",
        "It cannot be enforced, because nobody can be required to read email at a particular time",
        "It will slow other work, because staff will interrupt what they are doing to answer messages"],
@@ -74,7 +74,7 @@ FINAL = {
        "Technological inertia, since the third office prefers the tools it was already using",
        "A generation gap, since the third office has a longer-serving workforce",
        "A critical mass problem, since three offices are too few to sustain a daily meeting",
-       "The uneven cost of synchronous work across time zones, borne by whoever is inconvenienced"],
+       "The uneven cost of synchronous work across time zones"],
      a: 3, obj: "5.1",
      why: [
        "Inertia describes refusing to move to a new tool. Nobody here has refused anything; they attended for six weeks and then stopped.",
@@ -151,7 +151,7 @@ FINAL = {
      opts: [
        "When the budget is limited, since marketplace tasks cost a fraction of staff time",
        "When speed matters, since a marketplace completes in weeks what staff take months over",
-       "When the tags describe what is visible, rather than requiring local or historical knowledge",
+       "When the tags describe what is visible rather than what a local would know",
        "When accuracy is not critical, since a marketplace trades quality for cost and speed"],
      a: 2, obj: "5.2",
      why: [
@@ -345,7 +345,7 @@ FINAL = {
     {q: "A hypothetical kit maker's nine-year user forum absorbs most of its support questions and is cited by four in ten new buyers. A larger competitor launches a similar product with no community. Which force does the forum principally act on?",
      opts: [
        "Rivalry, since it is how the firm differentiates against this particular competitor",
-       "The threat of new entrants, since it is a barrier accumulation built and money cannot buy",
+       "The threat of new entrants, since it is a barrier money cannot buy",
        "Bargaining power of buyers, since forum members are less sensitive to price",
        "The threat of substitutes, since the forum substitutes for the firm's paid support"],
      a: 1, obj: "5.4",
@@ -398,7 +398,7 @@ FINAL = {
      opts: [
        "Four is too many to cost properly in the time available for the analysis",
        "Ranking implies a scoring method the analyst has not made explicit",
-       "It returns the decision to the reader and hides which pressure was being answered",
+       "It hands the decision back and hides which pressure was being answered",
        "The partners will choose the cheapest, which is rarely the strongest option"],
      a: 2, obj: "5.5",
      why: [

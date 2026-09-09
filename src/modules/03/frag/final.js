@@ -97,7 +97,7 @@ FINAL = {
 
     {q:"A hypothetical training department must move a one gigabyte video file to a site that has an old low-speed connection. Someone proposes buying a much faster connection for the site instead. Which statement follows from the chapter&rsquo;s own comparison of connection speeds?",
      opts:[
-       "Transfer time falls roughly in proportion to the increase in capacity, so a connection a thousand times faster turns a transfer of well over a day into seconds",
+       "Transfer time falls roughly in proportion, so a far faster connection turns a day into seconds",
        "Transfer time depends mainly on the size of the file, so a faster connection will make only a marginal difference to a file this large",
        "Transfer time is set by the slower of the two connections only when both ends are wireless, and by the faster one otherwise",
        "Transfer time cannot be estimated in advance, because bandwidth describes capacity rather than speed and the two are unrelated"],
@@ -113,7 +113,7 @@ FINAL = {
        "It has built a peer-to-peer network, gaining resilience because any terminal can serve any other if the basement server fails",
        "It has installed embedded systems, because each terminal now performs one specific set of tasks rather than being a general-purpose computer",
        "It has moved to a public cloud, because the applications now run somewhere other than where the user is sitting",
-       "It has adopted thin clients with desktop virtualization, reducing software licensing and maintenance costs and helping with strict privacy and data protection duties"],
+       "It has adopted thin clients with desktop virtualization"],
      a:3, obj:"3.2",
      why:[
        "Peer-to-peer means any device can both request and provide services. These terminals only request, and if the server fails none of them can serve anything, so no resilience has been gained.",
@@ -321,7 +321,7 @@ FINAL = {
        "Both are software as a service, because in both cases the broadcaster is a customer rather than an owner of the equipment",
        "Neither is a cloud service, because the broadcaster is managing operating systems in one case and configuring an application in the other",
        "The first is platform as a service, because the provider supplies the machines on which the broadcaster&rsquo;s software runs",
-       "The first is infrastructure as a service and the second is software as a service, and the difference is how far up the stack the provider&rsquo;s responsibility reaches"],
+       "The first is infrastructure as a service and the second is software as a service"],
      a:3, obj:"3.4",
      why:[
        "Being a customer is common to all three models. What separates them is what the provider manages, and the broadcaster is managing operating systems in the first case and nothing at all in the second.",
@@ -346,7 +346,7 @@ FINAL = {
      opts:[
        "It is sound, because a contractual uptime commitment transfers the risk of downtime to the provider",
        "It is sound for availability but not for security, since an agreement of this kind covers performance and says nothing about how the provider protects the data it is holding on the pharmacy&rsquo;s behalf",
-       "It is unsound, because such an agreement promises a service level and pays a refund or a discount rather than guaranteeing availability, and money back does not replace the business lost while the service was down",
+       "It is unsound, because such an agreement pays a refund rather than guaranteeing availability",
        "It is unsound, because the chapter concludes that in-house infrastructure achieves better uptime than any provider"],
      a:2, obj:"3.4",
      why:[

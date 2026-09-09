@@ -105,7 +105,7 @@ ACT.anaCase = {
       q: "The four-and-a-half day answer time and the sixty-two re-derived decisions. Where do those land, and are they one problem or two?",
       opts: [
         "One problem in operations: both are project delivery running slower than it should",
-        "Two problems in one activity: both sit in technology development, at different scales",
+        "Two problems in one activity: both of them sit somewhere in technology development, at different scales",
         "Two problems in two activities: coordination in operations, knowledge in technology development",
         "One problem in human resource management, since both are about how staff work"
       ],

@@ -97,14 +97,14 @@ ACT.webQuiz1 = {
       q: "What makes a document a web page rather than simply a file of text somebody stored on a machine?",
       opts: [
         "It sits on a server rather than on a personal computer, which is what the word page is recording",
-        "It is a hypertext document, so it carries both content and links to other documents, which is what lets a reader move between pages in any order",
+        "It is a hypertext document, so it carries both content and links to other documents",
         "It has been indexed by a search engine, since a document nobody can find is not yet part of the web",
         "It is written in a language browsers understand, which is the whole requirement, and links are an optional extra on top"
       ],
       a: 1,
       why: [
         "Where a file sits does not decide what kind of thing it is. The chapter defines a web page by what it contains, and such a page can be written and read on one machine long before it is put on a server.",
-        "Correct. The chapter defines a web page as a hypertext document containing not only content but also hyperlinks, and calls hypertext the key feature of the web.",
+        "Correct. The chapter defines a web page as a hypertext document containing not only content but also hyperlinks, and calls hypertext the key feature of the web, because links are what let a reader move between pages in any order.",
         "Indexing is something a search engine does afterwards, and the material on the deep web makes the opposite case: most of the web has never been indexed and is still the web.",
         "Being readable by a browser is necessary but is not the defining feature. Without links the result would be a library of unconnected documents rather than a web, which is precisely the distinction the word carries."
       ]
@@ -396,14 +396,14 @@ ACT.webQuiz2 = {
       q: "In the interface request shown in this section, the final value passed across is a key identifying the account that will be billed for the work. Which conclusion follows?",
       opts: [
         "It is safe where it is, because values inside an address are discarded as soon as a page has finished loading",
-        "It is a credential travelling in a place that is routinely logged, copied and shared, so treating it exactly like a password is the least that is required",
+        "It is a credential travelling in a place that is routinely logged, copied and shared",
         "It identifies the provider rather than the consumer, so losing it would inconvenience the mapping service rather than the caller",
         "It cannot be misused on its own, because a request is accepted only when the other agreed values are supplied alongside it"
       ],
       a: 1,
       why: [
         "Addresses are among the most copied strings in computing. They turn up in server logs, browser history, screenshots, chat messages and pasted examples, any of which can outlive the page by years.",
-        "Correct. The key names the account that pays, and it is sitting in the part of a request most likely to be recorded and passed on, which is why this section flags it before the cloud material returns to a case built on exactly this failure.",
+        "Correct. The key names the account that pays, and it is sitting in the part of a request most likely to be recorded and passed on, so treating it exactly like a password is the least that is required. That is why this section flags it before the cloud material returns to a case built on exactly this failure.",
         "The key is issued to the consumer so that the provider knows whose account to charge. Whoever holds it can spend against that account, which is why the consumer is the party exposed.",
         "Those other values are supplied by whoever makes the request, so they are no obstacle whatever. Anyone holding the key can supply their own and have the work billed to somebody else."
       ]

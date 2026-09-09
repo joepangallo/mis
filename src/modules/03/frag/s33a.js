@@ -206,7 +206,7 @@ ACT.obsQuiz1 = {
       q: "A hypothetical veterinary practice is told its computers are fine because none of them has failed in four years. What is the chapter&rsquo;s objection to that reasoning?",
       opts: [
         "Equipment becomes unreliable at a predictable age, so a fixed four-year replacement cycle removes the need for judgment",
-        "Obsolescence is measured against what the organization now needs to do, so working equipment can still be too far behind to support the work",
+        "Obsolescence is measured against what the organization now needs to do",
         "Obsolescence applies to software rather than hardware, so the age of the machines is not the relevant question at all",
         "The practice has not depreciated the equipment correctly, so the replacement decision is really an accounting matter"
       ],
@@ -296,7 +296,7 @@ ACT.obsQuiz2 = {
       q: "A hypothetical charity is deciding whether to replace six hundred aging computers and is comparing the vendor quotation against doing nothing. Which cost does the chapter say organizations most often leave out of that comparison?",
       opts: [
         "The purchase price of the software licences, which is normally quoted separately from the hardware and easily overlooked",
-        "The time and resources needed to carry out the upgrade across every machine, which for a fleet of that size usually exceeds the equipment cost",
+        "The time and resources needed to carry out the upgrade across every machine",
         "The cost of retraining every member of staff, which the chapter treats as the single largest component of any upgrade",
         "The interest forgone on the money spent, since the comparison should be made against leaving the funds invested"
       ],

@@ -276,7 +276,7 @@ ACT.netQuiz2 = {
       q: "In a hypothetical two-person design studio each computer can open files kept on the other, and neither machine is set aside to serve. In a hypothetical accounting firm, thirty desks open files kept on one machine that answers all of them and asks nothing of anybody. How does the chapter classify the two?",
       opts: [
         "Both are client-server networks, because in each case a machine is answering requests for files",
-        "The studio is a peer-to-peer network and the firm is a client-server network, because a peer both requests and provides while servers and clients have defined roles",
+        "The studio is a peer-to-peer network and the firm is a client-server network",
         "The studio is a client-server network with two servers, and the firm is peer-to-peer because thirty machines are sharing one resource between them",
         "Neither can be classified until it is known whether the connections are wired or wireless"
       ],

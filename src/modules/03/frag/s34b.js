@@ -119,7 +119,7 @@ ACT.svcQuiz1 = {
       q: "A hypothetical logistics firm rents computing capacity, installs an operating system of its own choosing on it, and runs its warehouse software on top. It is surprised to find it must still account for the operating system licences. Which model is this, and is the surprise justified?",
       opts: [
         "Platform as a service, and the surprise is justified, because the provider supplies the platform and should therefore supply the licences that come with it",
-        "Infrastructure as a service, and the surprise is not justified, because only processing, storage and networking are provided and managing software licences remains the customer&rsquo;s responsibility",
+        "Infrastructure as a service, and the surprise is not justified, because only processing, storage and networking are provided",
         "Software as a service, and the surprise is justified, because a rented application should arrive with everything it needs to run already paid for",
         "Infrastructure as a service, and the surprise is justified, because renting hardware from a provider transfers the cost of anything installed on that hardware to the provider"
       ],
@@ -136,7 +136,7 @@ ACT.svcQuiz1 = {
       opts: [
         "Infrastructure as a service, because the insurer is running software it wrote itself and therefore needs the greatest possible control over the resources",
         "Software as a service, because the insurer wants an application to run without maintaining anything, which is what this model exists to provide",
-        "Platform as a service, because the provider supplies the operating system, web server, database management system and tools while the insurer controls only its own applications",
+        "Platform as a service, because the provider supplies the operating system, web server and database management system",
         "A private cloud, because software written in-house has to run on infrastructure the organization owns and controls itself"
       ],
       a: 2,
@@ -210,7 +210,7 @@ ACT.svcQuiz2 = {
       opts: [
         "The number of machines a provider owns, which follows directly from how large the provider is, so the largest provider is the appropriate choice",
         "The speed at which data can be moved from one provider to another, so the organization should choose whichever provider transfers data fastest",
-        "The ability to adapt to increases or decreases in demand for processing or data storage, so it is a promise to test against your own demand rather than to assume",
+        "The ability to adapt to increases or decreases in demand for processing or data storage",
         "The ability of an application to serve users in more than one country, so it matters to international organizations and not to local ones"
       ],
       a: 2,

@@ -105,7 +105,7 @@ ACT.crsCase = {
         "The reviews worked, so the commercial damage of removing them will be significant",
         "The rise is unrelated, since a rating change cannot move sales by that much",
         "The rise is now a liability, because it is evidence the firm benefited from this",
-        "Nothing yet, because the exhibit does not separate the rating effect from other causes"
+        "Nothing yet, because the exhibit cannot separate this rise from other causes"
       ],
       a: 3,
       why: [
@@ -227,7 +227,7 @@ ACT.crsQuiz = {
       q: "A firm's monitoring watches only for mentions of its own brand name. What does the chapter suggest it will miss?",
       opts: [
         "Complaints about a product where the brand name is not spelled correctly",
-        "Discussion using the terms an opponent would choose rather than the firm's own",
+        "Discussion using the terms an opponent would choose",
         "Anything posted on platforms the firm does not itself have an account on",
         "Coverage in traditional media, which social monitoring tools do not index"
       ],

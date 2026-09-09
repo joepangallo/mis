@@ -223,14 +223,14 @@ ACT.conQuiz = {
     {
       q: "A firm standardises on a cloud productivity suite and cancels its own software licences. Which of the chapter's risks has it accepted along with the saving?",
       opts: [
-        "That the provider decides when features change, and can change them without notice",
+        "That the provider decides when features change",
         "That the tools will be harder to use than the software they replaced",
         "That staff will need more training than the previous suite required",
         "That the annual cost will rise once the introductory pricing period ends"
       ],
       a: 0,
       why: [
-        "Correct. The chapter's upgrade-cycle entry has a benefit and a matching risk: nobody buys upgrades any more, and in exchange the provider's roadmap becomes part of the firm's technology strategy whether it agreed or not.",
+        "Correct. The chapter's upgrade-cycle entry has a benefit and a matching risk: nobody buys upgrades any more, and in exchange the provider's roadmap becomes part of the firm's technology strategy, changing without notice whether it agreed or not.",
         "Ease of use is the chapter's organizational benefit rather than a risk, and it is why these tools spread through a workforce without a project behind them.",
         "The chapter's organizational risk is the opposite: little documentation, training or support exists, precisely because the tools are easy enough that nobody planned for any.",
         "Price increases are a genuine commercial risk of any subscription and are not among the four consequences the chapter tabulates."

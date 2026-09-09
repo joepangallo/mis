@@ -291,7 +291,7 @@ ACT.decApply = {
     {
       q: "A four-person architecture firm wants shared project boards, file storage and e-signature for contracts, with no interest in writing or customizing any software themselves. Which service model fits what they are actually asking for?",
       opts: [
-        "Software as a service, since they want finished applications to use, not infrastructure or a platform to build on",
+        "Software as a service, since they want finished applications to use",
         "Infrastructure as a service, since it gives them the most control over how the applications run",
         "Platform as a service, since it lets them build exactly the workflow they want",
         "None of the three; a firm this size should keep everything on its own office server"

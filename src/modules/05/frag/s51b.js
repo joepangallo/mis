@@ -117,14 +117,14 @@ ACT.netCase = {
     {
       q: "The ward managers say clinical staff will not use a computer for paperwork. What does the chapter suggest about that objection?",
       opts: [
-        "It is a culture and access question that decides the outcome, so it is answered before the build",
+        "It is a culture and access question, so it is settled before the build",
         "It is resistance to change, and the portal should be made mandatory on a fixed date",
         "It is unfounded, because self-service is easier than paper for everybody involved",
         "It is a training issue, so the budget should carry a training allowance and proceed"
       ],
       a: 0,
       why: [
-        "Correct. The chapter is blunt that providing a tool and hoping people use it is not enough, and that the conditions for adoption are a management problem rather than a technical one. Where a nurse can reach a machine mid-shift is part of that.",
+        "Correct. The chapter is blunt that providing a tool and hoping people use it is not enough: the conditions for adoption decide the outcome, and they are a management problem rather than a technical one. Where a nurse can reach a machine mid-shift is part of that.",
         "A mandate produces filed forms and does not produce adoption. It also converts a solvable design question into a grievance, which is the most expensive way to learn what the objection actually was.",
         "Self-service is easier for somebody at a desk with a browser open. Whether it is easier for somebody who has no desk is precisely the thing the ward managers are reporting, and dismissing it discards the best information available.",
         "Training helps and it is not the objection. The managers are describing access and working conditions, and a training budget aimed at a device availability problem buys nothing."
@@ -203,7 +203,7 @@ ACT.netQuiz = {
         "It runs on hardware the company owns rather than on rented cloud infrastructure",
         "It carries only internal information, and never anything a customer could also see",
         "It is written by employees rather than by a communications department",
-        "It is built with web technologies and sits behind the firewall, reachable only by authorised users"
+        "It is built with web technologies and sits behind the company firewall"
       ],
       a: 3,
       why: [
@@ -233,7 +233,7 @@ ACT.netQuiz = {
       q: "A firm computes its portal business case as fifteen transactions times four thousand staff times the saving per transaction. What is the most important thing that calculation leaves out?",
       opts: [
         "The cost of building and running the portal, which offsets the annual saving",
-        "The rework and the delay, which fall on employees rather than on the administration budget",
+        "The rework and the delay, which fall on employees",
         "The employees who will not use it, who reduce the volume the saving applies to",
         "The training and change work, which the chapter says decides whether it is adopted"
       ],

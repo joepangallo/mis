@@ -228,7 +228,7 @@ ACT.infQuiz1 = {
       opts: [
         "Some run facilities of their own while the others rent all of their capacity from a third party",
         "Some build facilities in many countries while the others keep all of their equipment inside one country",
-        "Some rent capacity on their infrastructure to other organizations, while the others use theirs only to run their own services",
+        "Some rent capacity on their infrastructure to other organizations",
         "Some use their facilities for artificial intelligence work while the others use theirs only to store records"
       ],
       a: 2,
@@ -269,7 +269,7 @@ ACT.infQuiz2 = {
       q: "A hypothetical accounting firm lists its technology as the laptops and servers it owns, the operating systems running on them, the disks its records sit on, and the wiring and wireless equipment connecting them all. Which of the chapter&rsquo;s five components has been left off the list?",
       opts: [
         "Nothing has been left off, because those four descriptions cover all five components between them",
-        "Data centers, meaning the dedicated space that houses the equipment and supplies its power, cooling and physical security",
+        "Data centers, meaning the dedicated space that houses the equipment",
         "Storage, because disks belong to hardware and the chapter means something different by storage",
         "Networking, because cables and wireless equipment are hardware rather than a network"
       ],

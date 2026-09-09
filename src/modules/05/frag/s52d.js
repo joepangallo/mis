@@ -209,20 +209,20 @@ ACT.socQuiz = {
         "Technological inertia, since people will not adopt a tool without a tangible benefit",
         "A generation gap, since younger staff hold higher expectations than older colleagues",
         "A critical mass problem, since too few colleagues have joined for it to feel useful",
-        "Consumerization, where consumer products set the usability benchmark for internal tools"
+        "Consumerization, where consumer products set the benchmark for internal tools"
       ],
       a: 3,
       why: [
         "Inertia is refusing to move at all. These staff have moved and are reporting that the destination compares badly, which is a different complaint with a different remedy.",
         "A gap describes differing comfort with these tools across a workforce. Here everybody agrees on the comparison, which is the opposite of a gap.",
         "Thin participation makes a social tool feel useless rather than clumsy, and the complaint described is about the tool itself.",
-        "Correct. The chapter names this directly: applications designed for the consumer marketplace make inroads into organizational settings, and users judge an internal tool against what they already use."
+        "Correct. The chapter names this directly: applications designed for the consumer marketplace make inroads into organizational settings, and users judge an internal tool's usability against what they already use."
       ]
     },
     {
       q: "Why is a large social network so hard for a well-funded new competitor to displace?",
       opts: [
-        "Each additional member makes the incumbent more valuable to every existing member",
+        "Each new member makes the network more valuable to every other member",
         "Members would lose the content they have already posted if they switched",
         "The incumbent can outspend a new entrant on advertising and acquisition",
         "The engineering required to run at that scale is difficult to replicate"

@@ -108,14 +108,14 @@ ACT.orgQuiz1 = {
     {
       q: "Employees increasingly work from home and while travelling, and they need the intranet. Why does the chapter say companies use a virtual private network rather than simply publishing the intranet on the open web behind a password?",
       opts: [
-        "Because a VPN lets employees connect securely to the company&rsquo;s intranet from the road or from home, keeping the traffic protected while it crosses public infrastructure",
+        "Because a VPN lets employees connect securely to the company&rsquo;s intranet from the road or from home",
         "Because a VPN makes the intranet faster, and the speed of the connection is what stops remote staff from using the site",
         "Because an intranet cannot technically be reached from outside the building, so a VPN is what makes the pages exist for a remote worker at all",
         "Because publishing on the open web would require rewriting the intranet in different software, which a VPN avoids having to do"
       ],
       a: 0,
       why: [
-        "Correct. The chapter says increases in employee mobility mean the intranet must be accessible from anywhere, so most companies allow employees to use VPNs to connect securely to the intranet while on the road or working from home.",
+        "Correct. The chapter says increases in employee mobility mean the intranet must be accessible from anywhere, so most companies allow employees to use VPNs to connect securely to the intranet while on the road or working from home, with the traffic protected while it crosses public infrastructure.",
         "A tunnel adds work at both ends rather than removing it, so speed is not the argument. The problem being solved is that the path between the employee and the office is public, not that it is slow.",
         "The site is perfectly reachable in a technical sense, which is exactly the danger. The VPN is chosen so that reachable does not mean reachable by everyone, not because remote access is otherwise impossible.",
         "No rewriting is involved either way. An intranet already uses the same software, hardware and networking technologies as a public site; what a VPN changes is who can get to it and how the traffic travels."

@@ -170,7 +170,7 @@ ACT.adpCase = {
       q: "Only thirty-one of two hundred and eighteen pages were edited by anybody other than their author. Why does that matter?",
       opts: [
         "It shows the pages were accurate enough that no correction was needed",
-        "It shows the wiki is being used as a filing cabinet rather than as peer production",
+        "It shows the wiki is being used as a filing cabinet, not peer production",
         "It shows the version history is not being used, so the tool is misconfigured",
         "It shows most pages are outside the areas other engineers work in"
       ],
@@ -230,7 +230,7 @@ ACT.adpQuiz = {
       opts: [
         "Critical mass, since a general-purpose tool spreads participation too thinly",
         "Technological integration, since a tool with no stated purpose connects to nothing",
-        "Organizational context, since the work should determine the tool rather than the reverse",
+        "Organizational context, since the work should determine the tool",
         "Culture, since staff will not contribute without an explicit instruction to do so"
       ],
       a: 2,

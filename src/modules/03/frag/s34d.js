@@ -119,7 +119,7 @@ ACT.advQuiz1 = {
       q: "The chapter explains interfaces by comparing them to having someone else change your car&rsquo;s oil. What is that comparison actually teaching?",
       opts: [
         "That the cheapest supplier is usually adequate, since the same task produces the same result wherever it is carried out",
-        "That what matters is the service arriving at the expected quality and cost, while how the provider does the work is not the customer&rsquo;s concern",
+        "That what matters is the service arriving at the expected quality and cost",
         "That specialist work belongs in-house, because a customer cannot judge whether an outside provider did the job properly",
         "That a modular approach removes the need for planning, since each provider takes responsibility for its own block"
       ],

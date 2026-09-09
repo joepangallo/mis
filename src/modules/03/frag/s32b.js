@@ -273,14 +273,14 @@ ACT.hwQuiz1 = {
       q: "A hypothetical national parcel carrier keeps its billing and consignment records on one central system that ten thousand staff use simultaneously and that is not permitted to stop. A consultant suggests buying a supercomputer instead. What does the chapter&rsquo;s comparison say?",
       opts: [
         "A supercomputer fits, because it is the most powerful class available and this is the carrier&rsquo;s most demanding system",
-        "A mainframe fits, because it is optimized for high availability, heavy shared use and security, and is the chapter&rsquo;s machine for mission-critical transaction processing",
+        "A mainframe fits, because it is optimized for high availability, heavy shared use and security",
         "Several servers fit better than either, since the chapter describes servers as the class that handles more than a thousand simultaneous users",
         "The two classes are interchangeable at this scale, since the table describes both as serving anywhere from one user to many"
       ],
       a: 1,
       why: [
         "Power is not the axis here. The chapter says supercomputers are used primarily for massive scientific problems and typically not by business organizations; buying one would spend a fortune on the wrong strength.",
-        "Correct. Ten thousand simultaneous users on records that cannot go down is precisely the mainframe description: the main central computing system of a major organization, optimized for availability, shared use and security.",
+        "Correct. Ten thousand simultaneous users on records that cannot go down is precisely the mainframe description: the main central computing system of a major organization, optimized for availability, shared use and security, and the chapter&rsquo;s machine for mission-critical transaction processing.",
         "The figure is right and the conclusion is not. Servers do serve a thousand or more users, but the chapter reserves enterprise-wide transaction processing at this scale and this availability requirement for the mainframe.",
         "The table gives supercomputers one to many users and mainframes ten thousand and more, and it gives them entirely different typical uses, so they are not interchangeable in either direction."
       ]
@@ -317,14 +317,14 @@ ACT.hwQuiz2 = {
         "Servers, because they make a service available to the other machines on the plant network and are reached by many devices at once",
         "Input devices, because they take signals from the line and act on them, which is what the chapter says an input device does",
         "Embedded systems, because any computer without a screen is by definition embedded inside the product it controls",
-        "Programmable logic controllers, which are specialized devices used to automate machines and processes rather than to run whatever software someone installs"
+        "Programmable logic controllers, which are specialized devices used to automate machines and processes"
       ],
       a: 3,
       why: [
         "A server provides files, printing, communications and other services to users of a network. These units are controlling machinery, and nobody is requesting anything from them.",
         "An input device supplies data to a computer and stops there. These units decide and act, which is the difference between reading a sensor and running a conveyor.",
         "The absence of a screen is not the test. Embedded systems sit inside a consumer product such as a media player or a traffic light; the chapter gives control of machines and processes, including ski lifts, its own name.",
-        "Correct. The chapter defines programmable logic controllers as specialized computing devices used to automate machines and processes, in environments from manufacturing plants to ski lifts, and that fixed job is what separates them."
+        "Correct. The chapter defines programmable logic controllers as specialized computing devices used to automate machines and processes, in environments from manufacturing plants to ski lifts. That fixed job, rather than running whatever software someone installs, is what separates them."
       ]
     },
     {
