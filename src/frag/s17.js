@@ -2,7 +2,7 @@
 PROSE.s17 = `<span class="eyebrow">Application supplement &middot; 1&ndash;7</span>
 <h2>The concepts as code</h2>
 
-<p class="lede">Everything in this module so far has been described in words, because that is how the material is usually taught and how it will be examined. Words are also where these ideas go to become vague. This supplement writes four of them as functions instead, because a function cannot be vague &mdash; it either returns the right answer for a case you did not think of, or it does not.</p>
+<p class="lede">Everything so far has been described in words, because that is how the material is taught and examined. Words are also where these ideas go to become vague. This supplement writes four of them as functions instead: a function either returns the right answer for a case you did not think of, or it does not.</p>
 
 <div class="callout info"><b>How this supplement relates to the chapter.</b> Nothing here is new material. Each exercise is a definition you have already read, restated as a contract with test cases attached: the network effect, the difference between data and information, the categories of organizational information system, and Mason&rsquo;s questions about who may see what. The code is the check on whether the definition was actually understood, not an addition to it.</div>
 

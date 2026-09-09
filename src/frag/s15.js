@@ -2,125 +2,93 @@
 PROSE.s15 = `
 <span class="eyebrow">Application supplement &middot; 1&ndash;5</span>
 <h2>Turning information systems into competitive strategy</h2>
-
-<p class="lede">Imagine two grocery chains buying the same checkout software from the same vendor. One uses it to lower labor cost; the other uses it to learn what households buy and make offers the first cannot match. Same software, different <b>intent</b>. This supplemental section applies two strategy tools to that second kind of use.</p>
-
-<div class="callout info"><b>How this supplement relates to the chapter.</b> The chapter defines competitive advantage and cites Porter&rsquo;s work, but it does not present Five Forces or the value chain as a fifth chapter learning objective. The frameworks below come from the Porter works named in the chapter&rsquo;s references and extend Objectives 1.1&ndash;1.4 into a manager&rsquo;s practice exercise.</div>
+<p class="lede">Two grocery chains buy the same checkout software. One cuts labor cost with it; the other learns what households buy and makes offers the first cannot match. Same software, different <b>intent</b>.</p>
+<div class="callout info"><b>How this supplement relates to the chapter.</b> The chapter defines competitive advantage and cites Porter, but does not present Five Forces or the value chain as an objective. They extend Objectives 1.1&ndash;1.4 into practice.</div>
 
 <h3>What &ldquo;strategic&rdquo; means here</h3>
-
-<p>When something your company has or does makes a customer choose you instead of a rival, and the rival cannot easily copy it, you have a <b>competitive advantage</b>.</p>
-
-<p>That is not the same as being good: two coffee shops can both make good coffee, but a shop that learns when to alert you about your usual bean has an advantage because a rival would first need to build comparable customer history.</p>
-
-<p>Of the systems built at <b>Zoom</b> and <b>FedEx</b>, the chapter says the choices made in developing them were <b>strategic in their intent</b>: both were developed, and are continuously updated, to help the companies <b>gain or sustain</b> a competitive advantage over their rivals.</p>
-
-<p>Continuously matters: on average FedEx reengineers and improves their performance twice a year, in ground hubs where a package passing an overhead scanner leaves between one and two seconds to be diverted, so the decision must be made in a few hundred milliseconds.</p>
-
+<p>When something your company does makes a customer choose you instead of a rival, and the rival cannot easily copy it, you have a <b>competitive advantage</b>. That is not the same as being good.</p>
+<p>Two shops can both make good coffee, but one that knows when to alert you about your usual bean has an advantage a rival must build customer history to match. The systems at <b>Zoom</b> and <b>FedEx</b> were <b>strategic in their intent</b>: built and continuously updated to gain or sustain advantage.</p>
 <p>There are three reasons to spend on a system, and only the third is strategic.</p>
-
 <ul class="keys">
-<li><b>Efficiency</b> &mdash; the system does the same work with fewer people or less waste, because the process itself is unchanged and only its cost moves.</li>
-<li><b>Return on investment</b> &mdash; the system pays back what it cost, which the chapter presents as something a system must do, not as the most it can do.</li>
-<li><b>Strategic use</b> &mdash; the system changes the customer&rsquo;s reason to choose you, because it is no longer supporting the offer; it is part of it.</li>
+<li><b>Efficiency</b> &mdash; the same work with fewer people or less waste, so only the cost moves.</li>
+<li><b>Return on investment</b> &mdash; it pays back its cost, which is what a system must do, not the most it can do.</li>
+<li><b>Strategic use</b> &mdash; it changes the customer&rsquo;s reason to choose you, being part of the offer rather than support for it.</li>
 </ul>
-
-<p class="takeaway">Size does not decide which one you get: whether it is a small mom-and-pop boutique or a large government agency, every organization can find a way to use information technology to beat its rivals.</p>
-
-<div class="callout info"><b>The commodity argument, and the chapter&rsquo;s answer.</b> At the start of the millennium, as information systems became standardized and ubiquitous, some argued they were now a commodity every company must have, that IT should target cost reduction and risk mitigation strictly, and that investing for differentiation was futile. The chapter states that argument and rejects it on four counts:
-<ul class="keys">
-<li><b>IT is still moving</b> &mdash; smartphones, social networks and the creative industries show information technology changing rapidly, and many companies gained advantage by innovatively using increasing <b>digital density</b>.</li>
-<li><b>The combination is the advantage</b> &mdash; companies from Amazon to Zoom created advantage by <b>combining commoditized technologies with proprietary systems and business processes</b>.</li>
-<li><b>The data can be the value</b> &mdash; for Google and Facebook, customer-generated data create the value, and how those data are gathered, processed, and used can sustain advantage.</li>
-<li><b>The IT itself can be the product</b> &mdash; Amazon sells cloud computing to others, earning revenue directly from its IT investment.</li>
-</ul>
-The purchased software is never the advantage; what you build on it is.</div>
+<p class="takeaway">Size does not decide which one you get: a corner boutique can beat its rivals with technology too.</p>
+<p>The purchased software is never the advantage. Amazon and Zoom built theirs by combining commoditized technologies with proprietary systems and processes; for Google the customer data are the value.</p>
 
 <h3>A clearly hypothetical practice situation</h3>
-
-<p>Suppose you advise a regional grocer. The following assumptions exist only for this practice situation, and four of them drive everything that follows.</p>
-
+<p>You advise a regional grocer. These assumptions exist only for this practice situation.</p>
 <ul>
-<li>Its shoppers are loyal out of habit, not because of anything the grocer built, so nothing they would lose keeps them from shopping somewhere else.</li>
-<li>Managers phone produce orders to a small supplier pool, so nobody can say chain-wide what is bought or what is paid for it.</li>
-<li>Inventory sits in a separate system in each store, so headquarters cannot say what is on hand chain-wide.</li>
-<li>A members-only warehouse club has entered some local markets, and a meal-kit service advertises across the region.</li>
+<li>Its shoppers are loyal out of habit, so nothing they would lose keeps them from leaving.</li>
+<li>Managers phone produce orders to a few suppliers, so nobody can say chain-wide what is paid.</li>
+<li>Inventory sits in a separate system per store, so headquarters cannot see stock.</li>
+<li>A warehouse club has entered local markets, and a meal-kit service advertises nearby.</li>
 </ul>
 
 <h3>Porter&rsquo;s Five Forces: where the pressure comes from</h3>
-
-<p>Before you can say what technology a company needs, you have to say what is squeezing it. An <b>industry</b> is the set of companies selling the same kind of product to the same kind of customer, and Porter&rsquo;s argument is that profit in any industry is pressed by five separate forces. Name the wrong one and you buy the wrong system.</p>
-
+<p>Before naming the technology a company needs, name what squeezes it. Porter&rsquo;s argument is that profit in any industry is pressed by five forces, and the wrong name buys the wrong system.</p>
 <ul class="keys">
-<li><b>Competitive rivalry</b> is how hard the firms already in your industry fight for the same customers, because they sell nearly the same thing to a limited pool of shoppers &mdash; two gas stations across the street changing their signs the same morning.</li>
-<li><b>Threat of new entrants</b> is how easily a company outside your industry today could compete tomorrow, because whatever keeps outsiders out &mdash; cost, scale, know-how, loyalty, together called <b>barriers to entry</b> &mdash; is low: opening a lemonade stand is easy, starting an airline is not.</li>
-<li><b>Threat of substitutes</b> is a different product meeting the same underlying need, so the customer never enters your industry; for a grocer that is not another grocer but the meal kit, the delivery app, the restaurant.</li>
-<li><b>Bargaining power of buyers</b> is your customers&rsquo; ability to push your price down or your service up, because leaving costs them little &mdash; one shopper with a price app and a nearby rival has more power than you think.</li>
-<li><b>Bargaining power of suppliers</b> is the reverse: the firms you buy from can raise prices or set terms, because you have few alternatives. The chapter reports this pressure without naming it a force &mdash; few suppliers worldwide can, on relatively short notice, produce the numbers needed to meet demand for Apple&rsquo;s products, so shifting suppliers is not easy for Apple.</li>
+<li><b>Competitive rivalry</b> &mdash; how hard the firms already in your industry fight over the same shoppers.</li>
+<li><b>Threat of new entrants</b> &mdash; how easily an outsider could compete tomorrow, given the <b>barriers to entry</b>: cost, scale, know-how, loyalty.</li>
+<li><b>Threat of substitutes</b> &mdash; a different product meeting the same need, so for a grocer the meal kit, not another grocer.</li>
+<li><b>Bargaining power of buyers</b> &mdash; your customers&rsquo; ability to push price down or service up, because leaving costs them little.</li>
+<li><b>Bargaining power of suppliers</b> &mdash; the reverse, when few alternatives exist, as with Apple&rsquo;s assembly volumes.</li>
 </ul>
-
-<p>Each force also has a <b>signal</b> that it is the strong one, and a kind of IT initiative that relieves it.</p>
+<p>Each force has a signal, and an initiative that relieves it.</p>
 
 <div class="activity" data-activity="strForces"></div>
 
-<p>One lost sale can be told as a story about any of three forces, which is what makes naming them hard.</p>
+<p>One lost sale can be told as a story about any of three forces.</p>
 
 <div class="activity" data-activity="strQuiz1"></div>
 
 <h3>Porter&rsquo;s Value Chain: where inside the company to act</h3>
-
-<p>The five forces describe the weather outside the building; they never say which department to change. For that you need a map of the company itself: the <b>value chain</b>, which cuts a firm into nine activities, each of which either adds value a customer will pay for or destroys it. Those nine fall into two groups.</p>
-
+<p>The five forces describe the weather outside; they never say which department to change. The <b>value chain</b> cuts a firm into nine activities, each adding value a customer will pay for or destroying it.</p>
 <ul class="keys">
-<li><b>Primary activities</b> &mdash; the five stages a product passes through on its way to the customer, so a change to one of them eventually reaches the buyer.</li>
-<li><b>Support activities</b> &mdash; the four that touch no single product but make the others possible, so their payoff shows up spread across all five primary ones.</li>
+<li><b>Primary activities</b> &mdash; the five stages a product passes through, so a change to one reaches the buyer.</li>
+<li><b>Support activities</b> &mdash; the four touching no single product but making the others possible.</li>
 </ul>
-
-<p>The table takes all nine in turn, with a system that adds value in each.</p>
-
 <div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Activity</th><th>What it covers</th><th>A system that adds value here</th></tr></thead>
+<thead><tr><th>Activity</th><th>What it covers</th></tr></thead>
 <tbody>
-<tr><td><b>Inbound logistics</b><br><span class="mini">primary</span></td><td>Receiving, storing and moving arrived goods, before they are sellable.</td><td>A dock scanner counting a pallet as it is unloaded, so nobody reorders what arrived.</td></tr>
-<tr><td><b>Operations</b><br><span class="mini">primary</span></td><td>Turning inputs into what the customer buys &mdash; a stocked, priced shelf.</td><td>Register scans becoming restock tasks, so the milk case refills before it empties.</td></tr>
-<tr><td><b>Outbound logistics</b><br><span class="mini">primary</span></td><td>Getting the finished product out to the customer.</td><td>Pickup and delivery batched by neighborhood, in slots a driver can meet.</td></tr>
-<tr><td><b>Marketing and sales</b><br><span class="mini">primary</span></td><td>Making customers aware and giving them a reason to choose you.</td><td>A loyalty program targeting the item a household stopped buying.</td></tr>
-<tr><td><b>Service</b><br><span class="mini">primary</span></td><td>Keeping the customer whole after the sale &mdash; returns, complaints, repairs.</td><td>A returns screen showing purchase history, so a refund can be resolved quickly.</td></tr>
-<tr><td><b>Firm infrastructure</b><br><span class="mini">support</span></td><td>General management, finance, accounting, legal and planning.</td><td>Margin by store by day, so a losing location appears early rather than after a reporting cycle.</td></tr>
-<tr><td><b>Human resource management</b><br><span class="mini">support</span></td><td>Recruiting, hiring, training, scheduling and keeping people.</td><td>Scheduling built on forecast traffic, so the busiest hour is not the thinnest.</td></tr>
-<tr><td><b>Technology development</b><br><span class="mini">support</span></td><td>Improving the product and the processes themselves &mdash; research, design, systems built in house.</td><td>Building a differentiated app instead of relying only on one every rival can rent.</td></tr>
-<tr><td><b>Procurement</b><br><span class="mini">support</span></td><td>Finding, qualifying and contracting suppliers &mdash; the buying decision for the whole firm.</td><td>A portal where approved growers quote on one order, with expiry dates visible.</td></tr>
+<tr><td><b>Inbound logistics</b><br><span class="mini">primary</span></td><td>Receiving, storing, and moving goods before they are sellable.</td></tr>
+<tr><td><b>Operations</b><br><span class="mini">primary</span></td><td>Turning inputs into what the customer buys: a priced shelf.</td></tr>
+<tr><td><b>Outbound logistics</b><br><span class="mini">primary</span></td><td>Getting the finished product to the customer.</td></tr>
+<tr><td><b>Marketing and sales</b><br><span class="mini">primary</span></td><td>Making customers aware and giving them a reason to choose.</td></tr>
+<tr><td><b>Service</b><br><span class="mini">primary</span></td><td>Keeping the customer whole after the sale: returns and repairs.</td></tr>
+<tr><td><b>Firm infrastructure</b><br><span class="mini">support</span></td><td>General management, finance, accounting, and planning.</td></tr>
+<tr><td><b>Human resource management</b><br><span class="mini">support</span></td><td>Recruiting, training, scheduling, and keeping people.</td></tr>
+<tr><td><b>Technology development</b><br><span class="mini">support</span></td><td>Improving the product and the processes: research, design, in-house systems.</td></tr>
+<tr><td><b>Procurement</b><br><span class="mini">support</span></td><td>Finding, qualifying, and contracting the firm&rsquo;s suppliers.</td></tr>
 </tbody>
 </table></div>
-
-<div class="callout warn"><b>The distinction most often missed.</b> <b>Procurement</b> is deciding whom to buy from and on what terms; <b>inbound logistics</b> is what happens to the goods after that decision, from truck to shelf. A quote-comparison portal is procurement and a dock scanner is inbound logistics, and confusing them puts your recommendation in the wrong department.</div>
+<div class="callout warn"><b>The distinction most often missed.</b> <b>Procurement</b> is deciding whom to buy from; <b>inbound logistics</b> is what happens to the goods after that. A quote portal is procurement, a dock scanner is inbound logistics.</div>
 
 <div class="activity" data-activity="strValueChain"></div>
 
-<h3>From a finding to a recommendation you can defend</h3>
-
-<p>Turning a finding into a proposal an executive will fund has four parts, and they have to arrive in this order.</p>
-
+<h3>From a finding to a recommendation</h3>
+<p>A proposal an executive will fund has four parts, in this order.</p>
 <ol class="steps">
-<li><b>Name the force or the activity</b> exactly, because a recommendation that opens with technology has skipped the diagnosis.</li>
-<li><b>Give the evidence</b>, the observable fact behind the finding &mdash; sales falling only at locations exposed to a new competitor &mdash; because evidence is what stops the meeting being two opinions.</li>
-<li><b>State the initiative</b> concretely: not &ldquo;improve our digital capabilities&rdquo; but &ldquo;one chain-wide inventory record updated at the dock and the register.&rdquo;</li>
-<li><b>Commit to a measurable outcome</b>, the number that will move and the date you check it, because a system with no defined result can only be defended, never judged.</li>
+<li><b>Name the force or activity</b> exactly: a recommendation that opens with technology has skipped the diagnosis.</li>
+<li><b>Give the evidence</b>, the observable fact behind it, so the meeting is not two opinions.</li>
+<li><b>State the initiative</b> concretely: not &ldquo;improve digital capabilities&rdquo; but &ldquo;one chain-wide inventory record.&rdquo;</li>
+<li><b>Commit to a measurable outcome</b>: the number that moves, and the date you check it.</li>
 </ol>
-
-<div class="callout tip"><b>Say it in one sentence.</b> Because [force or activity] is [strong or weak], shown by [evidence], we should build [initiative], which we will judge by [measure] at [date]. If you cannot fill every slot, you do not have a recommendation yet &mdash; you have a preference.</div>
+<div class="callout tip"><b>Say it in one sentence.</b> Because [force or activity] is [strong or weak], shown by [evidence], build [initiative], judged by [measure] at [date].</div>
 
 <div class="activity" data-activity="strStrategySim"></div>
 
-<div class="callout warn"><b>Two cautions the chapter insists on.</b> Both limit what any system, however well built, can do for you:
+<p>Two cautions limit what any system can do.</p>
 <ul class="keys">
-<li><b>The business model comes first</b> &mdash; companies with bad business models tend to fail regardless of whether they use information technology, while companies with good business models that use IT successfully to carry them out tend to be very successful, because the system amplifies the idea rather than replacing it.</li>
-<li><b>The advantage can be fleeting</b> &mdash; competitive advantage from the use of information systems fades because competitors can eventually do the same thing, which is why the goal is gain <i>or sustain</i>, and why FedEx keeps rebuilding systems it already leads with.</li>
-</ul></div>
+<li><b>The business model comes first</b> &mdash; firms with bad models fail whether or not they use technology, because a system amplifies an idea rather than replacing it.</li>
+<li><b>The advantage can be fleeting</b> &mdash; it fades because competitors eventually do the same thing, which is why FedEx keeps rebuilding.</li>
+</ul>
+<p>Two questions on both of them.</p>
 
 <div class="activity" data-activity="strQuiz2"></div>
 
-<p>The five companies below are not the practice grocer, and none of them is real. Naming the force, placing a system correctly, and catching a claim of permanent advantage are the same three judgments, asked about businesses you have not seen worked out already.</p>
+<p>The five companies below are invented. Naming the force, placing a system, and catching a claim of permanent advantage are the same three judgments.</p>
 
 <div class="activity" data-activity="strApply"></div>
 `;

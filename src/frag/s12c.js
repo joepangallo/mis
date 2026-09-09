@@ -2,134 +2,91 @@
 PROSE.s12c = `
 <span class="eyebrow">Section 1&ndash;2c</span>
 <h2>Information systems inside an organization</h2>
-<p class="lede">Information systems do not exist in a vacuum; they are built and used inside a context, and that context is almost always an organization. It is the last piece of the definition.</p>
-
-<p>Organizations put information systems in place for four blunt reasons, and not one of them is &ldquo;because the technology is new.&rdquo;</p>
+<p class="lede">Information systems do not exist in a vacuum. They are built and used inside a context, and that context is almost always an organization &mdash; the last piece of the definition.</p>
+<p>Organizations put systems in place for four blunt reasons, and none is that the technology is new.</p>
 <ul class="keys">
 <li><b>To become more productive and profitable</b> &mdash; the system must pay for itself in work or money.</li>
 <li><b>To gain competitive advantage</b> &mdash; it does something rivals cannot, or does it faster.</li>
-<li><b>To reach more customers</b> &mdash; a website reaches anyone with a browser.</li>
+<li><b>To reach more customers</b> &mdash; a website is open to anyone with a browser.</li>
 <li><b>To improve customer service</b> &mdash; answering a question faster is its own reason.</li>
 </ul>
-<p>None of those motives is unique to business: the same four hold for professional, social, religious, educational, and governmental organizations, and for industries from medical to legal to manufacturing.</p>
-
-<div class="callout info">
-<p><b>A government example, not a Silicon Valley one.</b> The U.S. Internal Revenue Service launched its own website for exactly those reasons. Roughly <b>220,000 users</b> visited in the first 24 hours and <b>more than one million</b> in the first week &mdash; before the address had even been officially announced. Facebook.com and WSJ.com now take millions of visitors a day.</p>
-</div>
+<p>None of that is unique to business: the same four hold for religious, educational, and governmental organizations alike.</p>
 
 <h3>One company, three questions</h3>
 <p>People at different heights in a company need different kinds of information.</p>
 <ul class="keys">
-<li><b>A cashier</b> &mdash; she needs the price of the item in her hand right now, because a customer is waiting.</li>
-<li><b>Her store manager</b> &mdash; he needs to know which items ran out last week across the store, so next week&rsquo;s order is right.</li>
+<li><b>A cashier</b> &mdash; she needs the price of the item in her hand now, because a customer is waiting.</li>
+<li><b>Her store manager</b> &mdash; he needs to know which items ran out last week, to get next week&rsquo;s order right.</li>
 <li><b>A senior leader</b> &mdash; she needs to know whether a store in a new state will pay for itself.</li>
 </ul>
-<p>Same data, three questions &mdash; and the catalogue below sorts largely by which question a system answers.</p>
+<p>Same data, three questions. Pick a layer of work below and see which system serves it.</p>
 
 <div class="activity" data-activity="orgLevels"></div>
 
-<h3>The catalogue: major categories of information systems</h3>
-<p>Read the middle column first: the category names are only labels for the job described there.</p>
-
+<h3>The catalogue of system categories</h3>
+<p>Read the purpose column first: the names are only labels for the job beside them.</p>
 <div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Category of system</th><th>Purpose</th><th>Sample application</th></tr></thead>
+<thead><tr><th>Category of system</th><th>Purpose</th></tr></thead>
 <tbody>
-<tr><td><b>Transaction processing system</b> (TPS)</td><td>Processes day-to-day business event data at the operational level of the organization</td><td>Grocery checkout register on a network; student registration</td></tr>
-<tr><td><b>Management information system</b> (MIS)</td><td>Produces detailed information to help manage a firm or part of a firm</td><td>Inventory management and planning; student enrollment management</td></tr>
-<tr><td><b>Decision support system</b> (DSS)</td><td>Provides analysis tools and access to databases to support quantitative decision making</td><td>Product demand forecasting; loan and investment analysis</td></tr>
-<tr><td><b>Intelligent system</b></td><td>Emulates or enhances human capabilities</td><td>Analyzing bank loan applications; self-driving cars; Siri, Alexa, ChatGPT, Gemini</td></tr>
-<tr><td><b>Business intelligence system</b></td><td>Analyzes Big Data to better understand various aspects of a business</td><td>Online analytical processing (OLAP); data visualization</td></tr>
-<tr><td><b>Office automation system</b> (personal productivity software)</td><td>Supports a wide range of predefined day-to-day work activities of individuals and small groups</td><td>Word processor, spreadsheet, presentation software, email client</td></tr>
-<tr><td><b>Collaboration system</b></td><td>Enables people to communicate, collaborate, and coordinate with each other</td><td>Email system with an automated, shared calendar</td></tr>
-<tr><td><b>Knowledge management system</b></td><td>Enables the generation, storage, sharing, and management of knowledge assets</td><td>Knowledge portal for common questions</td></tr>
-<tr><td><b>Social software</b></td><td>Facilitates collaboration and knowledge sharing</td><td>A social network connecting colleagues and friends</td></tr>
-<tr><td><b>Geographic information system</b> (GIS)</td><td>Creates, stores, analyzes, and manages geographically referenced data</td><td>Route planning system</td></tr>
-<tr><td><b>Functional area information system</b></td><td>Supports the activities within a specific functional area of the firm</td><td>Planning system for personnel training and work assignments</td></tr>
-<tr><td><b>Customer relationship management</b> (CRM)</td><td>Supports interaction between the firm and its customers</td><td>Sales force automation; lead generation</td></tr>
-<tr><td><b>Enterprise resource planning</b> (ERP)</td><td>Supports and integrates all facets of the business, including planning, manufacturing, sales, and marketing</td><td>Financial, operations, and human resource management</td></tr>
-<tr><td><b>Supply chain management</b> (SCM)</td><td>Supports the coordination of suppliers, product or service production, and distribution</td><td>Procurement planning</td></tr>
-<tr><td><b>Electronic commerce system</b></td><td>Enables customers to buy goods and services from a firm&rsquo;s website</td><td>Amazon, eBay, Nordstrom.com</td></tr>
-<tr><td><b>Mobile app</b></td><td>Performs a well-defined function, typically on a mobile device</td><td>Instagram, Snapchat, WhatsApp, Office Mobile, Google Pay, Lyft</td></tr>
+<tr><td><b>Transaction processing system</b> (TPS)</td><td>Processes day-to-day business event data at the operational level of the organization</td></tr>
+<tr><td><b>Management information system</b> (MIS)</td><td>Produces detailed information to help manage a firm</td></tr>
+<tr><td><b>Decision support system</b> (DSS)</td><td>Provides analysis tools and access to databases to support quantitative decision making</td></tr>
+<tr><td><b>Intelligent system</b></td><td>Emulates or enhances human capabilities</td></tr>
+<tr><td><b>Business intelligence system</b></td><td>Analyzes Big Data to understand aspects of a business</td></tr>
+<tr><td><b>Office automation system</b></td><td>Supports a wide range of predefined day-to-day work activities of individuals and small groups</td></tr>
+<tr><td><b>Collaboration system</b></td><td>Enables people to communicate, collaborate, and coordinate</td></tr>
+<tr><td><b>Knowledge management system</b></td><td>Enables the generation, storage, sharing, and management of knowledge assets</td></tr>
+<tr><td><b>Geographic information system</b> (GIS)</td><td>Creates, stores, analyzes, and manages geographically referenced data</td></tr>
+<tr><td><b>Customer relationship management</b> (CRM)</td><td>Supports interaction between the firm and its customers</td></tr>
+<tr><td><b>Enterprise resource planning</b> (ERP)</td><td>Supports and integrates all facets of the business</td></tr>
+<tr><td><b>Supply chain management</b> (SCM)</td><td>Supports the coordination of suppliers, product or service production, and distribution</td></tr>
+<tr><td><b>Electronic commerce system</b></td><td>Enables customers to buy goods and services from a firm&rsquo;s website</td></tr>
 </tbody>
 </table></div>
-
-<p>The transaction processing system is the foundation. Besides processing customer transactions efficiently, it generates a tremendous amount of data the firm can learn from, and two everyday examples show it.</p>
+<p>The transaction processing system is the foundation, and it also generates enormous amounts of data to learn from.</p>
 <ul>
-<li>Your grocery store scans bar codes at the register, then prints discount coupons on the back of the receipt for products related to what you just bought.</li>
-<li>Amazon processes thousands of transactions an hour from around the world, feeding large data warehouses that are analyzed to produce purchase recommendations for future customers.</li>
+<li>Your grocery store scans bar codes, then prints coupons on the receipt for related products.</li>
+<li>Amazon processes thousands of transactions an hour, feeding warehouses that produce recommendations for later customers.</li>
 </ul>
-<p>TPS data are then sorted and organized to support managerial decision making &mdash; most often through a management information system &mdash; and they also feed decision support, intelligent, business intelligence, and knowledge management systems, social software, geographic information systems, and functional area information systems.</p>
+<p>That data feeds the management information, decision support, business intelligence, and knowledge management systems. Pair each category with its purpose.</p>
 
 <div class="activity" data-activity="orgMatch"></div>
+
+<p>Now name the class of system each situation calls for.</p>
 
 <div class="activity" data-activity="orgQuiz1"></div>
 
 <h3>Why the boxes leak</h3>
-<p>Ten to 15 years ago it was typical to see a system that fell cleanly into one of these categories. Three developments ended that.</p>
-<ul class="keys">
-<li><b>Enterprise systems</b> &mdash; many organizations replaced stand-alone systems with ones that span the entire organization.</li>
-<li><b>Internetworking</b> &mdash; connecting host computers and their networks into larger networks, the internet being the giant example, let systems reach each other.</li>
-<li><b>Systems integration</b> &mdash; connecting separate, often modular systems and their data using technologies such as APIs, to improve business processes and decision making, stitched the pieces into one flow.</li>
-</ul>
-<p>Many systems no longer sit in the building at all; they live in the cloud, reached through a browser when needed.</p>
-<p>So a modern system usually spans several categories at once: collecting data from across the firm and from customers, integrating it from diverse sources, and presenting it to busy decision makers with tools to analyze it.</p>
-<p>Customer relationship management, supply chain management, and enterprise resource planning are the clearest cases &mdash; each carries so many features and data types that it refuses to sit in one row. The categories still matter, because they name the goals, features, and functions a system delivers.</p>
-
+<p>Ten or fifteen years ago a system fell cleanly into one category. Enterprise systems, internetworking, and integration ended that, and many systems no longer sit in the building at all. A modern one spans several categories &mdash; CRM, SCM, ERP &mdash; yet the categories still name what a system is for.</p>
 <div class="callout tip">
-<p><b>How to use the catalogue.</b> Do not ask &ldquo;what category is this product?&rdquo; Ask &ldquo;what job needs doing?&rdquo; Recording an event, summarizing events for a manager, and modeling a decision are three different jobs. Name the job; the category follows.</p>
+<p><b>How to use the catalogue.</b> Do not ask what category a product is. Ask what job needs doing: recording an event, summarizing events for a manager, and modeling a decision are three different jobs. Name the job; the category follows.</p>
 </div>
 
 <div class="activity" data-activity="orgPick"></div>
 
 <h3>Organizing the IS function</h3>
-<p>The people who run technology inside a company are the <b>IS function</b>, and their old reputation was earned. Old-school IS personnel held three beliefs about their own job.</p>
-<ul>
-<li>They owned and controlled the computing resources, so any change was theirs to grant or refuse.</li>
-<li>They knew better than users what those users needed.</li>
-<li>Their job was to tell users what they could and could not do.</li>
-</ul>
-<p>Early IS departments carried huge backlogs and delivered systems that were over budget, late, hard to use, and unreliable.</p>
-
-<p>Technology became too pervasive for that to survive. Fast-paced competition forced firms to treat IS as an enabler that streamlines business processes, improves customer service, and connects stakeholders inside and outside the company. Many organizations also realized that some of the best ideas for solving business problems come from the employees using the system.</p>
-<p>So IS units moved into a <b>consulting relationship</b> with their users, built on four habits.</p>
+<p>The people who run technology inside a company are the <b>IS function</b>, and their old reputation was earned: they owned the computing resources, thought they knew better than users, and saw the job as saying no. Early departments shipped late, over budget, and hard to use.</p>
+<p>Competition forced firms to treat IS as an enabler, and many realized the best ideas come from the employees using the system. IS units moved into a <b>consulting relationship</b> with users, built on four habits.</p>
 <ul class="keys">
 <li><b>Reach out first</b> &mdash; they seek user input instead of waiting for complaints.</li>
 <li><b>Change fast</b> &mdash; they modify systems at a moment&rsquo;s notice to meet a need.</li>
 <li><b>Welcome ideas</b> &mdash; they celebrate new ideas rather than explaining why they will not work.</li>
-<li><b>Hand over ownership</b> &mdash; they treat the technology and the information as belonging to the customer, and they build <b>help desks, hotlines, information centers, and training centers</b> to support them.</li>
+<li><b>Hand over ownership</b> &mdash; the technology and information belong to the customer, supported by help desks and training centers.</li>
 </ul>
-<p class="takeaway">A firm is unproductive when IS staff and everyone else are at odds and remarkably productive when they work hand in hand: technology is potentially the great lever, but it works best when people use it together rather than against each other.</p>
+<p class="takeaway">A firm is unproductive when IS staff and everyone else are at odds, and remarkably productive when they work hand in hand.</p>
 
 <h3>The pervasiveness of technology</h3>
-<p>Technology is now entrenched within the business units themselves &mdash; accounting, sales, marketing &mdash; so the seam between the technology and the business is hard to find.</p>
-<p>In many organizations, especially those using agile approaches such as <b>scrum</b>, the builders and managers of a system spend most of their time out in the business unit with its users, often permanently placed there with an office, desk, phone, and PC. Systems staff commonly have education, training, and experience in information systems <b>and</b> in the functional area the system supports, such as finance.</p>
-<p>Because systems are used so broadly, IS personnel often have <b>dual-reporting relationships</b>, reporting both to the central IS group and to the business function they serve. Firms want the benefits of decentralizing the IS function, but they are not willing &mdash; and not able &mdash; to forgo the benefits of centralizing it, so they try to hold both at once and keep a coordinating centre alongside the local staff.</p>
-<ul class="keys">
-<li><b>What decentralization buys</b> &mdash; flexibility, adaptability, and systems responsiveness, because builders sit beside users.</li>
-<li><b>What centralization buys</b> &mdash; coordination, economies of scale, compatibility, and connectivity firm-wide.</li>
-<li><b>Why central planning survives</b> &mdash; some centralized planning still has to exist, to achieve economies of scale in acquiring and developing systems and to keep systems integration and enterprise networking coherent.</li>
-</ul>
-<p>The clock is speeding up too: IS departments once thought in five-year time frames, but new devices now arrive every 6&ndash;18 months, so firms need people who understand the technology side and the business side at once. That is why how information systems are managed matters no matter which career you choose.</p>
-
-<h3>When things go wrong: technology addiction</h3>
+<p>Technology is entrenched inside the business units. Where firms use agile approaches such as <b>scrum</b>, a system&rsquo;s builders sit with its users, trained in information systems <b>and</b> in the area they support.</p>
+<p>Hence the <b>dual-reporting relationships</b>: to the central IS group and to the business function. Decentralizing buys flexibility; centralizing buys coordination, economies of scale, and compatibility. Firms want both.</p>
 <div class="callout warn">
-<p>Beginning in <b>2018</b>, online gaming was designated by health experts as a real, diagnosable addiction. The numbers are blunt.</p>
+<p><b>When things go wrong: technology addiction.</b> Since <b>2018</b>, online gaming has been a diagnosable addiction. The mechanism is chemical: <b>dopamine</b>, released when we are stimulated, means a like can addict as cocaine does.</p>
 <ul>
-<li>Average adults consume more than <b>11 hours</b> of media a day.</li>
-<li>Fifty percent of 18- to 24-year-olds check their phone within five minutes of waking up.</li>
-<li>A third of 25- to 34-year-olds open social media sites or apps more than ten times a day.</li>
-<li>A majority of adolescents already claim to be addicted to technology, and too much screen time can affect memory and lead to a decline in academic performance.</li>
-<li>The average human attention span has fallen from <b>12 seconds</b> at the turn of this century to <b>8 seconds</b> &mdash; less than a goldfish.</li>
-<li>University of Pennsylvania researchers have shown that social media use decreases overall health and well-being.</li>
-</ul>
-<p>The mechanism is chemical: <b>dopamine</b>, the brain chemical associated with pleasure, is released when we are stimulated, and the hit from a like or a status update can have the same addicting effect as drugs like cocaine or heroin. Being plugged in constantly also leaves the brain hyper-aroused, so we walk around in a constant state of distraction.</p>
-<p>There is a bright side: younger generations, immersed in this technology their whole lives, may be better able to adjust and adapt. The suggested fixes are unglamorous.</p>
-<ul class="split">
-<li>Start by turning the gadgets off for a while each day.</li>
-<li>Improve your overall health, which helps as well: eat right, stay hydrated, and work out regularly.</li>
-<li>Get enough sleep, and do not fall asleep to Netflix or Instagram.</li>
+<li>Adults consume over <b>11 hours</b> of media a day, and half of 18- to 24-year-olds check the phone five minutes after waking.</li>
+<li>The average attention span fell from <b>12 seconds</b> in 2000 to <b>8 seconds</b>.</li>
+<li>The fixes are unglamorous: switch the gadgets off part of each day, eat and exercise properly, sleep enough.</li>
 </ul>
 </div>
+<p>Three questions on the IS function and what constant connection costs.</p>
 
 <div class="activity" data-activity="orgQuiz2"></div>
 `;

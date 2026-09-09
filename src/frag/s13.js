@@ -2,141 +2,86 @@
 PROSE.s13 = `
 <span class="eyebrow">Section 1&ndash;3</span>
 <h2>The dual nature of information systems</h2>
+<p class="lede">Information systems are now so important, and so expensive, that the chapter reaches for a blunt image: information technology is <b>like a sword</b>. You can wield it as a weapon, but those who live by the sword sometimes die by it.</p>
+<p>A <b>competitive weapon</b> is anything that makes a customer pick you over the shop across the street &mdash; a live delivery map, say. On the night it fails, the customers who chose you for it feel most let down. That is the <b>dual nature of information systems</b>.</p>
 
-<p class="lede">Information systems have become so important, and so expensive, that the chapter reaches for a blunt image: information technology is <b>like a sword</b>. You can use it effectively as a competitive weapon &mdash; but, as the old saying goes, those who live by the sword sometimes die by the sword. That is the <b>dual nature of information systems</b>, taught here through two cases: one system that went wrong, one that works.</p>
-
-<p>A <b>competitive weapon</b> is anything that makes a customer pick you over the business across the street: a live delivery map, say, when the pizza place down the road still makes you phone and ask. It cuts both ways, because on the night the map fails, the customers who chose you for it feel most let down.</p>
-
-<h3>Case in Point: an information system gone awry &mdash; Zoom outages disrupt (almost) everyone</h3>
-
-<p>The COVID-19 pandemic of early 2020 left people facing stay-at-home orders, travel bans, and other mobility restrictions, so they turned to information systems for everything from working from home to the most mundane tasks. Activities that had never been online moved online at once:</p>
-
-<ul>
-<li><b>Delivery apps surged</b>, because errands that once meant going somewhere now had to be ordered.</li>
-<li><b>Companies scrambled</b> to move documents and workflows to the cloud, since the office was out of reach.</li>
-<li><b>Entire social lives moved onto Zoom</b>, from exercise classes to church service.</li>
+<h3>A system gone awry: the Zoom outage</h3>
+<p>The 2020 pandemic pushed people to information systems for everything, and activities never online before moved there at once.</p>
+<ul class="keys">
+<li><b>Errands became orders</b> &mdash; delivery apps surged, because going out was no longer an option.</li>
+<li><b>Offices became clouds</b> &mdash; firms scrambled to move documents and workflows online, the building being shut.</li>
+<li><b>Social life became Zoom</b> &mdash; exercise classes and church services alike ran on one videoconferencing platform.</li>
 </ul>
-
-<p>Videoconferencing was not new, because many companies had long used it to replace face-to-face meetings. What was new is how far it reached: Zoom&rsquo;s daily meeting participants surged to over <b>300 million</b>.</p>
-
-<p>Such a tremendous unforeseen increase in users can quickly cause problems, and on <b>Sunday morning, May 17, 2020</b> (U.S. time), it did: users suddenly started experiencing issues accessing the service. Comparatively few businesses and professionals were impacted, because it was a Sunday.</p>
-
-<p>The largest impact was for <b>churches</b>, which had moved their services online; with many worshippers unable to connect, churches across the United States were forced to end their services early. Zoom restored the systems by the afternoon, and the lesson stands: relying on a <b>single provider</b> can quickly disrupt many activities in unforeseen ways.</p>
-
-<div class="callout warn"><b>Notice what the chapter does not blame.</b> No hacker, no sabotage, no blunder &mdash; the trouble came from success. The growth that made Zoom indispensable made its bad Sunday everybody&rsquo;s bad Sunday.</div>
+<p>Videoconferencing was not new; the reach was. Daily meeting participants surged past <b>300 million</b>, and on <b>Sunday morning, May 17, 2020</b>, users suddenly could not get in. It was a Sunday, so few businesses were hit. Churches were, and services ended early.</p>
+<div class="callout warn"><b>Notice what the chapter does not blame.</b> No hacker, no sabotage, no blunder. The growth that made Zoom indispensable made its bad Sunday everybody&rsquo;s, and relying on a <b>single provider</b> is the lesson.</div>
+<p>Put the six stages of that failure back in order.</p>
 
 <div class="activity" data-activity="dualOutageOrder"></div>
 
-<h3>Case in Point: an information system that works &mdash; FedEx</h3>
-
-<p><b>FedEx</b>, an US$87.7 billion family of companies (2024 data), is the world&rsquo;s largest express transportation company, delivering millions of packages and millions of pounds of freight to over 220 countries and territories each business day, and it continuously updates and fine-tunes its extensive, interconnected information systems to improve its services and sustain a competitive advantage.</p>
-
+<h3>A system that works: FedEx</h3>
+<p><b>FedEx</b>, an US$87.7 billion family of companies, is the world&rsquo;s largest express transporter, and it keeps updating its systems to sustain a competitive advantage.</p>
 <div class="tbl-wrap"><table class="tbl"><thead><tr><th>What the systems coordinate</th><th>The chapter&rsquo;s figure</th></tr></thead><tbody>
-<tr><td>People and fleet</td><td>More than 500,000 employees, almost 700 aircraft, more than 200,000 ground vehicles</td></tr>
-<tr><td>FedEx.com traffic</td><td>More than 80 million unique visitors a month; more than 500 million tracking requests per day</td></tr>
-<tr><td>Time to divert a package after it passes an overhead scanner</td><td>Between 1 and 2 seconds; decisions made in a few hundred milliseconds</td></tr>
-<tr><td>Performance reengineered and improved</td><td>On average, twice a year</td></tr>
-<tr><td>Packages delivered within one business day</td><td>A quarter of all daily packages handled</td></tr>
+<tr><td>FedEx.com traffic</td><td>Over 80 million visitors a month; over 500 million tracking requests a day</td></tr>
+<tr><td>Time to divert a package after a scan</td><td>One to two seconds; decided in a few hundred milliseconds</td></tr>
+<tr><td>Performance reengineered</td><td>On average, twice a year</td></tr>
+<tr><td>Delivered within one business day</td><td>A quarter of all daily packages</td></tr>
 </tbody></table></div>
-
-<p>Accuracy, not the web page, is the product: FedEx strives to provide the most accurate tracking information to each visitor.</p>
-
-<p>The divert window is the binding constraint, because each package typically travels through at least one <b>sorting facility</b> where conveyor belts scan and reroute it, and no human decides a route in a few hundred milliseconds. That is why the chapter calls automation in the ground hubs another <b>enabler of competitive advantage</b> that helped position FedEx as the global leader in express transportation.</p>
-
-<h3>What the two cases share, and what separates them</h3>
-
-<p>Both are typical of systems that are pervasive in today&rsquo;s life or used in large, complex organizations, so they share three traits:</p>
-
-<ul class="keys">
-<li><b>So large in scale and scope that they are difficult to build</b> &mdash; which is why the chapter insists on getting such development right the first time around.</li>
-<li><b>Critical to the success of the organizations that built them</b> &mdash; they were and continue to be, so trouble inside the system is trouble in the business.</li>
-<li><b>Strategic in their intent</b> &mdash; both were developed, and are continuously updated, to gain or sustain competitive advantage over rivals.</li>
-</ul>
-
-<p>What separates them is the direction the blade turned. At Zoom, the dependence that made the service valuable meant everything resting on it stopped at once. At FedEx, the systems are reengineered twice a year, so the edge is renewed rather than assumed.</p>
+<p>Accuracy, not the web page, is the product, and no human decides a route in a few hundred milliseconds. Automation in the ground hubs is what the chapter calls an <b>enabler of competitive advantage</b>.</p>
+<p>Open the three systems below.</p>
 
 <div class="activity" data-activity="dualTwoCases"></div>
 
-<h3>What &ldquo;strategic&rdquo; means in this chapter</h3>
-
-<p>In everyday speech, calling something strategic just means calling it important. This chapter is narrower: a choice is <b>strategic</b> when it is made with the intent of gaining or sustaining an advantage over rivals, not merely to make an existing task cheaper. Switching to a cheaper email provider saves money but changes nothing about who picks you; tracking accurate enough that a hospital hands you its deliveries does.</p>
-
-<p>The advantage itself has a name the chapter borrows from Michael Porter: <b>competitive advantage</b> over rivals (Porter, 1985; Porter &amp; Millar, 1985). Do not let this notion slip by, because it asks three things of technology:</p>
-
+<h3>What the two cases share</h3>
+<p>Both are typical of systems in large organizations, and share three traits.</p>
 <ul class="keys">
-<li><b>Efficiency</b> &mdash; the use of technology can enable the same work with less time and expense.</li>
-<li><b>Return on investment</b> &mdash; information systems must provide one, so a system that never pays back what it cost fails the test.</li>
-<li><b>Competitive advantage</b> &mdash; technology use can <b>also</b> be strategic and a powerful enabler of it.</li>
+<li><b>Large in scale and scope</b> &mdash; difficult to build, which is why the chapter insists on getting development right first time.</li>
+<li><b>Critical to the organization</b> &mdash; trouble inside the system is trouble in the business.</li>
+<li><b>Strategic in intent</b> &mdash; both were built, and are still updated, to gain advantage over rivals.</li>
 </ul>
+<p>What separates them is which way the blade turned. The dependence that made Zoom valuable stopped everything at once; FedEx renews its edge twice a year rather than assuming it.</p>
 
-<p>Nor is that a big-company privilege: whether a small mom-and-pop boutique or a large government agency, every organization can find a way to use information technology to beat its rivals.</p>
+<h3>What &ldquo;strategic&rdquo; means here</h3>
+<p>In everyday speech, strategic just means important. Here it is narrower: a choice is <b>strategic</b> when made to gain or sustain advantage over rivals, not merely to make a task cheaper. A cheaper email provider changes nobody&rsquo;s mind; tracking a hospital will trust does.</p>
+<p>The advantage takes its name from Michael Porter: <b>competitive advantage</b> over rivals. It asks three things of technology.</p>
+<ul class="keys">
+<li><b>Efficiency</b> &mdash; the technology enables the same work with less time and expense than before.</li>
+<li><b>Return on investment</b> &mdash; a system that never pays back its cost fails the test, however clever.</li>
+<li><b>Competitive advantage</b> &mdash; technology use can <b>also</b> be strategic, and a powerful enabler of that advantage.</li>
+</ul>
+<p>Three questions on the sword, the cases, and the word strategic.</p>
 
 <div class="activity" data-activity="dualQuiz1"></div>
 
-<h3>&ldquo;But hasn&rsquo;t IS become a commodity?&rdquo;</h3>
-
-<p>In everyday use a <b>commodity</b> is something so standardized that one supplier&rsquo;s version is interchangeable with another&rsquo;s, which is why nobody wins customers by selling better electricity. At the start of the millennium, as information systems became standardized and ubiquitous, some argued three things:</p>
-
+<h3>But hasn&rsquo;t IS become a commodity?</h3>
+<p>A <b>commodity</b> is so standardized that one supplier&rsquo;s version is interchangeable with another&rsquo;s, which is why nobody wins customers selling better electricity. Some therefore argued three things.</p>
 <ul>
-<li>Information systems are now <b>more of a commodity</b>, absolutely necessary for every company.</li>
-<li>Firms should focus IT strictly on <b>cost reduction and risk mitigation</b>, not on winning customers with it.</li>
-<li>Investing in it <b>for differentiation or competitive advantage is futile</b>, because whatever you buy is on sale to your rivals too.</li>
+<li>Information systems are now a commodity, necessary for everyone.</li>
+<li>Firms should aim IT strictly at cost reduction and risk mitigation.</li>
+<li>Investing for differentiation is futile, since rivals can buy the same thing.</li>
 </ul>
-
-<p>The chapter answers rather than dismisses that argument. As evidenced by advances in smartphones, the emergence of social networks, and changes in creative industries, IT is changing rapidly, and many companies have gained competitive advantage by innovatively using increasing digital density:</p>
-
+<p>The chapter answers rather than dismisses that. IT keeps changing, and firms gained advantage from rising digital density.</p>
 <ul class="keys">
-<li><b>Companies from Amazon to Zoom</b> &mdash; they created advantages by combining certain <b>commoditized technologies with proprietary systems and business processes</b>, so the standard parts are shared and the combination is not.</li>
-<li><b>Google and Facebook</b> &mdash; customer-generated data create value, and how those data are gathered, processed, and used can be a source of <b>sustained</b> competitive advantage.</li>
-<li><b>Amazon again</b> &mdash; it sells cloud computing services to other businesses, generating revenue directly from its IT investments.</li>
+<li><b>Amazon to Zoom</b> &mdash; they combined commoditized technologies with proprietary systems and business processes, so the combination is not for sale.</li>
+<li><b>Google and Facebook</b> &mdash; how customer-generated data are gathered and used can be a source of <b>sustained</b> advantage.</li>
 </ul>
-
-<p>There is a hard limit on all of this: <b>companies with bad business models tend to fail regardless of whether they use information technology</b>, while companies with good business models that use IT successfully to carry them out tend to be very successful. A <b>business model</b> is a summary of a business&rsquo;s strategic directions that outlines how the objectives will be achieved.</p>
-
+<p>There is a hard limit: companies with bad business models tend to fail whether or not they use technology. A <b>business model</b> summarizes a firm&rsquo;s strategic direction and how its objectives will be met.</p>
 <p class="takeaway">Technology carries out a business model; it does not supply one.</p>
-
-<div class="callout warn"><b>The advantage does not stay bought.</b> Competitive advantage from the use of information systems <b>can be fleeting, as competitors can eventually do the same thing</b>. That is why FedEx reengineers performance twice a year: an edge never renewed is an edge being copied.</div>
+<div class="callout warn"><b>The advantage does not stay bought.</b> Advantage from information systems is fleeting, because competitors eventually do the same thing.</div>
 
 <div class="activity" data-activity="dualQuiz2"></div>
 
-<p>In sum, information systems are a necessary part of doing business, they can be used to create efficiencies, and they can also be used as an enabler of competitive advantage. Managed effectively and strategically and combined with a sound business model, they let an organization be more effective and more productive, expand its reach, and gain or sustain competitive advantage over rivals.</p>
+<p>Now run the argument as a rollout decision.</p>
 
 <div class="activity" data-activity="dualRolloutSim"></div>
 
-<h3>Ethical dilemma: the social and environmental costs of the newest gadgets</h3>
-
-<p>An <b>ethical dilemma</b>, sometimes called a moral dilemma, occurs when you must choose between two options, each of which involves breaking a moral imperative &mdash; not right against wrong, but two harms. There is usually no definite solution, so the chapter gives two steps, in order:</p>
-
+<h3>Ethical dilemma: what the newest gadgets cost</h3>
+<p>An <b>ethical dilemma</b> arises when both options break a moral imperative &mdash; not right against wrong, but two harms. There is rarely a definite answer, so the chapter gives two steps.</p>
 <ol class="steps">
 <li>Weigh the <b>consequences</b> of each option in benefits and harms, considering degree and time horizon.</li>
 <li>Then judge the <b>actions</b> themselves, irrespective of consequences, for honesty, fairness, and respect.</li>
 </ol>
-
-<p>Apply it to the device in your pocket. Tiny silver letters on the back of an iPhone say: &ldquo;Designed by Apple in California&mdash;Assembled in China.&rdquo; Globalization lets Apple design the electronics consumers crave while contract manufacturers worldwide handle components and assembly, so Apple controls the designs but not always how its suppliers work.</p>
-
-<p><b>Foxconn</b>, one of Apple&rsquo;s primary Chinese assembly partners, was scrutinized following complaints of poor working conditions, because huge production volumes and tight deadlines pushed workers to their limit. The toll took several forms:</p>
-
-<ul>
-<li><b>Twitching hands</b>, and the uncontrollable mimicking of the motion after work, from repeating it for hours.</li>
-<li><b>A rapid burnout rate</b>, visible in the resignation of 50,000 workers each month.</li>
-<li><b>Up to 14 suicides</b>, the harm that drew the scrutiny.</li>
-<li><b>An independent audit</b> that confirmed excessive overtime and health and safety issues.</li>
-</ul>
-
-<p>The cost is not only human. In search of design aesthetic, Apple also designs its products as non-repairable, so degraded lithium-ion batteries send spent AirPods to the bin.</p>
-
-<p>The other side is what makes this a dilemma rather than a scandal:</p>
-
-<ul class="keys">
-<li><b>Profit maximization</b> &mdash; Apple pursues it for its shareholders, the obligation every other choice answers to.</li>
-<li><b>Supplier scarcity</b> &mdash; few suppliers worldwide can produce its volumes on short notice, so shifting suppliers is not easy.</li>
-<li><b>Margin</b> &mdash; reducing hours, raising salaries, or adding fringe benefits cuts the profit margin.</li>
-<li><b>The alternative for workers</b> &mdash; for many young Chinese, a few months at Foxconn beats tilling a family farm or not working at all, as evidenced by the thousands lining up for recruiting sessions every week.</li>
-</ul>
-
+<p>Apple designs in California and assembles in China, controlling the designs but not how suppliers work. <b>Foxconn</b> drew scrutiny for repetitive strain injuries, 50,000 resignations a month, and an audit confirming excessive overtime. Against that sit shareholder obligations, a shortage of suppliers, and workers for whom the job beats farm work.</p>
 <p class="takeaway">Each option trades one harm for another.</p>
-
-<div class="callout info"><b>The chapter leaves you two questions.</b> If you were in Tim Cook&rsquo;s shoes, what would you do? As a consumer, what are your own ethical dilemmas associated with the ever-increasing desire for new gadgets?</div>
 `;
 
 ACT.dualOutageOrder = {

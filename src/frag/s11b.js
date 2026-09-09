@@ -2,132 +2,67 @@
 PROSE.s11b = `
 <span class="eyebrow">Section 1&ndash;1b</span>
 <h2>Digital density and the digital future</h2>
-<p class="lede">Twenty years ago, driving to work left no record at all. The same drive today throws off a stream of readings &mdash; tire pressure, engine temperature, position, how hard you braked &mdash; each of which can be stored and pooled with readings from a million other drivers. The activity did not change; the connected data it produces changed enormously, and that change has a name.</p>
-
-<p>Two conditions set this up.</p>
-
+<p class="lede">Twenty years ago, driving to work left no record. The same drive today throws off tire pressure, engine temperature, position, and how hard you braked, poolable with a million other drivers&rsquo; readings. The activity did not change; the connected data it produces did.</p>
+<p>Two conditions set that up.</p>
 <ul class="keys">
-<li><b>Information technologies have become pervasive</b> &mdash; they are used throughout society rather than locked in a computer room, so the technology sits inside ordinary activity.</li>
-<li><b>Innovation keeps accelerating</b> &mdash; radical innovations displace existing products and whole industries, which is why in just a few years drones went from mostly military use to farmers, aerial photographers, filmmakers, and hobbyists, why self-parking systems ship in many vehicles, why self-driving cars and trucks are being actively tested, and why autonomous Caterpillar mining trucks are already at work.</li>
+<li><b>Information technologies became pervasive</b> &mdash; used throughout society rather than locked in a computer room, so the technology sits inside ordinary activity.</li>
+<li><b>Innovation keeps accelerating</b> &mdash; radical innovations displace whole industries, which is how drones reached farms and film sets within a few years.</li>
 </ul>
-
-<p>The result is an exponential increase in <b>digital density</b>: the amount of connected data per unit of activity, where every unit of activity generates ever more connected data and enables new value-added interactions and business models. The chapter builds that in three moves: <b>connections</b>, <b>data</b>, and the <b>interactions</b> they make possible.</p>
-
-<div class="callout tip"><b>Read that as a ratio, not a total.</b> Digital density is not how much data exists in the world; it is how much connected data <b>one unit of activity</b> produces. A cash sale of a hammer in 2004 recorded one thing: a hammer left. The same sale today can record who bought it, which ad they saw first, and whether it came back.</div>
+<p>The result is an exponential rise in <b>digital density</b>: the amount of connected data per unit of activity, where every unit generates more connected data and enables new value-added interactions and business models. The chapter builds it in three moves &mdash; connections, data, interactions.</p>
+<div class="callout tip"><b>Read that as a ratio, not a total.</b> Not how much data exists, but how much one unit of activity produces. A cash sale of a hammer in 2004 recorded one thing: a hammer left.</div>
 
 <div class="activity" data-activity="ddDensityDiagram"></div>
 
 <h3>Connections: anything physical can join the digital world</h3>
-<p>Connections once ran between people, organizations, or computers; today just about any element of the physical world &mdash; people, organizations, or <b>things</b> &mdash; can be joined to the digital realm. The first enabler is the mobile phone, which changes four things at once.</p>
-
+<p>Connections once ran between people, organizations, or computers. Today almost any element of the physical world, <b>things</b> included, joins the digital realm. The first enabler is the mobile phone, kept within reach around the clock and, in the developing world, leapfrogging the PC entirely.</p>
 <ul class="keys">
-<li><b>Constant reach</b> &mdash; most adults in developed countries keep one within reach 24/7, and in the developing world mobile devices frequently leapfrog PCs, because without stable power or landlines the phone is often the primary means of reaching the internet.</li>
-<li><b>Real-time organizations</b> &mdash; for the employer that means more collaboration and the ability to run a business in real time, at any time, from anywhere.</li>
-<li><b>Mobile apps</b> &mdash; companies must build these software programs, each designed to perform a particular, well-defined function, to market their products or services, because the customer visit has moved onto the phone.</li>
-<li><b>Micro-moments</b> &mdash; interaction happens less in long desktop sessions and more in the moments when a person almost instinctively picks up a mobile device to buy something, know something, do something, or go somewhere.</li>
+<li><b>Mobile apps</b> &mdash; companies must build these programs, each performing one well-defined function, because the customer visit moved onto the phone.</li>
+<li><b>Micro-moments</b> &mdash; interaction happens less in long desktop sessions and more in the instants when someone instinctively picks up a device to buy, know, do, or go.</li>
 </ul>
-
-<p>Checking a store&rsquo;s closing time while walking to your car is a micro-moment, and it leaves a record behind.</p>
-
-<p>The second enabler is the <b>Internet of Things (IoT)</b>: a network of a broad range of physical objects that can automatically share data over the internet, such as a tire fitted with a pressure sensor, a smart meter a utility reads remotely, or a cow with an injectable ID chip.</p>
-
-<p>Already in 2008, more devices were connected to the internet than there were people on earth, driven by better chips and wireless radios plus decreasing costs of <b>sensors</b> &mdash; devices that can detect, record, and report changes in the physical environment. The base technology arrives under several names.</p>
-
-<ul class="keys">
-<li><b>Smart home technologies</b>, or <b>home automation</b> &mdash; they allow remote monitoring and control of lighting, heating, or appliances such as the Nest Learning Thermostat, a market expected to exceed US$250 billion by 2029.</li>
-<li><b>Wearable technologies</b> &mdash; clothing or accessories that incorporate electronic technologies such as the Apple Watch, whose sensors record body movements or heart rate as well as ambient light, orientation, or altitude.</li>
-<li><b>The quantified self</b> &mdash; trackers such as the Fitbit are worn passively all day, supporting the logging of all aspects of one&rsquo;s daily life, from activities to moods, to improve health and performance.</li>
-<li><b>Industrial Internet of Things (IIoT)</b> &mdash; in manufacturing the same idea converges information technology with operations technology and brings improvements in efficiency, product quality, agility, and flexibility.</li>
-<li><b>Internet of Everything (IoE)</b> &mdash; as the number of connected sensors and devices grows, the Internet of Things is expected to become this, where just about any device&rsquo;s functionality is enhanced through connectivity and intelligence.</li>
-<li><b>3D printing</b> &mdash; the link also runs the other way, building physical objects from digital models by adding thin layers, instead of milling a part out of a slab and scrapping up to 90 percent of it.</li>
-</ul>
+<p>The second enabler is the <b>Internet of Things (IoT)</b>: a network of physical objects that automatically share data over the internet &mdash; a tire with a pressure sensor, a smart meter, a cow with an injectable ID chip.</p>
+<p>Sensors worn on a person are <b>wearable technologies</b> &mdash; clothing or accessories with electronics built in, such as a smartwatch, recording movement and heart rate alongside light, orientation and altitude. Logging that about yourself to improve health or performance is the <b>quantified self</b>.</p>
+<p>It runs on <b>sensors</b>, devices that detect, record, and report changes in the physical environment. Cheaper sensors and better radios are why, already in 2008, more devices were connected to the internet than there were people on earth.</p>
+<p>The same technology arrives under other names: <b>smart home technologies</b>, or <b>home automation</b>, and the <b>Industrial Internet of Things (IIoT)</b> in manufacturing. Open each connecting technology below and read all four facets.</p>
 
 <div class="activity" data-activity="ddEnablers"></div>
 
 <h3>Data: what the connections leave behind</h3>
-<p>Connecting the physical world to the digital one generates tremendous amounts of <b>Big Data</b>: extremely large and complex datasets. The chapter defines them by three characteristics.</p>
-
+<p>All of that generates <b>Big Data</b>: extremely large and complex datasets, defined by three characteristics.</p>
 <ul class="keys">
-<li><b>Volume</b> &mdash; the datasets run high in volume, extremely large and complex, because connected things report constantly.</li>
-<li><b>Variety</b> &mdash; many different types of data arrive at once, from a sensor reading to a paragraph of opinion.</li>
-<li><b>Velocity</b> &mdash; the data are collected and analyzed at ever-increasing rates, so the window for acting keeps shrinking.</li>
+<li><b>Volume</b> &mdash; the datasets are extremely large, because connected things report constantly rather than when asked.</li>
+<li><b>Variety</b> &mdash; many types of data arrive at once, from a sensor reading to a paragraph of opinion.</li>
+<li><b>Velocity</b> &mdash; data are collected and analyzed at ever-increasing rates, so the window for acting keeps shrinking.</li>
 </ul>
-
-<p>Social media added a flood of <b>unstructured</b> data, since people voice thoughts about products on blogs and networks &mdash; text nobody designed to fit a spreadsheet column. Storage keeps getting cheaper, so organizations use cloud computing to hold the data and to run advanced analytics on what mobile devices, sensors, and social networks generate.</p>
-
-<p>Volume is not virtue. Garbage in, garbage out applies to data, so a key consideration in judging whether data are reliable enough to decide on is <b>data quality</b>, which the chapter breaks into five tests.</p>
-
-<ul class="split">
-<li><b>Completeness</b> &mdash; whether a half-filled record is passing as complete.</li>
-<li><b>Accuracy</b> &mdash; whether the values match what really happened.</li>
-<li><b>Timeliness</b> &mdash; whether the reading is current, because an old number still reads like a fact.</li>
-<li><b>Validity</b> &mdash; whether a value is of the kind the field should hold.</li>
-<li><b>Consistency</b> &mdash; whether one fact agrees with itself across systems.</li>
-</ul>
-
-<p class="takeaway">A report built on stale readings does not fail loudly, it quietly recommends the wrong thing.</p>
-
-<div class="callout info"><b>Technology today and tomorrow &middot; Memory crystals.</b> University of Southampton researchers write data into fused quartz with laser pulses, encoding it in five dimensions &mdash; height, length, width, position, and orientation. A glass disc the size of a large coin holds 360 terabytes, several hundred times a standard desktop computer (1&ndash;4 TB), and the quartz is stable up to 13.8 billion years at room temperature, so data can be archived essentially forever.</div>
+<p>Social media added a flood of <b>unstructured</b> data, text nobody designed to fit a spreadsheet column. Storage keeps getting cheaper, so organizations hold it in the cloud and analyze it there.</p>
+<p>Volume is not virtue: garbage in, garbage out. <b>Data quality</b> asks whether data are reliable enough to decide on, in five tests &mdash; completeness, accuracy, timeliness, validity, consistency.</p>
+<p class="takeaway">A report built on stale readings does not fail loudly; it quietly recommends the wrong thing.</p>
+<p>Three questions on connections and data.</p>
 
 <div class="activity" data-activity="ddQuiz1"></div>
 
 <h3>Interactions: connected data becomes a business model</h3>
-<p>Together, connections and data enable new value-added interactions and business models, because value now comes from data rather than from headcount.</p>
-
-<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Era</th><th>Examples the chapter names</th><th>Employees</th><th>Value comes from</th></tr></thead><tbody>
-<tr><td>Old economy</td><td>GE, Dow, Ford</td><td>100,000&ndash;300,000</td><td>Value from people</td></tr>
-<tr><td>New economy</td><td>Microsoft, HP, Oracle</td><td>Comparable headcounts</td><td>Value from people</td></tr>
-<tr><td>Digital world</td><td>Airbnb, Nvidia, X</td><td>2,500&ndash;35,000</td><td>Value from data</td></tr>
-</tbody></table></div>
-
-<p>Continuous sensor input, paired with machine learning and <b>artificial intelligence (AI)</b> &mdash; using information technologies to simulate human intelligence &mdash; makes sense of those Big Data streams and enables advances in <b>robotics</b>, the use of robots to perform manual tasks. Big Data also drives research from genomics to climate change, though analyzing enormous and often unstructured data poses tremendous challenges.</p>
-
-<p>Two patterns recur here.</p>
-
+<p>Connections and data together enable new value-added interactions, because value now comes from data rather than headcount: Airbnb and Nvidia create it with a fraction of the workforce GE or Ford needed.</p>
+<p>Continuous sensor input paired with machine learning and <b>artificial intelligence (AI)</b>, using information technologies to simulate human intelligence, makes sense of those streams and drives <b>robotics</b>, the use of robots for manual tasks. Two patterns recur.</p>
 <ul class="keys">
-<li><b>The network effect</b> &mdash; the value of a network, or of a tool built on one, increases with the number of other users, which is how Uber and Airbnb disrupted traditional industries, since riders come for drivers and drivers come for riders.</li>
-<li><b>Servitization</b> &mdash; a company shifts from selling a physical product to providing it as a service, so sensors monitoring performance, temperature, or mileage let Bridgestone and Michelin sell tires by usage while staying responsible for how they perform.</li>
+<li><b>The network effect</b> &mdash; a network is worth more as more people use it, which is how Uber and Airbnb disrupted established industries: riders come for drivers, drivers come for riders.</li>
+<li><b>Servitization</b> &mdash; a firm shifts from selling a product to providing it as a service, so sensors let Michelin sell tires by usage and stay responsible for them.</li>
 </ul>
-
-<p class="takeaway">Where data once mainly improved efficiency, connected data now lets firms anticipate changes, coordinate resources, and personalize offerings.</p>
+<p class="takeaway">Data once improved efficiency; connected data now lets firms anticipate change and personalize offerings.</p>
 
 <h3>The API economy</h3>
-<p><b>APIs (application programming interfaces)</b> are intermediaries that let different software components exchange data or functionality over common web communication protocols, so a provider can open part of its functionality to others without their needing intimate knowledge of its inner workings. Think of a power socket: a standardized interface delivering electricity from a utility, used without knowing how the power was made.</p>
-
-<p>The value runs both ways.</p>
-
+<p><b>APIs (application programming interfaces)</b> are intermediaries that let software components exchange data or functionality over common web protocols, so a provider opens part of itself without anyone needing to know its inner workings. Think of a power socket: a standard interface delivering electricity you use without knowing how it was made.</p>
 <ul class="keys">
-<li><b>Providers gain revenue and reach</b> &mdash; Stripe processes payments for companies from Target to Lyft.</li>
-<li><b>Users build on functionality they never wrote</b> &mdash; Lyft pulls maps from Google Maps&rsquo; API, and Uber built almost its entire app on other companies&rsquo; APIs.</li>
-<li><b>The interface holds still</b> &mdash; when Stripe changes its internals the API stays the same and users notice nothing, which is why some argue we live in an <b>API economy</b>.</li>
+<li><b>Providers gain revenue and reach</b> &mdash; Stripe processes payments for companies from Target to Lyft, on infrastructure none of them built.</li>
+<li><b>Users build on functionality they never wrote</b> &mdash; Lyft pulls maps from Google Maps, and when Stripe changes inside, the interface holds still.</li>
 </ul>
+<p>Match each term below with its definition.</p>
 
 <div class="activity" data-activity="ddVocab"></div>
 
-<h3>Digital density and today&rsquo;s workforce</h3>
-<p>Fueled by consumer mobile devices and cloud access, employees increasingly use their own devices and familiar software for work &mdash; no longer just email, but customer relationship management and other enterprise systems. Two named patterns follow from that.</p>
-
-<ul class="keys">
-<li><b>BYOD</b> (bring your own device) &mdash; managing it worries business and IT managers because of security, compliance, and support costs, though it can also raise productivity, retention, and customer satisfaction.</li>
-<li><b>The consumerization of IT</b> &mdash; many innovations reach the consumer marketplace first and organizations second.</li>
-</ul>
-
-<p>Knowing how to use a computer is <b>computer literacy</b> (or information literacy), which can mean the difference between being employed and being unemployed; some fear the Information Age will not treat information haves, who have almost unlimited access to information, the same as information have-nots, who have limited or no computer access or skills.</p>
-
-<div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>Computer literacy</th><th>Computer fluency</th></tr></thead><tbody>
-<tr><td>Definition</td><td>Knowing how to use a computer and certain applications</td><td>Independently learning new technologies as they emerge and assessing their impact</td></tr>
-<tr><td>What it buys</td><td>Access to information, and to most jobs at all</td><td>What sets you apart in the future</td></tr>
-</tbody></table></div>
-
-<p>Computer work also stopped being a separate category, because information systems sit inside ordinary jobs.</p>
-
-<ul>
-<li>Information systems manage air traffic, perform medical tests, and control construction machinery, so their operators are computer users too.</li>
-<li>Engineers and architects use computer-aided design (CAD) to draw and test what they build.</li>
-<li>Medical staff use <b>healthcare IS</b>, systems supporting everything from patient diagnosis and treatment to running a hospital.</li>
-</ul>
-
-<div class="callout info"><b>Sustainability &middot; Alphabet renewables.</b> Running the Google empire takes enormous electricity, so Alphabet aims for 100 percent clean energy by 2030: renewable capacity reached nearly 5.5 gigawatts by late 2019 and contracted agreements topped 14 GW by 2023. Long-term contracts and investments in clean energy companies lock in prices and improve reliability, so this is good business, not only good citizenship.</div>
+<h3>Digital density and the workforce</h3>
+<p>Employees increasingly use their own devices and familiar software for work, not just for email but for enterprise systems. <b>BYOD</b> (bring your own device) worries managers over security, compliance, and support costs, though it can raise productivity and retention.</p>
+<p>Innovations now reach the consumer marketplace first and organizations second: the <b>consumerization of IT</b>. Knowing how to operate a computer and common applications is <b>computer literacy</b>, which can decide whether a person is employed at all.</p>
+<p><b>Computer fluency</b> goes further: independently learning new technologies as they emerge and assessing their impact. Literacy gets you in the door; fluency sets you apart later.</p>
 
 <div class="activity" data-activity="ddQuiz2"></div>
 `;

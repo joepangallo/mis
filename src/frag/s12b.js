@@ -2,17 +2,10 @@
 PROSE.s12b = `
 <span class="eyebrow">Section 1&ndash;2b</span>
 <h2>The people who build, manage, and use information systems</h2>
-<p class="lede">Hardware, software, and networks do nothing on their own. The IS field is a vast collection of people who develop, maintain, manage, and study information systems. But a system does not exist in a vacuum, and the chapter is blunt about the other half: it is of little use if it were not for you &mdash; the user.</p>
+<p class="lede">Hardware, software, and networks do nothing on their own. The IS field is the people who develop, maintain, manage, and study information systems &mdash; plus one the chapter refuses to leave out: you, the user.</p>
 
 <h3>Why IS jobs keep landing at the top of the rankings</h3>
-<p>Because data has become so valuable for competitive advantage, the chapter argues that every company can now be considered a technology company, needing people who can optimize its business processes and find new ways of using information systems.</p>
-<p>The forecasts agree. The <b>Occupational Outlook Handbook</b> from the U.S. Bureau of Labor Statistics (2025) predicts employment for computer and IS managers will grow <b>17 percent through 2033</b>, much faster than the average for all other occupations, and in nearly every industry, not just computer hardware and software companies.</p>
-<p>Independent rankings point the same way, from three different directions.</p>
-<ul class="keys">
-<li><b>Glassdoor</b> &mdash; among the 50 best jobs in America ranked by the job site, almost all of the top 10, and nearly half of the top jobs overall, were technology related.</li>
-<li><b>U.S. News &amp; World Report</b> &mdash; ranked <b>IT manager</b> the second best job in America, with software developer, information security analyst, and data scientist also among its top 10.</li>
-<li><b>The degree itself</b> &mdash; an information systems degree can also provide the foundation for becoming a <b>data scientist</b>, currently one of the jobs with the highest demand.</li>
-</ul>
+<p>Because data became so valuable for competitive advantage, every company is now a technology company. The <b>Occupational Outlook Handbook</b> (2025) predicts employment for computer and IS managers will grow <b>17 percent through 2033</b>, much faster than average and in nearly every industry.</p>
 <div class="tbl-wrap"><table class="tbl">
 <thead><tr><th>Rank</th><th>Career</th><th>Job score (out of 5.0)</th><th>Median pay (US$)</th></tr></thead>
 <tbody>
@@ -27,138 +20,85 @@ PROSE.s12b = `
 <tr><td>9</td><td>Java Developer</td><td>4.1</td><td>107,099</td></tr>
 <tr><td>10</td><td>Product Manager</td><td>4.0</td><td>125,317</td></tr>
 </tbody></table></div>
-<p class="mini">Table 1.1 &middot; Best Jobs in America (2022), as ranked by the job site Glassdoor.</p>
-
+<p class="mini">Table 1.1 &middot; Best Jobs in America (2022), ranked by Glassdoor.</p>
 <div class="callout info">
 <p><b>Read that table honestly.</b> It is evidence, not proof.</p>
 <ul class="list-tight">
-<li>Rank is not pay: Java Developer sits at rank 9 earning US$107,099, ahead of Product Manager, who earns more at US$125,317.</li>
-<li>Rank is not the job score either: Enterprise Architect leads at 4.1 while Full Stack Engineer and Machine Learning engineer both score 4.3. Rank blends factors the table never prints.</li>
-<li>It is one job site&rsquo;s 2022 snapshot, and the chapter says rankings differ by source. What survives is the demand.</li>
+<li>Rank is not pay: Java Developer ranks 9th on US$107,099, ahead of Product Manager on US$125,317.</li>
+<li>Rank is not the job score either: Enterprise Architect leads at 4.1 while two lower-ranked jobs score 4.3.</li>
+<li>It is one job site&rsquo;s 2022 snapshot, and rankings differ by source. What survives is the demand.</li>
 </ul>
 </div>
-
-<p>Pay follows the demand, though the figure depends on who is counting.</p>
-<ul class="keys">
-<li><b>Bureau of Labor Statistics (2024)</b> &mdash; put median annual earnings for these managers in May 2024 at <b>US$187,990</b>, with the top 10 percent earning more than US$239,200.</li>
-<li><b>Salary.com</b> &mdash; reported a 2025 median of US$149,316 for IT managers, well below the federal figure for the same kind of work.</li>
-<li><b>National Association of Colleges and Employers (2025)</b> &mdash; expects a mean starting salary of <b>US$71,556</b> for management information systems graduates.</li>
-<li><b>Association for Information Systems, with Temple University&rsquo;s Institute for Business and Information Technology</b> &mdash; put the average starting salary for IS graduates holding a master&rsquo;s degree at US$96,164, higher than business majors such as accounting, finance, or marketing.</li>
-</ul>
+<p>Pay follows demand, though the figure depends on who counts: the Bureau of Labor Statistics put median pay for these managers at US$187,990 in 2024, Salary.com US$149,316, and graduates start nearer US$71,556.</p>
 
 <h3>Careers in information systems</h3>
-<p>The field includes those who design and build systems, those who use them, and those who manage them: <b>systems analysts</b>, <b>systems programmers</b>, <b>systems operators</b>, <b>network administrators</b>, <b>database administrators</b>, <b>systems designers</b>, <b>systems managers</b>, and <b>chief information officers</b>.</p>
-<p>The table below samples these positions rather than listing them all, and titles are slippery: firms use one title differently, or different titles for one function.</p>
+<p>The field covers those who build systems, those who maintain them, and those who manage them. Titles are slippery: firms use one title differently, or different titles for one function.</p>
 <div class="tbl-wrap"><table class="tbl">
 <thead><tr><th>IS activity</th><th>Job title</th><th>Job description</th><th>Median salary (US$)</th></tr></thead>
 <tbody>
 <tr><td>Develop</td><td>IS analyst</td><td>Analyze business requirements and select information systems that meet those needs</td><td>73,581</td></tr>
-<tr><td>Develop</td><td>Software developer I</td><td>Code, test, debug, and install programs</td><td>81,690</td></tr>
 <tr><td>Develop</td><td>Software architect IV</td><td>Create customized software for large corporations</td><td>145,613</td></tr>
-<tr><td>Develop</td><td>Systems analyst consultant</td><td>Provide IT knowledge to external clients</td><td>149,100</td></tr>
-<tr><td>Develop</td><td>Senior database engineer</td><td>Develop, modernize, and streamline databases</td><td>125,800</td></tr>
 <tr><td>Maintain</td><td>IT auditor I</td><td>Audit information systems and operating procedures for compliance with internal and external standards</td><td>70,790</td></tr>
 <tr><td>Maintain</td><td>Database administrator II</td><td>Manage database and database management software use</td><td>104,390</td></tr>
-<tr><td>Maintain</td><td>Webmaster</td><td>Manage a firm&rsquo;s website</td><td>84,300</td></tr>
-<tr><td>Manage</td><td>IT department manager</td><td>Manage existing information systems</td><td>135,760</td></tr>
 <tr><td>Manage</td><td>IS and cyber security manager</td><td>Manage security measures and disaster recovery</td><td>146,790</td></tr>
-<tr><td>Manage</td><td>IT quality assurance manager</td><td>Ensure availability and security of information stored on networks and in the cloud</td><td>121,510</td></tr>
-<tr><td>Manage</td><td>E-commerce technical manager</td><td>Manage development, maintenance, and strategy related to e-commerce systems</td><td>142,020</td></tr>
 <tr><td>Manage</td><td>Chief information officer (CIO)</td><td>Highest-ranking IS manager; oversee strategic planning and IS use throughout the firm</td><td>344,404</td></tr>
-<tr><td>Manage</td><td>Chief digital officer (CDO)</td><td>Executive focused on converting traditional analog businesses to digital; oversee operations in rapidly changing digital sectors like mobile apps and social media</td><td>298,890</td></tr>
+<tr><td>Manage</td><td>Chief digital officer (CDO)</td><td>Executive focused on converting traditional analog businesses to digital</td><td>298,890</td></tr>
 </tbody></table></div>
-<p class="mini">Table 1.2 &middot; IS management titles, grouped by develop, maintain, manage.</p>
+<p class="mini">Table 1.2 &middot; IS titles, grouped by develop, maintain, manage.</p>
+<p>Read each description, then find the title it belongs to.</p>
 
 <div class="activity" data-activity="pplJobMatch"></div>
 
-<h3>What makes IS personnel so valuable?</h3>
-<p>The chapter retires an old stereotype: IS departments are no longer filled only with nerdy men wearing pocket protectors, many more women hold IS positions now, and the IS professional is commonly a polished businessperson fluent in both business and technology.</p>
-<p>Studies asking what makes them valuable agree on the answer. Good IS personnel possess valuable, <b>integrated</b> knowledge and skills in three areas &mdash; <b>technical</b>, <b>business</b>, and <b>systems</b> &mdash; and integrated is the operative word, because the chapter says twice that it is the business and systems areas that set the IS professional apart from people who have only technical knowledge and skills.</p>
+<h3>What makes IS personnel valuable</h3>
+<p>Good IS personnel hold <b>integrated</b> knowledge in three areas &mdash; <b>technical</b>, <b>business</b>, and <b>systems</b>. It is the business and systems areas that separate the IS professional from someone with only technical skills.</p>
 <div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Domain</th><th>Description</th></tr></thead>
+<thead><tr><th>Domain</th><th>What it covers</th></tr></thead>
 <tbody>
-<tr><td><b>Technical knowledge and skills</b></td><td></td></tr>
-<tr><td>Hardware</td><td>Hardware platforms, infrastructure, cloud computing, virtualization, peripherals, mobile devices</td></tr>
-<tr><td>Software</td><td>Operating systems, application software, non-relational databases, AI and machine learning, prompt engineering, mobile apps, APIs</td></tr>
-<tr><td>Networking</td><td>Network administration, wireless networks, 5G, cybersecurity</td></tr>
-<tr><td><b>Business knowledge and skills</b></td><td></td></tr>
-<tr><td>Business integration, industry</td><td>Business processes, functional areas of businesses and their integration, industry characteristics</td></tr>
-<tr><td>Managing people and projects</td><td>Planning, organizing, leading, controlling, managing people and projects</td></tr>
-<tr><td>Social</td><td>Interpersonal, group dynamics, political</td></tr>
-<tr><td>Communication</td><td>Verbal, written, and technological communication and presentation</td></tr>
-<tr><td><b>Systems knowledge and skills</b></td><td></td></tr>
-<tr><td>Systems integration</td><td>Connectivity, compatibility, integrating subsystems and systems</td></tr>
-<tr><td>Development methodologies</td><td>Steps in systems analysis and design, systems development life cycle, alternative development methodologies</td></tr>
-<tr><td>Critical thinking</td><td>Challenging one&rsquo;s and others&rsquo; assumptions and ideas</td></tr>
-<tr><td>Problem solving</td><td>Information gathering and synthesis, problem identification, solution formulation, comparison, choice</td></tr>
+<tr><td><b>Technical</b></td><td>Hardware, infrastructure, cloud; operating systems, application software, AI, APIs; network administration, wireless, 5G, cybersecurity</td></tr>
+<tr><td><b>Business</b></td><td>Business processes and industry; managing people and projects; social (interpersonal, group dynamics, political); communication (verbal, written, presentation)</td></tr>
+<tr><td><b>Systems</b></td><td>Systems integration; development methodologies; critical thinking; problem solving</td></tr>
 </tbody></table></div>
 <p class="mini">Table 1.3 &middot; Core competencies &mdash; note that social and communication skills sit under <b>business</b>.</p>
-
-<h3>Technical competency</h3>
-<p>The <b>technical competency</b> area covers hardware, software, networking, and security &mdash; the &ldquo;nuts and bolts.&rdquo; Students often get the next part backwards.</p>
+<p>Each domain carries one idea students get backwards.</p>
 <ul class="keys">
-<li><b>Just enough, not expert</b> &mdash; the IS professional is not required to be a technical expert in these areas, but must know just enough to understand how they work, what they can do for an organization, and how they can and should be applied.</li>
-<li><b>Direct the specialists</b> &mdash; typically the IS professional manages or directs those who have deeper, more detailed technical knowledge, rather than out-building them.</li>
-<li><b>Hardest area to keep current</b> &mdash; it is perhaps the most difficult area to maintain, because the pace of technological innovation is so rapid.</li>
-<li><b>The outsourcing scare did not play out</b> &mdash; programming and support jobs once looked destined for outsourcing to providers abroad; instead demand rose for application development skills, especially combined with sound business analysis and project management.</li>
+<li><b>Technical: just enough, not expert</b> &mdash; enough to understand how the technology works and what it can do for an organization, then direct the specialists who know more.</li>
+<li><b>Business: it may save your job</b> &mdash; understanding the business those systems serve is what propels IS professionals into project management and upper-level positions.</li>
+<li><b>Systems: four named parts</b> &mdash; integration, development methodologies, critical thinking, and problem solving: identify, compare, choose.</li>
 </ul>
-<p>The hot skills the chapter names for the next decade point the same way: many of them sit in the business domain rather than the technical one, with the rest spread across technology infrastructure and services, security, applications, Internet, and business analytics/data science.</p>
+<p class="takeaway">People skills are filed under business, not under extras: interpersonal skill, group dynamics, politics, and presentation are capability that earns money.</p>
 
-<h3>Business competency</h3>
-<p><b>Business competency</b> separates the IS professional from someone with only technical knowledge, and in an era of increased outsourcing the chapter says it may well save a person&rsquo;s job. Even as low-level technology jobs move offshore, the Bureau of Labor Statistics (2025) reports increased need for IS managers as organizations embrace cloud computing, cybersecurity, and artificial intelligence.</p>
-<p>Three demands sit inside that competency.</p>
-<ul class="keys">
-<li><b>Know the business, not only the systems</b> &mdash; it is vital to understand both the technical areas and the nature of the business those areas exist to serve.</li>
-<li><b>Manage people and projects, not technology alone</b> &mdash; these are the business skills that propel IS professionals into project management and, ultimately, high-paying middle- and upper-level management positions.</li>
-<li><b>Count people skills as business skills</b> &mdash; note what is filed here in Table 1.3: interpersonal skill, group dynamics, politics, and presentation ability are business skills, not extras.</li>
-</ul>
-
-<h3>Systems competency</h3>
-<p><b>Systems competency</b> is the other area that sets the IS professional apart, and the table above breaks it into four parts.</p>
-<ul class="keys">
-<li><b>Systems integration</b> &mdash; joining subsystems into systems so that they connect and stay compatible with one another.</li>
-<li><b>Development methodologies</b> &mdash; the steps in systems analysis and design, the systems development life cycle, and the alternative development methodologies that compete with it.</li>
-<li><b>Critical thinking</b> &mdash; challenging your own and others&rsquo; assumptions and ideas rather than accepting them.</li>
-<li><b>Problem solving</b> &mdash; gathering and synthesizing information, identifying the problem, formulating and comparing solutions, and making the choice.</li>
-</ul>
-<p>Those who understand how to build and integrate systems and how to solve problems ultimately manage large, complex systems projects, and manage those in the firm who have only technical knowledge and skills.</p>
-<p class="takeaway">Add the social skills to work well with and motivate others and you have the chapter&rsquo;s whole answer to why IS professionals are valuable.</p>
 <div class="activity" data-activity="pplQuiz1"></div>
 
 <h3>You &mdash; the user</h3>
-<p>Technology is changing how products and services are produced, distributed, marketed, and sold, so in almost any business field &mdash; finance, accounting, operations, human resources, business law, marketing &mdash; you will use information systems constantly and be pulled into decisions about them.</p>
-<p>Three habits are what the chapter says are likely to set you apart from your competition.</p>
+<p>In almost any business field &mdash; finance, accounting, operations, marketing &mdash; you will use information systems constantly and be pulled into decisions about them. Three habits set you apart.</p>
 <ul class="keys">
-<li><b>Understanding what systems can do</b> &mdash; and, just as importantly, what they cannot do, so a vendor&rsquo;s promise can be measured against what the technology delivers.</li>
-<li><b>Being able to communicate with the technical staff</b> &mdash; describing a business need in terms the people who build the system can act on.</li>
-<li><b>Making educated IS-related decisions</b> &mdash; taking part in the choice itself rather than waiting to be handed someone else&rsquo;s pick.</li>
+<li><b>Understanding what systems can do</b> &mdash; and what they cannot, so a vendor&rsquo;s promise can be measured against what technology delivers.</li>
+<li><b>Talking to technical staff</b> &mdash; describing a business need in terms the people who build the system can act on.</li>
+<li><b>Making educated decisions</b> &mdash; taking part in the choice rather than waiting to be handed someone else&rsquo;s pick.</li>
 </ul>
-<p>The risk is sharpest in smaller organizations with no dedicated IS department. There you are likely involved in IS investment decisions, and lacking a basic grasp of IS infrastructure, systems analysis and design, or security leaves you at the mercy of consultants or, worse, vendors acting out of their own interests and selling their &ldquo;technology of the week.&rdquo;</p>
-<p class="takeaway">That is the responsibility a user carries: not building the system, but being hard to fool about it.</p>
+<p>The risk is sharpest in a small organization with no IS department: without a grasp of infrastructure, systems analysis, and security, you are at the mercy of vendors selling their technology of the week.</p>
 
 <div class="activity" data-activity="pplCompetencies"></div>
 
 <div class="callout warn">
-<p><b>Security matters: ransomware.</b> <b>Ransomware</b> is a virus that, once it infects a system or network, encrypts the data it finds in place, in a format that renders it impossible for the victim to access. The attacker then demands a ransom for the decryption keys &mdash; though many victims have painfully learned that paying does not guarantee regaining the data.</p>
+<p><b>Security matters: ransomware.</b> <b>Ransomware</b> is a virus that encrypts the data it finds in place, leaving the victim unable to open it; the attacker then demands payment for the decryption keys. Paying guarantees nothing.</p>
 <ul class="list-tight">
-<li>Victims range from individuals, who may lose years of family photos or personal records, to businesses large and small, which may lose customer records, financial data, or intellectual property.</li>
-<li>It usually arrives as an attachment to a spam email, or is downloaded in the guise of a video or other content from a website &mdash; which is why the user is part of the security system.</li>
-<li>Early demands were sized to be paid: attackers often targeted individuals and small businesses, and the average demand in 2018 was just US$530, with an upper limit of about US$1,000. Small ransoms still exist, but the shift is toward larger, higher-value companies, government agencies, and organizations &mdash; Change Healthcare was forced to pay a <b>US$22 million</b> ransom in early 2024.</li>
-<li>Attackers increasingly threaten to publish the data; for organizations holding personally identifiable information, lawsuits and reporting duties can cost more than the lost access.</li>
-<li>The chapter&rsquo;s answer has two parts: raise security awareness and vigilance to avoid infection, and improve backup and disaster recovery so infection is survivable.</li>
+<li>It arrives as a spam attachment or a download disguised as a video, which is why the user is part of the security system.</li>
+<li>Demands grew from a 2018 average near US$530 toward large organizations: Change Healthcare paid <b>US$22 million</b> in 2024.</li>
+<li>The answer has two halves: awareness to avoid infection, and backup and recovery so infection is survivable.</li>
 </ul>
 </div>
+<p>Three questions on where the user sits.</p>
 
 <div class="activity" data-activity="pplQuiz2"></div>
 
-<p>The same reasoning covers private life, where IS-related decisions already abound.</p>
+<p>The same reasoning covers private life.</p>
 <ul class="split">
-<li>Which mobile phone to purchase next, and which operating system you prefer on your personal computer.</li>
-<li>Whether to share personal information online, and how much of it.</li>
-<li>How to best secure the wireless network you run at home.</li>
-<li>How to keep your various files in sync across different computers and mobile devices.</li>
+<li>Which phone to buy next, and which operating system you prefer.</li>
+<li>Whether to share personal information online, and how much.</li>
+<li>How to secure the wireless network you run at home.</li>
 </ul>
-<p>They feel like preferences, but underneath sit real differences in privacy, security, and apps. And a startup idea is only the first step &mdash; information systems appear in every phase of bringing it to market.</p>
+<p>They feel like preferences, but underneath sit real differences in privacy and security. Rate yourself below.</p>
 
 <div class="activity" data-activity="pplSelfCheck"></div>
 `;

@@ -2,12 +2,11 @@
 PROSE.s12a = `
 <span class="eyebrow">Section 1&ndash;2a</span>
 <h2>What an information system actually is</h2>
-<p class="lede">Ask most people what an information system is and they point at the computers. The chapter means something wider and far more exact, and the rest of the course rests on it: an <b>information system (IS)</b> is the combination of people and information technology that creates, collects, processes, stores, and distributes useful data. Every clause in that sentence is load-bearing, so take it apart before you use it.</p>
+<p class="lede">Ask most people what an information system is and they point at the computers. An <b>information system (IS)</b> is the combination of people and information technology that creates, collects, processes, stores, and distributes useful data. Every clause is load-bearing.</p>
 
-<h3>Take the definition apart, clause by clause</h3>
-<p><b>People and information technology.</b> The people half is not politeness. The chapter is blunt about it: many of today&rsquo;s technologies operate autonomously, but they do not build themselves and they do not exist for their own sake &mdash; they are created to serve a useful purpose for people.</p>
-<p>A server humming in a closet, with nobody deciding what it should do and nobody acting on what it produces, has the technology half and nothing else, so it does not meet the definition.</p>
-<p><b>Creates, collects, processes, stores, and distributes.</b> Those five verbs are the job description, and a working system does all five. Watch them run in order.</p>
+<h3>The definition, clause by clause</h3>
+<p><b>People and information technology.</b> The people half is not politeness. Technologies may operate autonomously, but they do not build themselves and do not exist for their own sake: they are created to serve a useful purpose for people. A server humming in a closet, with nobody deciding what it does, is not one.</p>
+<p><b>Creates, collects, processes, stores, distributes.</b> Those five verbs are the job description, and a working system does all five. Watch them run in order.</p>
 <ol class="steps">
 <li><b>Creates</b> &mdash; tap your card at a store and the register creates a record of the sale.</li>
 <li><b>Collects</b> &mdash; the network collects that record into a central system.</li>
@@ -15,67 +14,38 @@ PROSE.s12a = `
 <li><b>Stores</b> &mdash; a database stores the result, so it outlives the moment it was made.</li>
 <li><b>Distributes</b> &mdash; a report distributes it to a manager who decides what to reorder.</li>
 </ol>
-<p>Drop any one verb and the chain breaks: data that are created but never distributed help nobody, and data that are distributed but never processed are just noise arriving faster.</p>
-<p><b>Useful data.</b> The word <b>useful</b> is the tell. Any information system involves data that are useful for someone, somewhere &mdash; and often for more than one someone at the same time. The chapter offers three examples.</p>
-<ul class="list-tight">
-<li>Transactional data are useful for businesses, which is why a store keeps every single sale.</li>
-<li>Status updates in your news feed on Facebook are useful for your friends and for Facebook itself &mdash; one post, two audiences.</li>
-<li>Scores in a computer game are useful for the player and for the game developers alike.</li>
-</ul>
-<p>So whenever you evaluate a system in this course, the first question is: useful to whom, for what decision?</p>
-<p>One naming note so the vocabulary never trips you up. The same phrase, <b>information systems</b>, also names the field &mdash; the people who develop, use, manage, and study these systems in organizations. Different schools and companies call that field management information systems, business information systems, computer information systems, or simply systems. Same subject.</p>
+<p>Drop one verb and the chain breaks: data created but never distributed help nobody, and data distributed but never processed are noise arriving faster.</p>
+<p><b>Useful data.</b> Any information system involves data useful for someone, somewhere, often for two someones at once: a status update is useful to your friends and to the platform, a game score to the player and the developers. So the first question about any system is, useful to whom, for what decision?</p>
 
 <div class="activity" data-activity="isdFill"></div>
 
-<h3>The technology half: hardware, software, telecommunications networks</h3>
+<h3>The technology half</h3>
 <p><b>Information technology (IT)</b> includes hardware, software, and telecommunications networks. Three parts, no more and no fewer.</p>
 <ul class="keys">
-<li><b>Hardware</b> is physical computer equipment &mdash; a computer, a tablet, a printer &mdash; along with components like a computer monitor or a keyboard. It has grown well past the desktop to include a variety of other input and output devices such as sensors, cameras, and actuators, which is why a thermostat and a warehouse robot arm both count as hardware.</li>
-<li><b>Software</b> is a program or set of programs that tell the computer to perform certain tasks. Software is how an organization gets its business processes and its competitive strategy out of hardware, because it supplies the hardware with instructions on what processing functions to perform. Two identical laptops running different software run two different companies.</li>
-<li><b>Telecommunications networks</b> are a group of two or more computer systems linked together with communications equipment. Networks allow computers to share data and services, and that sharing is what enables the global collaboration, communication, and commerce we see today &mdash; without it every system is an island holding data no one else can reach.</li>
+<li><b>Hardware</b> is physical computer equipment &mdash; computer, tablet, printer, monitor, keyboard &mdash; and now sensors, cameras, and actuators, which is why a thermostat counts.</li>
+<li><b>Software</b> is a program or set of programs telling the computer to perform certain tasks. It supplies the instructions, so two identical laptops running different software run two different companies.</li>
+<li><b>Telecommunications networks</b> are two or more computer systems linked with communications equipment. Without them every system is an island holding data nobody else can reach.</li>
 </ul>
-<p>Hardware is easier to place once you know what it replaced. Before the first computers &mdash; which worked on a mechanical basis using punch cards &mdash; the work ran on physical artifacts.</p>
-<ul class="list-tight">
-<li>Almost all business and government information systems consisted of file folders, filing cabinets, and document repositories.</li>
-<li>A calculating device such as an abacus or a slide rule did the arithmetic.</li>
-</ul>
-<p>Those filing cabinets were real information systems. Computer hardware replaced those physical artifacts and gave us technologies to input and process data and output useful information. The purpose never changed; only the machinery did.</p>
-<div class="callout info"><p><b>IS or IT?</b> Traditionally the term information technology referred to the hardware, software, and networking components of an information system. That difference is shrinking, and many people now use IS and IT synonymously. When a question forces the contrast, use the strict reading: IT is the technology, while an IS is that technology together with people, aimed at producing useful data.</p></div>
+<p>Hardware is easier to place once you know what it replaced. Before computers, information systems were file folders and filing cabinets, with an abacus or slide rule for the arithmetic. Those were real systems; only the machinery changed.</p>
+<div class="callout info"><p><b>IS or IT?</b> Traditionally IT meant the hardware, software, and networking components of an information system. That difference is shrinking and many now use the terms synonymously. When a question forces the contrast: IT is the technology, an IS is that technology plus people, aimed at useful data.</p></div>
 
 <div class="activity" data-activity="isdQuiz1"></div>
 
-<h3>Data: the root and the purpose of every information system</h3>
-<p>The definition begins and ends with data, so start there. Unformatted data, or simply <b>data</b>, are raw symbols, such as characters and numbers. They have no meaning in and of themselves and are of little value until processed.</p>
-<p>The chapter&rsquo;s test case is the string 465889727. If someone asked you what it meant or stood for, you could not tell them &mdash; not because you lack a skill, but because there is nothing there to know.</p>
-<p>Because everything downstream is built out of these symbols, the old adage garbage in, garbage out applies to data as well. That is why <b>data quality</b> is a key consideration in assessing whether data are reliable for making decisions. It consists of five named parts, and the plain reading of each is worth having in front of you.</p>
-<ul class="keys">
-<li><b>Completeness</b> &mdash; are any values missing? A customer file with blank zip codes cannot answer a question about shipping regions, no matter how many rows it has.</li>
-<li><b>Accuracy</b> &mdash; do the values match reality? A mistyped price is worse than a missing one, because a wrong number still looks trustworthy.</li>
-<li><b>Timeliness</b> &mdash; are the values current enough for this decision? Last quarter&rsquo;s inventory count cannot tell a store manager what is on the shelf tonight.</li>
-<li><b>Validity</b> &mdash; do the values take the form they are supposed to take? A birth date recorded as 30/30/2001 is not a date at all, so nothing can safely compute an age from it.</li>
-<li><b>Consistency</b> &mdash; do the values agree across the places they are stored? If two systems hold different addresses for the same customer, at least one is wrong and nothing in the data tells you which.</li>
-</ul>
-<p class="takeaway">A system is only ever as trustworthy as the symbols it starts with.</p>
-
-<h3>Information: the same data, plus context</h3>
-<p>Data can be formatted, organized, or processed to make them useful, and when that happens they are transformed into <b>information</b>, which is a representation of reality that can help answer questions about who, what, where, and when. Watch it happen to those same nine symbols.</p>
+<h3>Data, information, knowledge</h3>
+<p>Unformatted data, or simply <b>data</b>, are raw symbols such as characters and numbers, with no meaning in themselves and little value until processed. Take the string 465889727: asked what it means, you could not say, because there is nothing there to know.</p>
+<p>Garbage in, garbage out applies here, which is why <b>data quality</b> &mdash; completeness, accuracy, timeliness, validity, consistency &mdash; decides whether data are reliable enough to decide on.</p>
+<p>Data formatted or processed to make them useful become <b>information</b>: a representation of reality that helps answer who, what, where, and when. Watch it happen to those nine symbols.</p>
 <ol class="steps">
 <li>Present them as 465-88-9727, and the grouping alone looks familiar.</li>
 <li>Add that they sit in a certain database, in John Doe&rsquo;s record.</li>
-<li>Add a field labeled SSN, and now you might rightly surmise that the number is the Social Security number of someone named John Doe.</li>
+<li>Add a field labeled SSN, and you rightly surmise this is John Doe&rsquo;s Social Security number.</li>
 </ol>
-<p>Nothing about the digits changed. Contextual cues, such as a label, are what turn data into information that is familiar and useful to the reader.</p>
-<p>The chapter&rsquo;s second example is closer to your phone. A raw list of all the transactions you made over the course of a month in a peer-to-peer mobile payment system such as Venmo would be fairly useless data &mdash; a wall of names and amounts in whatever order they happened.</p>
-<p>A table that divided those same payments into two categories, sent and received, would be incredibly useful information: you could manage a monthly budget with it and make better decisions about your finances over time. Without information systems, it would be difficult to transform raw data into useful information at all.</p>
-
-<h3>Knowledge: the part that lives in a person</h3>
-<p>Information still sits on a screen, and a screen decides nothing. To actually use information, something else is required. <b>Knowledge</b> is the ability to understand information, form opinions, and make decisions or predictions based on the information. The chapter gives the word two faces.</p>
+<p>Nothing about the digits changed; a label did the work. A raw list of every payment you made last month is fairly useless data, while the same payments split into sent and received is incredibly useful information you could budget from.</p>
+<p>A screen still decides nothing. <b>Knowledge</b> is the ability to understand information, form opinions, and make decisions or predictions from it. It has two faces.</p>
 <ul class="keys">
-<li><b>An ability a person brings in</b> &mdash; you must have knowledge to be aware that only one Social Security number can uniquely identify each individual, because the database never told you that; you brought it with you.</li>
-<li><b>A body of governing procedures</b> &mdash; guidelines or rules used to organize or manipulate data to make them suitable for a given task, such as the rule that two records sharing one SSN are either the same person or an error.</li>
+<li><b>An ability a person brings in</b> &mdash; knowing that only one Social Security number can uniquely identify an individual, which the database never told you.</li>
+<li><b>A body of governing procedures</b> &mdash; guidelines or rules used to organize or manipulate data for a task, such as the rule that two records sharing one number are an error.</li>
 </ul>
-<p>Both faces live in a person, not in a file.</p>
-
 <div class="tbl-wrap"><table class="tbl">
 <thead><tr><th></th><th>Data</th><th>Information</th><th>Knowledge</th></tr></thead>
 <tbody>
@@ -84,29 +54,24 @@ PROSE.s12a = `
 <tr><td><b>Meaning</b></td><td>???</td><td>SSN</td><td>SSN &rarr; unique person</td></tr>
 </tbody>
 </table></div>
-
-<div class="callout exam"><p><b>The one distinction to get right.</b> Data are raw symbols. Information is data given form and context so that it answers who, what, where, and when. Knowledge is the ability to understand that information and act on it. The trap is usually a middle option that sounds like the top one: a well-formatted, clearly labeled, freshly generated report is still information, however impressive it looks. It becomes knowledge only inside someone who can read it, judge what it means, and decide.</p></div>
+<div class="callout exam"><p><b>The trap.</b> A well-formatted, clearly labeled, freshly generated report is still information, however impressive it looks. It becomes knowledge only inside someone who can read it, judge what it means, and decide.</p></div>
+<p>Follow the three stages through one working system.</p>
 
 <div class="activity" data-activity="isdDiagram"></div>
 
+<p>Now place each item where it belongs at the moment described, not where it could end up.</p>
+
 <div class="activity" data-activity="isdSort"></div>
 
-<h3>Systems integration: making the pieces speak to each other</h3>
-<p>Hardware, software, and networking components evolve rapidly, which makes the ability to tie everything together ever more important. Two chapter terms name that work.</p>
+<h3>Systems integration</h3>
+<p>Components evolve rapidly, which makes tying everything together ever more important. Two terms name that work.</p>
 <ul class="keys">
-<li><b>Internetworking</b> is connecting host computers and their networks together to form even larger networks, like the internet.</li>
+<li><b>Internetworking</b> is connecting host computers and their networks together to form even larger networks, as the internet does.</li>
 <li><b>Systems integration</b> is connecting separate and often modular information systems and data, using technologies such as APIs, to improve business processes and decision making.</li>
 </ul>
-<p>Integration is also why the tidy question &ldquo;what kind of system is this?&rdquo; often has no tidy answer any more. Ten to 15 years ago it would have been typical to see systems that fell cleanly into one category, and two developments since then blurred the lines.</p>
-<ul class="list-tight">
-<li>Today many organizations have replaced stand-alone systems with enterprise systems that span the entire organization.</li>
-<li>With internetworking and systems integration in play, it is difficult to say that any given information system fits into only one category.</li>
-</ul>
-<p>Systems integration also sits on the chapter&rsquo;s list of skills IS professionals need, described there as connectivity, compatibility, and integrating subsystems and systems.</p>
+<p>Integration is also why &ldquo;what kind of system is this?&rdquo; has no tidy answer any more. Ten or fifteen years ago systems fell cleanly into one category; today enterprise systems span the whole organization, and few sit in only one.</p>
 
 <div class="activity" data-activity="isdQuiz2"></div>
-
-<div class="callout tip"><p>If you keep one thing from this section, keep the shape of the definition: people and information technology (hardware, software, telecommunications networks) doing five things &mdash; create, collect, process, store, distribute &mdash; to data, so that what comes out is useful to someone. Every system named in the rest of the chapter is a variation on that single sentence.</p></div>
 `;
 
 ACT.isdFill = {

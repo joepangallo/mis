@@ -2,139 +2,92 @@
 PROSE.s14 = `
 <span class="eyebrow">Section 1&ndash;4</span>
 <h2>Computer ethics, privacy, and intellectual property</h2>
-<p class="lede">Every system in this chapter runs on data, and much of it is about people, including you. This section separates three questions that overlap without being identical: what is ethical, what an organization promised, and what applicable law permits.</p>
-
-<h3>Ethics is not the same thing as law</h3>
-<p>Something can be permitted by law and still be the wrong thing to do. <b>Computer ethics</b> describes moral issues and standards of conduct as they pertain to the use of information systems.</p>
-<p>The chapter uses the sale of customer data to expose that ethical question. Do not turn its ownership framing into a universal legal rule: whether an organization may share or sell personal data depends on the jurisdiction, the kind of data, the notice and consent provided, and the promises the organization made.</p>
+<p class="lede">Every system here runs on data, much of it about people, including you. Three questions overlap without being identical: what is ethical, what an organization promised, and what the law permits.</p>
+<p>Something can be legal and still be wrong. <b>Computer ethics</b> describes moral issues and standards of conduct as they pertain to the use of information systems. Whether a firm may sell personal data depends on jurisdiction, consent, and its promises.</p>
 
 <h3>Mason&rsquo;s four questions: PAPA</h3>
-<p>In 1986 <b>Richard O. Mason</b> reduced the debate to four issues &mdash; information privacy, accuracy, property, and accessibility &mdash; known ever since as <b>PAPA</b>. Almost every argument about technology and people is one of these four.</p>
+<p>In 1986 <b>Richard O. Mason</b> reduced the debate to four issues, known since as <b>PAPA</b>. Almost every argument about technology and people is one of them.</p>
 <ul class="keys">
-  <li><b>Information privacy</b> asks what an individual should have to reveal to others in the workplace or through other transactions, such as online shopping &mdash; for example, a site you bought from once greets you by name and recommends the product you were about to look for, because you told it more than you meant to.</li>
-  <li><b>Accuracy</b> asks about the authenticity and fidelity of information: the software to rearrange and otherwise change a photograph is ordinary now, so an image can look authentic and still misrepresent what happened, and somebody has to answer for a record about a person that turns out to be false.</li>
-  <li><b>Property</b> asks who owns information about individuals and how it may be sold and exchanged &mdash; one purchase puts your name and address on a list that is sold onward, which is why unwanted solicitations arrive from credit card companies, department stores, magazines, and charities you have never dealt with.</li>
-  <li><b>Accessibility</b> asks what a person or organization has the right to obtain about others, and how that information may be accessed and used &mdash; for example, whether every clerk in a company should be able to open any customer file, or only the ones hired, trained, and supervised for it.</li>
+<li><b>Information privacy</b> &mdash; what must an individual reveal, at work or in an ordinary transaction?</li>
+<li><b>Accuracy</b> &mdash; who answers for authenticity, when an edited photograph still looks like a record?</li>
+<li><b>Property</b> &mdash; who owns information about individuals, and how may it be sold on?</li>
+<li><b>Accessibility</b> &mdash; what may an organization obtain about others, and how may it be used?</li>
 </ul>
+<p>Open each issue and read all four facets.</p>
+
 <div class="activity" data-activity="ethPapaExplore"></div>
+
+<p>Now drop each situation into the one issue it raises first.</p>
+
 <div class="activity" data-activity="ethPapaSort"></div>
-<p>One more ethical problem sits alongside those four without being one of them. Where those with access to information systems hold great advantages over those without, there is a <b>digital divide</b>, and it is one of the major ethical challenges facing society because computer literacy now decides who can compete.</p>
-<p>Mason&rsquo;s four ask about information that already exists about you; this one asks who reaches the technology at all.</p>
+
+<p>Those four ask about information that already exists about you. A fifth, the <b>digital divide</b>, asks who reaches the technology at all.</p>
 
 <h3>Information privacy up close</h3>
-<p>Most personal data is handed over voluntarily and quietly, in three ordinary moments.</p>
+<p>Most personal data is handed over quietly: a card purchase records what you bought, and the address you type for free Wi-Fi is the price of the connection. Providing it enables that transaction, not every later use.</p>
+<p>One survey is harmless; the combination is not, because two kinds of data work together.</p>
 <ul class="keys">
-  <li><b>Credit card purchases</b> record what you bought, and you indirectly allow that collection simply by using the card.</li>
-  <li><b>Surveys</b> gather more than the answer asked for, whether you fill one out to apply for a card or to rate a restaurant.</li>
-  <li><b>The email address you type to reach a Wi-Fi network</b> is the price of the connection, so the network is free only in name.</li>
+<li><b>Demographic data</b> &mdash; who am I and where do I live, the part of you that appears on any form.</li>
+<li><b>Psychographic data</b> &mdash; what do I like, the part you give away by choosing rather than declaring.</li>
 </ul>
-<p>Providing data enables the immediate transaction; it does not grant unlimited permission for every later use. Notice, choice, an organization&rsquo;s promises, and applicable law still matter.</p>
-<p>One survey alone is harmless; the combination is not, because two kinds of data work together.</p>
-<ul class="keys">
-  <li><b>Demographic data</b> answers who am I, and where do I live, the part of you that appears on any form.</li>
-  <li><b>Psychographic data</b> answers what do I like, what are my tastes, the part you give away by choosing rather than declaring.</li>
-</ul>
-<p>Put the two beside each other and a company can piece the bits into a highly accurate profile. The aggregation has a name, the <b>Database of Intentions</b>: what you want, what you buy, what you like, what you are interested in, what you are doing, where you are, who you are, and whom you know.</p>
-<p>Such profiles feed predictive models that allow manipulating people through targeted advertising, and invite discrimination and damaging breaches.</p>
+<p>Side by side they assemble an accurate profile, an aggregation called the <b>Database of Intentions</b>: what you want, buy, and like, and whom you know. Such profiles feed targeted advertising.</p>
 <p class="takeaway">Providing data at separate moments never meant agreeing they be combined into one picture.</p>
-<p>So who controls it? The chapter frames a company-maintained database as a property issue, then emphasizes limits created by what the company said. Current law may add rights to know, correct, delete, limit, or opt out, depending on the person, data, organization, and jurisdiction. A firm that promised to use marketing data strictly inside its own business and then sold them would at minimum break its ethical commitment, and regulators may also enforce deceptive privacy promises.</p>
-<p>Each company answers the question twice.</p>
-<ul class="keys">
-  <li><b>At a strategic and ethical level</b>, should we be doing this, which is where a promise about the data is kept or broken.</li>
-  <li><b>At a tactical level</b>, how do we ensure the security and integrity of the data, which is answered through hiring, training, and supervision of employees with access, plus software and hardware security safeguards.</li>
-</ul>
+<p>So who controls it? The chapter frames a company database as a property question, limited by what the company said. A firm that promised to keep marketing data in-house and then sold them breaks that promise, which regulators may enforce.</p>
 <div class="callout warn">
-<p><b>Things you cannot control.</b> A friend&rsquo;s photo of you stays up whether you like it or not, and search engines keep pages in a long-term cache after they come off the web.</p>
-<p>In 2014 the European Court of Justice ruled that individuals have a <b>right to be forgotten</b>, so search engines may have to remove links to personal information that is inaccurate, inadequate, irrelevant, or excessive, though that raises a censorship problem of its own.</p>
+<p><b>Things you cannot control.</b> A friend&rsquo;s photo of you stays up whether you like it or not. In 2014 the European Court of Justice ruled that individuals have a <b>right to be forgotten</b>: search engines may have to remove links to inaccurate or excessive information.</p>
 </div>
 <p>Two newer rules go further.</p>
 <ul class="keys">
-  <li><b>The General Data Protection Regulation (GDPR)</b>, applied across the European Union from 2018, establishes principles including transparency, data minimization, integrity, confidentiality, and protection of personal data.</li>
-  <li><b>The California Consumer Privacy Act (CCPA)</b> gives covered California consumers defined rights over personal information held by covered businesses.</li>
+<li><b>The General Data Protection Regulation (GDPR)</b> &mdash; applied across the European Union since 2018, establishing transparency, data minimization, and confidentiality.</li>
+<li><b>The California Consumer Privacy Act (CCPA)</b> &mdash; gives covered California consumers defined rights over personal information held by covered businesses.</li>
 </ul>
+<p>Three questions on ethics, PAPA, and who owns your data.</p>
+
 <div class="activity" data-activity="ethQuiz1"></div>
 
 <h3>What a privacy policy is supposed to do</h3>
-<p>Because consumers rank privacy a top concern, governments pressured businesses to post policies. The accepted list of <b>fair information practices</b> comes from the U.S. Federal Trade Commission.</p>
+<p>The accepted list of <b>fair information practices</b> comes from the Federal Trade Commission.</p>
 <div class="tbl-wrap"><table class="tbl">
-<thead><tr><th>Practice</th><th>What it means in plain terms</th></tr></thead>
+<thead><tr><th>Practice</th><th>What it means</th></tr></thead>
 <tbody>
-<tr><td>Notice/Awareness</td><td>What data are gathered, what for, who gets access, whether giving them is required or voluntary, and how confidentiality is ensured &mdash; the job of a site&rsquo;s <b>data privacy statements</b>.</td></tr>
-<tr><td>Choice/Consent</td><td>Options about what is done with the data: you <b>opt in</b>, signaling agreement to collection or further use, for example by checking a box, or <b>opt out</b>, signaling that data cannot be used otherwise.</td></tr>
-<tr><td>Access/Participation</td><td>Means to see the data collected about you, check it for accuracy, and request correction.</td></tr>
-<tr><td>Integrity/Security</td><td>Using reputable sources of data, and controls against unauthorized access, disclosure, or destruction.</td></tr>
-<tr><td>Enforcement/Redress</td><td>Means to enforce these practices and give customers a remedy, through self-regulation or law.</td></tr>
+<tr><td>Notice/Awareness</td><td>What data are gathered, what for, and who gets access &mdash; the job of a <b>data privacy statement</b>.</td></tr>
+<tr><td>Choice/Consent</td><td>You <b>opt in</b>, agreeing to collection or further use, or <b>opt out</b>, refusing it.</td></tr>
+<tr><td>Access/Participation</td><td>Means to see the data about you and correct it.</td></tr>
+<tr><td>Integrity/Security</td><td>Reputable sources, and controls against unauthorized access.</td></tr>
+<tr><td>Enforcement/Redress</td><td>Means to enforce the practices and give customers a remedy.</td></tr>
 </tbody>
 </table></div>
-<p>Here is the catch: a privacy statement is notice, not a technical shield. Organizations must honor their promises and applicable law, yet a policy can still be vague or hard to use while a vendor records the shape of a visit.</p>
-<ul class="split">
-  <li>Which pages you look at.</li>
-  <li>Which products you examine in detail.</li>
-  <li>Which products you buy.</li>
-  <li>How you pay.</li>
-  <li>Where it is delivered.</li>
-</ul>
-<p>A vendor may seek to share or sell those records where its notice, consent, promises, and applicable law allow it, and an unscrupulous one may ignore those limits. Review the privacy policy of every company you do business with, use the choices it offers, and prefer businesses that state their practices clearly.</p>
+<p>The catch: a privacy statement is notice, not a shield. It can be vague while a vendor records which pages you looked at, what you bought, and where it went.</p>
+
 <div class="activity" data-activity="ethPrivacySim"></div>
 
 <h3>Email at work is not your mail</h3>
-<p>Most companies provide internet and email access, and many monitor some activity on the accounts or systems they supply. Do not assume a work message is private: monitoring rules vary with jurisdiction, the communication, the employer&rsquo;s policy, and the notice given.</p>
-<ul class="keys">
-  <li><b>The Electronic Communications Privacy Act (ECPA)</b> of 1986 regulates interception and access to electronic communications, but its rules and exceptions do not create a blanket guarantee that messages on an employer&rsquo;s system are private.</li>
-  <li><b>State laws and workplace policies</b> may require notice or restrict particular monitoring practices, so the applicable rule cannot be inferred from one chapter example or one state alone.</li>
-</ul>
-<p>A clear monitoring policy helps establish expectations, but applicable law still controls. The practical lesson is narrower: treat work accounts and systems as organizational resources, read the policy, and send sensitive personal messages through a personal account on a personal device.</p>
+<p>Many companies monitor the email accounts they supply. The <b>Electronic Communications Privacy Act (ECPA)</b> of 1986 regulates interception, but its exceptions guarantee nothing about messages on an employer&rsquo;s system. So treat work accounts as organizational resources and send private messages from a personal device.</p>
 
-<h3>Steps that actually maintain your privacy online</h3>
+<h3>Steps that actually protect your privacy</h3>
 <p>None of these makes you invisible, but each closes one leak.</p>
 <ul class="keys">
-  <li><b>Choose websites monitored by independent organizations</b> such as TRUSTe, because an outside group audits privacy practices a site cannot credibly audit itself.</li>
-  <li><b>Avoid having cookies left on your machine</b>, since commercial sites leave <b>cookies</b> so the owner can monitor where you go and what you do there; manage your browser&rsquo;s cookie settings or use cookie management software.</li>
-  <li><b>Visit sites anonymously</b> with private browser windows, search engines such as DuckDuckGo, and ad personalization off, which keeps marketers, identity thieves, and coworkers at bay.</li>
-  <li><b>Use caution when requesting confirmation email</b> by keeping a separate account for online purchases, apart from your work address, so order mail and the marketing behind it lands somewhere harmless.</li>
-  <li><b>Beware what you post or say online</b>, because the internet never forgets: content stays somewhere on the web after the page is gone, and one regrettable item can wreck a career.</li>
+<li><b>Manage cookies</b> &mdash; sites leave <b>cookies</b> so the owner can monitor where you go; use browser settings or management software.</li>
+<li><b>Visit anonymously</b> &mdash; private windows, search engines such as DuckDuckGo, and ad personalization off keep marketers and identity thieves at bay.</li>
+<li><b>Beware what you post</b> &mdash; the internet never forgets, and one regrettable item can wreck a career.</li>
 </ul>
+<p>Rate your habits honestly below.</p>
+
 <div class="activity" data-activity="ethHabitsCheck"></div>
 
 <h3>Intellectual property in a world of perfect copies</h3>
-<p>The other half of the property question is about what people create. <b>Intellectual property (IP)</b> means creations of the mind that have commercial value: a song, a photograph, an article, a program.</p>
-<p>Analog copies lost quality, which protected creators by accident; digital files removed that friction, so you can duplicate a friend&rsquo;s music library losslessly, pass it to strangers over peer-to-peer networks, or repost a photograph without asking.</p>
-<p>The cases are ordinary ones. Your school may license software to you as a student, and you forget to uninstall it after graduating or lend it to family; or you download a pirated program you cannot afford.</p>
-<p>Lossless copying has reached physical objects: <b>3D printing</b> builds objects from digital models by adding thin layers instead of milling a part from a block and binning up to 90 percent of the material, and cheap printers make counterfeits easy, causing tremendous losses of intellectual property.</p>
-<p>People defend all of this in three ways.</p>
+<p><b>Intellectual property (IP)</b> means creations of the mind with commercial value: a song, a photograph, a program. Analog copies lost quality, protecting creators by accident; digital files removed that friction, and <b>3D printing</b> copies objects too.</p>
+<p>The cases are ordinary: software your school licensed to you, kept after graduating. People defend it two ways.</p>
 <ul class="keys">
-  <li><b>No real loss occurred</b>, the argument runs, since the person would have used a free alternative or bought nothing at all.</li>
-  <li><b>Students cannot afford expensive software</b>, which is offered as a reason the rule should not apply while somebody is studying.</li>
-  <li><b>Copying counts as praise</b> in many non-Western societies, where using someone else&rsquo;s work honors the creator, so putting a famous song under a video or dropping another person&rsquo;s writing into a blog post reads as a compliment rather than a theft.</li>
+<li><b>No real loss occurred</b> &mdash; the person would have used a free alternative, or bought nothing.</li>
+<li><b>Copying counts as praise</b> &mdash; in many societies using another&rsquo;s work honors the creator, so a famous song under a video reads as flattery.</li>
 </ul>
 <p class="takeaway">Either way the act is the same: using intellectual property without permission, attribution, or compensation.</p>
 
-<h3>Why organizations write a code of ethical conduct</h3>
-<p>The internet age left governments playing catch-up on computer crime, privacy, and security, and left everyone else with questions no statute answers.</p>
-<ul>
-  <li>Is it ethical to rearrange and otherwise change a photograph, when it still looks like a genuine record?</li>
-  <li>Is it ethical to take computer time at work for personal business, when the equipment and the hours belong to somebody else?</li>
-  <li>Is it ethical to compile a customer&rsquo;s shopping habits and credit history for sale, even where the specific use is legally permitted?</li>
-</ul>
-<p>Because nobody settles those in the moment, many businesses and most universities publish guidelines telling users to act responsibly, ethically, and legally and to follow online etiquette and the law.</p>
+<h3>Codes of conduct and responsible use</h3>
+<p>Statutes answer none of the daily questions, so most universities publish guidelines instead. The best known come from the <b>Computer Ethics Institute</b>, whose eight prohibitions cover harming others, interfering with their work, snooping, stealing, bearing false witness, copying software, using others&rsquo; resources, and appropriating their work.</p>
+<p>Beyond those it recommends two habits: think about the social consequences of what you build, and use a computer with consideration and respect for others.</p>
 
-<h3>Responsible computer use</h3>
-<p>The best-known set comes from the <b>Computer Ethics Institute</b>, a research, education, and policy study organization that studies how advances in information technology have affected ethics and corporate and public policy. Its widely quoted guidelines prohibit eight things:</p>
-<ul class="list-tight">
-  <li>Using a computer to harm others, since one post or one program reaches further than any pair of hands could.</li>
-  <li>Interfering with other people&rsquo;s computer work, because deleting a shared file or downing a shared service stops work that was never yours to stop.</li>
-  <li>Snooping in other people&rsquo;s files, since being able to open a file has never been the same as having a reason to.</li>
-  <li>Using a computer to steal, because theft is no milder when the thing taken is a number in a database instead of cash in a drawer.</li>
-  <li>Using a computer to bear false witness, since a rearranged photograph carries the look of a genuine record and outlasts a spoken lie.</li>
-  <li>Copying or using proprietary software without paying for it, because digital copying is lossless and free, so only your own decision stops you.</li>
-  <li>Using other people&rsquo;s computer resources without authorization or compensation, since the storage, bandwidth, and processing time were paid for by somebody else.</li>
-  <li>Appropriating other people&rsquo;s intellectual output, because a creation of the mind with commercial value carried a price you did not pay.</li>
-</ul>
-<p>Beyond the prohibitions it recommends two habits: think about the social consequences of the programs you write and the systems you design, and use a computer in ways that show consideration and respect for others.</p>
-<p>When in doubt, review the ethical guidelines published by your school, your place of employment, or your professional organization, because those are the rules you will actually be held to.</p>
-<div class="callout info">
-<p><b>The anonymity is imaginary.</b> People drawn to illegal or unethical behavior count on being anonymous, but we leave electronic tracks as we wander the web, and many have been traced and prosecuted while sure their trail was hidden. Post objectionable material, draw complaints, and your internet service provider can ask you to remove it &mdash; or remove you.</p>
-</div>
 <div class="activity" data-activity="ethQuiz2"></div>
 `;
 

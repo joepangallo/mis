@@ -2,131 +2,94 @@
 PROSE.s16 = `
 <span class="eyebrow">Application supplement &middot; 1&ndash;6</span>
 <h2>Using AI to improve business workflows</h2>
-
-<p class="lede">Imagine two regional chains subscribing to the same generative AI assistant on the same day. One hands it the work and stops checking; the other decides, task by task, where the system drafts and where a person still signs. Same subscription, different <b>method</b>. This supplemental section is about that method.</p>
-
-<div class="callout info"><b>How this supplement relates to the chapter.</b> The AI material below is the chapter&rsquo;s own, but it is spread through the chapter rather than gathered into one of the four learning objectives: the chapter opens on OpenAI and ChatGPT and defines GenAI there, carries the <i>GenAI As a Companion and Not a Replacement</i> box, lists the intelligent system among the categories of organizational information systems, and sets a prompting exercise among its end-of-chapter material. What this section adds is a <b>method</b> &mdash; a repeatable way to decide where AI belongs in a piece of work. The method, not the AI itself, is the supplemental part, which is why it appears here as a labeled supplement rather than as a fifth chapter learning objective.</div>
+<p class="lede">Two chains subscribe to the same AI assistant. One hands it the work and stops checking; the other decides, task by task, where it drafts and where a person signs. Same subscription, different <b>method</b>.</p>
+<div class="callout info"><b>How this supplement relates to the chapter.</b> The AI material is the chapter&rsquo;s own, spread through it rather than gathered into an objective. What this adds is a <b>method</b> for deciding where AI belongs.</div>
 
 <h3>What generative AI actually is</h3>
-
-<p>Start with the chapter&rsquo;s definition, because most workplace arguments about AI are really arguments about what the thing is. <b>GenAI</b> is a type of artificial intelligence that learns patterns, relationships, natural language and problem-solving capabilities from existing datasets.</p>
-
-<p>Four parts of that sentence do the work, and each explains a behavior you will meet later.</p>
-
+<p><b>GenAI</b> is artificial intelligence that learns patterns, relationships, natural language, and problem-solving from existing datasets. Three parts explain behavior you meet later.</p>
 <ul class="keys">
-<li><b>Learned from existing datasets</b> &mdash; many existing GenAI systems were trained on freely available content from the internet, discussion boards, social media and other sources, so what a system knows was gathered outside your organization rather than from its records.</li>
-<li><b>Generative</b> &mdash; the system creates new content from what it learned in response to a user prompt, which is why the same question asked two ways comes back as two different answers.</li>
-<li><b>A transformer architecture</b> &mdash; the design that encodes and captures the relationships among all of the training data in order to create relevant output, and the source of the last word in ChatGPT, which stands for chatbot generative pre-trained transformer.</li>
-<li><b>Tuned system by system</b> &mdash; all of these systems are good at general tasks such as summarizing text, classifying data and natural language, while Claude is considered better for software development and ChatGPT is considered a very good generalist, so picking the system is itself a business decision.</li>
+<li><b>Learned from existing datasets</b> &mdash; trained on free internet content, so what it knows came from outside your organization.</li>
+<li><b>Generative</b> &mdash; it creates new content from a prompt, so one question asked two ways returns two answers.</li>
+<li><b>Tuned system by system</b> &mdash; all summarize and classify well, but they differ by strength, so choosing one is a business decision.</li>
 </ul>
-
-<p>The adoption numbers explain why this question arrived at work so suddenly. ChatGPT was the first commercially available GenAI system for general users, released in November 2022 by OpenAI. It gained one million users after only a month, and by January 2023 the user base had grown to 100 million. Competitors followed, among them Google&rsquo;s Gemini, Microsoft&rsquo;s Copilot and Anthropic&rsquo;s Claude.</p>
+<p>ChatGPT, released in 2022, reached a million users in a month and 100 million by January 2023.</p>
 
 <h3>Where AI sits among the systems already covered</h3>
-
-<p>The chapter does not treat AI as a separate universe. In its table of the system categories organizations use, AI is the <b>intelligent system</b>, whose stated purpose is to emulate or enhance human capabilities, with sample applications including an AI system for analyzing bank loan applications, self-driving cars, Siri, Alexa, ChatGPT and Gemini.</p>
-
-<p>Reading it beside its neighbors in that table shows what is different about it.</p>
-
+<p>AI is not a separate universe. In the catalogue of categories it is the <b>intelligent system</b>, which emulates or enhances human capabilities: loan analysis, self-driving cars, Siri.</p>
 <ul class="keys">
-<li><b>A transaction processing system</b> &mdash; processes day-to-day business event data at the operational level, such as a grocery store checkout register connected to a network, so it records events without judging them.</li>
-<li><b>A management information system</b> &mdash; produces detailed information to help manage a firm or part of a firm, such as an inventory management and planning system, so it reports on events already captured.</li>
-<li><b>A decision support system</b> &mdash; provides analysis tools and access to databases to support quantitative decision making, such as demand forecasting, so a person still decides.</li>
-<li><b>An intelligent system</b> &mdash; emulates or enhances human capabilities, a larger claim than the other three make, because it takes on part of the judgment rather than only supplying the numbers underneath.</li>
+<li><b>The systems around it report</b> &mdash; a transaction processing system records events, a management information system summarizes them, a decision support system models them.</li>
+<li><b>An intelligent system judges</b> &mdash; a larger claim, because it takes on part of the judgment, not just the numbers underneath.</li>
 </ul>
-
-<p class="takeaway">An intelligent system does not replace the systems around it &mdash; it works on data those systems captured, so analyzing a bank loan application still depends on that application having been recorded somewhere first.</p>
+<p class="takeaway">It does not replace the systems around it: a loan application still has to be recorded somewhere first.</p>
 
 <div class="activity" data-activity="aiQuiz1"></div>
 
 <h3>Companion, not replacement</h3>
+<p>The chapter&rsquo;s principle is plain: GenAI should be a <b>knowledge companion and not a knowledge replacement</b>. The argument is about credibility, not effort.</p>
+<p>Ask the system to do the work and you make yourself irrelevant: it produces an output you have no credible way of judging. Ask for assistance while keeping the decision and you make yourself more valuable. The workflow decides which, not the subscription.</p>
 
-<p>The chapter states the governing principle plainly: many organizations, educators and those in industry believe that GenAI should serve as a <b>knowledge companion and not a knowledge replacement</b>.</p>
-
-<p>The argument behind it is about credibility rather than effort. If you ask the system to do the work for you, then you have made yourself irrelevant &mdash; it might create an output, but you would have no credible way of knowing whether that output is correct or even reasonable. If you ask for assistance and you retain control of the decision, you have made yourself more valuable. In one line: the system should augment the human, not replace the human.</p>
-
-<p>Nothing in the subscription decides which of those two outcomes an organization gets, which is why this is a design question rather than a purchase: the workflow built around the subscription decides it.</p>
-
-<h3>A method for deciding where AI belongs in a workflow</h3>
-
-<p>Applying that principle needs a sequence you can repeat on any piece of work, because &ldquo;use AI&rdquo; is not a decision and &ldquo;ban AI&rdquo; is not one either. Four steps, in this order.</p>
-
+<h3>A method for deciding where AI belongs</h3>
+<p>&ldquo;Use AI&rdquo; is not a decision, and neither is &ldquo;ban AI.&rdquo; Four steps, in order.</p>
 <ol class="steps">
-<li><b>Name the task and where it sits</b> &mdash; one specific task, not a department, and the value chain activity it belongs to, because a proposal that opens with the technology has skipped the diagnosis.</li>
-<li><b>Choose the mode</b> &mdash; augment, automate, or leave it alone &mdash; and say which one out loud, because the three lead to different designs, different costs and different ways of going wrong.</li>
-<li><b>Place the human decision point</b> wherever being wrong is expensive, since the cost of an error, not the difficulty of the task, decides whether a person has to sign.</li>
-<li><b>Commit to a measure and a date</b>, naming the number that should move and when you will look at it, which is the same discipline the previous supplement asked of any IT recommendation.</li>
+<li><b>Name the task and where it sits</b> &mdash; one task, not a department, and its value chain activity.</li>
+<li><b>Choose the mode</b> &mdash; augment, automate, or leave alone &mdash; and say which out loud.</li>
+<li><b>Place the decision point</b> where being wrong is expensive: the cost of an error decides who signs.</li>
+<li><b>Commit to a measure and a date</b>: the number that should move, and when you look.</li>
 </ol>
-
-<p>The second step is the one people skip, so the three modes are worth separating carefully.</p>
-
+<p>The second step is the one people skip.</p>
 <ul class="keys">
-<li><b>Augment</b> &mdash; the system drafts, ranks or summarizes and a person decides, which suits work where a starting point saves real time but the judgment still matters, such as a difficult supplier email.</li>
-<li><b>Automate</b> &mdash; the system acts on its own inside limits you defined in advance, which suits high-volume, low-stakes, reversible work, such as sorting arriving messages by topic.</li>
-<li><b>Leave it alone</b> &mdash; the task stays entirely human because the stakes or the sensitivity are too high, such as a decision about one named employee, or anything requiring information you will not send outside the company.</li>
+<li><b>Augment</b> &mdash; it drafts or summarizes and a person decides, where a starting point saves time but judgment matters.</li>
+<li><b>Automate</b> &mdash; it acts inside limits set in advance, for high-volume, low-stakes, reversible work like sorting messages.</li>
+<li><b>Leave it alone</b> &mdash; the task stays human because the stakes or sensitivity are too high, as with one named employee.</li>
 </ul>
+<p>Now walk the method through one task.</p>
 
 <div class="activity" data-activity="aiMethod"></div>
 
-<p>Most workplace disagreements about AI are really disagreements about which mode a task belongs in.</p>
+<p>Most workplace disagreements about AI are really disagreements about mode.</p>
 
 <div class="activity" data-activity="aiMode"></div>
 
 <h3>Output quality follows input quality</h3>
-
-<p>The chapter&rsquo;s prompting exercise puts this as the old data adage: <b>garbage in, garbage out</b> holds for GenAI as well, and it holds twice over. The quality of the responses depends on the quality of the training data, which you do not control. Beyond that, no matter how high the quality of the training data, these tools are unlikely to give you the best response unless you craft a good prompt, which you do control.</p>
-
-<p>The chapter&rsquo;s own pair of prompts shows what a better prompt changes. The weak one is &ldquo;Write an email to a customer.&rdquo; The strong one is &ldquo;Write a short, polite email to a customer who received the wrong item, offering a replacement and a discount.&rdquo;</p>
-
-<p>Three things moved between the two, and the chapter names all three.</p>
-
+<p><b>Garbage in, garbage out</b> holds twice: quality depends on training data you do not control, and on the prompt you do. Compare &ldquo;Write an email to a customer&rdquo; with &ldquo;Write a short, polite email to a customer who received the wrong item, offering a replacement and a discount.&rdquo;</p>
+<p>Three things moved between them.</p>
 <ul class="split">
-<li><b>Specificity about the task</b> &mdash; the wrong item, and what is being offered to fix it.</li>
-<li><b>Tone and format</b> &mdash; short, and polite, rather than left to chance.</li>
-<li><b>Audience</b> &mdash; a customer who has already been let down once.</li>
+<li><b>Specificity</b> &mdash; the wrong item, and the remedy.</li>
+<li><b>Tone and format</b> &mdash; short and polite, not left to chance.</li>
+<li><b>Audience</b> &mdash; a customer let down once already.</li>
 </ul>
-
-<p class="takeaway">Investing the time to carefully craft a prompt might be worth the effort, which is why the prompt for a recurring business task is written once, reviewed, and reused rather than retyped from memory.</p>
+<p class="takeaway">A prompt for a recurring task is worth writing once, reviewing, and reusing.</p>
 
 <h3>What goes wrong</h3>
-
-<p>Four failures account for most of the damage, and each has a matching control that belongs inside the workflow rather than in a policy document nobody opens.</p>
+<p>Four failures cause most of the damage, and each has a control belonging inside the workflow, not in a policy nobody opens.</p>
 
 <div class="activity" data-activity="aiRisks"></div>
 
-<p>The third deserves a note, because it connects this section to ground already covered. Handing a customer list, an employee record or an unreleased contract to an outside system is not only an AI question &mdash; it is an information privacy question of exactly the kind Objective 1.4 raises about what a person must reveal and who may then reach it.</p>
+<p>The third deserves a note: handing a customer list to an outside system is an information privacy question of the kind Objective 1.4 raises.</p>
+<div class="callout warn"><b>Accountability does not transfer.</b> A person owns the decision, so &ldquo;the system suggested it&rdquo; is not an explanation a regulator accepts. If you cannot judge an output, you cannot defend what you built on it.</div>
 
-<div class="callout warn"><b>Accountability does not transfer.</b> A person still owns the decision, so &ldquo;the system suggested it&rdquo; is not an explanation a customer, a regulator or a manager can accept. The reasoning is the chapter&rsquo;s own: if you have no credible way of knowing whether an output is correct or even reasonable, you cannot defend whatever decision you built on top of it.</div>
-
-<h3>The method applied to a hypothetical practice situation</h3>
-
-<p>Return to the practice grocer from the previous supplement, a hypothetical regional chain of grocery and household-goods stores facing a members-only warehouse club that has entered some of its local markets. Four further conditions exist only for this practice situation.</p>
-
+<h3>The method on a hypothetical situation</h3>
+<p>Return to the practice grocer, a hypothetical chain facing a warehouse club. Four conditions exist only here.</p>
 <ul>
-<li>Customer service answers a few hundred emailed complaints a week, and each reply takes about a quarter of an hour because every one starts from a blank screen.</li>
-<li>Most of those complaints fall into four familiar categories, so the same few paragraphs get rewritten from scratch every day by different people.</li>
-<li>A small number report a food-safety concern or an injury, and those have to reach a store manager the same day they arrive.</li>
-<li>Nobody has written down what a good reply looks like, so quality depends on which agent happened to open the message.</li>
+<li>Customer service answers hundreds of emailed complaints a week, each a quarter hour from blank.</li>
+<li>Most fall into four familiar categories, so the same paragraphs are rewritten daily.</li>
+<li>A few report a food-safety concern and must reach a store manager the same day.</li>
+<li>Nobody has written down what a good reply looks like.</li>
 </ul>
-
-<p>Now run the four steps against it, in order.</p>
-
+<p>Now run the four steps.</p>
 <ol class="steps">
-<li><b>The task</b> is drafting the first version of a routine complaint reply, which sits in the value chain&rsquo;s service activity, and it is deliberately not &ldquo;improve customer service.&rdquo;</li>
-<li><b>The mode is augment</b>, because editing a draft is far faster than facing a blank screen, while a wrong promise about a refund still costs a customer relationship.</li>
-<li><b>The human decision point</b> sits immediately before sending, and a routing rule moves anything mentioning illness or injury to a manager untouched, because that is where being wrong is most expensive.</li>
-<li><b>The measure</b> is average time to first reply, paired with the share of drafts rewritten completely, both read on a date fixed in advance rather than whenever the numbers look flattering.</li>
+<li><b>The task</b> is drafting a routine complaint reply, in the service activity.</li>
+<li><b>The mode is augment</b>: editing beats a blank screen, and a wrong refund promise costs a customer.</li>
+<li><b>The decision point</b> sits before sending, and a rule routes anything mentioning injury to a manager.</li>
+<li><b>The measure</b> is time to first reply plus the share of drafts fully rewritten, on a fixed date.</li>
 </ol>
+<p>Now build the same workflow yourself.</p>
 
 <div class="activity" data-activity="aiWorkflow"></div>
 
 <h3>From knowledge workers to learning workers</h3>
-
-<p>The chapter ends its discussion of knowledge workers on a forward-looking claim rather than a warning. Many leaders believe that any efficiencies gained will actually allow knowledge workers to become more creative with their time, leading to better outcomes, and the lines between knowledge workers and manual workers are blurring because almost every organization now uses information technologies or systems to support nearly every part of its business.</p>
-
-<p>Where that leaves an individual is the chapter&rsquo;s own conclusion: while almost every worker can now be considered a knowledge worker, workers of the future need to become <b>learning workers</b>, because not the knowledge itself but the knowledge of how to learn will be of primary importance.</p>
-
-<p>The demand side agrees. AI and machine learning sit among the hot skills the chapter tabulates for the next decade, and it reports, citing the Bureau of Labor Statistics, an increased need for IS managers as organizations embrace cloud computing, cybersecurity and artificial intelligence.</p>
+<p>The chapter ends forward-looking: efficiencies should let knowledge workers be more creative, and the line between knowledge and manual work blurs as every organization runs on systems.</p>
+<p>Almost every worker is now a knowledge worker, but workers of the future must become <b>learning workers</b>, because not the knowledge itself but the knowledge of how to learn will matter most.</p>
 
 <div class="activity" data-activity="aiQuiz2"></div>
 `;
