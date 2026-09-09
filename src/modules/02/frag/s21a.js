@@ -199,7 +199,7 @@ ACT.lvlQuiz1 = {
       opts: [
         "Effectiveness, at the managerial level, since the goal is now being accomplished well",
         "Efficiency, at the managerial level, since midlevel managers deploy the organization&rsquo;s resources",
-        "Efficiency, at the operational level, since goals are accomplished faster, at lower cost, or with relatively little time and effort",
+        "Efficiency, at the operational level, since goals are accomplished faster and at lower cost",
         "Effectiveness, at the executive level, since a faster process supports the organization&rsquo;s long-term strategy"
       ],
       a: 2,

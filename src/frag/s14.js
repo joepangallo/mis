@@ -209,7 +209,7 @@ ACT.ethQuiz1 = {
         "Because the record is about you, the retailer needs affirmative written permission before repurposing it",
         "Because the retailer maintains the record, its ownership interest controls unless it made a specific promise",
         "Because the card issuer processed payment, its rules control how the retailer may use the transaction record",
-        "The retailer controls its customer record, but notice, consent, promises, data type, and applicable law can limit later use or sale"
+        "The retailer controls its customer record, but notice, consent and applicable law can limit later use"
       ],
       a: 3,
       why: [
@@ -303,7 +303,7 @@ ACT.ethQuiz2 = {
         "Treat it as private until the company publishes a policy, because notice normally defines when monitoring begins",
         "Treat the ECPA as the controlling protection, comparable to the rule for a private phone conversation",
         "Treat personal messages as exempt from monitoring, because their subject matter is not company business",
-        "Read the policy and applicable rules, avoid sensitive personal use, and assume an employer-provided account may be monitored"
+        "Read the policy and applicable rules, and assume an employer-provided account may be monitored"
       ],
       a: 3,
       why: [

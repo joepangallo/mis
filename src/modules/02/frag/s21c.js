@@ -166,7 +166,7 @@ ACT.frcQuiz1 = {
       q: "A regional retailer has lost share to two companies that have sold the same goods in the same region for decades, and every promotion it runs is matched within a week. Which competitive force is at work?",
       opts: [
         "Threat of new entrants into its market, because competitors are taking customers it used to keep",
-        "Traditional rivals within its industry, because the pressure comes from established sellers competing on price and service",
+        "Traditional rivals, because the pressure comes from established sellers competing on price and service",
         "Threat of substitute products or services, because customers are choosing something other than this retailer",
         "Customers&rsquo; bargaining power, because shoppers are the ones deciding to buy elsewhere"
       ],

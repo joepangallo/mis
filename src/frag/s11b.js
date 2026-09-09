@@ -315,7 +315,7 @@ ACT.ddQuiz2 = {
         "A copy of the provider's software that Lyft can host and modify on its own servers",
         "A direct connection into the provider's database so Lyft can query the provider's tables",
         "Ownership of the data the provider processes on Lyft's behalf",
-        "Access to the provider's functionality through a standard interface, without needing to know how it works inside"
+        "Access to the provider's functionality through a standard interface"
       ],
       a: 3,
       why: [

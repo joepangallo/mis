@@ -314,7 +314,7 @@ ACT.orgQuiz2 = {
         "Because business units are not permitted to make technology decisions of their own",
         "Because a central group costs less than embedded staff, so firms are gradually ending the embedded arrangement",
         "Because centralization delivers the flexibility, adaptability, and responsiveness that decentralization cannot",
-        "Because centralization preserves coordination, economies of scale, compatibility, and connectivity across the whole firm"
+        "Because centralization preserves coordination, economies of scale, compatibility, and connectivity"
       ],
       a: 3,
       why: [

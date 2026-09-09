@@ -154,7 +154,7 @@ ACT.isdQuiz1 = {
        "Information technology is what an organization buys from vendors; an information system is what it develops itself.",
        "Information technology is technology used by consumers; an information system is technology used inside businesses.",
        "Information technology is the newer term, and it has replaced information system in modern organizations.",
-       "Information technology is the hardware, software, and networks; an information system adds people and produces useful data."
+       "Information technology is the hardware, software and networks; an information system adds people and useful data."
      ],
      a: 3,
      why: [
@@ -283,7 +283,7 @@ ACT.isdQuiz2 = {
      ]},
     {q: "The chapter contrasts a raw month of peer-to-peer payment transactions with a table that divides the same payments into sent and received. Which reading matches the chapter?",
      opts: [
-       "The raw list is data and the table is information, because sorting them into categories gives them a form a person can use.",
+       "The raw list is data and the table is information, because sorting them into categories makes them usable.",
        "Both are information, because both are records of payments that really happened.",
        "The raw list is information and the table is knowledge, because the table can be used to make budgeting decisions.",
        "The raw list is data and the table is knowledge, because the app processed the transactions to build it."

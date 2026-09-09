@@ -259,7 +259,7 @@ ACT.invQuiz1 = {
     {
       q: "The chapter&rsquo;s table pairs compact discs with cassettes and records, then pairs music downloading and streaming with compact discs and music stores. What does that sequence illustrate?",
       opts: [
-        "That a technology which displaced an older one can itself be displaced later, so radical innovation is a chain rather than a finish line",
+        "That a technology which displaced an older one can itself be displaced later, so innovation is a chain, not a finish line",
         "That the chapter regards the compact disc as an incremental improvement on the cassette rather than a radical innovation",
         "That displacement moves slowly enough for the leading firm in each round to move into the technology that replaces it",
         "That a radical innovation displaces a technology from its own industry, since one recorded-music format gave way to the next"
@@ -286,7 +286,7 @@ ACT.invQuiz2 = {
       q: "A manager says: &ldquo;Our innovation strategy is simple. We build the best product in the category and defend the patents.&rdquo; What is the strongest objection the chapter supports?",
       opts: [
         "Competitive advantage comes from being the low-cost producer, so a strategy built on the best product aims at the wrong target",
-        "Product performance is one of ten types of innovation, and products, even radical ones, can easily be copied, so a product-only strategy is a dangerous path",
+        "Product performance is one of ten types of innovation, and products can easily be copied, so a product-only strategy is risky",
         "Improving an existing product does not count as innovation, so defending a product line is not an innovation strategy at all",
         "Innovation is the responsibility of the research department, so a manager outside it should not be setting an innovation strategy"
       ],

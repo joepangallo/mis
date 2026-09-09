@@ -212,7 +212,7 @@ ACT.pplQuiz2 = {
   questions: [
     {q: "You take a marketing job at a 30-person company with no IS department, and the owner asks you to help choose a new customer database. Why does the chapter say your IS knowledge matters here?",
      opts: [
-       "You will be part of the investment decision, and without basic understanding you are at the mercy of consultants and vendors",
+       "You will be part of the investment decision, and without basic understanding you are at others' mercy",
        "Small organizations face few IS decisions, so the stakes are low enough that any reasonable choice works out",
        "Hand the decision to an outside vendor, since their technical knowledge is deeper than anyone at the firm has",
        "IS knowledge here is really product training, so what matters is learning whichever database the owner buys"

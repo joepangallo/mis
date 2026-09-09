@@ -214,7 +214,7 @@ ACT.bmcQuiz1 = {
       opts: [
         "Nothing is missing, because naming the product answers the question of what the company does, and the other components follow from the product itself",
         "Only the price, since a product and a price together already state what is sold and how the firm gets paid for it",
-        "Everything after the first question: how the company uniquely does it, what key resources and activities are needed, in what ways it gets paid, and what the costs are",
+        "Everything after the first question: how it uniquely does that, what resources and activities are needed, how it gets paid, and what the costs are",
         "Only the technology, because a business model in the digital world is mainly a description of the systems the company runs on"
       ],
       a: 2,
@@ -228,14 +228,14 @@ ACT.bmcQuiz1 = {
     {
       q: "Why does the chapter insist that a manager answer the business model questions before deciding on information systems investments?",
       opts: [
-        "Because how a company answers them dictates how and where information systems investments can be used to execute a competitive strategy and sustain an advantage",
+        "Because how a company answers them dictates where information systems investments can execute a competitive strategy",
         "Because the answers reveal which technology vendor is offering the lowest price for the systems the company needs to buy this year",
         "Because the systems a company already owns are what determine which business model it is able to adopt in its industry",
         "Because information systems are only relevant to the revenue streams component and can safely be ignored when writing the other eight"
       ],
       a: 0,
       why: [
-        "Correct. The model is what tells you which investment executes the strategy, which is why the chapter presents technology investment as something to be aligned with the model rather than chosen on its own merits.",
+        "Correct. The model is what tells you which investment executes the strategy and sustains the advantage it wins, which is why the chapter presents technology investment as something to be aligned with the model rather than chosen on its own merits.",
         "Vendor pricing is a procurement question that arrives much later. The business model tells you what the system has to accomplish, and a cheap system aimed at the wrong component is not a saving.",
         "This reverses the chapter&rsquo;s order of reasoning: how a company answers the business model questions is what dictates where systems investments go, not the other way round. Treating the installed systems as the constraint locks a firm into whichever model it happens to have inherited.",
         "Revenue streams are one component of nine, and systems support many of the others directly, from the channels that reach customers to the key activities the firm performs every day."
@@ -270,7 +270,7 @@ ACT.bmcQuiz2 = {
     {
       q: "A firm decides that its offering will now reach customers through a subscription app instead of a retail counter. Which component has it changed, and what must be revisited straight away?",
       opts: [
-        "It changed its channels, so key resources and key activities must be revisited, because both are defined as whatever enables the channels and the rest of the promise",
+        "It changed its channels, so key resources and key activities must be revisited, since both are defined by what the channels require",
         "It changed its value proposition, and nothing else needs revisiting, because the product being sold to the customer is identical either way",
         "It changed its cost structure, and the customer segments must be renamed to match the new pattern of spending the app creates",
         "It changed its key partners, and only the partner contracts need to be rewritten, since the app will be built and hosted by someone else"

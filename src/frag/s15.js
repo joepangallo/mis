@@ -325,7 +325,7 @@ ACT.strQuiz2 = {
       q: "The practice grocer wants a system that tells every store manager what is on the next truck and when it will dock. Which value chain activity does it improve?",
       opts: [
         "Procurement, because the system is about goods the grocer purchased",
-        "Inbound logistics, because it covers receiving and handling goods on their way to the shelf",
+        "Inbound logistics, because it covers goods on their way to the shelf",
         "Operations, because store staff will be using it during the working day",
         "Outbound logistics, because it moves product closer to the customer"
       ],
@@ -417,7 +417,7 @@ ACT.strApply = {
         "Both, since either problem could be fixed with the right kind of app",
         "Neither, since a small fitness studio does not really run a full value chain",
         "Only the Instagram one, since brand perception is what drives a customer's choice of studio",
-        "Only the double-booking one, since it names an activity the studio performs and a system could change"
+        "Only the double-booking one, since it names an activity a system could change"
       ],
       a: 3,
       why: [
@@ -447,7 +447,7 @@ ACT.strApply = {
       q: "A specialty coffee roaster sells almost entirely through a handful of long-standing wholesale accounts and has been losing accounts to a competitor with fresher relationships. The owner commissions an expensive mobile app for direct-to-consumer sales, expecting it to fix the account losses. What does the chapter's caution about business models say to expect?",
       opts: [
         "The app will likely succeed regardless of the account losses, since a genuinely good app overcomes almost any weakness underneath it",
-        "The app targets a different problem than the one described; a system amplifies a business model, it does not repair a relationship it was never built to touch",
+        "The app targets a different problem than the one described; a system amplifies a business model, it does not repair one",
         "The app is doomed to fail outright, since no app can be built while wholesale relationships remain unfixed",
         "The account losses stop mattering once the app launches, since consumer and wholesale sales run on entirely separate tracks"
       ],

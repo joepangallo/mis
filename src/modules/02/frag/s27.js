@@ -417,7 +417,7 @@ ACT.delApply = {
         "Yes, because they are worded differently",
         "No, because customer service is not part of the value chain at all",
         "Yes, because customer service is the most important function in any company",
-        "No, because they describe the same activity twice, so the scan really only found one leak"
+        "No, because they describe the same activity twice rather than two areas"
       ],
       a: 3,
       why: [

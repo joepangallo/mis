@@ -162,7 +162,7 @@ ACT.alsQuiz1 = {
       q: "Which activity in the loan table takes the same amount of time in the manual, technology-supported, and fully automated processes, and why does that matter?",
       opts: [
         "Checking the application for errors, because a person still has to read every form no matter how it arrives",
-        "The committee decision on loans over $250,000, at 15 days in all three, because none of the three processes changed who makes that decision",
+        "The committee decision on loans over $250,000, because no process changed who makes that decision",
         "Notifying the applicant, because a decision still has to reach a human being at the other end",
         "Inputting the data into the information system, because entering an application takes as long as it takes"
       ],
@@ -263,7 +263,7 @@ ACT.alsQuiz2 = {
       q: "What makes an information system produce organizational learning rather than mere speed?",
       opts: [
         "It stores considerably more data than the system it replaced, since learning is a matter of volume",
-        "It creates data about the underlying business process that can be used to monitor, control, and change that process",
+        "It creates data about the business process that can be used to monitor, control and change it",
         "It removes human judgment from the process, so that the decisions come out consistent",
         "It operates at the executive level of the organization rather than the managerial level"
       ],
@@ -295,7 +295,7 @@ ACT.alsQuiz2 = {
       q: "A project team proposes a system that will clearly cut cost per transaction but has no answer to how it helps the company compete. What does the chapter say about its prospects?",
       opts: [
         "It will be funded, because cost reduction is the most reliable justification an information system can offer",
-        "It is not likely to be funded, because a proposal is expected to deliver strategic value as well as helping people work smarter and save money",
+        "It is not likely to be funded, because a proposal is expected to deliver strategic value as well as savings",
         "It is not likely to be funded, because a proposal is expected to show competitive advantage instead of cost savings",
         "It will be funded, because the strategic value of a system only becomes clear once the system is running"
       ],

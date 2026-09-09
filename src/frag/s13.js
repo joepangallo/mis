@@ -165,7 +165,7 @@ ACT.dualQuiz1 = {
     {
       q: "According to the chapter, who was hit hardest by the May 17, 2020, Zoom outage, and why?",
       opts: [
-        "Churches, because their services had moved online and the outage came on a Sunday morning, leaving many worshippers unable to connect",
+        "Churches, because their services had moved online and the outage came on a Sunday morning",
         "Businesses and professionals, because the outage struck in the middle of the workweek when most meetings were scheduled",
         "Schools, because students in remote classes could not attend their lessons for most of the day",
         "Zoom itself, because the outage reversed the surge that had carried it past 300 million daily meeting participants"
@@ -210,7 +210,7 @@ ACT.dualQuiz2 = {
         "It agrees, which is why it warns that advantage from information systems can be fleeting",
         "It holds for small firms, but companies the size of FedEx and Amazon can buy an advantage outright",
         "It is right that bought technology cannot differentiate a firm, so a firm should rebuild the standardized parts itself",
-        "IT keeps changing rapidly, and firms from Amazon to Zoom win by pairing commoditized technologies with proprietary systems and processes"
+        "IT keeps changing rapidly, and firms from Amazon to Zoom pair commoditized technologies with proprietary systems"
       ],
       a: 3,
       why: [
@@ -240,7 +240,7 @@ ACT.dualQuiz2 = {
       q: "A regional retailer buys the same analytics and logistics technology its most successful rival uses, but its stores stock merchandise its customers do not want at prices they will not pay. What does the chapter predict?",
       opts: [
         "It will close the gap, because in the chapter's view the technology is what creates the advantage",
-        "It will likely fail anyway, because companies with bad business models tend to fail regardless of whether they use information technology",
+        "It will likely fail anyway, because companies with bad business models tend to fail regardless of the technology",
         "It will succeed once it layers proprietary systems on top of the technology it bought, the way Amazon and Zoom did",
         "The chapter takes no position, because it treats the business model and the technology as separate subjects"
       ],

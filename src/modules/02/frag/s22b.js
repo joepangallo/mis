@@ -333,7 +333,7 @@ ACT.revQuiz2 = {
       q: "A jet-engine manufacturer stops selling engines and spare parts and is instead paid for guaranteeing continuous uptime. What actually changes?",
       opts: [
         "The customer finances the engine over time while the manufacturer keeps the spare-parts revenue it had before",
-        "The customer pays for hours of usage, turning fixed costs into variable ones, and the manufacturer now profits from durability and preventive maintenance",
+        "The customer pays for hours of usage, turning fixed costs into variable ones, and the manufacturer now profits from durability",
         "Nothing changes in the manufacturer&rsquo;s priorities, since minimizing manufacturing cost still decides how profitable each engine is",
         "The arrangement needs no new technology, because maintenance intervals for engines are already well known"
       ],

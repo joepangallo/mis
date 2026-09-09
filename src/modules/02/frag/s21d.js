@@ -135,7 +135,7 @@ ACT.vchQuiz1 = {
       opts: [
         "Proprietary technology the company owns and no competitor can use",
         "Brand equity built up with customers over many years",
-        "Efficient operations, meaning the company runs its processes better than others do",
+        "Efficient operations, meaning the firm runs its processes well",
         "A loyal and established customer base that keeps returning"
       ],
       a: 2,
@@ -307,7 +307,7 @@ ACT.vchQuiz2 = {
       q: "A hotel is deciding where an employee self-service portal for scheduling and time off belongs on its value chain. Where does it sit?",
       opts: [
         "Operations, because scheduling decides who is available to clean rooms and serve breakfast",
-        "Human resources, a support activity, because it serves the staffing of every stage rather than one stage",
+        "Human resources, a support activity, because it serves the staffing of every stage",
         "Inbound logistics, because staff time is one of the inputs the hotel receives and consumes",
         "Service, because the portal exists to serve the people who work at the hotel"
       ],

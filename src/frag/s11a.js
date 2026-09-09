@@ -358,7 +358,7 @@ ACT.dwQuiz2 = {
         "Growth a company can maintain year after year without losing market share to competitors.",
         "Reducing waste through recycling programs so that materials are reused rather than discarded.",
         "Development that meets the needs of the present without compromising the ability of future generations to meet their own needs.",
-        "Economic activity that avoids fossil fuels, since fossil fuels are the resource the chapter says is running short."
+        "Economic activity that avoids the use of fossil fuels, on the grounds that fossil fuels are the resource the chapter says is running short."
       ],
       a: 2,
       why: [

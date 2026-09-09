@@ -265,7 +265,7 @@ ACT.iprQuiz1 = {
         "Because savings in operating costs stay inside the firm, so they cannot influence how customers choose between one supplier and another",
         "Because efficiency gains show up in published financial results, so rivals can read them there and respond in the same quarter",
         "Because efficiency gains decay on their own over time, so the firm should relaunch the same system on a regular schedule",
-        "Because rivals can just as easily adopt the same types of systems and achieve the same gains; making the product unique or raising switching costs lasts longer"
+        "Because rivals can just as easily adopt the same systems and achieve the same gains; uniqueness and switching costs last longer"
       ],
       a: 3,
       why: [

@@ -373,7 +373,7 @@ ACT.aiQuiz2 = {
       opts: [
         "The prompt became longer, and longer prompts reliably produce better output than shorter ones",
         "The prompt named the system it was written for, so the request was matched to that system's strengths",
-        "The prompt became more specific about the task, clearer about tone and format, and better informed about the audience",
+        "The prompt became more specific about the task, clearer about tone and format, and better targeted",
         "The prompt corrected the training data, which is the underlying cause of a weak response"
       ],
       a: 2,
