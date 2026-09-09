@@ -329,3 +329,48 @@ test("all seven activities are wired to the progress counter", () => {
     assert.ok(html.includes(`id="sec-${id}"`), `${id} has no section`);
   }
 });
+
+test("the correct option is not reliably the longest", () => {
+  /* A reader who notices that the right answer is always the wordiest can score
+     the page without reading a single stem. The cause is structural rather than
+     careless: the author writes the correct option first and puts the reasoning
+     in it, then invents three shorter wrong ones. Measure both the per-question
+     gap and the share across the pool, the way src/check.mjs does for the
+     modules, so this page is held to the same bar. */
+  const plain = v => String(v).replace(/<[^>]*>/g, "").replace(/&(?:[A-Za-z]+|#\d+);/g, "x");
+  const items = [];
+  for (const m of html.matchAll(/a:\s*(\d+)\s*,\s*\n?\s*opts:\s*(\[[^\n]*\])/g)) {
+    const opts = new Function(`"use strict";return ${m[2]};`)();
+    if (!Array.isArray(opts) || opts.length < 2) continue;
+    items.push({ a: Number(m[1]), opts });
+  }
+  assert.ok(items.length >= 15, `expected the page's multiple-choice items, found ${items.length}`);
+
+  let longest = 0;
+  items.forEach(({ a, opts }, i) => {
+    const lens = opts.map(o => plain(o).length);
+    const correct = lens[a];
+    const maxOther = Math.max(...lens.filter((_, j) => j !== a));
+    if (correct > maxOther) longest++;
+    assert.ok(correct - maxOther <= 40,
+      `item ${i + 1}: correct option is ${correct - maxOther} characters longer than the longest distractor`);
+  });
+  assert.ok(longest <= items.length * 0.45,
+    `the correct option is the longest in ${longest}/${items.length} items - answerable without reading the stem`);
+});
+
+test("correct answers are spread across the option positions", () => {
+  const positions = [0, 0, 0, 0];
+  let total = 0;
+  for (const m of html.matchAll(/a:\s*(\d+)\s*,\s*\n?\s*opts:\s*(\[[^\n]*\])/g)) {
+    const opts = new Function(`"use strict";return ${m[2]};`)();
+    if (!Array.isArray(opts) || opts.length < 2) continue;
+    const a = Number(m[1]);
+    if (a < 4) positions[a]++;
+    total++;
+  }
+  for (let p = 0; p < 4; p++) {
+    assert.ok(positions[p] <= total * 0.45,
+      `${positions[p]}/${total} correct answers sit at position ${"ABCD"[p]}`);
+  }
+});
