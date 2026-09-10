@@ -125,6 +125,9 @@ that exists.
 node --test modules-1-3-jeopardy.test.mjs
 ```
 
+A second board, narrowed to the two strategy frameworks and playable without having read
+Modules 1 and 3, is described under **Strategy frameworks review game** below.
+
 ## Strategy frameworks workshop
 
 [`five-forces-and-value-chain.html`](five-forces-and-value-chain.html) is a standalone, deep
@@ -175,6 +178,75 @@ four positions, and every link resolving to a file that exists.
 
 ```sh
 node --test five-forces-and-value-chain.test.mjs
+```
+
+## Strategy frameworks quiz
+
+[`five-forces-and-value-chain-quiz.html`](five-forces-and-value-chain-quiz.html) is thirty questions on
+the same two frameworks, **marked the moment an answer is chosen**. It is the fastest way to find out
+whether the workshop actually stuck. Like the workshop it is one self-contained file with no CDN, no
+fonts, no scripts and no network of any kind, and it inherits the theme the reader last set on a module
+page.
+
+- **Six topics of five questions**, in the order the analysis is built: name the force &middot; diagnose
+  from evidence &middot; place it on the chain &middot; the classic confusions &middot; which system
+  answers it &middot; turn it into a recommendation.
+- **Immediate feedback, and every option explains itself.** Choosing marks the answer at once and opens
+  all four explanations, so the three options nobody chose still teach something. Under them sits the one
+  sentence worth keeping whether the answer was right or wrong.
+- **The first choice is the one that counts** &mdash; there is no going back and no penalty, which is the
+  only arrangement under which the score means anything.
+- **Situations rather than definitions.** Every question is a firm with a problem: a self-storage yard, a
+  translation agency, a calibration laboratory, a boutique hotel. All of them are invented, and the page
+  says so.
+- **Results per topic and per course objective**, then every missed question reprinted with the answer,
+  the reason, and what you chose instead &mdash; plus a retry that runs only those. Best percentage is
+  kept in the browser, and only a complete run of all thirty can set it.
+- **Keyboard throughout:** 1 to 4 chooses, Enter or the right arrow moves on.
+
+It teaches the shape of a written framework analysis and never its wording: no case name, no institution,
+no course code. `five-forces-and-value-chain-quiz.test.mjs` enforces that alongside the question
+contract &mdash; thirty questions in six topics of five, four distinct options each carrying its own
+explanation, an explanation of the right answer that confirms it and wrong ones that never do, correct
+answers spread across all four positions and only rarely the longest option, both frameworks and all
+nine value chain activities actually asked about, only the four course objectives these frameworks
+serve, and every link resolving to a file that exists.
+
+```sh
+node --test five-forces-and-value-chain-quiz.test.mjs
+```
+
+## Strategy frameworks review game
+
+[`five-forces-and-value-chain-jeopardy.html`](five-forces-and-value-chain-jeopardy.html) is a second
+Jeopardy board, this one narrowed to the two frameworks and playable without having read Modules 1 and 3.
+Fifty clues over two boards plus a Final Jeopardy capstone, self-contained on the same terms as
+everything else here.
+
+- **Round one, $200&ndash;$1,000 &mdash; what the terms mean.** The five forces by name, the five primary
+  activities, the four support bands and cost drivers, what actually makes a force strong (barriers,
+  switching costs, concentration, integration, and what the internet did to all of them), and the
+  strategy vocabulary the recommendation is judged against.
+- **Round two, Double Jeopardy, $400&ndash;$2,000 &mdash; what you do with them.** Diagnose the pressure
+  from a situation, name the activity that owns the problem, untangle the five confusions that change
+  what a firm buys, match a system to the force it answers, and **the shape of the written analysis
+  itself**.
+- **Final Jeopardy** is business and IT alignment, which is what both frameworks are ultimately for.
+- **A term defined in round one is often diagnosed again in round two, on purpose** &mdash; recognition
+  first, then recall from evidence. What the test forbids is the same answer twice inside one round, or
+  a round-two clue that simply reprints its round-one definition.
+
+Every clue is tagged with the course objectives it serves and the topic to go back to on a miss, so the
+results screen reports **per objective** rather than as one number, and the intro says plainly which
+objectives two strategy frameworks cannot honestly claim. Each revealed answer carries a sentence saying
+why it is that term and not the one next to it. `five-forces-and-value-chain-jeopardy.test.mjs` enforces
+the board contract &mdash; two 5&times;5 rounds with round two worth double, answers phrased as questions,
+all five forces both named in round one and diagnosable in round two, all nine value chain activities
+named, every clue tagged, every topic bucket carrying real weight, and every link resolving to a file
+that exists.
+
+```sh
+node --test five-forces-and-value-chain-jeopardy.test.mjs
 ```
 
 ## Practice case studies
