@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Five Forces &amp; Value Chain &mdash; Quiz</title>
+<meta name="description" content="A thirty-question quiz on Porter's Five Forces and the Value Chain Model that marks every answer the moment it is given, explains every option including the ones you did not choose, and reports the result by topic rather than as a single number.">
+<style>
+/* ============================================================================
+   THEME TOKENS
+   The palette the study modules and the strategy workshop use, so arriving here
+   from either one does not feel like switching products. The two framework
+   colours carry over as well: green for the value chain, violet for the
+   competitive forces, so a topic chip says which framework it belongs to
+   before the question has been read.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd; --panel-3:#ece3d1;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a; --good-line:#0e6b4d66;
+  --bad:#b3282f;  --bad-soft:#b3282f1a;  --bad-line:#b3282f66;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --chain:#2f6b3d; --chain-soft:#2f6b3d16; --chain-line:#2f6b3d55;
+  --force:#5a3fa8; --force-soft:#5a3fa816; --force-line:#5a3fa855;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#1e2433; --bg-soft:#242b3c; --panel:#293042; --panel-2:#323950; --panel-3:#39415a;
+  --border:#46506c; --border-soft:#394157;
+  --text:#f2f4fa; --text-dim:#c8cfe0; --muted:#a6aec4;
+  --accent:#7cc7f0; --accent-strong:#1d5d8c; --accent-soft:#7cc7f022; --accent-line:#7cc7f055;
+  --good:#2fd39f; --good-soft:#2fd39f22; --good-line:#2fd39f77;
+  --bad:#ff8a94;  --bad-soft:#ff8a9422;  --bad-line:#ff8a9477;
+  --warn:#f5a524; --warn-soft:#f5a52422;
+  --chain:#6fd08c; --chain-soft:#6fd08c1c; --chain-line:#6fd08c55;
+  --force:#b3a1f5; --force-soft:#b3a1f51c; --force-line:#b3a1f555;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%; margin:0}
+body{background:var(--bg); color:var(--text); min-height:100%;
+  font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+button,input,select{font:inherit; color:inherit}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:8px}
+[hidden]{display:none !important}
+
+/* ------------------------------------------------------------------ chrome */
+.app{min-height:100%; display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:9px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:20}
+.brand{display:flex; align-items:baseline; gap:10px; margin-right:auto; min-width:0}
+.brand b{font-size:1.02rem; letter-spacing:-.01em}
+.brand span{font-size:.68rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.stat{display:flex; align-items:baseline; gap:6px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.stat i{font-style:normal; font-size:.62rem; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted)}
+.stat b{font-size:.92rem; font-variant-numeric:tabular-nums}
+.btn{border:1px solid var(--border); background:var(--panel-2); border-radius:10px;
+  padding:8px 14px; cursor:pointer; font-weight:650; font-size:.86rem;
+  transition:transform .1s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--accent-line)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.sm{padding:5px 11px; font-size:.78rem}
+.btn[disabled]{opacity:.45; cursor:default}
+.stage{flex:1; padding:18px 18px 40px; display:flex; flex-direction:column; align-items:center}
+.wrap{width:100%; max-width:860px}
+.foot{padding:10px 18px 16px; border-top:1px solid var(--border-soft);
+  font-size:.75rem; color:var(--muted); display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+.foot a{font-weight:700}
+
+.hero{text-align:center; margin:8px 0 18px}
+.hero h1{margin:0 0 8px; font-size:1.85rem; letter-spacing:-.02em}
+.hero p{margin:0 auto; max-width:62ch; color:var(--text-dim); font-size:.95rem}
+.eyebrow{display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:8px}
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); width:100%}
+.panel + .panel{margin-top:14px}
+.panel h2{margin:0 0 10px; font-size:1.08rem}
+.panel p{margin:0 0 10px}
+.panel ul{margin:0; padding-left:22px}
+.panel li{margin:6px 0}
+.center-row{display:flex; justify-content:center; gap:12px; margin-top:18px; flex-wrap:wrap}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft);
+  border-radius:10px; padding:12px 14px; margin:12px 0 0; font-size:.9rem}
+.callout.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.callout b.tagline{display:block; margin-bottom:4px}
+.opts-row{display:flex; align-items:center; gap:10px; justify-content:center;
+  flex-wrap:wrap; margin-top:14px; font-size:.86rem; color:var(--text-dim)}
+.opts-row label{display:flex; align-items:center; gap:7px; cursor:pointer}
+.opts-row input{width:17px; height:17px; accent-color:var(--accent-strong)}
+
+/* ------------------------------------------------------------------- table */
+.tbl-wrap{width:100%; overflow-x:auto; margin-top:10px}
+table.tbl{width:100%; border-collapse:collapse; font-size:.88rem; text-align:left}
+table.tbl th,table.tbl td{padding:8px 10px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl thead th{background:var(--panel-2); font-size:.7rem; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted); border-bottom:1px solid var(--border)}
+table.tbl td.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pill{display:inline-block; padding:2px 9px; border-radius:99px; font-size:.72rem; font-weight:800}
+.pill.ok{background:var(--good-soft); color:var(--good)}
+.pill.mid{background:var(--warn-soft); color:var(--warn)}
+.pill.low{background:var(--bad-soft); color:var(--bad)}
+.pill.none{background:var(--panel-2); color:var(--muted)}
+
+/* -------------------------------------------------------------- question */
+.progress{height:8px; border-radius:99px; background:var(--panel-3);
+  border:1px solid var(--border-soft); overflow:hidden; margin-bottom:14px}
+.progress i{display:block; height:100%; width:0; background:var(--accent);
+  transition:width .25s ease}
+.qmeta{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 10px}
+.chip{display:inline-block; padding:3px 11px; border-radius:99px; font-size:.7rem;
+  font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+  background:var(--panel-2); border:1px solid var(--border-soft); color:var(--muted)}
+.chip.force{background:var(--force-soft); border-color:var(--force-line); color:var(--force)}
+.chip.chain{background:var(--chain-soft); border-color:var(--chain-line); color:var(--chain)}
+.chip.both{background:var(--accent-soft); border-color:var(--accent-line); color:var(--accent)}
+.qnum{font-size:.76rem; color:var(--muted); font-weight:700; margin-left:auto;
+  font-variant-numeric:tabular-nums}
+.qtext{margin:0 0 6px; font-size:1.18rem; line-height:1.48; font-weight:650; letter-spacing:-.01em}
+.qfacts{margin:10px 0 0; padding:10px 14px; background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:12px; font-size:.88rem; color:var(--text-dim)}
+.qfacts ul{margin:0; padding-left:20px}
+.qfacts li{margin:3px 0}
+
+.opts{display:flex; flex-direction:column; gap:9px; margin-top:16px}
+.opt{display:flex; gap:12px; align-items:flex-start; text-align:left; width:100%;
+  padding:12px 14px; border-radius:12px; border:1px solid var(--border);
+  background:var(--panel-2); cursor:pointer; transition:border-color .14s, background .14s}
+.opt:hover{border-color:var(--accent-line); background:var(--panel-3)}
+.opt .mark{flex:none; width:26px; height:26px; border-radius:8px; display:flex;
+  align-items:center; justify-content:center; font-weight:800; font-size:.8rem;
+  background:var(--panel); border:1px solid var(--border)}
+.opt .body{flex:1; min-width:0}
+.opt .label{display:block; font-size:.95rem; line-height:1.5}
+.opt .why{display:block; margin-top:7px; font-size:.85rem; line-height:1.55; color:var(--text-dim);
+  border-top:1px dashed var(--border); padding-top:7px}
+.opts.locked .opt{cursor:default}
+.opts.locked .opt:hover{border-color:var(--border); background:var(--panel-2)}
+.opt.correct{border-color:var(--good-line); background:var(--good-soft)}
+.opt.correct .mark{background:var(--good); border-color:var(--good); color:#fff}
+.opts.locked .opt.correct:hover{border-color:var(--good-line); background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad-line); background:var(--bad-soft)}
+.opt.wrong .mark{background:var(--bad); border-color:var(--bad); color:#fff}
+.opts.locked .opt.wrong:hover{border-color:var(--bad-line); background:var(--bad-soft)}
+.opt.dim{opacity:.72}
+.opt .tag{display:inline-block; margin-left:8px; font-size:.66rem; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase; vertical-align:1px}
+.opt.correct .tag{color:var(--good)}
+.opt.wrong .tag{color:var(--bad)}
+
+.verdict{margin-top:16px; padding:12px 15px; border-radius:12px; font-weight:700;
+  font-size:.96rem; border:1px solid var(--border)}
+.verdict.ok{background:var(--good-soft); border-color:var(--good-line); color:var(--good)}
+.verdict.no{background:var(--bad-soft); border-color:var(--bad-line); color:var(--bad)}
+.keybox{margin-top:10px; padding:12px 15px; border-radius:12px; font-size:.9rem;
+  line-height:1.6; background:var(--panel-2); border:1px solid var(--border-soft);
+  border-left:4px solid var(--accent)}
+.keybox b{display:block; font-size:.68rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:4px}
+.qnav{display:flex; gap:10px; justify-content:space-between; align-items:center;
+  margin-top:16px; flex-wrap:wrap}
+.hintline{font-size:.76rem; color:var(--muted)}
+
+/* --------------------------------------------------------------- results */
+.results{text-align:center}
+.results .score{font-size:3rem; font-weight:800; margin:4px 0 0; color:var(--accent);
+  font-variant-numeric:tabular-nums}
+.results .pct{font-size:.95rem; color:var(--text-dim); margin:0 0 6px}
+.results .best{color:var(--muted); font-size:.88rem; margin:0}
+.miss{border:1px solid var(--border-soft); border-radius:12px; padding:13px 15px;
+  background:var(--panel-2); margin-top:10px}
+.miss h3{margin:0 0 6px; font-size:.98rem; line-height:1.45}
+.miss .said{font-size:.85rem; color:var(--bad); margin:0 0 4px}
+.miss .right{font-size:.85rem; color:var(--good); margin:0 0 6px; font-weight:650}
+.miss .why{font-size:.85rem; color:var(--text-dim); margin:0; line-height:1.55}
+.miss .chip{margin-bottom:6px}
+
+@media (max-width:640px){
+  .hero h1{font-size:1.45rem}
+  .qtext{font-size:1.06rem}
+  .stage{padding:14px 12px 32px}
+  .panel{padding:16px 15px}
+  .qnum{margin-left:0; width:100%}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <b>Five Forces &amp; the Value Chain</b>
+      <span id="modeStat">Quiz</span>
+    </div>
+    <div class="stat" id="posStat" hidden><i>Question</i><b id="posStatValue">1 of 30</b></div>
+    <div class="stat" id="scoreStat" hidden><i>Correct</i><b id="scoreStatValue">0</b></div>
+    <div class="stat" id="bestStat" hidden><i>Best</i><b id="bestStatValue">0%</b></div>
+    <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
+  </header>
+
+  <main class="stage">
+    <div class="sr-only" role="status" aria-live="polite" id="liveStatus"></div>
+
+    <!-- ============================== INTRO ============================== -->
+    <section class="wrap" id="screenIntro">
+      <div class="hero">
+        <span class="eyebrow">Porter&rsquo;s five forces &middot; the value chain model</span>
+        <h1>Thirty questions, marked as you go</h1>
+        <p>Every question is a situation rather than a definition, because that is the form the
+          material takes once you are the person being asked. Choose an answer and it is marked
+          immediately &mdash; right or wrong, all four options explain themselves, so the three you
+          did not choose teach you something too.</p>
+      </div>
+
+      <div class="panel">
+        <h2>How this works</h2>
+        <ul>
+          <li><b>Immediate feedback.</b> The moment you choose, the answer is marked and every option
+            opens up: why the right one is right, and why each wrong one is the mistake it is.</li>
+          <li><b>No going back and no penalty.</b> Your first choice is the one that counts, which is
+            the only way the score means anything. A wrong answer costs nothing except a note of what
+            to reread.</li>
+          <li><b>Keyboard if you prefer it.</b> Press <b>1</b> to <b>4</b> to choose an option, then
+            <b>Enter</b> or the <b>right arrow</b> to move on.</li>
+          <li><b>The score is not the point.</b> At the end you get a breakdown by topic and by course
+            objective, plus every question you missed with its explanation, so a weak area shows up as
+            a named thing to go back to instead of disappearing into one number.</li>
+          <li><b>Nothing is submitted or collected.</b> Only your best percentage is remembered, in
+            this browser, so you can see whether a second pass actually moved.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>What is on it</h2>
+        <p>Six topics, five questions each. The first three ask whether you can name what you are
+          looking at; the last three ask what you would do about it, which is what the written
+          analysis is graded on.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Topic</th><th class="num">Questions</th><th>What it asks of you</th></tr></thead>
+            <tbody id="topicPreviewBody"></tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <b class="tagline">Two frameworks, two different questions</b>
+          The five forces look outward and say where the pressure is coming from. The value chain
+          looks inward and says which piece of your own work could answer it. Half the questions here
+          exist because those two get answered with each other.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Which course objectives it covers</h2>
+        <p>Each question is tagged with the course objectives it serves, and the results screen reports
+          them separately. This quiz is deliberately narrow &mdash; two frameworks, not a chapter
+          &mdash; so it claims four objectives and no more.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Questions</th></tr></thead>
+            <tbody id="objPreviewBody"></tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <b class="tagline">Not on this quiz</b>
+          Hardware, software, database technology and networks, the life cycle of an information
+          system, security breaches and computer crime, and the individual and organizational
+          consequences of technology are all real course objectives, and none of them is what these
+          two frameworks are for. They are covered in the study modules and in the course&rsquo;s
+          separate database and spreadsheet work.
+        </div>
+      </div>
+
+      <div class="opts-row">
+        <label><input type="checkbox" id="shuffleBox"> Shuffle the questions</label>
+        <span class="hintline">Useful on a second attempt, so you are recognising the idea rather than the position.</span>
+      </div>
+
+      <div class="center-row">
+        <button type="button" class="btn primary" id="startBtn">Start the quiz</button>
+        <a class="btn" href="five-forces-and-value-chain.html">Study the frameworks first</a>
+        <a class="btn" href="five-forces-and-value-chain-jeopardy.html">Play the review game</a>
+      </div>
+    </section>
+
+    <!-- ============================== QUIZ ============================== -->
+    <section class="wrap" id="screenQuiz" hidden>
+      <div class="progress" role="presentation"><i id="progressBar"></i></div>
+      <div class="panel">
+        <p class="qmeta">
+          <span class="chip" id="qTopicChip">Topic</span>
+          <span class="qnum" id="qNum">Question 1 of 30</span>
+        </p>
+        <h2 class="qtext" id="qText"></h2>
+        <div class="qfacts" id="qFacts" hidden></div>
+        <div class="opts" id="opts" role="group" aria-label="Answer options"></div>
+        <div class="verdict" id="verdict" hidden></div>
+        <div class="keybox" id="keyBox" hidden></div>
+        <div class="qnav">
+          <span class="hintline" id="navHint">Choose an answer. Keys 1 to 4 work too.</span>
+          <button type="button" class="btn primary" id="nextBtn" hidden>Next question</button>
+        </div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn sm" id="quitBtn">End the attempt and see results</button>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS ============================== -->
+    <section class="wrap" id="screenResults" hidden>
+      <div class="panel results">
+        <h2 id="resultsHead">Your result</h2>
+        <div class="score" id="resultsScore">0 / 30</div>
+        <p class="pct" id="resultsPct"></p>
+        <p class="best" id="resultsBest"></p>
+      </div>
+
+      <div class="panel">
+        <h2>By topic</h2>
+        <p>One number hides a weak area; this table does not. Anything below solid names the section
+          of the workshop that teaches it.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Topic</th><th class="num">Right</th><th class="num">Asked</th><th>Result</th><th>Where to go back to</th></tr></thead>
+            <tbody id="topicResultBody"></tbody>
+          </table>
+        </div>
+        <div class="callout" id="topicAdvice"></div>
+      </div>
+
+      <div class="panel">
+        <h2>By course objective</h2>
+        <p>A question counts toward every objective it serves, so these totals add up to more than the
+          number of questions asked.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Right</th><th class="num">Asked</th><th>Result</th></tr></thead>
+            <tbody id="objResultBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" id="missPanel">
+        <h2 id="missHead">What you missed</h2>
+        <p id="missIntro">Each one with the answer, and the reason it is that answer rather than the
+          one you chose.</p>
+        <div id="missList"></div>
+      </div>
+
+      <div class="center-row">
+        <button type="button" class="btn primary" id="retryMissedBtn" hidden>Retry just the ones you missed</button>
+        <button type="button" class="btn" id="retakeBtn">Take the whole quiz again</button>
+        <a class="btn" href="five-forces-and-value-chain.html">The workshop</a>
+        <a class="btn" href="five-forces-and-value-chain-jeopardy.html">The review game</a>
+        <a class="btn" href="practice-case-study/practice-case-study.html">Practice case study</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Nothing here is submitted or collected. Only your best percentage is saved, in this browser.</span>
+    <a href="five-forces-and-value-chain.html">Workshop</a>
+    <a href="five-forces-and-value-chain-jeopardy.html">Review game</a>
+    <a href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+  </footer>
+</div>
+
+<script>
+/* ============================================================================
+   COURSE OBJECTIVES
+   Only the four these two frameworks honestly serve. Every question names the
+   ones it serves in its `co` array, which is what makes the results breakdown
+   possible and what stops the quiz claiming coverage it does not have.
+   ========================================================================== */
+var OBJECTIVES = {
+  2:"Discuss how companies use information systems to manage internal operations and to make decisions",
+  3:"Discuss how companies use information technology for competitive advantage by changing their marketplace",
+  5:"Delineate how businesses use internet technology for electronic commerce, communicating with employees and working with business partners",
+  7:"Recognize a business problem which might be solved using information technology, then work with the information systems team on a solution"
+};
+
+/* ============================================================================
+   TOPICS
+   Six of them, five questions each. `kind` colours the chip: violet for the
+   competitive forces, green for the value chain, blue where the question needs
+   both. `where` names the part of the workshop that teaches it, so a weak row
+   in the results table points somewhere specific.
+   ========================================================================== */
+var TOPICS = {
+  forces:{
+    label:"Name the force", kind:"force",
+    asks:"Read a situation and say which of the five is applying the pressure.",
+    where:"Workshop &middot; <i>The five forces, one at a time</i>",
+    href:"five-forces-and-value-chain.html"},
+  diagnose:{
+    label:"Diagnose from evidence", kind:"force",
+    asks:"Situations where two forces look alike until you read what the evidence actually says.",
+    where:"Workshop &middot; <i>Rate an industry</i> and <i>Sort the evidence</i>",
+    href:"five-forces-and-value-chain.html"},
+  chain:{
+    label:"Place it on the chain", kind:"chain",
+    asks:"Given an initiative, name the activity it belongs to and the activity where the money moves.",
+    where:"Workshop &middot; <i>The value chain</i> and <i>Place the system</i>",
+    href:"five-forces-and-value-chain.html"},
+  confuse:{
+    label:"The classic confusions", kind:"both",
+    asks:"The five mix-ups that change what a firm spends money on.",
+    where:"Workshop &middot; <i>Sort the evidence</i>, and Module 2",
+    href:"module-02-enabling-strategy-through-information-systems.html"},
+  systems:{
+    label:"Which system answers it", kind:"both",
+    asks:"Match a pressure to the kind of system that actually relieves it, and test it against the strategy.",
+    where:"Workshop &middot; <i>Fund an initiative</i>",
+    href:"five-forces-and-value-chain.html"},
+  write:{
+    label:"Turn it into a recommendation", kind:"both",
+    asks:"The shape of the written analysis: what it rates, what it names, and what makes it checkable.",
+    where:"Workshop &middot; <i>Build the analysis</i>, then the practice case study",
+    href:"practice-case-study/practice-case-study.html"}
+};
+
+/* ============================================================================
+   THE QUESTIONS
+   Situations rather than definitions, because that is the form the material
+   takes once you are the person being asked. Every option carries its own
+   explanation, including the three nobody chose, and `key` is the sentence
+   worth keeping whether the answer was right or wrong.
+
+   Every firm below is invented. None of them is a real company.
+   ========================================================================== */
+var QUESTIONS = [
+
+  /* ---------------------------------------------------------- name the force */
+  {id:"f1", topic:"forces", co:[3],
+   q:"A self-storage operator has three rival yards within two miles. All four have advertised a free first month for the past year, and the local rate per unit has not risen in three years. Which force is this?",
+   opts:["The threat of new entrants",
+         "Rivalry among existing competitors",
+         "The bargaining power of suppliers",
+         "The threat of substitute products or services"],
+   a:1,
+   why:["Entry is about firms that were not in this business arriving in it. All four yards have been trading for years; what changed is how hard they compete, not who competes.",
+        "Right. Established sellers in the same industry matching each other&rsquo;s discounts until nobody can raise a price is the textbook picture of rivalry, and the giveaway is that the discounting is mutual.",
+        "Suppliers are the firms the yard buys from &mdash; the builder, the insurer, the software vendor. Nothing in the situation says any of their terms changed.",
+        "A substitute would be customers meeting the same need another way: decluttering, using a garage, borrowing a barn. These customers are still buying storage, just from whoever is giving away a month."],
+   key:"Rivalry looks like everybody doing the same thing to everybody. If your share is moving to firms already in the industry, and it is moving on price, that is the force you are in."},
+
+  {id:"f2", topic:"forces", co:[3],
+   q:"A veterinary clinic buys a vaccine only one manufacturer makes. The price rose eleven percent in June with no notice, and there is no other product a vet can use in its place. Which force is this?",
+   opts:["The bargaining power of suppliers",
+         "The bargaining power of buyers",
+         "Rivalry among existing competitors",
+         "The threat of new entrants"],
+   a:0,
+   why:["Right. One source, no alternative, and terms announced rather than negotiated. The supplier is setting part of what the clinic must charge, which is what supplier power means.",
+        "Buyer power runs the other way: it is what the clinic&rsquo;s own clients hold over the clinic. The manufacturer sits upstream, not downstream.",
+        "Rivalry is a contest with the other veterinary practices in town, and every one of them is paying the same eleven percent.",
+        "Entry would be a new veterinary practice opening. A price rise from an existing supplier is nobody entering anything."],
+   key:"Supplier power is measured by what your alternatives are, not by the size of the increase. One source plus no substitute equals terms you do not set."},
+
+  {id:"f3", topic:"forces", co:[3],
+   q:"Porter&rsquo;s model uses the word <i>substitute</i> more narrowly than everyday speech does. Which of these is a substitute?",
+   opts:["A competitor in your industry selling the same product as yours at a lower price to the same customers",
+         "A supplier deciding to sell direct to your customers",
+         "A new firm opening in your industry with the same offer as yours",
+         "A product or service from a different industry that meets the same customer need"],
+   a:3,
+   why:["That is rivalry. The customer is still buying from your industry, so a better price or a better offer can win them back.",
+        "That is a supplier integrating forward, usually read as supplier power. It does create a competitor, and the need is still being met by the same kind of product.",
+        "That is the threat of new entrants. The offer is the same; what is new is who is making it.",
+        "Right. The test is whether the need is met by a different kind of offering altogether &mdash; which is why the danger is that a price cut reaches nobody, because those customers are not shopping in your industry at all."],
+   key:"Rivals and entrants sell what you sell. A substitute meets the need without buying anything from your industry, which is why the chapter calls those customers lost for life."},
+
+  {id:"f4", topic:"forces", co:[3,7],
+   q:"A mobile dog-grooming business has watched two one-van operators start up locally this spring. The whole kit is a second-hand van and about eight thousand dollars of equipment, and no licence is required. Which force is strongest, and what is the evidence for it?",
+   opts:["Rivalry, because there are now more groomers chasing the same dogs",
+         "The bargaining power of buyers, because dog owners can now choose between more groomers than before",
+         "The threat of new entrants, because almost nothing stands between a stranger and trading",
+         "The threat of substitutes, because a van is not the same as a salon"],
+   a:2,
+   why:["There is more rivalry as a result, and rivalry does not explain why the number of competitors keeps rising. What explains that is the barrier, and the barrier is the force.",
+        "Choice does lift buyer power slightly, and individual dog owners are unconcentrated: no one of them can dictate terms, and losing any single one costs almost nothing.",
+        "Right. Low capital, no licence and no scale advantage is a description of barriers to entry, and the two new vans are the evidence they are low. The answer has to be something a newcomer cannot assemble in a fortnight.",
+        "A van and a salon are two ways of buying grooming, so both sit inside the industry. A substitute would be the owner deciding to bathe the dog at home."],
+   key:"Diagnose new entrants by asking what would have stopped them. If the honest answer is nothing much, that is where the pressure is, and discounting will not change it."},
+
+  {id:"f5", topic:"forces", co:[3,5],
+   q:"A payroll bureau gets seventy percent of its clients through four accounting firms that refer work to it. Each of the four renegotiates its referral fee every year, and one has started referring to a rival bureau as well. Which force is this?",
+   opts:["Supplier power, because the accounting firms are the source of the clients the bureau depends on for its work",
+         "Buyer power, because a handful of parties control access to the revenue and use that control annually",
+         "Rivalry, because a competing bureau is now getting some of the referrals",
+         "The threat of new entrants, because the rival bureau must be new"],
+   a:1,
+   why:["This is the tempting one, and it is worth being clear why it is wrong. The channel standing between you and the customer is treated as a buyer, because it decides whether your service reaches anyone at all. Suppliers sell you inputs; these firms sell you access.",
+        "Right. Concentration plus a demonstrated willingness to move is buyer power, and it acts at every renewal whether or not anybody actually leaves.",
+        "Some volume did move to a rival, and rivalry describes a contest between bureaus. What makes this bureau vulnerable is that four parties hold seventy percent of its revenue, which would hurt just as much with no rival at all.",
+        "Nothing says the other bureau is new. An established competitor receiving a referral is not entry."],
+   key:"Distribution channels count as buyers. Ask who could take a large share of your revenue away in a single decision, and you have found buyer power whatever the relationship is called."},
+
+  /* ------------------------------------------------------ diagnose from evidence */
+  {id:"d1", topic:"diagnose", co:[3,5],
+   q:"A translation agency&rsquo;s revenue per project has fallen forty percent in two years. The number of competing agencies has not changed, and clients explain that they now run the text through machine translation themselves and hire only for a final check. Which force is doing the damage?",
+   opts:["Rivalry, because another agency must be undercutting the price",
+         "The bargaining power of buyers, because clients are negotiating harder",
+         "The threat of substitutes, because most of the work is now met by something that is not a translation agency",
+         "The threat of new entrants, because software companies have entered the translation industry and taken the work"],
+   a:2,
+   why:["Rivalry would show up as work moving to another agency. The number of agencies has not changed and the work itself has shrunk, which is a different shape entirely.",
+        "Buyer power would look like the same job won at a lower price after a harder negotiation. Here the job is smaller because most of it is no longer bought from anybody.",
+        "Right. The need is still there and most of it is now met outside the industry, so the category is contracting rather than being redistributed. Notice what follows: cutting the rate cannot win back work that is not being bought.",
+        "It is tempting to call the software vendor an entrant, and it is not selling translation services in this market. It sells a tool that lets the customer meet the need without the service, which is the definition of a substitute."],
+   key:"Ask whether your share moved or the whole category shrank. Redistribution is rivalry, buyer power or entry. Contraction is a substitute."},
+
+  {id:"d2", topic:"diagnose", co:[3],
+   q:"A tool-hire firm has competed with two local rivals for twenty years. Last month a national chain opened a depot three miles away, on a site that had stood empty for two years. Which reading of the situation is correct?",
+   opts:["The new pressure is rivalry, and new entrants was the force that was always there",
+         "The new pressure is the threat of new entrants, and rivalry was the force that was always there",
+         "Both the chain and the two local rivals are new entrants, because all three compete for the same customers",
+         "Both are rivalry, because a national chain is an established firm rather than a newcomer"],
+   a:1,
+   why:["This has the two the wrong way round. The twenty-year contest with the local firms is the rivalry; the arrival is the new thing.",
+        "Right, and it matters because of the question each force asks. Rivalry asks how to be chosen over the firms already here. Entry asks what would have stopped the chain arriving &mdash; and the answer, an empty site and no barrier, is what tells you another one can follow.",
+        "Firms that have competed here for twenty years are rivals on any reading. Entry is about arriving, not about competing.",
+        "Entry is judged against the market you actually compete in. The chain is established in its industry and new to this town, and calling it plain rivalry hides the useful question, which is why the town was so easy to walk into."],
+   key:"New entrants and rivalry lead to opposite investments: one builds something a newcomer cannot copy quickly, the other tries to be chosen today. Getting them the wrong way round is the most expensive mistake in the model."},
+
+  {id:"d3", topic:"diagnose", co:[3,7],
+   q:"A bookkeeping practice has lost three of its eight clients to a software-only service costing a fifth of its fee. The three that left were its smallest. The four largest renewed at a higher fee, saying they need someone who understands their business. What does the evidence support?",
+   opts:["Rivalry: match the software&rsquo;s price before more clients go",
+         "Substitutes: cut the fee for every remaining client, because otherwise the rest of them will leave as well",
+         "Substitutes: concede the work the substitute does well and defend the work it cannot do",
+         "Buyer power: the four large clients will now demand the same discount"],
+   a:2,
+   why:["The software company is not another bookkeeping practice, and matching a price a fifth of yours is not a strategy, it is a closing-down sale.",
+        "The diagnosis is right and the response is wrong. A discount aimed at customers who have left the industry reaches nobody, and it throws away the margin from four clients who have just paid more.",
+        "Right. The evidence splits the market: the substitute is good enough for simple work and visibly not good enough for complex work, and the clients said which is which. That is a boundary to defend, not a price war to enter.",
+        "Nothing suggests it. The four largest clients accepted a higher fee, which is the opposite of exercising buyer power."],
+   key:"A substitute rarely takes a whole market at once. Read which part it took and what the customers who stayed said, then invest where the substitute is weak instead of competing where it is strong."},
+
+  {id:"d4", topic:"diagnose", co:[3],
+   q:"A wholesale coffee roaster is squeezed from two sides. Green bean prices are up thirty percent under a single-origin contract, and three of its caf&eacute; customers have bought small roasters and now roast their own. Which is the better reading of the strongest force?",
+   opts:["Supplier power, because the thirty percent bean rise is the largest number in the case",
+         "Buyer power, because a customer who can do the work itself sets the terms of every negotiation from now on",
+         "The threat of substitutes, because a caf&eacute; roasting its own beans is meeting the same need from another industry",
+         "Rivalry, because other roasters will now chase the same caf&eacute;s harder"],
+   a:1,
+   why:["The bean rise is real supplier power and it squeezes the margin. It is still the smaller threat: a margin can be repriced, whereas a caf&eacute; roasting its own beans has stopped being a customer.",
+        "Right. A buyer that can credibly do the work itself is the classic case of buyer power &mdash; the threat of integrating backward works at every renewal whether or not another caf&eacute; ever buys a roaster.",
+        "Arguable, and worth understanding rather than dismissing: some analysts do read in-house production as a substitute. Porter&rsquo;s own treatment puts a buyer who can make the thing itself under bargaining power of buyers, because the pressure arrives as terms rather than as a category that disappears.",
+        "Nothing in the case says a rival won an account, and every other roaster faces the same two problems."],
+   key:"When two forces are live, the stronger one is not the one with the biggest number. It is the one that threatens whether you get to sell at all."},
+
+  {id:"d5", topic:"diagnose", co:[3,7],
+   q:"A sign maker buys vinyl from any of six suppliers and can switch with a phone call, though vinyl prices did rise this year. Five of its nine largest customers are managed by one facilities firm, which reviews every contract in a single annual round. Which pair of judgements does the evidence support?",
+   opts:["Supplier power strong, buyer power weak: the vinyl price rise is the measurable damage, and one facilities firm is still only one customer",
+         "Supplier power strong, buyer power strong: the firm is squeezed from both ends at once",
+         "Supplier power weak, buyer power weak: nothing here is concentrated enough to matter",
+         "Supplier power weak, buyer power strong: six alternates and a phone call is not power, one firm holding five of nine accounts is"],
+   a:3,
+   why:["The price rise is visible, and a supplier with five interchangeable competitors cannot hold a price up for long. One facilities firm is also not one customer: it is the buying decision behind five of the nine largest accounts.",
+        "Only one of the two survives the test. Power comes from the absence of alternatives, and here the alternatives are one phone call away.",
+        "One firm controls the renewal of most of the revenue in a single annual decision. That is about as concentrated as buyer power gets in a small business.",
+        "Right, and the practical consequence is where the money should go: into whatever makes that one annual review easy to win, such as a service record the facilities firm can see, rather than into squeezing vinyl."],
+   key:"Rate a force by the alternatives available, not by the size of the last invoice. Then spend where the strong force is, not where the arithmetic is easiest."},
+
+  /* -------------------------------------------------------- place it on the chain */
+  {id:"c1", topic:"chain", co:[2,7],
+   q:"A veterinary clinic installs a system recording every drug and vaccine it holds, where it is, and when it expires, because it has twice paid for an emergency courier to fetch something already in its own fridge. Which value chain activity is being improved?",
+   opts:["Operations, because the drugs are used in treating the animals the clinic is paid to treat",
+         "Inbound logistics, because this is about receiving, storing and knowing what is held",
+         "Procurement, because it concerns things the clinic buys",
+         "Service, because it affects how well the animal is looked after"],
+   a:1,
+   why:["Operations is the consultation and the treatment: the service the client pays for, being performed. A drug sitting in the fridge is not a service yet.",
+        "Right. Receiving, checking, storing and knowing what you hold is inbound logistics, in a clinic exactly as in a warehouse. The emergency courier is its classic cost driver: buying at a premium because stock levels were unknown.",
+        "Procurement is the buying decision &mdash; which wholesaler, at what price, on what terms. Knowing what is already in the fridge is the handling of what was bought.",
+        "Service in this model is what happens after the sale: follow-ups, complaints, warranty work. A shortage does reach the client, and the activity being fixed is upstream of that."],
+   key:"Inbound logistics ends at the moment an input becomes usable. Anything about knowing what you hold belongs there, in any industry."},
+
+  {id:"c2", topic:"chain", co:[2,7],
+   q:"A landscaping company finds that sixty percent of its crews&rsquo; paid hours go on driving between jobs and waiting. It buys a system that plans the day&rsquo;s route and shows each customer a two-hour arrival window. Which activity is being improved?",
+   opts:["Operations, because the crews are the people doing the work",
+         "Outbound logistics, because this is the finished service being delivered to the customer",
+         "Sales and marketing, because the arrival window gives customers a reason to choose the firm",
+         "Human resources, because it changes how the crews spend their day"],
+   a:1,
+   why:["Operations is the mowing, planting and clearing itself. Driving between jobs is how the crew reaches the customer, which is a distribution problem.",
+        "Right. Getting the finished product or service to the customer is outbound logistics, and its cost drivers are exactly the ones named: miles driven, time idling, and the order of the stops.",
+        "The visible window is a genuine selling point, and this is the closest wrong answer. The activity being improved is still the getting-there; the marketing benefit is a consequence worth naming in the write-up rather than the placement.",
+        "Human resources covers who is hired, trained and scheduled. Sequencing jobs geographically is routing, not rostering."],
+   key:"Place an initiative by the cost driver it attacks, not by who touches it. Miles and idle time are outbound logistics even when the people driving also do the work."},
+
+  {id:"c3", topic:"chain", co:[2,5,7],
+   q:"A uniform-rental company takes orders by fax and email, and two staff spend most of the week rekeying them into the system that schedules the laundry. It proposes a customer portal where each site enters its own changes. Which pairing is right?",
+   opts:["The system belongs to operations, and the saving appears in operations",
+         "The system belongs to service, and the saving appears in sales and marketing",
+         "The system belongs to technology development, and the saving appears everywhere",
+         "The system belongs to sales and marketing, and the saving appears in operations"],
+   a:3,
+   why:["The rekeying is an operations cost, so half of this is right. The system itself changes how an order is taken, which is not operations.",
+        "Service is what happens after the sale &mdash; complaints, credits, support. Taking the order is not service, and there is no saving in marketing, where nobody was rekeying anything.",
+        "Technology development builds the systems the chain runs on, so in a sense every system passes through it. Naming it that way loses the specific activity being improved, which is the whole point of placing an initiative.",
+        "Right, and this pairing is worth memorising because it recurs: how the order is taken is sales and marketing, and the money that stops being spent is two people&rsquo;s time in operations. A good proposal names both."],
+   key:"The activity that owns the system and the activity where the money moves are frequently different. Saying so is what makes a recommendation traceable instead of vague."},
+
+  {id:"c4", topic:"chain", co:[2,7],
+   q:"An equipment calibration laboratory turned away eleven jobs last year because the only technician certified for that instrument had let the certification lapse. It proposes a system tracking every technician&rsquo;s certifications and renewal dates. Which activity does the initiative belong to?",
+   opts:["Human resources, because it is about who is trained and current",
+         "Operations, because the lost jobs were calibration work",
+         "Administration and firm infrastructure, because compliance is an administrative matter",
+         "Technology development, because certification is a technical subject"],
+   a:0,
+   why:["Right. Recruiting, training, developing and scheduling the people who perform every other activity is the human resources band, and a lapsed certification is a training failure that happens to show up as lost capacity.",
+        "The damage lands in operations &mdash; eleven jobs not done. The activity that produced the damage is the one managing people&rsquo;s qualifications, which is why the write-up should name both.",
+        "Administration covers general management, finance, legal and quality management. Tracking who may run which instrument is about the workforce, not about the firm&rsquo;s paperwork in general.",
+        "Technology development is product research, process improvement and building the systems the chain runs on. The subject here is people&rsquo;s credentials, not the technology of calibration."],
+   key:"In a service business the real problem is often in a support band, because the product is delivered by a person. Look there before assuming the fault is in the primary flow."},
+
+  {id:"c5", topic:"chain", co:[2],
+   q:"What does a value chain analysis actually ask about each activity?",
+   opts:["Whether it is a primary activity or a support activity",
+         "Whether a competitor performs it better than you do",
+         "How much value it adds and what it costs to add it, so you can choose which to improve",
+         "Whether somebody outside the firm could perform the activity more cheaply than you currently do"],
+   a:2,
+   why:["Classifying activities is the first step, not the analysis. Knowing that procurement is a support band tells you nothing about whether it is worth spending money on.",
+        "Benchmarking is a useful separate exercise and not what this model is for. The chain is drawn to examine your own work, activity by activity.",
+        "Right. Draw the chain, cost it, then decide where an improvement is worth making &mdash; which is why an exhibit of figures is part of the analysis rather than decoration.",
+        "Outsourcing is one possible conclusion among several, alongside automating, redesigning, investing, or leaving well alone."],
+   key:"Value chain analysis is arithmetic before it is opinion. Without the costs beside the activities you can only say what feels inefficient."},
+
+  /* --------------------------------------------------------- classic confusions */
+  {id:"x1", topic:"confuse", co:[2],
+   q:"Which of these is procurement rather than something else?",
+   opts:["Unloading a pallet of packaging, checking it against the order and putting it away",
+         "Agreeing a two-year price and delivery schedule with a new packaging supplier",
+         "Holding the packaging in the stockroom until the line needs it",
+         "Loading the finished cases onto the delivery van"],
+   a:1,
+   why:["Receiving and checking is inbound logistics. The decision to buy from this supplier was taken earlier, and usually by somebody else.",
+        "Right. Procurement is the buying decision &mdash; what to buy, from whom, on what terms &mdash; and it happens for every activity in the chain, including things that never touch the product, such as office chairs or software licences.",
+        "Storing what has arrived is inbound logistics: the input is inside the building and not yet part of anything sellable.",
+        "Loading finished goods for the customer is outbound logistics, at the far end of the chain."],
+   key:"Procurement is a decision; inbound logistics is a physical process. Confusing them makes a firm buy a warehouse system to fix a contract problem."},
+
+  {id:"x2", topic:"confuse", co:[3,7],
+   q:"A dental practice is losing patients to a clinic that opened on the same street two months ago. The owner proposes matching the newcomer&rsquo;s prices. What does a correct diagnosis change about that plan?",
+   opts:["Nothing. Either way the practice has to compete on price to keep its patients.",
+         "This is entry, so the question is what would have stopped the clinic arriving, and price matching leaves that barrier where it was.",
+         "This is rivalry, so the practice should cut prices until its share returns and then raise them again.",
+         "This is a substitute, because patients are meeting the same dental need somewhere other than a dental practice, which no price cut can reach."],
+   a:1,
+   why:["Price matching is a response to rivalry. It may be necessary in the short term, and on its own it guarantees the next clinic to open will be met the same way with less money in the bank.",
+        "Right. Entry asks about barriers: what does this practice have that a newcomer cannot assemble quickly? A recall history, an appointment habit, a hygienist programme patients are enrolled in, a payment plan. Price matching builds none of them.",
+        "Cutting prices and raising them again invites the newcomer to do the same, and patients who chose on price have no reason to stay when the price goes back up.",
+        "A substitute would be patients meeting the need outside dentistry altogether. Another dental clinic is inside the industry by definition."],
+   key:"The correct force does not merely relabel the problem. It changes what you spend money on, which is the only reason the classification is worth arguing about."},
+
+  {id:"x3", topic:"confuse", co:[3,5],
+   q:"A commercial print shop faces all four of these at once. Which one is the substitute?",
+   opts:["Its largest customer moving its product catalogue from print to email",
+         "A rival print shop down the road buying a faster press",
+         "A national print franchise taking the lease on a nearby unit and opening in the spring",
+         "The paper mill it buys from raising prices twice in a year"],
+   a:0,
+   why:["Right. The need &mdash; getting the catalogue in front of customers &mdash; is now met by something that is not printing at all, so no print shop gets that work and no discount brings it back.",
+        "That is rivalry: a firm inside the industry competing for the same jobs, and a faster press is how it intends to win them.",
+        "That is the threat of new entrants: a firm that was not competing here, arriving because nothing much stopped it.",
+        "That is supplier power, reaching the shop as a higher input cost. It hurts the margin rather than removing the demand."],
+   key:"Four different forces can all be true in the same week. Naming them separately is what stops a firm answering the wrong one, because each has its own family of answers."},
+
+  {id:"x4", topic:"confuse", co:[3],
+   q:"A firm loses a contract at re-tender to a competitor. Which reading is better supported by that fact alone?",
+   opts:["Rivalry, because a competitor is what took the contract",
+         "Buyer power, because the customer is the one who decided, and the decision is what cost the firm the work",
+         "Neither yet. It depends on how concentrated the revenue is and how routinely this customer re-tenders.",
+         "Whichever firm is larger tells you which force it is"],
+   a:2,
+   why:["A competitor taking work is consistent with rivalry, and equally consistent with a buyer running an auction it runs every year regardless of who wins.",
+        "The customer always decides. If that were enough to prove buyer power, every lost sale in every industry would be buyer power, and the classification would tell you nothing.",
+        "Right. If three customers hold most of the revenue and re-tender annually, the firm is exposed at every renewal and that is buyer power. If hundreds of customers each hold a little and this one preferred a cheaper offer, it is rivalry. The deciding fact is concentration, not the outcome.",
+        "Size is not part of the definition of any of the five forces."],
+   key:"A symptom is not a force. Falling prices, lost contracts and thinner margins are produced by all four outer forces, so name the force from who is applying the pressure and what would relieve it."},
+
+  {id:"x5", topic:"confuse", co:[2,5],
+   q:"A manager says: &ldquo;our value chain is our suppliers, then us, then the distributors, then the retailers.&rdquo; What is the correction?",
+   opts:["Nothing is wrong; that is what a value chain is",
+         "The order is wrong: goods reach the retailers before they reach the distributors, so those two are the wrong way round",
+         "Only manufacturers have value chains, so a distributor does not belong on one",
+         "That is a supply chain. A value chain is the set of activities inside one firm, and every firm on that chain has one of its own."],
+   a:3,
+   why:["It is the most common slip in this vocabulary, and it matters because the two lead to different work: one studies your own activities and costs, the other studies relationships between companies.",
+        "The order of the firms is not the problem, and in any case it varies by industry.",
+        "Every organization has a value chain, including a distributor, a hospital and a charity. The primary activities simply read differently in each.",
+        "Right. A value chain is drawn inside the boundary of one firm, from inbound logistics through to service, with the four support bands underneath. The chain of firms is a supply chain, and analysing it is a related but separate exercise."],
+   key:"Analysing your own activities and analysing your relationships with other firms are different tasks with different answers. The value chain model is the first of the two."},
+
+  /* ------------------------------------------------------ which system answers it */
+  {id:"s1", topic:"systems", co:[3,7],
+   q:"An independent pharmacy orders almost everything from one wholesaler, whose ordering system holds its entire purchase and price history. Moving would mean rebuilding that history by hand. Which initiative attacks the force rather than the symptom?",
+   opts:["Negotiate a larger annual discount with the wholesaler",
+         "Keep its own copy of its purchase history in a system it controls, and qualify a second wholesaler",
+         "Raise retail prices enough to cover the wholesaler&rsquo;s increases",
+         "Buy more from the same wholesaler to reach the next discount tier, which holds the effective increase down"],
+   a:1,
+   why:["Worth doing, and it lasts one year. Next year the pharmacy negotiates from exactly the same position, because nothing about its alternatives has changed.",
+        "Right. Supplier power comes from the absence of alternatives and the cost of leaving, so the initiative has to reduce one or both. Owning your own data is what makes a second supplier possible at all.",
+        "That passes the increase to customers and does nothing to the force. It also tests how much power the pharmacy&rsquo;s own buyers have.",
+        "This deepens the dependency. A bigger share of spend with a single source raises the switching cost further, which is what created the problem."],
+   key:"To answer supplier power, reduce what it costs you to leave. To answer buyer power, raise what it costs your customer to leave. Both are switching costs, pointing in opposite directions."},
+
+  {id:"s2", topic:"systems", co:[3,5,7],
+   q:"A distributor&rsquo;s three largest customers hold most of its revenue and re-tender every year. Which of these most directly raises what it would cost one of them to leave?",
+   opts:["A management dashboard giving the distributor&rsquo;s own directors better weekly numbers",
+         "A payroll system that reduces the finance team&rsquo;s month-end work",
+         "A customer portal holding each buyer&rsquo;s order history, standing orders and delivery records, which they use daily",
+         "A route planner that reduces delivery cost per drop, so the distributor can quote a lower price at the next tender"],
+   a:2,
+   why:["Better internal reporting improves your decisions and changes nothing about what the customer would lose by leaving, because the customer never sees it.",
+        "A real saving in a support band, and invisible to the buyer. Cost reduction and switching cost are different objectives.",
+        "Right. Once the buyer&rsquo;s own working record lives in your system, leaving means rebuilding it somewhere else, and that cost is precisely what the model calls a switching cost.",
+        "Cheaper delivery protects margin and can fund a lower price, and a competitor can match a price the week after hearing about it."],
+   key:"The system that answers buyer power is the one the buyer touches and comes to depend on. If your customer would not notice it had gone, it is not answering that force."},
+
+  {id:"s3", topic:"systems", co:[3,7],
+   q:"A boutique hotel competes by being visibly unlike a chain: no two rooms alike, and guests say so in their reviews. A vendor offers a housekeeping system that cuts cleaning cost sharply by standardizing every room to one layout. Payback is nine months. What does the alignment test say?",
+   opts:["Fund it. A nine-month payback is not an argument anyone can win against.",
+         "Refuse it. A firm competing on differentiation should not pursue cost reductions.",
+         "Judge it by what it does to the attribute customers pay extra for, which this one erodes directly.",
+         "Fund it, and then raise the room rates to make up for whatever the standardizing takes away from the guest."],
+   a:2,
+   why:["Payback is a necessary filter and not a sufficient argument. Money and management attention are limited, so a firm funds what supports the position it has chosen.",
+        "Too absolute. A differentiator should cut costs everywhere the customer cannot see &mdash; laundry contracts, energy, back-office work &mdash; because that is what funds the visible difference.",
+        "Right. This is business and information systems alignment made concrete: the same system is a good investment for a chain hotel and a bad one here, and the payback figure cannot tell you which case you are in.",
+        "Raising the price of a room you have just made ordinary is the least likely of the four to work."],
+   key:"Alignment asks what an investment does to the position, not only what it does to the accounts. The same system can be right for one firm and wrong for its neighbour."},
+
+  {id:"s4", topic:"systems", co:[5,7],
+   q:"A small retailer&rsquo;s customers have almost stopped carrying cash. Accepting cards and phone payments will cost real money in fees and equipment, and no customer will pay a cent more because it is available. How should the analysis treat the investment?",
+   opts:["Reject it, because an investment that creates no competitive advantage cannot be justified to the owner",
+         "Treat it as a differentiator, since it improves the customer&rsquo;s experience",
+         "Treat it as a cost saving, since counting and banking cash costs money too",
+         "Treat it as a strategic necessity: something the firm must do to keep trading, argued on exactly those terms"],
+   a:3,
+   why:["That reasoning ends with a shop nobody can pay in. Some investments are the price of remaining in the market.",
+        "It differentiates nothing, because every competitor already has it. An investment that brings you level with the market is not a difference.",
+        "Handling cash does cost money, and that is a genuine secondary benefit. It is not why the investment has to happen.",
+        "Right, and naming it honestly protects the credibility of the rest of the analysis. A reader who sees a necessity presented as an advantage stops believing the parts that really are advantages."],
+   key:"Strategic necessity is a legitimate category, not a weak argument. What damages a recommendation is claiming advantage where there is only survival."},
+
+  {id:"s5", topic:"systems", co:[7],
+   q:"A manager forwards a vendor brochure and asks for a business case by Friday. What does the order the analysis is built in require you to do first?",
+   opts:["Name the strongest force and the activity it is damaging, then test whether this product answers it",
+         "Calculate the payback period, because the figures decide the case",
+         "Ask the vendor for a reference site in the same industry, and call it before anything else is decided",
+         "Get quotes from two more vendors so there is something to compare"],
+   a:0,
+   why:["Right. Force first, activity second, technology third. A system chosen before the diagnosis can only be justified backwards, and a business case written backwards is the one that gets funded and then quietly abandoned.",
+        "Payback is worth calculating, and it answers a smaller question: whether this is affordable, not whether it is the right thing to buy.",
+        "A reference site tells you the product works somewhere. It cannot tell you whether the problem it solved is your problem.",
+        "Comparing three products still assumes the category is right. If the strongest force is buyer concentration and all three quotes are for warehouse systems, the comparison is precise and useless."],
+   key:"The order is the discipline. Name the pressure, name the activity that can answer it, and only then look at what to buy."},
+
+  /* ------------------------------------------------ turn it into a recommendation */
+  {id:"w1", topic:"write", co:[3,7],
+   q:"How many of the five forces does a written framework analysis rate?",
+   opts:["Only the one that turns out to be strongest, since the others are not the problem",
+         "All five, each with the evidence for its rating, before the strongest is named",
+         "The two or three that clearly matter, to keep the analysis short",
+         "All five, without naming a strongest, because ranking them is a matter of opinion"],
+   a:1,
+   why:["You cannot know which is strongest until all five have been looked at. Rating only your first instinct is how an analysis ends up defending the force that was easiest to see.",
+        "Right. Rating all five is what makes the strongest one a finding rather than an assumption, and the ratings you set aside are the evidence that a scan actually happened.",
+        "Skipping a force silently is not brevity, it is a gap. A force can be rated low in a single sentence &mdash; that is what a low rating looks like.",
+        "The analysis has to end in a decision, and a decision needs a target. Naming the strongest force, with its evidence, is the point of rating them."],
+   key:"Rate all five briefly, with evidence. Then name one as strongest and say what the evidence was, because everything after that depends on it."},
+
+  {id:"w2", topic:"write", co:[2,7],
+   q:"An analysis has to examine at least two genuinely different value chain areas. Which pair fails that test?",
+   opts:["Inbound logistics and human resources, one primary activity and one support band underneath it",
+         "Operations and service",
+         "Sales and marketing twice: how orders are taken, and the portal that would take them",
+         "Procurement and outbound logistics"],
+   a:2,
+   why:["Two different bands, one primary and one support, with different cost drivers. That is a real pair.",
+        "Both are primary activities, and they are separate stages: producing the service, and looking after the customer once it has been delivered.",
+        "Right. That is one activity, one problem and one initiative written out twice. The requirement exists to force a scan of the whole chain, and this pair proves only that the chain was not scanned.",
+        "The buying decision and the delivery of the finished product are about as far apart as the model gets."],
+   key:"Two areas means two activities with different cost drivers, and the second is often the more useful, because it is the one you examined and set aside with a reason."},
+
+  {id:"w3", topic:"write", co:[7],
+   q:"Why does the analysis ask for exactly one recommended initiative rather than a shortlist of three?",
+   opts:["Because one recommendation is a decision, and a list hands the decision back to the reader",
+         "Because there is never enough budget for more than one system",
+         "Because a shortlist would take too long to write",
+         "Because the other two on the list would turn out to be the same initiative in different words"],
+   a:0,
+   why:["Right. Anyone can list options. What is being tested is whether you can take the evidence, choose, and defend the choice &mdash; which also means saying what you looked at and declined.",
+        "Budgets do constrain, and plenty of firms fund several projects a year. The constraint here is the quality of the argument, not the money.",
+        "Length is not the issue. A well-argued single recommendation is usually longer than a list of three, because it has to be defended.",
+        "That would be a badly built shortlist. A good one would hold three genuinely different proposals, and it would still leave the decision unmade."],
+   key:"One initiative, concrete enough to cost, traced back to the force it answers and the activity it sits in. That is what a recommendation is."},
+
+  {id:"w4", topic:"write", co:[2,7],
+   q:"Which of these recommendations could actually be checked a year from now?",
+   opts:["Implement a customer relationship management system in order to improve customer satisfaction and retention across the business",
+         "Invest in technology to remain competitive in a changing market",
+         "Introduce a customer portal to increase efficiency and reduce manual work",
+         "Introduce a customer portal so the reorder rate rises from forty-one to fifty-five percent, reviewed next tender cycle"],
+   a:3,
+   why:["Improve satisfaction by how much, measured how, by when? As written, this can be declared a success or a failure by anybody, which means it settles nothing.",
+        "This names no system, no activity, no force and no number. It is the sentence a reader skims past.",
+        "Closer, because it names the system and the kind of benefit. Efficiency is still not a measurement, and no date is offered.",
+        "Right. A number that exists today, a number you expect instead, and the moment you will look. That is what makes a recommendation a commitment rather than an opinion."],
+   key:"Without a measure and a date, a recommendation can be defended forever and judged never. Both belong in the sentence that recommends it."},
+
+  {id:"w5", topic:"write", co:[3,7],
+   q:"The analysis closes with a comparison against a real company, in 150 to 200 words. What makes a lesson from a very large company worth writing about a very small one?",
+   opts:["That the lesson is a practice the small firm could adopt at its own scale, not the size of the system built",
+         "That both firms are in the same industry, because a practice from another industry will not transfer to it",
+         "That the large company is well known, so the reader will recognise it",
+         "That the large company&rsquo;s spending is described accurately, so the comparison is fair"],
+   a:0,
+   why:["Right. What a large firm let its customers do for themselves, or the moment it chose to start measuring, can be copied by a firm a thousandth of its size. The budget cannot.",
+        "Same-industry comparisons are convenient and not required. A hotel can learn a practice from a bank, and the cross-industry lesson is often the more interesting one.",
+        "Recognition helps the reader and proves nothing. A well-documented smaller company is a perfectly good comparison.",
+        "Accuracy matters throughout, and a faithfully reported budget is exactly the part that does not transfer to a firm that will never have one."],
+   key:"Compare practices, not budgets. The test of the comparison is whether a reader could name something the small firm could do on Monday."}
+];
+
+var THEME_KEY = "mis-ffvc-quiz-theme-v1";
+var BEST_KEY = "mis-ffvc-quiz-best-v1";
+</script>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================================
+   HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function el(tag, cls, html){
+  var n = document.createElement(tag);
+  if(cls) n.className = cls;
+  if(html !== undefined) n.innerHTML = html;
+  return n;
+}
+function announce(text){ $("liveStatus").textContent = text; }
+function stripTags(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent || ""; }
+function letter(i){ return "ABCD".charAt(i); }
+function questionById(id){
+  for(var i = 0; i < QUESTIONS.length; i++){ if(QUESTIONS[i].id === id) return QUESTIONS[i]; }
+  return null;
+}
+
+/* ============================================================================
+   THEME — this page's own saved choice first, then whatever theme the reader
+   last set on a study module or in the workshop, so a dark reading session
+   does not flip back to light here.
+   ========================================================================== */
+function applyTheme(theme){
+  var dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-label", dark ? "Switch to the light theme" : "Switch to the dark theme");
+}
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  if(saved === "dark" || saved === "light"){ applyTheme(saved); return; }
+  var inherited = null;
+  try{ inherited = localStorage.getItem("mis-ch1-theme-v1"); }catch(e){}
+  applyTheme(inherited === "dark" ? "dark" : "light");
+})();
+$("themeBtn").addEventListener("click", function(){
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ============================================================================
+   BEST SCORE — a percentage, so a full attempt and a shorter retry of the
+   questions you missed are never compared against each other.
+   ========================================================================== */
+function loadBest(){
+  var raw = null;
+  try{ raw = localStorage.getItem(BEST_KEY); }catch(e){}
+  var n = parseInt(raw, 10);
+  return (isNaN(n) || n < 0 || n > 100) ? 0 : n;
+}
+function saveBest(pct){
+  try{ localStorage.setItem(BEST_KEY, String(pct)); }catch(e){}
+}
+function refreshBestStat(){
+  var best = loadBest();
+  if(best > 0){
+    $("bestStat").hidden = false;
+    $("bestStatValue").textContent = best + "%";
+  }
+}
+
+/* ============================================================================
+   STATE
+   `order` holds question ids, so a shuffled attempt and a retry of the missed
+   ones are the same thing with a different list.
+   ========================================================================== */
+var state = { order:[], idx:0, locked:false, results:[], mode:"full" };
+
+function currentQuestion(){ return questionById(state.order[state.idx]); }
+function rightSoFar(){
+  var n = 0;
+  for(var i = 0; i < state.results.length; i++){ if(state.results[i].correct) n++; }
+  return n;
+}
+
+/* ============================================================================
+   INTRO SCREEN — both tables are generated from the question data, so they
+   cannot drift away from what the quiz actually asks.
+   ========================================================================== */
+function topicCounts(){
+  var counts = {};
+  QUESTIONS.forEach(function(q){ counts[q.topic] = (counts[q.topic] || 0) + 1; });
+  return counts;
+}
+function objectiveCounts(){
+  var counts = {};
+  QUESTIONS.forEach(function(q){
+    q.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+  });
+  return counts;
+}
+function renderTopicPreview(){
+  var counts = topicCounts();
+  var body = $("topicPreviewBody");
+  body.innerHTML = "";
+  Object.keys(TOPICS).forEach(function(key){
+    var t = TOPICS[key];
+    var tr = el("tr");
+    tr.appendChild(el("td", null, '<span class="chip ' + t.kind + '">' + t.label + "</span>"));
+    var n = el("td", "num", String(counts[key] || 0));
+    tr.appendChild(n);
+    tr.appendChild(el("td", null, t.asks));
+    body.appendChild(tr);
+  });
+}
+function renderObjPreview(){
+  var counts = objectiveCounts();
+  var body = $("objPreviewBody");
+  body.innerHTML = "";
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, "<b>" + n + ".</b> " + OBJECTIVES[n]));
+    tr.appendChild(el("td", "num", String(counts[n] || 0)));
+    body.appendChild(tr);
+  });
+}
+
+function showScreen(id){
+  ["screenIntro","screenQuiz","screenResults"].forEach(function(s){ $(s).hidden = (s !== id); });
+}
+
+/* ============================================================================
+   THE ATTEMPT
+   ========================================================================== */
+function shuffled(list){
+  var a = list.slice();
+  for(var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function startAttempt(ids, mode){
+  state.order = ids;
+  state.idx = 0;
+  state.locked = false;
+  state.results = [];
+  state.mode = mode;
+  $("posStat").hidden = false;
+  $("scoreStat").hidden = false;
+  $("modeStat").textContent = mode === "missed" ? "Retry" : "Quiz";
+  refreshStats();
+  renderQuestion();
+  showScreen("screenQuiz");
+  announce((mode === "missed" ? "Retrying " : "Starting ") + ids.length + " questions. Question 1.");
+}
+
+function refreshStats(){
+  $("posStatValue").textContent = (state.idx + 1) + " of " + state.order.length;
+  $("scoreStatValue").textContent = rightSoFar() + " of " + state.results.length;
+  var pct = state.order.length === 0 ? 0 : (state.idx / state.order.length) * 100;
+  $("progressBar").style.width = pct + "%";
+}
+
+function renderQuestion(){
+  var q = currentQuestion();
+  var topic = TOPICS[q.topic];
+  state.locked = false;
+
+  var chip = $("qTopicChip");
+  chip.className = "chip " + topic.kind;
+  chip.textContent = topic.label;
+  $("qNum").textContent = "Question " + (state.idx + 1) + " of " + state.order.length;
+  $("qText").innerHTML = q.q;
+
+  var facts = $("qFacts");
+  if(q.facts && q.facts.length){
+    facts.innerHTML = "<ul><li>" + q.facts.join("</li><li>") + "</li></ul>";
+    facts.hidden = false;
+  } else {
+    facts.hidden = true;
+  }
+
+  var box = $("opts");
+  box.className = "opts";
+  box.innerHTML = "";
+  q.opts.forEach(function(text, i){
+    var b = el("button", "opt");
+    b.type = "button";
+    b.setAttribute("data-i", String(i));
+    b.appendChild(el("span", "mark", letter(i)));
+    var body = el("span", "body");
+    body.appendChild(el("span", "label", text));
+    var why = el("span", "why", q.why[i]);
+    why.hidden = true;
+    body.appendChild(why);
+    b.appendChild(body);
+    b.addEventListener("click", function(){ choose(i); });
+    box.appendChild(b);
+  });
+
+  $("verdict").hidden = true;
+  $("keyBox").hidden = true;
+  $("nextBtn").hidden = true;
+  $("navHint").hidden = false;
+  $("navHint").textContent = "Choose an answer. Keys 1 to 4 work too.";
+  refreshStats();
+}
+
+function choose(i){
+  if(state.locked) return;
+  state.locked = true;
+  var q = currentQuestion();
+  var correct = i === q.a;
+  state.results.push({ id:q.id, topic:q.topic, co:q.co, chosen:i, correct:correct });
+
+  var box = $("opts");
+  box.className = "opts locked";
+  var buttons = box.querySelectorAll(".opt");
+  for(var b = 0; b < buttons.length; b++){
+    var btn = buttons[b];
+    btn.setAttribute("aria-disabled", "true");
+    var idx = parseInt(btn.getAttribute("data-i"), 10);
+    var why = btn.querySelector(".why");
+    if(why) why.hidden = false;
+    if(idx === q.a){
+      btn.className = "opt correct";
+      btn.querySelector(".label").insertAdjacentHTML("beforeend", ' <span class="tag">Correct answer</span>');
+    } else if(idx === i){
+      btn.className = "opt wrong";
+      btn.querySelector(".label").insertAdjacentHTML("beforeend", ' <span class="tag">Your answer</span>');
+    } else {
+      btn.className = "opt dim";
+    }
+  }
+
+  var v = $("verdict");
+  v.className = "verdict " + (correct ? "ok" : "no");
+  v.innerHTML = correct
+    ? "Correct."
+    : "Not quite &mdash; the answer is <b>" + letter(q.a) + "</b>. Read why yours is the mistake it is, and why " + letter(q.a) + " is not.";
+  v.hidden = false;
+
+  $("keyBox").innerHTML = "<b>The point</b>" + q.key;
+  $("keyBox").hidden = false;
+
+  var last = state.idx >= state.order.length - 1;
+  var next = $("nextBtn");
+  next.textContent = last ? "See your results" : "Next question";
+  next.hidden = false;
+  $("navHint").textContent = last ? "Enter or the right arrow finishes the attempt." : "Enter or the right arrow moves on.";
+  refreshStats();
+  next.focus();
+  announce((correct ? "Correct. " : "Incorrect. The answer is " + letter(q.a) + ". ") + stripTags(q.key));
+}
+
+function advance(){
+  if(!state.locked) return;
+  if(state.idx >= state.order.length - 1){ showResults(); return; }
+  state.idx += 1;
+  renderQuestion();
+  window.scrollTo(0, 0);
+  announce("Question " + (state.idx + 1) + " of " + state.order.length + ". " + stripTags(currentQuestion().q));
+}
+$("nextBtn").addEventListener("click", advance);
+
+/* Keyboard: 1-4 chooses, Enter or the right arrow moves on. Ignored while the
+   reader is typing anywhere, and while the quiz screen is not the one shown. */
+document.addEventListener("keydown", function(e){
+  if($("screenQuiz").hidden) return;
+  var tag = (e.target && e.target.tagName) || "";
+  if(tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(!state.locked && e.key >= "1" && e.key <= "4"){
+    var i = parseInt(e.key, 10) - 1;
+    var q = currentQuestion();
+    if(i < q.opts.length){ e.preventDefault(); choose(i); }
+    return;
+  }
+  if(state.locked && (e.key === "Enter" || e.key === "ArrowRight")){
+    e.preventDefault();
+    advance();
+  }
+});
+
+/* ============================================================================
+   RESULTS — the score, then the three things that say what to do next: which
+   topic is weak, which objective is weak, and the questions themselves.
+   ========================================================================== */
+function verdictFor(right, asked){
+  if(asked === 0) return { cls:"none", label:"Not asked" };
+  var pct = right / asked;
+  if(pct >= 0.8) return { cls:"ok", label:"Solid" };
+  if(pct >= 0.5) return { cls:"mid", label:"Shaky" };
+  return { cls:"low", label:"Go back to this" };
+}
+
+function tallyBy(pick){
+  var t = {};
+  state.results.forEach(function(res){
+    pick(res).forEach(function(k){
+      if(!t[k]) t[k] = { right:0, asked:0 };
+      t[k].asked += 1;
+      if(res.correct) t[k].right += 1;
+    });
+  });
+  return t;
+}
+
+function renderTopicResults(){
+  var t = tallyBy(function(res){ return [res.topic]; });
+  var body = $("topicResultBody");
+  body.innerHTML = "";
+  var weak = [];
+  Object.keys(TOPICS).forEach(function(key){
+    var row = t[key] || { right:0, asked:0 };
+    var info = TOPICS[key];
+    var v = verdictFor(row.right, row.asked);
+    if(v.cls === "low" || v.cls === "mid") weak.push(info.label);
+    var tr = el("tr");
+    tr.appendChild(el("td", null, '<span class="chip ' + info.kind + '">' + info.label + "</span>"));
+    tr.appendChild(el("td", "num", String(row.right)));
+    tr.appendChild(el("td", "num", String(row.asked)));
+    tr.appendChild(el("td", null, '<span class="pill ' + v.cls + '">' + v.label + "</span>"));
+    tr.appendChild(el("td", null, '<a href="' + info.href + '">' + info.where + "</a>"));
+    body.appendChild(tr);
+  });
+  var advice = $("topicAdvice");
+  if(weak.length === 0){
+    advice.innerHTML = '<b class="tagline">Nothing weak enough to send you back</b>' +
+      "Every topic asked came out solid. The useful next step is not another pass over the vocabulary but the " +
+      '<a href="practice-case-study/practice-case-study.html">practice case study</a>, where the same moves have to ' +
+      "be written out rather than recognised among four options.";
+  } else {
+    advice.innerHTML = '<b class="tagline">Worth a second pass</b>' +
+      "You came out shaky or weak on " + weak.join(", ") + ". The right-hand column says where each of those is " +
+      "taught, and the questions you missed are printed below with the reasoning, which is usually faster than rereading.";
+  }
+}
+
+function renderObjResults(){
+  var t = tallyBy(function(res){ return res.co; });
+  var body = $("objResultBody");
+  body.innerHTML = "";
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var row = t[n] || { right:0, asked:0 };
+    var v = verdictFor(row.right, row.asked);
+    var tr = el("tr");
+    tr.appendChild(el("td", null, "<b>" + n + ".</b> " + OBJECTIVES[n]));
+    tr.appendChild(el("td", "num", String(row.right)));
+    tr.appendChild(el("td", "num", String(row.asked)));
+    tr.appendChild(el("td", null, '<span class="pill ' + v.cls + '">' + v.label + "</span>"));
+    body.appendChild(tr);
+  });
+}
+
+function missedIds(){
+  var ids = [];
+  state.results.forEach(function(res){ if(!res.correct) ids.push(res.id); });
+  return ids;
+}
+
+function renderMissed(){
+  var missed = state.results.filter(function(r){ return !r.correct; });
+  var list = $("missList");
+  list.innerHTML = "";
+  if(missed.length === 0){
+    $("missHead").textContent = "Nothing missed";
+    $("missIntro").textContent = "Every question you answered in this attempt was right.";
+    $("retryMissedBtn").hidden = true;
+    return;
+  }
+  $("missHead").textContent = "What you missed (" + missed.length + ")";
+  $("missIntro").innerHTML = "Each one with the answer, and the reason it is that answer rather than the one you chose.";
+  missed.forEach(function(res){
+    var q = questionById(res.id);
+    var card = el("div", "miss");
+    card.appendChild(el("span", "chip " + TOPICS[q.topic].kind, TOPICS[q.topic].label));
+    card.appendChild(el("h3", null, q.q));
+    card.appendChild(el("p", "said", "<b>You chose " + letter(res.chosen) + ":</b> " + q.opts[res.chosen] +
+      " &mdash; " + q.why[res.chosen]));
+    card.appendChild(el("p", "right", "<b>Answer " + letter(q.a) + ":</b> " + q.opts[q.a]));
+    card.appendChild(el("p", "why", q.why[q.a] + " <b>" + q.key + "</b>"));
+    list.appendChild(card);
+  });
+  $("retryMissedBtn").hidden = false;
+}
+
+function showResults(){
+  var asked = state.results.length;
+  var right = rightSoFar();
+  var pct = asked === 0 ? 0 : Math.round((right / asked) * 100);
+
+  $("resultsHead").textContent = state.mode === "missed"
+    ? "Retry of the questions you missed"
+    : (asked < QUESTIONS.length ? "Result of a part attempt" : "Your result");
+  $("resultsScore").textContent = right + " / " + asked;
+  $("resultsPct").textContent = asked === 0
+    ? "No questions were answered."
+    : pct + " percent, over " + asked + (asked === 1 ? " question." : " questions.");
+
+  /* Only a complete run of the whole quiz can set the best score, so a short
+     retry of six questions cannot flatter the record. */
+  var best = loadBest();
+  if(state.mode === "full" && asked === QUESTIONS.length){
+    if(pct > best){
+      saveBest(pct);
+      $("resultsBest").textContent = "New best: " + pct + " percent.";
+    } else {
+      $("resultsBest").textContent = "Best full attempt so far: " + best + " percent.";
+    }
+  } else {
+    $("resultsBest").textContent = best > 0
+      ? "Best full attempt so far: " + best + " percent. Only a complete run of all " + QUESTIONS.length + " counts toward it."
+      : "Only a complete run of all " + QUESTIONS.length + " questions counts toward a best score.";
+  }
+  refreshBestStat();
+
+  renderTopicResults();
+  renderObjResults();
+  renderMissed();
+  $("posStat").hidden = true;
+  $("scoreStat").hidden = true;
+  $("modeStat").textContent = "Results";
+  showScreen("screenResults");
+  window.scrollTo(0, 0);
+  announce("Attempt finished. " + right + " of " + asked + " correct, " + pct + " percent.");
+}
+
+/* ============================================================================
+   CONTROLS
+   ========================================================================== */
+function allIds(){ return QUESTIONS.map(function(q){ return q.id; }); }
+
+$("startBtn").addEventListener("click", function(){
+  var ids = allIds();
+  if($("shuffleBox").checked) ids = shuffled(ids);
+  startAttempt(ids, "full");
+});
+$("retakeBtn").addEventListener("click", function(){
+  var ids = allIds();
+  if($("shuffleBox").checked) ids = shuffled(ids);
+  startAttempt(ids, "full");
+});
+$("retryMissedBtn").addEventListener("click", function(){
+  var ids = missedIds();
+  if(ids.length === 0) return;
+  startAttempt(ids, "missed");
+});
+$("quitBtn").addEventListener("click", function(){
+  if(state.results.length === 0){
+    showScreen("screenIntro");
+    $("posStat").hidden = true;
+    $("scoreStat").hidden = true;
+    $("modeStat").textContent = "Quiz";
+    announce("Attempt abandoned before any question was answered.");
+    return;
+  }
+  showResults();
+});
+
+/* ============================================================================
+   INIT
+   ========================================================================== */
+renderTopicPreview();
+renderObjPreview();
+refreshBestStat();
+showScreen("screenIntro");
+})();
+</script>
+</body>
+</html>
