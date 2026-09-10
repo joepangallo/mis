@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Final</title>
+<meta name="description" content="A practice final in the shape of the real one: multiple choice, matching, short answers, and a full framework analysis of a hypothetical firm.">
+<style>
+/* ============================================================================
+   The palette the study modules and the practice cases use, so this does not
+   look like a different course from the material it examines.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(900px,calc(100% - 32px));margin:auto}
+a{color:var(--accent-strong)}
+header.top{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;padding:34px 0 28px}
+header.top .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:4px 11px;margin-bottom:10px}
+header.top h1{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em}
+header.top p{margin:0;color:#e7eefc;max-width:66ch}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);padding:10px 0}
+.toolbar-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.toolbar label{font-size:.78rem;font-weight:700;color:var(--muted)}
+.toolbar input[type=text]{margin-left:6px;height:34px;padding:0 10px;border:1px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);min-width:180px}
+.save-status{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.btn{border:1px solid var(--accent-line);background:var(--accent-strong);color:#fff;border-radius:9px;
+  padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn.ghost:hover{background:var(--panel-2)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3ae}
+.btn.danger:hover{background:var(--bad-soft)}
+main{padding:26px 0 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px 22px;margin:0 0 18px}
+.card h2{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.01em}
+.card .kicker{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px}
+.card p{margin:10px 0}
+.card ul,.card ol{margin:10px 0;padding-left:22px}
+.card li{margin:4px 0}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:10px;
+  padding:12px 14px;margin:12px 0;font-size:.92rem}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.good{border-left-color:var(--good);background:var(--good-soft)}
+.part-head{background:var(--accent-strong);color:#fff;border-radius:var(--radius);padding:16px 20px;
+  margin:26px 0 14px;box-shadow:var(--shadow)}
+.part-head .kicker{color:#cfe4f4;display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:4px}
+.part-head h2{margin:0 0 4px;font-size:1.3rem}
+.part-head p{margin:0;color:#e7eefc;font-size:.92rem;max-width:70ch}
+.facts{list-style:none;padding:0;margin:12px 0}
+.facts li{position:relative;padding:9px 12px 9px 30px;background:var(--panel-2);
+  border:1px solid var(--border-soft);border-radius:10px;margin:7px 0;font-size:.9rem}
+.facts li::before{content:"";position:absolute;left:13px;top:17px;width:7px;height:7px;
+  border-radius:999px;background:var(--accent)}
+.task{border-top:1px dashed var(--border-soft);padding-top:16px;margin-top:16px}
+.task:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.task h3{margin:0 0 6px;font-size:1.05rem}
+.task .tag{float:right;background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:3px 10px;font-size:.7rem;font-weight:800;color:var(--muted);margin-left:10px}
+.task ol.parts{margin:8px 0 0;padding-left:20px}
+.task ol.parts li{margin:6px 0}
+textarea{display:block;width:100%;min-height:120px;margin-top:10px;padding:11px 12px;
+  border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);
+  font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;resize:vertical}
+textarea.code{font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:130px}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.wc-badge{padding:3px 10px;border-radius:999px;font-weight:800;background:var(--panel-2);color:var(--muted)}
+.wc-badge.ok{background:var(--good-soft);color:var(--good)}
+.wc-badge.low,.wc-badge.high{background:var(--warn-soft);color:var(--warn)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+table.tbl caption{text-align:left;padding:8px 10px;background:var(--accent-strong);color:#fff;
+  border-radius:8px 8px 0 0;font-weight:700}
+table.tbl th,table.tbl td{padding:8px 10px;border-bottom:1px solid var(--border-soft);text-align:left;
+  vertical-align:top}
+table.tbl th{background:var(--panel-2);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted)}
+table.tbl td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.tbl tfoot td{font-weight:800;border-top:2px solid var(--border)}
+.tbl-wrap{width:100%;overflow-x:auto}
+pre.schema{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:10px;
+  padding:12px 14px;margin:10px 0;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  overflow-x:auto}
+.checks{list-style:none;padding:0;margin:10px 0 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;padding:7px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.checks li:last-child{border-bottom:none}
+.checks .mark{flex:none;width:20px;height:20px;border-radius:999px;display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;background:var(--panel-2);color:var(--muted);border:1px solid var(--border-soft)}
+.checks li.ok .mark{background:var(--good);border-color:var(--good);color:#fff}
+.checks small{display:block;color:var(--muted);font-size:.79rem;margin-top:2px}
+footer{border-top:1px solid var(--border);padding:18px 0 30px;font-size:.82rem;color:var(--muted)}
+/* On a phone a text control under 16px makes iOS zoom the whole page in the
+   moment it is focused, which on a long exam means fighting the viewport at
+   every question. The objective chip also stops floating, so a long heading
+   cannot wrap around it. */
+@media (max-width:640px){
+  textarea,.toolbar input[type=text]{font-size:16px}
+  .task .tag{float:none;display:inline-block;margin:0 0 6px}
+}
+/* The name lives in the toolbar, and the toolbar does not print. This line is
+   the printed copy's version of it, blank-ruled when nobody typed a name. */
+.print-only{display:none}
+
+/* ------------------------------------------------------- multiple choice */
+.choices{list-style:none;padding:0;margin:12px 0 0}
+.choices li{margin:7px 0}
+.choices label{display:flex;gap:11px;align-items:flex-start;padding:10px 13px;
+  border:1px solid var(--border-soft);border-radius:10px;background:#fff;cursor:pointer;
+  transition:border-color .12s,background .12s}
+.choices label:hover{border-color:var(--accent-line);background:var(--panel-2)}
+.choices input{margin:3px 0 0;flex:none;width:17px;height:17px;accent-color:var(--accent-strong)}
+.choices .ltr{flex:none;font-weight:800;color:var(--muted);min-width:1.1em}
+.choices .opt{flex:1;min-width:0}
+.stem{margin:10px 0 0}
+.stem code{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:5px;
+  padding:1px 5px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* An option can hold a whole SQL statement, and a long unbroken one drags the
+   whole page sideways on a phone. Let it wrap at its spaces, and break a very
+   long token rather than overflow the viewport. */
+.choices .opt code,.stem code{white-space:normal;overflow-wrap:break-word;word-break:break-word}
+.choices .opt code{display:inline;background:var(--panel-2);border:1px solid var(--border-soft);
+  border-radius:5px;padding:1px 5px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* -------------------------------------------------------------- matching */
+table.match{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92rem}
+table.match th{background:var(--panel-2);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+table.match td{padding:9px 10px;border-bottom:1px solid var(--border-soft);vertical-align:top}
+table.match td.pick{width:min(46%,320px)}
+table.match select{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;
+  background:#fff;color:var(--text);font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+table.match select:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+table.match.grid td{vertical-align:middle}
+table.match.grid td:nth-child(2){font-weight:650}
+table.match.grid textarea{margin-top:0;min-height:52px}
+table.match .num{font-weight:800;color:var(--muted);padding-right:0;width:2.2em}
+@media (max-width:640px){
+  table.match,table.match tbody,table.match tr,table.match td{display:block;width:100%}
+  table.match thead{display:none}
+  table.match tr{border-bottom:1px solid var(--border-soft);padding:8px 0}
+  table.match td{border-bottom:0;padding:4px 0}
+  table.match td.pick{width:100%}
+  table.match .num{display:inline;width:auto}
+  table.match select{font-size:16px}
+}
+@media print{
+  .print-only{display:block;margin:14px 0 0;font-size:.95rem;font-weight:700}
+  .print-only .rule{display:inline-block;min-width:260px;border-bottom:1px solid #000}
+  .toolbar,.btn,.no-print{display:none !important}
+  body{background:#fff}
+  header.top{background:#fff !important;color:#000;border-bottom:2px solid #000}
+  header.top .eyebrow{background:none;border-color:#000;color:#000}
+  header.top p{color:#333}
+  .part-head{background:#fff !important;color:#000;border:2px solid #000;box-shadow:none}
+  .part-head .kicker,.part-head p{color:#333}
+  .card{box-shadow:none;border:1px solid #999;break-inside:avoid}
+  textarea{border:1px solid #999;white-space:pre-wrap;height:auto;overflow:visible}
+  .choices label{border:1px solid #bbb;background:#fff}
+  .echo{display:block;margin:8px 0 0;font-weight:700}
+  table.match select{border:1px solid #999;background:#fff;appearance:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Practice</span>
+    <h1>Practice Final</h1>
+    <p>Same shape as the real one: multiple choice, matching, written answers, and one firm analysed
+      from end to end. Every company here is invented.</p>
+    <p class="print-only" id="printIdentity">Name: <span class="rule">&nbsp;</span></p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-inner">
+    <label>Name <input type="text" id="who" autocomplete="name"></label>
+    <button type="button" class="btn ghost" id="exportBtn">Export my answers</button>
+    <button type="button" class="btn ghost" id="printBtn">Print / Save PDF</button>
+    <button type="button" class="btn danger" id="clearBtn">Clear my work</button>
+    <span class="save-status" id="saveStatus">Saved in this browser as you type.</span>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section class="card">
+      <p><b>Multiple choice questions have one right answer.</b> In the matching questions every answer
+        is used exactly once. Written answers go in the boxes, and everything is saved in this browser
+        as you type &mdash; nothing is uploaded anywhere.</p>
+    </section>
+
+    <div class="part-head">
+      <span class="kicker">Part one</span>
+      <h2>The five competitive forces and the value chain</h2>
+    </div>
+
+    <section class="card">
+      <span class="kicker">Questions 1 to 10 &middot; choose one answer</span>
+      <h2>Multiple choice</h2>
+
+      <div class="task">
+        <h3>1 &middot; Paper invoices</h3>
+        <p class="stem">A company that prints and mails paper invoices for utilities has seen its volume
+          fall forty-four percent in four years. The number of firms offering the service has not
+          changed, two rounds of price cuts brought back no volume at all, and the utilities say their
+          customers now take invoices by email. Which force explains it?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q1" value="A"><span class="ltr">A</span><span class="opt">The threat of substitutes</span></label></li>
+          <li><label><input type="radio" name="q1" value="B"><span class="ltr">B</span><span class="opt">Rivalry, because the other printers must be competing harder than before</span></label></li>
+          <li><label><input type="radio" name="q1" value="C"><span class="ltr">C</span><span class="opt">New entrants, because email providers have entered the printing industry</span></label></li>
+          <li><label><input type="radio" name="q1" value="D"><span class="ltr">D</span><span class="opt">Buyer power, because the utilities have negotiated the price downward</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>2 &middot; Ceramic blocks</h3>
+        <p class="stem">A dental laboratory mills crowns from ceramic blocks that fit only one
+          manufacturer&rsquo;s machines. That manufacturer raised block prices nineteen percent and set a
+          minimum order. Moving to another system would mean replacing a $180,000 mill. Which force is
+          this?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q2" value="A"><span class="ltr">A</span><span class="opt">Rivalry among the laboratories buying those same blocks each month</span></label></li>
+          <li><label><input type="radio" name="q2" value="B"><span class="ltr">B</span><span class="opt">The bargaining power of suppliers</span></label></li>
+          <li><label><input type="radio" name="q2" value="C"><span class="ltr">C</span><span class="opt">The threat of substitutes, because another material could be used instead</span></label></li>
+          <li><label><input type="radio" name="q2" value="D"><span class="ltr">D</span><span class="opt">The bargaining power of buyers, because dentists choose which lab to use</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>3 &middot; Four wholesalers</h3>
+        <p class="stem">A cleaning-products maker reaches shops through four wholesalers, who between
+          them carry its goods to eighty-two percent of the shops that stock them. Each wholesaler
+          reviews what it lists once a year, and one dropped two of the maker&rsquo;s lines last year.
+          Which force is strongest here?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q3" value="A"><span class="ltr">A</span><span class="opt">Supplier power, because the wholesalers supply the maker with its shops</span></label></li>
+          <li><label><input type="radio" name="q3" value="B"><span class="ltr">B</span><span class="opt">New entrants, because a new cleaning-products maker could arrive as well</span></label></li>
+          <li><label><input type="radio" name="q3" value="C"><span class="ltr">C</span><span class="opt">Rivalry, because other makers want the same space on the same shelves</span></label></li>
+          <li><label><input type="radio" name="q3" value="D"><span class="ltr">D</span><span class="opt">The bargaining power of buyers</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>4 &middot; Fifteen years, then this spring</h3>
+        <p class="stem">A firm has competed with the same three companies for fifteen years. This spring
+          a company that had never worked in this county opened an office two miles away. Which reading
+          of the situation is correct?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q4" value="A"><span class="ltr">A</span><span class="opt">The new pressure is the threat of new entrants, and rivalry was always there</span></label></li>
+          <li><label><input type="radio" name="q4" value="B"><span class="ltr">B</span><span class="opt">The new pressure is rivalry, and new entrants was the force that was there before</span></label></li>
+          <li><label><input type="radio" name="q4" value="C"><span class="ltr">C</span><span class="opt">All four companies are new entrants, because all four want the same customers</span></label></li>
+          <li><label><input type="radio" name="q4" value="D"><span class="ltr">D</span><span class="opt">All four are rivalry, because a company with an office nearby is simply a rival</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>5 &middot; The evidence for a rating</h3>
+        <p class="stem">Which single piece of evidence would most support rating the <b>bargaining power
+          of buyers</b> as strong?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q5" value="A"><span class="ltr">A</span><span class="opt">Two firms that were not in this business a year ago are trading in it now</span></label></li>
+          <li><label><input type="radio" name="q5" value="B"><span class="ltr">B</span><span class="opt">The only supplier of a part the firm cannot do without has raised its price</span></label></li>
+          <li><label><input type="radio" name="q5" value="C"><span class="ltr">C</span><span class="opt">Three customers hold seventy percent of revenue and re-tender every year</span></label></li>
+          <li><label><input type="radio" name="q5" value="D"><span class="ltr">D</span><span class="opt">Volume across the whole category fell while the number of firms held steady</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>6 &middot; Thirty-eight percent of the hours</h3>
+        <p class="stem">A tile distributor&rsquo;s crews spend thirty-eight percent of their paid hours
+          driving, because deliveries go out in the order the orders were taken rather than by where the
+          sites are. Which activity would a routing system improve?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q6" value="A"><span class="ltr">A</span><span class="opt">Operations, because the crews are the people doing the work all day</span></label></li>
+          <li><label><input type="radio" name="q6" value="B"><span class="ltr">B</span><span class="opt">Inbound logistics, because the tiles were received before they went out</span></label></li>
+          <li><label><input type="radio" name="q6" value="C"><span class="ltr">C</span><span class="opt">Human resources, because it changes how the crews spend their working day</span></label></li>
+          <li><label><input type="radio" name="q6" value="D"><span class="ltr">D</span><span class="opt">Outbound logistics</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>7 &middot; Which one is inbound logistics</h3>
+        <p class="stem">A joinery firm does all four of these in the same week. Which one is <b>inbound
+          logistics</b> rather than procurement?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q7" value="A"><span class="ltr">A</span><span class="opt">Agreeing next year&rsquo;s price and delivery schedule with a timber mill</span></label></li>
+          <li><label><input type="radio" name="q7" value="B"><span class="ltr">B</span><span class="opt">Unloading the timber, checking it against the order and racking it</span></label></li>
+          <li><label><input type="radio" name="q7" value="C"><span class="ltr">C</span><span class="opt">Choosing between two mills on the terms each of them is offering</span></label></li>
+          <li><label><input type="radio" name="q7" value="D"><span class="ltr">D</span><span class="opt">Reviewing every supplier contract before the year end and renewing some</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>8 &middot; Which band is it in</h3>
+        <p class="stem">Which of these is a <b>primary</b> activity rather than a support one?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q8" value="A"><span class="ltr">A</span><span class="opt">Procurement, the buying decision taken for every part of the chain</span></label></li>
+          <li><label><input type="radio" name="q8" value="B"><span class="ltr">B</span><span class="opt">Human resources, which hires and trains the people at every stage</span></label></li>
+          <li><label><input type="radio" name="q8" value="C"><span class="ltr">C</span><span class="opt">Outbound logistics</span></label></li>
+          <li><label><input type="radio" name="q8" value="D"><span class="ltr">D</span><span class="opt">Technology development, which builds the systems the chain runs on</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>9 &middot; Where the saving lands</h3>
+        <p class="stem">A contractor buys an estimating system that cuts the time to prepare a bid from
+          nine hours to three. Bidding is done by the sales team, and the hours saved are the sales
+          team&rsquo;s own. In which activity does the saving appear?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q9" value="A"><span class="ltr">A</span><span class="opt">Operations, because the jobs that are won have to be produced afterwards</span></label></li>
+          <li><label><input type="radio" name="q9" value="B"><span class="ltr">B</span><span class="opt">Technology development, because a new system was built to make it happen</span></label></li>
+          <li><label><input type="radio" name="q9" value="C"><span class="ltr">C</span><span class="opt">Administration, because the saved hours turn into general overhead again</span></label></li>
+          <li><label><input type="radio" name="q9" value="D"><span class="ltr">D</span><span class="opt">Sales and marketing</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>10 &middot; Two systems, identical payback</h3>
+        <p class="stem">A firm wins work by committing to installation dates none of its competitors
+          will promise, and it has never been the cheapest. It is offered two systems costing the same
+          and paying back in the same time. System A cuts material cost by seven percent. System B tells
+          each customer, in real time, whether their installation date is still on. Which does the
+          alignment test favour?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q10" value="A"><span class="ltr">A</span><span class="opt">System A, because a cost saving is certain and a service promise is not</span></label></li>
+          <li><label><input type="radio" name="q10" value="B"><span class="ltr">B</span><span class="opt">Either one, since the cost and the payback are identical either way</span></label></li>
+          <li><label><input type="radio" name="q10" value="C"><span class="ltr">C</span><span class="opt">System B</span></label></li>
+          <li><label><input type="radio" name="q10" value="D"><span class="ltr">D</span><span class="opt">Neither, until somebody has recalculated both of the payback periods</span></label></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">Questions 11 and 12 &middot; every answer is used exactly once</span>
+      <h2>Matching</h2>
+
+      <div class="task">
+        <h3>11 &middot; Match the situation to the force</h3>
+        <p class="stem">Five situations, five forces. Each force is the answer to exactly one situation,
+          so a row you are unsure of is settled by the rows you are sure of.</p>
+        <table class="match">
+          <thead><tr><th></th><th>Situation</th><th>The force</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td>
+              <td>A firm that was not in this trade a year ago is working in it now, and setting up took a van, a licence and eight weeks.</td>
+              <td class="pick"><select data-key="q11a" aria-label="Force for situation 1"><option value="">&mdash; choose &mdash;</option><option>Bargaining power of buyers</option><option>Bargaining power of suppliers</option><option>Rivalry among existing competitors</option><option>Threat of new entrants</option><option>Threat of substitutes</option></select></td></tr>
+            <tr><td class="num">2</td>
+              <td>Customers are meeting the same need with something bought from a different industry, and two price cuts brought none of them back.</td>
+              <td class="pick"><select data-key="q11b" aria-label="Force for situation 2"><option value="">&mdash; choose &mdash;</option><option>Bargaining power of buyers</option><option>Bargaining power of suppliers</option><option>Rivalry among existing competitors</option><option>Threat of new entrants</option><option>Threat of substitutes</option></select></td></tr>
+            <tr><td class="num">3</td>
+              <td>The one company allowed to supply a part the firm cannot work without has raised its price and shortened its payment terms.</td>
+              <td class="pick"><select data-key="q11c" aria-label="Force for situation 3"><option value="">&mdash; choose &mdash;</option><option>Bargaining power of buyers</option><option>Bargaining power of suppliers</option><option>Rivalry among existing competitors</option><option>Threat of new entrants</option><option>Threat of substitutes</option></select></td></tr>
+            <tr><td class="num">4</td>
+              <td>Six firms that have all traded here for years match each other&rsquo;s discounts within a month, and none has raised a price in three years.</td>
+              <td class="pick"><select data-key="q11d" aria-label="Force for situation 4"><option value="">&mdash; choose &mdash;</option><option>Bargaining power of buyers</option><option>Bargaining power of suppliers</option><option>Rivalry among existing competitors</option><option>Threat of new entrants</option><option>Threat of substitutes</option></select></td></tr>
+            <tr><td class="num">5</td>
+              <td>Two customers between them account for most of the revenue, review the arrangement every year, and one has moved work away once already.</td>
+              <td class="pick"><select data-key="q11e" aria-label="Force for situation 5"><option value="">&mdash; choose &mdash;</option><option>Bargaining power of buyers</option><option>Bargaining power of suppliers</option><option>Rivalry among existing competitors</option><option>Threat of new entrants</option><option>Threat of substitutes</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task">
+        <h3>12 &middot; Match the work to the value chain activity</h3>
+        <p class="stem">Nine pieces of work at a furniture maker, and the nine activities of the value
+          chain. Each activity is the answer to exactly one row.</p>
+        <table class="match">
+          <thead><tr><th></th><th>What the firm is doing</th><th>The activity</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Receiving timber and hardware, checking it against the order and racking it</td>
+              <td class="pick"><select data-key="q12a" aria-label="Activity for row 1"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">2</td><td>Cutting, assembling and finishing the furniture</td>
+              <td class="pick"><select data-key="q12b" aria-label="Activity for row 2"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">3</td><td>Loading the vans and deciding the order of the day&rsquo;s drops</td>
+              <td class="pick"><select data-key="q12c" aria-label="Activity for row 3"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">4</td><td>Preparing the quotation for a hotel refurbishment</td>
+              <td class="pick"><select data-key="q12d" aria-label="Activity for row 4"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">5</td><td>Handling a warranty claim on a chair frame that split</td>
+              <td class="pick"><select data-key="q12e" aria-label="Activity for row 5"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">6</td><td>Agreeing next year&rsquo;s price with the timber mill</td>
+              <td class="pick"><select data-key="q12f" aria-label="Activity for row 6"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">7</td><td>Recruiting and training the finishers</td>
+              <td class="pick"><select data-key="q12g" aria-label="Activity for row 7"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">8</td><td>Testing a new lacquer and building the system that records which batch went where</td>
+              <td class="pick"><select data-key="q12h" aria-label="Activity for row 8"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+            <tr><td class="num">9</td><td>Closing the month&rsquo;s accounts, and the firm&rsquo;s legal and quality management</td>
+              <td class="pick"><select data-key="q12i" aria-label="Activity for row 9"><option value="">&mdash; choose &mdash;</option><option>Inbound logistics</option><option>Operations</option><option>Outbound logistics</option><option>Sales and marketing</option><option>Service</option><option>Administration and firm infrastructure</option><option>Human resources</option><option>Technology development</option><option>Procurement</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="card">
+      <span class="kicker">Questions 13 to 16 &middot; written answers</span>
+      <h2>Short answer</h2>
+
+      <div class="task">
+        <h3>13 &middot; What makes each force weak</h3>
+        <p class="stem">One line per force. Write the <b>single observation</b> that would make you rate
+          that force <b>weak</b> in a business you had never seen before. Each answer has to name
+          something a reader could <b>count, compare or verify</b>, and no two rows may use the same
+          observation.</p>
+        <table class="match grid">
+          <thead><tr><th></th><th>The force</th><th>What I would have to see to rate it weak</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Rivalry among existing competitors</td>
+              <td class="pick"><textarea id="q13a" data-key="q13a" rows="2" aria-label="Evidence for rating rivalry weak"></textarea></td></tr>
+            <tr><td class="num">2</td><td>Threat of new entrants</td>
+              <td class="pick"><textarea id="q13b" data-key="q13b" rows="2" aria-label="Evidence for rating the threat of new entrants weak"></textarea></td></tr>
+            <tr><td class="num">3</td><td>Bargaining power of buyers</td>
+              <td class="pick"><textarea id="q13c" data-key="q13c" rows="2" aria-label="Evidence for rating buyer power weak"></textarea></td></tr>
+            <tr><td class="num">4</td><td>Bargaining power of suppliers</td>
+              <td class="pick"><textarea id="q13d" data-key="q13d" rows="2" aria-label="Evidence for rating supplier power weak"></textarea></td></tr>
+            <tr><td class="num">5</td><td>Threat of substitutes</td>
+              <td class="pick"><textarea id="q13e" data-key="q13e" rows="2" aria-label="Evidence for rating the threat of substitutes weak"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task">
+        <h3>14 &middot; Two pairs people mix up</h3>
+        <p>Explain the difference in each pair, in your own words, and name the practical mistake a firm
+          makes when it confuses them.</p>
+        <ol class="parts">
+          <li>A <b>rival</b> and a <b>substitute</b>.</li>
+          <li>The activity a <b>system belongs to</b> and the activity where the <b>saving appears</b>.</li>
+        </ol>
+        <textarea id="q14" data-key="q14" placeholder="(a) A rival is … whereas a substitute is … The mistake this causes is …&#10;&#10;(b) … The mistake this causes is …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>15 &middot; The largest cost is not the largest waste</h3>
+        <p>Below is part of a costed value chain for a regional courier. Answer all three.</p>
+        <ol class="parts">
+          <li>Name the activity with the <b>largest annual cost</b>.</li>
+          <li>Name the activity whose figures show the <b>largest identifiable waste</b> &mdash; money the
+            table says is being lost rather than spent on doing the work &mdash; and give that amount in
+            dollars.</li>
+          <li>In two or three sentences, say why those are two different questions, and which of the two
+            an initiative should be aimed at.</li>
+        </ol>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>Regional courier &mdash; annual cost by activity</caption>
+            <thead><tr><th>Activity</th><th class="num">Annual cost</th><th>What the money is spent on</th></tr></thead>
+            <tbody>
+              <tr><td>Inbound logistics</td><td class="num">$240,000</td><td>Receiving and sorting parcels at the depot each night</td></tr>
+              <tr><td>Operations</td><td class="num">$1,150,000</td><td>Drivers and vehicles making the deliveries &mdash; the work the customer is buying</td></tr>
+              <tr><td>Outbound logistics</td><td class="num">$390,000</td><td>Final-mile routing, of which <b>eighteen percent is spent on repeat attempts at addresses where nobody was in</b></td></tr>
+              <tr><td>Service</td><td class="num">$160,000</td><td>Answering tracking calls and settling claims</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <textarea id="q15" data-key="q15" placeholder="(i) Largest annual cost: …&#10;(ii) Largest identifiable waste: … which is $…&#10;(iii) Why they are different questions, and which one to aim at: …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>16 &middot; Switching costs, in both directions</h3>
+        <p>A firm is under pressure from its buyers and from one of its suppliers at the same time.
+          Explain what a switching cost has to do in <b>each</b> case for an information system to
+          relieve the pressure, and give one example of a system that would do it.</p>
+        <textarea id="q16" data-key="q16" placeholder="To answer buyer power, a system has to … for example …&#10;&#10;To answer supplier power, a system has to … for example …&#10;&#10;The two point in opposite directions because …"></textarea>
+      </div>
+    </section>
+
+    <div class="part-head">
+      <span class="kicker">Part two</span>
+      <h2>The rest of the course</h2>
+    </div>
+
+    <section class="card">
+      <span class="kicker">Questions 17 to 25 &middot; choose one answer</span>
+      <h2>Multiple choice</h2>
+
+      <div class="task">
+        <h3>17 &middot; Whose job is it</h3>
+        <p class="stem">Which task belongs to a <b>database administrator</b> rather than to a systems
+          analyst?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q17" value="A"><span class="ltr">A</span><span class="opt">Interviewing the sales team about what they need the new system to do</span></label></li>
+          <li><label><input type="radio" name="q17" value="B"><span class="ltr">B</span><span class="opt">Deciding how the data is structured, who may read it, and how it is kept</span></label></li>
+          <li><label><input type="radio" name="q17" value="C"><span class="ltr">C</span><span class="opt">Writing the specification that says what the business needs from the system</span></label></li>
+          <li><label><input type="radio" name="q17" value="D"><span class="ltr">D</span><span class="opt">Presenting three costed options to the managers who will pay for one of them</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>18 &middot; Which category of system</h3>
+        <p class="stem">An owner wants to know what would happen to profit if the firm opened a second
+          depot forty miles away, using its own delivery and cost figures to try the idea out before
+          committing. Which category of information system does that?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q18" value="A"><span class="ltr">A</span><span class="opt">A decision support system</span></label></li>
+          <li><label><input type="radio" name="q18" value="B"><span class="ltr">B</span><span class="opt">A transaction processing system, which records each delivery as it is made</span></label></li>
+          <li><label><input type="radio" name="q18" value="C"><span class="ltr">C</span><span class="opt">A management information system, which reports last week&rsquo;s deliveries</span></label></li>
+          <li><label><input type="radio" name="q18" value="D"><span class="ltr">D</span><span class="opt">A customer relationship management system, holding what each customer buys</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>19 &middot; Getting there and back</h3>
+        <p class="stem">You request a page and it arrives. What has TCP/IP done with your request on the
+          way?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q19" value="A"><span class="ltr">A</span><span class="opt">Broken it into packets, routed them separately, and reassembled them</span></label></li>
+          <li><label><input type="radio" name="q19" value="B"><span class="ltr">B</span><span class="opt">Sent it whole down one reserved line kept open until the reply came back</span></label></li>
+          <li><label><input type="radio" name="q19" value="C"><span class="ltr">C</span><span class="opt">Encrypted it, so that nobody between you and the server could read any of it</span></label></li>
+          <li><label><input type="radio" name="q19" value="D"><span class="ltr">D</span><span class="opt">Stored it on a nearby server, so the next person asking gets the same copy</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>20 &middot; Who is it for</h3>
+        <p class="stem">A firm runs a site its own employees sign in to for payslips, policies and the
+          staff directory. Nobody outside the company can reach it. What is it?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q20" value="A"><span class="ltr">A</span><span class="opt">An extranet, because a password is needed before anybody can get into it</span></label></li>
+          <li><label><input type="radio" name="q20" value="B"><span class="ltr">B</span><span class="opt">An intranet</span></label></li>
+          <li><label><input type="radio" name="q20" value="C"><span class="ltr">C</span><span class="opt">A decision support system, because managers read reports on it every week</span></label></li>
+          <li><label><input type="radio" name="q20" value="D"><span class="ltr">D</span><span class="opt">A public web site that happens to have a sign-in page in front of all of it</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>21 &middot; Requirement or decision</h3>
+        <p class="stem">A service manager says nobody can tell a customer when their repair will be
+          ready, so the desk guesses and is often wrong. Which of these is a <b>requirement</b> to hand
+          to the information systems team, rather than a decision that belongs to them?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q21" value="A"><span class="ltr">A</span><span class="opt">Buy the repair-tracking package that the dealership across town uses</span></label></li>
+          <li><label><input type="radio" name="q21" value="B"><span class="ltr">B</span><span class="opt">Keep the repair records in a cloud database and back it up every night</span></label></li>
+          <li><label><input type="radio" name="q21" value="C"><span class="ltr">C</span><span class="opt">A customer must be able to see the stage their repair has reached</span></label></li>
+          <li><label><input type="radio" name="q21" value="D"><span class="ltr">D</span><span class="opt">Build it as a mobile application first, and add the desktop version later</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>22 &middot; What the term means</h3>
+        <p class="stem">Tablets were built and sold to the public first, and only later became standard
+          equipment in warehouses, showrooms and hospitals. Which term names that direction of travel?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q22" value="A"><span class="ltr">A</span><span class="opt">The digital divide, which separates those with access from those without</span></label></li>
+          <li><label><input type="radio" name="q22" value="B"><span class="ltr">B</span><span class="opt">Computer fluency, which is being able to learn whatever appears next</span></label></li>
+          <li><label><input type="radio" name="q22" value="C"><span class="ltr">C</span><span class="opt">Disintermediation, which is what happens when a middleman is removed</span></label></li>
+          <li><label><input type="radio" name="q22" value="D"><span class="ltr">D</span><span class="opt">The consumerization of information technology</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>23 &middot; The morning nothing opens</h3>
+        <p class="stem">Every file on the office server has been renamed and will not open, and a message
+          on screen demands payment for a key. What is it, and what should have been in place?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q23" value="A"><span class="ltr">A</span><span class="opt">Phishing; the firm should have verified the sender before opening anything</span></label></li>
+          <li><label><input type="radio" name="q23" value="B"><span class="ltr">B</span><span class="opt">Ransomware; backups kept offline and already tested by restoring from them</span></label></li>
+          <li><label><input type="radio" name="q23" value="C"><span class="ltr">C</span><span class="opt">A hardware failure; the firm should have replaced the server before this year</span></label></li>
+          <li><label><input type="radio" name="q23" value="D"><span class="ltr">D</span><span class="opt">A denial-of-service attack; the firm should have bought more bandwidth first</span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>24 &middot; Reading a query</h3>
+        <p class="stem">The tables are <code>customers(customer_id, name, city)</code> and
+          <code>jobs(job_id, customer_id, hours)</code>. Which statement lists the customers who have had
+          more than five jobs?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q24" value="A"><span class="ltr">A</span><span class="opt"><code>SELECT name FROM customers WHERE jobs &gt; 5</code></span></label></li>
+          <li><label><input type="radio" name="q24" value="B"><span class="ltr">B</span><span class="opt"><code>SELECT c.name FROM customers c JOIN jobs j ON j.customer_id = c.customer_id WHERE COUNT(*) &gt; 5 ORDER BY c.name DESC</code></span></label></li>
+          <li><label><input type="radio" name="q24" value="C"><span class="ltr">C</span><span class="opt"><code>SELECT c.name FROM customers c JOIN jobs j ON j.customer_id = c.customer_id GROUP BY c.name HAVING COUNT(*) &gt; 5</code></span></label></li>
+          <li><label><input type="radio" name="q24" value="D"><span class="ltr">D</span><span class="opt"><code>SELECT c.name, COUNT(*) FROM customers c JOIN jobs j ON j.customer_id = c.customer_id GROUP BY c.name</code></span></label></li>
+        </ul>
+      </div>
+
+      <div class="task">
+        <h3>25 &middot; Counting the ones that matter</h3>
+        <p class="stem">Column D holds each job&rsquo;s margin as a percentage, for two hundred rows
+          running from <code>D2</code> to <code>D201</code>. Which formula counts how many jobs came in
+          under fifteen percent?</p>
+        <ul class="choices">
+          <li><label><input type="radio" name="q25" value="A"><span class="ltr">A</span><span class="opt"><code>=COUNTIF(D2:D201,"&lt;0.15")</code></span></label></li>
+          <li><label><input type="radio" name="q25" value="B"><span class="ltr">B</span><span class="opt"><code>=SUM(D2:D201&lt;0.15)</code></span></label></li>
+          <li><label><input type="radio" name="q25" value="C"><span class="ltr">C</span><span class="opt"><code>=COUNT(D2:D201,"&lt;0.15")</code></span></label></li>
+          <li><label><input type="radio" name="q25" value="D"><span class="ltr">D</span><span class="opt"><code>=IF(D2:D201&lt;0.15,COUNT(D2:D201),0)</code></span></label></li>
+        </ul>
+      </div>
+    </section>
+    <section class="card">
+      <span class="kicker">Questions 26 to 30 &middot; written answers</span>
+      <h2>Short answer</h2>
+
+      <div class="task">
+        <h3>26 &middot; Turning a complaint into a requirement</h3>
+        <p>A branch manager tells you: <i>&ldquo;The stock figures are wrong often enough that nobody
+          trusts them. Staff walk the aisles to check before they promise anything to a customer, and
+          last month we still turned away an order for something we had two of in the back.&rdquo;</i></p>
+        <p>Write what you would hand to the information systems team, in exactly these four pieces.</p>
+        <ol class="parts">
+          <li><b>Three capability statements</b>, each in this form and no other:
+            <i>the system must &hellip; so that &hellip;</i></li>
+          <li><b>The two facts from the complaint above</b> that you would quote as evidence of how big
+            the problem is. Quote them; do not summarise them.</li>
+          <li><b>One measure</b> that would be different if the system worked, and <b>one date</b> on
+            which somebody would look at it.</li>
+          <li><b>One thing you are deliberately leaving to the information systems team.</b></li>
+        </ol>
+        <textarea id="q26" data-key="q26" placeholder="1. The system must … so that …&#10;   The system must … so that …&#10;   The system must … so that …&#10;&#10;2. Evidence I would quote: “…” and “…”&#10;&#10;3. Measure: … Date: …&#10;&#10;4. I am leaving … to the information systems team."></textarea>
+      </div>
+
+      <div class="task">
+        <h3>27 &middot; Data, and what is easy to copy</h3>
+        <ol class="parts">
+          <li>Name <b>two obligations</b> a firm has toward the data it holds about its customers.</li>
+          <li>Name <b>one property of a digital copy</b> that makes intellectual property harder to
+            protect than it is for a physical product, and say in one sentence why that property is the
+            problem.</li>
+        </ol>
+        <textarea id="q27" data-key="q27" placeholder="(a) Obligation 1: …&#10;    Obligation 2: …&#10;&#10;(b) The property: … It is the problem because …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>28 &middot; The email about the bank account</h3>
+        <p>An email arrives on a long-running thread, appearing to come from a supplier the firm has paid
+          for years, asking that this month&rsquo;s payment go to a new account. The payment goes out
+          before anybody questions it. Answer all three.</p>
+        <ol class="parts">
+          <li>Name what this is.</li>
+          <li>Name <b>two</b> controls, each one something that had to be <b>already in place before the
+            email arrived</b>.</li>
+          <li>Give <b>two</b> reasons this kind of loss is hard to recover once the payment has gone.</li>
+        </ol>
+        <textarea id="q28" data-key="q28" placeholder="What it is: …&#10;&#10;Control 1: …&#10;Control 2: …&#10;&#10;Why the money is hard to get back: …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>29 &middot; Getting an answer out of a database</h3>
+        <p>A service firm keeps two tables.</p>
+        <pre class="schema">customers( customer_id, name, city )
+
+jobs( job_id, customer_id, job_date, hours, rate )</pre>
+        <p>Write <b>one</b> SQL statement that lists each city together with the total hours worked there
+          during 2026, with the busiest city first.</p>
+        <textarea id="q29" data-key="q29" class="code" placeholder="SELECT"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>30 &middot; A spreadsheet that supports a decision</h3>
+        <p>A contractor keeps one row per job:</p>
+        <pre class="schema">A: Job name    B: Hours    C: Hourly rate    D: Parts cost    E: Price quoted    F: Margin percent</pre>
+        <ol class="parts">
+          <li>Write the formula for <b>F2</b>, the job&rsquo;s margin as a percentage of the price
+            quoted. Labour costs hours &times; rate, and parts are on top of that.</li>
+          <li>The salesperson earns three percent of the price on any job whose margin is twenty percent
+            or better, and one percent on the rest. Write the formula for <b>G2</b>.</li>
+          <li>In one or two sentences: what makes this sheet a <b>decision support system</b> rather than
+            a record of jobs?</li>
+        </ol>
+        <textarea id="q30" data-key="q30" class="code" placeholder="F2 =&#10;&#10;G2 =&#10;&#10;(c) It supports a decision because …"></textarea>
+      </div>
+    </section>
+
+    <div class="part-head">
+      <span class="kicker">Part three</span>
+      <h2>One firm, both frameworks, one recommendation</h2>
+    </div>
+
+    <section class="card">
+      <span class="kicker">The brief</span>
+      <h2>Halloway Casework</h2>
+      <p><b>Halloway Casework is not a real company.</b> Every figure below is invented for this
+        exercise.</p>
+      <p>Halloway builds fitted cabinetry to order &mdash; reception desks, laboratory benching, clinic
+        storage &mdash; for offices, medical practices and research buildings across one region. Revenue
+        last year was $4.9 million on costs of $4.1 million, with thirty-four staff between the shop, the
+        install crews and a four-person office.</p>
+      <ul class="facts">
+        <li><b>Halloway has never been the low bid.</b> It wins by committing to installation dates on
+          projects where a delay stops a building opening, and it says so in every proposal.</li>
+        <li>The laminate architects name in their specifications is made by <b>one manufacturer</b>,
+          which raised its price <b>nineteen percent</b> this year and shortened its payment terms.
+          Substituting another laminate needs the architect&rsquo;s written approval, which has taken
+          <b>six weeks on average</b> and been refused twice in the last year.</li>
+        <li>Halloway bids against <b>four other shops</b>. Bids usually land within five percent of each
+          other, and Halloway has won <b>about one job in five for three years running</b> &mdash; the
+          same share as before.</li>
+        <li><b>No new shop has opened in the region in four years.</b> A CNC router and a spray booth
+          together cost about $400,000 before anybody is hired.</li>
+        <li><b>Thirty-one general contractors</b> buy from Halloway. The largest is twelve percent of
+          revenue, and each project is bid separately.</li>
+        <li>Ready-made modular cabinets are now good enough for storerooms and break rooms, which is
+          <b>eight percent</b> of Halloway&rsquo;s revenue.</li>
+        <li><b>Twenty-two percent of install-crew hours</b> are spent waiting for site access that was
+          promised for a date the contractor then moved.</li>
+        <li>Each bid takes about <b>nine hours</b> to estimate, and one in five is won.</li>
+      </ul>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>Exhibit &mdash; where Halloway&rsquo;s $4.1 million goes</caption>
+          <thead><tr><th>Activity</th><th class="num">Annual cost</th><th>What drives it</th></tr></thead>
+          <tbody>
+            <tr><td>Inbound logistics</td><td class="num">$520,000</td><td>Sheet goods and hardware received and racked; nine percent written off damaged or ordered against a specification that changed</td></tr>
+            <tr><td>Operations</td><td class="num">$1,980,000</td><td>Cutting, assembly and finishing &mdash; the work the customer is buying</td></tr>
+            <tr><td>Outbound logistics</td><td class="num">$470,000</td><td>Delivery and installation on site, including crews waiting for access</td></tr>
+            <tr><td>Sales and marketing</td><td class="num">$260,000</td><td>Estimating and bidding, at nine hours a bid</td></tr>
+            <tr><td>Service</td><td class="num">$180,000</td><td>Snag lists and warranty callbacks after handover</td></tr>
+            <tr><td>Human resources <span style="color:var(--muted)">(support)</span></td><td class="num">$460,000</td><td>Recruiting and training joiners and installers</td></tr>
+            <tr><td>Other support bands</td><td class="num">$230,000</td><td>Administration, purchasing, and keeping the existing systems running</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td class="num">$4,100,000</td><td></td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="task">
+        <h3>31 &middot; Rate all five forces</h3>
+        <p>Rate <b>every one</b> of the five competitive forces at Halloway as weak, moderate or strong.
+          For each one give the fact from the brief that supports your rating. Finish by naming the
+          <b>single strongest</b> force and saying why it beats the one you ranked second.</p>
+        <textarea id="q31" data-key="q31" placeholder="Rivalry: … because …&#10;Threat of new entrants: … because …&#10;Bargaining power of buyers: … because …&#10;Bargaining power of suppliers: … because …&#10;Threat of substitutes: … because …&#10;&#10;The strongest force is … It beats … because …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>32 &middot; Find two genuinely different opportunities</h3>
+        <p>Using the value chain, name <b>two activities</b> where a system could create a real
+          <b>operational or customer-facing</b> advantage for Halloway. They have to be two different
+          activities, not one activity described twice. For each of the two, give all three of these:</p>
+        <ol class="parts">
+          <li>The activity, named in the model&rsquo;s own words.</li>
+          <li><b>The dollar figure and the driver, quoted from the exhibit</b> &mdash; not your own
+            paraphrase of them.</li>
+          <li>One sentence saying what the weakness actually is.</li>
+        </ol>
+        <textarea id="q32" data-key="q32" placeholder="Area 1 — activity: … Quoted from the exhibit: … The weakness: …&#10;&#10;Area 2 — a genuinely different activity: … Quoted from the exhibit: … The weakness: …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>33 &middot; Write the recommendation</h3>
+        <p>In <b>200 to 250 words</b>, write the recommendation you would put in front of
+          Halloway&rsquo;s owner. All seven of the following have to be in it, and they have to agree
+          with each other.</p>
+        <ol class="parts">
+          <li>The <b>strongest force</b>, named, with the one fact from the brief that proves it.</li>
+          <li>The <b>activity</b> you are targeting, named in the model&rsquo;s own words, with its
+            figure from the exhibit.</li>
+          <li><b>Exactly one initiative</b> &mdash; not a shortlist &mdash; described concretely enough
+            that somebody could cost it and later check whether it shipped.</li>
+          <li><b>What kind of system it is</b>: transaction processing, management information, decision
+            support, customer relationship management, or another category you can name.</li>
+          <li><b>How it would run</b>: built and hosted by Halloway, or a cloud service &mdash; and if
+            cloud, which service model, for a firm whose whole office is four people.</li>
+          <li>The <b>measure and the date</b>: the number as it stands today, the number you expect
+            instead, and when somebody should look at it.</li>
+          <li><b>Why it fits the position Halloway has chosen.</b> The brief says what the firm has
+            always sold itself on.</li>
+        </ol>
+        <textarea id="q33" data-key="q33"></textarea>
+        <div class="wc-row">
+          <span class="wc-badge" id="wcBadge">0 words</span>
+          <span id="wcMsg" style="color:var(--muted)">Aim for 200&ndash;250 words.</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Every company here is invented. Your work is saved in this browser only &mdash;
+    export or print before you close the tab if you want to keep it.</div>
+</footer>
+
+<script>
+/* Everything below runs in the reader's own browser. Nothing is uploaded.
+   Three kinds of answer live on this page — written boxes, multiple choice
+   radio groups, and matching dropdowns — and they are collected the same way so
+   that saving, restoring, exporting and clearing need one code path each. */
+(function(){
+"use strict";
+
+var KEY = "mis-practice-final-v1";
+
+function $(id){ return document.getElementById(id); }
+function words(s){ s = (s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+function text(node){ return node ? (node.textContent || "").replace(/\s+/g, " ").trim() : ""; }
+
+var TASKS = [];
+
+/* A control inside a table row belongs to that row, and the export has to say
+   which one. Everything in the row except the control's own cell is the label. */
+function rowLabel(el){
+  var tr = el.closest("tr");
+  if(!tr) return "";
+  var cells = [].slice.call(tr.querySelectorAll("td")).filter(function(td){ return !td.contains(el); });
+  return cells.map(text).join(". ");
+}
+
+(function collect(){
+  var part = "";
+  var nodes = document.querySelectorAll(".part-head h2, .task");
+  for(var i = 0; i < nodes.length; i++){
+    var node = nodes[i];
+    if(node.tagName === "H2"){ part = text(node); continue; }
+    var task = { part: part, heading: text(node.querySelector("h3")), fields: [] };
+    var inputs = node.querySelectorAll("textarea[data-key], select[data-key], input[type=radio]");
+    var seen = {};
+    for(var j = 0; j < inputs.length; j++){
+      var el = inputs[j], field = null;
+      if(el.tagName === "TEXTAREA"){
+        field = { key: el.getAttribute("data-key"), kind: "text", el: el, row: rowLabel(el) };
+      } else if(el.tagName === "SELECT"){
+        field = { key: el.getAttribute("data-key"), kind: "match", el: el, row: rowLabel(el) };
+      } else {
+        if(seen[el.name]) continue;
+        seen[el.name] = true;
+        field = { key: el.name, kind: "choice", el: null, name: el.name, row: "" };
+      }
+      task.fields.push(field);
+    }
+    if(task.fields.length) TASKS.push(task);
+  }
+})();
+
+function allFields(){
+  return TASKS.reduce(function(list, task){ return list.concat(task.fields); }, []);
+}
+function getValue(field){
+  if(field.kind === "choice"){
+    var picked = document.querySelector('input[name="' + field.name + '"]:checked');
+    return picked ? picked.value : "";
+  }
+  return field.el.value;
+}
+function setValue(field, value){
+  if(typeof value !== "string") return;
+  if(field.kind === "choice"){
+    var input = document.querySelector('input[name="' + field.name + '"][value="' + value + '"]');
+    if(input) input.checked = true;
+    return;
+  }
+  field.el.value = value;
+}
+function choiceText(field){
+  var picked = document.querySelector('input[name="' + field.name + '"]:checked');
+  return picked ? text(picked.closest("label").querySelector(".opt")) : "";
+}
+
+/* ------------------------------------------------------------- persistence */
+function load(){
+  var raw = null;
+  try{ raw = localStorage.getItem(KEY); }catch(e){}
+  if(!raw) return;
+  var data = {};
+  try{ data = JSON.parse(raw) || {}; }catch(e){ return; }
+  if(typeof data.who === "string") $("who").value = data.who;
+  allFields().forEach(function(field){ setValue(field, data[field.key]); });
+}
+var saveTimer = null;
+function save(){
+  var data = { who: $("who").value };
+  allFields().forEach(function(field){ data[field.key] = getValue(field); });
+  try{
+    localStorage.setItem(KEY, JSON.stringify(data));
+    $("saveStatus").textContent = "Saved in this browser · " +
+      new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+  }catch(e){
+    $("saveStatus").textContent = "This browser is not saving — export before you close the tab.";
+  }
+}
+function queueSave(){
+  clearTimeout(saveTimer);
+  $("saveStatus").textContent = "Saving…";
+  saveTimer = setTimeout(save, 400);
+}
+
+function autosize(el){ el.style.height = "auto"; el.style.height = (el.scrollHeight + 2) + "px"; }
+function textareas(){ return [].slice.call(document.querySelectorAll("textarea[data-key]")); }
+
+/* A checked radio is the browser's own rendering and a printer may drop it, so
+   every multiple choice question carries a line that appears only in print. */
+(function buildEchoes(){
+  allFields().forEach(function(field){
+    if(field.kind !== "choice") return;
+    var list = document.querySelector('input[name="' + field.name + '"]').closest("ul.choices");
+    var echo = document.createElement("p");
+    echo.className = "print-only echo";
+    echo.id = "echo-" + field.name;
+    list.parentNode.insertBefore(echo, list.nextSibling);
+  });
+})();
+function refreshEchoes(){
+  allFields().forEach(function(field){
+    if(field.kind !== "choice") return;
+    var echo = $("echo-" + field.name);
+    if(!echo) return;
+    var value = getValue(field);
+    echo.textContent = "Chosen: " + (value ? value + " — " + choiceText(field) : "(no answer)");
+  });
+}
+
+function refreshIdentity(){
+  var name = $("who").value.trim();
+  $("printIdentity").innerHTML = name
+    ? "Name: " + name.replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }) +
+      "  ·  Printed: " + new Date().toLocaleDateString()
+    : 'Name: <span class="rule">&nbsp;</span>';
+}
+
+function refreshWordCount(){
+  var n = words($("q33").value);
+  var badge = $("wcBadge"), msg = $("wcMsg");
+  badge.textContent = n + (n === 1 ? " word" : " words");
+  badge.className = "wc-badge" + (n === 0 ? "" : n < 200 ? " low" : n > 250 ? " high" : " ok");
+  msg.textContent = n === 0 ? "Aim for 200–250 words."
+    : n < 200 ? "Under the band — " + (200 - n) + " more to reach 200."
+    : n > 250 ? "Over the band — cut " + (n - 250) + " to get back under 250."
+    : "Inside the band.";
+}
+
+/* -------------------------------------------------------------- the export */
+function exportText(){
+  save();
+  var name = $("who").value.trim();
+  var lines = [
+    "Practice Final",
+    "Name: " + (name || "(no name entered)"),
+    "Exported: " + new Date().toLocaleString(),
+    ""
+  ];
+  var lastPart = "";
+  TASKS.forEach(function(task){
+    if(task.part && task.part !== lastPart){
+      lastPart = task.part;
+      lines.push("", "=== " + task.part.toUpperCase() + " ===", "");
+    }
+    var head = "## " + task.heading;
+    if(task.fields.length === 1 && task.fields[0].key === "q33"){
+      head += "  (" + words(getValue(task.fields[0])) + " words)";
+    }
+    lines.push(head, "");
+    task.fields.forEach(function(field){
+      var value = getValue(field).trim();
+      if(field.kind === "choice"){
+        lines.push(value ? value + " — " + choiceText(field) : "(no answer)");
+      } else if(field.kind === "match" || field.row){
+        lines.push(field.row + "  ->  " + (value || "(no answer)"));
+      } else {
+        lines.push(value || "(no answer)");
+      }
+    });
+    lines.push("");
+  });
+  var blob = new Blob([lines.join("\n")], {type:"text/plain;charset=utf-8"});
+  var safe = (name || "student").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "student";
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = safe + "-practice-final.txt";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+}
+
+/* --------------------------------------------------------------- wiring up */
+function onAnswerChanged(el){
+  if(el && el.tagName === "TEXTAREA") autosize(el);
+  queueSave();
+  refreshWordCount();
+  refreshEchoes();
+}
+document.addEventListener("input", function(e){
+  if(e.target.matches("textarea[data-key], select[data-key], input[type=radio]")) onAnswerChanged(e.target);
+});
+document.addEventListener("change", function(e){
+  if(e.target.matches("select[data-key], input[type=radio]")) onAnswerChanged(e.target);
+});
+$("who").addEventListener("input", function(){ queueSave(); refreshIdentity(); });
+
+$("exportBtn").addEventListener("click", exportText);
+$("printBtn").addEventListener("click", function(){
+  textareas().forEach(autosize);
+  refreshIdentity();
+  refreshEchoes();
+  window.print();
+});
+$("clearBtn").addEventListener("click", function(){
+  if(!window.confirm("Clear your name and every answer on this page? This cannot be undone.")) return;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  $("who").value = "";
+  allFields().forEach(function(field){
+    if(field.kind === "choice"){
+      var inputs = document.querySelectorAll('input[name="' + field.name + '"]');
+      for(var i = 0; i < inputs.length; i++) inputs[i].checked = false;
+    } else {
+      field.el.value = "";
+      if(field.kind === "text") autosize(field.el);
+    }
+  });
+  refreshWordCount();
+  refreshEchoes();
+  refreshIdentity();
+  $("saveStatus").textContent = "Cleared.";
+});
+
+window.addEventListener("beforeprint", function(){
+  textareas().forEach(autosize);
+  refreshIdentity();
+  refreshEchoes();
+});
+
+/* Saving is debounced while typing; flush the moment the page is hidden or
+   unloaded so a closed tab cannot cost the last sentence written. */
+function flush(){ clearTimeout(saveTimer); save(); }
+window.addEventListener("pagehide", flush);
+document.addEventListener("visibilitychange", function(){
+  if(document.visibilityState === "hidden") flush();
+});
+
+load();
+textareas().forEach(autosize);
+refreshWordCount();
+refreshIdentity();
+refreshEchoes();
+})();
+</script>
+</body>
+</html>

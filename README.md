@@ -249,6 +249,25 @@ that exists.
 node --test five-forces-and-value-chain-jeopardy.test.mjs
 ```
 
+## Practice final
+
+[`practice-final.html`](practice-final.html) is a practice paper in the shape of the exam it prepares
+for and with none of its questions: thirty-three questions in a 16&ndash;14&ndash;3 split, mixing multiple
+choice, matching, written answers and a case, with a different firm in every scenario. It is **the questions and nothing else** &mdash; no
+objective tags, no coverage tables, no shape checklist, no weighting &mdash; because a practice paper is
+for sitting, not for reading about.
+
+It keeps only what a reader needs to sit it and hand it in: a name field, boxes that save as you type, a
+word counter on the closing recommendation, an export, and a printable layout that says in words which
+option was chosen. `practice-final.test.mjs` enforces both halves of that &mdash; the shape it shares
+with the real paper, and the scaffolding it must not have, including a test that fails if any multiple
+choice stem is copied from the exam or the case reuses the same firm, which it checks whenever the exam
+is present beside it.
+
+```sh
+node --test practice-final.test.mjs
+```
+
 ## Practice case studies
 
 `practice-case-study/` holds full-length practice analyses in the shape of a written framework study &mdash;

@@ -36,6 +36,14 @@ src/forbidden.local.txt
 # every future `git add` to catch it. Commit only when explicitly released.
 practice-case-study/instructor-notes*.md
 
+# The midterm's answer key, for exactly the same reason and with less room for error: the exam page
+# is committed and the key sits beside it. The page itself carries no answers, only a weights
+# comment, because a student can read its source.
+midterm-instructor-key*.md
+midterm-answer-key*.md
+practice-final-instructor-key*.md
+practice-final-answer-key*.md
+
 # Build scratch
 /tmp/
 *.tmp.html

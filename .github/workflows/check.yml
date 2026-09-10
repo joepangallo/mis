@@ -48,3 +48,4 @@ jobs:
           five-forces-and-value-chain-quiz.test.mjs
           five-forces-and-value-chain-jeopardy.test.mjs
           modules-1-3-jeopardy.test.mjs
+          practice-final.test.mjs
