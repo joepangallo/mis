@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Five Forces &amp; Value Chain Jeopardy</title>
+<meta name="description" content="A two-round Jeopardy-style review game on Porter's Five Forces and the Value Chain Model — naming the forces and the activities, diagnosing pressure from evidence, matching systems to the force they answer, and the shape of the written framework analysis.">
+<style>
+/* ============================================================================
+   THEME TOKENS — the same palette as the study modules, so moving from a
+   module into this review game does not feel like switching products. The
+   board colours are the one addition: a deep blue-violet that reads as a game
+   show rather than as more reading.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f;  --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --plum:#7a3d86; --plum-soft:#7a3d861a;
+  --board:#1b2a55; --board-2:#25397a; --board-text:#fff;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#1e2433; --bg-soft:#242b3c; --panel:#293042; --panel-2:#323950;
+  --border:#46506c; --border-soft:#394157;
+  --text:#f2f4fa; --text-dim:#c8cfe0; --muted:#a6aec4;
+  --accent:#7cc7f0; --accent-strong:#1d5d8c; --accent-soft:#7cc7f022; --accent-line:#7cc7f055;
+  --good:#2fd39f; --good-soft:#2fd39f22;
+  --bad:#ff8a94;  --bad-soft:#ff8a9422;
+  --warn:#f5a524; --warn-soft:#f5a52422;
+  --plum:#d8a6e4; --plum-soft:#d8a6e422;
+  --board:#101a38; --board-2:#1a2a5e; --board-text:#fff;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%; margin:0}
+body{background:var(--bg); color:var(--text); min-height:100%;
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+button{font:inherit; color:inherit}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+.app{min-height:100%; display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:10px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:5}
+.brand{display:flex; align-items:baseline; gap:10px; margin-right:auto; min-width:0}
+.brand b{font-size:1.05rem; letter-spacing:-.01em}
+.brand span{font-size:.7rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.stat{display:flex; align-items:baseline; gap:6px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.stat i{font-style:normal; font-size:.62rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.stat b{font-size:.95rem; font-variant-numeric:tabular-nums}
+.btn{border:1px solid var(--border); background:var(--panel-2); border-radius:10px;
+  padding:8px 14px; cursor:pointer; font-weight:650; font-size:.86rem;
+  transition:transform .1s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--accent-line)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.good{background:var(--good); border-color:var(--good); color:#fff}
+.btn.sm{padding:5px 11px; font-size:.78rem}
+.btn[disabled]{opacity:.45; cursor:default}
+button:focus-visible,[role="button"]:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
+.stage{flex:1; padding:18px 18px 40px; display:flex; flex-direction:column; align-items:center}
+.wrap{width:100%; max-width:1000px}
+.foot{padding:10px 18px 16px; border-top:1px solid var(--border-soft);
+  font-size:.75rem; color:var(--muted); display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+.foot a{font-weight:700}
+
+.hero{text-align:center; margin:8px 0 20px}
+.hero h1{margin:0 0 8px; font-size:1.9rem; letter-spacing:-.02em}
+.hero p{margin:0 auto; max-width:62ch; color:var(--text-dim); font-size:.95rem}
+.eyebrow{display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:8px}
+
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); width:100%}
+.panel + .panel{margin-top:14px}
+.panel h2{margin:0 0 10px; font-size:1.1rem}
+.panel p{margin:0 0 10px}
+.panel ul{margin:0; padding-left:22px}
+.panel li{margin:6px 0}
+.cats-preview{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); margin:10px 0 4px}
+.cats-preview .chip{background:var(--panel-2); border:1px solid var(--border-soft);
+  border-radius:12px; padding:11px 12px; text-align:center; font-weight:750; font-size:.83rem}
+.round-label{font-size:.66rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:14px 0 4px}
+.center-row{display:flex; justify-content:center; gap:12px; margin-top:18px; flex-wrap:wrap}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft);
+  border-radius:10px; padding:12px 14px; margin:12px 0 0; font-size:.9rem}
+.callout.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.callout b.tagline{display:block; margin-bottom:4px}
+
+/* ---------------------------------------------------------------- board */
+.round-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin:0 0 10px}
+.round-head h2{margin:0; font-size:1.25rem}
+.round-head span{font-size:.82rem; color:var(--muted)}
+.board-scroll{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;
+  border-radius:16px; box-shadow:var(--shadow)}
+.board{display:grid; grid-template-columns:repeat(5,minmax(158px,1fr)); gap:4px;
+  background:var(--board-2); min-width:800px; padding:4px}
+.board .cat{background:var(--board); color:var(--board-text); text-align:center;
+  font-weight:800; font-size:.76rem; letter-spacing:.02em; padding:12px 8px;
+  display:flex; align-items:center; justify-content:center; min-height:66px; line-height:1.25}
+.tile{background:var(--board); color:var(--board-text); border:none; border-radius:4px;
+  font-size:1.45rem; font-weight:800; padding:22px 6px; cursor:pointer;
+  font-variant-numeric:tabular-nums; transition:background .12s}
+.tile:hover:not([disabled]){background:var(--board-2)}
+.tile[disabled]{background:transparent; color:var(--border-soft); cursor:default; opacity:.55}
+html[data-theme="dark"] .tile[disabled]{color:#2c3663}
+
+/* ---------------------------------------------------------------- dialog */
+dialog{border:none; border-radius:18px; padding:0; background:var(--panel); color:var(--text);
+  width:min(660px,92vw); box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(20,16,10,.55)}
+html[data-theme="dark"] dialog::backdrop{background:rgba(0,0,0,.65)}
+.dlg-inner{padding:24px 26px 22px}
+.dlg-eyebrow{font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 8px}
+.dlg-clue{font-size:1.2rem; line-height:1.5; font-weight:650; margin:0 0 18px}
+.dlg-answer{font-size:1.1rem; line-height:1.5; font-weight:650; color:var(--good);
+  background:var(--good-soft); border:1px solid var(--good); border-radius:12px;
+  padding:12px 14px; margin:0 0 14px}
+.dlg-why{font-size:.9rem; line-height:1.55; color:var(--text-dim); background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:12px; padding:11px 14px; margin:0 0 18px}
+.dlg-why b{color:var(--text)}
+.dlg-row{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.dlg-row.spread{justify-content:space-between}
+.wager-row{display:flex; align-items:center; gap:10px; margin:0 0 8px}
+.wager-row input{font:inherit; font-size:1.1rem; font-weight:750; width:130px;
+  padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--panel-2);
+  color:var(--text)}
+.wager-hint{font-size:.82rem; color:var(--muted); margin:0 0 18px}
+
+/* ---------------------------------------------------------------- results */
+.results{text-align:center}
+.results .score{font-size:3rem; font-weight:800; margin:6px 0; color:var(--accent)}
+.results .best{color:var(--muted); font-size:.9rem; margin-bottom:6px}
+.tbl-wrap{width:100%; overflow-x:auto; margin-top:10px}
+table.tbl{width:100%; border-collapse:collapse; font-size:.88rem; text-align:left}
+table.tbl th,table.tbl td{padding:8px 10px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl thead th{background:var(--panel-2); font-size:.7rem; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted); border-bottom:1px solid var(--border)}
+table.tbl td.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pill{display:inline-block; padding:2px 9px; border-radius:99px; font-size:.72rem; font-weight:800}
+.pill.ok{background:var(--good-soft); color:var(--good)}
+.pill.mid{background:var(--warn-soft); color:var(--warn)}
+.pill.low{background:var(--bad-soft); color:var(--bad)}
+.pill.none{background:var(--panel-2); color:var(--muted)}
+
+[hidden]{display:none !important}
+@media (max-width:640px){
+  .hero h1{font-size:1.5rem}
+  .tile{font-size:1.15rem; padding:16px 4px}
+  .board .cat{font-size:.68rem}
+  .stage{padding:14px 12px 32px}
+}
+</style>
+<style>
+/* Two additions this board needs and the Modules 1-3 board did not: a colour
+   for each framework, so a category chip says which of the two it belongs to
+   before it has been read, and a slightly narrower board minimum so five
+   longer category names still fit a laptop screen without scrolling. */
+:root{ --chain:#2f6b3d; --chain-soft:#2f6b3d16; --chain-line:#2f6b3d55;
+       --force:#5a3fa8; --force-soft:#5a3fa816; --force-line:#5a3fa855; }
+html[data-theme="dark"]{ --chain:#6fd08c; --chain-soft:#6fd08c1c; --chain-line:#6fd08c55;
+       --force:#b3a1f5; --force-soft:#b3a1f51c; --force-line:#b3a1f555; }
+.cats-preview .chip.force{background:var(--force-soft); border-color:var(--force-line)}
+.cats-preview .chip.chain{background:var(--chain-soft); border-color:var(--chain-line)}
+.cats-preview .chip i{display:block; font-style:normal; font-size:.63rem; font-weight:800;
+  letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+.cats-preview .chip.force i{color:var(--force)}
+.cats-preview .chip.chain i{color:var(--chain)}
+.dlg-clue i{font-style:italic}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <b>Five Forces &amp; Value Chain Jeopardy</b>
+      <span id="roundStat">Review game</span>
+    </div>
+    <div class="stat"><i>Score</i><b id="scoreStat">$0</b></div>
+    <div class="stat" id="bestStat" hidden><i>Best</i><b id="bestStatValue">$0</b></div>
+    <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
+  </header>
+
+  <main class="stage">
+    <div class="sr-only" role="status" aria-live="polite" id="liveStatus"></div>
+
+    <!-- ============================== INTRO ============================== -->
+    <section class="wrap" id="screenIntro">
+      <div class="hero">
+        <span class="eyebrow">Porter&rsquo;s five forces &middot; the value chain model</span>
+        <h1>Fifty clues on two frameworks</h1>
+        <p>The first board is the vocabulary you have to have: the five forces by name, the nine
+          activities of the chain, and the words that decide how strong a force is. The second board
+          is the work you have to do with them &mdash; diagnosing pressure from evidence, placing an
+          initiative on the chain, matching a system to the force it answers, and the shape of the
+          written analysis. Pick a category and a dollar value, decide your answer, then reveal it and
+          grade yourself honestly.</p>
+      </div>
+
+      <div class="panel">
+        <h2>How to play</h2>
+        <ul>
+          <li><b>Goal:</b> clear both boards and bank as much money as you can. You choose the
+            category and the value, the same way the real game works.</li>
+          <li><b>Every clue is a statement.</b> Your answer is phrased as a question &mdash;
+            &ldquo;What is buyer power?&rdquo; not &ldquo;Buyer power.&rdquo;</li>
+          <li><b>Answer honestly.</b> Nothing is typed and nothing is graded for you. Decide your
+            answer, tap <b>Reveal answer</b>, then say whether you actually had it. The board cannot
+            tell, and a score you did not earn teaches you nothing.</li>
+          <li><b>No penalty for a miss</b> on the boards. This is a study tool, not an elimination
+            game: right answers add the tile&rsquo;s value and misses simply move on. Final Jeopardy
+            is the one place a wrong answer costs you, because you chose the wager.</li>
+          <li><b>Every answer explains itself.</b> Under each answer is a sentence saying why it is
+            that one and not the term next to it, because the near-miss is what the exam tests.</li>
+          <li><b>The score is not the point.</b> At the end you get a breakdown by course objective
+            and by topic, so a weak area shows up as a named thing to go back to instead of
+            disappearing into one number.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>The two boards</h2>
+        <p class="round-label">Round one &middot; $200&ndash;$1,000 &middot; what the terms mean</p>
+        <div class="cats-preview" id="catsPreview1"></div>
+        <p class="round-label">Round two &middot; Double Jeopardy &middot; $400&ndash;$2,000 &middot; what you do with them</p>
+        <div class="cats-preview" id="catsPreview2"></div>
+        <div class="callout">
+          <b class="tagline">The last category is the written analysis, not more vocabulary</b>
+          <b>Writing the Analysis</b> asks about the shape of the deliverable itself: how many forces
+          get rated, how many value chain areas count as genuinely different, how many initiatives you
+          recommend, what a comparison with a real company has to take from it, and the two things
+          that make a recommendation checkable a year later. Those clues are worth playing even if you
+          already know every definition on the first board.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Which course objectives this board covers</h2>
+        <p>Every clue is tagged with the course objectives it serves, and the results screen reports
+          them separately. This board is deliberately narrow &mdash; two frameworks, not a chapter
+          &mdash; so it claims four objectives and says plainly which ones it leaves alone.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Clues</th></tr></thead>
+            <tbody id="objPreviewBody"></tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <b class="tagline">Not on this board</b>
+          What an information systems department does, hardware, software, database technology and
+          networks, the life cycle of an information system, the individual and organizational
+          consequences of technology, and security breaches and computer crime are all real course
+          objectives, and none of them is what these two frameworks are for. The study modules cover
+          them, and the course&rsquo;s separate database and spreadsheet work covers the rest.
+        </div>
+      </div>
+
+      <div class="center-row">
+        <button type="button" class="btn primary" id="startBtn">Start the game</button>
+        <a class="btn" href="five-forces-and-value-chain.html">The workshop</a>
+        <a class="btn" href="five-forces-and-value-chain-quiz.html">The quiz</a>
+        <a class="btn" href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+      </div>
+    </section>
+
+    <!-- ============================== BOARD ============================== -->
+    <section class="wrap" id="screenBoard" hidden>
+      <div class="round-head">
+        <h2 id="roundTitle">Round one</h2>
+        <span id="roundSub"></span>
+      </div>
+      <div class="board-scroll">
+        <div class="board" id="board"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn sm" id="rulesBtn">How to play</button>
+      </div>
+    </section>
+
+    <!-- ============================== ROUND BREAK ============================== -->
+    <section class="wrap" id="screenBreak" hidden>
+      <div class="hero">
+        <span class="eyebrow">Round one complete</span>
+        <h1>Double Jeopardy</h1>
+        <p>The first board is clear. Your score is <b id="breakScoreLabel">$0</b>. The second board is
+          worth double, and it stops asking what the terms mean and starts asking what you would
+          actually do.</p>
+      </div>
+      <div class="panel">
+        <h2>What changes</h2>
+        <ul>
+          <li><b>Values double</b> &mdash; $400 through $2,000.</li>
+          <li><b>The clues become situations.</b> Most of them describe a firm with a problem and ask
+            you to name the force, the activity, or the system, which is the form the material takes
+            once you are the person being asked.</li>
+          <li><b>Two of the categories are about the mistakes</b> rather than the definitions, because
+            the near-miss is where the marks go.</li>
+          <li><b>Your score carries over.</b> Nothing from round one is lost.</li>
+        </ul>
+        <div class="cats-preview" id="catsPreview2b"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="round2Btn">Start Double Jeopardy</button>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL ============================== -->
+    <section class="wrap" id="screenFinal" hidden>
+      <div class="hero">
+        <span class="eyebrow">Both boards clear</span>
+        <h1>Final Jeopardy</h1>
+        <p>One last clue, and it is the one both frameworks exist to answer &mdash; wager what you are
+          willing to risk.</p>
+      </div>
+      <div class="panel">
+        <h2 id="finalCatLabel">Putting the Two Together</h2>
+        <p>Your current score is <b id="finalScoreLabel">$0</b>. Choose a wager from $0 up to your full
+          score. Unlike the boards, a wrong answer here costs you the wager.</p>
+        <div class="wager-row">
+          <label for="wagerInput"><b>Wager $</b></label>
+          <input type="number" id="wagerInput" min="0" step="1" value="0" inputmode="numeric">
+        </div>
+        <p class="wager-hint" id="wagerHint"></p>
+        <div class="dlg-row">
+          <button type="button" class="btn primary" id="lockWagerBtn">Lock in wager</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS ============================== -->
+    <section class="wrap" id="screenResults" hidden>
+      <div class="panel results">
+        <h2>Final score</h2>
+        <div class="score" id="resultsScore">$0</div>
+        <div class="best" id="resultsBest"></div>
+        <div class="best" id="resultsTally"></div>
+      </div>
+      <div class="panel">
+        <h2>How you did, by course objective</h2>
+        <p>One number hides a weak area; this table does not. A clue counts toward every objective it
+          serves, so the totals here add up to more than fifty-one.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Right</th><th class="num">Asked</th><th>Result</th></tr></thead>
+            <tbody id="objResultBody"></tbody>
+          </table>
+        </div>
+        <div class="callout" id="objAdvice"></div>
+      </div>
+      <div class="panel">
+        <h2>Where to go back to</h2>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Topic</th><th class="num">Right</th><th class="num">Asked</th><th>What it covers on this board</th></tr></thead>
+            <tbody id="srcResultBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="playAgainBtn">Play again</button>
+        <a class="btn" href="five-forces-and-value-chain.html">The workshop</a>
+        <a class="btn" href="five-forces-and-value-chain-quiz.html">The quiz</a>
+        <a class="btn" href="practice-case-study/practice-case-study.html">Practice case study</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Nothing here is submitted or collected. Your best score is saved in this browser only.</span>
+    <a href="five-forces-and-value-chain.html">Workshop</a>
+    <a href="five-forces-and-value-chain-quiz.html">Quiz</a>
+    <a href="module-02-enabling-strategy-through-information-systems.html">Module 2</a>
+  </footer>
+</div>
+
+<!-- ============================== CLUE DIALOG ============================== -->
+<dialog id="clueDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow" id="clueEyebrow">Category &middot; $200</p>
+    <p class="dlg-clue" id="clueText"></p>
+    <p class="dlg-answer" id="clueAnswer" hidden></p>
+    <p class="dlg-why" id="clueWhy" hidden></p>
+    <div class="dlg-row" id="clueRevealRow">
+      <button type="button" class="btn primary" id="revealBtn">Reveal answer</button>
+    </div>
+    <div class="dlg-row spread" id="clueGradeRow" hidden>
+      <button type="button" class="btn" id="missBtn">I missed it</button>
+      <button type="button" class="btn good" id="gotItBtn">I got it right</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============================== FINAL CLUE DIALOG ============================== -->
+<dialog id="finalDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow">Final Jeopardy &middot; Wager: <span id="finalWagerLabel">$0</span></p>
+    <p class="dlg-clue" id="finalClueText"></p>
+    <p class="dlg-answer" id="finalAnswerText" hidden></p>
+    <p class="dlg-why" id="finalWhyText" hidden></p>
+    <div class="dlg-row" id="finalRevealRow">
+      <button type="button" class="btn primary" id="finalRevealBtn">Reveal answer</button>
+    </div>
+    <div class="dlg-row spread" id="finalGradeRow" hidden>
+      <button type="button" class="btn" id="finalMissBtn">I missed it</button>
+      <button type="button" class="btn good" id="finalGotItBtn">I got it right</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================================
+   COURSE OBJECTIVES
+   Only the four these two frameworks honestly serve. Every clue names the ones
+   it serves in its `co` array, which is what makes the results breakdown
+   possible. The other seven objectives are covered by the study modules and by
+   the course's separate database and spreadsheet work, and the intro says so.
+   ========================================================================== */
+var OBJECTIVES = {
+  2:"Discuss how companies use information systems to manage internal operations and to make decisions",
+  3:"Discuss how companies use information technology for competitive advantage by changing their marketplace",
+  5:"Delineate how businesses use internet technology for electronic commerce, communicating with employees and working with business partners",
+  7:"Recognize a business problem which might be solved using information technology, then work with the information systems team on a solution"
+};
+
+/* ============================================================================
+   WHERE TO GO BACK TO
+   Four buckets rather than four modules, because both frameworks live in one
+   chapter. Every clue names the bucket that teaches it, so a miss points at a
+   section rather than at a book.
+   ========================================================================== */
+var SOURCES = {
+  forces:{ label:"The five forces",
+      covers:"What each force is, what makes it strong, and how to tell one from another when the evidence is ambiguous.",
+      href:"five-forces-and-value-chain.html" },
+  chain:{ label:"The value chain",
+      covers:"The five primary activities, the four support bands, cost drivers, and where an initiative belongs.",
+      href:"five-forces-and-value-chain.html" },
+  apply:{ label:"Putting them to work",
+      covers:"Generic strategies, the mistakes that change what a firm buys, and matching a system to the force it answers.",
+      href:"module-02-enabling-strategy-through-information-systems.html" },
+  write:{ label:"The written analysis",
+      covers:"The shape of the deliverable: all five forces rated, two genuinely different activities, one initiative, a comparison, a measure and a date.",
+      href:"practice-case-study/practice-case-study.html" }
+};
+var SOURCE_ORDER = ["forces","chain","apply","write"];
+
+/* ============================================================================
+   ROUND ONE — what the terms mean.
+   Every firm in a situation is invented. The only real companies named anywhere
+   on this board are the four the chapter itself uses to illustrate the generic
+   strategies, and they are named as the chapter names them.
+   ========================================================================== */
+var ROUND1 = [
+  { name:"The Five, By Name", kind:"force", clues:[
+    {value:200, co:[3], src:"forces",
+      clue:"The pressure from firms already selling what you sell, which shows up as discounting, longer opening hours and free delivery nobody is being paid for.",
+      answer:"What is rivalry among existing competitors?",
+      why:"It is the fight in the middle of the diagram, and the only force made entirely of people you would recognize as competitors. The other four decide how much winning that fight is worth."},
+    {value:400, co:[3], src:"forces",
+      clue:"The pressure from the people who hand you money. It rises when a few of them account for most of your revenue, or when leaving you costs them nothing.",
+      answer:"What is the bargaining power of buyers?",
+      why:"Concentration and switching cost are the two dials. Note that a distribution channel counts as a buyer, because it decides whether your product reaches anyone."},
+    {value:600, co:[3], src:"forces",
+      clue:"The pressure from the firms you buy from, which reaches your own customer as a higher price or a thinner product.",
+      answer:"What is the bargaining power of suppliers?",
+      why:"Measure it by how many alternatives you have, not by the size of the last increase. A supplier with five interchangeable competitors cannot hold a price up for long."},
+    {value:800, co:[3], src:"forces",
+      clue:"The pressure from firms that are not competing with you today. What decides its strength is not who they are but how little stands in their way.",
+      answer:"What is the threat of new entrants?",
+      why:"The diagnosis is made by asking what would have stopped them. If the honest answer is nothing much, discounting will not change it &mdash; only something a newcomer cannot assemble quickly will."},
+    {value:1000, co:[3], src:"forces",
+      clue:"The pressure that shrinks the whole category instead of moving share around inside it, because the need is being met by something not sold in your industry at all.",
+      answer:"What is the threat of substitute products or services?",
+      why:"It is the force a price cut cannot answer, because the customers you lost are not shopping in your industry. The chapter calls them customers lost for life."}
+  ]},
+  { name:"Down the Line", kind:"chain", clues:[
+    {value:200, co:[2], src:"chain",
+      clue:"Receiving, checking, storing, and knowing what you hold. In a hotel it also covers a reservation, because a booking is an input that arrives and has to be kept.",
+      answer:"What is inbound logistics?",
+      why:"Its classic cost driver is an emergency purchase at a premium price because nobody knew what was already in the building."},
+    {value:400, co:[2], src:"chain",
+      clue:"Integrating supplies into the product or service the customer actually buys. In a factory it is the line; in a hotel it is the room being cleaned and the breakfast served.",
+      answer:"What are operations?",
+      why:"In a service business this is the service being performed, which is why a clean, ready room <i>is</i> the product rather than the preparation for it."},
+    {value:600, co:[2], src:"chain",
+      clue:"Distributing the finished product or service out to the buyer: picking, loading, routing and delivering, or staging the occasion where the customer receives it.",
+      answer:"What is outbound logistics?",
+      why:"Miles driven, time idling between stops and half-empty vehicles are its cost drivers, which is why routing systems are placed here rather than in operations."},
+    {value:800, co:[2], src:"chain",
+      clue:"Turning a person who could buy into a person who does: advertising, the sales force, pricing, promotions, and the ordering experience itself.",
+      answer:"What is sales and marketing?",
+      why:"Notice that how an order is taken belongs here even when the saving from taking it better lands somewhere else entirely, usually in operations."},
+    {value:1000, co:[2], src:"chain",
+      clue:"Everything after the money has changed hands: installation, support, warranty, complaints and the record of all of it.",
+      answer:"What is service?",
+      why:"It is the activity most often starved and the most visible to a buyer deciding whether to renew, which is why it so often turns up in an analysis of buyer power."}
+  ]},
+  { name:"Underneath It All", kind:"chain", clues:[
+    {value:200, co:[2], src:"chain",
+      clue:"General management, planning, finance, accounting, legal and quality management &mdash; the costs belonging to the organization rather than to any one product.",
+      answer:"What is administration and firm infrastructure?",
+      why:"It is a support band because it serves every stage at once, which is also why no single product can be billed for it."},
+    {value:400, co:[2], src:"chain",
+      clue:"Recruiting, hiring, training, developing and scheduling the people who perform every activity above, plus the cost of losing them and starting again.",
+      answer:"What are human resources?",
+      why:"In a service business this band is frequently where the real advantage lives, because the product is delivered by a person."},
+    {value:600, co:[2,7], src:"chain",
+      clue:"Product research, process improvement, and the building of the systems the rest of the chain runs on.",
+      answer:"What is technology development?",
+      why:"It is a support band because it serves every stage rather than one, which is exactly why naming it as the home of an initiative is a way of avoiding the question."},
+    {value:800, co:[2], src:"chain",
+      clue:"The buying decision itself &mdash; what to buy, from whom, and on what terms &mdash; for every activity in the chain, and not the physical receiving.",
+      answer:"What is procurement?",
+      why:"It happens for things that never touch the product, such as office chairs and software licences. Swapping it with inbound logistics is how a firm buys a warehouse system to fix a contract problem."},
+    {value:1000, co:[2,7], src:"chain",
+      clue:"The thing that makes an activity cost what it costs &mdash; sixty percent of a delivery bill being drivers idling between stops, for instance.",
+      answer:"What is a cost driver?",
+      why:"A cost with no known driver can be complained about but not managed, which is why a costed chain is part of the analysis rather than decoration."}
+  ]},
+  { name:"How Strong Is It?", kind:"force", clues:[
+    {value:200, co:[3], src:"forces",
+      clue:"Capital, licensing, scale, expertise, customer loyalty and access to distribution &mdash; whatever makes starting up hard. The internet lowered most of them.",
+      answer:"What are barriers to entry?",
+      why:"They are what the threat of new entrants is actually measured by. Two one-van competitors starting this spring is evidence that yours are low."},
+    {value:400, co:[3,7], src:"forces",
+      clue:"What it costs a customer &mdash; in money, time, data or disruption &mdash; to move to another seller.",
+      answer:"What is a switching cost?",
+      why:"Low ones raise buyer power, and systems that raise them are how a firm answers it. The same idea run backwards is how a firm answers supplier power: lower your own cost of leaving."},
+    {value:600, co:[3], src:"forces",
+      clue:"When three customers account for sixty-eight percent of revenue, this property of the customer base is what turns an ordinary negotiation into a force.",
+      answer:"What is buyer concentration?",
+      why:"It works at every renewal whether or not anybody actually leaves, and one customer who has already moved volume is what proves the threat is real."},
+    {value:800, co:[3], src:"forces",
+      clue:"A buyer that could credibly make the thing itself, or a supplier that could credibly sell direct to your customers. Naming the direction is what tells you which force you are in.",
+      answer:"What is the threat of integration?",
+      why:"A buyer integrating backward strengthens buyer power; a supplier integrating forward strengthens supplier power. Neither is a substitute, because the same kind of product still meets the need."},
+    {value:1000, co:[3,5], src:"forces",
+      clue:"Wider choice in seconds, comparison without driving across town, and lower switching costs almost everywhere. Name the development that changed nearly every force at once.",
+      answer:"What is the internet?",
+      why:"It lowered barriers to entry, raised buyer power and widened the field of substitutes. Supplier power is the one it can cut either way, depending on whether it opens new suppliers to you or opens your customers to your supplier."}
+  ]},
+  { name:"Strategy Words", kind:"force", clues:[
+    {value:200, co:[2,3], src:"apply",
+      clue:"The five forces look outward at the industry. This model looks inward at the work you actually do, activity by activity, and asks what each one adds and what it costs to add it.",
+      answer:"What is the value chain?",
+      why:"The two are not rival theories. One says where the pressure is coming from, the other says which piece of your own work could answer it."},
+    {value:400, co:[3], src:"apply",
+      clue:"Offering the best prices in the industry on its goods and services, the way the chapter&rsquo;s example, Walmart, does.",
+      answer:"What is overall low-cost leadership?",
+      why:"It is one of the generic positions a firm takes against the forces, and it decides which investments are worth funding: a low-cost leader values what drives cost down."},
+    {value:600, co:[3], src:"apply",
+      clue:"Providing products or services rivals lack, so the customer pays for something extra. Porsche and Nordstrom are the chapter&rsquo;s examples.",
+      answer:"What is a differentiation strategy?",
+      why:"Neither position is superior to the other. Each is a different answer to the same competitive conditions, and each refuses a different set of good-looking proposals."},
+    {value:800, co:[3], src:"apply",
+      clue:"Reasonably good quality at competitive prices, sitting on purpose between the price players and the premium ones. Dell is the chapter&rsquo;s example.",
+      answer:"What is a best-cost provider strategy?",
+      why:"It is the middle position where the quadrants overlap, and it is the hardest to hold, because it can be attacked from both sides at once."},
+    {value:1000, co:[7], src:"apply",
+      clue:"An investment the organization must make simply to keep trading, whether or not it matches the strategy &mdash; card acceptance for a shop whose customers no longer carry cash.",
+      answer:"What is a strategic necessity?",
+      why:"It is a legitimate category, not a weak argument. What damages an analysis is claiming competitive advantage where there is only survival."}
+  ]}
+];
+
+/* ============================================================================
+   ROUND TWO — Double Jeopardy: what you do with the terms.
+   Situations rather than definitions, because that is the form the material
+   takes once you are the person being asked.
+   ========================================================================== */
+var ROUND2 = [
+  { name:"Diagnose the Pressure", kind:"force", clues:[
+    {value:400, co:[3], src:"forces",
+      clue:"A dry cleaner&rsquo;s takings fall every year while the number of dry cleaners in town stays the same, and customers explain that their offices no longer require a jacket and tie.",
+      answer:"What is the threat of substitutes?",
+      why:"Casual dress buys dry cleaning from nobody, so the category is contracting rather than being redistributed. A discount reaches none of the people who stopped coming."},
+    {value:800, co:[3], src:"forces",
+      clue:"Four of a courier firm&rsquo;s twelve clients turn out to be owned by the same parent, which has begun running one annual tender covering all four contracts at once.",
+      answer:"What is the bargaining power of buyers?",
+      why:"Consolidation on the customer&rsquo;s side turned four negotiations into a single decision. Nothing about the courier changed, and its exposure tripled."},
+    {value:1200, co:[3], src:"forces",
+      clue:"A boatyard&rsquo;s insurance, its travel-lift maintenance and its antifouling paint all come from single approved sources, and every one of them raised its price this spring without discussion.",
+      answer:"What is the bargaining power of suppliers?",
+      why:"Approved-source arrangements are a switching cost the yard agreed to, sometimes for good reasons. The initiative that answers this force has to attack the cost of leaving, not the price."},
+    {value:1600, co:[3,7], src:"forces",
+      clue:"Three mobile car-valeting firms started up this year in a town where the entire kit is a van and a pressure washer. Name the force, and the thing that has to change if the firm wants a different answer next year.",
+      answer:"What is the threat of new entrants, and its barriers to entry?",
+      why:"More competitors is the symptom; the barrier is the force. Only something a newcomer cannot assemble in a fortnight &mdash; a booking history, a contract, an enrolment &mdash; changes the answer."},
+    {value:2000, co:[3,7], src:"forces",
+      clue:"Five independent bookkeeping firms in one town all advertise the same fixed monthly fee, and none has raised it in four years. No new firm has opened, no client is big enough to dictate terms, and the work itself has not moved anywhere else. Name the force, having ruled out the other four.",
+      answer:"What is rivalry among existing competitors?",
+      why:"Every other force has been eliminated by a fact in the clue: no arrivals, no concentration, no contraction of the category, and nothing said about suppliers. What is left is established firms holding each other&rsquo;s prices down, which is rivalry."}
+  ]},
+  { name:"Which Activity Owns It?", kind:"chain", clues:[
+    {value:400, co:[2,7], src:"chain",
+      clue:"A restaurant throws away eleven cases of cream that expired behind newer stock at the back of the walk-in.",
+      answer:"What is inbound logistics?",
+      why:"Receiving, storing and knowing what you hold is inbound logistics in a kitchen exactly as in a warehouse. The waste is the cost driver, and it is not a cooking problem."},
+    {value:800, co:[2,7], src:"chain",
+      clue:"A plumbing firm&rsquo;s vans criss-cross the county all day because jobs are assigned in the order the calls came in.",
+      answer:"What is outbound logistics?",
+      why:"Getting the finished service to the customer is a distribution activity, and its drivers are miles and idle time. The plumbing itself &mdash; the work once the van arrives &mdash; is operations."},
+    {value:1200, co:[2,7], src:"chain",
+      clue:"A print shop&rsquo;s quotes are typed twice, once on the phone and again into the job system, and two in ten come out at a different price the second time.",
+      answer:"What is sales and marketing?",
+      why:"How an order is taken belongs to sales and marketing. The rework it causes lands in operations, and a good proposal names both the activity that owns the system and the activity where the money moves."},
+    {value:1600, co:[2,7], src:"chain",
+      clue:"A bus company turned away charter work because the only driver holding the right endorsement had let it lapse.",
+      answer:"What are human resources?",
+      why:"The damage lands in operations as work not done. The activity that produced it manages qualifications and scheduling, which is the human resources band."},
+    {value:2000, co:[2,7], src:"chain",
+      clue:"A hospital models a new outpatient process in software before any of it is built, using the same team that maintains the systems every other department runs on.",
+      answer:"What is technology development?",
+      why:"Process improvement and building the systems the chain runs on is this support band. Naming it for a specific initiative is only honest when the work really is building capability rather than improving one activity."}
+  ]},
+  { name:"Easily Confused", kind:"force", clues:[
+    {value:400, co:[3], src:"apply",
+      clue:"One sells what you sell; the other meets the same need without selling anything from your industry. Name the pair, in that order.",
+      answer:"What are a rival and a substitute?",
+      why:"The difference decides whether a price cut can work. Against a rival it can win the customer back; against a substitute it reaches nobody."},
+    {value:800, co:[2], src:"apply",
+      clue:"One is a decision, the other is a physical process. Negotiating a two-year linen contract is the first; unloading the van and checking it against the order is the second.",
+      answer:"What are procurement and inbound logistics?",
+      why:"Procurement happens wherever a buying decision is taken, including for things that never touch the product. Confusing the two sends a firm shopping for the wrong kind of system."},
+    {value:1200, co:[2,7], src:"apply",
+      clue:"A rostering system fixing night-shift overtime belongs to one activity, and the money it saves appears in another. Name them in that order.",
+      answer:"What are human resources and operations?",
+      why:"The system is about who is scheduled; the overtime is paid to produce the product. A proposal that names only one of the two is hard to trace and easy to refuse."},
+    {value:1600, co:[2,5], src:"apply",
+      clue:"A value chain is drawn inside one firm. This other chain runs across several of them, and confusing the two turns a study of your own costs into a study of your relationships.",
+      answer:"What is a supply chain?",
+      why:"Both are worth analysing and they are different tasks with different answers. Every firm on a supply chain &mdash; supplier, distributor, retailer &mdash; has a value chain of its own."},
+    {value:2000, co:[3], src:"apply",
+      clue:"Rivalry, new entrants, buyer power and substitutes can each produce it, which is why a firm that names its strongest force from this alone is guessing.",
+      answer:"What is a falling price?",
+      why:"A symptom is not a force. Name the force from who is applying the pressure and what would relieve it &mdash; and notice that a price rise from a supplier you could replace with one phone call is measurable without being powerful."}
+  ]},
+  { name:"Systems That Answer Back", kind:"chain", clues:[
+    {value:400, co:[5,7], src:"apply",
+      clue:"Three customers hold most of a distributor&rsquo;s revenue and re-tender every year. Name the kind of system that raises what it would cost one of them to leave.",
+      answer:"What is a customer portal holding the buyer&rsquo;s own history and standing orders?",
+      why:"Once the buyer&rsquo;s working record lives in your system, leaving means rebuilding it. A system the customer never sees, however good, cannot answer buyer power."},
+    {value:800, co:[7], src:"apply",
+      clue:"One wholesaler holds a pharmacy&rsquo;s entire purchase history, and moving would mean rebuilding it by hand. Name what the pharmacy has to own before a second supplier is even possible.",
+      answer:"What is its own copy of its purchase and price history?",
+      why:"Supplier power comes from the absence of alternatives and the cost of leaving. A bigger annual discount lasts a year; owning your own data changes the negotiation permanently."},
+    {value:1200, co:[2,7], src:"apply",
+      clue:"Emergency purchases at premium prices because nobody can say what is in the stockroom. Name the system, and the activity it sits in.",
+      answer:"What is stock visibility, in inbound logistics?",
+      why:"Force first, activity second, technology third. Naming the activity is what lets a reader check that the system attacks the cost driver rather than the complaint."},
+    {value:1600, co:[2,7], src:"apply",
+      clue:"Routes planned by hand each evening, drivers idling between stops, and two vans running half empty. Name the system, and the activity it sits in.",
+      answer:"What is route optimization, in outbound logistics?",
+      why:"It is a cost initiative, which makes it a strong fit for a low-cost position and a weak one for a firm trying to be chosen on service &mdash; unless the tracking is shown to the customer."},
+    {value:2000, co:[7], src:"apply",
+      clue:"The order the analysis is built in, which forbids opening a vendor&rsquo;s website until the first step is finished.",
+      answer:"What is force first, activity second, technology third?",
+      why:"A system chosen before the diagnosis can only be justified backwards, and a business case written backwards is the one that gets funded and then quietly abandoned."}
+  ]},
+  { name:"Writing the Analysis", kind:"force", clues:[
+    {value:400, co:[3,7], src:"write",
+      clue:"How many of the five forces a written analysis rates, and how many it names as strongest.",
+      answer:"What are all five, and one?",
+      why:"Rating all five is what makes the strongest one a finding rather than an assumption. A force can be rated low in a single sentence &mdash; that is what a low rating looks like."},
+    {value:800, co:[2,7], src:"write",
+      clue:"The minimum number of genuinely different value chain areas the analysis has to examine, where describing one activity twice in different words does not count.",
+      answer:"What are two?",
+      why:"The second is often the more useful, because it is the one you examined and set aside with a reason, which is the evidence that the whole chain was scanned."},
+    {value:1200, co:[7], src:"write",
+      clue:"The number of initiatives recommended &mdash; and the reason a longer list is worse rather than more thorough.",
+      answer:"What is one?",
+      why:"One recommendation is a decision; a list hands the decision back to the reader. Anyone can enumerate options, and choosing between them is the thing being tested."},
+    {value:1600, co:[3,7], src:"write",
+      clue:"A very large company&rsquo;s example can still teach a very small firm, provided the written comparison &mdash; 150 to 200 words of it &mdash; takes this from the story rather than the size of the system.",
+      answer:"What is a practice the smaller firm could copy at its own scale?",
+      why:"What a large firm let its customers do for themselves, or the moment it started measuring something, transfers. Its budget does not, and neither does its scale."},
+    {value:2000, co:[7], src:"write",
+      clue:"The two things that turn a recommendation from something defensible forever into something checkable next year.",
+      answer:"What are a measure and a date?",
+      why:"A number that exists today, a number you expect instead, and the moment you will look. Without both, nobody can ever say whether the investment worked."}
+  ]}
+];
+
+/* ============================================================================
+   FINAL JEOPARDY — the question both frameworks exist to answer.
+   ========================================================================== */
+var FINAL = {
+  category:"Putting the Two Together",
+  co:[3,7], src:"write",
+  clue:"The forces say where the pressure is. The chain says which piece of your own work could answer it. This is the name for how well the system you finally buy serves the position the firm has chosen to compete on &mdash; and it is why a low-cost leader can refuse a proposal with an excellent payback.",
+  answer:"What is business and IT alignment?",
+  why:"Payback says whether the firm can afford a system. Alignment says whether it moves the firm toward what it is trying to be, which is the question a board is really asking when it says &ldquo;why this one?&rdquo;"
+};
+
+var ROUNDS = [
+  { title:"Round one", sub:"$200 to $1,000 · what the terms mean", cats:ROUND1 },
+  { title:"Double Jeopardy", sub:"$400 to $2,000 · what you do with them", cats:ROUND2 }
+];
+
+var THEME_KEY = "mis-ffvc-jeopardy-theme-v1";
+var BEST_KEY = "mis-ffvc-jeopardy-best-v1";
+
+/* ============================================================================
+   STATE
+   ========================================================================== */
+var state = {
+  score:0,
+  round:0,             /* index into ROUNDS */
+  answered:{},         /* "round-cat-clue" -> true */
+  results:[],          /* {co:[], src:key, correct:bool} for every resolved clue */
+  activeCat:-1,
+  activeClue:-1,
+  finalWager:0
+};
+
+function tilesInRound(r){
+  return ROUNDS[r].cats.reduce(function(sum, c){ return sum + c.clues.length; }, 0);
+}
+function answeredInRound(r){
+  var n = 0, prefix = r + "-";
+  for(var k in state.answered){ if(state.answered.hasOwnProperty(k) && k.indexOf(prefix) === 0) n++; }
+  return n;
+}
+
+/* ============================================================================
+   DOM HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return (n < 0 ? "-$" : "$") + Math.abs(n).toLocaleString(); }
+function announce(text){ $("liveStatus").textContent = text; }
+function stripTags(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent || ""; }
+
+/* ============================================================================
+   THEME — read this page's own saved choice first, then inherit whatever theme
+   the reader last set on a study module, so the game does not flip back to
+   light after a dark reading session.
+   ========================================================================== */
+function applyTheme(theme){
+  var dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-label", dark ? "Switch to the light theme" : "Switch to the dark theme");
+}
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  if(saved === "dark" || saved === "light"){ applyTheme(saved); return; }
+  var moduleTheme = null;
+  try{ moduleTheme = localStorage.getItem("mis-ch1-theme-v1"); }catch(e){}
+  applyTheme(moduleTheme === "dark" ? "dark" : "light");
+})();
+$("themeBtn").addEventListener("click", function(){
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ============================================================================
+   BEST SCORE
+   ========================================================================== */
+function loadBest(){
+  var raw = null;
+  try{ raw = localStorage.getItem(BEST_KEY); }catch(e){}
+  var n = parseInt(raw, 10);
+  return isNaN(n) ? 0 : n;
+}
+function saveBest(n){
+  try{ localStorage.setItem(BEST_KEY, String(n)); }catch(e){}
+}
+function refreshBestStat(){
+  var best = loadBest();
+  if(best > 0){
+    $("bestStat").hidden = false;
+    $("bestStatValue").textContent = fmt(best);
+  }
+}
+refreshBestStat();
+
+function refreshScore(){ $("scoreStat").textContent = fmt(state.score); }
+
+/* ============================================================================
+   INTRO SCREEN
+   ========================================================================== */
+function renderCatsPreview(boxId, cats){
+  var box = $(boxId);
+  if(!box) return;
+  box.innerHTML = "";
+  cats.forEach(function(c){
+    var chip = document.createElement("div");
+    chip.className = "chip" + (c.kind ? " " + c.kind : "");
+    chip.appendChild(document.createTextNode(c.name));
+    var tag = document.createElement("i");
+    tag.textContent = c.kind === "chain" ? "Value chain" : "Five forces";
+    chip.appendChild(tag);
+    box.appendChild(chip);
+  });
+}
+
+/* Count every clue against every objective it serves, so the intro table is
+   generated from the clue data rather than typed out and left to drift. */
+function objectiveCounts(){
+  var counts = {};
+  ROUNDS.forEach(function(r){
+    r.cats.forEach(function(cat){
+      cat.clues.forEach(function(q){
+        q.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+      });
+    });
+  });
+  FINAL.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+  return counts;
+}
+
+function renderObjPreview(){
+  var counts = objectiveCounts();
+  var body = $("objPreviewBody");
+  body.innerHTML = "";
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = "<b>" + n + ".</b> " + OBJECTIVES[n];
+    var td2 = document.createElement("td");
+    td2.className = "num";
+    td2.textContent = String(counts[n] || 0);
+    tr.appendChild(td1); tr.appendChild(td2);
+    body.appendChild(tr);
+  });
+}
+
+function showScreen(id){
+  ["screenIntro","screenBoard","screenBreak","screenFinal","screenResults"].forEach(function(s){
+    $(s).hidden = (s !== id);
+  });
+}
+
+/* ============================================================================
+   BOARD
+   ========================================================================== */
+function tileKey(r, ci, qi){ return r + "-" + ci + "-" + qi; }
+
+function renderBoard(){
+  var round = ROUNDS[state.round];
+  $("roundTitle").textContent = round.title;
+  $("roundSub").textContent = round.sub;
+  $("roundStat").textContent = round.title;
+  var board = $("board");
+  board.innerHTML = "";
+  round.cats.forEach(function(cat){
+    var head = document.createElement("div");
+    head.className = "cat";
+    head.textContent = cat.name;
+    board.appendChild(head);
+  });
+  for(var r = 0; r < 5; r++){
+    round.cats.forEach(function(cat, ci){
+      var q = cat.clues[r];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tile";
+      var key = tileKey(state.round, ci, r);
+      var done = !!state.answered[key];
+      btn.textContent = done ? "" : fmt(q.value);
+      btn.disabled = done;
+      btn.setAttribute("aria-label", cat.name + " for " + fmt(q.value) + (done ? " (already played)" : ""));
+      if(!done){
+        btn.addEventListener("click", function(catIdx, clueIdx){
+          return function(){ openClue(catIdx, clueIdx); };
+        }(ci, r));
+      }
+      board.appendChild(btn);
+    });
+  }
+}
+
+/* ============================================================================
+   CLUE DIALOG
+   ========================================================================== */
+var clueDialog = $("clueDialog");
+
+function openClue(ci, qi){
+  state.activeCat = ci;
+  state.activeClue = qi;
+  var cat = ROUNDS[state.round].cats[ci];
+  var q = cat.clues[qi];
+  $("clueEyebrow").textContent = cat.name + " · " + fmt(q.value);
+  $("clueText").innerHTML = q.clue;
+  $("clueAnswer").hidden = true;
+  $("clueAnswer").textContent = q.answer;
+  $("clueWhy").hidden = true;
+  $("clueWhy").innerHTML = "<b>Why:</b> " + q.why;
+  $("clueRevealRow").hidden = false;
+  $("clueGradeRow").hidden = true;
+  announce(cat.name + " for " + fmt(q.value) + ". " + stripTags(q.clue));
+  clueDialog.showModal();
+  $("revealBtn").focus();
+}
+
+$("revealBtn").addEventListener("click", function(){
+  $("clueAnswer").hidden = false;
+  $("clueWhy").hidden = false;
+  $("clueRevealRow").hidden = true;
+  $("clueGradeRow").hidden = false;
+  announce("Answer: " + $("clueAnswer").textContent + " " + stripTags($("clueWhy").innerHTML));
+  $("gotItBtn").focus();
+});
+
+function resolveClue(correct){
+  var ci = state.activeCat, qi = state.activeClue;
+  if(ci < 0 || qi < 0) return;
+  var q = ROUNDS[state.round].cats[ci].clues[qi];
+  state.answered[tileKey(state.round, ci, qi)] = true;
+  state.results.push({ co:q.co, src:q.src, correct:!!correct });
+  if(correct){
+    state.score += q.value;
+    announce("Correct. Plus " + fmt(q.value) + ". Score is now " + fmt(state.score) + ".");
+  } else {
+    announce("No penalty. Score stays " + fmt(state.score) + ".");
+  }
+  refreshScore();
+  clueDialog.close();
+  state.activeCat = -1;
+  state.activeClue = -1;
+  renderBoard();
+  if(answeredInRound(state.round) >= tilesInRound(state.round)){
+    setTimeout(finishRound, 350);
+  }
+}
+$("gotItBtn").addEventListener("click", function(){ resolveClue(true); });
+$("missBtn").addEventListener("click", function(){ resolveClue(false); });
+
+/* A clue must be resolved, not dodged — Escape and backdrop-cancel are blocked
+   so a miss cannot be swallowed for free once the answer has been seen. */
+clueDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+/* ============================================================================
+   ROUND FLOW
+   ========================================================================== */
+function finishRound(){
+  if(state.round < ROUNDS.length - 1){
+    $("breakScoreLabel").textContent = fmt(state.score);
+    renderCatsPreview("catsPreview2b", ROUNDS[state.round + 1].cats);
+    showScreen("screenBreak");
+    $("roundStat").textContent = "Round one complete";
+    announce("Round one is clear. Score " + fmt(state.score) + ". Double Jeopardy is next.");
+    $("round2Btn").focus();
+  } else {
+    goToFinal();
+  }
+}
+
+$("round2Btn").addEventListener("click", function(){
+  state.round += 1;
+  renderBoard();
+  showScreen("screenBoard");
+  announce("Double Jeopardy. Choose a category and a value.");
+});
+
+$("rulesBtn").addEventListener("click", function(){
+  showScreen("screenIntro");
+  $("startBtn").textContent = "Back to the board";
+});
+
+$("startBtn").addEventListener("click", function(){
+  if($("startBtn").textContent === "Back to the board"){
+    $("startBtn").textContent = "Start the game";
+    showScreen("screenBoard");
+    return;
+  }
+  startGame();
+});
+
+function startGame(){
+  state.score = 0;
+  state.round = 0;
+  state.answered = {};
+  state.results = [];
+  state.finalWager = 0;
+  refreshScore();
+  renderBoard();
+  showScreen("screenBoard");
+  announce("New game started. Round one: choose a category and a value.");
+}
+
+/* ============================================================================
+   FINAL JEOPARDY
+   ========================================================================== */
+function goToFinal(){
+  $("roundStat").textContent = "Final Jeopardy";
+  $("finalCatLabel").textContent = FINAL.category;
+  $("finalScoreLabel").textContent = fmt(state.score);
+  var maxWager = Math.max(0, state.score);
+  var input = $("wagerInput");
+  input.min = 0;
+  input.max = maxWager;
+  input.value = maxWager > 0 ? Math.round(maxWager / 2) : 0;
+  input.disabled = maxWager <= 0;
+  $("wagerHint").textContent = maxWager > 0
+    ? "You can wager from $0 up to your full score of " + fmt(maxWager) + ". A wrong answer costs you the wager."
+    : "Your score is $0, so this one is for practice only — a correct answer will not add anything, but give it a real shot anyway.";
+  showScreen("screenFinal");
+  announce("Both boards are clear. Final Jeopardy: choose your wager.");
+}
+
+$("lockWagerBtn").addEventListener("click", function(){
+  var maxWager = Math.max(0, state.score);
+  var w = parseInt($("wagerInput").value, 10);
+  if(isNaN(w) || w < 0) w = 0;
+  if(w > maxWager) w = maxWager;
+  state.finalWager = w;
+  openFinalClue();
+});
+
+var finalDialog = $("finalDialog");
+function openFinalClue(){
+  $("finalWagerLabel").textContent = fmt(state.finalWager);
+  $("finalClueText").innerHTML = FINAL.clue;
+  $("finalAnswerText").hidden = true;
+  $("finalAnswerText").textContent = FINAL.answer;
+  $("finalWhyText").hidden = true;
+  $("finalWhyText").innerHTML = "<b>Why:</b> " + FINAL.why;
+  $("finalRevealRow").hidden = false;
+  $("finalGradeRow").hidden = true;
+  announce("Final Jeopardy, wager " + fmt(state.finalWager) + ". " + stripTags(FINAL.clue));
+  finalDialog.showModal();
+  $("finalRevealBtn").focus();
+}
+$("finalRevealBtn").addEventListener("click", function(){
+  $("finalAnswerText").hidden = false;
+  $("finalWhyText").hidden = false;
+  $("finalRevealRow").hidden = true;
+  $("finalGradeRow").hidden = false;
+  announce("Answer: " + $("finalAnswerText").textContent + " " + stripTags($("finalWhyText").innerHTML));
+  $("finalGotItBtn").focus();
+});
+finalDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+function resolveFinal(correct){
+  state.results.push({ co:FINAL.co, src:FINAL.src, correct:!!correct });
+  state.score += correct ? state.finalWager : -state.finalWager;
+  finalDialog.close();
+  showResults();
+}
+$("finalGotItBtn").addEventListener("click", function(){ resolveFinal(true); });
+$("finalMissBtn").addEventListener("click", function(){ resolveFinal(false); });
+
+/* ============================================================================
+   RESULTS — the score, then the two breakdowns that actually tell the reader
+   what to do next: by course objective, and by topic to go back to.
+   ========================================================================== */
+function verdict(right, asked){
+  var pct = asked === 0 ? 0 : right / asked;
+  if(asked === 0) return { cls:"none", label:"Not asked" };
+  if(pct >= 0.8) return { cls:"ok", label:"Solid" };
+  if(pct >= 0.5) return { cls:"mid", label:"Shaky" };
+  return { cls:"low", label:"Go back to this" };
+}
+
+function tallyBy(pick){
+  var t = {};
+  state.results.forEach(function(res){
+    var keys = pick(res);
+    keys.forEach(function(k){
+      if(!t[k]) t[k] = { right:0, asked:0 };
+      t[k].asked += 1;
+      if(res.correct) t[k].right += 1;
+    });
+  });
+  return t;
+}
+
+function renderObjResults(){
+  var t = tallyBy(function(res){ return res.co; });
+  var body = $("objResultBody");
+  body.innerHTML = "";
+  var weak = [];
+  Object.keys(OBJECTIVES).map(Number).sort(function(a,b){ return a - b; }).forEach(function(n){
+    var row = t[n] || { right:0, asked:0 };
+    var v = verdict(row.right, row.asked);
+    if(v.cls === "low" || v.cls === "mid") weak.push(n);
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = "<b>" + n + ".</b> " + OBJECTIVES[n];
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = String(row.right);
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = String(row.asked);
+    var td4 = document.createElement("td");
+    td4.innerHTML = '<span class="pill ' + v.cls + '">' + v.label + "</span>";
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+    body.appendChild(tr);
+  });
+  var advice = $("objAdvice");
+  if(weak.length === 0){
+    advice.innerHTML = "<b class=\"tagline\">Nothing weak enough to send you back</b>" +
+      "Every objective on this board came out solid. The useful next step is not another pass over the " +
+      "vocabulary but the practice case study, where the same moves have to be written out rather than " +
+      "recognised on a board.";
+  } else {
+    advice.innerHTML = "<b class=\"tagline\">Objectives worth a second pass</b>" +
+      "You came out shaky or weak on " + weak.map(function(n){ return "objective " + n; }).join(", ") +
+      ". The table underneath says which part of the material covers each of them, and a miss in " +
+      "<i>Writing the Analysis</i> points at the practice case study rather than at a chapter.";
+  }
+}
+
+function renderSrcResults(){
+  var t = tallyBy(function(res){ return [res.src]; });
+  var body = $("srcResultBody");
+  body.innerHTML = "";
+  SOURCE_ORDER.forEach(function(key){
+    var row = t[key] || { right:0, asked:0 };
+    var info = SOURCES[key];
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.innerHTML = '<a href="' + info.href + '">' + info.label + "</a>";
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = String(row.right);
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = String(row.asked);
+    var td4 = document.createElement("td"); td4.textContent = info.covers;
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+    body.appendChild(tr);
+  });
+}
+
+function showResults(){
+  refreshScore();
+  $("roundStat").textContent = "Game over";
+  $("resultsScore").textContent = fmt(state.score);
+  var best = loadBest();
+  if(state.score > best){
+    saveBest(state.score);
+    $("resultsBest").textContent = "New best score.";
+  } else {
+    $("resultsBest").textContent = "Best score: " + fmt(best);
+  }
+  refreshBestStat();
+  var right = state.results.filter(function(r){ return r.correct; }).length;
+  $("resultsTally").textContent = right + " of " + state.results.length + " clues answered correctly.";
+  renderObjResults();
+  renderSrcResults();
+  showScreen("screenResults");
+  announce("Game over. Final score " + fmt(state.score) + ". " + right + " of " + state.results.length + " correct.");
+}
+
+$("playAgainBtn").addEventListener("click", startGame);
+
+/* ============================================================================
+   INIT
+   ========================================================================== */
+renderCatsPreview("catsPreview1", ROUND1);
+renderCatsPreview("catsPreview2", ROUND2);
+renderObjPreview();
+refreshScore();
+showScreen("screenIntro");
+})();
+</script>
+</body>
+</html>
