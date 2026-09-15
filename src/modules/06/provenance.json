@@ -1,0 +1,138 @@
+{
+  "policy": {
+    "core": "The supplied Chapter 6 defines LO 6.1, LO 6.2, and LO 6.3. Reading and chapter vocabulary trace to those headings, including the ethics, security, smart-city, and automotive discussions.",
+    "supplement": "Applications 6.4 and 6.5 are explicitly labeled extensions applying existing Porter frameworks to original hypothetical data decisions. SQL and spreadsheet work is preparatory, not a complete database application.",
+    "hypotheticals": "Every numerical exhibit and practice organization is explicitly hypothetical. No invented count is attributed to a real organization.",
+    "currentLaw": "The module teaches responsible data handling without asserting current legal requirements or offering legal advice.",
+    "datedFigures": "Vendor prices, market sizes, sales counts, forecasts, and current product rankings from the chapter are omitted. Capabilities are taught by use case."
+  },
+  "sources": {
+    "chapter6": {
+      "citation": "Supplied Chapter 6, learning objectives 6.1–6.3: The Growing Importance of Data in Organizational Transactions; Managing Data Using Relational Databases and Data Warehouses; Managing Big Data Using Non-Relational Databases and Data Lakes.",
+      "localFile": "../../../book/Ch 6.docx"
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials.",
+      "localFile": "../../../book/Course Objectives.docx"
+    },
+    "porter1985": {
+      "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press. Framework vocabulary also taught in the existing strategy workshop and Module 5.",
+      "localFile": "../../../five-forces-and-value-chain.html"
+    },
+    "hbsForces": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Five Forces.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx",
+      "checked": "2026-09-13"
+    },
+    "hbsValueChain": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Value Chain.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-value-chain.aspx",
+      "checked": "2026-09-13"
+    },
+    "relationalConstraints": {
+      "citation": "PostgreSQL 18 documentation, section 5.5, Constraints. Primary and foreign key semantics used to clarify relational examples.",
+      "url": "https://www.postgresql.org/docs/18/ddl-constraints.html",
+      "checked": "2026-09-13"
+    }
+  },
+  "chapterLocators": {
+    "6.1": {
+      "heading": "The Growing Importance of Data in Organizational Transactions"
+    },
+    "6.2": {
+      "heading": "Managing Data Using Relational Databases and Data Warehouses"
+    },
+    "6.3": {
+      "heading": "Managing Big Data Using Non-Relational Databases and Data Lakes"
+    }
+  },
+  "fragments": {
+    "s61a": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "s61b": [
+      "chapter6"
+    ],
+    "s62a": [
+      "chapter6",
+      "relationalConstraints"
+    ],
+    "s62b": [
+      "chapter6",
+      "relationalConstraints"
+    ],
+    "s62c": [
+      "chapter6"
+    ],
+    "s62d": [
+      "chapter6"
+    ],
+    "s63": [
+      "chapter6"
+    ],
+    "s64": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "s65": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "glossary": [
+      "chapter6",
+      "relationalConstraints"
+    ],
+    "final": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain",
+      "relationalConstraints"
+    ]
+  },
+  "objectives": {
+    "6.1": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "6.2": [
+      "chapter6",
+      "relationalConstraints"
+    ],
+    "6.3": [
+      "chapter6"
+    ],
+    "6.4": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "6.5": [
+      "chapter6",
+      "porter1985",
+      "hbsForces",
+      "hbsValueChain",
+      "courseObjectives"
+    ]
+  },
+  "qualifications": [
+    "Related tables are not literally three-dimensional; the chapter’s analogy is replaced by explicit key-based relationships.",
+    "Primary keys are unique and non-null. Repeated foreign keys are valid in one-to-many relationships; required relationships must be enforced.",
+    "Historical sale price and current catalog price are distinct facts. Normalization does not remove needed transaction history or deliberate snapshots.",
+    "Future-date validation is event-specific: a planned appointment may be future-dated while a completed event should not be.",
+    "Relational scalability, NoSQL consistency, and warehouse mutability vary by implementation. Category labels are not stated as universal technical guarantees.",
+    "SQL exercises use the repository’s offline SELECT interpreter, not a real SQLite database. The page explicitly states this limit.",
+    "The capstone estimates released staff capacity rather than guaranteed cash savings. Its 50% realization scenario and order-accuracy guardrail expose uncertainty.",
+    "The generated HTML remains fully offline; external source links are recorded here, with plain bibliographic attribution in the lesson."
+  ]
+}

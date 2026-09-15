@@ -255,7 +255,7 @@ const page = `<!DOCTYPE html>
 (function(){"use strict";document.documentElement.classList.add("js");try{if(localStorage.getItem("mis-ch1-theme-v1")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();
 <\/script>
 <style>
-${css}
+${css}${shell.styles ? "\n" + shell.styles : ""}
 </style>
 </head>
 <body>

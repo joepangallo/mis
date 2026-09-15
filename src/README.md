@@ -72,6 +72,8 @@ a `data:` URI, or a bare sibling file name ending in `.html` — the last of whi
 link to practice material sitting beside it. A sibling link is additionally required to resolve to a
 file that is really there, so renaming a linked page fails the check rather than the reader.
 
+A module’s `shell.json` may include an optional `styles` string appended after the shared stylesheet. Use it for narrowly scoped presentation needs; omitting it preserves the existing generated output exactly. Module 6 uses it to respect closed reveal cards and stack its diagrams on small screens.
+
 ## Source boundaries
 
 Objectives 1.1–1.4, their vocabulary, and factual cases come from the local Chapter 1 PDF. The

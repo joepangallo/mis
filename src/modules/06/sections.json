@@ -1,0 +1,79 @@
+{
+  "id": "06",
+  "outputFile": "module-06-managing-data-and-business-intelligence.html",
+  "title": "Module 6 · Managing Data and Business Intelligence",
+  "sections": [
+    {
+      "id": "s61a",
+      "title": "Data as a strategic asset",
+      "prefix": "asset",
+      "objective": "6.1"
+    },
+    {
+      "id": "s61b",
+      "title": "Data flows and responsible stewardship",
+      "prefix": "flow",
+      "objective": "6.1"
+    },
+    {
+      "id": "s62a",
+      "title": "Tables, keys, and relationships",
+      "prefix": "model",
+      "objective": "6.2"
+    },
+    {
+      "id": "s62b",
+      "title": "Normalization and master data",
+      "prefix": "clean",
+      "objective": "6.2"
+    },
+    {
+      "id": "s62c",
+      "title": "Queries that answer business questions",
+      "prefix": "query",
+      "objective": "6.2"
+    },
+    {
+      "id": "s62d",
+      "title": "From transactions to data warehouses",
+      "prefix": "ware",
+      "objective": "6.2"
+    },
+    {
+      "id": "s63",
+      "title": "Big data, document stores, and data lakes",
+      "prefix": "big",
+      "objective": "6.3"
+    },
+    {
+      "id": "s64",
+      "title": "Data through the five forces and value chain",
+      "prefix": "force",
+      "objective": "6.4"
+    },
+    {
+      "id": "s65",
+      "title": "Recommend one data initiative",
+      "prefix": "plan",
+      "objective": "6.5"
+    }
+  ],
+  "objectives": [
+    "6.1",
+    "6.2",
+    "6.3",
+    "6.4",
+    "6.5"
+  ],
+  "objectiveNames": {
+    "6.1": "Managing data as a strategic asset",
+    "6.2": "Relational databases and data warehouses",
+    "6.3": "Big data, non-relational databases, and data lakes",
+    "6.4": "Application: five forces and the value chain",
+    "6.5": "Application: a defensible data initiative"
+  },
+  "supplements": [
+    "s64",
+    "s65"
+  ]
+}

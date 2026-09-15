@@ -12,6 +12,8 @@ Interactive, self-contained study modules for an introductory information system
 | 4 | [`module-04-electronic-commerce-and-fintech.html`](module-04-electronic-commerce-and-fintech.html) | Chapter 4 Objectives 4.1 and 4.5: what electronic commerce is, the electronic marketplace and disintermediation &middot; business-to-consumer, business-to-business, consumer-to-consumer and e-government trade &middot; fintech and what it displaces &middot; payment services, mobile and peer-to-peer payment &middot; cryptocurrency, the blockchain, and what a trusted middleman was actually for &middot; card-not-present risk, chargebacks, risk scores and the cost of a false decline &middot; consumer protection, online sales tax and intellectual property including digital rights management &middot; plus two clearly labeled application supplements: the platform, payment and fulfillment ecosystem behind a storefront together with the technology answering back on the shop floor, and a rehearsal that turns the chapter into a written strategy analysis. **This module set the reading density the others were later brought to** &mdash; a mini case study in every section, and prose that exists to arm the activity after it rather than to substitute for it |
 | 5 | [`module-05-collaboration-and-social-media.html`](module-05-collaboration-and-social-media.html) | Chapter 5 Objectives 5.1&ndash;5.3, arranged around the chapter&rsquo;s own four jobs &mdash; communicate, cooperate, collaborate, connect: why organizational communication and collaboration is strategic, with virtual teams, synchronous against asynchronous work, and the three families of collaboration tools &middot; intranets, employee portals, enterprise search and self-service &middot; the shift from Web 1.0 to Web 2.0 and user-generated content &middot; blogs, microblogging, instant messaging and live video &middot; media sharing, tagging, geotagging, social bookmarking and cataloging &middot; cloud collaboration, content and learning management systems, collective intelligence, wikis, open source, open innovation and crowdsourcing &middot; social and professional networks, consumerization, network effects, viral marketing and social-local-mobile &middot; the organizational conditions that decide whether an internal social tool is adopted &middot; the downsides, from fabricated reviews and crowdfunding failures to a complaint going viral, and the crisis playbook &middot; plus two clearly labeled application supplements: **the whole chapter read through Porter&rsquo;s five forces and the value chain**, and a rehearsal of the written strategy analysis this course asks for. Built at Module 4&rsquo;s case-led density, with a mini case study in every section |
 
+| 6 | [`module-06-managing-data-and-business-intelligence.html`](module-06-managing-data-and-business-intelligence.html) | Chapter 6 Objectives 6.1–6.3: strategic data and data flows · quality, ethics, and governance · relational tables, keys, relationships, normalization, and master data management · runnable SQL and business reports · OLTP, warehouses, ETL, and data marts · big data, document stores, and data lakes · two application supplements covering **all five Porter forces and all nine value-chain activities**, followed by one scoped data initiative. Nine sections, 30 interactive activities, 58 glossary terms, and a 32-question final challenge. HTML edition; no PDF companion generated yet. |
+
 **Reading density is a deliberate, measured property.** Every section runs roughly 800&ndash;1,000 words of
 prose with no paragraph over about 65 words and a quarter to a third of the body in lists, so the first
 activity arrives early and no unbroken stretch of reading runs long. Modules 1&ndash;3 were originally
@@ -19,7 +21,7 @@ two to four times that and were retrofitted to it; Module 4 established it.
 
 Each module ships as **one HTML file with nothing external** — no CDN, no fonts, no scripts, no
 network of any kind. Open it from a hard drive, a flash drive, or any static host and it works.
-A print-ready PDF companion sits beside it carrying the same lesson plus every answer.
+Modules 1–5 also have a print-ready PDF companion carrying the same lesson plus every answer.
 
 ## What is in a module
 
@@ -59,6 +61,9 @@ node src/check.mjs --module=modules/04  # the same checks against Module 4
 
 node src/build.mjs --module=modules/05  # regenerate Module 5
 node src/check.mjs --module=modules/05  # the same checks against Module 5
+
+node src/build.mjs --module=modules/06  # regenerate Module 6
+node src/check.mjs --module=modules/06  # the same checks against Module 6
 ```
 
 One generator serves every module. Module 1's sources sit directly in `src/`; each later module gets
