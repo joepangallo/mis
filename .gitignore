@@ -47,6 +47,21 @@ midterm-answer-key*.md
 practice-midterm-instructor-key*.md
 practice-midterm-answer-key*.md
 
+# Instructor archives. This one was tracked from 7e1f3e0 until 2026-09-15 carrying ANSWER-KEY.md,
+# the Blackboard text and three .sql solution files. Every other leak check in this repository works
+# on file names, and a .zip is one opaque blob to all of them — so the rule is by name here, and
+# src/check-archives.mjs looks inside whatever is still tracked.
+hw/Week1InstructorMaterials.zip
+*InstructorMaterials*.zip
+*instructor*.zip
+
+# The homework answer keys, for the same reason: each page is committed and its key sits in the
+# same directory. The pages themselves carry no answers at all, only a weights comment, because a
+# student can read the source of anything handed to them.
+homework/homework-06-instructor-key*.md
+homework/homework-07-instructor-key*.md
+homework/*-answer-key*.md
+
 # The Blackboard import file is the whole exam with its answers marked, in plain
 # text. It and everything built beside it stay out of a public repository.
 blackboard/
