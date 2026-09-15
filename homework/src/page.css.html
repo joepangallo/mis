@@ -1,0 +1,173 @@
+<style>
+/* ============================================================================
+   The palette the study modules and the practice cases use, so this does not
+   look like a different course from the material it examines.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(900px,calc(100% - 32px));margin:auto}
+a{color:var(--accent-strong)}
+header.top{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;padding:34px 0 28px}
+header.top .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:4px 11px;margin-bottom:10px}
+header.top h1{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em}
+header.top p{margin:0;color:#e7eefc;max-width:66ch}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);padding:10px 0}
+.toolbar-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.toolbar label{font-size:.78rem;font-weight:700;color:var(--muted)}
+.toolbar input[type=text]{margin-left:6px;height:34px;padding:0 10px;border:1px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);min-width:180px}
+.save-status{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.btn{border:1px solid var(--accent-line);background:var(--accent-strong);color:#fff;border-radius:9px;
+  padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn.ghost:hover{background:var(--panel-2)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3ae}
+.btn.danger:hover{background:var(--bad-soft)}
+main{padding:26px 0 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px 22px;margin:0 0 18px}
+.card h2{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.01em}
+.card .kicker{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px}
+.card p{margin:10px 0}
+.card ul,.card ol{margin:10px 0;padding-left:22px}
+.card li{margin:4px 0}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:10px;
+  padding:12px 14px;margin:12px 0;font-size:.92rem}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.good{border-left-color:var(--good);background:var(--good-soft)}
+.part-head{background:var(--accent-strong);color:#fff;border-radius:var(--radius);padding:16px 20px;
+  margin:26px 0 14px;box-shadow:var(--shadow)}
+.part-head .kicker{color:#cfe4f4;display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:4px}
+.part-head h2{margin:0 0 4px;font-size:1.3rem}
+.part-head p{margin:0;color:#e7eefc;font-size:.92rem;max-width:70ch}
+.facts{list-style:none;padding:0;margin:12px 0}
+.facts li{position:relative;padding:9px 12px 9px 30px;background:var(--panel-2);
+  border:1px solid var(--border-soft);border-radius:10px;margin:7px 0;font-size:.9rem}
+.facts li::before{content:"";position:absolute;left:13px;top:17px;width:7px;height:7px;
+  border-radius:999px;background:var(--accent)}
+.task{border-top:1px dashed var(--border-soft);padding-top:16px;margin-top:16px}
+.task:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.task h3{margin:0 0 6px;font-size:1.05rem}
+.task .tag{float:right;background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:3px 10px;font-size:.7rem;font-weight:800;color:var(--muted);margin-left:10px}
+.task ol.parts{margin:8px 0 0;padding-left:20px}
+.task ol.parts li{margin:6px 0}
+textarea{display:block;width:100%;min-height:120px;margin-top:10px;padding:11px 12px;
+  border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);
+  font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;resize:vertical}
+textarea.code{font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:130px}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.wc-badge{padding:3px 10px;border-radius:999px;font-weight:800;background:var(--panel-2);color:var(--muted)}
+.wc-badge.ok{background:var(--good-soft);color:var(--good)}
+.wc-badge.low,.wc-badge.high{background:var(--warn-soft);color:var(--warn)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+table.tbl caption{text-align:left;padding:8px 10px;background:var(--accent-strong);color:#fff;
+  border-radius:8px 8px 0 0;font-weight:700}
+table.tbl th,table.tbl td{padding:8px 10px;border-bottom:1px solid var(--border-soft);text-align:left;
+  vertical-align:top}
+table.tbl th{background:var(--panel-2);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted)}
+table.tbl td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.tbl tfoot td{font-weight:800;border-top:2px solid var(--border)}
+.tbl-wrap{width:100%;overflow-x:auto}
+pre.schema{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:10px;
+  padding:12px 14px;margin:10px 0;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  overflow-x:auto}
+.checks{list-style:none;padding:0;margin:10px 0 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;padding:7px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.checks li:last-child{border-bottom:none}
+.checks .mark{flex:none;width:20px;height:20px;border-radius:999px;display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;background:var(--panel-2);color:var(--muted);border:1px solid var(--border-soft)}
+.checks li.ok .mark{background:var(--good);border-color:var(--good);color:#fff}
+.checks small{display:block;color:var(--muted);font-size:.79rem;margin-top:2px}
+footer{border-top:1px solid var(--border);padding:18px 0 30px;font-size:.82rem;color:var(--muted)}
+/* On a phone a text control under 16px makes iOS zoom the whole page in the
+   moment it is focused, which on a long exam means fighting the viewport at
+   every question. The objective chip also stops floating, so a long heading
+   cannot wrap around it. */
+@media (max-width:640px){
+  textarea,.toolbar input[type=text]{font-size:16px}
+  .task .tag{float:none;display:inline-block;margin:0 0 6px}
+}
+/* The name lives in the toolbar, and the toolbar does not print. This line is
+   the printed copy's version of it, blank-ruled when nobody typed a name. */
+.print-only{display:none}
+
+/* ------------------------------------------------------- multiple choice */
+.choices{list-style:none;padding:0;margin:12px 0 0}
+.choices li{margin:7px 0}
+.choices label{display:flex;gap:11px;align-items:flex-start;padding:10px 13px;
+  border:1px solid var(--border-soft);border-radius:10px;background:#fff;cursor:pointer;
+  transition:border-color .12s,background .12s}
+.choices label:hover{border-color:var(--accent-line);background:var(--panel-2)}
+.choices input{margin:3px 0 0;flex:none;width:17px;height:17px;accent-color:var(--accent-strong)}
+.choices .ltr{flex:none;font-weight:800;color:var(--muted);min-width:1.1em}
+.choices .opt{flex:1;min-width:0}
+.stem{margin:10px 0 0}
+.stem code{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:5px;
+  padding:1px 5px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* An option can hold a whole SQL statement, and a long unbroken one drags the
+   whole page sideways on a phone. Let it wrap at its spaces, and break a very
+   long token rather than overflow the viewport. */
+.choices .opt code,.stem code{white-space:normal;overflow-wrap:break-word;word-break:break-word}
+.choices .opt code{display:inline;background:var(--panel-2);border:1px solid var(--border-soft);
+  border-radius:5px;padding:1px 5px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* -------------------------------------------------------------- matching */
+table.match{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92rem}
+table.match th{background:var(--panel-2);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+table.match td{padding:9px 10px;border-bottom:1px solid var(--border-soft);vertical-align:top}
+table.match td.pick{width:min(46%,320px)}
+table.match select{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;
+  background:#fff;color:var(--text);font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+table.match select:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+table.match.grid td{vertical-align:middle}
+table.match.grid td:nth-child(2){font-weight:650}
+table.match.grid textarea{margin-top:0;min-height:52px}
+table.match .num{font-weight:800;color:var(--muted);padding-right:0;width:2.2em}
+@media (max-width:640px){
+  table.match,table.match tbody,table.match tr,table.match td{display:block;width:100%}
+  table.match thead{display:none}
+  table.match tr{border-bottom:1px solid var(--border-soft);padding:8px 0}
+  table.match td{border-bottom:0;padding:4px 0}
+  table.match td.pick{width:100%}
+  table.match .num{display:inline;width:auto}
+  table.match select{font-size:16px}
+}
+@media print{
+  .print-only{display:block;margin:14px 0 0;font-size:.95rem;font-weight:700}
+  .print-only .rule{display:inline-block;min-width:260px;border-bottom:1px solid #000}
+  .toolbar,.btn,.no-print{display:none !important}
+  body{background:#fff}
+  header.top{background:#fff !important;color:#000;border-bottom:2px solid #000}
+  header.top .eyebrow{background:none;border-color:#000;color:#000}
+  header.top p{color:#333}
+  .part-head{background:#fff !important;color:#000;border:2px solid #000;box-shadow:none}
+  .part-head .kicker,.part-head p{color:#333}
+  .card{box-shadow:none;border:1px solid #999;break-inside:avoid}
+  textarea{border:1px solid #999;white-space:pre-wrap;height:auto;overflow:visible}
+  .choices label{border:1px solid #bbb;background:#fff}
+  .echo{display:block;margin:8px 0 0;font-weight:700}
+  table.match select{border:1px solid #999;background:#fff;appearance:none}
+}

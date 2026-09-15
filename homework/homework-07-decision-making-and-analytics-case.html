@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework &mdash; Decision Making and Analytics: a framework analysis</title>
+<meta name="description" content="A framework analysis case study: apply Porter's five forces and the value chain to an invented cycle retailer that cannot answer its own questions, recommend one IT initiative, and write a 150-200 word comparison against a real retail or e-commerce company.">
+<style>
+/* ============================================================================
+   The palette the study modules and the practice cases use, so this does not
+   look like a different course from the material it examines.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f; --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(900px,calc(100% - 32px));margin:auto}
+a{color:var(--accent-strong)}
+header.top{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;padding:34px 0 28px}
+header.top .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:4px 11px;margin-bottom:10px}
+header.top h1{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em}
+header.top p{margin:0;color:#e7eefc;max-width:66ch}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);padding:10px 0}
+.toolbar-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.toolbar label{font-size:.78rem;font-weight:700;color:var(--muted)}
+.toolbar input[type=text]{margin-left:6px;height:34px;padding:0 10px;border:1px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);min-width:180px}
+.save-status{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.btn{border:1px solid var(--accent-line);background:var(--accent-strong);color:#fff;border-radius:9px;
+  padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn.ghost:hover{background:var(--panel-2)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3ae}
+.btn.danger:hover{background:var(--bad-soft)}
+main{padding:26px 0 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px 22px;margin:0 0 18px}
+.card h2{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.01em}
+.card .kicker{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px}
+.card p{margin:10px 0}
+.card ul,.card ol{margin:10px 0;padding-left:22px}
+.card li{margin:4px 0}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:10px;
+  padding:12px 14px;margin:12px 0;font-size:.92rem}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.good{border-left-color:var(--good);background:var(--good-soft)}
+.part-head{background:var(--accent-strong);color:#fff;border-radius:var(--radius);padding:16px 20px;
+  margin:26px 0 14px;box-shadow:var(--shadow)}
+.part-head .kicker{color:#cfe4f4;display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:4px}
+.part-head h2{margin:0 0 4px;font-size:1.3rem}
+.part-head p{margin:0;color:#e7eefc;font-size:.92rem;max-width:70ch}
+.facts{list-style:none;padding:0;margin:12px 0}
+.facts li{position:relative;padding:9px 12px 9px 30px;background:var(--panel-2);
+  border:1px solid var(--border-soft);border-radius:10px;margin:7px 0;font-size:.9rem}
+.facts li::before{content:"";position:absolute;left:13px;top:17px;width:7px;height:7px;
+  border-radius:999px;background:var(--accent)}
+.task{border-top:1px dashed var(--border-soft);padding-top:16px;margin-top:16px}
+.task:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.task h3{margin:0 0 6px;font-size:1.05rem}
+.task .tag{float:right;background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:3px 10px;font-size:.7rem;font-weight:800;color:var(--muted);margin-left:10px}
+.task ol.parts{margin:8px 0 0;padding-left:20px}
+.task ol.parts li{margin:6px 0}
+textarea{display:block;width:100%;min-height:120px;margin-top:10px;padding:11px 12px;
+  border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);
+  font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;resize:vertical}
+textarea.code{font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:130px}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.wc-badge{padding:3px 10px;border-radius:999px;font-weight:800;background:var(--panel-2);color:var(--muted)}
+.wc-badge.ok{background:var(--good-soft);color:var(--good)}
+.wc-badge.low,.wc-badge.high{background:var(--warn-soft);color:var(--warn)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+table.tbl caption{text-align:left;padding:8px 10px;background:var(--accent-strong);color:#fff;
+  border-radius:8px 8px 0 0;font-weight:700}
+table.tbl th,table.tbl td{padding:8px 10px;border-bottom:1px solid var(--border-soft);text-align:left;
+  vertical-align:top}
+table.tbl th{background:var(--panel-2);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted)}
+table.tbl td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.tbl tfoot td{font-weight:800;border-top:2px solid var(--border)}
+.tbl-wrap{width:100%;overflow-x:auto}
+pre.schema{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:10px;
+  padding:12px 14px;margin:10px 0;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  overflow-x:auto}
+.checks{list-style:none;padding:0;margin:10px 0 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;padding:7px 0;
+  border-bottom:1px dashed var(--border-soft)}
+.checks li:last-child{border-bottom:none}
+.checks .mark{flex:none;width:20px;height:20px;border-radius:999px;display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;background:var(--panel-2);color:var(--muted);border:1px solid var(--border-soft)}
+.checks li.ok .mark{background:var(--good);border-color:var(--good);color:#fff}
+.checks small{display:block;color:var(--muted);font-size:.79rem;margin-top:2px}
+footer{border-top:1px solid var(--border);padding:18px 0 30px;font-size:.82rem;color:var(--muted)}
+/* On a phone a text control under 16px makes iOS zoom the whole page in the
+   moment it is focused, which on a long exam means fighting the viewport at
+   every question. The objective chip also stops floating, so a long heading
+   cannot wrap around it. */
+@media (max-width:640px){
+  textarea,.toolbar input[type=text]{font-size:16px}
+  .task .tag{float:none;display:inline-block;margin:0 0 6px}
+}
+/* The name lives in the toolbar, and the toolbar does not print. This line is
+   the printed copy's version of it, blank-ruled when nobody typed a name. */
+.print-only{display:none}
+
+/* ------------------------------------------------------- multiple choice */
+.choices{list-style:none;padding:0;margin:12px 0 0}
+.choices li{margin:7px 0}
+.choices label{display:flex;gap:11px;align-items:flex-start;padding:10px 13px;
+  border:1px solid var(--border-soft);border-radius:10px;background:#fff;cursor:pointer;
+  transition:border-color .12s,background .12s}
+.choices label:hover{border-color:var(--accent-line);background:var(--panel-2)}
+.choices input{margin:3px 0 0;flex:none;width:17px;height:17px;accent-color:var(--accent-strong)}
+.choices .ltr{flex:none;font-weight:800;color:var(--muted);min-width:1.1em}
+.choices .opt{flex:1;min-width:0}
+.stem{margin:10px 0 0}
+.stem code{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:5px;
+  padding:1px 5px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* An option can hold a whole SQL statement, and a long unbroken one drags the
+   whole page sideways on a phone. Let it wrap at its spaces, and break a very
+   long token rather than overflow the viewport. */
+.choices .opt code,.stem code{white-space:normal;overflow-wrap:break-word;word-break:break-word}
+.choices .opt code{display:inline;background:var(--panel-2);border:1px solid var(--border-soft);
+  border-radius:5px;padding:1px 5px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* -------------------------------------------------------------- matching */
+table.match{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92rem}
+table.match th{background:var(--panel-2);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+table.match td{padding:9px 10px;border-bottom:1px solid var(--border-soft);vertical-align:top}
+table.match td.pick{width:min(46%,320px)}
+table.match select{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;
+  background:#fff;color:var(--text);font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+table.match select:focus{outline:2px solid var(--accent-line);outline-offset:1px}
+table.match.grid td{vertical-align:middle}
+table.match.grid td:nth-child(2){font-weight:650}
+table.match.grid textarea{margin-top:0;min-height:52px}
+table.match .num{font-weight:800;color:var(--muted);padding-right:0;width:2.2em}
+@media (max-width:640px){
+  table.match,table.match tbody,table.match tr,table.match td{display:block;width:100%}
+  table.match thead{display:none}
+  table.match tr{border-bottom:1px solid var(--border-soft);padding:8px 0}
+  table.match td{border-bottom:0;padding:4px 0}
+  table.match td.pick{width:100%}
+  table.match .num{display:inline;width:auto}
+  table.match select{font-size:16px}
+}
+@media print{
+  .print-only{display:block;margin:14px 0 0;font-size:.95rem;font-weight:700}
+  .print-only .rule{display:inline-block;min-width:260px;border-bottom:1px solid #000}
+  .toolbar,.btn,.no-print{display:none !important}
+  body{background:#fff}
+  header.top{background:#fff !important;color:#000;border-bottom:2px solid #000}
+  header.top .eyebrow{background:none;border-color:#000;color:#000}
+  header.top p{color:#333}
+  .part-head{background:#fff !important;color:#000;border:2px solid #000;box-shadow:none}
+  .part-head .kicker,.part-head p{color:#333}
+  .card{box-shadow:none;border:1px solid #999;break-inside:avoid}
+  textarea{border:1px solid #999;white-space:pre-wrap;height:auto;overflow:visible}
+  .choices label{border:1px solid #bbb;background:#fff}
+  .echo{display:block;margin:8px 0 0;font-weight:700}
+  table.match select{border:1px solid #999;background:#fff;appearance:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Homework &middot; case study</span>
+    <h1>Decision Making and Analytics</h1>
+    <p>One firm, the two frameworks, one recommendation. You apply Porter&rsquo;s five competitive forces and the value chain to a retailer holding four years of records it has asked almost nothing, then recommend a single information system and defend it in writing against a real company you have gone and read about.</p>
+    <p class="print-only" id="printIdentity">Name: <span class="rule">&nbsp;</span></p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-inner">
+    <label>Name <input type="text" id="who" autocomplete="name"></label>
+    <button type="button" class="btn ghost" id="exportBtn">Export my work</button>
+    <button type="button" class="btn ghost" id="printBtn">Print / Save PDF</button>
+    <button type="button" class="btn danger" id="clearBtn">Clear my work</button>
+    <span class="save-status" id="saveStatus">Saved in this browser as you type.</span>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section class="card">
+      <span class="kicker">Scenario</span>
+      <h2>A retailer holding four years of records it has asked almost nothing</h2>
+      <p><b>Corwin Cycle Company is not a real company.</b> It is invented for this assignment, the way the
+        practice examples in the lecture modules are, and every organisation, figure and quotation in it
+        is hypothetical.</p>
+      <p>You have been hired as an analyst at Corwin Cycle Company, a mid-sized regional retailer selling bicycles, e-bikes, parts and servicing. Corwin runs <b>14 stores, each with a workshop</b>, and one webshop. Over the last three years it has lost share steadily.</p>
+      <p>Leadership is uneasy, and for an unusual reason. Corwin holds four years of sales, service and webshop records, and has asked them <b>almost nothing</b>: one margin spreadsheet opened once a quarter, and one prediction pilot that failed. Before it spends anything, the executive team wants to understand <b>how information systems could strengthen Corwin&rsquo;s competitive position and support its long-term strategy</b>.</p>
+
+      <h3 style="margin:18px 0 0;font-size:1rem">What the executives have told you</h3>
+      <ul class="facts">
+        <li><b>Five regional chains and about thirty independents</b> sell the same ranges in the same area, and <b>two direct-to-consumer brands</b> now ship an assembled e-bike with a two-year home-service contract. Prices sit within a few percent and nobody is discounting heavily; between them the two direct sellers have taken about <b>6 percent</b> of Corwin&rsquo;s e-bike volume this year.</li>
+        <li><b>Renting a webshop and drop-shipping parts costs almost nothing.</b> Four parts-only sellers started in the region this year and none of them holds any stock. Parts are <b>21 percent</b> of Corwin&rsquo;s revenue.</li>
+        <li>No single customer is more than <b>half a percent</b> of revenue and none of them negotiates. But <b>a shopper can compare every price in the region from a phone</b>, and <b>14 percent</b> of the ninety daily enquiries are answered after the customer has already bought elsewhere.</li>
+        <li><b>One manufacturer is the only supplier certified</b> for the battery packs in Corwin&rsquo;s own-brand e-bikes, which are <b>34 percent of revenue and the highest-margin line in the business</b>. It raised prices <b>9 percent</b> and now requires orders a quarter ahead; moving to a different pack would mean recertifying the frame, which takes about a year and has been quoted at more than the range earns in one.</li>
+        <li><b>A bike-share scheme</b> in the two largest towns passed <b>9,000 memberships</b> against roughly 240,000 adults in those towns, and it meets the same need without anybody owning a bicycle at all.</li>
+        <li><b>Servicing cannot be bought that way.</b> Workshop revenue is <b>19 percent</b> of the total and the only line that is growing.</li>
+        <li><b>Corwin has never been the cheapest.</b> It wins on having a bike ready to ride the day it was promised, and on a workshop that will still see that bike three years later.</li>
+        <li>The monthly pack is <b>one revenue figure per store</b>. When a figure moves, no manager can open it up to see which range, which region or which month is behind it.</li>
+        <li>The buying team has <b>one spreadsheet model</b> of margin. It is opened once a quarter, one number is changed, the answer is written down, and it is closed again.</li>
+        <li><b>40,000 workshop notes a year</b> are written as free text by the mechanic who did the job. <b>Nobody has ever labelled one</b>, and nothing reads them.</li>
+        <li>&ldquo;Have you a medium gravel bike near the Ashford store on Saturday&rdquo; arrives about <b>90 times a day</b>. Writing a reply takes a coordinator about <b>eight minutes</b>, but the average enquiry <b>waits 41 minutes</b> before anyone reaches it.</li>
+        <li><b>Nobody can say which customers are drifting away.</b> The one attempt reported <b>97 percent accuracy</b> and then failed in use: it had been <b>trained and tested on the same records</b>, and no accuracy threshold had been agreed before the result arrived.</li>
+        <li>Two stores opened in the last three years. <b>Both were sited on the cheapest available lease</b>, and neither decision used a map of anything but rent.</li>
+        <li>The <b>three longest-serving workshop managers</b>, who between them settle most repair-or-replace calls, <b>retire within eighteen months</b>. None of their reasoning is written down anywhere.</li>
+      </ul>
+
+      <div class="callout">Nothing here is drawn from a real company. If a detail sounds familiar for
+        reasons outside this assignment, that is a coincidence &mdash; analyse this Corwin and only this
+        one, using the evidence above plus any assumption you are willing to state in writing.</div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">The figures</span>
+      <h2>Where the money goes</h2>
+      <p>Corwin turned over $56 million last year on costs of $50 million. The exhibit splits those costs by value chain activity &mdash; all nine of them
+        &mdash; and then splits each activity again into the part that is <b>avoidable</b>: cost the
+        firm would not carry at all if the problems listed above were not there. Some of it is work done
+        twice, some is capacity spent on something a system would do, and some is margin that walked out
+        of the door. The two columns answer different questions.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>Exhibit &mdash; Corwin&rsquo;s $50.0 million of cost, by value chain activity</caption>
+          <thead><tr><th>Activity</th><th class="num">Annual cost</th>
+              <th class="num">Avoidable inside it</th><th>What makes it avoidable</th></tr></thead>
+          <tbody>
+            <tr><td>Inbound logistics</td><td class="num">$1,340,000</td><td class="num">&mdash;</td><td>Receiving parts and assembling bikes at the stores</td></tr>
+            <tr><td>Operations</td><td class="num">$28,900,000</td><td class="num">&mdash;</td><td>Selling, fitting and servicing bikes. Nothing here is avoidable by answering a question better</td></tr>
+            <tr><td>Outbound logistics</td><td class="num">$2,060,000</td><td class="num">$707,000</td><td>Stock sitting at a store where nobody wants it while another turns a customer away, plus the extra delivery mileage out of two stores sited on lease cost alone</td></tr>
+            <tr><td>Sales and marketing</td><td class="num">$4,180,000</td><td class="num">$340,000</td><td>Ninety enquiries a day written by hand, and the margin lost on the 14 percent answered after the customer had bought elsewhere</td></tr>
+            <tr><td>Service</td><td class="num">$3,220,000</td><td class="num">$214,000</td><td>Repair-or-replace settled differently in every store, and the rework when a call is reversed</td></tr>
+            <tr><td>Procurement <span style="color:var(--muted)">(support)</span></td><td class="num">$1,910,000</td><td class="num">$126,000</td><td>Parts and battery packs committed a quarter ahead against a forecast nobody has ever tested</td></tr>
+            <tr><td>Technology development <span style="color:var(--muted)">(support)</span></td><td class="num">$740,000</td><td class="num">$172,000</td><td>The prediction pilot that reported 97 percent and was rebuilt twice</td></tr>
+            <tr><td>Human resources <span style="color:var(--muted)">(support)</span></td><td class="num">$2,600,000</td><td class="num">$158,000</td><td>Training repeated from scratch, because the repair-or-replace judgement the workshops run on has never been written down</td></tr>
+            <tr><td>Administration <span style="color:var(--muted)">(support)</span></td><td class="num">$5,050,000</td><td class="num">&mdash;</td><td>Finance, payroll and property</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td class="num">$50,000,000</td>
+              <td class="num">$1,717,000</td><td></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="callout warn"><b>The two columns answer different questions, and neither answers
+        yours on its own.</b> The activity carrying most of the money carries no avoidable cost that
+        anyone has identified &mdash; which means the obvious target is the wrong one, not that the
+        activity could never be improved. Equally, the largest avoidable figure is not automatically the
+        best thing to fund: what it would cost to fix, how much of it you would really recover, and
+        whether it defends what this firm competes on all bear on that. Say which of those you are
+        weighing.</div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">Before you start</span>
+      <h2>Choose a company to compare against</h2>
+      <p>Choose <b>one real retail or e-commerce company</b> to use as a point of comparison with
+        Corwin. Take a close look at its competitive landscape, what it has done with technology, and
+        the difficulties it is working through now. The goal is not admiration; it is to gather enough
+        understanding to draw a clear parallel, and then to use that parallel to sharpen your view of
+        where information systems would make the greatest strategic difference at Corwin.</p>
+      <div class="callout warn">Pick a company whose relevant practice is actually <i>documented</i>
+        somewhere you can read. A famous company whose inner workings are undescribed gives you a name
+        and nothing else, and a lesson that only works at that company&rsquo;s budget or footprint is not
+        a lesson that transfers to a regional chain.</div>
+    </section>
+
+    <section class="card">
+      <span class="kicker">Your tasks</span>
+      <h2>Four tasks, one analysis</h2>
+      <p>Work them in order. Each depends on the one before it, which is also the order a real analyst is
+        obliged to work in: name the pressure before naming the fix, and name the activity before naming
+        the system. Everything you type is saved in this browser as you go, and nothing is uploaded,
+        submitted or sent anywhere from this page.</p>
+
+      <div class="task">
+        <h3>Task 1 &middot; Apply the five competitive forces</h3>
+        <p class="stem">Evaluate the competitive pressures facing Corwin. One row per force. In each
+          row say whether the force is <b>weak, moderate or strong</b>, and give the evidence from the
+          scenario &mdash; or a reasonable assumption you state plainly &mdash; that supports that
+          rating. Each row has to name something a reader could <b>count, compare or verify</b>: a share
+          of revenue, a number of competitors, a switching cost, a price move. &ldquo;A lot of
+          competition&rdquo; is not evidence, and it is not a different answer in each of the five
+          rows.</p>
+        <table class="match grid">
+          <thead><tr><th></th><th>The force</th><th>Weak, moderate or strong &mdash; and the evidence</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Rivalry among existing competitors</td>
+              <td class="pick"><textarea id="f1" data-key="f1" rows="3" aria-label="Rating and evidence for rivalry among existing competitors"></textarea></td></tr>
+            <tr><td class="num">2</td><td>Threat of new entrants</td>
+              <td class="pick"><textarea id="f2" data-key="f2" rows="3" aria-label="Rating and evidence for threat of new entrants"></textarea></td></tr>
+            <tr><td class="num">3</td><td>Bargaining power of buyers</td>
+              <td class="pick"><textarea id="f3" data-key="f3" rows="3" aria-label="Rating and evidence for bargaining power of buyers"></textarea></td></tr>
+            <tr><td class="num">4</td><td>Bargaining power of suppliers</td>
+              <td class="pick"><textarea id="f4" data-key="f4" rows="3" aria-label="Rating and evidence for bargaining power of suppliers"></textarea></td></tr>
+            <tr><td class="num">5</td><td>Threat of substitutes</td>
+              <td class="pick"><textarea id="f5" data-key="f5" rows="3" aria-label="Rating and evidence for threat of substitutes"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task">
+        <h3>Task 1b &middot; Name the single strongest force</h3>
+        <p>In two or three sentences, name the <b>one</b> force that puts the most pressure on Corwin
+          and say why it beats the force you would rank second. Rating all five and naming none leaves
+          the decision to your reader, and the decision was the job.</p>
+        <textarea id="strongest" data-key="strongest" aria-label="The single strongest force, and why it beats the runner-up" placeholder="The strongest force is … The evidence is … It beats … because …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>Task 2 &middot; Use the value chain to find the opportunities</h3>
+        <p>Using the value chain, identify <b>at least two internal areas</b> &mdash; primary activities
+          or support bands &mdash; where information systems could create an <b>operational or
+          customer-focused</b> advantage. They have to be two genuinely different activities, not one
+          activity described twice: the second is what shows you scanned the chain instead of stopping at
+          your first idea. It may turn out to be the alternative your recommendation was preferred over,
+          or the place a single initiative lands a second saving &mdash; both are good answers, and the
+          second is the better one when you can show it. For
+          <b>each</b> of the two give all three of these:</p>
+        <ol class="parts">
+          <li>The activity, named in the value chain&rsquo;s own words.</li>
+          <li><b>The avoidable figure exactly as the exhibit prints it</b>, so a reader can trace it.
+            Describe the driver in your own words &mdash; it is the figure that has to be quoted, not
+            the sentence beside it.</li>
+          <li>One or two sentences saying what the weakness actually is, and what a system would change
+            there.</li>
+        </ol>
+        <table class="match grid">
+          <thead><tr><th></th><th>Area</th><th>The activity, the figure, and the weakness</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>First area</td>
+              <td class="pick"><textarea id="a1" data-key="a1" rows="4" aria-label="First value chain area"></textarea></td></tr>
+            <tr><td class="num">2</td><td>A genuinely different area</td>
+              <td class="pick"><textarea id="a2" data-key="a2" rows="4" aria-label="Second value chain area"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task">
+        <h3>Task 3 &middot; Recommend exactly one IT initiative</h3>
+        <p>Recommend <b>one</b> initiative, drawn from one of the areas you just named, that would
+          directly support Corwin&rsquo;s strategic goals. Do not list options and let the reader
+          choose &mdash; one initiative is a decision, three are a wish list. Cover all <b>six</b> of
+          these:</p>
+        <ol class="parts">
+          <li><b>What it does</b>, concretely enough that somebody could cost it and later judge whether
+            it shipped.</li>
+          <li><b>What kind of system it is</b>, named in the reading&rsquo;s own words rather than by a
+            product name.</li>
+          <li><b>Which activity it belongs to, and where the saving appears.</b> These are frequently not
+            the same activity, and naming both is what answers the obvious objection.</li>
+          <li><b>Which force it answers</b>, named explicitly. It does not have to be the force you
+            called strongest in Task 1b &mdash; the biggest pressure is not always the one worth
+            spending on first &mdash; but if it is a different one, say why you are spending there
+            instead.</li>
+          <li><b>How it would run</b>: built and hosted by Corwin, or bought as a service &mdash; and
+            one sentence on what that choice costs you in control. (If you want to name a cloud service
+            model, Module 3 covers them; neither reading for this case does, so it is not required.)</li>
+          <li><b>How you would know it worked</b>: the number as it stands today, the number you expect
+            instead, and the date somebody should look at it.</li>
+        </ol>
+        <textarea id="t3" data-key="t3" aria-label="The one IT initiative, with its six elements" placeholder="What it does: …&#10;&#10;What kind of system it is: …&#10;&#10;The activity it belongs to, and where the saving appears: …&#10;&#10;The force it answers, from Task 1: …&#10;&#10;How it would run: …&#10;&#10;The measure and the date: …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>Task 3b &middot; Name the method, and settle what a generic answer leaves open</h3>
+        <p>A recommendation can name a tool and still not show that you have read the chapter. Name the method, then answer <b>the set that belongs to it</b> &mdash; one set, not all four.</p>
+        <ol class="parts">
+          <li><b>A decision support model:</b> the <b>one input you can actually control</b>, the <b>constraint</b> you are working inside, and <b>one what-if question</b> you would put to it in words a buyer would use.</li>
+          <li><b>A predictive model:</b> what <b>one row</b> represents, what the <b>label</b> is, how you <b>hold data back</b> to test it, and the <b>threshold</b> you fix before you have seen any result. The scenario says what happens when that last step is skipped.</li>
+          <li><b>A generative assistant:</b> which <b>live source</b> answers the question, what it does <b>when it does not know</b>, and <b>who it escalates to</b>.</li>
+          <li><b>Knowledge management:</b> <b>whose</b> judgement you are capturing, whether it is <b>tacit or explicit</b>, and how anyone checks a year later that it is <b>still right</b>.</li>
+        </ol>
+        <textarea id="t3b" data-key="t3b" aria-label="The chapter-specific decisions behind the initiative" placeholder="The method is …
+
+The set that belongs to it:
+1. …
+2. …
+3. …
+4. …"></textarea>
+      </div>
+
+      <div class="task">
+        <h3>Task 4 &middot; The written summary, in 150 to 200 words</h3>
+        <p>This is the second deliverable, and it is one piece of writing rather than a set of answers.
+          Explain how the two companies complement each other and what Corwin can draw from the
+          comparison. All <b>five</b> of these have to be in it:</p>
+        <ol class="parts">
+          <li>The company you chose, <b>named</b>, and what it actually did &mdash; the mechanism, not
+            its size or its reputation.</li>
+          <li>What makes it worth comparing even though the two are almost certainly a different
+            size.</li>
+          <li>The <b>one lesson</b> that would still make sense at Corwin&rsquo;s scale, and one thing
+            from that company you would explicitly <b>decline</b> to copy.</li>
+          <li>How your Task 3 initiative <b>aligns</b> with what Corwin has chosen to compete on. The
+            scenario says what the firm sells itself on; say how the initiative serves that.</li>
+          <li>What it would mean if the money went somewhere that did not.</li>
+        </ol>
+        <p>Stay inside the band, and <b>give the source</b> for what you say the company did &mdash; a
+          link or a reference, written underneath and not counted in the word total. A mechanism nobody
+          can check is a story.</p>
+        <textarea id="t4" data-key="t4" aria-label="The written summary comparing against a real company" placeholder="The company I am comparing with Corwin is …"></textarea>
+        <div class="wc-row">
+          <span class="wc-badge" id="wcBadge">0 words</span>
+          <span id="wcMsg" style="color:var(--muted)">Aim for 150&ndash;200 words.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card no-print">
+      <span class="kicker">Before you hand it in</span>
+      <h2>Check the shape of what you wrote</h2>
+      <p>This checks <b>structure, not correctness</b> &mdash; it cannot tell whether your reasoning is
+        any good, and a full row of ticks is not a grade. What it can catch is the handful of omissions
+        that cost marks on this kind of analysis every single time. Nothing here is graded and nothing is
+        sent anywhere.</p>
+      <ul class="checks" id="checkList"></ul>
+    </section>
+
+    <section class="card no-print">
+      <span class="kicker">Also worth checking</span>
+      <h2>Anything still empty</h2>
+      <p id="unansweredMsg">Nothing yet.</p>
+    </section>
+
+    <section class="card">
+      <span class="kicker">What to hand in</span>
+      <h2>Two deliverables</h2>
+      <ul>
+        <li><b>The framework analysis</b> &mdash; the five forces and the value chain areas: Tasks 1, 1b
+          and 2.</li>
+        <li><b>The written summary</b> explaining the strategic alignment between the initiative and the
+          business: Tasks 3, 3b and 4.</li>
+      </ul>
+      <p>Use <b>Export my work</b> for a text file containing your name and every answer in order, or
+        <b>Print / Save PDF</b> for a printable copy, or write them in your own document if you prefer
+        &mdash; any of the three is fine, as long as every task is clearly labelled and your name is on
+        it. Submit it the way you have been asked to.</p>
+      <div class="callout warn">Your work lives in this browser only, on this computer. Reopening this
+        page on the same machine brings it back, but clearing the browser&rsquo;s data, using a
+        different machine, or opening it in a private window will not. Export as soon as you finish.</div>
+    </section>
+
+    <section class="card no-print">
+      <span class="kicker">If you are stuck</span>
+      <h2>Where to practise first</h2>
+      <ul>
+        <li><a href="../five-forces-and-value-chain.html">Five Forces and the Value Chain &mdash; a
+          working review</a> &mdash; rate an industry force by force against an analyst&rsquo;s reading,
+          sort evidence to the force it actually demonstrates, place a proposed system on the chain, and
+          work three cases that need both models at once.</li>
+        <li><a href="../five-forces-and-value-chain-quiz.html">The frameworks quiz</a> &mdash; every
+          answer explains itself, including the ones you did not choose.</li>
+        <li><a href="../games/decision-engine.html">Decision Engine &mdash; the Chapter 7 learning game</a> &mdash; eight quarters running an invented distributor&rsquo;s analytics programme: the four analytics questions, a real cube, a dashboard and a working what-if model, unlabelled data, an honestly tested model, generative AI and its governance, an agent and where the human stands in it, and a depot sited from map layers.</li>
+        <li><a href="../module-03-information-systems-infrastructure.html">Module 3 &mdash; Information Systems Infrastructure</a> &mdash; the cloud service models, if you want to say more in Task 3 than built here or bought as a service. Not required.</li>
+      </ul>
+      <div class="callout good"><b>One habit worth copying from the worked cases.</b> Write the sentence
+        &ldquo;the strongest force is X, and the evidence is Y&rdquo; before you write anything at all
+        about technology. Nearly every weak analysis of this kind is a system that was chosen first and
+        given a diagnosis afterwards.</div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Corwin Cycle Company is a hypothetical practice scenario. Every company on this assignment is invented and every figure in
+    it is hypothetical. Your work is saved in this browser only &mdash; nothing you type is uploaded,
+    submitted or collected.</div>
+</footer>
+
+<script>
+/* ============================================================================
+   Everything below runs in the reader's own browser. Nothing is uploaded, and
+   nothing is graded here — the checklist reports the SHAPE of an analysis,
+   which is the only part a page can verify without an instructor in the room.
+
+   Two kinds of answer live on this page: written boxes and the five-row force
+   grid, which is written boxes in a table. They are collected the same way so
+   that saving, restoring, exporting and clearing do not need two code paths.
+
+   This is the machinery the exam and the practice cases use. Keeping it
+   identical is the point: the controls are the same ones on the paper.
+   ========================================================================== */
+(function(){
+"use strict";
+
+var KEY = "mis-homework-07-case-v2";
+var FIRM = "Corwin Cycle Company";
+var ESSAY = "t4";
+var EXHIBIT_FIGURES = ["$707,000", "$340,000", "$214,000", "$126,000", "$172,000", "$158,000"];
+var BAND = { low: 150, high: 200 };
+
+function $(id){ return document.getElementById(id); }
+function words(s){ s = (s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+function text(node){ return node ? (node.textContent || "").replace(/\s+/g, " ").trim() : ""; }
+
+/* ------------------------------------------------------------------ fields
+   Built from the page itself, in document order, so a task that is added,
+   renamed or moved cannot end up mislabelled in the exported file. */
+var TASKS = [];
+
+function rowLabel(el){
+  var tr = el.closest("tr");
+  if(!tr) return "";
+  var cells = [].slice.call(tr.querySelectorAll("td")).filter(function(td){ return !td.contains(el); });
+  return cells.map(text).join(". ");
+}
+
+(function collect(){
+  var nodes = document.querySelectorAll(".task");
+  for(var i = 0; i < nodes.length; i++){
+    var node = nodes[i];
+    var task = { heading: text(node.querySelector("h3")), fields: [] };
+    var boxes = node.querySelectorAll("textarea[data-key]");
+    for(var j = 0; j < boxes.length; j++){
+      task.fields.push({ key: boxes[j].getAttribute("data-key"), el: boxes[j], row: rowLabel(boxes[j]) });
+    }
+    if(task.fields.length) TASKS.push(task);
+  }
+})();
+
+function allFields(){
+  return TASKS.reduce(function(list, task){ return list.concat(task.fields); }, []);
+}
+
+/* ------------------------------------------------------------- persistence */
+function load(){
+  var raw = null;
+  try{ raw = localStorage.getItem(KEY); }catch(e){}
+  if(!raw) return;
+  var data = {};
+  try{ data = JSON.parse(raw) || {}; }catch(e){ return; }
+  if(typeof data.who === "string") $("who").value = data.who;
+  allFields().forEach(function(f){ if(typeof data[f.key] === "string") f.el.value = data[f.key]; });
+}
+var saveTimer = null;
+function save(){
+  var data = { who: $("who").value };
+  allFields().forEach(function(f){ data[f.key] = f.el.value; });
+  try{
+    localStorage.setItem(KEY, JSON.stringify(data));
+    $("saveStatus").textContent = "Saved in this browser · " +
+      new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+  }catch(e){
+    $("saveStatus").textContent = "This browser is not saving — export before you close the tab.";
+  }
+}
+function queueSave(){
+  clearTimeout(saveTimer);
+  $("saveStatus").textContent = "Saving…";
+  saveTimer = setTimeout(save, 400);
+}
+
+/* --------------------------------------------------------------- autosize */
+function autosize(el){ el.style.height = "auto"; el.style.height = (el.scrollHeight + 2) + "px"; }
+function textareas(){ return [].slice.call(document.querySelectorAll("textarea[data-key]")); }
+
+/* ------------------------------------------------- the printed name and date
+   The name lives in the toolbar and the toolbar does not print, so a printed
+   analysis would otherwise arrive with nobody's name on it. */
+function refreshIdentity(){
+  var name = $("who").value.trim();
+  $("printIdentity").innerHTML = name
+    ? "Name: " + name.replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }) +
+      "  ·  Printed: " + new Date().toLocaleDateString()
+    : 'Name: <span class="rule">&nbsp;</span>';
+}
+
+/* ------------------------------------------------------------ word counter */
+function refreshWordCount(){
+  var n = words($(ESSAY).value);
+  var badge = $("wcBadge"), msg = $("wcMsg");
+  badge.textContent = n + (n === 1 ? " word" : " words");
+  badge.className = "wc-badge" + (n === 0 ? "" : n < BAND.low ? " low" : n > BAND.high ? " high" : " ok");
+  msg.textContent = n === 0 ? "Aim for " + BAND.low + "–" + BAND.high + " words."
+    : n < BAND.low ? "Under the band — " + (BAND.low - n) + " more to reach " + BAND.low + "."
+    : n > BAND.high ? "Over the band — cut " + (n - BAND.high) + " to get back under " + BAND.high + "."
+    : "Inside the band.";
+}
+
+/* --------------------------------------------------- what is still unanswered */
+function refreshUnanswered(){
+  var missing = [];
+  TASKS.forEach(function(task){
+    var blank = task.fields.filter(function(f){ return f.el.value.trim() === ""; }).length;
+    if(blank === 0) return;
+    var label = (task.heading.match(/^Task \d+[a-z]?/) || [task.heading])[0];
+    missing.push(task.fields.length > 1 ? label + " (" + blank + " of " + task.fields.length + " boxes)" : label);
+  });
+  $("unansweredMsg").textContent = missing.length === 0
+    ? "Every task on this case has something in it."
+    : "Nothing written yet in: " + missing.join(", ") + ".";
+}
+
+/* ---------------------------------------------------------- shape checklist */
+var ACTIVITY_WORDS = [
+  {label:"inbound logistics",  re:/\binbound\b/i},
+  {label:"operations",         re:/\boperations\b/i},
+  {label:"outbound logistics", re:/\boutbound\b/i},
+  {label:"sales and marketing",re:/\b(sales|marketing)\b/i},
+  {label:"service",            re:/\bservice\b(?!\s*(model|s\b))/i},
+  {label:"administration",     re:/\badministration\b|\bfirm infrastructure\b/i},
+  {label:"human resources",    re:/\bhuman resource|\bHR\b/i},
+  {label:"technology development", re:/\btechnology development\b/i},
+  {label:"procurement",        re:/\bprocurement\b/i}
+];
+var FORCE_WORDS = [
+  {label:"rivalry",        re:/\brivalr/i},
+  {label:"new entrants",   re:/\b(new entrant|entrant|barrier to entry|barriers to entry)/i},
+  {label:"buyer power",    re:/\bbuyer|\bcustomer power|\bbargaining power of (the )?(buyers|customers)/i},
+  {label:"supplier power", re:/\bsupplier/i},
+  {label:"substitutes",    re:/\bsubstitut/i}
+];
+var SYSTEM_WORDS = [
+  {label:"an OLAP cube", re:/\bcube\b|\bOLAP\b|\bdrill down\b|\broll up\b/i},
+  {label:"a digital dashboard", re:/\bdashboard\b/i},
+  {label:"a decision support system", re:/\bdecision support\b|\bDSS\b|\bwhat-if\b|\bgoal seek/i},
+  {label:"clustering", re:/\bcluster/i},
+  {label:"anomaly detection", re:/\banomal/i},
+  {label:"association discovery", re:/\bassociation\b|\bmarket basket\b/i},
+  {label:"a supervised model", re:/\bsupervised\b|\bclassif|\bmachine learning\b|\bpredictive model\b/i},
+  {label:"a generative AI assistant", re:/\bgenerative\b|\blarge language model\b|\bLLM\b|\bretrieval-augmented\b|\bRAG\b/i},
+  {label:"a generative AI agent", re:/\bagent\b/i},
+  {label:"a geographic information system", re:/\bgeographic information\b|\bGIS\b|\bmap layer\b|\btrade area\b/i},
+  {label:"knowledge management", re:/\bknowledge management\b|\bknowledge base\b|\btacit\b|\bexplicit knowledge\b/i}
+];
+var RATING_RE = /\bweak\b|\bmoderate\b|\bstrong\b|\bhigh\b|\blow\b/i;
+var NUM_RE = /\d|\b(no|none|zero|one|single|sole|only|both|half|third|quarter|fifth|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|thirty|forty|fifty|sixty|ninety|hundred)\b/i;
+var TIME_RE = /\b(day|days|week|weeks|month|months|quarter|quarterly|year|years|annually|january|february|march|april|may|june|july|august|september|october|november|december|tender|renewal|season)\b|\d{4}-\d{2}-\d{2}|\b\d{1,2}\/\d{1,2}(\/\d{2,4})?\b|\bQ[1-4]\b/i;
+/* Only phrases that are empty on their own. A single word like "leverage" has
+   honest uses ("buyers gain leverage when promises fail") and rejecting a whole
+   answer for containing one is how a correct recommendation gets marked vague. */
+var VAGUE = ["improve our digital", "digital transformation", "drive synergy", "synergies",
+             "modernize our", "modernise our", "best practices across", "cutting edge",
+             "state of the art", "adopt ai", "leverage synergies", "leverage our data assets"];
+
+var FORCE_KEYS = ["f1", "f2", "f3", "f4", "f5"];
+
+function matched(list, value){
+  return list.filter(function(item){ return item.re.test(value || ""); });
+}
+/* The activity a box leads with: the one whose name appears earliest in it. */
+function firstActivity(value){
+  value = value || "";
+  var best = null, at = Infinity;
+  for(var i = 0; i < ACTIVITY_WORDS.length; i++){
+    var m = value.match(ACTIVITY_WORDS[i].re);
+    if(m && m.index < at){ at = m.index; best = ACTIVITY_WORDS[i].label; }
+  }
+  return best;
+}
+function dollars(value){
+  return ((value || "").match(/\$\s?\d[\d,]*/g) || []).length;
+}
+/* "$1" is not quoting the exhibit. Require a figure the exhibit actually prints. */
+function quotesExhibit(value){
+  value = (value || "").replace(/\s+/g, "");
+  for(var i = 0; i < EXHIBIT_FIGURES.length; i++){
+    if(value.indexOf(EXHIBIT_FIGURES[i].replace(/\s+/g, "")) !== -1) return true;
+  }
+  return false;
+}
+/* A named comparison company: a capitalised word the student typed that is not
+   the start of a sentence and is not this case's own firm. It is a heuristic,
+   and the label says so rather than claiming to have verified a company. */
+function namesACompany(value){
+  value = value || "";
+  var firmWords = FIRM.toLowerCase().split(/\W+/).filter(Boolean);
+  var STOP = /^(the|this|that|they|their|there|then|both|because|although|while|however|its|it|an|and|but|for|from|in|on|at|by|to|of|we|our|us|my|one|two|first|second|third|unlike|like|when|where|what|which|who|task|yes|no|not|if|so|as|is|was|are|were|has|have|had|would|could|should|will|can|may|might)$/i;
+  var tokens = value.split(/\s+/);
+  var opensSentence = true;
+  for(var t = 0; t < tokens.length; t++){
+    var raw = tokens[t];
+    /* Strip surrounding punctuation but keep internal & \u2019 . - so that
+       names like "Levi\u2019s", "H&M" and "Amazon.com" survive intact. */
+    var word = raw.replace(/^[^A-Za-z0-9]+/, "").replace(/[^A-Za-z0-9&\u2019'.]+$/, "").replace(/\.$/, "");
+    var ends = /[.!?]$/.test(raw);
+    var wasOpening = opensSentence;
+    opensSentence = ends;
+    if(word.length < 2) continue;
+    if(!/[A-Z]/.test(word)) continue;               /* eBay and IKEA both qualify */
+    if(firmWords.indexOf(word.toLowerCase()) !== -1) continue;
+    if(wasOpening && !/[A-Z].*[A-Z]/.test(word) && STOP.test(word)) continue;
+    if(STOP.test(word)) continue;
+    return true;
+  }
+  return false;
+}
+
+function namesACompanyLegacy(value){
+  value = value || "";
+  var firmWords = FIRM.toLowerCase().split(/\W+/).filter(Boolean);
+  /* Take the capture group, not the whole match: the leading [^.!?]\s eats the
+     last letter of the previous word, so "with Ashgrove" used to yield
+     "h Ashgrove", which matched nothing and let the case's own firm through. */
+  var re = /(?:^|[^.!?]\s)([A-Z][A-Za-z&'’.-]{2,})/g, m, found = [];
+  while((m = re.exec(value)) !== null) found.push(m[1]);
+  for(var i = 0; i < found.length; i++){
+    var word = found[i];
+    if(firmWords.indexOf(word.toLowerCase()) !== -1) continue;
+    if(/^(The|This|That|They|Their|Both|Because|Although|While|However|Its|It|A|An|I|My|We|Our|One|Two|First|Second|Unlike|Like|By|For|In|On|At|When|Where|What|Which|Task)$/.test(word)) continue;
+    return true;
+  }
+  return false;
+}
+
+var CHECKS = [
+  {label:"Your name is on it",
+   hint:"The export and the printout both put it at the top.",
+   test:function(v){ return v.who.trim().length >= 2; }},
+
+  {label:"Task 1 addresses all five forces",
+   hint:function(v){
+     var blank = FORCE_KEYS.filter(function(k){ return (v[k] || "").trim() === ""; }).length;
+     return blank === 0 ? "All five rows have something in them."
+                        : blank + " of the five rows are still empty.";
+   },
+   test:function(v){ return FORCE_KEYS.every(function(k){ return words(v[k]) >= 4; }); }},
+
+  {label:"Task 1 rates each force rather than describing it",
+   hint:"Weak, moderate or strong, in every row. A description with no rating is not an evaluation.",
+   test:function(v){ return FORCE_KEYS.every(function(k){ return RATING_RE.test(v[k]); }); }},
+
+  {label:"Task 1 cites something countable",
+   hint:"A share, a count, a price move, a number of competitors — evidence from the scenario rather than an impression.",
+   test:function(v){
+     return FORCE_KEYS.filter(function(k){ return NUM_RE.test(v[k]); }).length >= 3;
+   }},
+
+  {label:"Task 1b names one force and argues it against another",
+   hint:"Rating all five and naming none leaves the decision to the reader, which was your job.",
+   test:function(v){
+     var forces = matched(FORCE_WORDS, v.strongest).length;
+     /* Either an explicit connective or a second force named — both are ways of
+        saying "this one rather than that one". A semicolon contrast counts. */
+     var argues = /because|since|beats|outweigh|more than|ahead of|whereas|while|compared|rather than|;/i
+       .test(v.strongest);
+     return forces >= 1 && words(v.strongest) >= 20 && (forces >= 2 || argues);
+   }},
+
+  {label:"Task 2 names two different activities",
+   hint:function(v){
+     var a = firstActivity(v.a1), b = firstActivity(v.a2);
+     if(!a || !b) return "Name each area in the value chain's own words.";
+     return a === b ? "Both areas lead with " + a + "." : "Area 1: " + a + ". Area 2: " + b + ".";
+   },
+   test:function(v){
+     /* Compare the activity each box LEADS with. An area that also names the
+        knock-on activity is a better answer, not a worse one, and the old
+        set-difference test rejected exactly that. */
+     var a = firstActivity(v.a1), b = firstActivity(v.a2);
+     return !!a && !!b && a !== b;
+   }},
+
+  {label:"Task 2 quotes each area's figure from the exhibit",
+   hint:"The figure exactly as the exhibit prints it, so a reader can trace it. Describe the driver in your own words.",
+   test:function(v){ return quotesExhibit(v.a1) && quotesExhibit(v.a2); }},
+
+  {label:"Task 3 is specific enough to cost",
+   hint:"Concrete means somebody could cost it and later check whether it shipped. “Improve our digital capabilities” fails this.",
+   test:function(v){
+     if(words(v.t3) < 50) return false;
+     var low = v.t3.toLowerCase();
+     for(var i = 0; i < VAGUE.length; i++){ if(low.indexOf(VAGUE[i]) !== -1) return false; }
+     return true;
+   }},
+
+  {label:"Task 3 names the kind of system, from the reading",
+   hint:function(v){
+     var found = matched(SYSTEM_WORDS, v.t3).map(function(s){ return s.label; });
+     return found.length ? "Found: " + found.join(", ") + "." :
+       "Name it in the reading's own words rather than by a product name.";
+   },
+   test:function(v){ return matched(SYSTEM_WORDS, v.t3).length >= 1; }},
+
+  {label:"Task 3 ties back to an activity and to a force",
+   hint:"A fix with no activity is not on the chain, and one with no pressure behind it is a preference.",
+   test:function(v){
+     return matched(ACTIVITY_WORDS, v.t3).length >= 1 && matched(FORCE_WORDS, v.t3).length >= 1;
+   }},
+
+  {label:"Task 3 gives a measure and a date",
+   hint:"The number as it stands today, the number you expect instead, and when somebody should look.",
+   test:function(v){ return NUM_RE.test(v.t3) && TIME_RE.test(v.t3); }},
+
+  {label:"Task 3b answers the chapter's own question",
+   hint:"Four parts on the Chapter 6 case, one set of four on the Chapter 7 case. This is the part a generic answer cannot fake.",
+   test:function(v){ return words(v.t3b) >= 60 && matched(SYSTEM_WORDS, v.t3 + " " + v.t3b).length >= 1; }},
+
+  {label:"Task 4 names the company it is comparing with",
+   hint:"A real company, named. The checklist can only see that you typed a name — whether it is documented anywhere is on you.",
+   test:function(v){ return namesACompany(v[ESSAY]); }},
+
+  {label:"Task 4 says what transfers",
+   hint:"A lesson that only works at that company's budget is not a lesson. Say what this firm should actually adapt.",
+   test:function(v){ return /lesson|should|adapt|borrow|copy|take from|apply|transfer/i.test(v[ESSAY]); }},
+
+  {label:"Task 4 connects the comparison to the initiative",
+   hint:"The summary is the strategic alignment deliverable. It has to come back to what you recommended, and to what the firm has chosen to compete on.",
+   test:function(v){
+     /* A 160-word summary for a board is allowed to say "the model" rather than
+        "the decision support system". Accept the reading's words, a value chain
+        activity, OR a plain reference to the thing recommended — what this is
+        really catching is a summary that admires a company and never returns to
+        Task 3 at all. */
+     var namesIt = matched(SYSTEM_WORDS, v[ESSAY]).length +
+                   matched(ACTIVITY_WORDS, v[ESSAY]).length > 0 ||
+                   /\binitiative|\bmodel|\bsystem\b|\bpilot\b|\bprogramme\b|\bprogram\b|\bassistant\b|\brecommend|\bdashboard|\bforecast/i.test(v[ESSAY]);
+     return namesIt && /alig|strateg|position|compet|advantage|promise|in stock|on time|what (it|we) sell|wins on|never been the cheapest/i.test(v[ESSAY]);
+   }},
+
+  {label:"Task 4 is inside the 150 to 200 word band",
+   hint:function(v){
+     var n = words(v[ESSAY]);
+     return n === 0 ? BAND.low + " to " + BAND.high + " words." :
+       n < BAND.low ? (BAND.low - n) + " words short of the band." :
+       n > BAND.high ? (n - BAND.high) + " words over the band." : "Inside the band.";
+   },
+   test:function(v){ var n = words(v[ESSAY]); return n >= BAND.low && n <= BAND.high; }}
+];
+
+function values(){
+  var v = { who: $("who").value };
+  allFields().forEach(function(f){ v[f.key] = f.el.value; });
+  return v;
+}
+
+function renderChecks(){
+  var v = values();
+  var list = $("checkList");
+  list.innerHTML = "";
+  CHECKS.forEach(function(check){
+    var ok = false;
+    try{ ok = !!check.test(v); }catch(e){ ok = false; }
+    var li = document.createElement("li");
+    li.className = ok ? "ok" : "";
+    var mark = document.createElement("span");
+    mark.className = "mark";
+    mark.textContent = ok ? "✓" : "•";
+    var body = document.createElement("div");
+    var strong = document.createElement("b");
+    strong.textContent = check.label;
+    body.appendChild(strong);
+    var hint = typeof check.hint === "function" ? check.hint(v) : check.hint;
+    if(hint){
+      var small = document.createElement("small");
+      small.textContent = hint;
+      body.appendChild(small);
+    }
+    li.appendChild(mark);
+    li.appendChild(body);
+    list.appendChild(li);
+  });
+}
+
+/* -------------------------------------------------------------- the export */
+function exportText(){
+  save();
+  var name = $("who").value.trim();
+  var lines = [
+    "Homework — Decision Making and Analytics: a framework analysis",
+    "Name: " + (name || "(no name entered)"),
+    "Exported: " + new Date().toLocaleString(),
+    ""
+  ];
+  TASKS.forEach(function(task){
+    var head = "## " + task.heading;
+    if(task.fields.length === 1 && task.fields[0].key === ESSAY){
+      head += "  (" + words(task.fields[0].el.value) + " words)";
+    }
+    lines.push(head, "");
+    task.fields.forEach(function(f){
+      var value = f.el.value.trim();
+      lines.push(f.row ? f.row + "  ->  " + (value || "(nothing written)")
+                       : (value || "(nothing written)"));
+    });
+    lines.push("");
+  });
+  var blob = new Blob([lines.join("\n")], {type:"text/plain;charset=utf-8"});
+  var safe = (name || "student").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "student";
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = safe + "-homework-07-case.txt";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+}
+
+/* --------------------------------------------------------------- wiring up */
+document.addEventListener("input", function(e){
+  if(!e.target.matches("textarea[data-key]")) return;
+  autosize(e.target);
+  queueSave();
+  refreshWordCount();
+  refreshUnanswered();
+  renderChecks();
+});
+$("who").addEventListener("input", function(){ queueSave(); renderChecks(); refreshIdentity(); });
+
+$("exportBtn").addEventListener("click", exportText);
+
+$("printBtn").addEventListener("click", function(){
+  textareas().forEach(autosize);
+  refreshIdentity();
+  window.print();
+});
+
+$("clearBtn").addEventListener("click", function(){
+  if(!window.confirm("Clear your name and every answer on this case? This cannot be undone.")) return;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  $("who").value = "";
+  allFields().forEach(function(f){ f.el.value = ""; autosize(f.el); });
+  refreshWordCount();
+  refreshUnanswered();
+  refreshIdentity();
+  renderChecks();
+  $("saveStatus").textContent = "Cleared.";
+});
+
+/* Print from the keyboard still needs the boxes grown, or the printed copy
+   shows the first few lines of every answer and nothing else. */
+window.addEventListener("beforeprint", function(){
+  textareas().forEach(autosize);
+  refreshIdentity();
+});
+
+/* Saving is debounced while typing, which leaves a window of a few hundred
+   milliseconds in which a closed tab loses the last sentence written. Flush
+   the moment the page is hidden or unloaded — pagehide fires where
+   beforeunload does not, and visibilitychange covers a phone being locked. */
+function flush(){ clearTimeout(saveTimer); save(); }
+window.addEventListener("pagehide", flush);
+document.addEventListener("visibilitychange", function(){
+  if(document.visibilityState === "hidden") flush();
+});
+
+load();
+textareas().forEach(autosize);
+refreshWordCount();
+refreshIdentity();
+refreshUnanswered();
+renderChecks();
+})();
+</script>
+
+<!--
+================================================================================
+This page carries no answers, no marking guidance and no weighting, on purpose:
+a student can read this source as easily as the page. Both live in the
+instructor key beside this file, which is not in version control.
+
+Generated. Edit homework/src/ and run `python3 homework/src/build.py`.
+================================================================================
+-->
+</body>
+</html>

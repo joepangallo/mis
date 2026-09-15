@@ -396,6 +396,90 @@ the test says so.
 node --test games/decision-engine.test.mjs
 ```
 
+## Homework
+
+**Both homework papers live in [`homework/`](homework).** Each is a **case study in the shape of the
+graded framework analysis** &mdash; a scenario, a real company of the student&rsquo;s choosing to compare
+against, four tasks, and the two deliverables &mdash; rather than a worksheet with a case bolted on. They
+are open book, and each links back to the reading it is answered with and to the frameworks workshop.
+
+| Paper | Answered with | The firm |
+|---|---|---|
+| [`homework-06-data-and-business-intelligence-case.html`](homework/homework-06-data-and-business-intelligence-case.html) | [Module 6](module-06-managing-data-and-business-intelligence.html) | **Ashgrove Pet Company**, a 17-store pet retailer that is not short of data and can act on almost none of it: two product catalogs merged without reconciling 3,100 identifiers, returns in a spreadsheet nobody else can open, two live definitions of &ldquo;customer&rdquo;, a monthly report that lands four days after the meeting, and a webshop clickstream thrown away because nothing can store it |
+| [`homework-07-decision-making-and-analytics-case.html`](homework/homework-07-decision-making-and-analytics-case.html) | [Decision Engine](games/decision-engine.html) | **Corwin Cycle Company**, a 14-store cycle retailer holding four years of records it has never asked anything: one revenue figure per store with nothing to open up, a margin model opened once a quarter, 40,000 unlabelled workshop notes, ninety availability enquiries a day answered by hand, a pilot that reported 97 percent because it was tested on its training data, and three workshop managers retiring with everything they know |
+
+**The two papers are alternatives, not a sequence.** Each is a full analysis of one firm; assigning both
+back to back is repetitive, and the reading load below is per paper.
+
+**The tasks are the assignment&rsquo;s own**, and the contract test fails if the wording drifts:
+apply the five competitive forces; use the value chain to find **at least two internal areas** where
+information systems could create an **operational or customer-focused** advantage; recommend **exactly
+one** IT initiative; and write the **150&ndash;200 word** summary comparing against **one real retail or
+e-commerce company**. The two deliverables are the framework analysis and the written summary explaining
+IT strategic alignment.
+
+Three things make them markable rather than merely open:
+
+- **Task 1 is a five-row grid, one row per force.** A single box invites four forces to be skipped
+  silently; a grid does not. Task 1b then makes naming the *single strongest* force its own answer,
+  because rating all five and naming none leaves the decision to the reader. Rating a force is an
+  *evaluate* task, so the keys mark the evidence rather than the label, and name which alternative
+  readings earn full marks instead of declaring a runner-up settled.
+- **Task 3b is what makes the reading non-optional.** Without it both papers answer to a generic
+  strategy recommendation with a system&rsquo;s name attached. It asks the question only the chapter
+  settles &mdash; which of the three data failures is being fixed and which are left, who owns the
+  authoritative record and what happens when two departments disagree; or, on the other paper, the
+  method and the four things that particular method has to pin down.
+- **Every case carries a costed exhibit split two ways** &mdash; the annual cost of each of the **nine**
+  value chain activities, and the part of it that is **avoidable**: cost the firm would not carry if the
+  problems in the brief were not there. Task 2 requires the figure quoted exactly, and the driver
+  described in the student&rsquo;s own words &mdash; requiring the driver verbatim rewards copying. On
+  both papers the activity carrying most of the money carries no avoidable cost, so attacking the
+  biggest number is the designed wrong answer; a test asserts that stays true. The page is careful not
+  to claim the converse &mdash; the largest avoidable figure is not automatically the best thing to
+  fund, and saying which you are weighing is part of the task.
+- **The brief carries one quantified fact per force**, with a stated ceiling on the forces that are not
+  meant to win, and the best-supported force is deliberately **different on the two papers**, so a
+  student who pattern-matches from one to the other gets it wrong. Which force that is on each paper is
+  in the gitignored instructor key, not here.
+
+Both carry the exam's machinery: a name field, answers saved in the reader's own browser as they type
+(flushed on `pagehide`, so closing the tab does not lose the last sentence), a word counter on the
+summary, a live **shape** checklist, a panel naming anything still empty, a plain-text export with every
+answer in order, and a printable layout that puts the student's name on the printed copy.
+
+**No point value, rubric or weighting appears anywhere in the file** &mdash; not in the body and not in
+a comment, because View Source is as readable as the page. Weights and marking guidance live only in the
+gitignored `homework/homework-0N-instructor-key.md` beside each page, and a test scans the whole file
+rather than just the visible part. (Note the tension: `practice-case-study/` *does* show a 25-point
+table, so the precedent for showing them exists and is one edit &mdash; and `midterm.html` still keeps
+its weights in a comment.)
+
+### Working on them
+
+The two papers are **generated from one template**, so anything true of one is true of the other by
+construction rather than by discipline. Sources in [`homework/src/`](homework/src): `build.py` holds the
+per-case data, `case-script.js` the shared page machinery, `page.css.html` the design system the exam
+pages use. Edit those, never the built HTML.
+
+```sh
+python3 homework/src/build.py          # regenerate both papers
+node --test homework/homework-cases.test.mjs
+```
+
+One test file covers both and additionally asserts they have **not drifted apart** &mdash; same tasks,
+same boxes, same checklist &mdash; while sharing no scenario, no firm, no exhibit and no storage key. It
+also loads each page's inline script against a small DOM stub and **runs the checklist predicates
+directly** &mdash; including one **end-to-end fixture**, a complete analysis that has to pass every
+check at once, and a filler fixture that must not. That harness exists because the checklist's real
+failure mode is not a crash but marking a complete answer incomplete.
+
+The generated pages are checked by **regenerating them into a temp directory and comparing bytes**, so a
+hand edit to the built HTML fails the build rather than surviving until the next run. Where the
+gitignored instructor key is present, the suite also checks that **every figure the key quotes is one the
+exhibit prints** &mdash; the key and the exhibit drifted apart once, and a stale key marks down students
+who read the page correctly.
+
 ## Practice midterm
 
 [`practice-midterm.html`](practice-midterm.html) is a practice paper in the shape of the exam it

@@ -36,11 +36,21 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      # The workshop, the quiz, the three review games and the Chapter 7 learning
-      # game are hand-written rather than generated, so check.mjs never sees them.
-      # Their contract tests are what stops a board drifting out of shape or a link
-      # going stale, and they are listed one by one for the same reason the module
-      # matrix is: adding a page should be a deliberate line in this file.
+      # The workshop, the quiz, the three review games, the Chapter 7 learning game
+      # and the two homework papers are hand-written rather than generated, so
+      # check.mjs never sees them. Their contract tests are what stops a board
+      # drifting out of shape or a link going stale, and they are listed one by one
+      # for the same reason the module matrix is: adding a page should be a
+      # deliberate line in this file.
+      #
+      # The two homework case studies are generated from one template, so a single
+      # test file covers both and also asserts they have not drifted apart. It
+      # needs no answer key: every task on those papers is an open analysis, and
+      # the marking guidance is gitignored beside them.
+      # Every other leak check here works on file names, which a .zip defeats.
+      - name: Refuse an archive that carries answers
+        run: node src/check-archives.mjs
+
       - name: Run the contract tests for every self-contained page
         run: >
           node --test
@@ -51,3 +61,4 @@ jobs:
           games/modules-1-3-jeopardy.test.mjs
           games/module-06-jeopardy.test.mjs
           games/decision-engine.test.mjs
+          homework/homework-cases.test.mjs
