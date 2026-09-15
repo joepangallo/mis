@@ -1,10 +1,10 @@
-/* Contract tests for the self-contained practice final.
+/* Contract tests for the self-contained practice midterm.
  *
  * Node standard library only. The answers are not in this repository: they live
  * in the untracked instructor key beside the page, so the tests that need them
  * skip when it is absent, which is what happens on CI.
  *
- * Run: node --test practice-final.test.mjs
+ * Run: node --test practice-midterm.test.mjs
  */
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -13,8 +13,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const PAGE = "practice-final.html";
-const KEY_FILE = "practice-final-instructor-key.md";
+const PAGE = "practice-midterm.html";
+const KEY_FILE = "practice-midterm-instructor-key.md";
 const html = readFileSync(join(ROOT, PAGE), "utf8");
 const LETTERS = ["A", "B", "C", "D"];
 
@@ -118,7 +118,7 @@ test("three parts, thirty-three questions, numbered once each", () => {
     "questions must run 1 to 33 in order, each heading used once");
   const parts = html.split(/<div class="part-head">/).slice(1);
   assert.deepEqual(parts.map(p => questionNumbers(p).length), [16, 14, 3],
-    "the practice final must carry the same 16-14-3 split as the exam it prepares for");
+    "the practice paper must carry the same 16-14-3 split as the exam it prepares for");
 });
 
 test("every multiple choice question offers four distinct options, A to D, none preselected", () => {
@@ -240,6 +240,22 @@ test("the right answer is never simply the longest option", (t) => {
   }
 });
 
+test("the right answer is not a bare label among explained distractors", (t) => {
+  /* The mirror of the rule above, and the easier one to write by accident: a
+     one-word correct option sitting among four that each carry a "because"
+     clause is visible from across the room without reading the question. */
+  const key = answerKey();
+  if(!key){ t.skip(`${KEY_FILE} is not present, so the answers are not being checked`); return; }
+  for(const q of choiceQuestions()){
+    const lengths = q.options.map(o => rendered(o.text).length);
+    const correct = LETTERS.indexOf(key[q.name.toUpperCase()]);
+    const others = lengths.filter((_, i) => i !== correct);
+    const under = Math.min(...others) - lengths[correct];
+    assert.ok(under <= 25,
+      `${q.name}: the correct option is ${under} characters shorter than every distractor`);
+  }
+});
+
 test("each matching question uses every option exactly once", (t) => {
   const key = answerKey();
   if(!key){ t.skip(`${KEY_FILE} is not present`); return; }
@@ -306,7 +322,7 @@ test("no reserved assessment term reaches the page", (t) => {
 
 test("the answer key is kept out of version control", () => {
   const ignore = readFileSync(join(ROOT, ".gitignore"), "utf8");
-  assert.match(ignore, /^practice-final-instructor-key\*\.md$/m);
+  assert.match(ignore, /^practice-midterm-instructor-key\*\.md$/m);
 });
 
 test("every firm on the page is declared invented", () => {

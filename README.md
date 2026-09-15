@@ -100,7 +100,15 @@ cannot merge unnoticed in any of them.
 
 ## Review game
 
-[`modules-1-3-jeopardy.html`](modules-1-3-jeopardy.html) is a two-round Jeopardy board covering
+**Every game lives in [`games/`](games).** Each is one self-contained HTML file with its
+contract test beside it, and each links back up to the reading it covers. The three review boards are
+described separately in this file because each serves a different part of the course: this one covers
+Modules 1 to 3, **Strategy frameworks review game** narrows to the two frameworks, and **Module 6
+review game** covers Chapter 6 and is the one two to four people can play against each other.
+**Decision Engine**, described below, is not a review board at all &mdash; it is where Chapter 7 is
+taught rather than revised.
+
+[`games/modules-1-3-jeopardy.html`](games/modules-1-3-jeopardy.html) is a two-round Jeopardy board covering
 Modules 1 to 3, for use once the reading is done rather than instead of it. Like the modules it is one
 self-contained file with no CDN, no fonts, no scripts and no network of any kind, and it inherits the
 theme the reader last set on a module page.
@@ -121,17 +129,19 @@ results screen reports **per objective** rather than as one number, and says pla
 a sentence saying why it is that term and not the one next to it.
 
 The board teaches the shape of the graded deliverable, never its wording: no case name, no institution,
-no course code. `modules-1-3-jeopardy.test.mjs` enforces that alongside the board contract &mdash; two
+no course code. `games/modules-1-3-jeopardy.test.mjs` enforces that alongside the board contract &mdash; two
 5&times;5 rounds with round two worth double, answers phrased as questions, no duplicated clue or answer,
 every clue tagged and every covered objective actually asked about, and every link resolving to a file
 that exists.
 
 ```sh
-node --test modules-1-3-jeopardy.test.mjs
+node --test games/modules-1-3-jeopardy.test.mjs
 ```
 
-A second board, narrowed to the two strategy frameworks and playable without having read
-Modules 1 and 3, is described under **Strategy frameworks review game** below.
+The other two boards in `games/` follow the same pattern: one narrowed to the two strategy frameworks and
+playable without having read Modules 1 and 3, under **Strategy frameworks review game** below, and one
+covering Module 6 that **two to four people can play against each other on one screen**, under
+**Module 6 review game**.
 
 ## Strategy frameworks workshop
 
@@ -223,54 +233,186 @@ node --test five-forces-and-value-chain-quiz.test.mjs
 
 ## Strategy frameworks review game
 
-[`five-forces-and-value-chain-jeopardy.html`](five-forces-and-value-chain-jeopardy.html) is a second
-Jeopardy board, this one narrowed to the two frameworks and playable without having read Modules 1 and 3.
-Fifty clues over two boards plus a Final Jeopardy capstone, self-contained on the same terms as
-everything else here.
+[`games/five-forces-and-value-chain-jeopardy.html`](games/five-forces-and-value-chain-jeopardy.html) is a second
+Jeopardy board, playable without having read Modules 1 and 3. It is deliberately **two things and nothing
+else**: the five competitive forces, and the five primary activities of the value chain together with what
+sits inside each one. Fifty clues over two boards plus a Final Jeopardy capstone.
 
-- **Round one, $200&ndash;$1,000 &mdash; what the terms mean.** The five forces by name, the five primary
-  activities, the four support bands and cost drivers, what actually makes a force strong (barriers,
-  switching costs, concentration, integration, and what the internet did to all of them), and the
-  strategy vocabulary the recommendation is judged against.
-- **Round two, Double Jeopardy, $400&ndash;$2,000 &mdash; what you do with them.** Diagnose the pressure
-  from a situation, name the activity that owns the problem, untangle the five confusions that change
-  what a firm buys, match a system to the force it answers, and **the shape of the written analysis
-  itself**.
-- **Final Jeopardy** is business and IT alignment, which is what both frameworks are ultimately for.
-- **A term defined in round one is often diagnosed again in round two, on purpose** &mdash; recognition
-  first, then recall from evidence. What the test forbids is the same answer twice inside one round, or
-  a round-two clue that simply reprints its round-one definition.
+- **Round one, $200&ndash;$1,000 &mdash; naming each part.** The five forces by name; the conditions that
+  make a force strong (barriers to entry, switching costs, buyer concentration, product differentiation,
+  flat or shrinking demand); the five primary activities by name; then **Inside Inbound Logistics** and
+  **Inside Operations**.
+- **Round two, Double Jeopardy, $400&ndash;$2,000 &mdash; reading them from evidence.** **Which Force Is
+  It?** is built entirely on the five near-misses &mdash; rival against substitute, entrant against rival,
+  a demanding buyer against a crowded market, the supplier whose power lands in the cost line. **The Same
+  Chain in a Hotel** asks the five activities again in a service business. Then **Inside Outbound
+  Logistics**, **Inside Sales and Marketing** and **Inside Service**.
+- **Half the board is those five `Inside` categories** &mdash; 25 of the 50 tiles. Each asks for what is
+  actually in one activity: the cost drivers it is judged on (idling between stops, half-empty vehicles,
+  a failed first delivery) and the systems that answer them (route optimisation, proof of delivery).
+  Knowing that outbound logistics exists is not the same as knowing that sixty percent of its bill is
+  drivers idling between stops.
+- **Final Jeopardy** is the cost driver, which is what every one of those activities was opened up for.
+- **Deliberately off the board:** the four support activities &mdash; firm infrastructure, human
+  resources, technology development and procurement &mdash; along with the generic strategies, business
+  and revenue models, and the shape of the written analysis, all of which this board used to carry. The
+  intro says so in as many words and sends the reader to the workshop for them.
+- **A part named in round one is often asked again in round two, on purpose** &mdash; recognition first,
+  then recall from evidence. What the test forbids is the same answer twice inside one round, or a
+  round-two clue that simply reprints its round-one definition.
 
-Every clue is tagged with the course objectives it serves and the topic to go back to on a miss, so the
-results screen reports **per objective** rather than as one number, and the intro says plainly which
-objectives two strategy frameworks cannot honestly claim. Each revealed answer carries a sentence saying
-why it is that term and not the one next to it. `five-forces-and-value-chain-jeopardy.test.mjs` enforces
-the board contract &mdash; two 5&times;5 rounds with round two worth double, answers phrased as questions,
-all five forces both named in round one and diagnosable in round two, all nine value chain activities
-named, every clue tagged, every topic bucket carrying real weight, and every link resolving to a file
-that exists.
+Every clue is tagged with the course objectives it serves and the part of the workshop to go back to on a
+miss, so the results screen reports **per objective** rather than as one number. Each revealed answer
+carries a sentence saying why it is that term and not the one next to it.
+`games/five-forces-and-value-chain-jeopardy.test.mjs` enforces the board contract and the narrowing
+together &mdash; two 5&times;5 rounds with round two worth double, answers phrased as questions, all five
+forces both named in round one and diagnosable in round two, all five primary activities named, one
+`Inside` category per activity that never answers with the activity's own name, **no support activity as
+an answer anywhere**, no generic-strategy or written-analysis vocabulary left behind, every clue tagged,
+and every workshop link resolving to an anchor that still exists.
 
 ```sh
-node --test five-forces-and-value-chain-jeopardy.test.mjs
+node --test games/five-forces-and-value-chain-jeopardy.test.mjs
 ```
 
-## Practice final
+## Module 6 review game &mdash; up to four players
 
-[`practice-final.html`](practice-final.html) is a practice paper in the shape of the exam it prepares
-for and with none of its questions: thirty-three questions in a 16&ndash;14&ndash;3 split, mixing multiple
+[`games/module-06-jeopardy.html`](games/module-06-jeopardy.html) is a third Jeopardy board, covering Module 6 and
+**playable by one to four people on one screen**. Fifty-one clues over two boards plus a Final Jeopardy
+capstone, self-contained on the same terms as everything else here.
+
+- **Round one, $200&ndash;$1,000 &mdash; what the terms mean.** Data as an asset and the three failures that
+  look alike, the parts of a table and its keys, reading an ERD in both directions, the SQL clauses, and
+  the three Vs.
+- **Round two, Double Jeopardy, $400&ndash;$2,000 &mdash; what you do with them.** Diagnose which data failure
+  you are actually looking at, name the report a manager is asking for, choose where the data should live,
+  read competitive pressure from evidence, and **the shape of a recommendation somebody could fund** &mdash;
+  why two reports are not two value chain activities, what a comparison needs before a drop in hours counts
+  as an improvement, why released staff time is not yet a cash saving, and the decision rule that says in
+  advance what would stop a pilot.
+- **Final Jeopardy** is the business capability, which is the chapter&rsquo;s answer to why two firms can buy
+  the identical database and get different results.
+
+**What the extra players change.** With one player it behaves like the other two boards: reveal, grade
+yourself, no penalty for a miss, and a personal best kept in the browser. With two to four, the number keys
+**1**&ndash;**4** are the buzzers and **0** is &ldquo;nobody has it&rdquo;; the printed answer stays hidden until
+the clue is settled, so a steal is worth something; a wrong answer costs the tile&rsquo;s value and reopens
+the clue to whoever has not tried it; a correct answer takes control of the board; Double Jeopardy opens
+with the player in last place; and Final Jeopardy takes each wager privately in turn before one clue goes
+to the whole table. The objective and section breakdowns report **the table**, not any one player &mdash;
+a clue counts as answered if anybody got it, because what the group could not reach between them is what
+is worth reteaching.
+
+`games/module-06-jeopardy.test.mjs` enforces the board contract and the multiplayer rules together &mdash; two
+5&times;5 rounds with round two worth double, answers phrased as questions, all five report types and all
+five forces asked, every clue tagged, every section bucket carrying real weight, buzzer keys bounded by the
+roster, player names rendered as text and never as markup, wagers clamped to the wagering player&rsquo;s own
+score and never shown to the players still to wager, and no element with an id sitting inside a panel the
+engine rebuilds between games.
+
+```sh
+node --test games/module-06-jeopardy.test.mjs
+```
+
+## Chapter 7 learning game
+
+[`games/decision-engine.html`](games/decision-engine.html) is the one page here that **teaches a chapter
+instead of revising it**. It is an eight-quarter management game: you run the analytics, artificial
+intelligence and knowledge programme of an invented distributor, and every mechanic in it *is* a piece of
+Chapter 7 rather than a question about one. Self-contained on the same terms as everything else &mdash; no
+CDN, no fonts, no network &mdash; and it inherits the theme the reader last set on a module page.
+
+**Every question marks itself the moment you answer it** — right or wrong, the reasoning underneath, the
+points it was worth, and the controls locked so the first answer is the one that counts. The score in the
+top bar moves as you work. That is the same rhythm as the intro's try-it card and the same rule as the
+strategy quiz, and it is the answer to *how am I being assessed*: you never make ten choices before
+finding out how the first one went. Cash, trust and capability still move behind the scenes and are
+reported in each quarter's results as consequences, but they are **not** in the top bar, because three
+numbers that do not decide the ending read as three more things you are being marked on.
+
+**It opens with one decision rather than an explanation.** The first thing on the screen is a single
+request from a regional manager and four buttons; press one and the game tells you why that was or was
+not the right kind of analysis. That is the whole mechanic, played before a word of scenario. The
+scenario, the four meters and the coverage notes are folded away behind one disclosure for whoever wants
+them. Inside a quarter the order is the same: **&ldquo;Quarter 3 of 8 &mdash; choose six tiles for an
+executive's dashboard, then work a pricing model with sliders&rdquo;** comes before the briefing, a
+numbered *What to do on this screen* comes before the field manual, and the commit button carries a badge
+saying what is still outstanding that turns green when it is done.
+
+The design rule is that a concept the reader could be *told* is instead something they have to *do*, and
+getting it wrong costs cash, trust or capability rather than a mark:
+
+- **Q1, the inbox** &mdash; eight departmental requests, none of which says what it wants, sorted into
+  descriptive, diagnostic, predictive and prescriptive, then two of them chosen to build against a
+  priority the board has stated. Misfiling one buys rework that reappears in Q5.
+- **Q2, the cube** &mdash; a real 4&times;4&times;4 cube with two measures. Slicing, dicing, drilling down
+  and rolling up are the controls, not the vocabulary, and the CFO&rsquo;s questions cannot be answered
+  without using them. **The region that sells the most chilled is not the one that earns the most on it**,
+  so the measure you pick changes the answer. Queries take four seconds off a disk until you pay to move
+  the cube into memory.
+- **Q3, the dashboard and the model** &mdash; six tiles out of twelve for an executive with a stated job,
+  then a **working** decision support model: what-if, sensitivity, goal seeking and a constrained optimum,
+  all from one formula. The goal-seek answer hits the target and the probability-weighted expectation
+  misses it, and the volume it assumed is one the demand curve will not give you.
+- **Q4, unlabelled data** &mdash; support and confidence counted live off twenty printed orders, so a rule
+  with 100% confidence and 5% support is something the reader watches happen. Support reads the same in
+  both directions and confidence does not. Plus an anomaly with two decoys, and three clusters an
+  algorithm produced and cannot name.
+- **Q5, the model** &mdash; the whole workflow, and the accuracy at the end is **computed from the
+  decisions** rather than announced. Training on all the data is allowed, reports a wonderful number, and
+  the deployment reveals the real one. What the model is worth then decides Q7.
+- **Q6, generative AI** &mdash; three jobs whose right answers are three *different* rungs of the
+  deployment ladder, and each choice returns the answer that choice actually produces, including a
+  confident invented returns policy. Then governance, and a draft in which three of five sentences are
+  fabricated.
+- **Q7, the agent** &mdash; one human review gate placed in a five-step pipeline, priced against the
+  errors it catches. No gate is never cheapest and a gate before the machine has judged is never cheapest,
+  but **which of the two later positions wins depends on the accuracy you produced in Q5**.
+- **Q8, ground truth** &mdash; a map whose layers all start switched off, where the best site on density is
+  the one inside the floodplain; quantities against densities; a knowledge network with a connector and a
+  bridge who are different people; and explicit against tacit knowledge.
+
+Results are reported **per chapter objective 7.1&ndash;7.4** with a Solid/Shaky/Reread verdict, followed by
+every decision that cost something and why, and a chain of what each quarter handed the next. The intro
+names the five course objectives a single chapter can honestly claim and the six it cannot, including why
+objective 11 is not one of them even though Q3 teaches what a decision support system does. Every
+organization, person and figure is invented; the one real company named appears once, inside a card marked
+as the chapter&rsquo;s own example.
+
+The onboarding is under test too, because it took two rounds of feedback to get right: the try-it card
+must come before any panel of prose, the intro must stay under 240 words before the fold, every quarter
+must state its job in one sentence above the briefing, and every *what to do* line must actually tell the
+reader to do something.
+
+`games/decision-engine.test.mjs` loads the page against a DOM stub and then **recomputes every number the
+game asserts** &mdash; the cube answers off the raw arrays, the four DSS analyses off the model, support and
+confidence off the baskets, model accuracy off the workflow choices, and the cost of every review gate at
+every reachable accuracy. So a tuned constant that quietly breaks a lesson fails the build: if the same
+region ever won on both measures, if the expected margin ever cleared the target, if running the agent
+unattended were ever the cheapest option, or if anybody but the bridge could split the knowledge network,
+the test says so.
+
+```sh
+node --test games/decision-engine.test.mjs
+```
+
+## Practice midterm
+
+[`practice-midterm.html`](practice-midterm.html) is a practice paper in the shape of the exam it
+prepares for and with none of its questions: thirty-three questions in a 16&ndash;14&ndash;3 split, mixing multiple
 choice, matching, written answers and a case, with a different firm in every scenario. It is **the questions and nothing else** &mdash; no
 objective tags, no coverage tables, no shape checklist, no weighting &mdash; because a practice paper is
 for sitting, not for reading about.
 
 It keeps only what a reader needs to sit it and hand it in: a name field, boxes that save as you type, a
 word counter on the closing recommendation, an export, and a printable layout that says in words which
-option was chosen. `practice-final.test.mjs` enforces both halves of that &mdash; the shape it shares
+option was chosen. `practice-midterm.test.mjs` enforces both halves of that &mdash; the shape it shares
 with the real paper, and the scaffolding it must not have, including a test that fails if any multiple
 choice stem is copied from the exam or the case reuses the same firm, which it checks whenever the exam
 is present beside it.
 
 ```sh
-node --test practice-final.test.mjs
+node --test practice-midterm.test.mjs
 ```
 
 ## Practice case studies

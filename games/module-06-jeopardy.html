@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Module 6 Jeopardy &mdash; Managing Data and Business Intelligence</title>
+<meta name="description" content="A two-round Jeopardy-style review game on Chapter 6 for one to four players — data as an asset, tables and keys, SQL, reports, warehouses and lakes, and the strategy case for a data initiative.">
+<style>
+/* ============================================================================
+   THEME TOKENS — the same palette as the study modules, so moving from a
+   module into this review game does not feel like switching products. The
+   board colours are the one addition: a deep blue-violet that reads as a game
+   show rather than as more reading.
+   ========================================================================== */
+:root{
+  --bg:#efe7d9; --bg-soft:#e8dfcd; --panel:#faf5ec; --panel-2:#f2ebdd;
+  --border:#ddd0b8; --border-soft:#e7dcc8;
+  --text:#2f2a22; --text-dim:#554d40; --muted:#6b6153;
+  --accent:#1d5d8c; --accent-strong:#17506f; --accent-soft:#1d5d8c1a; --accent-line:#1d5d8c45;
+  --good:#0e6b4d; --good-soft:#0e6b4d1a;
+  --bad:#b3282f;  --bad-soft:#b3282f1a;
+  --warn:#8a5300; --warn-soft:#8a53001a;
+  --plum:#7a3d86; --plum-soft:#7a3d861a;
+  --board:#1b2a55; --board-2:#25397a; --board-text:#fff;
+  --shadow:0 8px 22px rgba(96,74,40,.11);
+  --radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#1e2433; --bg-soft:#242b3c; --panel:#293042; --panel-2:#323950;
+  --border:#46506c; --border-soft:#394157;
+  --text:#f2f4fa; --text-dim:#c8cfe0; --muted:#a6aec4;
+  --accent:#7cc7f0; --accent-strong:#1d5d8c; --accent-soft:#7cc7f022; --accent-line:#7cc7f055;
+  --good:#2fd39f; --good-soft:#2fd39f22;
+  --bad:#ff8a94;  --bad-soft:#ff8a9422;
+  --warn:#f5a524; --warn-soft:#f5a52422;
+  --plum:#d8a6e4; --plum-soft:#d8a6e422;
+  --board:#101a38; --board-2:#1a2a5e; --board-text:#fff;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%; margin:0}
+body{background:var(--bg); color:var(--text); min-height:100%;
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+button{font:inherit; color:inherit}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+.app{min-height:100%; display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:10px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:5}
+.brand{display:flex; align-items:baseline; gap:10px; margin-right:auto; min-width:0}
+.brand b{font-size:1.05rem; letter-spacing:-.01em}
+.brand span{font-size:.7rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.stat{display:flex; align-items:baseline; gap:6px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.stat i{font-style:normal; font-size:.62rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.stat b{font-size:.95rem; font-variant-numeric:tabular-nums}
+.btn{border:1px solid var(--border); background:var(--panel-2); border-radius:10px;
+  padding:8px 14px; cursor:pointer; font-weight:650; font-size:.86rem;
+  transition:transform .1s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--accent-line)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.good{background:var(--good); border-color:var(--good); color:#fff}
+.btn.sm{padding:5px 11px; font-size:.78rem}
+.btn[disabled]{opacity:.45; cursor:default}
+button:focus-visible,[role="button"]:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
+.stage{flex:1; padding:18px 18px 40px; display:flex; flex-direction:column; align-items:center}
+.wrap{width:100%; max-width:1000px}
+.foot{padding:10px 18px 16px; border-top:1px solid var(--border-soft);
+  font-size:.75rem; color:var(--muted); display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+.foot a{font-weight:700}
+
+.hero{text-align:center; margin:8px 0 20px}
+.hero h1{margin:0 0 8px; font-size:1.9rem; letter-spacing:-.02em}
+.hero p{margin:0 auto; max-width:62ch; color:var(--text-dim); font-size:.95rem}
+.eyebrow{display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:8px}
+
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  padding:20px 22px; box-shadow:var(--shadow); width:100%}
+.panel + .panel{margin-top:14px}
+.panel h2{margin:0 0 10px; font-size:1.1rem}
+.panel p{margin:0 0 10px}
+.panel ul{margin:0; padding-left:22px}
+.panel li{margin:6px 0}
+.cats-preview{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); margin:10px 0 4px}
+.cats-preview .chip{background:var(--panel-2); border:1px solid var(--border-soft);
+  border-radius:12px; padding:11px 12px; text-align:center; font-weight:750; font-size:.83rem}
+.round-label{font-size:.66rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:14px 0 4px}
+.center-row{display:flex; justify-content:center; gap:12px; margin-top:18px; flex-wrap:wrap}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft);
+  border-radius:10px; padding:12px 14px; margin:12px 0 0; font-size:.9rem}
+.callout.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.callout b.tagline{display:block; margin-bottom:4px}
+
+/* ---------------------------------------------------------------- board */
+.round-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin:0 0 10px}
+.round-head h2{margin:0; font-size:1.25rem}
+.round-head span{font-size:.82rem; color:var(--muted)}
+.board-scroll{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;
+  border-radius:16px; box-shadow:var(--shadow)}
+.board{display:grid; grid-template-columns:repeat(5,minmax(158px,1fr)); gap:4px;
+  background:var(--board-2); min-width:800px; padding:4px}
+.board .cat{background:var(--board); color:var(--board-text); text-align:center;
+  font-weight:800; font-size:.76rem; letter-spacing:.02em; padding:12px 8px;
+  display:flex; align-items:center; justify-content:center; min-height:66px; line-height:1.25}
+.tile{background:var(--board); color:var(--board-text); border:none; border-radius:4px;
+  font-size:1.45rem; font-weight:800; padding:22px 6px; cursor:pointer;
+  font-variant-numeric:tabular-nums; transition:background .12s}
+.tile:hover:not([disabled]){background:var(--board-2)}
+.tile[disabled]{background:transparent; color:var(--border-soft); cursor:default; opacity:.55}
+html[data-theme="dark"] .tile[disabled]{color:#2c3663}
+
+/* ---------------------------------------------------------------- dialog */
+dialog{border:none; border-radius:18px; padding:0; background:var(--panel); color:var(--text);
+  width:min(660px,92vw); box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(20,16,10,.55)}
+html[data-theme="dark"] dialog::backdrop{background:rgba(0,0,0,.65)}
+.dlg-inner{padding:24px 26px 22px}
+.dlg-eyebrow{font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 8px}
+.dlg-clue{font-size:1.2rem; line-height:1.5; font-weight:650; margin:0 0 18px}
+.dlg-answer{font-size:1.1rem; line-height:1.5; font-weight:650; color:var(--good);
+  background:var(--good-soft); border:1px solid var(--good); border-radius:12px;
+  padding:12px 14px; margin:0 0 14px}
+.dlg-why{font-size:.9rem; line-height:1.55; color:var(--text-dim); background:var(--panel-2);
+  border:1px solid var(--border-soft); border-radius:12px; padding:11px 14px; margin:0 0 18px}
+.dlg-why b{color:var(--text)}
+.dlg-row{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.dlg-row.spread{justify-content:space-between}
+.wager-row{display:flex; align-items:center; gap:10px; margin:0 0 8px}
+.wager-row input{font:inherit; font-size:1.1rem; font-weight:750; width:130px;
+  padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--panel-2);
+  color:var(--text)}
+.wager-hint{font-size:.82rem; color:var(--muted); margin:0 0 18px}
+
+/* ---------------------------------------------------------------- results */
+.results{text-align:center}
+.results .score{font-size:3rem; font-weight:800; margin:6px 0; color:var(--accent)}
+.results .score.name{font-size:2rem; line-height:1.25}
+.results .best{color:var(--muted); font-size:.9rem; margin-bottom:6px}
+.tbl-wrap{width:100%; overflow-x:auto; margin-top:10px}
+table.tbl{width:100%; border-collapse:collapse; font-size:.88rem; text-align:left}
+table.tbl th,table.tbl td{padding:8px 10px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+table.tbl thead th{background:var(--panel-2); font-size:.7rem; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted); border-bottom:1px solid var(--border)}
+table.tbl td.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pill{display:inline-block; padding:2px 9px; border-radius:99px; font-size:.72rem; font-weight:800}
+.pill.ok{background:var(--good-soft); color:var(--good)}
+.pill.mid{background:var(--warn-soft); color:var(--warn)}
+.pill.low{background:var(--bad-soft); color:var(--bad)}
+.pill.none{background:var(--panel-2); color:var(--muted)}
+
+[hidden]{display:none !important}
+@media (max-width:640px){
+  .hero h1{font-size:1.5rem}
+  .tile{font-size:1.15rem; padding:16px 4px}
+  .board .cat{font-size:.68rem}
+  .stage{padding:14px 12px 32px}
+}
+</style>
+<style>
+/* ============================================================================
+   WHAT THIS BOARD ADDS THAT THE EARLIER TWO DID NOT: up to four people playing
+   at once. Everything below exists to keep four scores, four buzzers and one
+   shared screen legible — a colour and a number per player, carried the same
+   way in the topbar, on the buzzer buttons, in the turn bar and in the final
+   standings, so nobody has to remember which chip is theirs.
+   ========================================================================== */
+:root{ --p1:#1d5d8c; --p2:#0e6b4d; --p3:#7a3d86; --p4:#8a5300; --dot-text:#fff; }
+html[data-theme="dark"]{ --p1:#7cc7f0; --p2:#2fd39f; --p3:#d8a6e4; --p4:#f5a524; --dot-text:#141a28; }
+
+.strip{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.pchip{display:inline-flex; align-items:center; gap:7px; padding:4px 11px; border-radius:99px;
+  background:var(--panel-2); border:1px solid var(--border-soft); white-space:nowrap}
+.pchip .num{font-style:normal; font-size:.62rem; font-weight:800; width:17px; height:17px;
+  border-radius:50%; display:inline-grid; place-items:center; color:var(--dot-text)}
+.pchip .who{font-size:.8rem; font-weight:750; max-width:11ch; overflow:hidden; text-overflow:ellipsis}
+.pchip .amt{font-size:.95rem; font-weight:800; font-variant-numeric:tabular-nums}
+.pchip .amt.neg{color:var(--bad)}
+.p1 .num,.dot.p1{background:var(--p1)} .p2 .num,.dot.p2{background:var(--p2)}
+.p3 .num,.dot.p3{background:var(--p3)} .p4 .num,.dot.p4{background:var(--p4)}
+.pchip.p1.control{border-color:var(--p1)} .pchip.p2.control{border-color:var(--p2)}
+.pchip.p3.control{border-color:var(--p3)} .pchip.p4.control{border-color:var(--p4)}
+.pchip.control{box-shadow:inset 0 0 0 1px currentColor}
+.pchip .ctrl{font-size:.58rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+/* ----------------------------------------------------------- player setup */
+.count-row{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 14px}
+.btn.count{min-width:56px; font-weight:800; text-align:center}
+.btn.count[aria-pressed="true"]{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.name-grid{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.name-grid .field label{display:block; font-size:.66rem; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.name-grid .field input{width:100%; font:inherit; font-size:.92rem; padding:8px 10px; border-radius:10px;
+  border:1px solid var(--border); background:var(--panel-2); color:var(--text)}
+.name-grid .field.f1 input{border-left:4px solid var(--p1)}
+.name-grid .field.f2 input{border-left:4px solid var(--p2)}
+.name-grid .field.f3 input{border-left:4px solid var(--p3)}
+.name-grid .field.f4 input{border-left:4px solid var(--p4)}
+
+/* -------------------------------------------------------------- turn bar */
+.turnbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:9px 14px;
+  border-radius:12px; background:var(--panel); border:1px solid var(--border);
+  margin:0 0 10px; font-size:.9rem}
+.turnbar .dot{width:13px; height:13px; border-radius:50%; flex:none}
+.turnbar b{font-weight:800}
+.turnbar span{color:var(--muted)}
+
+/* ------------------------------------------------------- buzzers + steps */
+.step-label{font-size:.72rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 8px}
+.hint{font-size:.8rem; color:var(--muted); margin:0 0 16px}
+.hint b{color:var(--text-dim)}
+.ring-row{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 10px}
+.btn.ring{display:inline-flex; align-items:center; gap:8px; font-weight:750}
+.btn.ring .num{font-style:normal; font-size:.62rem; font-weight:800; width:17px; height:17px;
+  border-radius:50%; display:inline-grid; place-items:center; color:var(--dot-text)}
+.btn.ring.p1{border-color:var(--p1)} .btn.ring.p2{border-color:var(--p2)}
+.btn.ring.p3{border-color:var(--p3)} .btn.ring.p4{border-color:var(--p4)}
+.btn.ring[disabled]{border-color:var(--border)}
+.answering{display:flex; align-items:center; gap:9px; font-size:1.02rem; font-weight:750; margin:0 0 6px}
+.answering .dot{width:14px; height:14px; border-radius:50%; flex:none}
+
+/* ------------------------------------------------- final wagers + grading */
+.locked-list{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.locked-list .tag{font-size:.76rem; font-weight:750; padding:3px 10px; border-radius:99px;
+  background:var(--good-soft); color:var(--good); border:1px solid var(--good)}
+.grade-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  padding:10px 0; border-top:1px solid var(--border-soft)}
+.grade-row .who{display:flex; align-items:center; gap:8px; margin-right:auto; font-weight:750}
+.grade-row .who .dot{width:13px; height:13px; border-radius:50%; flex:none}
+.grade-row .wag{font-size:.8rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.btn.pick[aria-pressed="true"]{background:var(--accent-strong); border-color:var(--accent-strong); color:#fff}
+.btn.pick.yes[aria-pressed="true"]{background:var(--good); border-color:var(--good); color:#fff}
+.btn.pick.no[aria-pressed="true"]{background:var(--bad); border-color:var(--bad); color:#fff}
+.winner td{font-weight:800}
+.cats-preview .chip i{display:block; font-style:normal; font-size:.63rem; font-weight:800;
+  letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+.cats-preview .chip.asset{background:#1d5d8c14; border-color:#1d5d8c45}
+.cats-preview .chip.db{background:#0e6b4d14; border-color:#0e6b4d45}
+.cats-preview .chip.big{background:#7a3d8614; border-color:#7a3d8645}
+.cats-preview .chip.apply{background:#8a530014; border-color:#8a530045}
+.cats-preview .chip.asset i{color:var(--p1)} .cats-preview .chip.db i{color:var(--p2)}
+.cats-preview .chip.big i{color:var(--p3)} .cats-preview .chip.apply i{color:var(--p4)}
+.dlg-clue i{font-style:italic}
+.dlg-clue code,.dlg-why code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.92em; background:var(--panel-2); border:1px solid var(--border-soft);
+  border-radius:6px; padding:1px 5px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <b>Module 6 Jeopardy</b>
+      <span id="roundStat">Review game</span>
+    </div>
+    <div class="strip" id="scoreStrip" aria-label="Scores"></div>
+    <div class="stat" id="bestStat" hidden><i>Solo best</i><b id="bestStatValue">$0</b></div>
+    <button type="button" class="btn sm" id="themeBtn" aria-label="Switch to the dark theme">Dark</button>
+  </header>
+
+  <main class="stage">
+    <div class="sr-only" role="status" aria-live="polite" id="liveStatus"></div>
+
+    <!-- ============================== INTRO ============================== -->
+    <section class="wrap" id="screenIntro">
+      <div class="hero">
+        <span class="eyebrow">Module 6 &middot; managing data and business intelligence</span>
+        <h1>Fifty-one clues, one to four players</h1>
+        <p>The first board is the vocabulary the chapter cannot be discussed without: what makes data
+          an asset, what the parts of a table are called, the SQL clauses, and the three Vs. The second
+          board is the work &mdash; diagnosing which data failure you are actually looking at, naming the
+          report a manager is asking for, choosing where the data should live, reading competitive
+          pressure, and the shape of a recommendation somebody could fund. Play it alone as a study
+          tool, or put two to four people on one screen and race for the buzzer.</p>
+      </div>
+
+      <div class="panel" id="setupPanel">
+        <h2>Who is playing?</h2>
+        <p>One player is a study session. Two to four is a game, and the rules change accordingly &mdash;
+          see <b>How to play</b> below. Names are only used on this screen and are remembered in this
+          browser so the next round can start straight away.</p>
+        <div class="count-row" role="group" aria-label="Number of players">
+          <button type="button" class="btn count" data-count="1" aria-pressed="true">1</button>
+          <button type="button" class="btn count" data-count="2" aria-pressed="false">2</button>
+          <button type="button" class="btn count" data-count="3" aria-pressed="false">3</button>
+          <button type="button" class="btn count" data-count="4" aria-pressed="false">4</button>
+        </div>
+        <div class="name-grid" id="nameGrid">
+          <div class="field f1" id="field1"><label for="pname1">Player 1</label><input id="pname1" type="text" maxlength="14" autocomplete="off" placeholder="Player 1"></div>
+          <div class="field f2" id="field2" hidden><label for="pname2">Player 2</label><input id="pname2" type="text" maxlength="14" autocomplete="off" placeholder="Player 2"></div>
+          <div class="field f3" id="field3" hidden><label for="pname3">Player 3</label><input id="pname3" type="text" maxlength="14" autocomplete="off" placeholder="Player 3"></div>
+          <div class="field f4" id="field4" hidden><label for="pname4">Player 4</label><input id="pname4" type="text" maxlength="14" autocomplete="off" placeholder="Player 4"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>How to play</h2>
+        <ul>
+          <li><b>The player in control picks</b> the category and the dollar value, the same way the real
+            game works. Whoever answers correctly takes control of the board; if nobody gets it, control
+            stays where it was. Double Jeopardy opens with the player in last place, which is the show&rsquo;s
+            own rule and the one that keeps a runaway game interesting.</li>
+          <li><b>With two or more players, the number keys are the buzzers.</b> Once a clue is up, press
+            <b>1</b>, <b>2</b>, <b>3</b> or <b>4</b> to ring in &mdash; first key down wins, exactly as on a
+            shared keyboard it should &mdash; or <b>0</b> if nobody has it. The buttons do the same thing
+            for a touchscreen.</li>
+          <li><b>Answer out loud before anything is revealed.</b> The person who rang in says their answer,
+            phrased as a question, and the table decides whether it counts. The printed answer stays hidden
+            until the clue is settled, because a steal is worthless if everyone has already read it.</li>
+          <li><b>A wrong answer costs the tile&rsquo;s value and opens the clue to everybody else.</b> That
+            penalty is the only thing that makes ringing in mean anything, so it applies whenever two or
+            more are playing. <b>Alone, nothing is deducted</b> &mdash; a study tool that punishes you for
+            attempting a clue teaches you to attempt fewer of them.</li>
+          <li><b>Every answer explains itself.</b> Under each answer is a sentence saying why it is that
+            one and not the term next to it, because the near-miss is what the exam tests. Read it before
+            moving on; it is the part of the game that is actually the lesson.</li>
+          <li><b>Final Jeopardy is wagered privately.</b> Each player enters a wager in turn &mdash; pass the
+            screen along &mdash; then one clue goes to everybody at once and each wager is settled separately.
+            This is the one place a wrong answer costs a solo player anything, because the solo player chose
+            the number.</li>
+          <li><b>The score is not the point.</b> The results screen breaks the game down by course objective
+            and by section of the module, so a weak area shows up as a named thing to go back to instead of
+            disappearing into one total.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>The two boards</h2>
+        <p class="round-label">Round one &middot; $200&ndash;$1,000 &middot; what the terms mean</p>
+        <div class="cats-preview" id="catsPreview1"></div>
+        <p class="round-label">Round two &middot; Double Jeopardy &middot; $400&ndash;$2,000 &middot; what you do with them</p>
+        <div class="cats-preview" id="catsPreview2"></div>
+        <div class="callout">
+          <b class="tagline">The last category is the recommendation, not more vocabulary</b>
+          <b>Making the Case</b> asks about the deliverable itself: why two reports are not two value chain
+          activities, what a comparison needs before a drop in hours counts as an improvement, why released
+          staff time is not yet a cash saving, and the piece that decides in advance what would stop a pilot
+          from being extended. Those clues are worth playing even if you already know every definition on
+          the first board.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Which course objectives this board covers</h2>
+        <p>Every clue is tagged with the course objectives it serves, and the results screen reports them
+          separately. Module 6 is one chapter, so the board claims five objectives and says plainly which
+          ones it leaves alone.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Clues</th></tr></thead>
+            <tbody id="objPreviewBody"></tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <b class="tagline">Not on this board</b>
+          What an information systems department does, internet technology for electronic commerce and
+          working with business partners, and the life cycle of an information system are course objectives
+          this chapter does not teach. Neither is security breaches and computer crime: the module covers
+          responsible access, accidental exposure and recovery, which is a duty of care rather than the
+          recognition of a crime. Objectives 10 and 11 &mdash; building a database application and a
+          spreadsheet decision support system &mdash; are the course&rsquo;s separate build work; asking what
+          <code>WHERE</code> does is preparation for it, not a substitute.
+        </div>
+      </div>
+
+      <div class="center-row">
+        <button type="button" class="btn primary" id="startBtn">Start the game</button>
+        <a class="btn" href="../module-06-managing-data-and-business-intelligence.html">Module 6</a>
+        <a class="btn" href="../five-forces-and-value-chain.html">Strategy workshop</a>
+        <a class="btn" href="modules-1-3-jeopardy.html">Modules 1&ndash;3 board</a>
+      </div>
+    </section>
+
+    <!-- ============================== BOARD ============================== -->
+    <section class="wrap" id="screenBoard" hidden>
+      <div class="round-head">
+        <h2 id="roundTitle">Round one</h2>
+        <span id="roundSub"></span>
+      </div>
+      <div class="turnbar" id="turnBar">
+        <span class="dot p1" id="turnDot"></span>
+        <b id="turnName">Player 1</b>
+        <span id="turnNote">picks the next clue</span>
+      </div>
+      <div class="board-scroll">
+        <div class="board" id="board"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn sm" id="rulesBtn">How to play</button>
+      </div>
+    </section>
+
+    <!-- ============================== ROUND BREAK ============================== -->
+    <section class="wrap" id="screenBreak" hidden>
+      <div class="hero">
+        <span class="eyebrow">Round one complete</span>
+        <h1>Double Jeopardy</h1>
+        <p id="breakLede">The first board is clear. The second is worth double, and it stops asking what the
+          terms mean and starts asking what you would actually do with them.</p>
+      </div>
+      <div class="panel">
+        <h2>What changes</h2>
+        <ul>
+          <li><b>Values double</b> &mdash; $400 through $2,000, and so does the cost of a wrong answer.</li>
+          <li><b>The clues become situations.</b> A firm has a problem and you name the failure, the report,
+            the repository, the force or the missing piece of the recommendation &mdash; which is the form
+            this material takes once you are the person being asked.</li>
+          <li id="breakControlNote"><b>The player in last place picks first</b>, which is the show&rsquo;s own rule.</li>
+          <li><b>Every score carries over.</b> Nothing from round one is lost.</li>
+        </ul>
+        <div class="tbl-wrap" id="breakStandings" hidden>
+          <table class="tbl">
+            <thead><tr><th>Player</th><th class="num">Score</th><th class="num">Right</th></tr></thead>
+            <tbody id="breakStandingsBody"></tbody>
+          </table>
+        </div>
+        <div class="cats-preview" id="catsPreview2b"></div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="round2Btn">Start Double Jeopardy</button>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL ============================== -->
+    <section class="wrap" id="screenFinal" hidden>
+      <div class="hero">
+        <span class="eyebrow">Both boards clear</span>
+        <h1>Final Jeopardy</h1>
+        <p>One last clue, and it is the question the whole chapter has been working toward &mdash; wager
+          what you are willing to risk on it.</p>
+      </div>
+      <div class="panel" id="wagerPanel">
+        <h2 id="wagerWho">Your wager</h2>
+        <!-- Rewritten in full by renderWagerStep for whoever is wagering, so nothing
+             inside it may carry an id of its own. -->
+        <p id="wagerIntro">The category is announced here when both boards are clear.</p>
+        <div class="wager-row">
+          <label for="wagerInput"><b>Wager $</b></label>
+          <input type="number" id="wagerInput" min="0" step="1" value="0" inputmode="numeric">
+        </div>
+        <p class="wager-hint" id="wagerHint"></p>
+        <div class="dlg-row">
+          <button type="button" class="btn primary" id="lockWagerBtn">Lock in wager</button>
+        </div>
+        <div class="locked-list" id="lockedList"></div>
+      </div>
+      <div class="panel" id="revealPanel" hidden>
+        <h2>Every wager is in</h2>
+        <p id="revealNote">Turn the screen back to the table. The clue goes up once, everybody answers it,
+          and then each wager is settled separately.</p>
+        <div class="center-row">
+          <button type="button" class="btn primary" id="showFinalBtn">Show the clue</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS ============================== -->
+    <section class="wrap" id="screenResults" hidden>
+      <div class="panel results">
+        <h2 id="resultsHeading">Final score</h2>
+        <div class="score" id="resultsScore">$0</div>
+        <div class="best" id="resultsBest"></div>
+        <div class="best" id="resultsTally"></div>
+      </div>
+      <div class="panel" id="standingsPanel" hidden>
+        <h2>Final standings</h2>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Player</th><th class="num">Right</th><th class="num">Missed</th><th class="num">Score</th></tr></thead>
+            <tbody id="standingsBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>How the table did, by course objective</h2>
+        <p id="objIntro">One number hides a weak area; this table does not. A clue counts as answered if
+          anybody got it, and it counts toward every objective it serves, so the totals here add up to more
+          than fifty-one.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Course objective</th><th class="num">Right</th><th class="num">Asked</th><th>Result</th></tr></thead>
+            <tbody id="objResultBody"></tbody>
+          </table>
+        </div>
+        <div class="callout" id="objAdvice"></div>
+      </div>
+      <div class="panel">
+        <h2>Where to go back to</h2>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Section of Module 6</th><th class="num">Right</th><th class="num">Asked</th><th>What it covers on this board</th></tr></thead>
+            <tbody id="srcResultBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="center-row">
+        <button type="button" class="btn primary" id="playAgainBtn">Play again, same players</button>
+        <button type="button" class="btn" id="newPlayersBtn">Change players</button>
+        <a class="btn" href="../module-06-managing-data-and-business-intelligence.html">Module 6</a>
+        <a class="btn" href="../practice-midterm.html">Practice midterm</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Nothing here is submitted or collected. Player names and a solo best score are saved in this browser only.</span>
+    <a href="../module-06-managing-data-and-business-intelligence.html">Module 6</a>
+    <a href="../five-forces-and-value-chain.html">Workshop</a>
+    <a href="modules-1-3-jeopardy.html">Modules 1&ndash;3 board</a>
+  </footer>
+</div>
+
+<!-- ============================== CLUE DIALOG ============================== -->
+<dialog id="clueDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow" id="clueEyebrow">Category &middot; $200</p>
+    <p class="dlg-clue" id="clueText"></p>
+
+    <div id="ringStep" hidden>
+      <p class="step-label">Who rings in?</p>
+      <div class="ring-row" id="ringRow"></div>
+      <div class="dlg-row" style="justify-content:flex-start">
+        <button type="button" class="btn sm" id="nobodyBtn">Nobody has it</button>
+      </div>
+      <p class="hint">Keyboard: <b>1</b>&ndash;<b>4</b> to ring in, <b>0</b> for nobody. First key down wins.</p>
+    </div>
+
+    <div id="judgeStep" hidden>
+      <p class="answering"><span class="dot" id="judgeDot"></span><span id="judgePrompt"></span></p>
+      <p class="hint">Say it out loud first, phrased as a question. The table decides before anything is revealed.</p>
+      <div class="dlg-row spread">
+        <button type="button" class="btn" id="judgeWrongBtn">Not right</button>
+        <button type="button" class="btn good" id="judgeRightBtn">That&rsquo;s it</button>
+      </div>
+    </div>
+
+    <div id="soloStep" hidden>
+      <div class="dlg-row">
+        <button type="button" class="btn primary" id="revealBtn">Reveal answer</button>
+      </div>
+    </div>
+
+    <p class="dlg-answer" id="clueAnswer" hidden></p>
+    <p class="dlg-why" id="clueWhy" hidden></p>
+
+    <div class="dlg-row spread" id="soloGradeRow" hidden>
+      <button type="button" class="btn" id="missBtn">I missed it</button>
+      <button type="button" class="btn good" id="gotItBtn">I got it right</button>
+    </div>
+    <div class="dlg-row" id="continueRow" hidden>
+      <button type="button" class="btn primary" id="continueBtn">Back to the board</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============================== FINAL CLUE DIALOG ============================== -->
+<dialog id="finalDialog">
+  <div class="dlg-inner">
+    <p class="dlg-eyebrow" id="finalEyebrow">Final Jeopardy</p>
+    <p class="dlg-clue" id="finalClueText"></p>
+    <div class="dlg-row" id="finalRevealRow">
+      <button type="button" class="btn primary" id="finalRevealBtn">Reveal answer</button>
+    </div>
+    <p class="dlg-answer" id="finalAnswerText" hidden></p>
+    <p class="dlg-why" id="finalWhyText" hidden></p>
+    <div id="finalGradeStep" hidden>
+      <p class="step-label">Who had it?</p>
+      <div id="finalGradeRows"></div>
+      <div class="dlg-row">
+        <button type="button" class="btn primary" id="finalScoreBtn" disabled>Score it</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================================
+   COURSE OBJECTIVES
+   The five this chapter honestly serves. Every clue names the ones it serves in
+   its `co` array, which is what makes the results breakdown possible. The other
+   six are named on the intro screen as objectives this board leaves alone.
+   ========================================================================== */
+var OBJECTIVES = {
+  2:"Discuss how companies use information systems to manage internal operations and to make decisions",
+  3:"Discuss how companies use information technology for competitive advantage by changing their marketplace",
+  4:"Apply a working knowledge of computer hardware, software, database technology and computer networks",
+  7:"Recognize a business problem which might be solved using information technology, then work with the information systems team on a solution",
+  8:"Describe the individual and organizational consequences of the use of information technology"
+};
+
+/* ============================================================================
+   WHERE TO GO BACK TO
+   Five buckets, each one a run of sections in Module 6, so a miss points at a
+   place in the reading rather than at a chapter.
+   ========================================================================== */
+var SOURCES = {
+  asset:{ label:"Data as an asset, and the flows it moves through",
+      covers:"Why a record is worth capturing at all, the three failures that look alike, accurate against timely, the decision levels, and the stewardship that follows the data.",
+      href:"../module-06-managing-data-and-business-intelligence.html#s61a" },
+  model:{ label:"Tables, keys, and master data",
+      covers:"Entities and attributes, primary and foreign keys, reading an ERD in both directions, normalization, and agreeing what a customer is across two divisions.",
+      href:"../module-06-managing-data-and-business-intelligence.html#s62a" },
+  query:{ label:"Queries, and the reports built on them",
+      covers:"SELECT, WHERE, ORDER BY, JOIN and GROUP BY, establishing what one row represents, and which of the five report types a manager is actually asking for.",
+      href:"../module-06-managing-data-and-business-intelligence.html#s62c" },
+  store:{ label:"Where the data lives",
+      covers:"Transactions against analysis, warehouses, marts and ETL, the three Vs, document stores, and the governance that keeps a lake from turning into a swamp.",
+      href:"../module-06-managing-data-and-business-intelligence.html#s62d" },
+  strategy:{ label:"The strategy case for a data initiative",
+      covers:"All five forces read from evidence, two genuinely different value chain activities, and one initiative carrying a measure, a guardrail and a review date.",
+      href:"../module-06-managing-data-and-business-intelligence.html#s64" }
+};
+var SOURCE_ORDER = ["asset","model","query","store","strategy"];
+
+/* ============================================================================
+   ROUND ONE — what the terms mean.
+   Every firm in a situation is invented, and every figure with it. No real
+   company is named anywhere on this board.
+   ========================================================================== */
+var ROUND1 = [
+  { name:"Data as an Asset", kind:"asset", clues:[
+    {value:200, co:[2], src:"asset",
+      clue:"The chapter&rsquo;s name for an organization that builds evidence into its processes instead of storing it and hoping somebody looks. Its warning: a dashboard nobody acts on creates little value.",
+      answer:"What is a data-driven organization?",
+      why:"The test is whether a record changes an action, not whether it was captured. Somebody still has to know what the record means, whether it is current enough, and which decision follows from it."},
+    {value:400, co:[2,4], src:"asset",
+      clue:"The movement and transformation of data within and between systems &mdash; checkout to order system to warehouse application to carrier to support screen.",
+      answer:"What are data flows?",
+      why:"Mapping them records what moves, who owns each step, how fast it moves and how errors get reported. A correct address at checkout becomes a wrong label at dispatch in one of those handoffs, not in storage."},
+    {value:600, co:[2,8], src:"asset",
+      clue:"Dispatch writes an address correction into its own spreadsheet, and support, reading the original order, never sees it. Name the failure: useful data isolated where other work cannot reach it.",
+      answer:"What is a data silo?",
+      why:"Isolation, not repetition. Copying every silo into one storage location moves the data without making it reachable, which is why the remedy is access and a named owner rather than another copy."},
+    {value:800, co:[4,8], src:"asset",
+      clue:"Five applications each maintain the same supplier&rsquo;s current phone number. Name the failure &mdash; and notice that today all five may still agree.",
+      answer:"What is data duplication?",
+      why:"Unnecessary repetition of one fact, whether or not the copies currently conflict. It is the condition that makes the next failure likely rather than the failure itself."},
+    {value:1000, co:[2,8], src:"asset",
+      clue:"Two systems show different current destinations for the same shipment. Name the failure that duplication had been setting up.",
+      answer:"What is data inconsistency?",
+      why:"A conflict between values, formats or business meanings. Duplication is the repeated fact; inconsistency is the repeated fact disagreeing, which is why the two get diagnosed and repaired separately."}
+  ]},
+  { name:"Tables, Rows, and Keys", kind:"db", clues:[
+    {value:200, co:[4], src:"model",
+      clue:"A kind of person, object, event or concept the business keeps data about &mdash; Customer, Product, Order, Employee.",
+      answer:"What is an entity?",
+      why:"The kind of thing, not one of them. Order 501 is a record, Order is the entity, and Orders is the table where the records about it live."},
+    {value:400, co:[4], src:"model",
+      clue:"A property of the thing being described, held in a column: <code>order_date</code>, quantity, unit price.",
+      answer:"What is an attribute?",
+      why:"Columns are attributes and rows are records. How many of something the business has is a question about records; what it knows about each one is a question about attributes."},
+    {value:600, co:[4], src:"model",
+      clue:"The column, or combination of columns, that identifies each row uniquely and is never left empty. A customer&rsquo;s name makes a poor one.",
+      answer:"What is a primary key?",
+      why:"Two people share a name and one person can change theirs. A stable <code>customer_id</code> keeps every past order attached to the right customer while the descriptive details get corrected."},
+    {value:800, co:[4], src:"model",
+      clue:"The column that points at a key in another table, so Orders can record which customer placed each order without copying that customer&rsquo;s details onto every one.",
+      answer:"What is a foreign key?",
+      why:"Repeated values here are correct rather than duplication &mdash; the same customer places many orders. Enforcing the reference is what stops an order pointing at a customer who does not exist."},
+    {value:1000, co:[2,4], src:"model",
+      clue:"Also called a metadata repository: the document recording field names, types, valid values and business meanings &mdash; whether a price includes tax, and in which currency.",
+      answer:"What is a data dictionary?",
+      why:"Metadata is data describing other data; the dictionary is where it gets written down for people. Without it two divisions can compare totals that were never measuring the same thing."}
+  ]},
+  { name:"Lines on the Diagram", kind:"db", clues:[
+    {value:200, co:[4], src:"model",
+      clue:"The representation of the entities, relationships and rules the organization actually needs. Settling it means asking ordinary questions: what counts as an order, and can one customer place more than one?",
+      answer:"What is a data model?",
+      why:"It is business reasoning before it is software, which is why those questions get answered with the people who perform the process. Getting them wrong is cheap now and expensive once data has accumulated."},
+    {value:400, co:[4], src:"model",
+      clue:"Boxes for the things and lines for how they connect: the drawing that puts a design up for review before any data accumulates.",
+      answer:"What is an entity-relationship diagram?",
+      why:"Its value is making the assumptions visible and arguable. A line drawn one-to-many is a claim about the business that somebody can correct in a meeting rather than in a migration."},
+    {value:600, co:[4], src:"model",
+      clue:"One customer can place many orders, and each of those orders belongs to one customer in this model. Name the relationship &mdash; and notice it has to be read in both directions.",
+      answer:"What is a one-to-many relationship?",
+      why:"Read one way only it is indistinguishable from many-to-many. The second direction is the claim doing the work: each order has exactly one customer, which is why the customer reference can sit on the order."},
+    {value:800, co:[4], src:"model",
+      clue:"An order contains many products, and a product appears on many orders. Name the relationship, and expect a third table to record each pairing.",
+      answer:"What is a many-to-many relationship?",
+      why:"Two tables cannot hold it directly, so an OrderLines table records one row per pairing and carries the facts belonging to the pairing itself, such as quantity and the price agreed that day."},
+    {value:1000, co:[4], src:"model",
+      clue:"Organizing tables so each fact sits with the thing it describes: the instructor&rsquo;s phone number with the instructor, not beside every student&rsquo;s grade.",
+      answer:"What is normalization?",
+      why:"The purpose is maintenance &mdash; one correction in one place instead of hundreds. It is not an instruction to delete every repeated value, because a repeated foreign key is how a relationship works."}
+  ]},
+  { name:"Ask It in SQL", kind:"db", clues:[
+    {value:200, co:[4], src:"query",
+      clue:"The clause naming which columns come back, so a late-order list carries the order identifier and the delay and not the customer&rsquo;s phone number.",
+      answer:"What is SELECT?",
+      why:"It chooses columns, while FROM names the table they come out of. Returning only the fields the recipient needs is an access decision as much as a tidiness one."},
+    {value:400, co:[2,4], src:"query",
+      clue:"The clause keeping only the rows that meet a condition &mdash; <code>delay_days &gt; 2</code>.",
+      answer:"What is WHERE?",
+      why:"It narrows the population while SELECT narrows the fields. Confusing the two produces either every row with three columns or three rows with every column, and only one of those answers the question."},
+    {value:600, co:[4], src:"query",
+      clue:"The clause arranging the result, with <code>DESC</code> putting the largest delays at the top of a priority list.",
+      answer:"What is ORDER BY?",
+      why:"Sorting changes what a reader sees first, not which rows qualified &mdash; that was WHERE&rsquo;s job. A list sorted but never filtered still contains every on-time order underneath."},
+    {value:800, co:[4], src:"query",
+      clue:"The operation bringing customer names alongside their orders by matching the order&rsquo;s customer reference to the customer&rsquo;s key.",
+      answer:"What is a JOIN?",
+      why:"It is meaningful only when the matched columns are the related keys. Matching two unrelated numeric columns returns rows that look perfectly plausible and mean nothing at all."},
+    {value:1000, co:[2,4], src:"query",
+      clue:"The clause collapsing rows into one line per category so <code>COUNT(*)</code> or <code>SUM</code> can report a total for each &mdash; late orders per branch, say.",
+      answer:"What is GROUP BY?",
+      why:"Establish what one row represents before counting it. After a join to order lines a count of rows is a count of order-product occurrences rather than of orders, and the database will compute that wrong number perfectly."}
+  ]},
+  { name:"Big, Varied, and Fast", kind:"big", clues:[
+    {value:200, co:[4], src:"store",
+      clue:"The chapter&rsquo;s term for data whose scale, diversity or speed creates substantial management and analysis problems &mdash; a delivery fleet&rsquo;s footage, sensor messages, repair notes and order records all at once.",
+      answer:"What is big data?",
+      why:"It names a management problem rather than a size threshold. The three characteristics describe different constraints, and a dataset can present one of them without the other two."},
+    {value:400, co:[4], src:"store",
+      clue:"The first V: the sheer amount accumulated or processed, such as years of recordings kept across a large fleet.",
+      answer:"What is volume?",
+      why:"It is the one most people mean by big data and the one least likely to be the actual difficulty. A large archive can sit perfectly still while a small stream demands an answer in one second."},
+    {value:600, co:[4], src:"store",
+      clue:"The second V: differing forms and meanings inside one investigation &mdash; invoice tables, nested event messages, typed notes, images and audio.",
+      answer:"What is variety?",
+      why:"It is the V deciding how much interpretation has to happen before anything can be compared, which is why it usually drives the choice of repository more than sheer size does."},
+    {value:800, co:[2,4], src:"store",
+      clue:"The third V: the rate data arrives and the speed at which it has to be used &mdash; reacting to a sensor alert before the equipment is damaged.",
+      answer:"What is velocity?",
+      why:"It is a deadline, not a quantity. An archive can be enormous while the urgent requirement is a one-second response, and only this V names that requirement."},
+    {value:1000, co:[4], src:"store",
+      clue:"An event record with named fields, a nested sensor object and an optional comment. It has identifiable elements, but not every record carries the same ones.",
+      answer:"What is semistructured data?",
+      why:"Structured data fills the same typed columns every time and unstructured data such as a recording fits no business schema at all. This sits between them, which is exactly what a document store is built to hold."}
+  ]}
+];
+
+/* ============================================================================
+   ROUND TWO — what you do with them. Situations rather than definitions, and
+   every firm in them is invented.
+   ========================================================================== */
+var ROUND2 = [
+  { name:"Diagnose the Data Failure", kind:"asset", clues:[
+    {value:400, co:[2], src:"asset",
+      clue:"A gym&rsquo;s membership records are correct in every detail and reach the entry gate a day after renewals are processed. Name the requirement that failed.",
+      answer:"What is timeliness?",
+      why:"Accuracy and timeliness are separate tests. A record can describe yesterday perfectly and still be useless for a promise being made now, and no amount of extra history repairs a delay."},
+    {value:800, co:[2,8], src:"asset",
+      clue:"Marketing&rsquo;s campaign-response file sits on one laptop. The service team, handling the complaints that campaign produced, has never seen it and does not know it exists.",
+      answer:"What is a data silo?",
+      why:"The data here is neither wrong nor repeated &mdash; it is unreachable by the work that needs it. Diagnosing it as duplication would send the firm hunting for copies to delete instead of access to grant."},
+    {value:1200, co:[2], src:"asset",
+      clue:"A manager studies six months of bookings to set next quarter&rsquo;s staffing budget. Name the decision level: not today&rsquo;s shift, and not entering a new industry.",
+      answer:"What is a tactical decision?",
+      why:"Operational decisions run today&rsquo;s work and strategic ones set long-term direction. This one allocates resources over a medium horizon, and the horizon is what decides how fresh the data has to be."},
+    {value:1600, co:[2,4], src:"model",
+      clue:"After a merger two divisions cannot agree whether the same supplier appears in both purchasing systems, and matching on name alone would merge two different firms. Name the coordination this needs: identity, definitions, ownership and quality of the shared records.",
+      answer:"What is master data management?",
+      why:"It is principally a management responsibility supported by technology. An accountable owner, matching rules and a review queue settle it; copying both lists onto one server does not."},
+    {value:2000, co:[4,8], src:"store",
+      clue:"Thousands of raw datasets are retained in their original formats with no recorded owners, units, capture times or source descriptions. Name what the repository has become.",
+      answer:"What is a data swamp?",
+      why:"The same contents with a catalogue, owners and retention rules would be a lake. Governance is the entire difference, which is why the fix is documentation and ownership rather than more storage."}
+  ]},
+  { name:"Which Report Do You Want?", kind:"db", clues:[
+    {value:400, co:[2], src:"query",
+      clue:"The fulfillment summary arriving every morning whether or not anything unusual happened.",
+      answer:"What is a scheduled report?",
+      why:"The defining feature is the predefined interval. The categories overlap &mdash; a key-indicator report can also arrive on a schedule &mdash; so match on the reason it exists, not on one feature it happens to have."},
+    {value:800, co:[2], src:"query",
+      clue:"A list containing only the shipments more than two days late, and nothing else.",
+      answer:"What is an exception report?",
+      why:"It exists to show what fell outside an accepted range, which means somebody first had to define the range. Without that agreed threshold it is only a filtered list nobody has signed up to act on."},
+    {value:1200, co:[2], src:"query",
+      clue:"A management panel showing on-time delivery and cost per order against their targets.",
+      answer:"What is a key-indicator report?",
+      why:"It carries the few measures judged critical to a goal, against a target. An exception report shows the out-of-range cases; this one shows the standing position whether or not anything is wrong."},
+    {value:1600, co:[2], src:"query",
+      clue:"A branch shows an unusually high return rate, and the manager opens the individual transactions sitting behind that number.",
+      answer:"What is a drill-down report?",
+      why:"The defining move is exposing the detail beneath a summary. The summary on its own cannot say whether one product, one week or one employee produced the figure."},
+    {value:2000, co:[2,7], src:"query",
+      clue:"A road closure disrupts a route this afternoon, and a manager asks a question nobody had planned for about which orders are affected.",
+      answer:"What is an ad hoc query?",
+      why:"It answers an unplanned information need once. If the same question gets asked every week it has stopped being ad hoc and should become a scheduled or exception report instead."}
+  ]},
+  { name:"Where Should It Live?", kind:"big", clues:[
+    {value:400, co:[2,4], src:"store",
+      clue:"A travel site confirms one booking while thousands of other customers reserve other trips &mdash; each a small defined read and update that somebody is waiting on.",
+      answer:"What is online transaction processing?",
+      why:"Many concurrent transactions, narrow and current. The question comparing two years of promotions is the opposite workload, which is why the two are usually kept off each other&rsquo;s resources."},
+    {value:800, co:[2,4], src:"store",
+      clue:"A regional manager wants orders, returns and promotions from four divisions compared on one consistent basis across two years.",
+      answer:"What is a data warehouse?",
+      why:"Its value is reliable integration and historical coverage rather than size. Narrow the same idea to one business area &mdash; finance, say &mdash; and it is a data mart."},
+    {value:1200, co:[4], src:"store",
+      clue:"Before rows reach that repository, two source date formats are mapped onto one agreed format. Name the stage of extraction, transformation and loading this is.",
+      answer:"What is transformation?",
+      why:"Extraction retrieves the source records and loading writes the prepared result; this is where shared meaning gets imposed. Converting a clearly specified format is legitimate, but guessing whether 04/05 means April 5 or May 4 is not, and that record gets quarantined."},
+    {value:1600, co:[4], src:"store",
+      clue:"Order records nest contact details and an array of items, and newer ones carry delivery instructions the older ones never had. Name the kind of database built to hold them whole.",
+      answer:"What is a document data store?",
+      why:"Flexibility is not the absence of a model. Required fields, valid meanings and access rules still have to be enforced somewhere &mdash; either by the store or by every application that writes to it."},
+    {value:2000, co:[4,7], src:"store",
+      clue:"A team wants raw recordings, event messages and tables kept in their original formats, catalogued and owned, for analyses nobody has approved yet.",
+      answer:"What is a data lake?",
+      why:"A warehouse transforms data for defined uses before loading, while a lake defers that until somebody retrieves it for a question. Without the catalogue and the owners it degrades into a swamp."}
+  ]},
+  { name:"Pressure on the Business", kind:"apply", clues:[
+    {value:400, co:[3], src:"strategy",
+      clue:"Several firms already sell comparable subscriptions in the defined market and keep cutting price to win the same customers. Name the force.",
+      answer:"What is rivalry among existing competitors?",
+      why:"A dashboard that improves the firm&rsquo;s response to this force does not reduce the force. The pressure belongs to the industry; the analysis says how this firm intends to answer it."},
+    {value:800, co:[3], src:"strategy",
+      clue:"A small group of clients accounts for most of one firm&rsquo;s sales, and moving their business elsewhere would cost them almost nothing. Name the pressure.",
+      answer:"What is the bargaining power of buyers?",
+      why:"Concentration and cheap switching are the two conditions together. Either alone is weaker evidence: many small customers who can leave freely, or a few large ones who would find leaving expensive."},
+    {value:1200, co:[3], src:"strategy",
+      clue:"Within a paid-tutoring industry boundary, learners are meeting the same need with free self-study material. Name the force &mdash; and notice the boundary is doing the work.",
+      answer:"What is the threat of substitutes?",
+      why:"A substitute meets the underlying need a different way, which puts a ceiling on price. Draw the boundary as &ldquo;learning support&rdquo; instead and the same providers become rivals rather than substitutes."},
+    {value:1600, co:[3,7], src:"strategy",
+      clue:"One specialist data provider is hard to replace because converting the historical records into anyone else&rsquo;s format would take months. Name the pressure that documenting exports and testing a migration is aimed at.",
+      answer:"What is the bargaining power of suppliers?",
+      why:"Whether the supplier currently behaves well is not the measure &mdash; the absence of a credible replacement is. The response works by creating the alternative, not by negotiating harder without one."},
+    {value:2000, co:[3,7], src:"strategy",
+      clue:"A manager argues that the catalogue database the firm just licensed will keep newcomers out of the market. A rival can rent the same product this afternoon. Which force is being claimed, wrongly, to have changed?",
+      answer:"What is the threat of new entrants?",
+      why:"It is measured by barriers a competitor cannot readily reproduce or acquire. Widely available software produces parity, so the claim needs evidence about what a newcomer still could not assemble."}
+  ]},
+  { name:"Making the Case", kind:"apply", clues:[
+    {value:400, co:[3,7], src:"strategy",
+      clue:"Someone offers a supplier-selection report and a supplier-negotiation report as their two distinct value chain opportunities. Name the single activity both of them belong to.",
+      answer:"What is procurement?",
+      why:"Two reports are not two activities. Counting them separately hides that one owner holds both benefits, which is the double count the requirement for genuinely different areas exists to prevent."},
+    {value:800, co:[7], src:"strategy",
+      clue:"Choosing which supplier to buy from belongs to procurement. Name the activity owning the checking in and putting away of what that supplier actually delivered.",
+      answer:"What is inbound logistics?",
+      why:"The split is deciding against receiving. Pairing supplier selection with receipt reconciliation gives two genuinely different areas with two different owners, which is something a manager can act on."},
+    {value:1200, co:[2,7], src:"strategy",
+      clue:"A pilot cut total support hours during a month that also had noticeably fewer orders. Name what the comparison is missing before that drop can be called an improvement.",
+      answer:"What is a workload denominator?",
+      why:"Support hours per comparable order survives a change in volume; total hours does not. Twenty corrections out of two hundred records means something entirely different from twenty out of twenty thousand."},
+    {value:1600, co:[7], src:"strategy",
+      clue:"A pilot releases an estimated $4,000 a month of staff time and costs $1,000 a month to run. A careful analyst reports the $3,000 under this name and refuses to call it a cash saving.",
+      answer:"What is net capacity value?",
+      why:"Released time becomes money only if spending actually falls or the freed hours produce additional useful output. Reporting it as a saving claims a result the pilot has not produced yet."},
+    {value:2000, co:[7], src:"strategy",
+      clue:"The pilot already has an owner, a scope, a baseline, a target and guardrails on order accuracy. Name the last piece: the one fixing a review date and stating the condition the pilot must meet before anybody extends it.",
+      answer:"What is a decision rule?",
+      why:"The guardrail is the measure being watched; the decision rule is what the review does about it. Without one, a pilot that improved speed and worsened accuracy gets extended anyway, because nobody agreed in advance what would stop it."}
+  ]}
+];
+
+/* ============================================================================
+   FINAL JEOPARDY — the argument the whole chapter is building toward.
+   ========================================================================== */
+var FINAL = {
+  category:"Why the Database Was Never the Scarce Part",
+  co:[3,7], src:"asset",
+  clue:"Two rival sellers license the identical cloud inventory product in the same month. A year later one is quoting availability its customers trust and the other is still cancelling orders. The chapter&rsquo;s answer is that the software was never the scarce part. Name what the winner had that a purchase order could not deliver: reliable historical records, processes that actually use them, trained staff, and supplier relationships that keep improving the data.",
+  answer:"What is a business capability?",
+  why:"Ask what a rival would need in order to copy the improvement. Widely available software alone produces parity, while those four things are hard to reproduce together &mdash; which is why the chapter says the capability matters more than the number of records stored. A competitive advantage is the result; the capability is what produces it."
+};
+
+var ROUNDS = [
+  { title:"Round one", sub:"$200 to $1,000 · what the terms mean", cats:ROUND1 },
+  { title:"Double Jeopardy", sub:"$400 to $2,000 · what you do with them", cats:ROUND2 }
+];
+
+/* The preview chips say which part of the module a category comes from, so the
+   board is readable before a single clue has been played. */
+var KIND_LABELS = {
+  asset:"Objective 6.1",
+  db:"Objective 6.2",
+  big:"Objectives 6.2–6.3",
+  apply:"Applications 6.4–6.5"
+};
+
+var MAX_PLAYERS = 4;
+var MAX_NAME = 14;
+var THEME_KEY = "mis-mod6-jeopardy-theme-v1";
+var BEST_KEY = "mis-mod6-jeopardy-best-v1";
+var PLAYERS_KEY = "mis-mod6-jeopardy-players-v1";
+
+/* ============================================================================
+   STATE
+   ========================================================================== */
+var state = {
+  players:[],          /* {name, score, right, wrong, wager, finalCorrect} */
+  control:0,           /* index of the player who picks the next clue */
+  picker:0,            /* who picked the clue currently open */
+  round:0,             /* index into ROUNDS */
+  answered:{},         /* "round-cat-clue" -> true */
+  results:[],          /* {co:[], src:key, correct:bool} once per resolved clue */
+  activeCat:-1,
+  activeClue:-1,
+  lockedOut:{},        /* player index -> true, for the clue currently open */
+  ringer:-1,           /* who is answering right now */
+  finalIdx:0           /* which player is entering a wager */
+};
+
+var setupCount = 1;
+
+function playerCount(){ return state.players.length; }
+function isSolo(){ return playerCount() === 1; }
+function currentCat(){ return ROUNDS[state.round].cats[state.activeCat]; }
+function currentClue(){ return currentCat().clues[state.activeClue]; }
+
+function tilesInRound(r){
+  return ROUNDS[r].cats.reduce(function(sum, c){ return sum + c.clues.length; }, 0);
+}
+function answeredInRound(r){
+  var n = 0, prefix = r + "-";
+  for(var k in state.answered){ if(state.answered.hasOwnProperty(k) && k.indexOf(prefix) === 0) n++; }
+  return n;
+}
+
+/* ============================================================================
+   DOM HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return (n < 0 ? "-$" : "$") + Math.abs(n).toLocaleString(); }
+function announce(text){ $("liveStatus").textContent = text; }
+function stripTags(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent || ""; }
+function clear(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+function el(tag, cls, text){
+  var node = document.createElement(tag);
+  if(cls) node.className = cls;
+  if(text !== undefined) node.textContent = text;
+  return node;
+}
+/* Player names are entered by the reader, so they reach the page as text nodes
+   and never as markup. Every name rendered anywhere goes through here. */
+function nameNode(i, cls){ return el("span", cls || "who", state.players[i].name); }
+function listNames(names){
+  if(names.length === 1) return names[0];
+  return names.slice(0, -1).join(", ") + " and " + names[names.length - 1];
+}
+
+/* ============================================================================
+   THEME — read this page's own saved choice first, then inherit whatever theme
+   the reader last set on a study module, so the game does not flip back to
+   light after a dark reading session.
+   ========================================================================== */
+function applyTheme(theme){
+  var dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-label", dark ? "Switch to the light theme" : "Switch to the dark theme");
+}
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  if(saved === "dark" || saved === "light"){ applyTheme(saved); return; }
+  var moduleTheme = null;
+  try{ moduleTheme = localStorage.getItem("mis-ch1-theme-v1"); }catch(e){}
+  applyTheme(moduleTheme === "dark" ? "dark" : "light");
+})();
+$("themeBtn").addEventListener("click", function(){
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ============================================================================
+   BEST SCORE — kept for solo play only. A four-player game produces smaller
+   scores for reasons that have nothing to do with how well anybody did, so
+   ranking it against a solo run would be meaningless.
+   ========================================================================== */
+function loadBest(){
+  var raw = null;
+  try{ raw = localStorage.getItem(BEST_KEY); }catch(e){}
+  var n = parseInt(raw, 10);
+  return isNaN(n) ? 0 : n;
+}
+function saveBest(n){
+  try{ localStorage.setItem(BEST_KEY, String(n)); }catch(e){}
+}
+function refreshBestStat(){
+  var best = loadBest();
+  var soloContext = playerCount() === 0 || isSolo();
+  $("bestStat").hidden = !(best > 0 && soloContext);
+  $("bestStatValue").textContent = fmt(best);
+}
+
+/* ============================================================================
+   THE ROSTER — remembered between games so a class can replay without retyping
+   four names. Anything read back out of storage is re-validated, because a
+   value that got there by any other route must not be able to break the page.
+   ========================================================================== */
+function cleanName(raw, index){
+  var name = String(raw == null ? "" : raw).replace(/\s+/g, " ").trim().slice(0, MAX_NAME);
+  return name || ("Player " + (index + 1));
+}
+function loadRoster(){
+  var raw = null;
+  try{ raw = localStorage.getItem(PLAYERS_KEY); }catch(e){}
+  if(!raw) return null;
+  var parsed = null;
+  try{ parsed = JSON.parse(raw); }catch(e){ return null; }
+  if(!parsed || !Array.isArray(parsed.names)) return null;
+  var count = parseInt(parsed.count, 10);
+  if(!(count >= 1 && count <= MAX_PLAYERS)) return null;
+  var names = [];
+  for(var i = 0; i < count; i++) names.push(cleanName(parsed.names[i], i));
+  return { count:count, names:names };
+}
+function saveRoster(count, names){
+  try{ localStorage.setItem(PLAYERS_KEY, JSON.stringify({ count:count, names:names })); }catch(e){}
+}
+
+function setSetupCount(n){
+  setupCount = Math.min(MAX_PLAYERS, Math.max(1, n));
+  var buttons = document.querySelectorAll(".btn.count");
+  for(var i = 0; i < buttons.length; i++){
+    var on = parseInt(buttons[i].getAttribute("data-count"), 10) === setupCount;
+    buttons[i].setAttribute("aria-pressed", on ? "true" : "false");
+  }
+  for(var p = 1; p <= MAX_PLAYERS; p++){ $("field" + p).hidden = p > setupCount; }
+}
+(function wireSetup(){
+  var buttons = document.querySelectorAll(".btn.count");
+  for(var i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener("click", function(){
+      setSetupCount(parseInt(this.getAttribute("data-count"), 10));
+      if(setupCount > 1) $("pname" + setupCount).focus();
+    });
+  }
+  var saved = loadRoster();
+  if(saved){
+    setSetupCount(saved.count);
+    for(var n = 0; n < saved.count; n++) $("pname" + (n + 1)).value = saved.names[n];
+  } else {
+    setSetupCount(1);
+  }
+})();
+
+function buildPlayersFromSetup(){
+  var names = [];
+  for(var i = 0; i < setupCount; i++) names.push(cleanName($("pname" + (i + 1)).value, i));
+  saveRoster(setupCount, names);
+  return names.map(function(name){
+    return { name:name, score:0, right:0, wrong:0, wager:0, finalCorrect:null };
+  });
+}
+
+/* ============================================================================
+   SCOREBOARD
+   ========================================================================== */
+function renderScoreStrip(){
+  var strip = $("scoreStrip");
+  clear(strip);
+  state.players.forEach(function(p, i){
+    var chip = el("div", "pchip p" + (i + 1) + (!isSolo() && i === state.control ? " control" : ""));
+    if(!isSolo()) chip.appendChild(el("i", "num", String(i + 1)));
+    chip.appendChild(nameNode(i));
+    var amt = el("b", "amt" + (p.score < 0 ? " neg" : ""), fmt(p.score));
+    chip.appendChild(amt);
+    strip.appendChild(chip);
+  });
+}
+
+function renderTurnBar(){
+  var bar = $("turnBar");
+  if(isSolo()){
+    bar.hidden = true;
+    return;
+  }
+  bar.hidden = false;
+  $("turnDot").className = "dot p" + (state.control + 1);
+  $("turnName").textContent = state.players[state.control].name;
+  $("turnNote").textContent = "picks the next clue";
+}
+
+/* ============================================================================
+   INTRO SCREEN
+   ========================================================================== */
+function renderCatsPreview(boxId, cats){
+  var box = $(boxId);
+  if(!box) return;
+  clear(box);
+  cats.forEach(function(c){
+    var chip = el("div", "chip" + (c.kind ? " " + c.kind : ""));
+    chip.appendChild(document.createTextNode(c.name));
+    chip.appendChild(el("i", null, KIND_LABELS[c.kind] || ""));
+    box.appendChild(chip);
+  });
+}
+
+/* Count every clue against every objective it serves, so the intro table is
+   generated from the clue data rather than typed out and left to drift. */
+function objectiveCounts(){
+  var counts = {};
+  ROUNDS.forEach(function(r){
+    r.cats.forEach(function(cat){
+      cat.clues.forEach(function(q){
+        q.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+      });
+    });
+  });
+  FINAL.co.forEach(function(n){ counts[n] = (counts[n] || 0) + 1; });
+  return counts;
+}
+
+function objectiveNumbers(){
+  return Object.keys(OBJECTIVES).map(Number).sort(function(a, b){ return a - b; });
+}
+
+function renderObjPreview(){
+  var counts = objectiveCounts();
+  var body = $("objPreviewBody");
+  clear(body);
+  objectiveNumbers().forEach(function(n){
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.appendChild(el("b", null, n + "."));
+    td1.appendChild(document.createTextNode(" " + OBJECTIVES[n]));
+    var td2 = el("td", "num", String(counts[n] || 0));
+    tr.appendChild(td1); tr.appendChild(td2);
+    body.appendChild(tr);
+  });
+}
+
+function showScreen(id){
+  ["screenIntro","screenBoard","screenBreak","screenFinal","screenResults"].forEach(function(s){
+    $(s).hidden = (s !== id);
+  });
+}
+
+/* ============================================================================
+   BOARD
+   ========================================================================== */
+function tileKey(r, ci, qi){ return r + "-" + ci + "-" + qi; }
+
+function renderBoard(){
+  var round = ROUNDS[state.round];
+  $("roundTitle").textContent = round.title;
+  $("roundSub").textContent = round.sub;
+  $("roundStat").textContent = round.title;
+  var board = $("board");
+  clear(board);
+  round.cats.forEach(function(cat){
+    board.appendChild(el("div", "cat", cat.name));
+  });
+  for(var r = 0; r < 5; r++){
+    round.cats.forEach(function(cat, ci){
+      var q = cat.clues[r];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tile";
+      var key = tileKey(state.round, ci, r);
+      var done = !!state.answered[key];
+      btn.textContent = done ? "" : fmt(q.value);
+      btn.disabled = done;
+      btn.setAttribute("aria-label", cat.name + " for " + fmt(q.value) + (done ? " (already played)" : ""));
+      if(!done){
+        btn.addEventListener("click", function(catIdx, clueIdx){
+          return function(){ openClue(catIdx, clueIdx); };
+        }(ci, r));
+      }
+      board.appendChild(btn);
+    });
+  }
+  renderTurnBar();
+}
+
+/* ============================================================================
+   THE CLUE
+
+   Solo:  reveal, then grade yourself. A miss costs nothing.
+   Two to four: ring in, answer out loud, the table judges, and only then is the
+   printed answer shown. A wrong answer costs the value and hands the clue to
+   whoever has not tried it yet, which is the whole reason ringing in first is
+   worth anything.
+   ========================================================================== */
+var clueDialog = $("clueDialog");
+
+function hideRevealBlocks(){
+  $("clueAnswer").hidden = true;
+  $("clueWhy").hidden = true;
+  $("soloGradeRow").hidden = true;
+  $("continueRow").hidden = true;
+}
+
+function openClue(ci, qi){
+  state.activeCat = ci;
+  state.activeClue = qi;
+  state.picker = state.control;
+  state.lockedOut = {};
+  state.ringer = -1;
+  var cat = currentCat();
+  var q = cat.clues[qi];
+  $("clueEyebrow").textContent = cat.name + " · " + fmt(q.value);
+  $("clueText").innerHTML = q.clue;
+  hideRevealBlocks();
+  $("judgeStep").hidden = true;
+  if(isSolo()){
+    $("ringStep").hidden = true;
+    $("soloStep").hidden = false;
+  } else {
+    $("soloStep").hidden = true;
+    showRingStep();
+  }
+  announce(cat.name + " for " + fmt(q.value) + ". " + stripTags(q.clue));
+  clueDialog.showModal();
+  (isSolo() ? $("revealBtn") : $("nobodyBtn")).focus();
+}
+
+function remainingPlayers(){
+  var left = [];
+  for(var i = 0; i < playerCount(); i++){ if(!state.lockedOut[i]) left.push(i); }
+  return left;
+}
+
+function showRingStep(){
+  $("judgeStep").hidden = true;
+  $("ringStep").hidden = false;
+  var row = $("ringRow");
+  clear(row);
+  state.players.forEach(function(p, i){
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn ring p" + (i + 1);
+    btn.disabled = !!state.lockedOut[i];
+    btn.setAttribute("aria-label", p.name + " rings in, keyboard " + (i + 1));
+    btn.appendChild(el("i", "num", String(i + 1)));
+    btn.appendChild(document.createTextNode(p.name));
+    btn.addEventListener("click", function(idx){
+      return function(){ ringIn(idx); };
+    }(i));
+    row.appendChild(btn);
+  });
+}
+
+function ringIn(i){
+  if(state.activeCat < 0 || state.lockedOut[i] || i >= playerCount()) return;
+  state.ringer = i;
+  $("ringStep").hidden = true;
+  $("judgeStep").hidden = false;
+  $("judgeDot").className = "dot p" + (i + 1);
+  $("judgePrompt").textContent = state.players[i].name + " rang in.";
+  announce(state.players[i].name + " rang in.");
+  $("judgeRightBtn").focus();
+}
+
+function recordResult(q, correct){
+  state.results.push({ co:q.co, src:q.src, correct:!!correct });
+  state.answered[tileKey(state.round, state.activeCat, state.activeClue)] = true;
+}
+
+function revealAndWait(){
+  var q = currentClue();
+  $("ringStep").hidden = true;
+  $("judgeStep").hidden = true;
+  $("soloStep").hidden = true;
+  $("clueAnswer").hidden = false;
+  $("clueAnswer").textContent = q.answer;
+  $("clueWhy").hidden = false;
+  clear($("clueWhy"));
+  $("clueWhy").appendChild(el("b", null, "Why: "));
+  var why = document.createElement("span");
+  why.innerHTML = q.why;
+  $("clueWhy").appendChild(why);
+  $("continueRow").hidden = false;
+  $("continueBtn").focus();
+}
+
+function judgeRight(){
+  var q = currentClue(), i = state.ringer;
+  if(i < 0) return;
+  var p = state.players[i];
+  p.score += q.value;
+  p.right += 1;
+  state.control = i;
+  recordResult(q, true);
+  renderScoreStrip();
+  announce(p.name + " is right. Plus " + fmt(q.value) + ", now on " + fmt(p.score) + ", and takes control of the board.");
+  revealAndWait();
+}
+
+function judgeWrong(){
+  var q = currentClue(), i = state.ringer;
+  if(i < 0) return;
+  var p = state.players[i];
+  p.score -= q.value;
+  p.wrong += 1;
+  state.lockedOut[i] = true;
+  state.ringer = -1;
+  renderScoreStrip();
+  var left = remainingPlayers();
+  if(left.length > 0){
+    announce(p.name + " misses. Minus " + fmt(q.value) + ", now on " + fmt(p.score) + ". Still open to " +
+      listNames(left.map(function(idx){ return state.players[idx].name; })) + ".");
+    showRingStep();
+    $("nobodyBtn").focus();
+  } else {
+    announce(p.name + " misses. Minus " + fmt(q.value) + ". Nobody had it.");
+    recordResult(q, false);
+    revealAndWait();
+  }
+}
+
+function nobodyRings(){
+  if(state.activeCat < 0) return;
+  recordResult(currentClue(), false);
+  announce("Nobody rings in. No change to any score.");
+  revealAndWait();
+}
+
+function closeClue(){
+  clueDialog.close();
+  state.activeCat = -1;
+  state.activeClue = -1;
+  state.ringer = -1;
+  state.lockedOut = {};
+  renderScoreStrip();
+  renderBoard();
+  if(answeredInRound(state.round) >= tilesInRound(state.round)){
+    setTimeout(finishRound, 350);
+  }
+}
+
+$("nobodyBtn").addEventListener("click", nobodyRings);
+$("judgeRightBtn").addEventListener("click", judgeRight);
+$("judgeWrongBtn").addEventListener("click", judgeWrong);
+$("continueBtn").addEventListener("click", closeClue);
+
+/* Solo path: the printed answer comes first and the reader grades themselves,
+   because there is nobody else to judge and nothing to steal. */
+$("revealBtn").addEventListener("click", function(){
+  var q = currentClue();
+  $("soloStep").hidden = true;
+  $("clueAnswer").hidden = false;
+  $("clueAnswer").textContent = q.answer;
+  $("clueWhy").hidden = false;
+  clear($("clueWhy"));
+  $("clueWhy").appendChild(el("b", null, "Why: "));
+  var why = document.createElement("span");
+  why.innerHTML = q.why;
+  $("clueWhy").appendChild(why);
+  $("soloGradeRow").hidden = false;
+  announce("Answer: " + q.answer + " " + stripTags(q.why));
+  $("gotItBtn").focus();
+});
+
+function resolveSolo(correct){
+  var q = currentClue();
+  var p = state.players[0];
+  if(correct){
+    p.score += q.value;
+    p.right += 1;
+    announce("Correct. Plus " + fmt(q.value) + ". Score is now " + fmt(p.score) + ".");
+  } else {
+    p.wrong += 1;
+    announce("No penalty on the board. Score stays " + fmt(p.score) + ".");
+  }
+  recordResult(q, correct);
+  closeClue();
+}
+$("gotItBtn").addEventListener("click", function(){ resolveSolo(true); });
+$("missBtn").addEventListener("click", function(){ resolveSolo(false); });
+
+/* A clue must be resolved, not dodged — Escape and backdrop-cancel are blocked
+   so a miss cannot be swallowed for free once the clue has been opened. */
+clueDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+/* The number keys are the buzzers. They only do anything while a clue is open
+   and waiting for somebody to ring in. */
+document.addEventListener("keydown", function(e){
+  if(!clueDialog.open || $("ringStep").hidden) return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(e.key === "0"){ e.preventDefault(); nobodyRings(); return; }
+  var n = parseInt(e.key, 10);
+  if(!(n >= 1 && n <= MAX_PLAYERS)) return;
+  var i = n - 1;
+  if(i >= playerCount() || state.lockedOut[i]) return;
+  e.preventDefault();
+  ringIn(i);
+});
+
+/* ============================================================================
+   ROUND FLOW
+   ========================================================================== */
+function trailingPlayer(){
+  var low = 0;
+  for(var i = 1; i < playerCount(); i++){
+    if(state.players[i].score < state.players[low].score) low = i;
+  }
+  return low;
+}
+
+function renderBreakStandings(){
+  var wrap = $("breakStandings");
+  if(isSolo()){ wrap.hidden = true; return; }
+  wrap.hidden = false;
+  var body = $("breakStandingsBody");
+  clear(body);
+  state.players.slice().sort(function(a, b){ return b.score - a.score; }).forEach(function(p){
+    var tr = document.createElement("tr");
+    tr.appendChild(el("td", null, p.name));
+    tr.appendChild(el("td", "num", fmt(p.score)));
+    tr.appendChild(el("td", "num", String(p.right)));
+    body.appendChild(tr);
+  });
+}
+
+function finishRound(){
+  if(state.round < ROUNDS.length - 1){
+    renderBreakStandings();
+    renderCatsPreview("catsPreview2b", ROUNDS[state.round + 1].cats);
+    if(isSolo()){
+      $("breakLede").textContent = "The first board is clear and you are on " + fmt(state.players[0].score) +
+        ". The second is worth double, and it stops asking what the terms mean and starts asking what you would actually do with them.";
+      $("breakControlNote").hidden = true;
+    } else {
+      var next = trailingPlayer();
+      $("breakLede").textContent = "The first board is clear. The second is worth double, and it stops asking what the terms mean and starts asking what you would actually do with them.";
+      $("breakControlNote").hidden = false;
+      clear($("breakControlNote"));
+      $("breakControlNote").appendChild(el("b", null, state.players[next].name + " picks first"));
+      $("breakControlNote").appendChild(document.createTextNode(
+        " — the player in last place opens Double Jeopardy, which is the show's own rule and the one that keeps a runaway game interesting."));
+    }
+    showScreen("screenBreak");
+    $("roundStat").textContent = "Round one complete";
+    announce("Round one is clear. Double Jeopardy is next.");
+    $("round2Btn").focus();
+  } else {
+    goToFinal();
+  }
+}
+
+$("round2Btn").addEventListener("click", function(){
+  state.round += 1;
+  if(!isSolo()) state.control = trailingPlayer();
+  renderBoard();
+  renderScoreStrip();
+  showScreen("screenBoard");
+  announce("Double Jeopardy. " + (isSolo() ? "Choose a category and a value." :
+    state.players[state.control].name + " picks first."));
+});
+
+$("rulesBtn").addEventListener("click", function(){
+  $("setupPanel").hidden = true;
+  showScreen("screenIntro");
+  $("startBtn").textContent = "Back to the board";
+});
+
+$("startBtn").addEventListener("click", function(){
+  if($("startBtn").textContent === "Back to the board"){
+    $("startBtn").textContent = "Start the game";
+    showScreen("screenBoard");
+    return;
+  }
+  state.players = buildPlayersFromSetup();
+  startGame();
+});
+
+function startGame(){
+  state.players.forEach(function(p){
+    p.score = 0; p.right = 0; p.wrong = 0; p.wager = 0; p.finalCorrect = null;
+  });
+  state.control = 0;
+  state.picker = 0;
+  state.round = 0;
+  state.answered = {};
+  state.results = [];
+  state.finalIdx = 0;
+  refreshBestStat();
+  renderScoreStrip();
+  renderBoard();
+  showScreen("screenBoard");
+  announce(isSolo()
+    ? "New game started. Round one: choose a category and a value."
+    : "New game with " + playerCount() + " players. " + state.players[0].name + " picks first.");
+}
+
+/* ============================================================================
+   FINAL JEOPARDY — every player wagers in turn, out of sight of the others,
+   then one clue goes to the whole table and each wager settles separately.
+   ========================================================================== */
+function goToFinal(){
+  $("roundStat").textContent = "Final Jeopardy";
+  state.finalIdx = 0;
+  state.players.forEach(function(p){ p.wager = 0; p.finalCorrect = null; });
+  clear($("lockedList"));
+  $("wagerPanel").hidden = false;
+  $("revealPanel").hidden = true;
+  $("revealNote").textContent = isSolo()
+    ? "The clue goes up once, and the wager is settled the moment you say whether you had it."
+    : "Turn the screen back to the table. The clue goes up once, everybody answers it, and then each wager is settled separately.";
+  renderWagerStep();
+  showScreen("screenFinal");
+  announce("Both boards are clear. Final Jeopardy: wagers first.");
+}
+
+function renderWagerStep(){
+  if(state.finalIdx >= playerCount()){
+    $("wagerPanel").hidden = true;
+    $("revealPanel").hidden = false;
+    $("showFinalBtn").focus();
+    return;
+  }
+  var p = state.players[state.finalIdx];
+  var maxWager = Math.max(0, p.score);
+  $("wagerWho").textContent = isSolo() ? "Your wager" : p.name + ", it is your wager";
+  clear($("wagerIntro"));
+  $("wagerIntro").appendChild(document.createTextNode("The category is "));
+  $("wagerIntro").appendChild(el("b", null, FINAL.category));
+  $("wagerIntro").appendChild(document.createTextNode(
+    isSolo() ? ". Your score is " : ". " + p.name + " is on "));
+  $("wagerIntro").appendChild(el("b", null, fmt(p.score)));
+  $("wagerIntro").appendChild(document.createTextNode(
+    isSolo() ? "." : ". Keep the number to yourself — the others wager next."));
+  var input = $("wagerInput");
+  input.min = 0;
+  input.max = maxWager;
+  input.value = maxWager > 0 ? Math.round(maxWager / 2) : 0;
+  input.disabled = maxWager <= 0;
+  $("wagerHint").textContent = maxWager > 0
+    ? "Anything from $0 up to the full " + fmt(maxWager) + ". A wrong answer costs the wager."
+    : "Nothing to wager from a score of " + fmt(p.score) + ", so this one is for the answer alone. Give it a real shot anyway.";
+  renderLockedList();
+  (maxWager > 0 ? input : $("lockWagerBtn")).focus();
+}
+
+function renderLockedList(){
+  var box = $("lockedList");
+  clear(box);
+  if(isSolo()) return;
+  for(var i = 0; i < state.finalIdx; i++){
+    box.appendChild(el("span", "tag", state.players[i].name + " — wager locked"));
+  }
+}
+
+$("lockWagerBtn").addEventListener("click", function(){
+  var p = state.players[state.finalIdx];
+  var maxWager = Math.max(0, p.score);
+  var w = parseInt($("wagerInput").value, 10);
+  if(isNaN(w) || w < 0) w = 0;
+  if(w > maxWager) w = maxWager;
+  p.wager = w;
+  state.finalIdx += 1;
+  announce(p.name + " has locked in a wager.");
+  renderWagerStep();
+});
+
+var finalDialog = $("finalDialog");
+
+$("showFinalBtn").addEventListener("click", function(){
+  $("finalEyebrow").textContent = "Final Jeopardy · " + FINAL.category;
+  $("finalClueText").innerHTML = FINAL.clue;
+  $("finalAnswerText").hidden = true;
+  $("finalWhyText").hidden = true;
+  $("finalGradeStep").hidden = true;
+  $("finalRevealRow").hidden = false;
+  announce("Final Jeopardy. " + stripTags(FINAL.clue));
+  finalDialog.showModal();
+  $("finalRevealBtn").focus();
+});
+
+$("finalRevealBtn").addEventListener("click", function(){
+  $("finalRevealRow").hidden = true;
+  $("finalAnswerText").hidden = false;
+  $("finalAnswerText").textContent = FINAL.answer;
+  $("finalWhyText").hidden = false;
+  clear($("finalWhyText"));
+  $("finalWhyText").appendChild(el("b", null, "Why: "));
+  var why = document.createElement("span");
+  why.innerHTML = FINAL.why;
+  $("finalWhyText").appendChild(why);
+  renderFinalGradeRows();
+  $("finalGradeStep").hidden = false;
+  announce("Answer: " + FINAL.answer + " " + stripTags(FINAL.why));
+});
+
+function renderFinalGradeRows(){
+  var box = $("finalGradeRows");
+  clear(box);
+  state.players.forEach(function(p, i){
+    var row = el("div", "grade-row");
+    var who = el("div", "who");
+    who.appendChild(el("span", "dot p" + (i + 1)));
+    who.appendChild(document.createTextNode(p.name));
+    row.appendChild(who);
+    row.appendChild(el("span", "wag", "wagered " + fmt(p.wager)));
+    var no = document.createElement("button");
+    no.type = "button"; no.className = "btn sm pick no";
+    no.textContent = "Missed it"; no.setAttribute("aria-pressed", "false");
+    var yes = document.createElement("button");
+    yes.type = "button"; yes.className = "btn sm pick yes";
+    yes.textContent = "Had it"; yes.setAttribute("aria-pressed", "false");
+    no.addEventListener("click", function(){ setFinalVerdict(i, false, no, yes); });
+    yes.addEventListener("click", function(){ setFinalVerdict(i, true, no, yes); });
+    row.appendChild(no);
+    row.appendChild(yes);
+    box.appendChild(row);
+  });
+  $("finalScoreBtn").disabled = true;
+}
+
+function setFinalVerdict(i, correct, noBtn, yesBtn){
+  state.players[i].finalCorrect = correct;
+  noBtn.setAttribute("aria-pressed", correct ? "false" : "true");
+  yesBtn.setAttribute("aria-pressed", correct ? "true" : "false");
+  var allSet = state.players.every(function(p){ return p.finalCorrect !== null; });
+  $("finalScoreBtn").disabled = !allSet;
+}
+
+$("finalScoreBtn").addEventListener("click", function(){
+  var anyRight = false;
+  state.players.forEach(function(p){
+    if(p.finalCorrect){
+      p.score += p.wager;
+      p.right += 1;
+      anyRight = true;
+    } else {
+      p.score -= p.wager;
+      p.wrong += 1;
+    }
+  });
+  state.results.push({ co:FINAL.co, src:FINAL.src, correct:anyRight });
+  finalDialog.close();
+  showResults();
+});
+
+finalDialog.addEventListener("cancel", function(e){ e.preventDefault(); });
+
+/* ============================================================================
+   RESULTS — the standings, then the two breakdowns that actually say what to
+   do next: by course objective, and by section of the module to go back to.
+   Both breakdowns are the table's, not any one player's: a clue counts as
+   answered if anybody got it, because what the group could not reach between
+   them is what is worth reteaching.
+   ========================================================================== */
+function verdict(right, asked){
+  var pct = asked === 0 ? 0 : right / asked;
+  if(asked === 0) return { cls:"none", label:"Not asked" };
+  if(pct >= 0.8) return { cls:"ok", label:"Solid" };
+  if(pct >= 0.5) return { cls:"mid", label:"Shaky" };
+  return { cls:"low", label:"Go back to this" };
+}
+
+function tallyBy(pick){
+  var t = {};
+  state.results.forEach(function(res){
+    pick(res).forEach(function(k){
+      if(!t[k]) t[k] = { right:0, asked:0 };
+      t[k].asked += 1;
+      if(res.correct) t[k].right += 1;
+    });
+  });
+  return t;
+}
+
+function renderObjResults(){
+  var t = tallyBy(function(res){ return res.co; });
+  var body = $("objResultBody");
+  clear(body);
+  var weak = [];
+  objectiveNumbers().forEach(function(n){
+    var row = t[n] || { right:0, asked:0 };
+    var v = verdict(row.right, row.asked);
+    if(v.cls === "low" || v.cls === "mid") weak.push(n);
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    td1.appendChild(el("b", null, n + "."));
+    td1.appendChild(document.createTextNode(" " + OBJECTIVES[n]));
+    tr.appendChild(td1);
+    tr.appendChild(el("td", "num", String(row.right)));
+    tr.appendChild(el("td", "num", String(row.asked)));
+    var td4 = document.createElement("td");
+    td4.appendChild(el("span", "pill " + v.cls, v.label));
+    tr.appendChild(td4);
+    body.appendChild(tr);
+  });
+  var advice = $("objAdvice");
+  clear(advice);
+  if(weak.length === 0){
+    advice.appendChild(el("b", "tagline", "Nothing weak enough to send anybody back"));
+    advice.appendChild(document.createTextNode(
+      "Every objective on this board came out solid. The useful next step is not another pass over the " +
+      "vocabulary but the practice midterm, where the same material has to be written out rather than " +
+      "recognised on a board."));
+  } else {
+    advice.appendChild(el("b", "tagline", "Objectives worth a second pass"));
+    advice.appendChild(document.createTextNode(
+      (isSolo() ? "You came out shaky or weak on " : "The table came out shaky or weak on ") +
+      listNames(weak.map(function(n){ return "objective " + n; })) +
+      ". The table underneath says which section of Module 6 covers each of them, and a miss in " +
+      "Making the Case points at the closing application rather than at the vocabulary."));
+  }
+}
+
+function renderSrcResults(){
+  var t = tallyBy(function(res){ return [res.src]; });
+  var body = $("srcResultBody");
+  clear(body);
+  SOURCE_ORDER.forEach(function(key){
+    var row = t[key] || { right:0, asked:0 };
+    var info = SOURCES[key];
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var a = document.createElement("a");
+    a.href = info.href;
+    a.textContent = info.label;
+    td1.appendChild(a);
+    tr.appendChild(td1);
+    tr.appendChild(el("td", "num", String(row.right)));
+    tr.appendChild(el("td", "num", String(row.asked)));
+    tr.appendChild(el("td", null, info.covers));
+    body.appendChild(tr);
+  });
+}
+
+function renderStandings(){
+  var panel = $("standingsPanel");
+  if(isSolo()){ panel.hidden = true; return; }
+  panel.hidden = false;
+  var body = $("standingsBody");
+  clear(body);
+  var ranked = state.players.slice().sort(function(a, b){ return b.score - a.score; });
+  var top = ranked[0].score;
+  ranked.forEach(function(p){
+    var tr = document.createElement("tr");
+    if(p.score === top) tr.className = "winner";
+    tr.appendChild(el("td", null, p.name));
+    tr.appendChild(el("td", "num", String(p.right)));
+    tr.appendChild(el("td", "num", String(p.wrong)));
+    tr.appendChild(el("td", "num", fmt(p.score)));
+    body.appendChild(tr);
+  });
+}
+
+function showResults(){
+  renderScoreStrip();
+  $("roundStat").textContent = "Game over";
+  var scoreBox = $("resultsScore");
+  var bestBox = $("resultsBest");
+  scoreBox.className = "score";
+  if(isSolo()){
+    var solo = state.players[0];
+    $("resultsHeading").textContent = "Final score";
+    scoreBox.textContent = fmt(solo.score);
+    var best = loadBest();
+    if(solo.score > best){
+      saveBest(solo.score);
+      bestBox.textContent = "New best score.";
+    } else {
+      bestBox.textContent = "Best solo score: " + fmt(best);
+    }
+    refreshBestStat();
+  } else {
+    var top = Math.max.apply(null, state.players.map(function(p){ return p.score; }));
+    var winners = state.players.filter(function(p){ return p.score === top; });
+    $("resultsHeading").textContent = winners.length > 1 ? "It is a tie" : "Winner";
+    scoreBox.className = "score name";
+    scoreBox.textContent = winners.length > 1
+      ? listNames(winners.map(function(p){ return p.name; })) + " — " + fmt(top) + " each"
+      : winners[0].name + " — " + fmt(top);
+    bestBox.textContent = "";
+    refreshBestStat();
+  }
+  var right = state.results.filter(function(r){ return r.correct; }).length;
+  $("resultsTally").textContent = (isSolo() ? "You answered " : "The table answered ") +
+    right + " of " + state.results.length + " clues correctly.";
+  $("objIntro").textContent = isSolo()
+    ? "One number hides a weak area; this table does not. A clue counts toward every objective it serves, so the totals here add up to more than fifty-one."
+    : "One number hides a weak area; this table does not. A clue counts as answered if anybody got it, and it counts toward every objective it serves, so the totals here add up to more than fifty-one.";
+  renderStandings();
+  renderObjResults();
+  renderSrcResults();
+  showScreen("screenResults");
+  announce("Game over. " + $("resultsScore").textContent + ". " +
+    right + " of " + state.results.length + " clues answered correctly.");
+}
+
+$("playAgainBtn").addEventListener("click", startGame);
+$("newPlayersBtn").addEventListener("click", function(){
+  $("setupPanel").hidden = false;
+  $("startBtn").textContent = "Start the game";
+  showScreen("screenIntro");
+  $("roundStat").textContent = "Review game";
+  state.players = [];
+  renderScoreStrip();
+  refreshBestStat();
+  $("pname1").focus();
+});
+
+/* ============================================================================
+   INIT
+   ========================================================================== */
+renderCatsPreview("catsPreview1", ROUND1);
+renderCatsPreview("catsPreview2", ROUND2);
+renderObjPreview();
+renderScoreStrip();
+refreshBestStat();
+showScreen("screenIntro");
+})();
+</script>
+</body>
+</html>

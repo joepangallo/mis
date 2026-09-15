@@ -20,9 +20,9 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const PAGE = "five-forces-and-value-chain-jeopardy.html";
 const html = readFileSync(join(ROOT, PAGE), "utf8");
 
-/* The four course objectives two strategy frameworks can honestly claim. The
-   board says so on its intro screen and must not quietly claim more. */
-const COVERED_OBJECTIVES = [2, 3, 5, 7];
+/* The three course objectives this narrowed board can honestly claim. The board
+   says so on its intro screen and must not quietly claim more. */
+const COVERED_OBJECTIVES = [2, 3, 7];
 
 const FORCE_ANSWERS = [
   "rivalry among existing competitors",
@@ -30,6 +30,34 @@ const FORCE_ANSWERS = [
   "the bargaining power of buyers",
   "the bargaining power of suppliers",
   "the threat of substitute"
+];
+
+/* The board covers the five PRIMARY activities and, deliberately, nothing else
+   from the value chain. Each gets a category of its own opening it up. */
+const PRIMARY_ACTIVITIES = [
+  "inbound logistics",
+  "operations",
+  "outbound logistics",
+  "sales and marketing",
+  "service"
+];
+
+/* The four support activities are real, are taught in the workshop, and are off
+   this board on purpose. An answer naming one of them is scope creeping back. */
+const SUPPORT_ACTIVITIES = [
+  "firm infrastructure",
+  "administration and firm infrastructure",
+  "human resources",
+  "technology development",
+  "procurement"
+];
+
+const INSIDE_CATEGORIES = [
+  ["Inside Inbound Logistics", "inbound logistics"],
+  ["Inside Operations", "operations"],
+  ["Inside Outbound Logistics", "outbound logistics"],
+  ["Inside Sales and Marketing", "sales and marketing"],
+  ["Inside Service", "service"]
 ];
 
 /* ============================================================================
@@ -225,15 +253,63 @@ test("a round-two clue never simply reprints its round-one definition", () => {
 /* ============================================================================
    COVERAGE — the board has to teach both frameworks, not the memorable one
    ========================================================================== */
-test("round one names all five forces and all nine value chain activities", () => {
+test("round one names all five forces and all five primary activities", () => {
   const answers = data.ROUND1.flatMap(cat => cat.clues.map(c => c.answer.toLowerCase()));
   for(const force of FORCE_ANSWERS){
     assert.ok(answers.some(a => a.includes(force)), `round one never asks for ${force}`);
   }
-  for(const activity of ["inbound logistics", "operations", "outbound logistics",
-                         "sales and marketing", "service", "administration and firm infrastructure",
-                         "human resources", "technology development", "procurement"]){
-    assert.ok(answers.some(a => a.includes(activity)), `round one never asks for ${activity}`);
+  const named = data.ROUND1.find(c => c.name === "The Five Primary Activities");
+  assert.ok(named, "round one must have a category that names the five primary activities");
+  const namedAnswers = named.clues.map(c => c.answer.toLowerCase());
+  for(const activity of PRIMARY_ACTIVITIES){
+    assert.ok(namedAnswers.some(a => a.includes(activity)),
+      `the naming category never asks for ${activity}`);
+  }
+});
+
+test("the four support activities are never an answer anywhere on the board", () => {
+  /* The board was deliberately narrowed to the five primary activities. This is
+     the test that keeps the other four from drifting back onto it. */
+  for(const { cat, clue } of everyClue()){
+    const answer = clue.answer.toLowerCase();
+    for(const support of SUPPORT_ACTIVITIES){
+      assert.ok(!answer.includes(support),
+        `"${cat.name}" $${clue.value} answers with the support activity "${support}"`);
+    }
+  }
+  for(const support of SUPPORT_ACTIVITIES){
+    assert.ok(!data.FINAL.answer.toLowerCase().includes(support),
+      `Final Jeopardy answers with the support activity "${support}"`);
+  }
+});
+
+test("each primary activity gets one category that opens it up", () => {
+  const byName = new Map(data.ROUNDS.flatMap(r => r.cats).map(c => [c.name, c]));
+  for(const [name, activity] of INSIDE_CATEGORIES){
+    const cat = byName.get(name);
+    assert.ok(cat, `missing the category that opens up ${activity}`);
+    assert.equal(cat.clues.length, 5, `"${name}" must carry five pieces`);
+    for(const clue of cat.clues){
+      /* An "Inside" category asks for the pieces, never for the activity's own
+         name — that is what the naming categories are for. */
+      assert.notEqual(clue.answer.toLowerCase().replace(/^what (is|are) /, "").replace(/\?$/, "").trim(),
+        activity, `"${name}" $${clue.value} answers with the activity itself rather than a piece of it`);
+      assert.equal(clue.src, "pieces",
+        `"${name}" $${clue.value} should send a miss to the part of the workshop that opens activities up`);
+    }
+  }
+  const insideClues = INSIDE_CATEGORIES.reduce((n, [name]) => n + byName.get(name).clues.length, 0);
+  assert.equal(insideClues, 25, "half the board is meant to be what sits inside the five activities");
+});
+
+test("the board asks about nothing but the forces and the primary activities", () => {
+  /* Generic strategies, business models and the shape of the written analysis
+     were all on this board before it was narrowed. They are off it now. */
+  const text = everyClue().map(({ clue }) => `${clue.clue} ${clue.answer}`).join(" ").toLowerCase();
+  for(const gone of ["low-cost leader", "differentiation strategy is", "revenue model", "business model",
+                     "150 to 200 words", "recommend one initiative", "signature", "alignment"]){
+    assert.ok(!text.includes(gone),
+      `"${gone}" is outside the two things this board is now about`);
   }
 });
 
@@ -245,15 +321,22 @@ test("round two makes every force diagnosable from a situation", () => {
   }
 });
 
-test("the closing category teaches the shape of the written analysis", () => {
-  const cat = data.ROUND2.find(c => c.name === "Writing the Analysis");
-  assert.ok(cat, "the written-analysis category is missing from round two");
-  const text = cat.clues.map(c => `${c.clue} ${c.answer} ${c.why}`).join(" ").toLowerCase();
-  for(const move of ["five forces", "value chain", "150 to 200 words", "measure and a date"]){
-    assert.ok(text.includes(move), `the category never mentions "${move}"`);
+test("the pieces are the cost drivers and the systems that answer them", () => {
+  /* What makes an activity worth opening up is that it has drivers a system can
+     change. Both halves have to be on the board, or the categories are trivia. */
+  const byName = new Map(data.ROUNDS.flatMap(r => r.cats).map(c => [c.name, c]));
+  for(const [name] of INSIDE_CATEGORIES){
+    const cat = byName.get(name);
+    const systems = cat.clues.filter(c => c.co.includes(7));
+    assert.ok(systems.length >= 1,
+      `"${name}" never asks for a system that answers one of its drivers`);
+    assert.ok(cat.clues.length - systems.length >= 2,
+      `"${name}" is mostly systems — an activity is opened up by its cost drivers first`);
   }
-  const one = cat.clues.find(c => /^what is one\?$/i.test(c.answer.trim()));
-  assert.ok(one, "the category must establish that exactly one initiative is recommended");
+  const text = everyClue().map(({ clue }) => `${clue.clue} ${clue.why}`).join(" ").toLowerCase();
+  assert.ok(text.includes("cost driver"), "the board never uses the term it is all built on");
+  assert.equal(data.FINAL.answer.toLowerCase(), "what is a cost driver?",
+    "the capstone is the thing that turns a costed activity into a decision");
 });
 
 /* ============================================================================
@@ -275,10 +358,10 @@ test("every clue names at least one course objective and a topic to go back to",
     "Final Jeopardy names no topic to go back to");
 });
 
-test("the four objectives it claims are each asked about, and no others are claimed", () => {
+test("the three objectives it claims are each asked about, and no others are claimed", () => {
   const declared = Object.keys(data.OBJECTIVES).map(Number).sort((a, b) => a - b);
   assert.deepEqual(declared, COVERED_OBJECTIVES,
-    "the objective list must hold exactly the four these frameworks serve");
+    "the objective list must hold exactly the three this narrowed board serves");
   const asked = new Set();
   for(const { clue } of everyClue()) clue.co.forEach(n => asked.add(n));
   data.FINAL.co.forEach(n => asked.add(n));
@@ -287,11 +370,20 @@ test("the four objectives it claims are each asked about, and no others are clai
   }
 });
 
-test("the intro says plainly which objectives the board does not reach", () => {
-  const callout = html.slice(html.indexOf("Not on this board"), html.indexOf("Not on this board") + 800);
+test("the intro says plainly what the board leaves alone, support activities first", () => {
+  const at = html.indexOf("Not on this board");
+  assert.ok(at > 0, "the intro must carry a callout naming what it leaves alone");
+  /* The callout wraps across lines in the source, so match on collapsed text. */
+  const callout = html.slice(at, at + 1400).replace(/\s+/g, " ").toLowerCase();
+  for(const support of ["firm infrastructure", "human resources", "technology development", "procurement"]){
+    assert.ok(callout.includes(support),
+      `the callout must name the support activity "${support}" it now leaves out`);
+  }
+  assert.ok(/generic strategies/.test(callout),
+    "the callout must say the generic strategies came off this board");
+  assert.ok(callout.includes("written analysis"),
+    "the callout must say the written analysis came off this board");
   assert.ok(callout.includes("life cycle"), "the callout must name the life-cycle objective it leaves alone");
-  assert.ok(/database technology|networks/.test(callout),
-    "the callout must name the infrastructure objective it leaves alone");
   assert.ok(/security breaches|computer crime/.test(callout),
     "the callout must name the security objective it leaves alone");
 });
@@ -306,7 +398,11 @@ test("every topic bucket is used, carries real weight, and links where it says",
     const info = data.SOURCES[key];
     assert.ok(nonEmptyString(info.label), `topic "${key}" has no label`);
     assert.ok(nonEmptyString(info.covers), `topic "${key}" does not say what it covers`);
-    assert.ok(existsSync(join(ROOT, info.href)), `topic "${key}" links to missing file "${info.href}"`);
+    const [path, hash] = info.href.split("#");
+    assert.ok(existsSync(join(ROOT, path)), `topic "${key}" links to missing file "${path}"`);
+    assert.ok(hash, `topic "${key}" should link to its own part of the workshop, not the top of it`);
+    assert.ok(readFileSync(join(ROOT, path), "utf8").includes(`id="${hash}"`),
+      `topic "${key}" links to #${hash}, which no longer exists in ${path}`);
     assert.ok((counts[key] || 0) >= 5,
       `topic "${key}" carries only ${counts[key] || 0} clues — too thin to diagnose from`);
   }
@@ -337,7 +433,7 @@ test("no institutional, course-code, or local-path wording reaches the page", ()
    that src/check.mjs already reads, and this test reads the same file. Without
    it the check reports itself as not run rather than passing quietly. */
 function reservedTerms(){
-  const list = join(ROOT, "src", "forbidden.local.txt");
+  const list = join(ROOT, "..", "src", "forbidden.local.txt");
   if(!existsSync(list)) return null;
   return readFileSync(list, "utf8").split(/\r?\n/).map(t => t.trim()).filter(Boolean);
 }
@@ -354,21 +450,16 @@ test("no reserved assessment term reaches the page", (t) => {
   }
 });
 
-test("the firms in the situations are invented, and the real ones are the chapter's own", () => {
-  assert.match(html, /Every firm in a situation is invented\./,
-    "the board data must state that the firms in its situations are hypothetical");
-  /* The chapter illustrates the generic strategies with four named companies.
-     Those four may appear because the chapter names them; any other real
-     company would be a practice situation dressed up as reported fact. */
-  const allowed = ["Walmart", "Porsche", "Nordstrom", "Dell"];
-  const strategy = data.ROUND1.find(c => c.name === "Strategy Words");
-  assert.ok(strategy, "the generic-strategy category is missing from round one");
-  const strategyText = strategy.clues.map(c => `${c.clue} ${c.answer} ${c.why}`).join(" ");
-  for(const name of allowed){
-    const everywhere = [...html.matchAll(new RegExp(`\\b${name}\\b`, "g"))].length;
-    if(everywhere === 0) continue;
-    assert.ok(strategyText.includes(name),
-      `${name} is named outside the category that quotes the chapter's own examples`);
-    assert.equal(everywhere, 1, `${name} should be named once, where the chapter names it`);
+test("every firm in a situation is invented, and no real company is named", () => {
+  assert.match(html, /Every firm in a situation is invented, and so is every figure\./,
+    "the board data must state that the firms and figures in its situations are hypothetical");
+  assert.match(html, /No real company is named anywhere on this board\./,
+    "the board must state that it names no real company");
+  /* The generic-strategy category carried the chapter's four named companies.
+     It came off the board when the board was narrowed, so they should be gone
+     with it rather than left sitting in a situation as reported fact. */
+  for(const name of ["Walmart", "Porsche", "Nordstrom", "Dell", "Amazon", "Netflix"]){
+    assert.doesNotMatch(html, new RegExp(`\\b${name}\\b`),
+      `${name} is named on a board whose situations are all invented`);
   }
 });
