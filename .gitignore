@@ -36,13 +36,20 @@ src/forbidden.local.txt
 # every future `git add` to catch it. Commit only when explicitly released.
 practice-case-study/instructor-notes*.md
 
-# The midterm's answer key, for exactly the same reason and with less room for error: the exam page
-# is committed and the key sits beside it. The page itself carries no answers, only a weights
-# comment, because a student can read its source.
+# The live midterm and its answer key. This repository is public and the exam is closed book and
+# proctored, so the paper itself stays out as well as the key — practice-midterm.html is the
+# student-facing rehearsal, and practice-midterm.test.mjs is written to skip the comparison when
+# the exam is absent, which is the normal state here. The page carries no answers either way.
+midterm.html
+midterm.test.mjs
 midterm-instructor-key*.md
 midterm-answer-key*.md
-practice-final-instructor-key*.md
-practice-final-answer-key*.md
+practice-midterm-instructor-key*.md
+practice-midterm-answer-key*.md
+
+# The Blackboard import file is the whole exam with its answers marked, in plain
+# text. It and everything built beside it stay out of a public repository.
+blackboard/
 
 # Build scratch
 /tmp/
