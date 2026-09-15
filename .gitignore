@@ -47,6 +47,16 @@ midterm-answer-key*.md
 practice-midterm-instructor-key*.md
 practice-midterm-answer-key*.md
 
+# The Week 1 instructor source: the answer key, the Blackboard question text, the SQL solutions, and
+# the expected/ fixtures that drive the browser suite. build.mjs reads this directory to assemble the
+# instructor archive; nothing here may ever be committed. It was restored from that archive on
+# 2026-09-15 after the archive itself was purged from history, and it showed up as plain untracked
+# files — one `git add -A` away from republishing everything the purge removed.
+hw/instructor/
+hw/**/ANSWER-KEY.md
+hw/**/BLACKBOARD-TEXT.md
+hw/**/solutions-ch*.sql
+
 # Instructor archives. This one was tracked from 7e1f3e0 until 2026-09-15 carrying ANSWER-KEY.md,
 # the Blackboard text and three .sql solution files. Every other leak check in this repository works
 # on file names, and a .zip is one opaque blob to all of them — so the rule is by name here, and
