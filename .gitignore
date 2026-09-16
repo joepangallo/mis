@@ -79,3 +79,10 @@ blackboard/
 # Build scratch
 /tmp/
 *.tmp.html
+
+# The Chapter 8 game's solutions. It carries every right answer, every designed wrong answer, the
+# partial-credit ladders and the reference arithmetic, so on a public repository it is an answer key
+# like any other. The game itself teaches without it — every option explains itself the moment it is
+# answered — so this is for whoever is running the session, not for the people playing it. Commit
+# only if that judgement is ever deliberately reversed.
+games/rocks-in-the-river-solutions.html

@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      # The workshop, the quiz, the three review games, the Chapter 7 learning game
+      # The workshop, the quiz, the three review games, the two learning games
       # and the two homework papers are hand-written rather than generated, so
       # check.mjs never sees them. Their contract tests are what stops a board
       # drifting out of shape or a link going stale, and they are listed one by one
@@ -61,4 +61,5 @@ jobs:
           games/modules-1-3-jeopardy.test.mjs
           games/module-06-jeopardy.test.mjs
           games/decision-engine.test.mjs
+          games/rocks-in-the-river.test.mjs
           homework/homework-cases.test.mjs

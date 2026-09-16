@@ -14,6 +14,7 @@ Interactive, self-contained study modules for an introductory information system
 
 | 6 | [`module-06-managing-data-and-business-intelligence.html`](module-06-managing-data-and-business-intelligence.html) | Chapter 6 Objectives 6.1–6.3: strategic data and data flows · quality, ethics, and governance · relational tables, keys, relationships, normalization, and master data management · runnable SQL and business reports · OLTP, warehouses, ETL, and data marts · big data, document stores, and data lakes · two application supplements covering **all five Porter forces and all nine value-chain activities**, followed by one scoped data initiative. Nine sections, 30 interactive activities, 58 glossary terms, and a 32-question final challenge. HTML edition; no PDF companion generated yet. |
 
+
 **Reading density is a deliberate, measured property.** Every section runs roughly 800&ndash;1,000 words of
 prose with no paragraph over about 65 words and a quarter to a third of the body in lists, so the first
 activity arrives early and no unbroken stretch of reading runs long. Modules 1&ndash;3 were originally
@@ -105,8 +106,8 @@ contract test beside it, and each links back up to the reading it covers. The th
 described separately in this file because each serves a different part of the course: this one covers
 Modules 1 to 3, **Strategy frameworks review game** narrows to the two frameworks, and **Module 6
 review game** covers Chapter 6 and is the one two to four people can play against each other.
-**Decision Engine**, described below, is not a review board at all &mdash; it is where Chapter 7 is
-taught rather than revised.
+**Decision Engine** and **Rocks in the River**, described below, are not review boards at all &mdash;
+they are where Chapters 7 and 8 are taught rather than revised.
 
 [`games/modules-1-3-jeopardy.html`](games/modules-1-3-jeopardy.html) is a two-round Jeopardy board covering
 Modules 1 to 3, for use once the reading is done rather than instead of it. Like the modules it is one
@@ -394,6 +395,155 @@ the test says so.
 
 ```sh
 node --test games/decision-engine.test.mjs
+```
+
+## Chapter 8 learning game
+
+[`games/rocks-in-the-river.html`](games/rocks-in-the-river.html) is the second page here that
+**teaches a chapter instead of revising it**, and it is the sibling of Decision Engine above: same
+rhythm, same rules, a different chapter. Seven rounds running the business systems programme of an
+invented refrigeration maker, and every mechanic in it *is* a piece of Chapter 8 rather than a
+question about one. Self-contained on the same terms as everything else &mdash; no CDN, no fonts, no
+network &mdash; and it inherits the theme the reader last set on a module page.
+
+The chapter's own picture of a company whose departments cannot share data is a river with **too many
+rocks in it**: the information exists, it simply cannot get from one activity to the next. That is
+where the title comes from, and clearing them is the game.
+
+**It opens with one question rather than an explanation.** A buyer is on the phone asking for forty
+cabinets. The warehouse system shows 52 on the shelf; the order book has already promised 31 of them
+to somebody else; the two systems do not talk. Press one of four buttons and find out what **on hand**
+and **available to promise** are, and why they are not the same number. Everything else &mdash; the
+company, the meters, what the game covers and what it does not &mdash; is folded behind one
+disclosure. **Every question marks itself the moment you answer it**, with the reasoning underneath
+and the controls locked, so the first answer is the one that counts &mdash; and in each round one
+wrong answer opens a second question that lets you earn most of it back.
+
+**How to play it is shown rather than written down.** The first version explained the controls in a
+list at the top of each round and then put the controls four screens further down, which is not an
+explanation but a memory test. Now:
+
+- **A bar along the bottom always names the next press** &mdash; &ldquo;press a card in the tray, then
+  press where it belongs&rdquo;, &ldquo;now press where *Yardhand* belongs&rdquo;, &ldquo;press *Mark
+  this answer*&rdquo; &mdash; and turns green when the round is finished. It works the next press out
+  by reading the page in the order the reader reads it, so no round has to remember to update it.
+- **Picking a card up visibly changes the screen.** The strip above the tray says what is in your hand
+  and every place that will take it is outlined. The second press is shown, not described.
+- **Four of the seven rounds ask you to put cards on places, so the opening screen has you do it once**
+  &mdash; two cards, two places, no marks attached &mdash; before any of them count.
+- **Every question says which one of how many it is** and grows a tick when it is answered, the
+  question you are on is outlined, and one label, **Mark this answer**, does the job that four
+  different phrases used to.
+- **Three lines of instruction per round**, and a **Start pressing &darr;** button in the header for
+  anyone who would rather press something first and read the fiction afterwards.
+
+The design rule is Decision Engine's: a concept the reader could be *told* is instead something they
+have to *do*, and getting it wrong costs money, trust or somebody's afternoon rather than a mark.
+
+**Getting a question wrong opens a second one.** A reader who answers, reads why they were wrong and
+moves on has been marked on what they knew *before* the teaching, which is a strange thing for a
+teaching page to measure &mdash; and it makes the explanation something you read rather than something
+you use. So every round has one question that carries a **repair**: a second instance of the same
+idea, in different particulars, built only if the first answer was wrong.
+
+- The first answer still stands and still costs whatever it cost inside the fiction. What the repair
+  changes is the mark, and only partly: getting it right the second time recovers **all but one** of
+  the points.
+- **It is a different instance, never the same question reworded.** Round 1 asks you to *build* an
+  order-to-cash sequence, and its repair hands you one somebody else wrote with a single step out of
+  place and asks what is wrong with it &mdash; which is what the job actually looks like. Round 3's
+  repair is a fourth module, round 6's asks which single field would have narrowed the recall, round
+  7's settles substitutes against new entrants on two fresh cases.
+- **Round 4's repair moves the right answer.** The promise desk's second call flips the staleness of
+  the availability figure, so a reader who learned &ldquo;always stop and count&rdquo; is exactly as
+  wrong as one who learned &ldquo;always trust the screen&rdquo;. The timestamp is the question, and
+  the only way through is to read it.
+- A reader who was right first time never sees any of it, so knowing the material does not make the
+  game longer, and **the round will not let you commit while a repair is open** &mdash; the button
+  says &ldquo;one to put right first&rdquo;.
+
+There is an instructor guide &mdash; the answer key, the designed traps, the arithmetic to check
+against and how to run the session &mdash; but it is **deliberately not in this repository**, which is
+public and which students read. It is generated alongside the game and handed over separately, on the
+same rule as every other key here.
+
+- **Round 1, seven stones** &mdash; nine cards, seven slots. Lay the order-to-cash process out in the
+  order it happens, leave the two cards that belong to **procure-to-pay** in the tray, and then watch
+  the page run one real order down the order you gave it. Every step that arrived early is priced from
+  its own consequence: ship before you allocate and the pallet is already labelled for somebody else.
+  Two of those faults cost nothing today and **detonate four rounds later**.
+- **Round 2, rocks in the river** &mdash; the value chain as a live board, five core activities over
+  five support ones, and eight departmental systems to put on the right one. **Procurement against
+  inbound logistics** is the placement that catches everybody. Then the six crossings between those
+  systems, each of which can be re-keyed by hand, sent as a nightly file or wired live, against a
+  costed exhibit and a capital cap. The panel recomputes the annual bill and the payback on every
+  press. **Nightly files are nearly free and remove three quarters of the cost; live links pay back
+  over three to eight years on re-typing alone.** What the money does not price is how old the number
+  is when somebody reads it down the phone, and which fields a person copying by hand does not copy.
+- **Round 3, the backbone** &mdash; one suite or the best of each; which module replaces which system,
+  and which of the eight no module replaces; **business process management**, and why it is not the
+  quality programme it is usually confused with; vanilla against configured against **customized**,
+  with the reprogramming bill at every release made explicit; the four cost lines the chapter says
+  nobody quotes, hidden among four decoys that do not belong in a total cost of ownership at all; and
+  which of the four things that make an implementation succeed you would refuse to cut.
+- **Round 4, the promise desk** &mdash; five enquiries sorted by which ERP component owns them, and
+  then one promise made against an availability figure that is **exactly as stale as round two made
+  it**. The right answer is not fixed: with the crossing wired live the screen is the truth and you
+  confirm what it says; with it on a nightly file the screen is hours old and the only defensible
+  answer is to stop and count. Nothing on the page ever says the figure is wrong &mdash; only how old
+  it is.
+- **Round 5, the whip** &mdash; four tiers, four safety-stock sliders defaulting to the cautious
+  setting, and a switch on each tier for sharing what customers actually bought. The propagation rule
+  is printed in words and in symbols and then run: a **10 per cent wobble at the till** reaches the
+  copper tube mill as a **four-hundred per cent swing**, with three weeks in which the mill is told to
+  ship nothing while customers never stopped buying. Sharing the demand signal alone is not enough and
+  cutting safety stock alone is not safe; the round only pays when you do both, which is what
+  just-in-time actually depends on.
+- **Round 6, three flows and one bad lot** &mdash; ten movements sorted into product, information and
+  financial flow, including the two that run **backwards**; who owns a supplier portal against a
+  customer portal against a marketplace; a register of 240 cabinets, one bad compressor lot, and a
+  recall whose size is decided by a decision made in round two; and then a consultant who wants to put
+  the whole register on a blockchain, which is where the chapter's own list of what that would and
+  would not fix gets used.
+- **Round 7, the age of the customer** &mdash; the chapter argues **all five of Porter's competitive
+  forces** in five consecutive sentences and never once uses the word. Five pieces of evidence from
+  the firm's own order book, five forces, and the two confusions that are actually hard: engineers
+  leaving is **supplier power**, not a human resources problem, and refrigeration-as-a-service is a
+  **substitute** while a contractor in a rented unit is a **new entrant**. Then the service console,
+  where **first-contact resolution turns out to be a multiplier on volume rather than a satisfaction
+  score**, hiring more agents does not touch it, and a chatbot with nothing behind it makes it worse.
+
+**The two frameworks this course is built on run right through it**, and the closing screen says
+where: the value chain is round two's board and round three's split between core and extended ERP
+components, and it leaves the company altogether in rounds five and six, where one firm's chain wired
+to the next is a **value system**. The five forces are round seven. The closing question is the one
+the whole course keeps asking &mdash; which force is the system you just bought actually answering?
+
+**The closing screen puts the opening question back on the table.** The same buyer, the same forty
+cabinets &mdash; and what the desk can say this time is computed from the wiring the player chose and
+the faults they left behind. A run that wired the right crossing and ran the order in the right order
+gets to answer on the first call; one that did not is still saying &ldquo;let me check and call you
+back&rdquo;, and the panel says in hours exactly how old its own stock figure is.
+
+Results are reported **per chapter objective 8.1&ndash;8.5** with a Solid/Shaky/Reread verdict,
+followed by every decision that cost something and a chain of what each round handed the next. The
+intro names the five course objectives a single chapter can honestly claim and the six it cannot,
+including why objective 6 is not one of them even though the game buys and installs a system. Every
+organization, person and figure is invented, and no real company is named anywhere.
+
+`games/rocks-in-the-river.test.mjs` loads the page against a DOM stub and then **recomputes every
+number the game asserts** &mdash; the cost of any ordering of the seven steps from the rules it
+breaks, the annual bill and the payback of all 729 wirings, the five-year estate, the four-tier
+propagation from the rule printed on the page, the recall arithmetic, and the service console at every
+combination of switches. So a tuned constant that quietly breaks a lesson fails the build: if the
+right order-to-cash sequence ever broke a rule, if sharing the demand signal alone ever damped the
+whip, if hiring more agents ever improved first-contact resolution, or if the cheapest wiring were
+ever also the one that narrows a recall, the test says so. It also refuses drag-and-drop, any absolute
+URL, any unguarded `localStorage` access, and any round whose field manual is too thin to rescue a
+reader who is stuck.
+
+```sh
+node --test games/rocks-in-the-river.test.mjs
 ```
 
 ## Homework
