@@ -1,0 +1,101 @@
+{
+  "id": "08",
+  "outputFile": "module-08-enterprise-information-systems.html",
+  "title": "Module 8 \u00b7 Enhancing Business Processes Using Enterprise Systems",
+  "sections": [
+    {
+      "id": "s81a",
+      "title": "Core business processes",
+      "prefix": "proc",
+      "objective": "8.1"
+    },
+    {
+      "id": "s81b",
+      "title": "The value chain, and value systems between firms",
+      "prefix": "chain",
+      "objective": "8.1"
+    },
+    {
+      "id": "s82a",
+      "title": "Why standalone applications stopped working",
+      "prefix": "rise",
+      "objective": "8.2"
+    },
+    {
+      "id": "s82b",
+      "title": "Internally and externally focused systems",
+      "prefix": "scope",
+      "objective": "8.2"
+    },
+    {
+      "id": "s83a",
+      "title": "ERP core and extended components",
+      "prefix": "erpcore",
+      "objective": "8.3"
+    },
+    {
+      "id": "s83b",
+      "title": "Choosing, installing, and living with an ERP",
+      "prefix": "erplive",
+      "objective": "8.3"
+    },
+    {
+      "id": "s84a",
+      "title": "Supply networks, B2B, and the bullwhip effect",
+      "prefix": "netw",
+      "objective": "8.4"
+    },
+    {
+      "id": "s84b",
+      "title": "Planning, execution, visibility, and the ledger question",
+      "prefix": "scm",
+      "objective": "8.4"
+    },
+    {
+      "id": "s85a",
+      "title": "CRM strategy and its components",
+      "prefix": "crm",
+      "objective": "8.5"
+    },
+    {
+      "id": "s85b",
+      "title": "CRM in practice, and where it goes wrong",
+      "prefix": "crmlive",
+      "objective": "8.5"
+    },
+    {
+      "id": "s86",
+      "title": "Enterprise systems through the five forces and the value chain",
+      "prefix": "force",
+      "objective": "8.6"
+    },
+    {
+      "id": "s87",
+      "title": "Recommend one enterprise-systems initiative",
+      "prefix": "plan",
+      "objective": "8.7"
+    }
+  ],
+  "objectives": [
+    "8.1",
+    "8.2",
+    "8.3",
+    "8.4",
+    "8.5",
+    "8.6",
+    "8.7"
+  ],
+  "objectiveNames": {
+    "8.1": "Core business processes and the value chain",
+    "8.2": "The role and evolution of enterprise-wide systems",
+    "8.3": "Enterprise resource planning",
+    "8.4": "Supply chain management",
+    "8.5": "Customer relationship management",
+    "8.6": "Application: five forces and the value chain",
+    "8.7": "Application: a defensible recommendation"
+  },
+  "supplements": [
+    "s86",
+    "s87"
+  ]
+}

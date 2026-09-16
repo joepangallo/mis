@@ -1,0 +1,161 @@
+{
+  "policy": {
+    "core": "The supplied Chapter 8 defines LO 8.1 through LO 8.5. Reading and chapter vocabulary trace to those headings, including the ethical dilemma, security, sustainability, and when-things-go-wrong discussions.",
+    "supplement": "Applications 8.6 and 8.7 are explicitly labeled extensions applying existing Porter frameworks and ordinary cost reasoning to original hypothetical enterprise-system decisions. They are not part of the chapter's own objectives.",
+    "hypotheticals": "Every numerical exhibit, firm, and practice organization is explicitly hypothetical. No invented figure is attributed to a real organization. Real companies named in the chapter are used only as the chapter uses them.",
+    "currentLaw": "Compliance material is taught as a reason enterprise systems record what they record. The module does not assert current legal requirements and does not offer legal advice.",
+    "datedFigures": "Vendor prices, market shares, license costs, adoption counts, and chapter forecasts are omitted. Vendor capabilities are taught by use case rather than by product comparison."
+  },
+  "sources": {
+    "chapter8": {
+      "citation": "Supplied Chapter 8, learning objectives 8.1\u20138.5: Core Business Processes and Organizational Value Chains; Enterprise Systems; Enterprise Resource Planning; Managing Supply Chains; Customer Relationship Management.",
+      "localFile": "../../../book/Ch 8.docx"
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials.",
+      "localFile": "../../../book/Course Objectives.docx"
+    },
+    "porter1985": {
+      "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press. Framework vocabulary also taught in the course's strategy workshop and in Modules 2 and 5.",
+      "localFile": "../../../five-forces-and-value-chain.html"
+    },
+    "porterMillar1985": {
+      "citation": "Porter, M. E., & Millar, V. E. (1985). How Information Gives You Competitive Advantage. Harvard Business Review, 63(4), 149\u2013160. The value chain figure in this chapter is credited to this article.",
+      "localFile": "../../../five-forces-and-value-chain.html"
+    },
+    "hbsForces": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Five Forces.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx",
+      "checked": "2026-09-16"
+    },
+    "hbsValueChain": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Value Chain.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-value-chain.aspx",
+      "checked": "2026-09-16"
+    }
+  },
+  "chapterLocators": {
+    "8.1": {
+      "heading": "Core Business Processes and Organizational Value Chains"
+    },
+    "8.2": {
+      "heading": "Enterprise Systems"
+    },
+    "8.3": {
+      "heading": "Enterprise Resource Planning"
+    },
+    "8.4": {
+      "heading": "Managing Supply Chains"
+    },
+    "8.5": {
+      "heading": "Customer Relationship Management"
+    }
+  },
+  "fragments": {
+    "s81a": [
+      "chapter8"
+    ],
+    "s81b": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "s82a": [
+      "chapter8"
+    ],
+    "s82b": [
+      "chapter8"
+    ],
+    "s83a": [
+      "chapter8"
+    ],
+    "s83b": [
+      "chapter8"
+    ],
+    "s84a": [
+      "chapter8"
+    ],
+    "s84b": [
+      "chapter8"
+    ],
+    "s85a": [
+      "chapter8"
+    ],
+    "s85b": [
+      "chapter8"
+    ],
+    "s86": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "s87": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain",
+      "courseObjectives"
+    ],
+    "glossary": [
+      "chapter8"
+    ],
+    "final": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ]
+  },
+  "objectives": {
+    "8.1": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "8.2": [
+      "chapter8"
+    ],
+    "8.3": [
+      "chapter8"
+    ],
+    "8.4": [
+      "chapter8"
+    ],
+    "8.5": [
+      "chapter8"
+    ],
+    "8.6": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "8.7": [
+      "chapter8",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain",
+      "courseObjectives"
+    ]
+  },
+  "qualifications": [
+    "The supply chain is called a chain for convenience; the chapter says plainly that the accurate picture is a network, because each tier has many suppliers of its own.",
+    "Upstream means towards raw materials and downstream means towards the end customer. One firm's order-to-cash overlaps the next firm's procure-to-pay, so the same transaction is a sale on one side and a purchase on the other.",
+    "The bullwhip effect is amplification of order variability moving upstream. It is a consequence of each tier reacting to its own order book rather than to end demand; it is not a claim that any tier behaved irrationally.",
+    "Customizing an ERP module is costly to maintain because each vendor release must be re-fitted to the changed code. The chapter says costly rewriting, not that an updated module becomes impossible to patch.",
+    "A productivity dip shortly after go-live is common and expected while people learn a new process. Treating every dip as proof the system was wrong is as mistaken as treating it as proof of nothing.",
+    "Blockchain makes an existing record hard to alter after it is written. It cannot supply a field nobody captured, and the chapter's own treatment spends most of its length on the limits.",
+    "Best-of-breed is a real strategy the chapter describes, not a wrong answer. Its cost is that integration is built and maintained per pair of systems.",
+    "Framework applications in 8.6 and 8.7 are analytical extensions. A system that improves a firm's position does not by itself change an industry's structure."
+  ]
+}

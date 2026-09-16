@@ -14,6 +14,7 @@ Interactive, self-contained study modules for an introductory information system
 
 | 6 | [`module-06-managing-data-and-business-intelligence.html`](module-06-managing-data-and-business-intelligence.html) | Chapter 6 Objectives 6.1–6.3: strategic data and data flows · quality, ethics, and governance · relational tables, keys, relationships, normalization, and master data management · runnable SQL and business reports · OLTP, warehouses, ETL, and data marts · big data, document stores, and data lakes · two application supplements covering **all five Porter forces and all nine value-chain activities**, followed by one scoped data initiative. Nine sections, 30 interactive activities, 58 glossary terms, and a 32-question final challenge. HTML edition; no PDF companion generated yet. |
 
+| 8 | [`module-08-enterprise-information-systems.html`](module-08-enterprise-information-systems.html) | Chapter 8 Objectives 8.1&ndash;8.5: the three core business processes &mdash; order-to-cash, procure-to-pay and make-to-stock against make-to-order &mdash; and why one firm&rsquo;s selling process is the next firm&rsquo;s buying process &middot; the value chain&rsquo;s five core and five support activities, and the value systems that join one chain to the next &middot; why stand-alone applications and legacy systems stopped working, and what internally against externally focused systems actually means &middot; enterprise resource planning: core and extended components, one suite against best-of-breed, vanilla against configured against customized, and the four cost lines nobody quotes &middot; supply networks, business-to-business exchange, the bullwhip effect, supply chain planning against execution, the three flows and the two that run backwards, visibility, and what a blockchain can and cannot fix &middot; customer relationship management: strategy, its four components, first-contact resolution as a multiplier rather than a score, and the ethical ceiling where personalization backfires &middot; plus two clearly labeled application supplements: **the chapter read through all five of Porter&rsquo;s forces and the value chain**, and one scoped enterprise-systems recommendation priced and measured the way a manager would have to defend it. Twelve sections, 36 interactive activities, 70 glossary terms, and a 38-question final challenge. HTML edition; no PDF companion generated yet. |
 
 **Reading density is a deliberate, measured property.** Every section runs roughly 800&ndash;1,000 words of
 prose with no paragraph over about 65 words and a quarter to a third of the body in lists, so the first
@@ -65,6 +66,9 @@ node src/check.mjs --module=modules/05  # the same checks against Module 5
 
 node src/build.mjs --module=modules/06  # regenerate Module 6
 node src/check.mjs --module=modules/06  # the same checks against Module 6
+
+node src/build.mjs --module=modules/08  # regenerate Module 8
+node src/check.mjs --module=modules/08  # the same checks against Module 8
 ```
 
 One generator serves every module. Module 1's sources sit directly in `src/`; each later module gets
