@@ -1,0 +1,170 @@
+{
+  "policy": {
+    "core": "The supplied Chapter 7 defines LO 7.1 through LO 7.4. Reading and chapter vocabulary trace to those headings, including the sustainability, ethical dilemma, security, technology and when-things-go-wrong discussions.",
+    "supplement": "Applications 7.5 and 7.6 are explicitly labeled extensions applying existing Porter frameworks and ordinary cost reasoning to original hypothetical analytics decisions. They are not part of the chapter's own objectives.",
+    "hypotheticals": "Every numerical exhibit, firm, and practice organization is explicitly hypothetical. No invented figure is attributed to a real organization.",
+    "currentLaw": "Bias, privacy and consent material is taught as a reason to govern how a model is trained and used. The module does not assert current legal requirements and does not offer legal advice.",
+    "datedFigures": "The chapter surveys named generative AI vendors, model families and version numbers, and cites benchmark and adoption figures. All of it is omitted: model capability is taught by use case rather than by product, because any such comparison is out of date before a term ends. No vendor, model name, version, ranking, price or forecast appears anywhere in this module."
+  },
+  "sources": {
+    "chapter7": {
+      "citation": "Supplied Chapter 7, learning objectives 7.1\u20137.4: Enhancing Organizational Decision Making; Business Intelligence, Advanced Analytics, and Artificial Intelligence; Generative AI; Knowledge Management and Geographic Information Systems.",
+      "localFile": "../../../book/Ch 7.docx"
+    },
+    "courseObjectives": {
+      "citation": "The eleven course objectives supplied with the course materials.",
+      "localFile": "../../../book/Course Objectives.docx"
+    },
+    "porter1985": {
+      "citation": "Porter, M. E. (1985). Competitive Advantage: Creating and Sustaining Superior Performance. Free Press. Framework vocabulary also taught in the course's strategy workshop and in Modules 2, 5 and 8.",
+      "localFile": "../../../five-forces-and-value-chain.html"
+    },
+    "porterMillar1985": {
+      "citation": "Porter, M. E., & Millar, V. E. (1985). How Information Gives You Competitive Advantage. Harvard Business Review, 63(4), 149\u2013160.",
+      "localFile": "../../../five-forces-and-value-chain.html"
+    },
+    "hbsForces": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Five Forces.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx",
+      "checked": "2026-09-17"
+    },
+    "hbsValueChain": {
+      "citation": "Harvard Business School, Institute for Strategy and Competitiveness. The Value Chain.",
+      "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-value-chain.aspx",
+      "checked": "2026-09-17"
+    },
+    "chapter7Game": {
+      "citation": "The course's own Chapter 7 learning game, games/decision-engine.html, whose figures and worked examples were computed and contract-tested against this chapter. This module reuses its invented firm and several of its verified exhibits so the two pieces teach one continuous case.",
+      "localFile": "../../../games/decision-engine.html"
+    }
+  },
+  "chapterLocators": {
+    "7.1": {
+      "heading": "Enhancing Organizational Decision Making"
+    },
+    "7.2": {
+      "heading": "Business Intelligence, Advanced Analytics, and Artificial Intelligence"
+    },
+    "7.3": {
+      "heading": "Generative AI"
+    },
+    "7.4": {
+      "heading": "Knowledge Management and Geographic Information Systems"
+    }
+  },
+  "fragments": {
+    "s71a": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s71b": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s72a": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s72b": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s72c": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s72d": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s73a": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s73b": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s74a": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s74b": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "s75": [
+      "chapter7",
+      "chapter7Game",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "s76": [
+      "chapter7",
+      "chapter7Game",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain",
+      "courseObjectives"
+    ],
+    "glossary": [
+      "chapter7"
+    ],
+    "final": [
+      "chapter7",
+      "chapter7Game",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ]
+  },
+  "objectives": {
+    "7.1": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "7.2": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "7.3": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "7.4": [
+      "chapter7",
+      "chapter7Game"
+    ],
+    "7.5": [
+      "chapter7",
+      "chapter7Game",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain"
+    ],
+    "7.6": [
+      "chapter7",
+      "chapter7Game",
+      "porter1985",
+      "porterMillar1985",
+      "hbsForces",
+      "hbsValueChain",
+      "courseObjectives"
+    ]
+  },
+  "qualifications": [
+    "A structured decision has a known procedure and a checkable answer; an unstructured one does not, and the same question can be structured for one role and unstructured for another. The continuum is about the decision, not about the seniority of whoever makes it.",
+    "Business intelligence reports what happened and helps a person decide. Machine learning fits a model to historical data to produce a prediction. Neither establishes that one thing caused another.",
+    "A model's output is a prediction with an error rate, not a fact. Accuracy measured on the data a model was fitted to is not evidence it will work on new cases.",
+    "Bias in a model is usually inherited from the data it was trained on rather than introduced deliberately, which is why the chapter treats training data as an ethical question rather than a purely technical one.",
+    "A generative model produces plausible text; plausibility is not accuracy, and a confident answer can be wholly invented. That is a property of how these systems work, not a defect that a particular product has fixed.",
+    "Explicit knowledge can be written down and transferred; tacit knowledge is held in experience and is harder to codify. A knowledge management system can store the first and only ever point at the second.",
+    "A geographic information system adds location as a dimension of analysis. Showing data on a map makes patterns visible; it does not by itself explain them.",
+    "Framework applications in 7.5 and 7.6 are analytical extensions. A system that improves one firm's decisions does not by itself change an industry's structure."
+  ]
+}

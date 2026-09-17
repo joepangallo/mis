@@ -1,0 +1,99 @@
+{
+  "id": "07",
+  "outputFile": "module-07-enhancing-organizational-decision-making.html",
+  "title": "Module 7 \u00b7 Enhancing Organizational Decision Making",
+  "sections": [
+    {
+      "id": "s71a",
+      "title": "Four kinds of analytics, and which can act on its own",
+      "prefix": "kinds",
+      "objective": "7.1"
+    },
+    {
+      "id": "s71b",
+      "title": "The decision-making continuum",
+      "prefix": "cont",
+      "objective": "7.1"
+    },
+    {
+      "id": "s72a",
+      "title": "Measures, dimensions, and the cube",
+      "prefix": "cube",
+      "objective": "7.2"
+    },
+    {
+      "id": "s72b",
+      "title": "Reporting, dashboards, and asking what if",
+      "prefix": "dash",
+      "objective": "7.2"
+    },
+    {
+      "id": "s72c",
+      "title": "Patterns in data nobody labelled",
+      "prefix": "unlab",
+      "objective": "7.2"
+    },
+    {
+      "id": "s72d",
+      "title": "The machine learning workflow, end to end",
+      "prefix": "flow",
+      "objective": "7.2"
+    },
+    {
+      "id": "s73a",
+      "title": "How generative AI actually gets used",
+      "prefix": "gen",
+      "objective": "7.3"
+    },
+    {
+      "id": "s73b",
+      "title": "Agents, oversight, and governing the use of it",
+      "prefix": "agent",
+      "objective": "7.3"
+    },
+    {
+      "id": "s74a",
+      "title": "Knowledge management: what leaves when people do",
+      "prefix": "km",
+      "objective": "7.4"
+    },
+    {
+      "id": "s74b",
+      "title": "Geographic information systems",
+      "prefix": "gis",
+      "objective": "7.4"
+    },
+    {
+      "id": "s75",
+      "title": "Decision systems through the five forces and the value chain",
+      "prefix": "force",
+      "objective": "7.5"
+    },
+    {
+      "id": "s76",
+      "title": "Recommend one analytics initiative",
+      "prefix": "plan",
+      "objective": "7.6"
+    }
+  ],
+  "objectives": [
+    "7.1",
+    "7.2",
+    "7.3",
+    "7.4",
+    "7.5",
+    "7.6"
+  ],
+  "objectiveNames": {
+    "7.1": "Why decisions need business intelligence and AI",
+    "7.2": "Business intelligence, analytics, and machine learning",
+    "7.3": "Generative AI in organizations",
+    "7.4": "Knowledge management and geographic information systems",
+    "7.5": "Application: five forces and the value chain",
+    "7.6": "Application: a defensible recommendation"
+  },
+  "supplements": [
+    "s75",
+    "s76"
+  ]
+}
