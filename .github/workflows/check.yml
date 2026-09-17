@@ -37,16 +37,16 @@ jobs:
         with:
           node-version: 22
       # The workshop, the quiz, the three review games, the two learning games
-      # and the two homework papers are hand-written rather than generated, so
+      # and the homework papers are hand-written rather than generated, so
       # check.mjs never sees them. Their contract tests are what stops a board
       # drifting out of shape or a link going stale, and they are listed one by one
       # for the same reason the module matrix is: adding a page should be a
       # deliberate line in this file.
       #
-      # The two homework case studies are generated from one template, so a single
-      # test file covers both and also asserts they have not drifted apart. It
-      # needs no answer key: every task on those papers is an open analysis, and
-      # the marking guidance is gitignored beside them.
+      # The homework case studies are generated from one template, so a single
+      # test file covers all of them and also asserts they have not drifted
+      # apart. It needs no answer key: every task on those papers is an open
+      # analysis, and the marking guidance is gitignored beside them.
       # Every other leak check here works on file names, which a .zip defeats.
       - name: Refuse an archive that carries answers
         run: node src/check-archives.mjs

@@ -1,8 +1,8 @@
-/* Contract tests for the two homework case studies.
+/* Contract tests for the homework case studies.
  *
- * Node standard library only. Both papers are generated from one template —
+ * Node standard library only. Every paper is generated from one template —
  * scenario, comparison company, four tasks, two deliverables — so one test file
- * covers both and additionally asserts they have not drifted apart. There are no
+ * covers them all and additionally asserts they have not drifted apart. There are no
  * answer keys to gate on here: every task is an open analysis, and the marking
  * guidance lives in the gitignored instructor keys beside the pages.
  *
@@ -37,8 +37,6 @@ const PAPERS = [
     ],
     /* The chapter this case is built to be answered with. */
     reading: "module-06-managing-data-and-business-intelligence.html",
-    /* The intended strongest force, and the alternative the key must accept. */
-    strongest: "buyer power",
     fixtureSystem: "master data management running on the operational database",
     fixtureChapter: "The failure is data duplication, and it leaves the conflicting definitions of a customer untouched. The authoritative record becomes the product master, owned by the operations manager, who settles any disagreement about what one product is rather than deleting either department's meaning. An operational fix is needed because copying everything into one analytical store would settle the reporting and would not stop the wrong item being picked at the shelf. The corrected identifier reaches goods receipt and the webshop through the nightly catalog feed that both of them already read every night.",
     substitute: /home-prepared/i,
@@ -59,11 +57,50 @@ const PAPERS = [
       [/bike-share scheme/, "the threat of substitutes"]
     ],
     reading: "games/decision-engine.html",
-    strongest: "supplier power",
     fixtureSystem: "a decision support system built on one margin model",
     fixtureChapter: "The method is a decision support system. The one input I can actually control is the quantity committed a quarter ahead, the constraint is the delivery capacity the stores actually have, and the what-if question a buyer would put to it is what happens to margin if the certified supplier raises the pack price another 9 percent. It is a model rather than a prediction, so there is no label and no held-back test set; what it needs instead is the buyer checking the assumptions each quarter before the order goes in.",
     substitute: /bike-share/i,
     cappedForce: /Parts are <b>21 percent<\/b>/
+  },
+  {
+    file: "homework-08-enterprise-systems-case.html",
+    key: "homework-08-instructor-key.md",
+    firm: "Marchmont Home Company",
+    storage: "mis-homework-08-case-v1",
+    cost: 62000000,
+    avoidable: 3202000,
+    evidence: [
+      [/Two national furniture chains/, "rivalry"],
+      [/Setting up a furniture webshop and drop-shipping/, "the threat of new entrants"],
+      [/compare the same range across three sellers from a phone/, "buyer power"],
+      [/Two frame mills supply about 70 percent/, "supplier power"],
+      [/Furniture rental and restored second-hand pieces/, "the threat of substitutes"]
+    ],
+    reading: "module-08-enterprise-information-systems.html",
+    fixtureSystem: "a configured ERP operations management module replacing two standalone applications",
+    fixtureChapter: "The process that fails is order-to-cash: a showroom promises stock the workshop does not have, on 214 of 3,600 orders last quarter, at about $390 each. The class is an enterprise system, the half is an ERP core component, and the module I would switch on first is operations management. The work is configuration rather than customization, because the last two releases were skipped when written-to-order changes would have had to be written again. Year one is a licence, configuration labour, integration with what is not being replaced, training and change management, and a recurring cost after that. I would warn the board about the drop in productivity in the first weeks after go-live.",
+    substitute: /furniture rental/i,
+    cappedForce: /flat-packed accessories, which are 12 percent<\/b>/
+  },
+  {
+    file: "homework-09-supply-chains-and-customer-relationships-case.html",
+    key: "homework-09-instructor-key.md",
+    firm: "Pentworth Workplace Company",
+    storage: "mis-homework-09-case-v1",
+    cost: 44000000,
+    avoidable: 2224000,
+    evidence: [
+      [/Three regional distributors and two national ones/, "rivalry"],
+      [/A reseller webshop that drop-ships from a wholesaler/, "the threat of new entrants"],
+      [/Contract accounts are 61 percent/, "buyer power"],
+      [/Three manufacturers hold 48 percent/, "supplier power"],
+      [/managed print service/, "the threat of substitutes"]
+    ],
+    reading: "module-08-enterprise-information-systems.html",
+    fixtureSystem: "a supply chain management extended component, starting with supply chain planning",
+    fixtureChapter: "The component is supply chain management and the part I am switching on is supply chain planning. The plan is a demand plan, it starts from a forecast of what the contract accounts will order next quarter, and the eleven suppliers who asked for an electronic link are the ones allowed to see it. The lead time it has to respect is eleven weeks on the imported furniture line. It is externally focused, so it does not work until a supplier agrees to read the forecast and plan against it rather than against the order that lands on the day.",
+    substitute: /managed print service/i,
+    cappedForce: /single-order online business, which is 14 percent<\/b>/
   }
 ];
 
@@ -552,7 +589,11 @@ for(const paper of PAPERS){
     for(const good of [
       "It aligns with what the firm competes on, and the model I recommended is what makes that true.",
       "The lesson is to model the commitment rather than fight the contract, which is the position the firm has chosen.",
-      "That initiative is what defends the advantage this business actually sells."
+      "That initiative is what defends the advantage this business actually sells.",
+      /* A browser found this one: the predicate wanted \bsystem\b and the
+         sentence a student actually writes uses the plural. */
+      "It replaced two separate ordering and warehouse systems with one, which is the position this firm competes from too.",
+      "One record of what is actually available is what makes the promised date true, and that promise is what this firm sells."
     ]){
       assert.ok(connects({ t4: good }), `a summary that does connect was marked as not: "${good}"`);
     }
@@ -618,7 +659,12 @@ for(const paper of PAPERS){
       f3: "Strong. Switching costs a customer nothing at all, and a fifth of them did not come back last year.",
       f4: "Strong. One supplier holds the only licence that counts and raised its prices 9 percent in March.",
       f5: "Moderate. About 12 percent now meet the same need a different way, up from 7 percent three years ago.",
-      strongest: "Buyer power is the strongest force here, because a fifth of last year's customers left at no cost to themselves whatsoever. It beats rivalry, since nobody in this market is discounting heavily and the pressure is plainly coming from customers rather than from competitors cutting their prices.",
+      /* Deliberately WRONG on every one of these papers, and deliberately free
+         of any paper's evidence: this file is public. New entrants is capped on
+         all four briefs, so a student who copies this gets it wrong — and a
+         force named and argued against a second is all the structural check can
+         see anyway. */
+      strongest: "The threat of new entrants is the force I would put first here, because the brief counts the sellers who arrived this year and gives no comparable count anywhere else. It beats supplier power, since that one has an exit the brief prices and this one does not.",
       a1: `${rows[0].activity}. The exhibit prints ${fig(0)} of avoidable cost there, and the weakness is that the work is being done twice, so a system that got the record right once would stop it.`,
       a2: `${rows[1].activity}. The exhibit prints ${fig(1)} of avoidable cost there, and the weakness is a different one, so the two areas are not one idea written out twice.`,
       t3: `The initiative is one programme, scoped to the records that cause the trouble and enforced at the point they are first captured. It is ${paper.fixtureSystem}, and it would be bought as a service rather than hosted here, which costs some control over the release schedule. It sits in ${rows[0].activity.toLowerCase()} and the saving also appears in ${rows[1].activity.toLowerCase()}. It answers buyer power, because a customer let down once has no cost at all to leave. We stand at 3,100 today; the target is under 200 by March, reviewed on the first of that month, and the guardrail is that nothing is lost when two records are merged.`,
@@ -648,44 +694,78 @@ for(const paper of PAPERS){
 }
 
 /* ============================================================================
-   THE TWO TOGETHER
+   THE PAPERS TOGETHER
    They are generated from one template, so drift between them is a defect
    rather than a variation.
    ========================================================================== */
-test("both papers have the same tasks, boxes and checklist", () => {
-  const [a, b] = PAPERS;
+test("every paper has the same tasks, boxes and checklist", () => {
   /* Task 3b is the one heading that is meant to differ: it asks each chapter's
      own question. Everything around it has to match. */
   const shape = html => taskNames(html).map(t => t.startsWith("Task 3b") ? "Task 3b" : t);
-  assert.deepEqual(shape(a.html), shape(b.html), "the two papers ask different tasks");
-  assert.notEqual(taskNames(a.html)[4], taskNames(b.html)[4],
-    "both chapter tasks ask the same thing, so one of them is not about its chapter");
   const keys = html => [...html.matchAll(/data-key="([a-z0-9]+)"/g)].map(m => m[1]);
-  assert.deepEqual(keys(a.html), keys(b.html), "the two papers collect different fields");
   const labels = html => [...scripts(html)[0].matchAll(/\{label:"([^"]+)"/g)]
     .map(m => m[1]).filter(l => /^(Your name|Task)/.test(l));
-  assert.deepEqual(labels(a.html), labels(b.html), "the two checklists check different things");
-  assert.ok(labels(a.html).length >= 12, "the checklist should cover every element both tasks ask for");
+  const [first, ...rest] = PAPERS;
+  for(const paper of rest){
+    assert.deepEqual(shape(paper.html), shape(first.html),
+      `${paper.file} asks different tasks from ${first.file}`);
+    assert.deepEqual(keys(paper.html), keys(first.html),
+      `${paper.file} collects different fields from ${first.file}`);
+    assert.deepEqual(labels(paper.html), labels(first.html),
+      `${paper.file} checks different things from ${first.file}`);
+  }
+  assert.ok(labels(first.html).length >= 12,
+    "the checklist should cover every element both tasks ask for");
+  /* Every chapter task must ask its own chapter's question, or one of them is
+     not about its chapter. */
+  const chapterTasks = PAPERS.map(p => taskNames(p.html)[4]);
+  assert.equal(new Set(chapterTasks).size, PAPERS.length,
+    `two papers share a Task 3b heading: ${chapterTasks.join(" | ")}`);
 });
 
-test("the two papers share no scenario, no firm and no exhibit", () => {
-  const [a, b] = PAPERS;
-  assert.notEqual(a.firm, b.firm);
-  assert.ok(!a.html.includes(b.firm) && !b.html.includes(a.firm),
-    "one paper names the other's firm");
-  assert.notEqual(a.cost, b.cost);
-  assert.notEqual(a.storage, b.storage,
-    "sharing a storage key would make one paper overwrite the other in the same browser");
-  /* No fact may be copied verbatim between the two briefs. */
+test("no two papers share a scenario, a firm or an exhibit", () => {
   const facts = paper => {
     const start = paper.html.indexOf("What the executives have told you");
     return new Set([...paper.html.slice(start, paper.html.indexOf("</ul>", start))
       .matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m => plain(m[1])));
   };
-  const theirs = facts(b);
-  for(const fact of facts(a)){
-    assert.ok(!theirs.has(fact), `a fact is copied between the two briefs: "${fact.slice(0, 60)}…"`);
+  for(let i = 0; i < PAPERS.length; i++){
+    for(let j = i + 1; j < PAPERS.length; j++){
+      const a = PAPERS[i], b = PAPERS[j];
+      assert.notEqual(a.firm, b.firm);
+      assert.ok(!a.html.includes(b.firm) && !b.html.includes(a.firm),
+        `${a.file} and ${b.file}: one paper names the other's firm`);
+      assert.notEqual(a.cost, b.cost, `${a.file} and ${b.file} cost the same`);
+      assert.notEqual(a.storage, b.storage,
+        "sharing a storage key would make one paper overwrite the other in the same browser");
+      /* No fact may be copied verbatim between two briefs. */
+      const theirs = facts(b);
+      for(const fact of facts(a)){
+        assert.ok(!theirs.has(fact),
+          `a fact is copied between ${a.file} and ${b.file}: "${fact.slice(0, 60)}…"`);
+      }
+    }
   }
+});
+
+test("the papers do not all point at the same strongest force", (t) => {
+  /* A student who pattern-matches from one paper to the next should get it
+     wrong. The answers live ONLY in the gitignored keys — this file is public,
+     and an array of paper → intended force would publish the whole set. So the
+     assertion reads the keys where they exist, and skips where they do not,
+     which is the same bargain the figure-checking test above makes. */
+  const answers = [];
+  for(const paper of PAPERS){
+    const keyPath = join(HERE, paper.key);
+    if(!existsSync(keyPath)) continue;
+    const found = readFileSync(keyPath, "utf8")
+      .match(/\*\*([^*]+)\*\* is the best-supported reading/);
+    assert.ok(found, `${paper.key} never says which force it marks as best supported`);
+    answers.push(found[1].trim().toLowerCase().replace(/^the /, ""));
+  }
+  if(answers.length < 2){ t.skip("fewer than two instructor keys are present"); return; }
+  assert.ok(new Set(answers).size >= Math.min(3, answers.length),
+    "too many papers are built around the same best-supported force");
 });
 
 test("the committed pages are byte-identical to what the generator produces", () => {
@@ -713,7 +793,7 @@ test("the committed pages are byte-identical to what the generator produces", ()
   }
 });
 
-test("neither paper reuses a firm from the exam, the practice papers or the game", () => {
+test("no paper reuses a firm from the exam, the practice papers or the game", () => {
   /* A student who pattern-matches a case they have already worked gets the
      wrong answer, which is worse than not having seen it. */
   /* The graded assessment's own firm is deliberately absent from this list: this

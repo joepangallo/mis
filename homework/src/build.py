@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build the two homework case studies from one template.
+"""Build the homework case studies from one template.
 
-Both papers are the signature assignment's shape — scenario, a chosen comparison
+Every paper is the signature assignment's shape — scenario, a chosen comparison
 company, four tasks, two deliverables — so they are generated rather than written
-twice. Anything that differs between them is data in CASES below; anything that
-is the same is in the template, which is the only way the two stay in step.
+out once each. Anything that differs between them is data in CASES below; anything that
+is the same is in the template, which is the only way they stay in step.
 """
 import pathlib, re
 
@@ -163,6 +163,8 @@ CASES = [
         ],
         revenue="Ashgrove turned over $43 million last year on costs of $38.4 million.",
         footerNote="Ashgrove Pet Company is a hypothetical practice scenario.",
+        t3bHint=("Four parts, on the three failures this chapter tells apart. This is the part a "
+                 "generic answer cannot fake."),
     ),
     dict(
         slug="homework-07-decision-making-and-analytics-case",
@@ -302,6 +304,357 @@ CASES = [
         ],
         revenue="Corwin turned over $56 million last year on costs of $50 million.",
         footerNote="Corwin Cycle Company is a hypothetical practice scenario.",
+        t3bHint=("One set of four, belonging to the method you named. This is the part a generic "
+                 "answer cannot fake."),
+    ),
+    dict(
+        slug="homework-08-enterprise-systems-case",
+        storage="mis-homework-08-case-v1",
+        title="Homework &mdash; Enterprise Systems: a framework analysis",
+        description=(
+            "A framework analysis case study: apply Porter's five forces and the value chain to an "
+            "invented home furnishings retailer whose four applications each hold a different version "
+            "of the same order, recommend one enterprise-systems initiative, and write a 150-200 word "
+            "comparison against a real retail or e-commerce company."),
+        heroTitle="Enterprise Systems",
+        heroLead=(
+            "One firm, the two frameworks, one recommendation. You apply Porter&rsquo;s five competitive "
+            "forces and the value chain to a retailer whose four applications each hold a different "
+            "version of the same order, then recommend a single information system and defend it in "
+            "writing against a real company you have gone and read about."),
+        firm="Marchmont Home Company",
+        firmShort="Marchmont",
+        exportTitle="Homework — Enterprise Systems: a framework analysis",
+        exportSlug="homework-08-case",
+        scenarioHeading="A retailer whose four applications each hold a different version of the same order",
+        scenario=[
+            "You have been hired as an analyst at Marchmont Home Company, a mid-sized regional retailer "
+            "selling furniture, floor coverings and lighting, and upholstering its own seating in a "
+            "workshop behind its largest branch. Marchmont runs <b>11 showrooms and one webshop</b>, and "
+            "sells to hotels and care homes through a contract desk. Over the last three years it has "
+            "lost share steadily.",
+            "Leadership is uneasy, and for an unusual reason. Nothing at Marchmont goes unrecorded: "
+            "every order, every purchase and every payment is written down. It is written down "
+            "<b>four times, in four applications that cannot read each other</b>, and the four do not "
+            "agree. Before it spends anything, the executive team wants to understand <b>how "
+            "information systems could strengthen Marchmont&rsquo;s competitive position and support its "
+            "long-term strategy</b>.",
+        ],
+        facts=[
+            "<b>Two national furniture chains</b> opened large stores in the region&rsquo;s three "
+            "biggest towns, and a <b>direct-to-consumer upholstery brand</b> now ships a made-to-order "
+            "sofa in four weeks. Marchmont&rsquo;s share of regional furnishing spend fell from "
+            "<b>14 percent to 10 percent</b> in three years, and last year it <b>matched a "
+            "competitor&rsquo;s advertised price on 31 percent</b> of showroom orders, at an average "
+            "cost of <b>6 percentage points of margin</b> on those orders.",
+            "<b>Setting up a furniture webshop and drop-shipping from a wholesaler costs almost "
+            "nothing</b>, and six online-only sellers appeared in the region this year. None of them "
+            "upholsters anything, carries anything into a room, or takes the old piece away, so they "
+            "reach only the <b>flat-packed accessories, which are 12 percent</b> of Marchmont&rsquo;s "
+            "revenue.",
+            "No household is more than a fraction of a percent of revenue, and a shopper can "
+            "<b>compare the same range across three sellers from a phone</b> without leaving the "
+            "showroom. The <b>contract desk</b> &mdash; hotels and care homes &mdash; is "
+            "<b>17 percent</b> of revenue across <b>eleven accounts</b>, the largest of them "
+            "<b>3 percent</b>, and each of them retenders every two years.",
+            "<b>Two frame mills supply about 70 percent</b> of the frames the workshop upholsters, and "
+            "one of them raised prices <b>7 percent</b> in the spring. A third mill is certified to the "
+            "same specification and holds stock; moving a range across to it takes about <b>a "
+            "quarter</b>.",
+            "<b>Furniture rental and restored second-hand pieces meet the same need without anybody "
+            "buying new furniture at all.</b> Rental subscriptions in the trading area passed "
+            "<b>6,400 households</b> against roughly 310,000, up from 1,900 three years ago, and the "
+            "two largest restoration marketplaces between them list more upholstered seating in the "
+            "region than Marchmont has on all eleven floors.",
+            "<b>Fitting, carrying a piece into the room and taking the old one away cannot be shipped "
+            "in a carton.</b> That work is <b>16 percent</b> of revenue and the only line that is "
+            "growing.",
+            "<b>Marchmont has never been the cheapest.</b> It wins on a sofa built in its own workshop "
+            "in the customer&rsquo;s own fabric, and on a delivery carried in, assembled and set up on "
+            "the day it was promised.",
+            "Showroom orders, the workshop schedule, purchasing and the ledger run on <b>four "
+            "standalone applications</b>. Two of the four hold an on-hand figure, and the two figures "
+            "disagree.",
+            "Last quarter Marchmont <b>promised stock it did not have on 214 of 3,600 orders</b>, at "
+            "about <b>$390 each</b> in expedited freight, credits and a second delivery run.",
+            "A sales order is <b>keyed three times</b> &mdash; once into the workshop schedule, once "
+            "into purchasing, once into the ledger. About <b>3 lines in every 100</b> differ between at "
+            "least two of the three.",
+            "The ordering system was <b>written to order eleven years ago</b>. The supplier&rsquo;s "
+            "last two releases were skipped, because every one of those changes would have had to be "
+            "written again.",
+            "<b>Month end takes eleven working days</b>, because finance and the workshop cannot settle "
+            "what has actually shipped until somebody walks the workshop floor with a clipboard.",
+            "A supplier invoice is matched by hand against a paper goods receipt. <b>9 percent are paid "
+            "late</b> and <b>1.4 percent are paid twice</b>.",
+            "Payroll and rostering run on a <b>fifth application</b> a branch manager bought four years "
+            "ago. Its list of employees and the ledger&rsquo;s differ by <b>23 names</b>.",
+            "The board has approved <b>$240,000 for year one</b> and will fund <b>one</b> initiative. "
+            "Three quotes sit on the table at <b>$86,000</b>, <b>$148,000</b> and <b>$305,000</b> for "
+            "year one, and <b>none of the three carries a line for training</b>. The last system change "
+            "budgeted nothing for training either, and the showrooms took <b>five months</b> to get "
+            "back to the order rate they had before it.",
+        ],
+        exhibitCaption="Exhibit &mdash; Marchmont&rsquo;s $62.0 million of cost, by value chain activity",
+        exhibit=[
+            ("Inbound logistics", 2240000, "$318,000",
+             "Frames and floor coverings received against a purchase order the workshop schedule cannot see, so every receipt is keyed a second time and matched by hand"),
+            ("Operations", 33600000, "&mdash;",
+             "Showroom staff, the upholstery workshop and the delivery crews. Nothing here is avoidable by making four applications agree"),
+            ("Outbound logistics", 4120000, "$896,000",
+             "Deliveries rebooked, reloaded and run a second time after an order was promised against stock that was not there"),
+            ("Sales and marketing", 5480000, "$402,000",
+             "Quotations rebuilt by hand from three screens, and the margin given away matching an advertised price on an order nobody could confirm"),
+            ("Service", 2960000, "$274,000",
+             "Establishing what was actually delivered, because the showroom, the workshop and the ledger each hold a different version of the order"),
+            ("Procurement <span style=\"color:var(--muted)\">(support)</span>", 2310000, "$246,000",
+             "Buying decided from whichever on-hand figure the buyer happened to open, and invoices matched by hand against paper receipts"),
+            ("Technology development <span style=\"color:var(--muted)\">(support)</span>", 1180000, "$358,000",
+             "Keeping eleven years of written-to-order changes alive, and the two releases that were skipped rather than written again"),
+            ("Human resources <span style=\"color:var(--muted)\">(support)</span>", 4060000, "$187,000",
+             "Rostering and payroll run from a fifth application whose list of employees the ledger has never seen"),
+            ("Administration <span style=\"color:var(--muted)\">(support)</span>", 6050000, "$521,000",
+             "Month end rebuilt by hand over eleven working days, because no two applications agree on what has shipped"),
+        ],
+        systemWords=[
+            ("an enterprise system", r"\benterprise (resource planning|system|systems)\b|\bERP\b"),
+            ("an ERP core component", r"\bcore component\b|\bfinancial management\b|\boperations management\b|\bhuman resource management\b"),
+            ("an ERP extended component", r"\bextended component\b"),
+            ("supply chain management", r"\bsupply chain management\b|\bSCM\b"),
+            ("customer relationship management", r"\bcustomer relationship management\b|\bCRM\b"),
+            ("a module", r"\bmodule\b"),
+            ("configuration", r"\bconfigur"),
+            ("customization", r"\bcustomi[sz]"),
+            ("a vanilla installation", r"\bvanilla\b"),
+            ("a best-of-breed selection", r"\bbest.of.breed\b"),
+            ("replacing a standalone application", r"\bstand.?alone\b|\blegacy (application|system)\b"),
+            ("an internally focused system", r"\binternally focused\b"),
+            ("an externally focused system", r"\bexternally focused\b"),
+        ],
+        chapterHeading="Name the process that fails, and price the whole thing",
+        chapterIntro=(
+            "A recommendation can name a system and still not show that you have read the chapter. This "
+            "task is where you show it, and it is the ladder a manager actually walks down before "
+            "approving anything. Answer <b>all four</b>."),
+        chapterParts=[
+            "<b>State the problem as a process failure rather than a purchase.</b> Name the process "
+            "&mdash; <b>order-to-cash</b> or <b>procure-to-pay</b> &mdash; then say what goes wrong, to "
+            "whom, how often, and what it costs, using a figure from the brief somebody could go and "
+            "count. &ldquo;We need a new system&rdquo; is not a problem; it is a purchase.",
+            "<b>Walk down the ladder of precision.</b> The <b>class</b> of system; then whether you are "
+            "switching on an <b>ERP core component or an extended component</b>, and which one; then "
+            "the <b>module</b> you would turn on first. Say whether the work is <b>configuration or "
+            "customization</b>, and what the difference costs Marchmont the next time a release "
+            "arrives. The brief says what happened to the last two.",
+            "<b>Price the whole thing, not the licence.</b> Name the year-one lines: licence or "
+            "subscription, <b>configuration labour</b>, <b>integration</b> with whatever you are not "
+            "replacing, <b>training and change management</b>, and the <b>recurring</b> cost of the "
+            "years after this one. Then say which of the three quotes on the table your recommendation "
+            "fits inside, and show the arithmetic that rules any of them out.",
+            "<b>Say what would make it fail, and what evidence you will accept.</b> There is usually a "
+            "sharp drop in productivity in the weeks straight after go-live, while experienced people "
+            "work slowly in an unfamiliar system &mdash; say what you would tell the board about that "
+            "<b>in advance</b>, which figure from the brief you would watch instead, and when you would "
+            "look at it.",
+        ],
+        chapterPlaceholder=(
+            "1. The process that fails is … It goes wrong to … about … times, and it costs …\n\n"
+            "2. The class is … The component is … The module is … The work is configuration/"
+            "customization because …\n\n3. Year one: licence …, configuration …, integration …, "
+            "training …, recurring … That fits inside the … quote because …\n\n4. It would fail if … "
+            "I would tell the board … I would watch … on …"),
+        readingLinks=[
+            ("../module-08-enterprise-information-systems.html",
+             "Module 8 &mdash; Enterprise Information Systems",
+             "where order-to-cash and procure-to-pay are followed end to end, where the cost of "
+             "standalone applications is set out, and where the ladder from enterprise system to core "
+             "or extended component to module to configuration is the thing a manager actually "
+             "approves &mdash; including the cost lines nobody quotes and the first month after "
+             "go-live."),
+            ("../games/rocks-in-the-river.html",
+             "Rocks in the River &mdash; the Chapter 8 game",
+             "seven rounds running an invented refrigeration maker&rsquo;s business systems programme, "
+             "starting with the difference between what is on hand and what can actually be promised "
+             "&mdash; which is this case&rsquo;s whole problem in one screen."),
+        ],
+        revenue="Marchmont turned over $69 million last year on costs of $62 million.",
+        footerNote="Marchmont Home Company is a hypothetical practice scenario.",
+        t3bHint=("Four parts, from the problem statement down to what you would tell the board about "
+                 "the first month. This is the part a generic answer cannot fake."),
+    ),
+    dict(
+        slug="homework-09-supply-chains-and-customer-relationships-case",
+        storage="mis-homework-09-case-v1",
+        title="Homework &mdash; Supply Chains and Customer Relationships: a framework analysis",
+        description=(
+            "A framework analysis case study: apply Porter's five forces and the value chain to an "
+            "invented workplace supplies distributor whose problems all sit on its two boundaries, "
+            "recommend one enterprise-systems initiative, and write a 150-200 word comparison against "
+            "a real retail or e-commerce company."),
+        heroTitle="Supply Chains and Customer Relationships",
+        heroLead=(
+            "One firm, the two frameworks, one recommendation. You apply Porter&rsquo;s five competitive "
+            "forces and the value chain to a distributor whose troubles all sit on the two boundaries it "
+            "does not control, then recommend a single information system and defend it in writing "
+            "against a real company you have gone and read about."),
+        firm="Pentworth Workplace Company",
+        firmShort="Pentworth",
+        exportTitle="Homework — Supply Chains and Customer Relationships: a framework analysis",
+        exportSlug="homework-09-case",
+        scenarioHeading="A distributor whose troubles all sit on the two boundaries it does not control",
+        scenario=[
+            "You have been hired as an analyst at Pentworth Workplace Company, a mid-sized regional "
+            "distributor of office and workplace supplies &mdash; paper, print consumables, desks and "
+            "chairs, catering and cleaning &mdash; selling to businesses through a webshop, a telephone "
+            "desk and <b>240 contract accounts</b>, served out of <b>four depots</b>. Over the last "
+            "three years it has lost share steadily.",
+            "Leadership is uneasy, and for an unusual reason. Almost nothing that hurts Pentworth "
+            "happens inside Pentworth. Its trouble sits on its two boundaries: <b>the suppliers above "
+            "it, who are shown nothing but its orders, and the customers below it, who exist four times "
+            "over in four systems</b>. Before it spends anything, the executive team wants to "
+            "understand <b>how information systems could strengthen Pentworth&rsquo;s competitive "
+            "position and support its long-term strategy</b>.",
+        ],
+        facts=[
+            "<b>Three regional distributors and two national ones</b> sell much the same catalog in the "
+            "same towns. Contract business is won on <b>three-year tenders</b> that fall due at "
+            "different times, so only about <b>a third of the market is contestable in any one "
+            "year</b>, and list prices sit within a few percent of each other.",
+            "<b>A reseller webshop that drop-ships from a wholesaler can be trading inside a "
+            "weekend</b>, and five of them appeared in the region this year holding no stock at all. "
+            "None of them can deliver next day out of local stock or sign a service level, so they "
+            "reach only the <b>single-order online business, which is 14 percent</b> of "
+            "Pentworth&rsquo;s revenue.",
+            "Contract accounts are <b>61 percent</b> of revenue across 240 accounts, the largest of "
+            "them <b>4 percent</b>. Every one of them retenders, and <b>19 of the 240 did not renew "
+            "last year</b>. Moving, though, means a customer republishing its own approved catalog and "
+            "reapproving every user who buys from it, which takes a purchasing team about a month.",
+            "<b>Three manufacturers hold 48 percent</b> of the lines Pentworth stocks, and one of them "
+            "raised prices <b>7 percent</b> in the spring. Substitutable equivalents exist for most of "
+            "those lines, and two of the four depots already stock them.",
+            "<b>The work is being done a different way, and it needs less of what Pentworth sells.</b> "
+            "Print volume across its contract accounts fell <b>34 percent in four years</b> as "
+            "documents stopped being printed at all; hybrid working left desks empty and took the "
+            "catering and cleaning lines down with them; and <b>four of Pentworth&rsquo;s ten largest "
+            "accounts</b> moved to a <b>managed print service</b> that buys consumables direct from the "
+            "manufacturer and bills by the page.",
+            "<b>Next-day delivery out of local stock, and a named person who answers the phone, cannot "
+            "be drop-shipped.</b> The service and account-management side of the business is "
+            "<b>13 percent</b> of revenue and the only line that is growing.",
+            "<b>Pentworth has never been the cheapest.</b> It wins on next-day delivery out of a depot "
+            "twenty miles away, and on one named account manager who knows what a customer ordered last "
+            "time.",
+            "Pentworth sends about <b>1,900 purchase orders a month to 86 suppliers</b> by email and "
+            "PDF attachment, and every one of them is keyed in again at the other end. <b>Eleven of "
+            "those suppliers have asked for an electronic link</b> and been told there is not one.",
+            "A March promotion raised customer demand for one paper line <b>18 percent</b>. The order "
+            "Pentworth placed on its wholesaler rose <b>41 percent</b>, and the order that wholesaler "
+            "placed on the mill rose <b>86 percent</b>. <b>Forty-two pallets</b> of that paper were "
+            "written off four months later.",
+            "<b>No supplier is shown anything but Pentworth&rsquo;s orders.</b> Nothing about what "
+            "Pentworth expects to sell is shared with any of them, and lead times run from three weeks "
+            "on paper to <b>eleven weeks</b> on the imported furniture line.",
+            "There is no plan, only a reaction. <b>One buyer purchases from last month&rsquo;s "
+            "sales</b> in a spreadsheet, and nothing anywhere in the firm states what it expects to "
+            "sell next quarter.",
+            "<b>A customer exists four times.</b> The webshop, the contract catalog, the delivery "
+            "system and the ledger each hold their own record, and about <b>2,900 of 11,400 business "
+            "customers appear in more than one of them</b>. A customer who moves premises has to be "
+            "asked to change the address in each.",
+            "<b>54 percent of calls to the trade desk are settled on the first contact.</b> The rest "
+            "call back an average of <b>2.4 times</b>, and nobody has ever counted what the other "
+            "46 percent costs to handle.",
+            "<b>Account managers keep their accounts in their own spreadsheets.</b> Two left last year; "
+            "their notes left with them, and <b>9 of their 61 accounts</b> did not renew at the next "
+            "tender.",
+            "<b>Nobody can say which contract account is about to leave</b> until the tender documents "
+            "arrive. The firm has never put the question in a form that anything it owns could answer.",
+        ],
+        exhibitCaption="Exhibit &mdash; Pentworth&rsquo;s $44.0 million of cost, by value chain activity",
+        exhibit=[
+            ("Inbound logistics", 3180000, "$612,000",
+             "Purchase orders keyed in again at the other end, and the freight and the write-off when an order amplified up the chain arrives late and far too large"),
+            ("Operations", 21400000, "&mdash;",
+             "Picking, packing and running four depots. Nothing here is avoidable by fixing what crosses the firm’s boundary"),
+            ("Outbound logistics", 2240000, "$291,000",
+             "Second delivery runs to an address that was changed in one system and left alone in the other three"),
+            ("Sales and marketing", 3860000, "$348,000",
+             "Tender responses rebuilt from an account manager’s own spreadsheet, and campaigns sent twice to a customer who exists twice"),
+            ("Service", 1940000, "$233,000",
+             "The 46 percent of trade calls that are not settled on the first contact, and everything that follows one"),
+            ("Procurement <span style=\"color:var(--muted)\">(support)</span>", 2420000, "$457,000",
+             "Buying from last month’s sales, with no plan behind it and no forecast any supplier is allowed to see"),
+            ("Technology development <span style=\"color:var(--muted)\">(support)</span>", 860000, "$119,000",
+             "Keeping four customer records in step by hand, and the interfaces written again each time a system is added"),
+            ("Human resources <span style=\"color:var(--muted)\">(support)</span>", 3100000, "&mdash;",
+             "Recruiting, training and scheduling depot and trade-desk staff"),
+            ("Administration <span style=\"color:var(--muted)\">(support)</span>", 5000000, "$164,000",
+             "Credit notes and reconciliations after a delivery went out against the wrong version of a customer"),
+        ],
+        systemWords=[
+            ("supply chain management", r"\bsupply chain management\b|\bSCM\b"),
+            ("customer relationship management", r"\bcustomer relationship management\b|\bCRM\b"),
+            ("an ERP extended component", r"\bextended component\b"),
+            ("supply chain planning", r"\bsupply chain planning\b|\bdemand plan|\bproduction plan|\bdistribution plan|\bsafety stock\b"),
+            ("supply chain execution", r"\bsupply chain execution\b|\bexecution system"),
+            ("supply chain visibility", r"\bvisibilit"),
+            ("operational CRM", r"\boperational CRM\b|\btouch ?point\b|\bsales force automation\b"),
+            ("analytical CRM", r"\banalytical CRM\b|\bcustomer analytic"),
+            ("collaborative CRM", r"\bcollaborative CRM\b|\bself-service\b|\bportal\b"),
+            ("an electronic data interchange link", r"\bEDI\b|\belectronic data interchange\b|\bXML\b"),
+            ("a business-to-business exchange", r"\bB2B\b|\bbusiness-to-business\b|\bexchange\b"),
+            ("an enterprise system", r"\benterprise (resource planning|system|systems)\b|\bERP\b"),
+            ("a single customer record", r"\bsingle (customer )?record\b|\bone record\b|\bmaster record\b"),
+        ],
+        chapterHeading="Name the component, and settle what a generic answer leaves open",
+        chapterIntro=(
+            "A recommendation can name a system and still not show that you have read the chapter. Say "
+            "which <b>extended component</b> you are switching on &mdash; supply chain management or "
+            "customer relationship management &mdash; and then answer <b>the set that belongs to the "
+            "part of it you chose</b>, plus the last item, which applies whichever you named. <b>One "
+            "set, not all four.</b>"),
+        chapterParts=[
+            "<b>Supply chain planning:</b> which plan you are making &mdash; <b>demand</b>, "
+            "<b>production or stock</b>, or <b>distribution</b> &mdash; the <b>forecast</b> it starts "
+            "from and <b>who outside Pentworth is allowed to see it</b>, and the <b>lead time</b> it "
+            "has to respect. The brief says what happens up the chain when a supplier is shown nothing "
+            "but orders.",
+            "<b>Supply chain execution:</b> which of the <b>three flows</b> &mdash; product, "
+            "information, financial &mdash; you are fixing first, <b>what replaces the emailed purchase "
+            "order</b> across the firm&rsquo;s boundary, and <b>what a supplier would be able to see "
+            "that it cannot see today</b>. Say which of the eighty-six you would start with and why.",
+            "<b>Operational CRM:</b> which <b>touch point</b> it serves &mdash; sales, marketing or "
+            "support &mdash; <b>which of the four records becomes the one record</b> of a customer and "
+            "<b>who inside Pentworth owns it</b>, and <b>what the person on the trade desk does "
+            "differently</b> on the morning it goes live.",
+            "<b>Analytical CRM:</b> the <b>one question</b> you are putting to the customer data, what "
+            "would count as an answer somebody could <b>act on before a tender</b> rather than after "
+            "it, and <b>who acts on it</b>. A number nobody is obliged to do anything about is a "
+            "report, not a decision.",
+            "<b>Whichever you named:</b> say whether that component is <b>internally or externally "
+            "focused</b>, and name <b>who outside Pentworth has to agree</b> before it works at all. "
+            "This is the item that separates the two halves of the chapter, and the answer is not the "
+            "same for both.",
+        ],
+        chapterPlaceholder=(
+            "The component is … and the part of it I am switching on is …\n\nThe set that belongs to "
+            "it:\n1. …\n2. …\n3. …\n\nInternally or externally focused: … Who has to agree: …"),
+        readingLinks=[
+            ("../module-08-enterprise-information-systems.html",
+             "Module 8 &mdash; Enterprise Information Systems",
+             "where the supply network, the ways data is exchanged across a firm&rsquo;s boundary and "
+             "the bullwhip effect are set out; where planning is separated from execution and the three "
+             "flows are named; and where CRM is argued as a strategy with operational, analytical and "
+             "collaborative parts rather than as a purchase."),
+            ("../module-03-information-systems-infrastructure.html",
+             "Module 3 &mdash; Information Systems Infrastructure",
+             "the cloud service models, if you want to say more in Task 3 than built here or bought as "
+             "a service. Not required."),
+        ],
+        revenue="Pentworth turned over $49 million last year on costs of $44 million.",
+        footerNote="Pentworth Workplace Company is a hypothetical practice scenario.",
+        t3bHint=("One set, belonging to the component you named, plus the last item. This is the part "
+                 "a generic answer cannot fake."),
     ),
 ]
 
@@ -347,6 +700,7 @@ def build(case):
               .replace("__FIRM__", case["firm"])
               .replace("__EXPORT_TITLE__", case["exportTitle"])
               .replace("__EXPORT_SLUG__", case["exportSlug"])
+              .replace("__T3B_HINT__", case["t3bHint"])
               .replace("__SYSTEM_WORDS__", js_regex_list(case["systemWords"]))
               .replace("__EXHIBIT_FIGURES__",
                        "[" + ", ".join('"{}"'.format(v) for v in avoidable_figures) + "]"))

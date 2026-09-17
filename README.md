@@ -556,7 +556,7 @@ node --test games/rocks-in-the-river.test.mjs
 
 ## Homework
 
-**Both homework papers live in [`homework/`](homework).** Each is a **case study in the shape of the
+**The homework papers live in [`homework/`](homework).** Each is a **case study in the shape of the
 graded framework analysis** &mdash; a scenario, a real company of the student&rsquo;s choosing to compare
 against, four tasks, and the two deliverables &mdash; rather than a worksheet with a case bolted on. They
 are open book, and each links back to the reading it is answered with and to the frameworks workshop.
@@ -565,9 +565,15 @@ are open book, and each links back to the reading it is answered with and to the
 |---|---|---|
 | [`homework-06-data-and-business-intelligence-case.html`](homework/homework-06-data-and-business-intelligence-case.html) | [Module 6](module-06-managing-data-and-business-intelligence.html) | **Ashgrove Pet Company**, a 17-store pet retailer that is not short of data and can act on almost none of it: two product catalogs merged without reconciling 3,100 identifiers, returns in a spreadsheet nobody else can open, two live definitions of &ldquo;customer&rdquo;, a monthly report that lands four days after the meeting, and a webshop clickstream thrown away because nothing can store it |
 | [`homework-07-decision-making-and-analytics-case.html`](homework/homework-07-decision-making-and-analytics-case.html) | [Decision Engine](games/decision-engine.html) | **Corwin Cycle Company**, a 14-store cycle retailer holding four years of records it has never asked anything: one revenue figure per store with nothing to open up, a margin model opened once a quarter, 40,000 unlabelled workshop notes, ninety availability enquiries a day answered by hand, a pilot that reported 97 percent because it was tested on its training data, and three workshop managers retiring with everything they know |
+| [`homework-08-enterprise-systems-case.html`](homework/homework-08-enterprise-systems-case.html) | [Module 8](module-08-enterprise-information-systems.html) | **Marchmont Home Company**, an 11-showroom home furnishings retailer with its own upholstery workshop, whose four applications each hold a different version of the same order: two disagreeing on-hand figures, an order keyed three times, stock promised that was not there on 214 of 3,600 orders, a written-to-order system whose last two releases were skipped rather than rewritten, an eleven-day month end, and three quotes on the table of which none carries a training line |
+| [`homework-09-supply-chains-and-customer-relationships-case.html`](homework/homework-09-supply-chains-and-customer-relationships-case.html) | [Module 8](module-08-enterprise-information-systems.html) | **Pentworth Workplace Company**, a four-depot workplace supplies distributor whose troubles all sit on the two boundaries it does not control: 1,900 purchase orders a month emailed and keyed in again at the other end, an 18 percent demand rise amplified to 41 and then 86 up the chain, no forecast any supplier may see, one customer existing four times in four systems, 46 percent of trade calls unsettled on the first contact, and account histories that left with the account managers |
 
-**The two papers are alternatives, not a sequence.** Each is a full analysis of one firm; assigning both
-back to back is repetitive, and the reading load below is per paper.
+**The papers are alternatives, not a sequence.** Each is a full analysis of one firm; assigning two back
+to back is repetitive, and the reading load below is per paper. Papers 8 and 9 both answer to Module 8
+and split it between them &mdash; 8 is the **internal** half (standalone applications, ERP core
+components, configuration against customization, the whole year-one price) and 9 is the **external**
+half (the supply network and the bullwhip effect, and CRM as a strategy), so they are the closest pair
+here to a genuine choice rather than two versions of one paper.
 
 **The tasks are the assignment&rsquo;s own**, and the contract test fails if the wording drifts:
 apply the five competitive forces; use the value chain to find **at least two internal areas** where
@@ -585,21 +591,26 @@ Three things make them markable rather than merely open:
   readings earn full marks instead of declaring a runner-up settled.
 - **Task 3b is what makes the reading non-optional.** Without it both papers answer to a generic
   strategy recommendation with a system&rsquo;s name attached. It asks the question only the chapter
-  settles &mdash; which of the three data failures is being fixed and which are left, who owns the
-  authoritative record and what happens when two departments disagree; or, on the other paper, the
-  method and the four things that particular method has to pin down.
+  settles. On the Chapter 6 paper: which of the three data failures is being fixed and which are left,
+  who owns the authoritative record and what happens when two departments disagree. On the Chapter 7
+  paper: the method, and the four things that particular method has to pin down. On the two Chapter 8
+  papers: the process failure stated as something countable rather than as a purchase, the ladder from
+  class to component to module to configuration, the year-one lines nobody quotes and the arithmetic
+  that rules a quote out &mdash; or, on the external paper, which extended component is being switched
+  on, the set belonging to the part of it chosen, and whether it is internally or externally focused,
+  which decides whether anybody outside the firm has to agree before it works at all.
 - **Every case carries a costed exhibit split two ways** &mdash; the annual cost of each of the **nine**
   value chain activities, and the part of it that is **avoidable**: cost the firm would not carry if the
   problems in the brief were not there. Task 2 requires the figure quoted exactly, and the driver
   described in the student&rsquo;s own words &mdash; requiring the driver verbatim rewards copying. On
-  both papers the activity carrying most of the money carries no avoidable cost, so attacking the
+  every paper the activity carrying most of the money carries no avoidable cost, so attacking the
   biggest number is the designed wrong answer; a test asserts that stays true. The page is careful not
   to claim the converse &mdash; the largest avoidable figure is not automatically the best thing to
   fund, and saying which you are weighing is part of the task.
 - **The brief carries one quantified fact per force**, with a stated ceiling on the forces that are not
-  meant to win, and the best-supported force is deliberately **different on the two papers**, so a
-  student who pattern-matches from one to the other gets it wrong. Which force that is on each paper is
-  in the gitignored instructor key, not here.
+  meant to win, and the best-supported force is deliberately **different across the papers**, so a
+  student who pattern-matches from one to the next gets it wrong &mdash; a test asserts they do not all
+  point the same way. Which force wins on each paper is in the gitignored instructor key, not here.
 
 Both carry the exam's machinery: a name field, answers saved in the reader's own browser as they type
 (flushed on `pagehide`, so closing the tab does not lose the last sentence), a word counter on the
@@ -615,22 +626,25 @@ its weights in a comment.)
 
 ### Working on them
 
-The two papers are **generated from one template**, so anything true of one is true of the other by
+The papers are **generated from one template**, so anything true of one is true of the rest by
 construction rather than by discipline. Sources in [`homework/src/`](homework/src): `build.py` holds the
 per-case data, `case-script.js` the shared page machinery, `page.css.html` the design system the exam
 pages use. Edit those, never the built HTML.
 
 ```sh
-python3 homework/src/build.py          # regenerate both papers
+python3 homework/src/build.py          # regenerate every paper
 node --test homework/homework-cases.test.mjs
 ```
 
-One test file covers both and additionally asserts they have **not drifted apart** &mdash; same tasks,
-same boxes, same checklist &mdash; while sharing no scenario, no firm, no exhibit and no storage key. It
+One test file covers them all and additionally asserts they have **not drifted apart** &mdash; same
+tasks, same boxes, same checklist &mdash; while no two share a scenario, a firm, an exhibit, a Task 3b
+heading or a storage key. It
 also loads each page's inline script against a small DOM stub and **runs the checklist predicates
 directly** &mdash; including one **end-to-end fixture**, a complete analysis that has to pass every
 check at once, and a filler fixture that must not. That harness exists because the checklist's real
-failure mode is not a crash but marking a complete answer incomplete.
+failure mode is not a crash but marking a complete answer incomplete. A browser found the latest one:
+the Task 4 check looked for `\bsystem\b`, so a summary saying a company replaced *two separate systems*
+was told it never returned to the recommendation.
 
 The generated pages are checked by **regenerating them into a temp directory and comparing bytes**, so a
 hand edit to the built HTML fails the build rather than surviving until the next run. Where the

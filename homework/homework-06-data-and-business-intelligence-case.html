@@ -806,7 +806,7 @@ var CHECKS = [
    test:function(v){ return NUM_RE.test(v.t3) && TIME_RE.test(v.t3); }},
 
   {label:"Task 3b answers the chapter's own question",
-   hint:"Four parts on the Chapter 6 case, one set of four on the Chapter 7 case. This is the part a generic answer cannot fake.",
+   hint:"Four parts, on the three failures this chapter tells apart. This is the part a generic answer cannot fake.",
    test:function(v){ return words(v.t3b) >= 60 && matched(SYSTEM_WORDS, v.t3 + " " + v.t3b).length >= 1; }},
 
   {label:"Task 4 names the company it is comparing with",
@@ -824,10 +824,12 @@ var CHECKS = [
         "the decision support system". Accept the reading's words, a value chain
         activity, OR a plain reference to the thing recommended — what this is
         really catching is a summary that admires a company and never returns to
-        Task 3 at all. */
+        Task 3 at all. A browser found the plural: "separate ordering and
+        warehouse systems" is exactly the sentence this wants, and \bsystem\b
+        did not match it. */
      var namesIt = matched(SYSTEM_WORDS, v[ESSAY]).length +
                    matched(ACTIVITY_WORDS, v[ESSAY]).length > 0 ||
-                   /\binitiative|\bmodel|\bsystem\b|\bpilot\b|\bprogramme\b|\bprogram\b|\bassistant\b|\brecommend|\bdashboard|\bforecast/i.test(v[ESSAY]);
+                   /\binitiative|\bmodel|\bsystems?\b|\bpilot\b|\bprogramme\b|\bprogram\b|\bassistant\b|\brecommend|\bdashboard|\bforecast|\brecord\b|\bcomponent\b|\bmodule\b/i.test(v[ESSAY]);
      return namesIt && /alig|strateg|position|compet|advantage|promise|in stock|on time|what (it|we) sell|wins on|never been the cheapest/i.test(v[ESSAY]);
    }},
 
